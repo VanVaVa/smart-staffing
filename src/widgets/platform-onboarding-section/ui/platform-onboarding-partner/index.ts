@@ -1,0 +1,1 @@
+export { PlatformOnboardingPartner } from "./PlatformOnboardingPartner";

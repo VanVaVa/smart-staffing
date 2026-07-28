@@ -1,0 +1,23 @@
+.section {
+  padding-block: var(--section-gap);
+}
+
+.section--light {
+  background: var(--color-white);
+}
+
+.section--muted {
+  background: var(--color-bg);
+}
+
+.section--dark {
+  background: var(--color-grey-800);
+  color: var(--color-white);
+}
+
+.section__inner {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(40px, 5vw, 64px);
+  min-width: 0;
+}

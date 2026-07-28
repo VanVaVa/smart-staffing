@@ -1,0 +1,14 @@
+.footer-link-column__links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-link-column__link {
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-link-column__link:hover {
+  color: var(--color-accent);
+}

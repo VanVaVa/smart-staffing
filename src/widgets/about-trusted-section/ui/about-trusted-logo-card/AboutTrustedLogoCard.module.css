@@ -1,0 +1,24 @@
+.about-trusted-logo-card {
+  flex-shrink: 0;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--about-trusted-card-height);
+  width: min(var(--about-trusted-card-width), calc(var(--about-trusted-card-width) * 100vw / 1920));
+  padding-inline: min(48px, calc(48 * 100vw / 1920));
+  border-radius: min(20px, calc(20 * 100vw / 1920));
+  background: color-mix(in srgb, var(--color-grey-600) 8%, transparent);
+  backdrop-filter: blur(80px);
+}
+
+.about-trusted-logo-card__logo {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: min(var(--about-trusted-logo-width), calc(var(--about-trusted-logo-width) * 100vw / 1920));
+  max-height: min(var(--about-trusted-logo-height), calc(var(--about-trusted-logo-height) * 100vw / 1920));
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.72;
+}

@@ -1,0 +1,33 @@
+.hero-visual {
+  position: relative;
+  width: 100%;
+  max-width: 956px;
+  margin-left: auto;
+  padding: 28px;
+  border-radius: 40px 0 0 40px;
+  background: rgb(119 119 142 / 8%);
+  backdrop-filter: blur(80px);
+}
+
+.hero-visual__dashboard {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-control);
+}
+
+.hero-visual__segments {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 48px;
+  max-width: 598px;
+}
+
+@media (max-width: 1200px) {
+  .hero-visual {
+    margin-left: 0;
+    max-width: none;
+    border-radius: var(--radius-lg);
+  }
+}

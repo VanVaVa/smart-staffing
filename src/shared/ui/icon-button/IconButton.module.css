@@ -1,0 +1,77 @@
+.icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: none;
+  padding: 2px;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.icon-button--md {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+}
+
+.icon-button--lg {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+}
+
+.icon-button:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+.icon-button:disabled {
+  opacity: 1;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.icon-button--soft {
+  background: var(--color-grey-200);
+  color: var(--color-black);
+}
+
+.icon-button--soft:hover:not(:disabled) {
+  background: var(--color-grey-300);
+}
+
+.icon-button--soft:disabled {
+  background: var(--color-white);
+  color: var(--color-grey-400);
+}
+
+.icon-button--soft-accent {
+  background: var(--color-grey-200);
+  color: var(--color-black);
+}
+
+.icon-button--soft-accent:hover:not(:disabled) {
+  background: var(--color-accent);
+  color: var(--color-white);
+}
+
+.icon-button--outline {
+  border: 1px solid var(--color-grey-300);
+  background: var(--color-white);
+}
+
+.icon-button--outline:hover:not(:disabled) {
+  border-color: var(--color-accent);
+}
+
+.icon-button--ghost {
+  background: transparent;
+}
+
+.icon-button--ghost:hover:not(:disabled) {
+  background: var(--color-grey-200);
+}

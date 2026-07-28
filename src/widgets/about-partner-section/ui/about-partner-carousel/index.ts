@@ -1,0 +1,1 @@
+export { AboutPartnerCarousel } from "./AboutPartnerCarousel";

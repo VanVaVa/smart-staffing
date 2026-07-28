@@ -1,0 +1,23 @@
+.arrow-icon {
+  display: block;
+  flex-shrink: 0;
+}
+
+.arrow-icon--size-16 {
+  width: 16px;
+  height: 16px;
+}
+
+.arrow-icon--size-18 {
+  width: 18px;
+  height: 18px;
+}
+
+.arrow-icon--size-32 {
+  width: 32px;
+  height: 32px;
+}
+
+.arrow-icon--flip-x {
+  transform: scaleX(-1);
+}

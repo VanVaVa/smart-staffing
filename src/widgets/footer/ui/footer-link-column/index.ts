@@ -1,0 +1,1 @@
+export { FooterLinkColumn } from "./FooterLinkColumn";

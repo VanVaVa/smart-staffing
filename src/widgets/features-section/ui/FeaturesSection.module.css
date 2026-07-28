@@ -1,0 +1,12 @@
+.features-section {
+  padding-block: var(--section-gap);
+  background: var(--color-bg);
+  overflow-x: clip;
+}
+
+.features-section__list {
+  display: flex;
+  flex-direction: column;
+  gap: min(112px, calc(112 * 100vw / 1920));
+  width: 100%;
+}

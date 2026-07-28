@@ -1,0 +1,1 @@
+export { HeroRegistryLink } from "./HeroRegistryLink";

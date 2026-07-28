@@ -1,0 +1,116 @@
+.about-partner-award-card {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: min(507px, calc(507 * 100vw / 1920));
+  min-height: min(600px, calc(600 * 100vw / 1920));
+  padding: 28px;
+  border: none;
+  border-radius: var(--radius-lg);
+  background: var(--color-white);
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.about-partner-award-card:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.about-partner-award-card__title {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: min(26px, calc(26 * 100vw / 1920));
+  font-weight: 500;
+  line-height: 36px;
+  white-space: pre-line;
+}
+
+.about-partner-award-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 28px;
+  margin-top: min(104px, calc(104 * 100vw / 1920));
+  min-height: min(368px, calc(368 * 100vw / 1920));
+}
+
+.about-partner-award-card__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin: 0;
+}
+
+.about-partner-award-card__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+}
+
+.about-partner-award-card__field-label {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-grey-400);
+}
+
+.about-partner-award-card__field-value {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 20px;
+  line-height: 26px;
+}
+
+.about-partner-award-card__action {
+  align-self: flex-end;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  padding: 2px;
+  border-radius: var(--radius-pill);
+  background: var(--color-grey-200);
+  color: var(--color-black);
+  transition: background-color 0.2s ease;
+}
+
+.about-partner-award-card:hover .about-partner-award-card__action {
+  background: var(--color-grey-300);
+}
+
+.about-partner-award-card__action-icon {
+  transform: rotate(-90deg);
+}
+
+@media (max-width: 768px) {
+  .about-partner-award-card {
+    width: min(320px, 85vw);
+    min-height: auto;
+  }
+
+  .about-partner-award-card__title {
+    font-size: clamp(20px, 5vw, 26px);
+    line-height: 1.35;
+  }
+
+  .about-partner-award-card__body {
+    margin-top: 48px;
+    min-height: auto;
+  }
+
+  .about-partner-award-card__field-value {
+    font-size: clamp(16px, 4vw, 20px);
+    line-height: 1.3;
+  }
+}

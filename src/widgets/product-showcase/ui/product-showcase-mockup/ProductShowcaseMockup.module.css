@@ -1,0 +1,34 @@
+.product-showcase-mockup {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin: 0;
+}
+
+.product-showcase-mockup__device {
+  display: block;
+  width: 100%;
+  height: auto;
+  vertical-align: top;
+  pointer-events: none;
+}
+
+.product-showcase-mockup__screen-slot {
+  position: absolute;
+  z-index: 1;
+  top: 3.333%;
+  left: 4.134%;
+  width: 91.434%;
+  height: 93.392%;
+  overflow: hidden;
+  border-radius: 21px;
+  background: var(--color-bg);
+}
+
+.product-showcase-mockup__screen {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left top;
+}

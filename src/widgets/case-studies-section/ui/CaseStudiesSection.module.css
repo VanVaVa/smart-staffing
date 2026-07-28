@@ -1,0 +1,9 @@
+.case-studies-section__title {
+  max-width: 1150px;
+}
+
+.case-studies-section__list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}

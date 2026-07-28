@@ -1,0 +1,109 @@
+.platform-onboarding-partner {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(32px, 4vw, 48px);
+}
+
+.platform-onboarding-partner__subtitle-accent {
+  color: var(--color-accent);
+}
+
+.platform-onboarding-partner__card-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.platform-onboarding-partner__orb {
+  position: absolute;
+  left: clamp(0px, 12vw, 328px);
+  bottom: 28px;
+  width: clamp(120px, 12vw, 180px);
+  height: clamp(120px, 12vw, 180px);
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    var(--color-blue-muted) 0%,
+    #7175c7 50%,
+    var(--color-purple-mid) 100%
+  );
+  pointer-events: none;
+}
+
+.platform-onboarding-partner__card {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "text cta"
+    "text cta";
+  align-items: center;
+  gap: clamp(24px, 5vw, 80px);
+  width: min(100%, 1274px);
+  padding: 40px 28px 40px clamp(120px, 14vw, 200px);
+  border-radius: var(--radius-lg);
+  background: rgb(119 119 142 / 8%);
+  backdrop-filter: blur(80px);
+}
+
+.platform-onboarding-partner__media {
+  position: absolute;
+  left: clamp(-8px, -1vw, -23px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(140px, 14vw, 213px);
+}
+
+.platform-onboarding-partner__image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.platform-onboarding-partner__card-text {
+  grid-area: text;
+  margin: 0;
+  max-width: 595px;
+  font-family: var(--font-body);
+  font-size: clamp(18px, 2vw, var(--text-h3));
+  line-height: 1.38;
+  color: var(--color-black);
+}
+
+.platform-onboarding-partner__cta {
+  grid-area: cta;
+  flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+  .platform-onboarding-partner__card {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "text"
+      "cta";
+    padding: 32px 24px 32px clamp(96px, 22vw, 140px);
+  }
+
+  .platform-onboarding-partner__cta {
+    justify-self: start;
+  }
+}
+
+@media (max-width: 560px) {
+  .platform-onboarding-partner__card {
+    padding: 120px 20px 28px;
+  }
+
+  .platform-onboarding-partner__media {
+    left: 50%;
+    top: 20px;
+    transform: translateX(-50%);
+  }
+
+  .platform-onboarding-partner__orb {
+    left: 16px;
+    bottom: auto;
+    top: 72px;
+  }
+}

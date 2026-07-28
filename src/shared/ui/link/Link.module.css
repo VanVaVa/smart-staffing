@@ -1,0 +1,27 @@
+.link {
+  transition: color 0.2s ease;
+}
+
+.link--nav {
+  font-size: var(--text-body-xl);
+  line-height: var(--line-body-xl);
+  font-weight: 400;
+  color: var(--color-black);
+}
+
+.link--nav:hover {
+  font-weight: 500;
+  color: var(--color-black);
+}
+
+.link--inline {
+  font-size: inherit;
+  line-height: inherit;
+  color: var(--color-accent-2);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.link--inline:hover {
+  color: var(--color-accent);
+}

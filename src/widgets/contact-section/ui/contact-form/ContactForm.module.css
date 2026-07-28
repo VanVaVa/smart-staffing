@@ -1,0 +1,34 @@
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 28px;
+  width: min(100%, 555px);
+}
+
+.contact-form__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.contact-form__input {
+  width: 100%;
+}
+
+.contact-form__consent {
+  font-size: var(--text-body-xl);
+  line-height: var(--line-body-xl);
+  color: var(--color-white);
+}
+
+.contact-form__consent-link {
+  color: var(--color-white);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.contact-form__consent .contact-form__consent-link:hover {
+  color: var(--color-white);
+}

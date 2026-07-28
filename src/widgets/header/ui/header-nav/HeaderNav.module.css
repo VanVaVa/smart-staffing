@@ -1,0 +1,104 @@
+.header-nav {
+  display: flex;
+  gap: clamp(16px, 2vw, 40px);
+  min-width: 0;
+}
+
+.header-nav__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  line-height: 22px;
+  color: var(--color-grey-700);
+  transition: color 0.2s ease;
+}
+
+.header-nav__link:hover {
+  color: var(--color-accent);
+}
+
+.header-nav--on-dark-backdrop .header-nav__link {
+  color: var(--color-white-64);
+}
+
+.header-nav--on-dark-backdrop .header-nav__link:hover {
+  color: var(--color-accent);
+}
+
+.header-nav__chevron {
+  flex-shrink: 0;
+  margin-top: 1px;
+  transition: transform 0.2s ease;
+}
+
+.header-nav__dropdown {
+  position: relative;
+}
+
+.header-nav__dropdown:hover .header-nav__chevron,
+.header-nav__dropdown:focus-within .header-nav__chevron {
+  transform: rotate(180deg);
+}
+
+.header-nav__dropdown-menu {
+  overflow: hidden;
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  right: auto;
+  z-index: 1;
+  width: max-content;
+  min-width: min(533px, calc(100vw - 2 * var(--container-padding)));
+  max-width: calc(100vw - 2 * var(--container-padding));
+  margin: 0;
+  padding-block: 20px;
+  list-style: none;
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, -4px);
+  transition:
+    opacity 0.2s ease,
+    visibility 0.2s ease,
+    transform 0.2s ease;
+}
+
+.header-nav__dropdown::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 12px;
+}
+
+.header-nav__dropdown:hover .header-nav__dropdown-menu,
+.header-nav__dropdown:focus-within .header-nav__dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+.header-nav__dropdown-item {
+  display: block;
+  padding: 15px;
+  text-align: center;
+  color: var(--color-grey-700);
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+.header-nav__dropdown-menu .header-nav__dropdown-item:hover {
+  color: var(--color-white);
+  background: var(--color-black);
+  font-weight: 400;
+}
+
+@media (max-width: 960px) {
+  .header-nav {
+    display: none;
+  }
+}

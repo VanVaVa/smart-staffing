@@ -1,0 +1,43 @@
+.footer-about {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 196px;
+}
+
+.footer-about__logos-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+  width: 100%;
+  min-width: 0;
+}
+
+.footer-about__logo {
+  display: inline-flex;
+  flex-shrink: 0;
+  max-width: 100%;
+}
+
+.footer-about__logo-image {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+}
+
+.footer-about__skolkovo-logo {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  flex-shrink: 1;
+}
+
+@media (max-width: 960px) {
+  .footer-about {
+    grid-column: 1 / -1;
+  }
+}

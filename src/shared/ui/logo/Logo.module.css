@@ -1,0 +1,21 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  color: inherit;
+}
+
+.logo__mark {
+  display: block;
+  width: auto;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+.logo--light .logo__mark {
+  filter: brightness(0) invert(1);
+}

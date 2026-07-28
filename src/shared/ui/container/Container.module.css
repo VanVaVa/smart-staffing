@@ -1,0 +1,9 @@
+.container {
+  width: 100%;
+  min-width: 0;
+  padding-inline: var(--container-padding);
+}
+
+.container--wide {
+  width: 100%;
+}

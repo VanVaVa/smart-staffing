@@ -1,0 +1,1 @@
+export { AboutTrustedMarquee } from "./AboutTrustedMarquee";

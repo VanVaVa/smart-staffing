@@ -1,0 +1,32 @@
+.steps-section__steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  position: relative;
+}
+
+.steps-section__steps::before {
+  content: "";
+  position: absolute;
+  top: 24px;
+  left: 10%;
+  right: 10%;
+  height: 0;
+  border-top: 2px dashed var(--color-grey-300);
+  z-index: 0;
+}
+
+.steps-section__steps > * {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .steps-section__steps {
+    grid-template-columns: 1fr;
+  }
+
+  .steps-section__steps::before {
+    display: none;
+  }
+}

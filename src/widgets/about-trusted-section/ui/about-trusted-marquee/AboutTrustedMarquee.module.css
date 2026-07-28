@@ -1,0 +1,25 @@
+.about-trusted-marquee {
+  --about-trusted-card-height: min(200px, calc(200 * 100vw / 1920));
+  --about-trusted-sequence-gap: min(8px, calc(8 * 100vw / 1920));
+
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  min-width: 0;
+  margin-inline: calc(-1 * var(--container-padding));
+  isolation: isolate;
+}
+
+.about-trusted-marquee__track {
+  display: flex;
+  width: max-content;
+  gap: var(--about-trusted-sequence-gap);
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+.about-trusted-marquee__sequence {
+  display: flex;
+  flex-shrink: 0;
+  gap: var(--about-trusted-sequence-gap);
+}
