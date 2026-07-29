@@ -1,0 +1,1 @@
+export { CertificateGallery } from "./CertificateGallery";

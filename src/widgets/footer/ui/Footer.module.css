@@ -1,6 +1,7 @@
 .footer {
   position: relative;
   z-index: 2;
+  margin-top: -40px;
   overflow-x: clip;
   background: var(--color-grey-700);
   color: var(--color-white);

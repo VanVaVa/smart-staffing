@@ -1,0 +1,146 @@
+.software-rights-modal {
+  position: fixed;
+  z-index: 120;
+  inset: 0;
+  display: grid;
+  place-items: start center;
+  padding: 40px;
+}
+
+.software-rights-modal__overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  border: 0;
+  background: rgb(0 0 0 / 20%);
+  backdrop-filter: blur(12px);
+  cursor: default;
+}
+
+.software-rights-modal__panel {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  width: min(778px, 100%);
+  max-height: min(880px, calc(100vh - 80px));
+  padding: 40px 40px 32px;
+  border-radius: var(--radius-lg);
+  background: var(--color-white);
+}
+
+.software-rights-modal__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  padding-bottom: 28px;
+}
+
+.software-rights-modal__title {
+  max-width: 580px;
+  font-family: var(--font-heading);
+  font-size: var(--text-h3);
+  font-weight: 600;
+  line-height: var(--line-h3);
+}
+
+.software-rights-modal__close {
+  flex: 0 0 48px;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.software-rights-modal__close img {
+  display: block;
+}
+
+.software-rights-modal__close:focus-visible {
+  border-radius: 4px;
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+.software-rights-modal__scroll {
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-color: var(--color-grey-400) transparent;
+  scrollbar-width: auto;
+}
+
+.software-rights-modal__scroll::-webkit-scrollbar {
+  width: 46px;
+}
+
+.software-rights-modal__scroll::-webkit-scrollbar-track,
+.software-rights-modal__scroll::-webkit-scrollbar-thumb {
+  border: 19px solid transparent;
+  border-radius: 20px;
+  background-clip: content-box;
+}
+
+.software-rights-modal__scroll::-webkit-scrollbar-track {
+  background-color: var(--color-grey-200);
+}
+
+.software-rights-modal__scroll::-webkit-scrollbar-thumb {
+  min-height: 96px;
+  background-color: var(--color-grey-400);
+}
+
+.software-rights-modal__content {
+  display: grid;
+  gap: 28px;
+  padding-bottom: 60px;
+  font-size: var(--text-body-xl);
+  line-height: 26px;
+}
+
+.software-rights-modal__registrations {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.software-rights-modal__content p {
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .software-rights-modal {
+    padding: 16px;
+  }
+
+  .software-rights-modal__panel {
+    max-height: calc(100vh - 32px);
+    padding: 24px 20px 20px;
+    border-radius: 16px;
+  }
+
+  .software-rights-modal__header {
+    padding-bottom: 20px;
+  }
+
+  .software-rights-modal__title {
+    font-size: 22px;
+    line-height: 28px;
+  }
+
+  .software-rights-modal__content {
+    gap: 24px;
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  .software-rights-modal__scroll::-webkit-scrollbar {
+    width: 24px;
+  }
+
+  .software-rights-modal__scroll::-webkit-scrollbar-track,
+  .software-rights-modal__scroll::-webkit-scrollbar-thumb {
+    border-width: 8px;
+  }
+}

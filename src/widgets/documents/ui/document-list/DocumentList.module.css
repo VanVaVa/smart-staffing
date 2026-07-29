@@ -1,0 +1,208 @@
+.document-list {
+  padding-block: 138px 196px;
+}
+
+.document-list__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  font-weight: 600;
+  line-height: 68px;
+  letter-spacing: var(--letter-heading);
+}
+
+.document-list__company {
+  margin-top: 48px;
+  padding: 40px;
+  border-radius: 28px;
+  background: var(--color-white);
+}
+
+.document-list__company-name,
+.document-list__category-title,
+.document-list__certificates-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-h3);
+  font-weight: 600;
+  line-height: var(--line-h3);
+  letter-spacing: var(--letter-heading);
+}
+
+.document-list__requisites {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px;
+  margin-top: 34px;
+}
+
+.document-list__requisite-column {
+  display: grid;
+  align-content: start;
+  gap: 28px;
+}
+
+.document-list__requisite {
+  min-width: 0;
+}
+
+.document-list__requisite dt {
+  margin-bottom: 8px;
+  color: var(--color-grey-500);
+  font-size: var(--text-body-sm);
+  line-height: var(--line-body-sm);
+}
+
+.document-list__requisite dd {
+  margin: 0;
+  font-size: var(--text-body-xl);
+  line-height: 28px;
+}
+
+.document-list__categories {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 112px;
+}
+
+.document-list__category {
+  min-height: 328px;
+  padding: 40px;
+  border-radius: 28px;
+  background: var(--color-white);
+}
+
+.document-list__links {
+  display: grid;
+  gap: 12px;
+  margin-top: 28px;
+  padding: 0;
+  list-style: none;
+}
+
+.document-list__link {
+  display: inline;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-black);
+  font: inherit;
+  font-size: var(--text-body-xl);
+  line-height: 28px;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 160ms ease;
+}
+
+.document-list__link:hover {
+  color: var(--color-accent);
+}
+
+.document-list__link:focus-visible,
+.document-list__certificate:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+.document-list__certificates {
+  margin-top: 112px;
+}
+
+.document-list__certificate-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 28px;
+}
+
+.document-list__certificate {
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  border-radius: 16px;
+  background: var(--color-white);
+  cursor: pointer;
+}
+
+.document-list__certificate :global(.react-pdf__Page) {
+  transition: transform 220ms ease;
+}
+
+.document-list__certificate:hover :global(.react-pdf__Page) {
+  transform: scale(1.015);
+}
+
+@media (max-width: 960px) {
+  .document-list__categories {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+    margin-top: 72px;
+  }
+
+  .document-list__category {
+    min-height: auto;
+  }
+
+  .document-list__certificate-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .document-list {
+    padding-block: 108px 96px;
+  }
+
+  .document-list__container {
+    padding-inline: 16px;
+  }
+
+  .document-list__title {
+    font-size: 40px;
+    line-height: 48px;
+  }
+
+  .document-list__company {
+    margin-top: 32px;
+    padding: 24px;
+    border-radius: 20px;
+  }
+
+  .document-list__company-name,
+  .document-list__category-title,
+  .document-list__certificates-title {
+    font-size: 22px;
+    line-height: 28px;
+  }
+
+  .document-list__requisites {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+    margin-top: 28px;
+  }
+
+  .document-list__requisite-column {
+    gap: 24px;
+  }
+
+  .document-list__requisite dd,
+  .document-list__link {
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  .document-list__categories,
+  .document-list__certificates {
+    margin-top: 64px;
+  }
+
+  .document-list__category {
+    padding: 24px;
+    border-radius: 20px;
+  }
+
+  .document-list__certificate-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

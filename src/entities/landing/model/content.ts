@@ -327,7 +327,7 @@ export const footerContent = {
     { label: "О СмартСтаффинг", href: "/about" },
     { label: "Тарифы", href: "#platform" },
     { label: "Медиа", href: "/media" },
-    { label: "Документы", href: "#pricing" },
+    { label: "Документы", href: "/documents" },
   ],
   solutions: [
     { label: "Аутстаффинг", href: "#solutions" },

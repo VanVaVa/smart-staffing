@@ -48,9 +48,26 @@ export type {
   ClientsPlatformContent,
   ClientsSegmentContent,
 } from "./model/clients-content";
-export { getMediaPage } from "./model/media-content";
+export {
+  getMediaArticle,
+  getMediaPage,
+  mediaArticleSlugs,
+} from "./model/media-content";
 export type {
   MediaArticle,
+  MediaArticleDetail,
+  MediaArticleRelated,
   MediaArticleTag,
   MediaPageContent,
 } from "./model/media-content";
+export {
+  documentSlugs,
+  documentsPage,
+  getDocument,
+} from "./model/documents-content";
+export type {
+  DocumentCategory,
+  DocumentCertificate,
+  DocumentItem,
+  DocumentsPageContent,
+} from "./model/documents-content";

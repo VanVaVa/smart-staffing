@@ -1,0 +1,139 @@
+.article-body {
+  padding: 48px 28px;
+  border-radius: var(--radius-xl);
+  background: var(--color-white);
+  color: var(--color-black);
+  font-size: var(--text-body-md);
+  line-height: 24px;
+}
+
+.article-body__lead {
+  font-size: var(--text-body-xl);
+  font-weight: 500;
+  line-height: var(--line-body-xl);
+}
+
+.article-body__copy {
+  display: grid;
+  gap: 20px;
+}
+
+.article-body__copy--before-image {
+  margin-top: 48px;
+}
+
+.article-body__copy--after-image {
+  margin: 28px 0 0 12px;
+  line-height: var(--line-body);
+}
+
+.article-body__visual {
+  position: relative;
+  overflow: hidden;
+  margin-top: 28px;
+  aspect-ratio: 854 / 267;
+  border-radius: var(--radius-lg);
+}
+
+.article-body__image {
+  object-fit: cover;
+}
+
+.article-body__source {
+  margin: 48px 0 0 12px;
+  overflow-wrap: anywhere;
+}
+
+.article-body__source a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+@media (min-width: 1601px) {
+  .article-body {
+    padding-inline: 40px;
+    border-radius: 40px;
+    font-size: var(--text-body-xl);
+    line-height: var(--line-body-xl);
+  }
+
+  .article-body__lead {
+    font-family: var(--font-heading);
+    font-size: var(--text-lead);
+    font-weight: 600;
+    line-height: var(--line-h3);
+    letter-spacing: var(--letter-heading);
+  }
+
+  .article-body__copy--before-image {
+    margin-top: 80px;
+  }
+
+  .article-body__copy--after-image {
+    line-height: var(--line-body-xl);
+  }
+
+  .article-body__source {
+    margin-top: 56px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .article-body {
+    border-radius: 24px;
+  }
+
+  .article-body__copy {
+    gap: 0;
+  }
+
+  .article-body__copy--after-image {
+    margin-left: 0;
+    line-height: 24px;
+  }
+
+  .article-body__visual {
+    aspect-ratio: 872 / 355;
+    border-radius: var(--radius-md);
+  }
+
+  .article-body__source {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .article-body {
+    padding: 24px 16px;
+    border-radius: var(--radius-lg);
+    font-size: var(--text-body-sm);
+    line-height: var(--line-body-sm);
+  }
+
+  .article-body__lead {
+    font-size: var(--text-body-md);
+    line-height: var(--line-body);
+  }
+
+  .article-body__copy {
+    gap: 16px;
+  }
+
+  .article-body__copy--before-image {
+    margin-top: 32px;
+  }
+
+  .article-body__copy--after-image {
+    margin-top: 20px;
+  }
+
+  .article-body__visual {
+    margin-top: 20px;
+    aspect-ratio: 311 / 184;
+    border-radius: var(--radius-sm);
+  }
+
+  .article-body__source {
+    margin-top: 32px;
+  }
+}
