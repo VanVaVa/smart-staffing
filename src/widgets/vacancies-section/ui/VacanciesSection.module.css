@@ -1,0 +1,111 @@
+.vacancies-section {
+  position: relative;
+  padding-bottom: 312px;
+  background: var(--color-bg);
+  overflow: hidden;
+}
+
+.vacancies-section__hero {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 0;
+  width: min(1106px, calc(1106 * 100vw / 1920));
+  height: min(932px, calc(932 * 100vw / 1920));
+  max-width: none;
+  object-fit: cover;
+  object-position: right center;
+  border-bottom-left-radius: min(40px, calc(40 * 100vw / 1920));
+  pointer-events: none;
+  user-select: none;
+}
+
+.vacancies-section__container {
+  position: relative;
+  z-index: 1;
+}
+
+.vacancies-section__intro {
+  display: flex;
+  flex-direction: column;
+  gap: min(12px, calc(12 * 100vw / 1920));
+  max-width: min(908px, calc(908 * 100vw / 1920));
+  padding-top: min(118px, calc(118 * 100vw / 1920));
+}
+
+.vacancies-section__title {
+  max-width: min(718px, calc(718 * 100vw / 1920));
+  font-family: var(--font-heading);
+  font-size: min(56px, calc(56 * 100vw / 1920));
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--color-black);
+}
+
+.vacancies-section__subtitle {
+  max-width: min(703px, calc(703 * 100vw / 1920));
+  font-family: var(--font-body);
+  font-size: min(26px, calc(26 * 100vw / 1920));
+  font-weight: 400;
+  line-height: min(36px, calc(36 * 100vw / 1920));
+  color: var(--color-black);
+}
+
+.vacancies-section__subtitle-accent {
+  color: var(--color-accent);
+}
+
+.vacancies-section__workspace {
+  display: flex;
+  align-items: flex-start;
+  margin-top: min(108px, calc(108 * 100vw / 1920));
+}
+
+.vacancies-section__workspace > :first-child {
+  flex-shrink: 0;
+}
+
+.vacancies-section__workspace > :last-child {
+  margin-left: min(104px, calc(104 * 100vw / 1920));
+}
+
+@media (max-width: 1200px) {
+  .vacancies-section__workspace {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .vacancies-section__workspace > :last-child {
+    margin-left: 0;
+  }
+
+  .vacancies-section__hero {
+    position: relative;
+    width: 100%;
+    max-width: 640px;
+    margin-inline: auto;
+    margin-bottom: 32px;
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+  }
+
+  .vacancies-section__intro {
+    padding-top: min(64px, calc(64 * 100vw / 768));
+  }
+}
+
+@media (max-width: 768px) {
+  .vacancies-section__title {
+    font-size: clamp(32px, 8vw, 56px);
+  }
+
+  .vacancies-section__subtitle {
+    font-size: clamp(18px, 4.5vw, 26px);
+    line-height: 1.35;
+  }
+
+  .vacancies-section__workspace {
+    margin-top: 48px;
+  }
+}

@@ -1,0 +1,96 @@
+.vacancies-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: min(115px, calc(115 * 100vw / 1920));
+  width: 100%;
+  min-height: min(84px, calc(84 * 100vw / 1920));
+  padding: min(16px, calc(16 * 100vw / 1920)) min(16px, calc(16 * 100vw / 1920))
+    min(16px, calc(16 * 100vw / 1920)) min(28px, calc(28 * 100vw / 1920));
+  border: none;
+  border-radius: min(20px, calc(20 * 100vw / 1920));
+  background: var(--color-grey-200);
+  color: var(--color-black);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.vacancies-list-item--selected {
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+.vacancies-list-item__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-width: 0;
+}
+
+.vacancies-list-item__title {
+  font-family: var(--font-body);
+  font-size: min(20px, calc(20 * 100vw / 1920));
+  font-weight: 500;
+  line-height: min(26px, calc(26 * 100vw / 1920));
+}
+
+.vacancies-list-item__employment {
+  font-family: var(--font-body);
+  font-size: min(14px, calc(14 * 100vw / 1920));
+  font-weight: 400;
+  line-height: min(20px, calc(20 * 100vw / 1920));
+}
+
+.vacancies-list-item__arrow {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: min(52px, calc(52 * 100vw / 1920));
+  height: min(52px, calc(52 * 100vw / 1920));
+  border-radius: 50%;
+  background: var(--color-grey-200);
+  color: var(--color-black);
+}
+
+.vacancies-list-item__arrow-icon {
+  width: min(18px, calc(18 * 100vw / 1920));
+  height: min(18px, calc(18 * 100vw / 1920));
+}
+
+.vacancies-list-item--selected .vacancies-list-item__arrow {
+  background: var(--color-grey-200);
+  color: var(--color-black);
+}
+
+.vacancies-list-item:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+@media (max-width: 1024px) {
+  .vacancies-list-item {
+    gap: 24px;
+    min-height: 72px;
+    padding: 14px 16px 14px 20px;
+    border-radius: 16px;
+  }
+
+  .vacancies-list-item__title {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .vacancies-list-item__employment {
+    font-size: 13px;
+    line-height: 18px;
+  }
+
+  .vacancies-list-item__arrow {
+    width: 44px;
+    height: 44px;
+  }
+}

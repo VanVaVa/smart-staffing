@@ -15,9 +15,13 @@ export {
 } from "./model/content";
 export {
   aboutBenefits,
+  aboutCareerBook,
   aboutHistory,
   aboutIntro,
+  aboutLeadership,
   aboutPartner,
   aboutSpotlight,
   aboutTrusted,
 } from "./model/about-content";
+export type { AboutLeadershipMemberLayout } from "./model/about-content";
+export { vacanciesPage } from "./model/vacancies-content";

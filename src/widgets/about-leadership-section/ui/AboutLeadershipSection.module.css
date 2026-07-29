@@ -1,0 +1,65 @@
+.about-leadership-section {
+  position: relative;
+  z-index: 1;
+  padding-bottom: min(196px, calc(196 * 100vw / 1920));
+}
+
+.about-leadership-section__inner {
+  display: flex;
+  flex-direction: column;
+  gap: min(56px, calc(56 * 100vw / 1920));
+  min-width: 0;
+}
+
+.about-leadership-section__title {
+  margin: 0;
+  max-width: min(732px, calc(732 * 100vw / 1920));
+  font-family: var(--font-heading);
+  font-size: min(56px, calc(56 * 100vw / 1920));
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+
+.about-leadership-section__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 603fr) minmax(0, 602fr) minmax(0, 603fr);
+  grid-template-rows: repeat(3, minmax(0, auto));
+  grid-template-areas:
+    "featured strategy alliance"
+    "featured development analytics"
+    "marketing investors finance";
+  gap: min(8px, calc(8 * 100vw / 1920));
+  align-items: stretch;
+}
+
+@media (max-width: 1200px) {
+  .about-leadership-section__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      "featured featured"
+      "strategy alliance"
+      "development analytics"
+      "marketing investors"
+      "finance finance";
+  }
+}
+
+@media (max-width: 768px) {
+  .about-leadership-section__title {
+    font-size: clamp(32px, 8vw, 56px);
+  }
+
+  .about-leadership-section__grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "featured"
+      "strategy"
+      "alliance"
+      "development"
+      "analytics"
+      "marketing"
+      "investors"
+      "finance";
+  }
+}

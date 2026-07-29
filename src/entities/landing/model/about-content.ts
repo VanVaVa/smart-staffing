@@ -193,6 +193,78 @@ export const aboutTrusted = {
   ],
 } as const;
 
+export type AboutLeadershipMemberLayout =
+  | "featured"
+  | "strategy"
+  | "alliance"
+  | "development"
+  | "analytics"
+  | "marketing"
+  | "investors"
+  | "finance";
+
+export const aboutLeadership = {
+  title: "Познакомьтесь с нашим руководством",
+  members: [
+    {
+      id: "ruslan-gaynanov",
+      role: "Стратегия",
+      name: "Руслан Гайнанов",
+      imageSrc: "/landing/about/leadership/ruslan-gaynanov.png",
+      layout: "featured",
+    },
+    {
+      id: "alexey-shapka",
+      role: "Стратегия",
+      name: "Алексей Шапка",
+      imageSrc: "/landing/about/leadership/alexey-shapka.png",
+      layout: "strategy",
+    },
+    {
+      id: "kristina-lytsus",
+      role: "Альянс",
+      name: "Кристина Лыцусь",
+      imageSrc: "/landing/about/leadership/kristina-lytsus.png",
+      layout: "alliance",
+    },
+    {
+      id: "ilya-vorobyov",
+      role: "Развитие",
+      name: "Илья Воробьёв",
+      imageSrc: "/landing/about/leadership/ilya-vorobyov.png",
+      layout: "development",
+    },
+    {
+      id: "guzal-nazarova",
+      role: "Аналитика",
+      name: "Гузаль Назарова",
+      imageSrc: "/landing/about/leadership/guzal-nazarova.png",
+      layout: "analytics",
+    },
+    {
+      id: "alexandra-sadikova",
+      role: "Маркетинг и PR",
+      name: "Александра Садикова",
+      imageSrc: "/landing/about/leadership/alexandra-sadikova.png",
+      layout: "marketing",
+    },
+    {
+      id: "olesya-meshcheryakova",
+      role: "Инвесторы",
+      name: "Олеся Мещерякова",
+      imageSrc: "/landing/about/leadership/olesya-meshcheryakova.png",
+      layout: "investors",
+    },
+    {
+      id: "vladimir-ignatov",
+      role: "Финансы",
+      name: "Владимир Игнатов",
+      imageSrc: "/landing/about/leadership/vladimir-ignatov.png",
+      layout: "finance",
+    },
+  ],
+} as const;
+
 export const aboutBenefits = {
   title: "Преимущества работы с нами",
   flex: {
@@ -213,6 +285,37 @@ export const aboutBenefits = {
     imageSrc: "/landing/about/benefits/expertise-photo.png",
     title: "Подтвержденная экспертиза в сложных проектах",
     text: "Опыт реализации ИТ-проектов разного уровня сложности позволяет нам понимать реальные боли бизнеса",
+  },
+} as const;
+
+export const aboutCareerBook = {
+  career: {
+    title: "Работа в СмартСтаффинг",
+    subtitle: {
+      lead: "Мы растём и ",
+      accent: "ищем талантливых специалистов",
+      tail: ", готовых развиваться вместе с нами",
+    },
+    cta: {
+      text: "Найдите свою роль и станьте частью нашей команды!",
+      buttonLabel: "Смотрите доступные вакансии",
+      buttonHref: "/vacancies",
+      photoSrc: "/landing/about/career-cta-photo.png",
+      photoAlt: "Сотрудник СмартСтаффинг",
+    },
+  },
+  book: {
+    title: "Узнайте секреты стаффинга",
+    description: {
+      accent: "Получите экспертную литературу",
+      rest: ". В ней мы поделились опытом сложных ИТ-проектов, подходами к подбору команд, а также уникальными решениями для корпоративного аутсорсинга.",
+    },
+    spreadSrc: "/landing/about/book-spread.png",
+    spreadAlt: "Книга о стаффинге",
+    form: {
+      inputPlaceholder: "@telegram_id",
+      buttonLabel: "Забрать книгу бесплатно",
+    },
   },
 } as const;
 

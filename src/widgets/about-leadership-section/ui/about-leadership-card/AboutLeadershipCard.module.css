@@ -1,0 +1,119 @@
+.about-leadership-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-input);
+  min-width: 0;
+  min-height: min(396px, calc(396 * 100vw / 1920));
+}
+
+.about-leadership-card__photo {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.about-leadership-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgb(0 0 0 / 0%) 0%,
+    rgb(0 0 0 / 80%) 90%
+  );
+  pointer-events: none;
+}
+
+.about-leadership-card__caption {
+  position: absolute;
+  z-index: 1;
+  inset-inline: min(28px, calc(28 * 100vw / 1920));
+  inset-block-end: min(28px, calc(28 * 100vw / 1920));
+  display: flex;
+  flex-direction: column;
+  gap: min(4px, calc(4 * 100vw / 1920));
+  min-width: 0;
+  max-width: min(375px, calc(375 * 100vw / 1920));
+}
+
+.about-leadership-card__role {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: min(var(--text-body-xl), calc(var(--text-body-xl) * 100vw / 1920));
+  font-weight: 400;
+  line-height: min(var(--line-body-xl), calc(var(--line-body-xl) * 100vw / 1920));
+  color: var(--color-grey-200);
+}
+
+.about-leadership-card__name {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: min(var(--text-h3), calc(var(--text-h3) * 100vw / 1920));
+  font-weight: 500;
+  line-height: min(var(--line-lead), calc(var(--line-lead) * 100vw / 1920));
+  color: var(--color-white);
+}
+
+.about-leadership-card--featured {
+  grid-area: featured;
+  min-height: min(800px, calc(800 * 100vw / 1920));
+}
+
+.about-leadership-card--strategy {
+  grid-area: strategy;
+}
+
+.about-leadership-card--alliance {
+  grid-area: alliance;
+}
+
+.about-leadership-card--development {
+  grid-area: development;
+}
+
+.about-leadership-card--analytics {
+  grid-area: analytics;
+}
+
+.about-leadership-card--marketing {
+  grid-area: marketing;
+}
+
+.about-leadership-card--investors {
+  grid-area: investors;
+}
+
+.about-leadership-card--finance {
+  grid-area: finance;
+}
+
+@media (max-width: 1200px) {
+  .about-leadership-card,
+  .about-leadership-card--featured {
+    grid-area: auto;
+    min-height: min(396px, calc(396 * 100vw / 1920));
+  }
+
+  .about-leadership-card--featured {
+    min-height: min(520px, calc(520 * 100vw / 1920));
+  }
+}
+
+@media (max-width: 768px) {
+  .about-leadership-card__role {
+    font-size: clamp(16px, 4vw, var(--text-body-xl));
+    line-height: 1.3;
+  }
+
+  .about-leadership-card__name {
+    font-size: clamp(20px, 5vw, var(--text-h3));
+    line-height: 1.35;
+  }
+
+  .about-leadership-card--featured {
+    min-height: min(440px, calc(440 * 100vw / 375));
+  }
+}

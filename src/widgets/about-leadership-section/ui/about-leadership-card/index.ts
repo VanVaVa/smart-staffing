@@ -1,0 +1,1 @@
+export { AboutLeadershipCard } from "./AboutLeadershipCard";

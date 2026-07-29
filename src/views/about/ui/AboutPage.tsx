@@ -1,4 +1,6 @@
 import { AboutBenefitsSection } from "@/widgets/about-benefits-section";
+import { AboutCareerBookSection } from "@/widgets/about-career-book-section";
+import { AboutLeadershipSection } from "@/widgets/about-leadership-section";
 import { AboutHistorySection } from "@/widgets/about-history-section";
 import { AboutIntroSection } from "@/widgets/about-intro-section";
 import { AboutPartnerSection } from "@/widgets/about-partner-section";
@@ -16,6 +18,8 @@ export function AboutPage() {
       <AboutPartnerSection />
       <AboutTrustedSection />
       <AboutBenefitsSection />
+      <AboutLeadershipSection />
+      <AboutCareerBookSection />
     </div>
   );
 }

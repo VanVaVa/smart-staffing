@@ -30,7 +30,7 @@
 
 .about-trusted-section__orb--purple {
   position: absolute;
-  top: min(610px, calc(610 * 100vw / 1920));
+  top: min(412px, calc(610 * 100vw / 1920));
   left: min(-42px, calc(-42 * 100vw / 1920));
   width: min(200px, calc(200 * 100vw / 1920));
   height: min(200px, calc(200 * 100vw / 1920));
