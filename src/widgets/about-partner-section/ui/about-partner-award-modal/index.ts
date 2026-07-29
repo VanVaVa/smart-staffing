@@ -1,0 +1,1 @@
+export { AboutPartnerAwardModal } from "./AboutPartnerAwardModal";

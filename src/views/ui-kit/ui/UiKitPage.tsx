@@ -5,6 +5,7 @@ import {
   Card,
   CaseStudyCard,
   Checkbox,
+  CompanyConnectionButton,
   Container,
   Divider,
   Heading,
@@ -159,8 +160,10 @@ export function UiKitPage() {
             <div className={styles["ui-kit-page__row"]}>
               <Button variant="dark">Регистрация</Button>
               <Button variant="light">Регистрация</Button>
-              <Button>Подключить</Button>
-              <Button withArrow>Подключить компанию</Button>
+              <CompanyConnectionButton>Подключить</CompanyConnectionButton>
+              <CompanyConnectionButton withArrow>
+                Подключить компанию
+              </CompanyConnectionButton>
               <Button withArrow disabled>
                 Подключить компанию
               </Button>
@@ -292,9 +295,9 @@ export function UiKitPage() {
             <Button href="#contacts" variant="dark">
               Регистрация
             </Button>
-            <Button href="#contacts" withArrow>
+            <CompanyConnectionButton withArrow>
               Подключить компанию
-            </Button>
+            </CompanyConnectionButton>
           </div>
         </Container>
       </Section>

@@ -3,6 +3,7 @@ import NextLink from "next/link";
 import type { ReactNode } from "react";
 
 import { ArrowIcon } from "@/shared/ui/arrow-icon";
+import { Badge } from "@/shared/ui/badge";
 
 import styles from "./CaseStudyCard.module.css";
 
@@ -13,6 +14,7 @@ type CaseStudyCardProps = {
   description: string;
   metric: string;
   metricLabel: string;
+  tag?: string;
   actionLabel?: string;
 };
 
@@ -49,6 +51,7 @@ export function CaseStudyCard({
   description,
   metric,
   metricLabel,
+  tag,
   actionLabel = "Подробнее о кейсе",
 }: CaseStudyCardProps) {
   const ariaLabel = `${panelAlt}. ${actionLabel}`;
@@ -70,7 +73,14 @@ export function CaseStudyCard({
         />
       </div>
       <div className={styles["case-study-card__content"]}>
-        <p className={styles["case-study-card__description"]}>{description}</p>
+        <div className={styles["case-study-card__lead"]}>
+          {tag ? (
+            <Badge variant="tag" className={styles["case-study-card__tag"]}>
+              {tag}
+            </Badge>
+          ) : null}
+          <p className={styles["case-study-card__description"]}>{description}</p>
+        </div>
         <div className={styles["case-study-card__metric-block"]}>
           <div className={styles["case-study-card__metric-bar"]} aria-hidden />
           <div className={styles["case-study-card__metric-copy"]}>

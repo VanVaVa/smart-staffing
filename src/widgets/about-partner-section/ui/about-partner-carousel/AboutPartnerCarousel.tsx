@@ -1,8 +1,9 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 
+import { AboutPartnerAwardModal } from "../about-partner-award-modal";
 import { AboutPartnerAwardCard } from "../about-partner-award-card";
 
 import styles from "./AboutPartnerCarousel.module.css";
@@ -13,6 +14,12 @@ type AboutPartnerAward = {
   status: string;
   nomination: string;
   project: string;
+  document: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+  };
 };
 
 type AboutPartnerCarouselProps = {
@@ -36,6 +43,11 @@ function getActiveCardIndex(viewport: HTMLDivElement, track: HTMLDivElement): nu
 export function AboutPartnerCarousel({ awards }: AboutPartnerCarouselProps) {
   const viewportRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
+  const [activeAwardId, setActiveAwardId] = useState<string | null>(null);
+
+  const activeAward = activeAwardId
+    ? awards.find((award) => award.id === activeAwardId)
+    : undefined;
 
   const scroll = (direction: "prev" | "next") => {
     const viewport = viewportRef.current;
@@ -62,60 +74,73 @@ export function AboutPartnerCarousel({ awards }: AboutPartnerCarouselProps) {
   };
 
   return (
-    <div className={styles["about-partner-carousel"]}>
-      <div className={styles["about-partner-carousel__scroll-area"]}>
-        <div
-          className={`${styles["about-partner-carousel__fade"]} ${styles["about-partner-carousel__fade--start"]}`}
-          aria-hidden
-        />
-        <div
-          className={`${styles["about-partner-carousel__fade"]} ${styles["about-partner-carousel__fade--end"]}`}
-          aria-hidden
-        />
-        <div ref={viewportRef} className={styles["about-partner-carousel__viewport"]}>
-          <div ref={trackRef} className={styles["about-partner-carousel__track"]}>
-            {awards.map((award) => (
-              <AboutPartnerAwardCard
-                key={award.id}
-                title={award.title}
-                status={award.status}
-                nomination={award.nomination}
-                project={award.project}
-              />
-            ))}
+    <>
+      <div className={styles["about-partner-carousel"]}>
+        <div className={styles["about-partner-carousel__scroll-area"]}>
+          <div
+            className={`${styles["about-partner-carousel__fade"]} ${styles["about-partner-carousel__fade--start"]}`}
+            aria-hidden
+          />
+          <div
+            className={`${styles["about-partner-carousel__fade"]} ${styles["about-partner-carousel__fade--end"]}`}
+            aria-hidden
+          />
+          <div ref={viewportRef} className={styles["about-partner-carousel__viewport"]}>
+            <div ref={trackRef} className={styles["about-partner-carousel__track"]}>
+              {awards.map((award) => (
+                <AboutPartnerAwardCard
+                  key={award.id}
+                  title={award.title}
+                  status={award.status}
+                  nomination={award.nomination}
+                  project={award.project}
+                  onClick={() => setActiveAwardId(award.id)}
+                />
+              ))}
+            </div>
           </div>
         </div>
+        <div className={styles["about-partner-carousel__nav"]}>
+          <button
+            type="button"
+            className={styles["about-partner-carousel__nav-button"]}
+            aria-label="Предыдущая награда"
+            onClick={() => scroll("prev")}
+          >
+            <Image
+              src="/landing/testimonials/arrow-icon.svg"
+              alt=""
+              width={32}
+              height={32}
+              className={styles["about-partner-carousel__nav-icon"]}
+            />
+          </button>
+          <button
+            type="button"
+            className={styles["about-partner-carousel__nav-button"]}
+            aria-label="Следующая награда"
+            onClick={() => scroll("next")}
+          >
+            <Image
+              src="/landing/testimonials/arrow-icon.svg"
+              alt=""
+              width={32}
+              height={32}
+              className={`${styles["about-partner-carousel__nav-icon"]} ${styles["about-partner-carousel__nav-icon--next"]}`}
+            />
+          </button>
+        </div>
       </div>
-      <div className={styles["about-partner-carousel__nav"]}>
-        <button
-          type="button"
-          className={styles["about-partner-carousel__nav-button"]}
-          aria-label="Предыдущая награда"
-          onClick={() => scroll("prev")}
-        >
-          <Image
-            src="/landing/testimonials/arrow-icon.svg"
-            alt=""
-            width={32}
-            height={32}
-            className={styles["about-partner-carousel__nav-icon"]}
-          />
-        </button>
-        <button
-          type="button"
-          className={styles["about-partner-carousel__nav-button"]}
-          aria-label="Следующая награда"
-          onClick={() => scroll("next")}
-        >
-          <Image
-            src="/landing/testimonials/arrow-icon.svg"
-            alt=""
-            width={32}
-            height={32}
-            className={`${styles["about-partner-carousel__nav-icon"]} ${styles["about-partner-carousel__nav-icon--next"]}`}
-          />
-        </button>
-      </div>
-    </div>
+      {activeAward ? (
+        <AboutPartnerAwardModal
+          open
+          onClose={() => setActiveAwardId(null)}
+          documentSrc={activeAward.document.src}
+          documentAlt={activeAward.document.alt}
+          documentWidth={activeAward.document.width}
+          documentHeight={activeAward.document.height}
+        />
+      ) : null}
+    </>
   );
 }

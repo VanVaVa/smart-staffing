@@ -328,6 +328,12 @@ export const aboutPartner = {
       status: "Победитель",
       nomination: "Лидер сегмента: HR-продукты",
       project: "B2BCloud",
+      document: {
+        src: "/landing/about/partner/documents/digital-leaders-2025.png",
+        alt: "Диплом: Лидеры цифровизации 2025 — лидер сегмента HR-продукты, проект B2BCloud",
+        width: 684,
+        height: 968,
+      },
     },
     {
       id: "russoft-2025",
@@ -336,6 +342,12 @@ export const aboutPartner = {
       nomination:
         "За участие и выступление в рамках серии бесплатных обучающих вебинаров, а также вклад в развитие предпринимательского ИТ-сообщества в 2025 году.",
       project: "СмартСтаффинг",
+      document: {
+        src: "/landing/about/partner/documents/russoft-2025.png",
+        alt: "Благодарственное письмо Ассоциации «РУССОФТ»",
+        width: 684,
+        height: 968,
+      },
     },
     {
       id: "global-cio",
@@ -343,6 +355,12 @@ export const aboutPartner = {
       status: "Номинант",
       nomination: "Сервисы и аутсорсинг",
       project: "B2BCloud",
+      document: {
+        src: "/landing/about/partner/documents/global-cio.png",
+        alt: "Документ конкурса «Проект года» Global CIO",
+        width: 684,
+        height: 968,
+      },
     },
     {
       id: "runet-2025",
@@ -350,6 +368,12 @@ export const aboutPartner = {
       status: "Номинант",
       nomination: "Облачное решение 2025",
       project: "B2BCloud",
+      document: {
+        src: "/landing/about/partner/documents/runet-2025.png",
+        alt: "Документ премии Рунета-2025",
+        width: 684,
+        height: 968,
+      },
     },
   ],
 } as const;

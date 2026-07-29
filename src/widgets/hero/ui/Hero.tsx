@@ -1,5 +1,5 @@
 import { heroContent } from "@/entities/landing";
-import { Button } from "@/shared/ui/button";
+import { CompanyConnectionButton } from "@/shared/ui/feedback-form";
 
 import { HeroRegistryLink } from "./hero-registry-link";
 import { HeroVisual } from "./hero-visual";
@@ -30,9 +30,14 @@ export function Hero() {
               </p>
             </div>
             <div className={styles.hero__actions}>
-              <Button href="#contacts" variant="primary" size="md" withArrow className={styles["hero__primary-cta"]}>
+              <CompanyConnectionButton
+                variant="primary"
+                size="md"
+                withArrow
+                className={styles["hero__primary-cta"]}
+              >
                 {heroContent.primaryCta}
-              </Button>
+              </CompanyConnectionButton>
               <HeroRegistryLink />
             </div>
           </div>

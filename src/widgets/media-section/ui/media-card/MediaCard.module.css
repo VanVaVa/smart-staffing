@@ -1,0 +1,131 @@
+.media-card {
+  display: flex;
+  min-width: 0;
+  height: 400px;
+  flex-direction: column;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-white);
+  color: var(--color-black);
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.media-card:hover {
+  box-shadow: var(--shadow-card);
+  transform: translateY(-2px);
+}
+
+.media-card:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+.media-card__visual {
+  position: relative;
+  flex: 0 0 260px;
+  overflow: hidden;
+}
+
+.media-card__image {
+  object-fit: cover;
+}
+
+.media-card__tag {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 33px;
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  background: var(--color-white-64);
+  font-size: var(--text-body-sm);
+  font-weight: 500;
+  line-height: var(--line-body-sm);
+  backdrop-filter: blur(8px);
+}
+
+.media-card__tag--important {
+  color: var(--color-accent);
+}
+
+.media-card__tag--interesting {
+  color: var(--color-black);
+}
+
+.media-card__tag--news {
+  color: var(--color-accent-2);
+}
+
+.media-card__content {
+  display: flex;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
+  gap: 12px;
+  padding: 28px;
+}
+
+.media-card__date {
+  color: var(--color-grey-400);
+  font-size: var(--text-body-sm);
+  line-height: var(--line-body-sm);
+}
+
+.media-card__title {
+  display: -webkit-box;
+  overflow: hidden;
+  color: var(--color-black);
+  font-family: var(--font-body);
+  font-size: var(--text-body-xl);
+  font-weight: 400;
+  line-height: var(--line-body-xl);
+  letter-spacing: 0;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+@media (max-width: 1440px) {
+  .media-card {
+    height: 372px;
+  }
+
+  .media-card__visual {
+    flex-basis: 232px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .media-card {
+    height: 400px;
+  }
+
+  .media-card__visual {
+    flex-basis: 260px;
+  }
+}
+
+@media (max-width: 640px) {
+  .media-card {
+    height: auto;
+    min-height: 322px;
+  }
+
+  .media-card__visual {
+    flex-basis: auto;
+    aspect-ratio: 595 / 260;
+  }
+
+  .media-card__content {
+    min-height: 140px;
+    padding: 20px;
+  }
+
+  .media-card__title {
+    font-size: var(--text-body-lg);
+    line-height: var(--line-body-lg);
+  }
+}

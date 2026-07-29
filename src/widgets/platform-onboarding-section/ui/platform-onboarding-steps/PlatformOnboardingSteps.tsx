@@ -1,5 +1,5 @@
-import { Button } from "@/shared/ui/button";
 import { ArrowIcon } from "@/shared/ui/arrow-icon";
+import { CompanyConnectionButton } from "@/shared/ui/feedback-form";
 
 import styles from "./PlatformOnboardingSteps.module.css";
 
@@ -56,13 +56,12 @@ export function PlatformOnboardingSteps({ title, cta, steps }: PlatformOnboardin
             <StepArrow className={styles["platform-onboarding-steps__arrow--1"]} />
           </div>
           {second ? <StepCard {...second} placement="second" /> : null}
-          <Button
-            href="#contacts"
+          <CompanyConnectionButton
             withArrow
             className={styles["platform-onboarding-steps__cta"]}
           >
             {cta}
-          </Button>
+          </CompanyConnectionButton>
           <StepArrow className={styles["platform-onboarding-steps__arrow--2"]} />
           {third ? <StepCard {...third} placement="third" /> : null}
         </div>

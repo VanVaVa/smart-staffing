@@ -1,0 +1,1 @@
+export { ClientsPlatformBenefitsCard } from "./ClientsPlatformBenefitsCard";

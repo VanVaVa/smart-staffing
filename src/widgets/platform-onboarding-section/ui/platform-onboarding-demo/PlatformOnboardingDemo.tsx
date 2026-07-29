@@ -1,7 +1,7 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
 
-import { Button } from "@/shared/ui/button";
+import { CompanyConnectionButton } from "@/shared/ui/feedback-form";
 import { SectionTitle } from "@/shared/ui/section-title";
 
 import styles from "./PlatformOnboardingDemo.module.css";
@@ -64,13 +64,12 @@ export function PlatformOnboardingDemo({
         <div className={styles["platform-onboarding-demo__promo"]}>
           <p className={styles["platform-onboarding-demo__promo-text"]}>{promoText}</p>
           <div className={styles["platform-onboarding-demo__promo-glow"]} aria-hidden />
-          <Button
-            href="#contacts"
+          <CompanyConnectionButton
             withArrow
             className={styles["platform-onboarding-demo__promo-cta"]}
           >
             {promoCta}
-          </Button>
+          </CompanyConnectionButton>
         </div>
       </div>
     </div>

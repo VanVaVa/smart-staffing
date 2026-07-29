@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { ReactNode } from "react";
+import type { MouseEventHandler, ReactNode } from "react";
 
 import { ArrowIcon } from "../arrow-icon";
 
@@ -34,6 +34,7 @@ type ButtonAsButton = ButtonBaseProps & {
 
 type ButtonAsLink = ButtonBaseProps & {
   href: string;
+  onClick?: MouseEventHandler<HTMLAnchorElement>;
 };
 
 export type ButtonProps = ButtonAsButton | ButtonAsLink;
@@ -93,7 +94,7 @@ export function Button(props: ButtonProps) {
 
   if ("href" in props && props.href) {
     return (
-      <Link href={props.href} className={rootClass}>
+      <Link href={props.href} className={rootClass} onClick={props.onClick}>
         {content}
       </Link>
     );

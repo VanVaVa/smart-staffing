@@ -9,7 +9,7 @@ import { VacanciesList } from "./vacancies-list";
 import styles from "./VacanciesSection.module.css";
 
 export function VacanciesSection() {
-  const { title, subtitle, heroImageSrc, heroImageWidth, heroImageHeight, heroImageAlt, vacancies, form } =
+  const { title, subtitle, heroImageSrc, heroImageWidth, heroImageHeight, heroImageAlt, vacancies, form, applicationSuccessModal } =
     vacanciesPage;
 
   return (
@@ -37,6 +37,7 @@ export function VacanciesSection() {
             fullNamePlaceholder={form.fullNamePlaceholder}
             attachLabel={form.attachLabel}
             submitLabel={form.submitLabel}
+            successModal={applicationSuccessModal}
           />
         </div>
       </Container>

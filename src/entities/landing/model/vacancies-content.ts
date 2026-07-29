@@ -21,4 +21,13 @@ export const vacanciesPage = {
     submitLabel: "Отправить",
     attachLabel: "Прикрепить резюме",
   },
+  applicationSuccessModal: {
+    title: "Резюме успешно отправлено",
+    description:
+      "Спасибо за интерес к нашей компании!\nЕсли Ваш опыт соответствует требованиям, мы свяжемся с вами для дальнейших шагов",
+    homeLabel: "На главную",
+    illustrationSrc: "/landing/vacancies/application-success-illustration.png",
+    illustrationWidth: 490,
+    illustrationHeight: 344,
+  },
 } as const;

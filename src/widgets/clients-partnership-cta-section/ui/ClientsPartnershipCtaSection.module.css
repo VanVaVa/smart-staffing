@@ -1,0 +1,17 @@
+.clients-partnership-cta-section {
+  padding-top: min(196px, calc(196 * 100vw / 1920));
+  padding-bottom: min(196px, calc(196 * 100vw / 1920));
+  overflow: visible;
+}
+
+.clients-partnership-cta-section__container {
+  min-width: 0;
+  overflow: visible;
+}
+
+@media (max-width: 768px) {
+  .clients-partnership-cta-section {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+}

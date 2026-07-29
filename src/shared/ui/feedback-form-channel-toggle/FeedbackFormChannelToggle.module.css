@@ -1,0 +1,67 @@
+.feedback-form-channel-toggle {
+  --toggle-gap: 4px;
+  --toggle-segments: 3;
+
+  position: relative;
+  display: flex;
+  gap: var(--toggle-gap);
+  width: min(100%, 451px);
+  height: 52px;
+  padding: 0;
+  border-radius: var(--radius-input);
+  background: var(--color-white);
+}
+
+.feedback-form-channel-toggle__thumb {
+  position: absolute;
+  top: 0;
+  left: calc(
+    var(--active-index) * (100% - (var(--toggle-segments) - 1) * var(--toggle-gap)) /
+      var(--toggle-segments) + var(--active-index) * var(--toggle-gap)
+  );
+  width: calc(
+    (100% - (var(--toggle-segments) - 1) * var(--toggle-gap)) / var(--toggle-segments)
+  );
+  height: 100%;
+  border-radius: var(--radius-input);
+  background: var(--color-black);
+  transition: left 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.feedback-form-channel-toggle__option {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  min-width: 0;
+  border: none;
+  border-radius: var(--radius-input);
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: var(--text-body-xl);
+  font-weight: 500;
+  line-height: var(--line-body-xl);
+  color: var(--color-black);
+  cursor: pointer;
+  padding: 8px 28px;
+  transition: color 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.feedback-form-channel-toggle__option--active {
+  color: var(--color-white);
+}
+
+.feedback-form-channel-toggle__option:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .feedback-form-channel-toggle__thumb {
+    transition: none;
+  }
+
+  .feedback-form-channel-toggle__option {
+    transition: none;
+  }
+}

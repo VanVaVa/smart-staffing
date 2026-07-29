@@ -1,0 +1,300 @@
+.company-connection-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 16px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.company-connection-modal__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  padding: 0;
+  background: rgb(0 0 0 / 20%);
+}
+
+.company-connection-modal__panel {
+  position: relative;
+  z-index: 1;
+  width: min(778px, 100%);
+  max-height: calc(100vh - 80px);
+  padding: 40px 33px 28px 40px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: var(--color-white);
+  color: var(--color-black);
+}
+
+.company-connection-modal__header {
+  padding-right: 48px;
+}
+
+.company-connection-modal__title {
+  font-size: 26px;
+  line-height: 32px;
+  letter-spacing: -0.01em;
+}
+
+.company-connection-modal__close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: grid;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  place-items: center;
+  color: #939393;
+}
+
+.company-connection-modal__close-icon {
+  position: relative;
+  display: block;
+  width: 21px;
+  height: 21px;
+}
+
+.company-connection-modal__close-icon::before,
+.company-connection-modal__close-icon::after {
+  position: absolute;
+  top: 9.5px;
+  left: -4px;
+  width: 29px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  content: "";
+}
+
+.company-connection-modal__close-icon::before {
+  transform: rotate(45deg);
+}
+
+.company-connection-modal__close-icon::after {
+  transform: rotate(-45deg);
+}
+
+.company-connection-modal__content {
+  max-height: calc(100vh - 192px);
+  margin-top: 40px;
+  padding-right: 7px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.company-connection-modal__sales-card {
+  position: relative;
+  min-height: 326px;
+  padding: 28px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #0e0d18;
+  color: var(--color-white);
+}
+
+.company-connection-modal__sales-orb--purple,
+.company-connection-modal__sales-orb--orange {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.company-connection-modal__sales-orb--purple {
+  right: -105px;
+  bottom: -49px;
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(
+    135deg,
+    var(--color-blue-muted),
+    var(--color-purple-mid) 47.12%,
+    #273181
+  );
+  filter: blur(40px);
+}
+
+.company-connection-modal__sales-orb--orange {
+  right: -91px;
+  bottom: -300px;
+  width: 400px;
+  height: 400px;
+  background: linear-gradient(
+    225deg,
+    var(--color-blue-muted),
+    var(--color-accent-hover) 47.12%,
+    var(--color-accent-lead)
+  );
+  filter: blur(40px);
+  transform: rotate(102.8deg);
+}
+
+.company-connection-modal__sales-copy,
+.company-connection-modal__sales-action {
+  position: relative;
+  z-index: 1;
+}
+
+.company-connection-modal__sales-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.company-connection-modal__sales-title {
+  font-family: var(--font-body);
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 36px;
+  letter-spacing: 0;
+}
+
+.company-connection-modal__sales-description,
+.company-connection-modal__summary,
+.company-connection-modal__features-title,
+.company-connection-modal__feature {
+  font-family: var(--font-body);
+  font-size: 20px;
+  line-height: 26px;
+}
+
+.company-connection-modal__sales-description {
+  font-weight: 500;
+}
+
+.company-connection-modal__sales-action {
+  margin-top: 56px;
+}
+
+.company-connection-modal__summary {
+  margin-top: 55px;
+  font-weight: 400;
+}
+
+.company-connection-modal__summary strong {
+  font-weight: 500;
+  color: var(--color-accent);
+}
+
+.company-connection-modal__features-title {
+  margin-top: 22px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.company-connection-modal__features {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.company-connection-modal__feature {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-weight: 400;
+}
+
+.company-connection-modal__check {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+}
+
+.company-connection-modal__check::before {
+  position: absolute;
+  top: 2px;
+  left: 5px;
+  width: 10px;
+  height: 16px;
+  border-right: 2px solid #2fd124;
+  border-bottom: 2px solid #2fd124;
+  content: "";
+  transform: rotate(45deg);
+}
+
+:global(html.company-connection-modal-open) > body > header,
+:global(html.company-connection-modal-open) > body > main,
+:global(html.company-connection-modal-open) > body > footer {
+  filter: blur(48px);
+}
+
+:global(html.company-connection-modal-open),
+:global(html.company-connection-modal-open) body {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+@media (max-width: 768px) {
+  .company-connection-modal {
+    align-items: center;
+    padding: 16px;
+  }
+
+  .company-connection-modal__panel {
+    max-height: calc(100vh - 32px);
+    padding: 24px 16px 20px 20px;
+  }
+
+  .company-connection-modal__title {
+    font-size: 22px;
+    line-height: 28px;
+  }
+
+  .company-connection-modal__close {
+    top: 10px;
+    right: 8px;
+  }
+
+  .company-connection-modal__content {
+    max-height: calc(100vh - 104px);
+    margin-top: 24px;
+    padding-right: 4px;
+  }
+
+  .company-connection-modal__sales-card {
+    min-height: 0;
+    padding: 24px 20px;
+  }
+
+  .company-connection-modal__sales-title {
+    font-size: 22px;
+    line-height: 29px;
+  }
+
+  .company-connection-modal__sales-description,
+  .company-connection-modal__summary,
+  .company-connection-modal__features-title,
+  .company-connection-modal__feature {
+    font-size: 17px;
+    line-height: 23px;
+  }
+
+  .company-connection-modal__sales-action {
+    width: 100%;
+    margin-top: 32px;
+  }
+
+  .company-connection-modal__summary {
+    margin-top: 32px;
+  }
+
+  .company-connection-modal__features-title {
+    margin-top: 20px;
+  }
+
+  .company-connection-modal__features {
+    margin-top: 20px;
+  }
+
+  :global(html.company-connection-modal-open) > body > header,
+  :global(html.company-connection-modal-open) > body > main,
+  :global(html.company-connection-modal-open) > body > footer {
+    filter: blur(32px);
+  }
+}

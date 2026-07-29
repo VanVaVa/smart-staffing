@@ -1,0 +1,38 @@
+.clients-partners-experience-section {
+  padding-top: min(196px, calc(196 * 100vw / 1920));
+}
+
+.clients-partners-experience-section__container {
+  display: flex;
+  flex-direction: column;
+  gap: min(56px, calc(56 * 100vw / 1920));
+  min-width: 0;
+}
+
+.clients-partners-experience-section__title {
+  margin: 0;
+  max-width: min(1001px, calc(1001 * 100vw / 1920));
+  font-family: var(--font-heading);
+  font-size: min(56px, calc(56 * 100vw / 1920));
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+
+.clients-partners-experience-section__card {
+  min-width: 0;
+}
+
+@media (max-width: 768px) {
+  .clients-partners-experience-section {
+    padding-top: 64px;
+  }
+
+  .clients-partners-experience-section__container {
+    gap: 32px;
+  }
+
+  .clients-partners-experience-section__title {
+    font-size: clamp(32px, 8vw, 56px);
+  }
+}

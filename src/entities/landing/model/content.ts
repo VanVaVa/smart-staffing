@@ -1,6 +1,6 @@
 export const landingNav = [
   { label: "О компании", href: "/about" },
-  { label: "Медиа", href: "/solutions" },
+  { label: "Медиа", href: "/media" },
   {
     label: "Клиентам",
     href: "/pricing",
@@ -326,7 +326,7 @@ export const footerContent = {
   menu: [
     { label: "О СмартСтаффинг", href: "/about" },
     { label: "Тарифы", href: "#platform" },
-    { label: "Медиа", href: "#solutions" },
+    { label: "Медиа", href: "/media" },
     { label: "Документы", href: "#pricing" },
   ],
   solutions: [
