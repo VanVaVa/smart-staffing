@@ -1,6 +1,7 @@
 .about-trusted-marquee {
   --about-trusted-card-height: min(200px, calc(200 * 100vw / 1920));
   --about-trusted-sequence-gap: min(8px, calc(8 * 100vw / 1920));
+  --about-trusted-scale: 1;
 
   position: relative;
   z-index: 1;
@@ -22,4 +23,44 @@
   display: flex;
   flex-shrink: 0;
   gap: var(--about-trusted-sequence-gap);
+}
+
+@media (max-width: 1440px) {
+  .about-trusted-marquee {
+    --about-trusted-card-height: 148px;
+    --about-trusted-sequence-gap: 8px;
+    --about-trusted-scale: 0.74;
+  }
+}
+
+@media (max-width: 992px) {
+  .about-trusted-marquee {
+    --about-trusted-card-height: 148px;
+    --about-trusted-sequence-gap: 8px;
+    --about-trusted-scale: 0.74;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-trusted-marquee {
+    --about-trusted-card-height: 90px;
+    --about-trusted-sequence-gap: 6px;
+    --about-trusted-scale: 0.45;
+  }
+}
+
+@media (max-width: 576px) {
+  .about-trusted-marquee {
+    --about-trusted-card-height: 85px;
+    --about-trusted-sequence-gap: 6px;
+    --about-trusted-scale: 0.425;
+  }
+}
+
+@media (max-width: 360px) {
+  .about-trusted-marquee {
+    --about-trusted-card-height: 67px;
+    --about-trusted-sequence-gap: 4px;
+    --about-trusted-scale: 0.335;
+  }
 }

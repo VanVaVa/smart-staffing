@@ -1,138 +1,210 @@
-.feedback-form-success-modal {
-  position: fixed;
-  inset: 0;
-  z-index: 200;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: min(197px, calc(197 * 100vw / 1920)) var(--container-padding)
-    min(48px, calc(48 * 100vw / 1920));
-  overflow-y: auto;
-  overscroll-behavior: contain;
-}
-
-.feedback-form-success-modal__overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  border: none;
-  padding: 0;
-  background: rgb(0 0 0 / 20%);
-  cursor: pointer;
-}
-
 .feedback-form-success-modal__panel {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: min(602px, calc(602 * 100vw / 1920));
-  max-width: 100%;
-  padding: min(40px, calc(40 * 100vw / 1920));
-  border-radius: min(20px, calc(20 * 100vw / 1920));
-  background: var(--color-white);
-  box-sizing: border-box;
+  width: min(var(--modal-panel-max-width), 100%);
 }
 
 .feedback-form-success-modal__illustration {
   display: block;
-  width: min(245px, calc(245 * 100vw / 1920));
-  height: min(172px, calc(172 * 100vw / 1920));
+  width: 245px;
+  height: auto;
   max-width: 100%;
-  object-fit: cover;
+  aspect-ratio: 245 / 172;
+  object-fit: contain;
 }
 
 .feedback-form-success-modal__copy {
   display: flex;
   flex-direction: column;
-  gap: min(12px, calc(12 * 100vw / 1920));
+  gap: 12px;
   width: 100%;
-  max-width: min(522px, calc(522 * 100vw / 1920));
-  margin-top: min(56px, calc(56 * 100vw / 1920));
+  max-width: 522px;
   text-align: center;
 }
 
 .feedback-form-success-modal__title {
   margin: 0;
   font-family: var(--font-heading);
-  font-size: min(26px, calc(26 * 100vw / 1920));
+  font-size: 26px;
   font-weight: 600;
-  line-height: min(32px, calc(32 * 100vw / 1920));
-  letter-spacing: -0.01em;
+  line-height: 32px;
+  letter-spacing: var(--letter-heading);
   color: var(--color-black);
 }
 
 .feedback-form-success-modal__description {
   margin: 0;
   font-family: var(--font-body);
-  font-size: min(20px, calc(20 * 100vw / 1920));
+  font-size: 20px;
   font-weight: 400;
-  line-height: min(26px, calc(26 * 100vw / 1920));
+  line-height: 26px;
   color: var(--color-black);
   white-space: pre-line;
 }
 
 .feedback-form-success-modal__action {
   width: 100%;
-  max-width: min(522px, calc(522 * 100vw / 1920));
-  min-height: min(52px, calc(52 * 100vw / 1920));
-  margin-top: min(56px, calc(56 * 100vw / 1920));
+  max-width: 522px;
+  min-height: 52px;
+  font-size: 20px;
+  line-height: 26px;
 }
 
-:global(html.feedback-form-success-modal-open) > body > header,
-:global(html.feedback-form-success-modal-open) > body > main,
-:global(html.feedback-form-success-modal-open) > body > footer {
-  filter: blur(48px);
-}
-
-:global(html.feedback-form-success-modal-open),
-:global(html.feedback-form-success-modal-open) body {
-  overflow: hidden;
-  overscroll-behavior: none;
-}
-
-@media (max-width: 768px) {
-  .feedback-form-success-modal {
-    align-items: center;
-    padding-top: 24px;
-  }
-
-  .feedback-form-success-modal__panel {
-    width: 100%;
-    padding: 24px 20px;
-    border-radius: 20px;
-  }
-
+@media (max-width: 1440px) {
   .feedback-form-success-modal__illustration {
-    width: min(245px, 100%);
-    height: auto;
-    aspect-ratio: 245 / 172;
+    width: 220px;
+    aspect-ratio: 220 / 154;
   }
 
   .feedback-form-success-modal__copy {
-    margin-top: 32px;
-    gap: 12px;
+    max-width: 378px;
+    gap: 8px;
   }
 
   .feedback-form-success-modal__title {
-    font-size: 22px;
+    font-family: var(--font-body);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 29px;
+    letter-spacing: 0;
+  }
+
+  .feedback-form-success-modal__description {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .feedback-form-success-modal__action {
+    max-width: 378px;
+    min-height: 38px;
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+
+@media (max-width: 992px) {
+  .feedback-form-success-modal__illustration {
+    width: 185px;
+    aspect-ratio: 185 / 128;
+  }
+
+  .feedback-form-success-modal__copy {
+    max-width: 360px;
+    gap: 8px;
+  }
+
+  .feedback-form-success-modal__title {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+    letter-spacing: var(--letter-heading);
+  }
+
+  .feedback-form-success-modal__description {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .feedback-form-success-modal__action {
+    max-width: 360px;
+    min-height: 40px;
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+
+@media (max-width: 768px) {
+  .feedback-form-success-modal__illustration {
+    width: 185px;
+    aspect-ratio: 185 / 128;
+  }
+
+  .feedback-form-success-modal__copy {
+    max-width: 360px;
+    gap: 8px;
+  }
+
+  .feedback-form-success-modal__title {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-weight: 600;
     line-height: 28px;
   }
 
   .feedback-form-success-modal__description {
-    font-size: 18px;
-    line-height: 24px;
+    font-size: 16px;
+    line-height: 22px;
   }
 
   .feedback-form-success-modal__action {
-    margin-top: 32px;
-    min-height: 52px;
+    max-width: 360px;
+    min-height: 40px;
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+
+@media (max-width: 576px) {
+  .feedback-form-success-modal__illustration {
+    width: 138px;
+    aspect-ratio: 138 / 96;
   }
 
-  :global(html.feedback-form-success-modal-open) > body > header,
-  :global(html.feedback-form-success-modal-open) > body > main,
-  :global(html.feedback-form-success-modal-open) > body > footer {
-    filter: blur(32px);
+  .feedback-form-success-modal__copy {
+    max-width: 340px;
+    gap: 8px;
+  }
+
+  .feedback-form-success-modal__title {
+    font-family: var(--font-heading);
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 28px;
+    letter-spacing: var(--letter-heading);
+  }
+
+  .feedback-form-success-modal__description {
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  .feedback-form-success-modal__action {
+    max-width: 340px;
+    min-height: 32px;
+    padding: 8px 16px;
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+
+@media (max-width: 360px) {
+  .feedback-form-success-modal__illustration {
+    width: 138px;
+    aspect-ratio: 138 / 96;
+  }
+
+  .feedback-form-success-modal__copy {
+    max-width: 296px;
+    gap: 8px;
+  }
+
+  .feedback-form-success-modal__title {
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: 0;
+  }
+
+  .feedback-form-success-modal__description {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .feedback-form-success-modal__action {
+    max-width: 296px;
+    min-height: 32px;
+    padding: 8px 16px;
+    font-size: 12px;
+    line-height: 16px;
   }
 }

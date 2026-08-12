@@ -1,0 +1,54 @@
+.modal-shell {
+  position: fixed;
+  inset: 0;
+  z-index: var(--modal-z-index);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: var(--modal-root-padding-top) var(--modal-root-padding-x)
+    var(--modal-root-padding-bottom);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.modal-shell__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  border: none;
+  padding: 0;
+  background: var(--modal-overlay);
+  cursor: pointer;
+}
+
+.modal-shell__panel {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  width: min(var(--modal-panel-max-width), 100%);
+  max-width: 100%;
+  padding: var(--modal-panel-padding);
+  border-radius: var(--modal-panel-radius);
+  background: var(--color-white);
+  color: var(--color-black);
+}
+
+.modal-shell__panel--stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--modal-panel-gap);
+}
+
+.modal-shell__panel--scroll {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  max-height: calc(
+    100vh - var(--modal-root-padding-top) - var(--modal-root-padding-bottom)
+  );
+  overflow: hidden;
+}
+
+.modal-shell__panel--wide {
+  width: min(778px, 100%);
+}

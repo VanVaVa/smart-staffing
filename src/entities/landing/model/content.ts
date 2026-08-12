@@ -240,7 +240,10 @@ export const caseStudies = {
   items: [
     {
       href: "#",
-      panelSrc: "/landing/case-studies/panel-timforce.svg",
+      panelSrc: "/landing/case-studies/panel-bg-timforce.png",
+      logoSrc: "/landing/case-studies/logo-timforce.svg",
+      logoWidth: 363,
+      logoHeight: 80,
       panelAlt: "Логотип группы компаний ТИМ ФОРС",
       description:
         "Благодаря внедрению платформы группа компаний «ТИМ ФОРС» смогла выстроить прозрачную и управляемую экосистему взаимодействия с подрядчиками, повысив рентабельность проектов на 5%",
@@ -249,7 +252,10 @@ export const caseStudies = {
     },
     {
       href: "#",
-      panelSrc: "/landing/case-studies/panel-case-2.svg",
+      panelSrc: "/landing/case-studies/panel-bg-case-2.png",
+      logoSrc: "/landing/case-studies/logo-case-2.svg",
+      logoWidth: 249,
+      logoHeight: 60,
       panelAlt: "Логотип компании",
       description:
         "Внедрение платформы помогло повысить производительность команд на 25%, снизить ошибки и дублирование задач на 35%, а также вдвое сократить время управленческого контроля над проектом благодаря росту прозрачности процессов и улучшению управляемости работы с подрядчиками",
@@ -258,7 +264,10 @@ export const caseStudies = {
     },
     {
       href: "#",
-      panelSrc: "/landing/case-studies/panel-case-3.svg",
+      panelSrc: "/landing/case-studies/panel-bg-case-3.png",
+      logoSrc: "/landing/case-studies/logo-case-3.svg",
+      logoWidth: 260,
+      logoHeight: 80,
       panelAlt: "Логотип компании Репола",
       description:
         "Платформа позволила компании «Репола» автоматизировать распределение заявок между проверенными подрядчиками и организовать витрину доступных специалистов. В результате внедрения сроки закрытия позиций сократились с 5 до 2,5 дней, а уровень удовлетворенности внутренних заказчиков достиг 95%.",

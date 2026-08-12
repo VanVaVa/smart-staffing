@@ -68,3 +68,45 @@
 .badge--chip-accent {
   color: var(--color-accent);
 }
+
+@media (max-width: 1440px) {
+  .badge--tag {
+    padding: 8px 20px;
+    font-size: var(--text-body-sm);
+    line-height: var(--line-body-sm);
+  }
+
+  .badge--chip,
+  .badge--chip-accent {
+    padding: 8px 16px;
+    font-size: var(--text-caption);
+    line-height: var(--line-caption);
+  }
+}
+
+@media (max-width: 576px) {
+  .badge--tag {
+    font-size: var(--text-body-sm);
+    line-height: var(--line-body-sm);
+    padding: 6px 14px;
+  }
+}
+
+@media (max-width: 360px) {
+  .badge--default,
+  .badge--accent,
+  .badge--purple,
+  .badge--outline,
+  .badge--chip,
+  .badge--chip-accent {
+    font-size: var(--text-caption);
+    line-height: var(--line-caption);
+    padding: 4px 10px;
+  }
+
+  .badge--tag {
+    font-size: var(--text-caption);
+    line-height: var(--line-caption);
+    padding: 4px 12px;
+  }
+}

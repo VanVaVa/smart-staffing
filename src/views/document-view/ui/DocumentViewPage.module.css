@@ -1,3 +1,4 @@
 .document-view-page {
+  overflow-x: clip;
   background: var(--color-bg);
 }

@@ -39,26 +39,23 @@ export function AboutHistorySection() {
               ))}
             </ol>
             <div className={styles["about-history-section__mission-column"]}>
-              <div className={styles["about-history-section__mission-markers"]} aria-hidden>
-                {mission.markers.map((marker, index) => (
-                  <span key={marker.iconSrc} className={styles["about-history-section__mission-marker"]}>
-                    <Image
-                      src={marker.iconSrc}
-                      alt={marker.alt}
-                      width={index === 1 ? 32 : 28}
-                      height={index === 1 ? 32 : 28}
-                    />
-                  </span>
-                ))}
-              </div>
               <article className={styles["about-history-section__mission"]}>
                 <span className={styles["about-history-section__mission-tag"]}>{mission.tag}</span>
                 <ul className={styles["about-history-section__mission-list"]}>
-                  {mission.items.map((item) => (
-                    <li key={item} className={styles["about-history-section__mission-item"]}>
-                      {item}
-                    </li>
-                  ))}
+                  {mission.items.map((item, index) => {
+                    const marker = mission.markers[index];
+
+                    return (
+                      <li key={item} className={styles["about-history-section__mission-item"]}>
+                        {marker ? (
+                          <span className={styles["about-history-section__mission-marker"]} aria-hidden>
+                            <Image src={marker.iconSrc} alt={marker.alt} width={28} height={28} />
+                          </span>
+                        ) : null}
+                        <p className={styles["about-history-section__mission-item-text"]}>{item}</p>
+                      </li>
+                    );
+                  })}
                 </ul>
               </article>
             </div>

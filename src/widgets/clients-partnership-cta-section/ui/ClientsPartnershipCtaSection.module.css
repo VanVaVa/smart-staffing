@@ -9,9 +9,28 @@
   overflow: visible;
 }
 
+@media (max-width: 1440px) {
+  .clients-partnership-cta-section {
+    padding-block: 168px;
+  }
+}
+
+@media (max-width: 992px) {
+  .clients-partnership-cta-section {
+    padding-block: min(168px, calc(168 * 100vw / 992));
+  }
+}
+
 @media (max-width: 768px) {
   .clients-partnership-cta-section {
-    padding-top: 64px;
+    padding-top: 148px;
     padding-bottom: 64px;
+  }
+}
+
+@media (max-width: 360px) {
+  .clients-partnership-cta-section {
+    padding-top: 100px;
+    padding-bottom: 100px;
   }
 }

@@ -2,7 +2,9 @@
   display: flex;
   align-items: flex-start;
   gap: min(16px, calc(16 * 100vw / 1920));
-  flex-shrink: 0;
+  flex-shrink: 1;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .vacancies-list-panel__viewport {
@@ -63,29 +65,76 @@
   cursor: grabbing;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1440px) {
+  .vacancies-list-panel__viewport {
+    width: min(634px, calc(634 * 100vw / 1440));
+    height: min(312px, calc(312 * 100vw / 1440));
+  }
+
+  .vacancies-list-panel__scrollbar {
+    height: min(312px, calc(312 * 100vw / 1440));
+  }
+}
+
+@media (max-width: 992px) {
   .vacancies-list-panel {
-    flex-direction: column;
-    width: 100%;
+    flex: 0 0 auto;
+    width: min(560px, 100%);
+    max-width: 560px;
+    min-width: 0;
   }
 
   .vacancies-list-panel__viewport {
     width: 100%;
     height: auto;
-    max-height: min(360px, calc(360 * 100vw / 1920));
+    max-height: 264px;
   }
 
   .vacancies-list-panel__scrollbar {
     display: none;
   }
-}
 
-@media (max-width: 1024px) {
   .vacancies-list-panel__items {
     gap: 8px;
   }
+}
+
+@media (max-width: 768px) {
+  .vacancies-list-panel {
+    width: 100%;
+    max-width: none;
+    margin-inline: auto;
+  }
 
   .vacancies-list-panel__viewport {
-    max-height: 360px;
+    height: auto;
+    max-height: none;
+    overflow: visible;
+  }
+}
+
+@media (max-width: 576px) {
+  .vacancies-list-panel {
+    width: 100%;
+    max-width: 536px;
+    margin-inline: auto;
+  }
+
+  .vacancies-list-panel__viewport {
+    max-height: 376px;
+    overflow-x: visible;
+    overflow-y: auto;
+  }
+}
+
+@media (max-width: 360px) {
+  .vacancies-list-panel__viewport {
+    height: auto;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .vacancies-list-panel__items {
+    gap: 6px;
   }
 }

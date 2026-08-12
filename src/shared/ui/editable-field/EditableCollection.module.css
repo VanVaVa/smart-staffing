@@ -1,0 +1,102 @@
+.editable-collection__add {
+  margin-top: 12px;
+  padding: 10px 16px;
+  border: 1px dashed rgb(21 101 192 / 45%);
+  border-radius: 12px;
+  background: rgb(21 101 192 / 4%);
+  color: #1565c0;
+  font-size: 14px;
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.editable-collection__add--inline {
+  margin-top: 0;
+  width: auto;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.editable-collection__add--grid-span {
+  grid-column: 1 / -1;
+}
+
+.editable-collection-item {
+  position: relative;
+  min-width: 0;
+}
+
+.editable-collection-item__content {
+  min-width: 0;
+}
+
+.editable-collection-item__remove {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 3;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 50%;
+  background: rgb(20 20 24 / 75%);
+  color: #fff;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.editable-collection-item:hover .editable-collection-item__remove,
+.editable-collection-item:focus-within .editable-collection-item__remove {
+  opacity: 1;
+}
+
+.editable-collection-item--segment {
+  width: fit-content;
+  max-width: 100%;
+}
+
+.editable-collection-item--carousel-card {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+}
+
+.editable-collection-item--feature-row,
+.editable-collection-item--case-study {
+  width: 100%;
+}
+
+.editable-collection-item--benefit {
+  min-height: 0;
+}
+
+.editable-collection-item--benefit .editable-collection-item__content,
+.editable-collection-item--benefit .editable-collection-item__content > * {
+  height: 100%;
+}
+
+@media (max-width: 992px) {
+  .editable-collection-item--benefit .editable-collection-item__content,
+  .editable-collection-item--benefit .editable-collection-item__content > * {
+    height: auto;
+  }
+}
+
+.editable-collection-item--step {
+  position: relative;
+}
+
+.editable-collection-item--step-inline {
+  display: contents;
+}
+
+.editable-collection-item--step-inline .editable-collection-item__content {
+  display: contents;
+}
+
+.editable-collection-item--step-inline .editable-collection-item__remove {
+  display: none;
+}

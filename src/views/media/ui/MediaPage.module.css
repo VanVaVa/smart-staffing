@@ -1,3 +1,4 @@
 .media-page {
+  overflow-x: clip;
   background: var(--color-bg);
 }

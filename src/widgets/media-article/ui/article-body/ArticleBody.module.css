@@ -137,3 +137,40 @@
     margin-top: 32px;
   }
 }
+
+@media (max-width: 360px) {
+  .article-body {
+    padding: 16px;
+    border-radius: 20px;
+    font-size: var(--text-body-sm);
+    line-height: var(--line-body-sm);
+  }
+
+  .article-body__lead {
+    font-size: var(--text-body-sm);
+    line-height: var(--line-body-sm);
+  }
+
+  .article-body__copy {
+    gap: 12px;
+  }
+
+  .article-body__copy--before-image {
+    margin-top: 20px;
+  }
+
+  .article-body__copy--after-image {
+    margin-top: 12px;
+    line-height: var(--line-body-sm);
+  }
+
+  .article-body__visual {
+    margin-top: 12px;
+    aspect-ratio: 296 / 186;
+    border-radius: 8px;
+  }
+
+  .article-body__source {
+    margin-top: 20px;
+  }
+}

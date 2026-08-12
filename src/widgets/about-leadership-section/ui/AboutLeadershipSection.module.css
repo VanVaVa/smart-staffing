@@ -33,33 +33,114 @@
   align-items: stretch;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1440px) {
+  .about-leadership-section__title {
+    font-size: var(--text-h1);
+    line-height: var(--line-h1);
+  }
+
+  .about-leadership-section__grid {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 992px) {
+  .about-leadership-section {
+    padding-bottom: 168px;
+  }
+
+  .about-leadership-section__inner {
+    gap: 48px;
+  }
+
   .about-leadership-section__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-areas:
-      "featured featured"
-      "strategy alliance"
-      "development analytics"
+      "featured strategy"
+      "featured development"
+      "alliance analytics"
       "marketing investors"
-      "finance finance";
+      "finance .";
   }
 }
 
 @media (max-width: 768px) {
+  .about-leadership-section {
+    padding-bottom: 96px;
+  }
+
+  .about-leadership-section__inner {
+    gap: 36px;
+  }
+
   .about-leadership-section__title {
-    font-size: clamp(32px, 8vw, 56px);
+    max-width: none;
+    font-size: var(--text-h1);
+    line-height: var(--line-h1);
   }
 
   .about-leadership-section__grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-areas:
-      "featured"
-      "strategy"
-      "alliance"
-      "development"
-      "analytics"
-      "marketing"
-      "investors"
-      "finance";
+      "featured strategy"
+      "featured alliance"
+      "development analytics"
+      "marketing investors"
+      "finance .";
+    gap: 8px;
+  }
+}
+
+@media (max-width: 576px) {
+  .about-leadership-section {
+    padding-bottom: 120px;
+  }
+
+  .about-leadership-section__inner {
+    gap: 40px;
+  }
+
+  .about-leadership-section__title {
+    max-width: none;
+    font-size: var(--text-h1);
+    line-height: var(--line-h1);
+  }
+
+  .about-leadership-section__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      "featured strategy"
+      "featured alliance"
+      "development analytics"
+      "marketing investors"
+      "finance .";
+    gap: 8px;
+  }
+}
+
+@media (max-width: 360px) {
+  .about-leadership-section {
+    padding-bottom: 64px;
+  }
+
+  .about-leadership-section__title {
+    max-width: 328px;
+    font-size: var(--text-h1);
+    line-height: var(--line-h1);
+  }
+
+  .about-leadership-section__inner {
+    gap: 36px;
+  }
+
+  .about-leadership-section__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      "featured strategy"
+      "featured alliance"
+      "development analytics"
+      "marketing investors"
+      "finance .";
+    gap: 8px;
   }
 }

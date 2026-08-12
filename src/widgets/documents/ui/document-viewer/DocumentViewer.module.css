@@ -90,3 +90,31 @@
     line-height: 24px;
   }
 }
+
+@media (max-width: 360px) {
+  .document-viewer {
+    padding-block: 104px 100px;
+  }
+
+  .document-viewer__header {
+    margin-bottom: 20px;
+  }
+
+  .document-viewer__title {
+    font-family: var(--font-body);
+    font-size: var(--text-body-sm);
+    font-weight: 400;
+    line-height: var(--line-body-sm);
+  }
+
+  .document-viewer__back {
+    height: 32px;
+    font-size: var(--text-body-sm);
+    line-height: var(--line-body-sm);
+  }
+
+  .document-viewer__download {
+    width: 32px;
+    height: 32px;
+  }
+}

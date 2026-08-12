@@ -19,7 +19,7 @@ export function ClientsHeroSection({ content }: ClientsHeroSectionProps) {
           alt={content.imageAlt}
           width={content.imageWidth}
           height={content.imageHeight}
-          sizes="(max-width: 1200px) 100vw, min(956px, 50vw)"
+          sizes="(max-width: 360px) 344px, (max-width: 768px) 744px, (max-width: 992px) 960px, (max-width: 1440px) 716px, 956px"
           priority
         />
       </figure>

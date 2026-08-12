@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useId, useLayoutEffect, useRef } from "react";
+import { useId, useRef } from "react";
 import { createPortal } from "react-dom";
 
+import { useModalLock } from "@/shared/ui/modal-shell";
 import { Button } from "@/shared/ui/button";
 
+import shellStyles from "@/shared/ui/modal-shell/modal-shell.module.css";
 import styles from "./CompanyConnectionModal.module.css";
-
-const PAGE_BLUR_CLASS = "company-connection-modal-open";
 
 const FEATURES = [
   "До 10 пользователей в команде",
@@ -28,53 +28,8 @@ export function CompanyConnectionModal({
 }: CompanyConnectionModalProps) {
   const titleId = useId();
   const panelRef = useRef<HTMLDivElement>(null);
-  const scrollYRef = useRef(0);
 
-  useLayoutEffect(() => {
-    if (!open) {
-      return;
-    }
-
-    const root = document.documentElement;
-    const { style: bodyStyle } = document.body;
-
-    scrollYRef.current = window.scrollY;
-    bodyStyle.position = "fixed";
-    bodyStyle.top = `-${scrollYRef.current}px`;
-    bodyStyle.width = "100%";
-    bodyStyle.overflow = "hidden";
-    root.classList.add(PAGE_BLUR_CLASS);
-    panelRef.current?.focus();
-
-    return () => {
-      bodyStyle.position = "";
-      bodyStyle.top = "";
-      bodyStyle.width = "";
-      bodyStyle.overflow = "";
-      root.classList.remove(PAGE_BLUR_CLASS);
-      window.scrollTo({
-        top: scrollYRef.current,
-        left: 0,
-        behavior: "instant",
-      });
-    };
-  }, [open]);
-
-  useEffect(() => {
-    if (!open) {
-      return;
-    }
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        onClose();
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [open, onClose]);
+  useModalLock(open, onClose, panelRef);
 
   if (!open) {
     return null;
@@ -88,17 +43,24 @@ export function CompanyConnectionModal({
   };
 
   return createPortal(
-    <div className={styles["company-connection-modal"]}>
+    <div className={shellStyles["modal-shell"]}>
       <button
         type="button"
-        className={styles["company-connection-modal__overlay"]}
+        className={shellStyles["modal-shell__overlay"]}
         aria-label="Закрыть окно"
         onClick={onClose}
       />
       <div
         ref={panelRef}
         tabIndex={-1}
-        className={styles["company-connection-modal__panel"]}
+        className={[
+          shellStyles["modal-shell__panel"],
+          shellStyles["modal-shell__panel--scroll"],
+          shellStyles["modal-shell__panel--wide"],
+          styles["company-connection-modal__panel"],
+        ]
+          .filter(Boolean)
+          .join(" ")}
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}

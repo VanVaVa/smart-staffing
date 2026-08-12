@@ -1,4 +1,11 @@
-import { productShowcase } from "@/entities/landing";
+import type {
+  ProductShowcaseBenefit,
+  ProductShowcaseBenefitMedia,
+} from "@/entities/landing/model/home-blocks";
+import {
+  EditableCollectionItem,
+  EditableText,
+} from "@/shared/ui/editable-field";
 
 import {
   ProductShowcaseBenefitCostCard,
@@ -6,45 +13,107 @@ import {
   ProductShowcaseBenefitTallMediaCard,
   ProductShowcaseBenefitWideMediaCard,
 } from "../product-showcase-benefit-card";
+import cardStyles from "../product-showcase-benefit-card/ProductShowcaseBenefitCard.module.css";
 import styles from "./ProductShowcaseBenefits.module.css";
 
-const BENEFIT_COST_ICONS_SRC = "/landing/product-showcase-benefit-cost-icons.png";
-const BENEFIT_CONTRACTORS_MEDIA_SRC =
-  "/landing/product-showcase-benefit-contractors.png";
-const BENEFIT_COMPETENCIES_MEDIA_SRC =
-  "/landing/product-showcase-benefit-competencies.png";
-const BENEFIT_STAT_MEDIA_SRC = "/landing/product-showcase-benefit-stat-bg.png";
+type ProductShowcaseBenefitsProps = {
+  benefitsTitle: string;
+  benefits: ProductShowcaseBenefit[];
+  benefitMedia: ProductShowcaseBenefitMedia;
+};
 
-export function ProductShowcaseBenefits() {
-  const [cost, contractors, competencies, stat] = productShowcase.benefits;
+function findBenefitIndex(
+  benefits: ProductShowcaseBenefit[],
+  layout: ProductShowcaseBenefit["layout"],
+): number {
+  return benefits.findIndex((benefit) => benefit.layout === layout);
+}
+
+export function ProductShowcaseBenefits({
+  benefitsTitle,
+  benefits,
+  benefitMedia,
+}: ProductShowcaseBenefitsProps) {
+  const cost = benefits.find((b) => b.layout === "cost");
+  const contractors = benefits.find((b) => b.layout === "wide-media");
+  const competencies = benefits.find((b) => b.layout === "tall-media");
+  const stat = benefits.find((b) => b.layout === "stat");
 
   return (
     <div id="pricing" className={styles["product-showcase-benefits"]}>
-      <h3 className={styles["product-showcase-benefits__title"]}>
-        {productShowcase.benefitsTitle}
-      </h3>
+      <EditableText
+        path="benefitsTitle"
+        label="Заголовок benefits"
+        as="h3"
+        className={styles["product-showcase-benefits__title"]}
+      >
+        {benefitsTitle}
+      </EditableText>
       <div className={styles["product-showcase-benefits__grid"]}>
-        <ProductShowcaseBenefitCostCard
-          title={cost.title}
-          text={cost.text}
-          iconsImageSrc={BENEFIT_COST_ICONS_SRC}
-        />
-        <ProductShowcaseBenefitWideMediaCard
-          title={contractors.title}
-          text={contractors.text}
-          mediaImageSrc={BENEFIT_CONTRACTORS_MEDIA_SRC}
-        />
-        <ProductShowcaseBenefitTallMediaCard
-          title={competencies.title}
-          text={competencies.text}
-          mediaImageSrc={BENEFIT_COMPETENCIES_MEDIA_SRC}
-        />
-        <ProductShowcaseBenefitStatCard
-          statValue={stat.statValue}
-          title={stat.title}
-          text={stat.text}
-          mediaImageSrc={BENEFIT_STAT_MEDIA_SRC}
-        />
+        {cost ? (
+          <EditableCollectionItem
+            arrayPath="benefits"
+            index={findBenefitIndex(benefits, "cost")}
+            variant="benefit"
+            className={cardStyles["product-showcase-benefit-card--cost"]}
+          >
+            <ProductShowcaseBenefitCostCard
+              benefitIndex={findBenefitIndex(benefits, "cost")}
+              title={cost.title}
+              text={cost.text}
+              costIcons={benefitMedia.costIcons}
+            />
+          </EditableCollectionItem>
+        ) : null}
+        {contractors ? (
+          <EditableCollectionItem
+            arrayPath="benefits"
+            index={findBenefitIndex(benefits, "wide-media")}
+            variant="benefit"
+            className={cardStyles["product-showcase-benefit-card--wide-media"]}
+          >
+            <ProductShowcaseBenefitWideMediaCard
+              benefitIndex={findBenefitIndex(benefits, "wide-media")}
+              title={contractors.title}
+              text={contractors.text}
+              mediaImageSrc={benefitMedia.contractors}
+              mediaPath="benefitMedia.contractors"
+            />
+          </EditableCollectionItem>
+        ) : null}
+        {competencies ? (
+          <EditableCollectionItem
+            arrayPath="benefits"
+            index={findBenefitIndex(benefits, "tall-media")}
+            variant="benefit"
+            className={cardStyles["product-showcase-benefit-card--tall-media"]}
+          >
+            <ProductShowcaseBenefitTallMediaCard
+              benefitIndex={findBenefitIndex(benefits, "tall-media")}
+              title={competencies.title}
+              text={competencies.text}
+              mediaImageSrc={benefitMedia.competencies}
+              mediaPath="benefitMedia.competencies"
+            />
+          </EditableCollectionItem>
+        ) : null}
+        {stat ? (
+          <EditableCollectionItem
+            arrayPath="benefits"
+            index={findBenefitIndex(benefits, "stat")}
+            variant="benefit"
+            className={cardStyles["product-showcase-benefit-card--stat"]}
+          >
+            <ProductShowcaseBenefitStatCard
+              benefitIndex={findBenefitIndex(benefits, "stat")}
+              statValue={stat.statValue ?? ""}
+              title={stat.title}
+              text={stat.text}
+              mediaImageSrc={benefitMedia.stat}
+              mediaPath="benefitMedia.stat"
+            />
+          </EditableCollectionItem>
+        ) : null}
       </div>
     </div>
   );

@@ -36,8 +36,48 @@
   flex-shrink: 1;
 }
 
-@media (max-width: 960px) {
+@media (max-width: 1440px) {
   .footer-about {
-    grid-column: 1 / -1;
+    margin-bottom: 161px;
+  }
+
+  .footer-about__logo-image {
+    max-width: min(100%, 198px);
+    max-height: 72px;
+  }
+
+  .footer-about__skolkovo-logo {
+    max-width: min(100%, 205px);
+    max-height: 57px;
+  }
+}
+
+@media (max-width: 992px) {
+  .footer-about {
+    margin-bottom: 104px;
+  }
+
+  .footer-about__logo-image {
+    max-width: min(100%, 200px);
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-about {
+    margin-bottom: 68px;
+  }
+
+  .footer-about__logo-image {
+    max-width: min(100%, 156px);
+  }
+
+  .footer-about__skolkovo-logo {
+    max-width: min(45%, 142px);
+  }
+}
+
+@media (max-width: 576px) {
+  .footer-about {
+    margin-bottom: 60px;
   }
 }

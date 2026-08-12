@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import styles from "./SectionTitle.module.css";
 
 type SectionTitleProps = {
-  title: string;
+  title: ReactNode;
   subtitle?: ReactNode;
   centered?: boolean;
   dark?: boolean;

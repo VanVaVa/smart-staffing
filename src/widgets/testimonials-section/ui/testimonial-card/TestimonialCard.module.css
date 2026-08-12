@@ -89,3 +89,43 @@
   font-size: var(--text-body-xl);
   line-height: var(--line-body-xl);
 }
+
+@media (max-width: 992px) {
+  .testimonial-card {
+    flex-basis: 424px;
+    width: 424px;
+    min-height: 265px;
+    padding: 24px;
+  }
+
+  .testimonial-card__body {
+    gap: 48px;
+  }
+}
+
+@media (max-width: 768px) {
+  .testimonial-card {
+    flex-basis: 356px;
+    width: 356px;
+    min-height: 258px;
+  }
+}
+
+@media (max-width: 576px) {
+  .testimonial-card {
+    flex-basis: min(400px, calc(100vw - 2 * var(--container-padding)));
+    width: min(400px, calc(100vw - 2 * var(--container-padding)));
+    min-height: 212px;
+    padding: 20px;
+  }
+
+  .testimonial-card__body {
+    gap: 32px;
+  }
+
+  .testimonial-card__logo {
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+  }
+}

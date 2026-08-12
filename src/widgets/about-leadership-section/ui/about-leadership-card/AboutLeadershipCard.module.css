@@ -90,30 +90,159 @@
   grid-area: finance;
 }
 
-@media (max-width: 1200px) {
-  .about-leadership-card,
-  .about-leadership-card--featured {
-    grid-area: auto;
-    min-height: min(396px, calc(396 * 100vw / 1920));
+@media (max-width: 1440px) {
+  .about-leadership-card {
+    min-height: 296px;
   }
 
   .about-leadership-card--featured {
-    min-height: min(520px, calc(520 * 100vw / 1920));
+    min-height: 600px;
+  }
+
+  .about-leadership-card__caption {
+    inset-inline: 24px;
+    inset-block-end: 24px;
+  }
+}
+
+@media (max-width: 992px) {
+  .about-leadership-card {
+    min-height: 300px;
+  }
+
+  .about-leadership-card--featured {
+    min-height: 608px;
+  }
+
+  .about-leadership-card__caption {
+    inset-inline: 24px;
+    inset-block-end: 24px;
   }
 }
 
 @media (max-width: 768px) {
-  .about-leadership-card__role {
-    font-size: clamp(16px, 4vw, var(--text-body-xl));
-    line-height: 1.3;
-  }
-
-  .about-leadership-card__name {
-    font-size: clamp(20px, 5vw, var(--text-h3));
-    line-height: 1.35;
+  .about-leadership-card {
+    min-height: 232px;
+    border-radius: var(--radius-control);
   }
 
   .about-leadership-card--featured {
-    min-height: min(440px, calc(440 * 100vw / 375));
+    min-height: 472px;
+  }
+
+  .about-leadership-card__caption {
+    inset-inline: 12px;
+    inset-block-end: 12px;
+    gap: 2px;
+    max-width: none;
+  }
+
+  .about-leadership-card__role {
+    font-size: var(--text-body-sm);
+    line-height: var(--line-body-sm);
+  }
+
+  .about-leadership-card__name {
+    font-size: var(--text-body-md);
+    line-height: var(--line-body);
+  }
+
+  .about-leadership-card--featured .about-leadership-card__caption {
+    inset-inline: 16px;
+    inset-block-end: 16px;
+    gap: 4px;
+  }
+
+  .about-leadership-card--featured .about-leadership-card__role {
+    font-size: var(--text-body-md);
+    line-height: var(--line-body);
+  }
+
+  .about-leadership-card--featured .about-leadership-card__name {
+    font-size: var(--text-h4);
+    line-height: var(--line-h4);
+  }
+}
+
+@media (max-width: 576px) {
+  .about-leadership-card {
+    min-height: 172px;
+    border-radius: var(--radius-control);
+  }
+
+  .about-leadership-card--featured {
+    min-height: 352px;
+  }
+
+  .about-leadership-card__caption {
+    inset-inline: 12px;
+    inset-block-end: 12px;
+    gap: 2px;
+  }
+
+  .about-leadership-card__role {
+    font-size: var(--text-caption);
+    line-height: var(--line-caption);
+  }
+
+  .about-leadership-card__name {
+    font-size: var(--text-body-sm);
+    line-height: var(--line-body-sm);
+  }
+
+  .about-leadership-card--featured .about-leadership-card__caption {
+    inset-inline: 16px;
+    inset-block-end: 16px;
+    gap: 4px;
+  }
+
+  .about-leadership-card--featured .about-leadership-card__role {
+    font-size: var(--text-caption);
+    line-height: var(--line-caption);
+  }
+
+  .about-leadership-card--featured .about-leadership-card__name {
+    font-size: var(--text-body-sm);
+    line-height: var(--line-body-sm);
+  }
+}
+
+@media (max-width: 360px) {
+  .about-leadership-card {
+    min-height: 104px;
+  }
+
+  .about-leadership-card--featured {
+    min-height: 214px;
+  }
+
+  .about-leadership-card__caption {
+    inset-inline: 12px;
+    inset-block-end: 12px;
+  }
+
+  .about-leadership-card__role {
+    font-size: var(--text-caption);
+    line-height: var(--line-caption);
+  }
+
+  .about-leadership-card__name {
+    font-size: var(--text-body-sm);
+    line-height: var(--line-body-sm);
+  }
+
+  .about-leadership-card--featured .about-leadership-card__caption {
+    inset-inline: 12px;
+    inset-block-end: 12px;
+  }
+
+  .about-leadership-card--featured .about-leadership-card__role {
+    font-size: var(--text-caption);
+    line-height: var(--line-caption);
+  }
+
+  .about-leadership-card--featured .about-leadership-card__name {
+    font-size: var(--text-body-sm);
+    line-height: var(--line-body-sm);
   }
 }

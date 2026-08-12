@@ -106,7 +106,7 @@
   width: 100%;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 992px) {
   .product-showcase__orb--orange-large,
   .product-showcase__orb--orange-small,
   .product-showcase__orb--purple {
@@ -121,12 +121,10 @@
   .product-showcase__orb--orange-small {
     right: 8%;
   }
-}
 
-@media (max-width: 960px) {
   .product-showcase {
-    min-height: auto;
-    padding-block: clamp(64px, 12vw, 120px) clamp(64px, 10vw, 96px);
+    padding-top: 168px;
+    padding-bottom: 286px;
     border-radius: var(--radius-lg);
   }
 
@@ -140,20 +138,72 @@
   }
 
   .product-showcase__stage {
-    display: flex;
-    flex-direction: column;
-    margin-top: clamp(48px, 10vw, 80px);
-  }
-
-  .product-showcase__stage > * {
-    grid-area: auto;
+    margin-top: 667px;
   }
 
   .product-showcase__mockup-slot {
-    width: min(100%, min(1168px, calc(1168 * 100vw / 1920)));
+    width: min(calc(100% - 2 * var(--container-padding)), 587px);
   }
 
   .product-showcase__benefits-slot {
-    margin-top: clamp(48px, 10vw, 64px);
+    margin-top: 168px;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-showcase {
+    padding-top: 148px;
+    padding-bottom: 233px;
+  }
+
+  .product-showcase__stage {
+    margin-top: 630px;
+  }
+
+  .product-showcase__mockup-slot {
+    width: min(calc(100% - 2 * var(--container-padding)), 550px);
+  }
+
+  .product-showcase__benefits-slot {
+    margin-top: 148px;
+  }
+}
+
+@media (max-width: 576px) {
+  .product-showcase {
+    padding-top: 120px;
+    padding-bottom: 172px;
+    border-radius: var(--radius-md);
+  }
+
+  .product-showcase__decor,
+  .product-showcase__gradient {
+    border-radius: var(--radius-md);
+  }
+
+  .product-showcase__stage {
+    margin-top: 473px;
+  }
+
+  .product-showcase__mockup-slot {
+    width: min(calc(100% - 2 * var(--container-padding)), 409px);
+  }
+
+  .product-showcase__benefits-slot {
+    margin-top: 120px;
+  }
+}
+
+@media (max-width: 360px) {
+  .product-showcase {
+    padding-block: 100px
+  }
+
+  .product-showcase__stage {
+    margin-top: 48px;
+  }
+
+  .product-showcase__benefits-slot {
+    margin-top: 96px;
   }
 }

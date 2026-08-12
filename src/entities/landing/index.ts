@@ -14,6 +14,26 @@ export {
   testimonials,
 } from "./model/content";
 export {
+  defaultBlockProps,
+  defaultCollectionItem,
+  HOME_BLOCK_TYPE_LABELS,
+  HOME_BLOCK_TYPES,
+  isHomeBlockType,
+  parseHomeBlock,
+  parseHomeBlockProps,
+  type CaseStudiesBlockProps,
+  type ContactBlockProps,
+  type FeaturesBlockProps,
+  type HeroBlockProps,
+  type HomeBlock,
+  type HomeBlockType,
+  type HomeCollectionKey,
+  type HomePageContent,
+  type PlatformOnboardingBlockProps,
+  type ProductShowcaseBlockProps,
+  type TestimonialsBlockProps,
+} from "./model/home-blocks";
+export {
   aboutBenefits,
   aboutCareerBook,
   aboutHistory,

@@ -7,11 +7,13 @@
   background: var(--color-white);
   border: 1px solid var(--color-grey-200);
   min-height: 100%;
+  min-width: 0;
+  width: 100%;
 }
 
 .testimonial-card__quote {
-  font-size: 16px;
-  line-height: 24px;
+  font-size: var(--text-body-md);
+  line-height: var(--line-body);
   color: var(--color-grey-700);
   flex: 1;
 }
@@ -38,12 +40,42 @@
 
 .testimonial-card__name {
   font-weight: 500;
-  font-size: 16px;
-  line-height: 22px;
+  font-size: var(--text-body-md);
+  line-height: var(--line-body);
 }
 
 .testimonial-card__role {
-  font-size: 14px;
-  line-height: 20px;
+  font-size: var(--text-body-sm);
+  line-height: var(--line-body-sm);
   color: var(--color-grey-600);
+}
+
+@media (max-width: 1440px) {
+  .testimonial-card {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 576px) {
+  .testimonial-card {
+    padding: 20px;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 360px) {
+  .testimonial-card__quote {
+    font-size: var(--text-body-sm);
+    line-height: var(--line-body-sm);
+  }
+
+  .testimonial-card__name {
+    font-size: var(--text-body-sm);
+    line-height: var(--line-body-sm);
+  }
+
+  .testimonial-card__role {
+    font-size: var(--text-caption);
+    line-height: var(--line-caption);
+  }
 }

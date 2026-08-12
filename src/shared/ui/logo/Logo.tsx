@@ -21,8 +21,6 @@ export function Logo({ light }: LogoProps) {
       <img
         src="/logo.svg"
         alt=""
-        width={36}
-        height={54}
         className={styles.logo__mark}
         aria-hidden
       />

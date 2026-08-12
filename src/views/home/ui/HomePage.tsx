@@ -1,22 +1,48 @@
-import { CaseStudiesSection } from "@/widgets/case-studies-section";
-import { ContactSection } from "@/widgets/contact-section";
-import { FeaturesSection } from "@/widgets/features-section";
-import { Hero } from "@/widgets/hero";
-import { PlatformOnboardingSection } from "@/widgets/platform-onboarding-section";
-import { ProductShowcase } from "@/widgets/product-showcase";
-import { StepsSection } from "@/widgets/steps-section";
-import { TestimonialsSection } from "@/widgets/testimonials-section";
+"use client";
 
-export function HomePage() {
+import type { ReactNode } from "react";
+
+import type { HomeBlock } from "@/entities/landing/model/home-blocks";
+import { AdminInlineEditLayer } from "@/features/admin-home-editor";
+
+import { HomeBlockRenderer } from "./HomeBlockRenderer";
+
+export type HomePageMode = "view" | "edit";
+
+type HomePageProps = {
+  blocks: HomeBlock[];
+  mode?: HomePageMode;
+  onBlockUpdate?: (block: HomeBlock) => void;
+  renderBlock?: (block: HomeBlock, index: number, node: ReactNode) => ReactNode;
+};
+
+export function HomePage({
+  blocks,
+  mode = "view",
+  onBlockUpdate,
+  renderBlock,
+}: HomePageProps) {
+  const interactive = mode === "view";
+  const inlineEdit = mode === "edit" && Boolean(onBlockUpdate);
+
   return (
     <>
-      <Hero />
-      <ProductShowcase />
-      <FeaturesSection />
-      <PlatformOnboardingSection />
-      <CaseStudiesSection />
-      <TestimonialsSection />
-      <ContactSection />
+      {blocks.map((block, index) => {
+        let node = (
+          <HomeBlockRenderer block={block} interactive={interactive} />
+        );
+        if (inlineEdit && onBlockUpdate) {
+          node = (
+            <AdminInlineEditLayer block={block} onUpdateBlock={onBlockUpdate}>
+              {node}
+            </AdminInlineEditLayer>
+          );
+        }
+        if (renderBlock) {
+          return <div key={block.id}>{renderBlock(block, index, node)}</div>;
+        }
+        return <div key={block.id}>{node}</div>;
+      })}
     </>
   );
 }

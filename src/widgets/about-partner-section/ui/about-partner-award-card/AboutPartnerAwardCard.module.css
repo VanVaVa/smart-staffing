@@ -93,15 +93,63 @@
   transform: rotate(-90deg);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1440px) {
   .about-partner-award-card {
-    width: min(320px, 85vw);
-    min-height: auto;
+    width: 451px;
+    min-height: 507px;
   }
 
   .about-partner-award-card__title {
-    font-size: clamp(20px, 5vw, 26px);
-    line-height: 1.35;
+    font-size: var(--text-lead);
+    line-height: var(--line-lead);
+  }
+
+  .about-partner-award-card__body {
+    margin-top: 88px;
+    min-height: 310px;
+  }
+
+  .about-partner-award-card__action {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 992px) {
+  .about-partner-award-card {
+    width: 340px;
+    min-height: 372px;
+    padding: 24px;
+  }
+
+  .about-partner-award-card__title {
+    font-family: var(--font-heading);
+    font-size: var(--text-body-xl);
+    font-weight: 600;
+    line-height: var(--line-body-xl);
+  }
+
+  .about-partner-award-card__body {
+    margin-top: 88px;
+    min-height: 310px;
+  }
+
+  .about-partner-award-card__action {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-partner-award-card {
+    width: min(320px, calc(100vw - 2 * var(--container-padding) - 24px));
+    min-height: auto;
+    padding: 24px;
+  }
+
+  .about-partner-award-card__title {
+    font-size: var(--text-lead);
+    line-height: var(--line-lead);
   }
 
   .about-partner-award-card__body {
@@ -110,7 +158,64 @@
   }
 
   .about-partner-award-card__field-value {
-    font-size: clamp(16px, 4vw, 20px);
-    line-height: 1.3;
+    font-size: var(--text-body-md);
+    line-height: var(--line-body);
+  }
+
+  .about-partner-award-card__action {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 576px) {
+  .about-partner-award-card {
+    width: min(264px, calc(100vw - 2 * var(--container-padding) - 16px));
+    min-height: 360px;
+    padding: 20px;
+    border-radius: var(--radius-control);
+  }
+
+  .about-partner-award-card__title {
+    font-family: var(--font-body);
+    font-size: var(--text-body-md);
+    font-weight: 500;
+    line-height: var(--line-body);
+  }
+
+  .about-partner-award-card__body {
+    margin-top: 32px;
+    gap: 20px;
+  }
+
+  .about-partner-award-card__fields {
+    gap: 12px;
+  }
+
+  .about-partner-award-card__field {
+    gap: 4px;
+  }
+
+  .about-partner-award-card__field-label {
+    font-size: var(--text-caption);
+    line-height: var(--line-caption);
+  }
+
+  .about-partner-award-card__field-value {
+    font-size: var(--text-body-sm);
+    line-height: var(--line-body-sm);
+  }
+
+  .about-partner-award-card__action {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media (max-width: 360px) {
+  .about-partner-award-card {
+    width: 264px;
+    min-height: 348px;
+    padding: 28px;
   }
 }

@@ -7,6 +7,9 @@ export const vacanciesPage = {
   heroImageSrc: "/landing/vacancies/hero-photo.png",
   heroImageWidth: 1106,
   heroImageHeight: 932,
+  heroImageMobileSrc: "/landing/vacancies/hero-photo-mobile.png",
+  heroImageMobileWidth: 656,
+  heroImageMobileHeight: 328,
   heroImageAlt: "Рабочее место в офисе СмартСтаффинг",
   vacancies: [
     { id: "developer", title: "Разработчик", employment: "Полная занятость" },
@@ -20,6 +23,7 @@ export const vacanciesPage = {
     fullNamePlaceholder: "ФИО",
     submitLabel: "Отправить",
     attachLabel: "Прикрепить резюме",
+    attachLoadingLabel: "Идёт загрузка",
   },
   applicationSuccessModal: {
     title: "Резюме успешно отправлено",

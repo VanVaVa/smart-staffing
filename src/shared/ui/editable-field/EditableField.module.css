@@ -1,0 +1,99 @@
+.editable-field {
+  cursor: text;
+  border-radius: 4px;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  transition: outline-color 0.15s ease, background-color 0.15s ease;
+}
+
+.editable-field:hover,
+.editable-field:focus-visible {
+  outline-color: rgb(21 101 192 / 35%);
+  background-color: rgb(21 101 192 / 6%);
+}
+
+.editable-field--editing {
+  cursor: text;
+  background: rgb(21 101 192 / 8%);
+  outline: 2px solid rgb(21 101 192 / 55%);
+  outline-offset: 0;
+  border-radius: 4px;
+}
+
+.editable-field--multiline {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.editable-field__input {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: rgb(21 101 192 / 8%);
+  outline: 2px solid rgb(21 101 192 / 55%);
+  outline-offset: 0;
+  resize: vertical;
+  color: inherit;
+  text-align: inherit;
+}
+
+.editable-media {
+  position: relative;
+  cursor: pointer;
+  border-radius: 8px;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  transition: outline-color 0.15s ease;
+}
+
+.editable-media:hover,
+.editable-media:focus-visible {
+  outline-color: rgb(21 101 192 / 45%);
+}
+
+.editable-media--editing {
+  outline-color: rgb(21 101 192 / 55%);
+}
+
+.editable-media__bar {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: rgb(20 20 24 / 92%);
+  color: #fff;
+  border-radius: 0 0 8px 8px;
+}
+
+.editable-media__url {
+  flex: 1 1 160px;
+  min-width: 0;
+  padding: 6px 10px;
+  border: 1px solid rgb(255 255 255 / 20%);
+  border-radius: 6px;
+  background: rgb(0 0 0 / 25%);
+  color: inherit;
+  font-size: 13px;
+}
+
+.editable-media__upload {
+  font-size: 13px;
+  cursor: pointer;
+  color: #90caf9;
+}
+
+.editable-media__file {
+  display: none;
+}
+
+.editable-media__error {
+  flex: 1 1 100%;
+  font-size: 12px;
+  color: #ef9a9a;
+}

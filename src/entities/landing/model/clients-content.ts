@@ -97,6 +97,9 @@ export type ClientsPartnersExperienceCaseStudy = {
   panelWidth: number;
   panelHeight: number;
   panelAlt: string;
+  logoSrc: string;
+  logoWidth: number;
+  logoHeight: number;
   description: string;
   metric: string;
   metricLabel: string;
@@ -234,10 +237,13 @@ const enterprisePartnersExperience: ClientsPartnersExperienceContent = {
   caseStudy: {
     href: "#",
     tag: "Банк",
-    panelSrc: "/landing/clients/enterprise/partners-experience-panel.png",
+    panelSrc: "/landing/case-studies/panel-bg-case-3.png",
     panelWidth: 571,
     panelHeight: 484,
-    panelAlt: "Логотип банка-партнёра",
+    panelAlt: "Логотип компании Репола",
+    logoSrc: "/landing/case-studies/logo-case-3.svg",
+    logoWidth: 260,
+    logoHeight: 80,
     description:
       "Платформа помогла выстроить централизованное управление подрядчиками и ресурсами, сократить сроки формирования команд и повысить прозрачность работы по ИТ-проектам",
     metric: "20%",
@@ -378,10 +384,13 @@ const outstaffingPartnersExperience: ClientsPartnersExperienceContent = {
   caseStudy: {
     href: "#",
     tag: "Банк",
-    panelSrc: "/landing/clients/outstaffing/partners-experience-panel.png",
+    panelSrc: "/landing/case-studies/panel-bg-case-3.png",
     panelWidth: 571,
     panelHeight: 484,
     panelAlt: "Логотип партнёра на платформе СмартСтаффинг",
+    logoSrc: "/landing/case-studies/logo-case-3.svg",
+    logoWidth: 260,
+    logoHeight: 80,
     description:
       "Платформа помогла выстроить централизованное управление подрядчиками и ресурсами, сократить сроки формирования команд и повысить прозрачность работы по ИТ-проектам",
     metric: "20%",
@@ -506,10 +515,13 @@ const midMarketPartnersExperience: ClientsPartnersExperienceContent = {
   caseStudy: {
     href: "#",
     tag: "Банк",
-    panelSrc: "/landing/clients/mid-market/partners-experience-panel.png",
+    panelSrc: "/landing/case-studies/panel-bg-case-3.png",
     panelWidth: 571,
     panelHeight: 484,
     panelAlt: "Логотип банка-партнёра",
+    logoSrc: "/landing/case-studies/logo-case-3.svg",
+    logoWidth: 260,
+    logoHeight: 80,
     description:
       "Платформа помогла выстроить централизованное управление подрядчиками и ресурсами, сократить сроки формирования команд и повысить прозрачность работы по ИТ-проектам",
     metric: "20%",
@@ -625,7 +637,8 @@ const agenciesPartnersExperience: ClientsPartnersExperienceContent = {
   ...enterprisePartnersExperience,
   caseStudy: {
     ...enterprisePartnersExperience.caseStudy,
-    panelSrc: "/landing/clients/agencies/partners-experience-panel.png",
+    panelSrc: "/landing/case-studies/panel-bg-case-3.png",
+    logoSrc: "/landing/case-studies/logo-case-3.svg",
   },
 };
 

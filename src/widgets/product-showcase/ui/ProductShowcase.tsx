@@ -1,3 +1,4 @@
+import type { ProductShowcaseBlockProps } from "@/entities/landing/model/home-blocks";
 import { headerBackdropProps } from "@/shared/config";
 
 import { ProductShowcaseBenefits } from "./product-showcase-benefits";
@@ -5,7 +6,11 @@ import { ProductShowcaseIntro } from "./product-showcase-intro";
 import { ProductShowcaseMockup } from "./product-showcase-mockup";
 import styles from "./ProductShowcase.module.css";
 
-export function ProductShowcase() {
+type ProductShowcaseProps = {
+  content: ProductShowcaseBlockProps;
+};
+
+export function ProductShowcase({ content }: ProductShowcaseProps) {
   return (
     <section
       id="platform"
@@ -26,14 +31,25 @@ export function ProductShowcase() {
       </div>
       <div className={styles["product-showcase__inner"]}>
         <div className={styles["product-showcase__content"]}>
-          <ProductShowcaseIntro />
+          <ProductShowcaseIntro
+            tag={content.tag}
+            title={content.title}
+            subtitle={content.subtitle}
+          />
           <div className={styles["product-showcase__stage"]}>
             <div className={styles["product-showcase__mockup-slot"]}>
-              <ProductShowcaseMockup />
+              <ProductShowcaseMockup
+                deviceSrc={content.mockupDeviceSrc}
+                screenSrc={content.mockupScreenSrc}
+              />
             </div>
           </div>
             <div className={styles["product-showcase__benefits-slot"]}>
-              <ProductShowcaseBenefits />
+              <ProductShowcaseBenefits
+                benefitsTitle={content.benefitsTitle}
+                benefits={content.benefits}
+                benefitMedia={content.benefitMedia}
+              />
             </div>
         </div>
       </div>

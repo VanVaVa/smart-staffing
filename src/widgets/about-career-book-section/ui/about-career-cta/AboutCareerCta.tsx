@@ -21,13 +21,15 @@ export function AboutCareerCta({
 }: AboutCareerCtaProps) {
   return (
     <article className={styles["about-career-cta"]}>
-      <div className={styles["about-career-cta__photo-slot"]}>
+      <div className={styles["about-career-cta__surface"]} aria-hidden />
+      <div className={styles["about-career-cta__media"]}>
         <Image
           className={styles["about-career-cta__photo"]}
           src={photoSrc}
           alt={photoAlt}
           width={152}
           height={203}
+          sizes="(max-width: 360px) 52px, (max-width: 576px) 128px, (max-width: 768px) 171px, 190px"
         />
       </div>
       <p className={styles["about-career-cta__text"]}>{text}</p>

@@ -1,3 +1,6 @@
 export { CompanyConnectionButton } from "./CompanyConnectionButton";
-export { FeedbackForm } from "./FeedbackForm";
-export { FeedbackFormSuccessModalProvider } from "./FeedbackFormSuccessModalProvider";
+export { FeedbackForm, type FeedbackFormProps, type FeedbackFormResumeAttach } from "./FeedbackForm";
+export {
+  FeedbackFormSuccessModalProvider,
+  type FeedbackFormSuccessContent,
+} from "./FeedbackFormSuccessModalProvider";

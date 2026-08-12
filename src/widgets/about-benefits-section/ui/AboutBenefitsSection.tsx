@@ -24,20 +24,22 @@ export function AboutBenefitsSection() {
               title={flex.title}
               text={flex.text}
             />
-            <AboutBenefitsSecurityCard
-              imageSrc={security.imageSrc}
-              title={security.title}
-              text={security.text}
-            />
-            <AboutBenefitsPlatformCard
-              title={platform.title}
-              text={platform.text}
-            />
             <AboutBenefitsExpertiseCard
               imageSrc={expertise.imageSrc}
               title={expertise.title}
               text={expertise.text}
             />
+            <div className={styles["about-benefits-section__stack"]}>
+              <AboutBenefitsPlatformCard
+                title={platform.title}
+                text={platform.text}
+              />
+              <AboutBenefitsSecurityCard
+                imageSrc={security.imageSrc}
+                title={security.title}
+                text={security.text}
+              />
+            </div>
           </div>
         </div>
       </Container>

@@ -1,6 +1,6 @@
 import Image from "next/image";
-import type { ReactNode } from "react";
 
+import { EditableMedia, EditableText } from "@/shared/ui/editable-field";
 import { CompanyConnectionButton } from "@/shared/ui/feedback-form";
 import { SectionTitle } from "@/shared/ui/section-title";
 
@@ -15,60 +15,67 @@ type PlatformOnboardingDemoProps = {
   mockupSrc: string;
   mockupWidth: number;
   mockupHeight: number;
+  interactive?: boolean;
 };
-
-function buildSubtitle(subtitle: string, accent: string): ReactNode {
-  const accentIndex = subtitle.indexOf(accent);
-  if (accentIndex === -1) {
-    return subtitle;
-  }
-
-  const before = subtitle.slice(0, accentIndex);
-  const after = subtitle.slice(accentIndex + accent.length);
-
-  return (
-    <>
-      {before}
-      <span className={styles["platform-onboarding-demo__subtitle-accent"]}>{accent}</span>
-      {after}
-    </>
-  );
-}
 
 export function PlatformOnboardingDemo({
   title,
   subtitle,
-  subtitleAccent,
   promoText,
   promoCta,
   mockupSrc,
   mockupWidth,
   mockupHeight,
+  interactive = true,
 }: PlatformOnboardingDemoProps) {
   return (
     <div className={styles["platform-onboarding-demo"]}>
       <div className={styles["platform-onboarding-demo__stage"]}>
-        <figure className={styles["platform-onboarding-demo__mockup"]} aria-hidden>
-          <Image
-            className={styles["platform-onboarding-demo__mockup-image"]}
-            src={mockupSrc}
-            alt=""
-            width={mockupWidth}
-            height={mockupHeight}
-            sizes="(max-width: 1024px) 72vw, 812px"
-          />
-        </figure>
+        <EditableMedia path="demo.mockupSrc" label="Demo — mockup">
+          <figure className={styles["platform-onboarding-demo__mockup"]} aria-hidden>
+            <Image
+              className={styles["platform-onboarding-demo__mockup-image"]}
+              src={mockupSrc}
+              alt=""
+              width={mockupWidth}
+              height={mockupHeight}
+              sizes="(max-width: 1024px) 72vw, 812px"
+            />
+          </figure>
+        </EditableMedia>
         <div className={styles["platform-onboarding-demo__copy"]}>
-          <SectionTitle title={title} subtitle={buildSubtitle(subtitle, subtitleAccent)} />
+          <SectionTitle
+            title={
+              <EditableText path="demo.title" label="Demo — заголовок">
+                {title}
+              </EditableText>
+            }
+            subtitle={
+              <EditableText path="demo.subtitle" label="Demo — подзаголовок" multiline>
+                {subtitle}
+              </EditableText>
+            }
+          />
         </div>
         <div className={styles["platform-onboarding-demo__promo"]}>
-          <p className={styles["platform-onboarding-demo__promo-text"]}>{promoText}</p>
+          <EditableText
+            path="demo.promoText"
+            label="Demo — promo"
+            as="p"
+            className={styles["platform-onboarding-demo__promo-text"]}
+            multiline
+          >
+            {promoText}
+          </EditableText>
           <div className={styles["platform-onboarding-demo__promo-glow"]} aria-hidden />
           <CompanyConnectionButton
             withArrow
             className={styles["platform-onboarding-demo__promo-cta"]}
+            interactive={interactive}
           >
-            {promoCta}
+            <EditableText path="demo.promoCta" label="Demo — CTA">
+              {promoCta}
+            </EditableText>
           </CompanyConnectionButton>
         </div>
       </div>

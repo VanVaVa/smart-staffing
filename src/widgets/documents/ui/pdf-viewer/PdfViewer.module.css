@@ -48,3 +48,13 @@
     border-radius: 12px;
   }
 }
+
+@media (max-width: 360px) {
+  .pdf-viewer :global(.react-pdf__Document) {
+    gap: 12px;
+  }
+
+  .pdf-viewer__page {
+    border-radius: 20px;
+  }
+}

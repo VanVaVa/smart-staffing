@@ -1,6 +1,6 @@
 import Image from "next/image";
-import type { ReactNode } from "react";
 
+import { EditableMedia, EditableText } from "@/shared/ui/editable-field";
 import { CompanyConnectionButton } from "@/shared/ui/feedback-form";
 import { SectionTitle } from "@/shared/ui/section-title";
 
@@ -15,62 +15,66 @@ type PlatformOnboardingPartnerProps = {
   imageWidth: number;
   imageHeight: number;
   cta: string;
+  interactive?: boolean;
 };
-
-function buildSubtitle(subtitle: string, accent: string): ReactNode {
-  const accentIndex = subtitle.indexOf(accent);
-  if (accentIndex === -1) {
-    return subtitle;
-  }
-
-  const before = subtitle.slice(0, accentIndex);
-  const after = subtitle.slice(accentIndex + accent.length);
-
-  return (
-    <>
-      {before}
-      <span className={styles["platform-onboarding-partner__subtitle-accent"]}>{accent}</span>
-      {after}
-    </>
-  );
-}
 
 export function PlatformOnboardingPartner({
   title,
   subtitle,
-  subtitleAccent,
   cardText,
   imageSrc,
   imageWidth,
   imageHeight,
   cta,
+  interactive = true,
 }: PlatformOnboardingPartnerProps) {
   return (
     <div className={styles["platform-onboarding-partner"]}>
       <SectionTitle
-        title={title}
-        subtitle={buildSubtitle(subtitle, subtitleAccent)}
+        title={
+          <EditableText path="partner.title" label="Partner — заголовок">
+            {title}
+          </EditableText>
+        }
+        subtitle={
+          <EditableText path="partner.subtitle" label="Partner — подзаголовок" multiline>
+            {subtitle}
+          </EditableText>
+        }
         centered
       />
       <div className={styles["platform-onboarding-partner__card-wrap"]}>
         <div className={styles["platform-onboarding-partner__orb"]} aria-hidden />
         <article className={styles["platform-onboarding-partner__card"]}>
-          <div className={styles["platform-onboarding-partner__media"]}>
-            <Image
-              className={styles["platform-onboarding-partner__image"]}
-              src={imageSrc}
-              alt=""
-              width={imageWidth}
-              height={imageHeight}
-              sizes="213px"
-            />
-          </div>
-          <p className={styles["platform-onboarding-partner__card-text"]}>{cardText}</p>
+          <EditableMedia path="partner.imageSrc" label="Partner — изображение">
+            <div className={styles["platform-onboarding-partner__media"]}>
+              <Image
+                className={styles["platform-onboarding-partner__image"]}
+                src={imageSrc}
+                alt=""
+                width={imageWidth}
+                height={imageHeight}
+                sizes="213px"
+              />
+            </div>
+          </EditableMedia>
+          <EditableText
+            path="partner.cardText"
+            label="Partner — текст карточки"
+            as="p"
+            className={styles["platform-onboarding-partner__card-text"]}
+            multiline
+          >
+            {cardText}
+          </EditableText>
           <CompanyConnectionButton
             withArrow
             className={styles["platform-onboarding-partner__cta"]}
+            interactive={interactive}
           >
-            {cta}
+            <EditableText path="partner.cta" label="Partner — CTA">
+              {cta}
+            </EditableText>
           </CompanyConnectionButton>
         </article>
       </div>

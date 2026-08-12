@@ -30,7 +30,7 @@ export function ClientsPlatformBenefitsCard({ card }: ClientsPlatformBenefitsCar
           alt={card.visual.imageAlt}
           width={card.visual.imageWidth}
           height={card.visual.imageHeight}
-          sizes="(max-width: 960px) 100vw, 25vw"
+          sizes="(max-width: 768px) 100vw, (max-width: 992px) 288px, 25vw"
         />
       </div>
     </article>

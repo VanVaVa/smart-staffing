@@ -4,7 +4,7 @@
   width: 100%;
   max-width: 1824px;
   margin-inline: auto;
-  padding-inline: 48px;
+  padding-inline: var(--container-padding);
 }
 
 .product-showcase-benefits__title {
@@ -29,24 +29,29 @@
   align-items: stretch;
 }
 
-@media (max-width: 1200px) {
-  .product-showcase-benefits {
-    padding-inline: var(--container-padding);
+@media (max-width: 992px) {
+  .product-showcase-benefits__title {
+    margin-bottom: 48px;
   }
 
   .product-showcase-benefits__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-rows: auto;
     grid-template-areas:
-      "cost contractors"
+      "cost cost"
+      "contractors contractors"
       "stat competencies";
+    align-items: start;
+  }
+
+  .product-showcase-benefits__grid > :first-child {
+    width: min(100%, 616px);
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 576px) {
   .product-showcase-benefits__title {
-    margin-bottom: 32px;
-    font-size: clamp(32px, 7vw, var(--text-h1));
+    margin-bottom: 40px;
   }
 
   .product-showcase-benefits__grid {
@@ -54,7 +59,21 @@
     grid-template-areas:
       "cost"
       "contractors"
-      "competencies"
-      "stat";
+      "stat"
+      "competencies";
+  }
+
+  .product-showcase-benefits__grid > * {
+    width: 100%;
+  }
+
+  .product-showcase-benefits__grid > :nth-child(3) {
+    width: min(100%, 400px);
+  }
+}
+
+@media (max-width: 360px) {
+  .product-showcase-benefits__title {
+    margin-bottom: 32px;
   }
 }

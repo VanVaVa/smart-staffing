@@ -25,3 +25,17 @@
 .link--inline:hover {
   color: var(--color-accent);
 }
+
+@media (max-width: 1440px) {
+  .link--nav {
+    font-size: var(--text-body-md);
+    line-height: var(--line-body);
+  }
+}
+
+@media (max-width: 576px) {
+  .link--nav {
+    font-size: var(--text-body-md);
+    line-height: var(--line-body);
+  }
+}

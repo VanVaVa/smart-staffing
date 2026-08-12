@@ -211,6 +211,43 @@
   }
 }
 
+@media (max-width: 360px) {
+  .related-articles {
+    margin-top: 60px;
+  }
+
+  .related-articles__heading {
+    margin-bottom: 12px;
+    font-size: var(--text-lead);
+    line-height: var(--line-lead);
+  }
+
+  .related-articles__link {
+    height: 32px;
+    min-height: 32px;
+    grid-template-columns: 65px minmax(0, 1fr);
+    gap: 8px;
+    padding: 8px;
+    border-radius: 8px;
+  }
+
+  .related-articles__date,
+  .related-articles__title {
+    font-size: var(--text-body-sm);
+    line-height: var(--line-body-sm);
+  }
+
+  .related-articles__title {
+    white-space: nowrap;
+  }
+
+  .related-articles__summary {
+    min-height: 32px;
+    font-size: var(--text-body-sm);
+    line-height: var(--line-body-sm);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .related-articles__more,
   .related-articles__expandable,

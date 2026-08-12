@@ -5,19 +5,12 @@
 }
 
 .heading--level-1 {
-  font-size: var(--text-display);
-  line-height: var(--line-display);
-}
-
-@media (min-width: 960px) {
-  .heading--level-1 {
-    font-size: var(--text-h1);
-    line-height: var(--line-h1);
-  }
+  font-size: var(--text-h1);
+  line-height: var(--line-h1);
 }
 
 .heading--level-2 {
-  font-size: clamp(32px, 3vw, var(--text-h2));
+  font-size: var(--text-h2);
   line-height: var(--line-h2);
 }
 

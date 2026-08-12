@@ -1,4 +1,5 @@
 import { FeedbackForm } from "@/shared/ui/feedback-form";
+import { EditableText } from "@/shared/ui/editable-field";
 
 import styles from "./FeedbackFormPanel.module.css";
 
@@ -11,20 +12,47 @@ export type FeedbackFormPanelContent = {
 
 type FeedbackFormPanelProps = FeedbackFormPanelContent & {
   className?: string;
+  interactive?: boolean;
+  editPrefix?: string;
 };
 
 function FeedbackFormPanelSubtitle({
   subtitle,
   subtitleAccent,
-}: Pick<FeedbackFormPanelContent, "subtitle" | "subtitleAccent">) {
+  editPrefix,
+}: Pick<FeedbackFormPanelContent, "subtitle" | "subtitleAccent"> & {
+  editPrefix?: string;
+}) {
+  const pathBase = editPrefix ?? "";
+
   if (!subtitleAccent) {
-    return <p className={styles["feedback-form-panel__subtitle"]}>{subtitle}</p>;
+    return (
+      <EditableText
+        path={`${pathBase}subtitle`}
+        label="Подзаголовок формы"
+        as="p"
+        className={styles["feedback-form-panel__subtitle"]}
+        multiline
+      >
+        {subtitle}
+      </EditableText>
+    );
   }
 
   const accentIndex = subtitle.indexOf(subtitleAccent);
 
   if (accentIndex === -1) {
-    return <p className={styles["feedback-form-panel__subtitle"]}>{subtitle}</p>;
+    return (
+      <EditableText
+        path={`${pathBase}subtitle`}
+        label="Подзаголовок формы"
+        as="p"
+        className={styles["feedback-form-panel__subtitle"]}
+        multiline
+      >
+        {subtitle}
+      </EditableText>
+    );
   }
 
   const before = subtitle.slice(0, accentIndex);
@@ -33,7 +61,11 @@ function FeedbackFormPanelSubtitle({
   return (
     <p className={styles["feedback-form-panel__subtitle"]}>
       {before}
-      <span className={styles["feedback-form-panel__subtitle-accent"]}>{subtitleAccent}</span>
+      <EditableText path={`${pathBase}subtitleAccent`} label="Акцент подзаголовка">
+        <span className={styles["feedback-form-panel__subtitle-accent"]}>
+          {subtitleAccent}
+        </span>
+      </EditableText>
       {after}
     </p>
   );
@@ -45,6 +77,8 @@ export function FeedbackFormPanel({
   subtitleAccent,
   submitLabel,
   className,
+  interactive = true,
+  editPrefix = "",
 }: FeedbackFormPanelProps) {
   const rootClassName = [styles["feedback-form-panel"], className].filter(Boolean).join(" ");
 
@@ -57,10 +91,32 @@ export function FeedbackFormPanel({
       </div>
       <div className={styles["feedback-form-panel__panel"]}>
         <div className={styles["feedback-form-panel__intro"]}>
-          <h2 className={styles["feedback-form-panel__title"]}>{title}</h2>
-          <FeedbackFormPanelSubtitle subtitle={subtitle} subtitleAccent={subtitleAccent} />
+          <EditableText
+            path={`${editPrefix}title`}
+            label="Заголовок формы"
+            as="h2"
+            className={styles["feedback-form-panel__title"]}
+          >
+            {title}
+          </EditableText>
+          <FeedbackFormPanelSubtitle
+            subtitle={subtitle}
+            subtitleAccent={subtitleAccent}
+            editPrefix={editPrefix}
+          />
         </div>
-        <FeedbackForm submitLabel={submitLabel} />
+        <div
+          className={[
+            styles["feedback-form-panel__form-slot"],
+            interactive
+              ? ""
+              : styles["feedback-form-panel__form-slot--inactive"],
+          ]
+            .filter(Boolean)
+            .join(" ")}
+        >
+          <FeedbackForm submitLabel={submitLabel} />
+        </div>
       </div>
     </div>
   );

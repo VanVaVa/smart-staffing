@@ -1,7 +1,12 @@
 "use client";
 
-import { useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
+
+import {
+  EditableCollectionAdd,
+  EditableCollectionItem,
+} from "@/shared/ui/editable-field";
 
 import { TestimonialCard } from "../testimonial-card";
 
@@ -21,13 +26,28 @@ type TestimonialsCarouselProps = {
   items: readonly TestimonialItem[];
 };
 
-function getActiveCardIndex(viewport: HTMLDivElement, track: HTMLDivElement): number {
-  const cards = Array.from(track.children) as HTMLElement[];
-  const scrollLeft = viewport.scrollLeft;
+type ScrollState = {
+  canScrollPrev: boolean;
+  canScrollNext: boolean;
+};
+
+function getCards(track: HTMLDivElement): HTMLElement[] {
+  return Array.from(track.querySelectorAll("[data-testimonial-card]")) as HTMLElement[];
+}
+
+function getCardScrollTargets(viewport: HTMLDivElement, cards: HTMLElement[]): number[] {
+  const viewportLeft = viewport.getBoundingClientRect().left;
+
+  return cards.map(
+    (card) => viewport.scrollLeft + card.getBoundingClientRect().left - viewportLeft,
+  );
+}
+
+function getActiveCardIndex(scrollLeft: number, targets: number[]): number {
   let index = 0;
 
-  for (let i = 0; i < cards.length; i += 1) {
-    if (cards[i].offsetLeft <= scrollLeft + 1) {
+  for (let i = 0; i < targets.length; i += 1) {
+    if (targets[i] <= scrollLeft + 2) {
       index = i;
     }
   }
@@ -35,9 +55,54 @@ function getActiveCardIndex(viewport: HTMLDivElement, track: HTMLDivElement): nu
   return index;
 }
 
+function getScrollState(viewport: HTMLDivElement): ScrollState {
+  const maxScrollLeft = Math.max(0, viewport.scrollWidth - viewport.clientWidth);
+
+  return {
+    canScrollPrev: viewport.scrollLeft > 2,
+    canScrollNext: viewport.scrollLeft < maxScrollLeft - 2,
+  };
+}
+
 export function TestimonialsCarousel({ items }: TestimonialsCarouselProps) {
   const viewportRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
+  const [scrollState, setScrollState] = useState<ScrollState>({
+    canScrollPrev: false,
+    canScrollNext: false,
+  });
+
+  const updateScrollState = useCallback(() => {
+    const viewport = viewportRef.current;
+    if (!viewport) {
+      return;
+    }
+
+    setScrollState(getScrollState(viewport));
+  }, []);
+
+  useEffect(() => {
+    const viewport = viewportRef.current;
+    const track = trackRef.current;
+    if (!viewport || !track) {
+      return;
+    }
+
+    updateScrollState();
+
+    viewport.addEventListener("scroll", updateScrollState, { passive: true });
+    window.addEventListener("resize", updateScrollState);
+
+    const resizeObserver = new ResizeObserver(updateScrollState);
+    resizeObserver.observe(viewport);
+    resizeObserver.observe(track);
+
+    return () => {
+      viewport.removeEventListener("scroll", updateScrollState);
+      window.removeEventListener("resize", updateScrollState);
+      resizeObserver.disconnect();
+    };
+  }, [items, updateScrollState]);
 
   const scroll = (direction: "prev" | "next") => {
     const viewport = viewportRef.current;
@@ -46,19 +111,21 @@ export function TestimonialsCarousel({ items }: TestimonialsCarouselProps) {
       return;
     }
 
-    const cards = Array.from(track.children) as HTMLElement[];
+    const cards = getCards(track);
     if (cards.length === 0) {
       return;
     }
 
-    const activeIndex = getActiveCardIndex(viewport, track);
+    const targets = getCardScrollTargets(viewport, cards);
+    const activeIndex = getActiveCardIndex(viewport.scrollLeft, targets);
     const targetIndex =
       direction === "next"
         ? Math.min(activeIndex + 1, cards.length - 1)
         : Math.max(activeIndex - 1, 0);
+    const maxScrollLeft = Math.max(0, viewport.scrollWidth - viewport.clientWidth);
 
     viewport.scrollTo({
-      left: cards[targetIndex].offsetLeft,
+      left: Math.min(targets[targetIndex], maxScrollLeft),
       behavior: "smooth",
     });
   };
@@ -67,9 +134,24 @@ export function TestimonialsCarousel({ items }: TestimonialsCarouselProps) {
     <div className={styles["testimonials-carousel"]}>
       <div ref={viewportRef} className={styles["testimonials-carousel__viewport"]}>
         <div ref={trackRef} className={styles["testimonials-carousel__track"]}>
-          {items.map((item) => (
-            <TestimonialCard key={item.company} {...item} />
+          {items.map((item, index) => (
+            <EditableCollectionItem
+              key={`${item.company}-${index}`}
+              arrayPath="items"
+              index={index}
+              variant="carousel-card"
+            >
+              <div data-testimonial-card className={styles["testimonials-carousel__card"]}>
+                <TestimonialCard itemIndex={index} {...item} />
+              </div>
+            </EditableCollectionItem>
           ))}
+          <EditableCollectionAdd
+            arrayPath="items"
+            collectionKey="testimonials.items"
+            addLabel="Отзыв"
+            variant="inline"
+          />
         </div>
       </div>
       <div className={styles["testimonials-carousel__nav"]}>
@@ -77,6 +159,7 @@ export function TestimonialsCarousel({ items }: TestimonialsCarouselProps) {
           type="button"
           className={styles["testimonials-carousel__nav-button"]}
           aria-label="Предыдущий отзыв"
+          disabled={!scrollState.canScrollPrev}
           onClick={() => scroll("prev")}
         >
           <Image
@@ -91,6 +174,7 @@ export function TestimonialsCarousel({ items }: TestimonialsCarouselProps) {
           type="button"
           className={styles["testimonials-carousel__nav-button"]}
           aria-label="Следующий отзыв"
+          disabled={!scrollState.canScrollNext}
           onClick={() => scroll("next")}
         >
           <Image

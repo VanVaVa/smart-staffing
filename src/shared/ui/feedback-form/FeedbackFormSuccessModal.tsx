@@ -1,95 +1,68 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useId, useLayoutEffect, useRef } from "react";
+import { useId, useRef } from "react";
 import { createPortal } from "react-dom";
 
 import { routes } from "@/shared/config";
+import { useModalLock } from "@/shared/ui/modal-shell";
 import { Button } from "@/shared/ui/button";
 
+import type { FeedbackFormSuccessContent } from "./FeedbackFormSuccessModalProvider";
+
+import shellStyles from "@/shared/ui/modal-shell/modal-shell.module.css";
 import styles from "./FeedbackFormSuccessModal.module.css";
 
-const PAGE_BLUR_CLASS = "feedback-form-success-modal-open";
+const DEFAULT_SUCCESS_CONTENT: FeedbackFormSuccessContent = {
+  title: "Заявка принята",
+  description:
+    "Спасибо за интерес к нашему продукту!\nМенеджер свяжется с вами в ближайшее время,\nи поможет подключиться к платформе.",
+  homeLabel: "На главную",
+  illustrationSrc: "/landing/vacancies/application-success-illustration.png",
+  illustrationWidth: 490,
+  illustrationHeight: 344,
+};
 
 type FeedbackFormSuccessModalProps = {
   open: boolean;
   onClose: () => void;
+  content?: FeedbackFormSuccessContent | null;
 };
 
 export function FeedbackFormSuccessModal({
   open,
   onClose,
+  content,
 }: FeedbackFormSuccessModalProps) {
   const titleId = useId();
   const descriptionId = useId();
   const panelRef = useRef<HTMLDivElement>(null);
-  const scrollYRef = useRef(0);
+  const modalContent = content ?? DEFAULT_SUCCESS_CONTENT;
 
-  useLayoutEffect(() => {
-    if (!open) {
-      return;
-    }
-
-    const root = document.documentElement;
-    const { style: bodyStyle } = document.body;
-
-    scrollYRef.current = window.scrollY;
-
-    bodyStyle.position = "fixed";
-    bodyStyle.top = `-${scrollYRef.current}px`;
-    bodyStyle.width = "100%";
-    bodyStyle.overflow = "hidden";
-    root.classList.add(PAGE_BLUR_CLASS);
-    panelRef.current?.focus();
-
-    return () => {
-      bodyStyle.position = "";
-      bodyStyle.top = "";
-      bodyStyle.width = "";
-      bodyStyle.overflow = "";
-      root.classList.remove(PAGE_BLUR_CLASS);
-      window.scrollTo({
-        top: scrollYRef.current,
-        left: 0,
-        behavior: "instant",
-      });
-    };
-  }, [open]);
-
-  useEffect(() => {
-    if (!open) {
-      return;
-    }
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        onClose();
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [open, onClose]);
+  useModalLock(open, onClose, panelRef);
 
   if (!open) {
     return null;
   }
 
   return createPortal(
-    <div className={styles["feedback-form-success-modal"]}>
+    <div className={shellStyles["modal-shell"]}>
       <button
         type="button"
-        className={styles["feedback-form-success-modal__overlay"]}
+        className={shellStyles["modal-shell__overlay"]}
         aria-label="Закрыть окно"
         onClick={onClose}
       />
       <div
         ref={panelRef}
         tabIndex={-1}
-        className={styles["feedback-form-success-modal__panel"]}
+        className={[
+          shellStyles["modal-shell__panel"],
+          shellStyles["modal-shell__panel--stack"],
+          styles["feedback-form-success-modal__panel"],
+        ]
+          .filter(Boolean)
+          .join(" ")}
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
@@ -97,24 +70,22 @@ export function FeedbackFormSuccessModal({
       >
         <Image
           className={styles["feedback-form-success-modal__illustration"]}
-          src="/landing/vacancies/application-success-illustration.png"
+          src={modalContent.illustrationSrc}
           alt=""
-          width={490}
-          height={344}
-          sizes="(max-width: 768px) min(245px, 100vw), min(245px, 12.8vw)"
+          width={modalContent.illustrationWidth}
+          height={modalContent.illustrationHeight}
+          sizes="(max-width: 576px) 138px, (max-width: 992px) 185px, (max-width: 1440px) 220px, 245px"
           priority
         />
         <div className={styles["feedback-form-success-modal__copy"]}>
           <h2 id={titleId} className={styles["feedback-form-success-modal__title"]}>
-            Заявка принята
+            {modalContent.title}
           </h2>
           <p
             id={descriptionId}
             className={styles["feedback-form-success-modal__description"]}
           >
-            {
-              "Спасибо за интерес к нашему продукту!\nМенеджер свяжется с вами в ближайшее время,\nи поможет подключиться к платформе."
-            }
+            {modalContent.description}
           </p>
         </div>
         <Button
@@ -125,7 +96,7 @@ export function FeedbackFormSuccessModal({
           className={styles["feedback-form-success-modal__action"]}
           onClick={onClose}
         >
-          На главную
+          {modalContent.homeLabel}
         </Button>
       </div>
     </div>,

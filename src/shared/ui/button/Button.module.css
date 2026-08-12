@@ -12,6 +12,7 @@
   white-space: nowrap;
   cursor: pointer;
   text-decoration: none;
+  max-width: 100%;
   transition:
     background 0.2s ease,
     color 0.2s ease,
@@ -158,4 +159,52 @@
 .button:disabled {
   cursor: not-allowed;
   pointer-events: none;
+}
+
+@media (max-width: 1440px) {
+  .button--md,
+  .button--lg {
+    font-size: var(--text-body-md);
+    line-height: var(--line-body);
+    padding: 8px 20px;
+  }
+
+  .button__arrow-slot {
+    width: 36px;
+    height: 36px;
+  }
+
+  .button--with-arrow.button--md,
+  .button--with-arrow.button--lg {
+    padding: 2px 2px 2px 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .button--md,
+  .button--lg {
+    font-size: var(--text-body-sm);
+    line-height: var(--line-body-sm);
+    padding: 7px 16px;
+  }
+
+  .button__arrow-slot {
+    width: 28px;
+    height: 28px;
+  }
+
+  .button--with-arrow.button--md,
+  .button--with-arrow.button--lg {
+    padding: 2px 2px 2px 16px;
+  }
+}
+
+@media (max-width: 360px) {
+  .button--with-arrow {
+    white-space: normal;
+  }
+
+  .button--with-arrow .button__label {
+    min-width: 0;
+  }
 }

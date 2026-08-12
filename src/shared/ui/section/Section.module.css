@@ -21,3 +21,15 @@
   gap: clamp(40px, 5vw, 64px);
   min-width: 0;
 }
+
+@media (max-width: 576px) {
+  .section__inner {
+    gap: 32px;
+  }
+}
+
+@media (max-width: 360px) {
+  .section__inner {
+    gap: 24px;
+  }
+}

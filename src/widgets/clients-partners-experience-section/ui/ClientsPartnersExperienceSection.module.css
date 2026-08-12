@@ -23,16 +23,61 @@
   min-width: 0;
 }
 
+@media (max-width: 1440px) {
+  .clients-partners-experience-section {
+    padding-top: 168px;
+  }
+
+  .clients-partners-experience-section__container {
+    gap: 48px;
+  }
+
+  .clients-partners-experience-section__title {
+    font-size: var(--text-h1);
+    line-height: var(--line-h1);
+  }
+}
+
+@media (max-width: 992px) {
+  .clients-partners-experience-section {
+    padding-top: min(168px, calc(168 * 100vw / 992));
+  }
+
+  .clients-partners-experience-section__container {
+    gap: min(48px, calc(48 * 100vw / 992));
+  }
+
+  .clients-partners-experience-section__title {
+    font-size: var(--text-h1);
+    line-height: var(--line-h1);
+  }
+}
+
 @media (max-width: 768px) {
   .clients-partners-experience-section {
     padding-top: 64px;
   }
 
   .clients-partners-experience-section__container {
-    gap: 32px;
+    gap: 31px;
   }
 
   .clients-partners-experience-section__title {
     font-size: clamp(32px, 8vw, 56px);
+  }
+}
+
+@media (max-width: 360px) {
+  .clients-partners-experience-section {
+    padding-top: 100px;
+  }
+
+  .clients-partners-experience-section__container {
+    gap: 36px;
+  }
+
+  .clients-partners-experience-section__title {
+    font-size: var(--text-h1);
+    line-height: var(--line-h1);
   }
 }

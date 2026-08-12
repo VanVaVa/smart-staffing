@@ -13,13 +13,16 @@
   width: 100%;
 }
 
+.feedback-form__fields :global(.input) {
+  width: 100%;
+  gap: 0;
+}
+
 .feedback-form__input {
   width: 100%;
 }
 
 .feedback-form__consent {
-  font-size: var(--text-body-xl);
-  line-height: var(--line-body-xl);
   color: var(--color-white);
 }
 
@@ -31,4 +34,366 @@
 
 .feedback-form__consent .feedback-form__consent-link:hover {
   color: var(--color-white);
+}
+
+.feedback-form--light .feedback-form__consent {
+  color: var(--color-black);
+}
+
+.feedback-form--light .feedback-form__consent-link {
+  color: var(--color-black);
+}
+
+.feedback-form--light .feedback-form__consent .feedback-form__consent-link:hover {
+  color: var(--color-black);
+}
+
+.feedback-form--with-resume {
+  gap: 28px;
+  width: 100%;
+  max-width: 100%;
+}
+
+.feedback-form--with-resume .feedback-form__input {
+  height: 52px;
+  min-height: 52px;
+  padding-block: 0;
+  line-height: 26px;
+}
+
+.feedback-form--with-resume.feedback-form--light .feedback-form__consent {
+  max-width: 100%;
+  font-size: 20px;
+  line-height: 26px;
+}
+
+.feedback-form__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+}
+
+.feedback-form__attach {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  min-width: 0;
+  max-width: 100%;
+  height: 52px;
+  min-height: 52px;
+  padding: 0;
+  border-radius: var(--radius-input);
+  background: var(--color-grey-200);
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 26px;
+  color: var(--color-black);
+  cursor: pointer;
+}
+
+.feedback-form__attach--loading {
+  justify-content: flex-start;
+  background: rgb(255 255 255 / 40%);
+}
+
+.feedback-form__attach--uploaded {
+  justify-content: flex-start;
+  background: var(--color-white);
+}
+
+.feedback-form__attach-progress {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  width: 52px;
+  border-radius: var(--radius-input) 0 0 var(--radius-input);
+  background: var(--color-white);
+  animation: feedback-form-attach-progress 1.2s ease-in-out infinite;
+}
+
+.feedback-form__attach-label {
+  position: relative;
+  z-index: 1;
+  display: block;
+  min-width: 0;
+  padding-inline: 28px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.feedback-form__attach--loading .feedback-form__attach-label {
+  padding-inline: 38px 12px;
+}
+
+.feedback-form__attach--uploaded .feedback-form__attach-label {
+  padding-inline: 12px;
+}
+
+@keyframes feedback-form-attach-progress {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 52px;
+  }
+}
+
+.feedback-form__attach-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.feedback-form__submit {
+  flex-shrink: 1;
+  min-width: 0;
+  width: min(200px, 100%);
+  height: 52px;
+  min-height: 52px;
+  padding-block: 0;
+}
+
+@media (min-width: 993px) and (max-width: 1440px) {
+  .feedback-form--with-resume {
+    gap: 24px;
+  }
+
+  .feedback-form--with-resume .feedback-form__input {
+    height: 40px;
+    min-height: 40px;
+    line-height: 22px;
+  }
+
+  .feedback-form--with-resume.feedback-form--light .feedback-form__consent {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .feedback-form__attach,
+  .feedback-form__submit {
+    height: 40px;
+    min-height: 40px;
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .feedback-form__attach-label {
+    padding-inline: 20px;
+  }
+
+  .feedback-form__attach--loading .feedback-form__attach-label {
+    padding-inline: 57px 12px;
+  }
+
+  .feedback-form__submit {
+    width: min(155px, 100%);
+  }
+}
+
+@media (max-width: 768px) {
+  .feedback-form {
+    gap: 20px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .feedback-form {
+    gap: 20px;
+    width: 100%;
+  }
+
+  .feedback-form__fields {
+    gap: 6px;
+  }
+}
+
+@media (max-width: 992px) {
+  .feedback-form--with-resume {
+    width: 100%;
+    gap: 24px;
+  }
+
+  .feedback-form--with-resume .feedback-form__input {
+    height: 40px;
+    min-height: 40px;
+    line-height: 22px;
+  }
+
+  .feedback-form--with-resume.feedback-form--light .feedback-form__consent {
+    max-width: none;
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .feedback-form__attach,
+  .feedback-form__submit {
+    height: 40px;
+    min-height: 40px;
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .feedback-form__attach-label {
+    padding-inline: 20px;
+  }
+
+  .feedback-form__attach--loading .feedback-form__attach-label {
+    padding-inline: 57px 12px;
+  }
+
+  .feedback-form__attach--uploaded .feedback-form__attach-label {
+    padding-inline: 12px;
+  }
+
+  .feedback-form__attach-progress {
+    width: 52px;
+  }
+
+  @keyframes feedback-form-attach-progress {
+    0% {
+      width: 0;
+    }
+
+    100% {
+      width: 52px;
+    }
+  }
+
+  .feedback-form__submit {
+    width: min(155px, 100%);
+  }
+}
+
+@media (max-width: 576px) {
+  .feedback-form--with-resume {
+    gap: 20px;
+  }
+
+  .feedback-form--with-resume .feedback-form__input {
+    height: 32px;
+    min-height: 32px;
+    line-height: 16px;
+  }
+
+  .feedback-form--with-resume.feedback-form--light .feedback-form__consent {
+    font-size: var(--text-body-sm);
+    line-height: var(--line-body-sm);
+  }
+
+  .feedback-form__attach,
+  .feedback-form__submit {
+    height: 32px;
+    min-height: 32px;
+    font-size: var(--text-body-sm);
+    line-height: var(--line-body-sm);
+  }
+
+  .feedback-form__attach-label {
+    padding-inline: 16px;
+  }
+
+  .feedback-form__attach--loading .feedback-form__attach-label {
+    padding-inline: 38px 12px;
+  }
+
+  .feedback-form__attach--uploaded .feedback-form__attach-label {
+    padding-inline: 12px;
+  }
+
+  .feedback-form__submit {
+    width: 128px;
+  }
+}
+
+@media (max-width: 360px) {
+  .feedback-form--with-resume {
+    gap: 20px;
+  }
+
+  .feedback-form--with-resume .feedback-form__fields {
+    gap: 8px;
+  }
+
+  .feedback-form--with-resume .feedback-form__input {
+    height: auto;
+    min-height: 0;
+    padding-block: 0;
+    line-height: inherit;
+  }
+
+  .feedback-form--with-resume.feedback-form--light .feedback-form__consent {
+    max-width: none;
+    font-size: var(--text-caption);
+    line-height: var(--line-caption);
+  }
+
+  .feedback-form__actions {
+    flex-wrap: nowrap;
+    gap: 15px;
+  }
+
+  .feedback-form__attach {
+    flex: 1 1 auto;
+    width: auto;
+    max-width: 166px;
+    height: 32px;
+    min-height: 32px;
+    font-size: var(--text-caption);
+    line-height: var(--line-caption);
+  }
+
+  .feedback-form__attach-label {
+    box-sizing: border-box;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 8px 20px;
+  }
+
+  .feedback-form__attach--loading .feedback-form__attach-label {
+    padding: 8px 12px 8px 38px;
+  }
+
+  .feedback-form__attach--uploaded .feedback-form__attach-label {
+    padding: 8px 12px;
+  }
+
+  .feedback-form__attach-progress {
+    width: 52px;
+  }
+
+  @keyframes feedback-form-attach-progress {
+    0% {
+      width: 0;
+    }
+
+    100% {
+      width: 52px;
+    }
+  }
+
+  .feedback-form__submit {
+    flex: 0 0 auto;
+    width: auto;
+    min-width: 118px;
+    height: 32px;
+    min-height: 32px;
+    font-size: var(--text-caption);
+    line-height: var(--line-caption);
+  }
 }

@@ -148,45 +148,27 @@
 }
 
 .about-history-section__mission-column {
-  display: grid;
-  grid-template-columns: 52px minmax(0, 1fr);
-  gap: 8px;
-  align-items: start;
-  margin-top: min(700px, calc(700 * 100vw / 1920));
-}
-
-.about-history-section__mission-markers {
-  display: flex;
-  flex-direction: column;
-  gap: 48px;
-  padding-top: 118px;
-}
-
-.about-history-section__mission-marker {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: var(--color-white);
-}
-
-.about-history-section__mission-marker img {
-  width: 28px;
-  height: 28px;
-  object-fit: contain;
+  margin-top: min(918px, calc(918 * 100vw / 1920));
+  margin-bottom: min(144px, calc(144 * 100vw / 1920));
+  padding-inline-start: 8px;
+  min-width: 0;
+  overflow: visible;
 }
 
 .about-history-section__mission {
+  --mission-marker-size: 48px;
+  --mission-marker-icon-size: 28px;
+  --mission-marker-offset: -88px;
+
   display: flex;
   flex-direction: column;
-  gap: 28px;
-  min-height: 424px;
-  padding: 40px;
-  border-radius: 40px;
+  gap: 24px;
+  width: min(680px, 100%);
+  padding: 32px;
+  border-radius: var(--radius-xl);
   background: var(--color-white);
   color: var(--color-black);
+  overflow: visible;
 }
 
 .about-history-section__mission-tag {
@@ -202,48 +184,396 @@
 .about-history-section__mission-list {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 24px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .about-history-section__mission-item {
+  position: relative;
+  min-width: 0;
+}
+
+.about-history-section__mission-marker {
+  position: absolute;
+  top: 50%;
+  left: var(--mission-marker-offset);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--mission-marker-size);
+  height: var(--mission-marker-size);
+  border-radius: 50%;
+  background: var(--color-white);
+  transform: translateY(-50%);
+}
+
+.about-history-section__mission-marker img {
+  width: var(--mission-marker-icon-size);
+  height: var(--mission-marker-icon-size);
+  object-fit: contain;
+}
+
+.about-history-section__mission-item-text {
+  margin: 0;
   font-family: var(--font-body);
   font-size: min(26px, calc(26 * 100vw / 1920));
   line-height: 36px;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1440px) {
+  .about-history-section__title {
+    font-size: var(--text-h1);
+    line-height: var(--line-h1);
+  }
+
+  .about-history-section__body {
+    grid-template-columns: minmax(0, 841fr) minmax(0, 680fr);
+    gap: 28px;
+  }
+
+  .about-history-section__mission {
+    width: 680px;
+    max-width: 100%;
+    padding: 32px;
+    gap: 24px;
+  }
+
+  .about-history-section__mission-list {
+    gap: 24px;
+  }
+
+  .about-history-section__mission-item-text {
+    font-size: var(--text-body-xl);
+    line-height: var(--line-body-xl);
+  }
+}
+
+@media (max-width: 992px) {
   .about-history-section {
     margin-inline: 0;
+    padding-block: 168px 80px;
     border-radius: 32px;
+  }
+
+  .about-history-section__decor {
+    border-radius: 32px;
+  }
+
+  .about-history-section__orb--purple {
+    top: 857px;
+    right: -79px;
+    width: 720px;
+    height: 720px;
+  }
+
+  .about-history-section__orb--orange-top {
+    top: 599px;
+    right: -160px;
+    width: 320px;
+    height: 320px;
+  }
+
+  .about-history-section__orb--orange-bottom {
+    top: 1140px;
+    bottom: auto;
+    left: -80px;
+    width: 160px;
+    height: 160px;
+  }
+
+  .about-history-section__inner {
+    gap: 48px;
+  }
+
+  .about-history-section__title {
+    max-width: 772px;
   }
 
   .about-history-section__body {
     grid-template-columns: 1fr;
+    gap: 168px;
+  }
+
+  .about-history-section__timeline {
+    gap: 20px;
+  }
+
+  .about-history-section__timeline-item {
+    gap: 28px;
+  }
+
+  .about-history-section__timeline-arrow {
+    width: 48px;
+    height: 48px;
   }
 
   .about-history-section__mission-column {
     margin-top: 0;
+    margin-bottom: 0;
+    padding-inline-start: 0;
   }
 
-  .about-history-section__mission-markers {
-    display: none;
+  .about-history-section__mission {
+    --mission-marker-size: 48px;
+    --mission-marker-icon-size: 28px;
+    --mission-marker-offset: -80px;
+
+    width: 100%;
+    max-width: 614px;
+    margin-inline-start: auto;
+    padding: 24px;
+    gap: 24px;
   }
 
-  .about-history-section__mission-column {
-    grid-template-columns: 1fr;
+  .about-history-section__mission-list {
+    gap: 24px;
   }
 }
 
 @media (max-width: 768px) {
-  .about-history-section__title {
-    font-size: clamp(32px, 8vw, 56px);
+  .about-history-section {
+    padding-block: 148px 100px;
+    border-radius: 24px;
   }
 
-  .about-history-section__mission-item {
-    font-size: clamp(18px, 4.5vw, 26px);
-    line-height: 1.35;
+  .about-history-section__decor {
+    border-radius: 24px;
+  }
+
+  .about-history-section__title {
+    font-size: var(--text-h1);
+    line-height: var(--line-h1);
+  }
+
+  .about-history-section__body {
+    gap: 148px;
+  }
+
+  .about-history-section__timeline {
+    gap: 20px;
+  }
+
+  .about-history-section__timeline-item {
+    gap: 24px;
+  }
+
+  .about-history-section__timeline-arrow {
+    width: 48px;
+    height: 48px;
+  }
+
+  .about-history-section__timeline-year,
+  .about-history-section__timeline-text {
+    font-size: var(--text-body-md);
+    line-height: var(--line-body);
+  }
+
+  .about-history-section__mission {
+    --mission-marker-size: 48px;
+    --mission-marker-icon-size: 28px;
+    --mission-marker-offset: -76px;
+
+    width: 100%;
+    max-width: 599px;
+    margin-inline-start: auto;
+    padding: 20px;
+    gap: 24px;
+  }
+
+  .about-history-section__mission-list {
+    gap: 24px;
+  }
+
+  .about-history-section__mission-item-text {
+    font-size: var(--text-body-xl);
+    line-height: var(--line-body-xl);
+  }
+
+  .about-history-section__orb--purple {
+    top: 576px;
+    right: -53px;
+    width: 600px;
+    height: 600px;
+  }
+
+  .about-history-section__orb--orange-top {
+    top: 451px;
+    right: -120px;
+    width: 240px;
+    height: 240px;
+  }
+
+  .about-history-section__orb--orange-bottom {
+    top: 1104px;
+    bottom: auto;
+    left: -50px;
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@media (max-width: 576px) {
+  .about-history-section {
+    padding-block: 40px 48px;
+    border-radius: 20px;
+  }
+
+  .about-history-section__decor {
+    border-radius: 20px;
+  }
+
+  .about-history-section__inner {
+    gap: 40px;
+  }
+
+  .about-history-section__title {
+    max-width: none;
+    font-size: var(--text-h1);
+    line-height: var(--line-h1);
+  }
+
+  .about-history-section__body {
+    gap: 120px;
+  }
+
+  .about-history-section__timeline {
+    gap: 20px;
+  }
+
+  .about-history-section__timeline-item {
+    gap: 16px;
+  }
+
+  .about-history-section__timeline-arrow {
+    width: 40px;
+    height: 40px;
+  }
+
+  .about-history-section__timeline-year,
+  .about-history-section__timeline-text {
+    font-size: var(--text-body-sm);
+    line-height: var(--line-body-sm);
+  }
+
+  .about-history-section__mission {
+    --mission-marker-size: 40px;
+    --mission-marker-icon-size: 24px;
+    --mission-marker-offset: -68px;
+
+    max-width: calc(100% - var(--mission-marker-size));
+    margin-inline-start: auto;
+    padding: 20px;
+    gap: 20px;
+    border-radius: 20px;
+  }
+
+  .about-history-section__mission-tag {
+    padding: 8px 16px;
+    font-size: var(--text-caption);
+    line-height: var(--line-caption);
+  }
+
+  .about-history-section__mission-list {
+    gap: 24px;
+  }
+
+  .about-history-section__mission-item-text {
+    font-size: var(--text-body-md);
+    line-height: var(--line-body);
+  }
+
+  .about-history-section__orb--purple {
+    top: 576px;
+    right: -160px;
+    width: 480px;
+    height: 480px;
+  }
+
+  .about-history-section__orb--orange-top {
+    top: 321px;
+    right: -120px;
+    width: 180px;
+    height: 180px;
+  }
+
+  .about-history-section__orb--orange-bottom {
+    top: 1016px;
+    bottom: auto;
+    left: -30px;
+    width: 96px;
+    height: 96px;
+  }
+}
+
+@media (max-width: 360px) {
+  .about-history-section {
+    padding-block: 100px 48px;
+    border-radius: var(--radius-control);
+  }
+
+  .about-history-section__decor {
+    border-radius: var(--radius-control);
+  }
+
+  .about-history-section__inner {
+    gap: 36px;
+  }
+
+  .about-history-section__title {
+    max-width: 326px;
+  }
+
+  .about-history-section__body {
+    gap: 120px;
+  }
+
+  .about-history-section__timeline {
+    gap: 16px;
+  }
+
+  .about-history-section__timeline-item {
+    gap: 12px;
+  }
+
+  .about-history-section__timeline-arrow {
+    width: 36px;
+    height: 36px;
+  }
+
+  .about-history-section__mission {
+    --mission-marker-size: 36px;
+    --mission-marker-icon-size: 20px;
+    --mission-marker-offset: -62px;
+
+    margin-left: var(--mission-marker-size);
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .about-history-section__mission-list {
+    gap: 16px;
+  }
+
+  .about-history-section__orb--purple {
+    top: 592px;
+    right: -160px;
+    width: 480px;
+    height: 480px;
+  }
+
+  .about-history-section__orb--orange-top {
+    top: 321px;
+    right: -288px;
+    width: 180px;
+    height: 180px;
+  }
+
+  .about-history-section__orb--orange-bottom {
+    top: 850px;
+    left: -30px;
+    width: 80px;
+    height: 80px;
   }
 }

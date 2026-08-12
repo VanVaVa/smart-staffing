@@ -1,0 +1,35 @@
+.media-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.media-field__actions {
+  display: flex;
+  align-items: center;
+}
+
+.media-field__file {
+  display: none;
+}
+
+.media-field__upload {
+  border: none;
+  background: none;
+  color: #1565c0;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+}
+
+.media-field__upload:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.media-field__error {
+  margin: 0;
+  font-size: 13px;
+  color: #c62828;
+}

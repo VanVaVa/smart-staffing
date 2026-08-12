@@ -206,3 +206,91 @@
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+@media (max-width: 360px) {
+  .document-list {
+    padding-block: 104px 100px;
+  }
+
+  .document-list__title {
+    font-size: var(--text-h1);
+    line-height: var(--line-h1);
+  }
+
+  .document-list__company {
+    margin-top: 36px;
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .document-list__company-name,
+  .document-list__category-title,
+  .document-list__certificates-title {
+    font-size: var(--text-lead);
+    line-height: var(--line-lead);
+  }
+
+  .document-list__requisites {
+    gap: 24px;
+    margin-top: 24px;
+  }
+
+  .document-list__requisite-column {
+    gap: 24px;
+  }
+
+  .document-list__requisite dt,
+  .document-list__requisite dd {
+    font-size: var(--text-body-sm);
+    line-height: var(--line-body-sm);
+  }
+
+  .document-list__categories {
+    margin-top: 16px;
+    gap: 8px;
+  }
+
+  .document-list__category {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .document-list__links {
+    display: grid;
+    gap: 2px;
+    margin-top: 20px;
+  }
+
+  .document-list__link {
+    display: block;
+    padding: 8px 0;
+    border-radius: 0;
+    background: transparent;
+    font-size: var(--text-body-sm);
+    line-height: var(--line-body-sm);
+  }
+
+  .document-list__link:hover {
+    color: var(--color-accent);
+  }
+
+  .document-list__certificates {
+    margin-top: 60px;
+  }
+
+  .document-list__certificate-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 8px;
+    margin-inline: calc(-1 * var(--container-padding));
+    padding-inline: var(--container-padding);
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .document-list__certificate {
+    flex: 0 0 300px;
+    scroll-snap-align: start;
+    border-radius: 8px;
+  }
+}

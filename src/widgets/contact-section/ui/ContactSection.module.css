@@ -1,0 +1,24 @@
+.contact-section {
+  overflow-x: clip;
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+  .contact-section {
+    padding-top: 171px;
+    padding-bottom: 201px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-section {
+    padding-top: 172px;
+    padding-bottom: 172px;
+  }
+}
+
+@media (max-width: 576px) {
+  .contact-section {
+    padding-top: 104px;
+    padding-bottom: 144px;
+  }
+}

@@ -12,14 +12,14 @@
 }
 
 .section-title__title {
-  font-size: clamp(32px, 4vw, 56px);
-  line-height: 1.05;
-  letter-spacing: -0.02em;
+  font-size: var(--text-h1);
+  line-height: var(--line-h1);
+  letter-spacing: var(--letter-heading);
 }
 
 .section-title__subtitle {
-  font-size: clamp(18px, 2vw, 26px);
-  line-height: 1.35;
+  font-size: var(--text-body-md);
+  line-height: var(--line-body);
   color: var(--color-grey-600);
   font-weight: 400;
   font-family: var(--font-body);
@@ -27,4 +27,16 @@
 
 .section-title--dark .section-title__subtitle {
   color: var(--color-white-40);
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    max-width: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .section-title {
+    gap: 12px;
+  }
 }

@@ -61,7 +61,7 @@ export function ClientsPlatformSection({ content }: ClientsPlatformSectionProps)
                 alt={content.imageAlt}
                 width={content.imageWidth}
                 height={content.imageHeight}
-                sizes="(max-width: 960px) 100vw, 602px"
+                sizes="(max-width: 360px) 328px, (max-width: 768px) 359px, (max-width: 992px) 540px, (max-width: 1440px) 680px, 602px"
               />
             </figure>
             <div className={styles["clients-platform-section__copy"]}>

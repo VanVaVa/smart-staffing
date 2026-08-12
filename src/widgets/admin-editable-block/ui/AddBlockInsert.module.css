@@ -1,0 +1,38 @@
+.add-block-insert {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
+  margin: 8px 0;
+  border: 1px dashed rgb(21 101 192 / 35%);
+  border-radius: 12px;
+  background: rgb(21 101 192 / 4%);
+}
+
+.add-block-insert__label {
+  font-size: 13px;
+  color: #424242;
+}
+
+.add-block-insert__types {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+}
+
+.add-block-insert__type {
+  border: 1px solid #cfd8dc;
+  border-radius: 999px;
+  padding: 6px 12px;
+  background: #fff;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.add-block-insert__type:hover {
+  border-color: #1565c0;
+  color: #1565c0;
+}

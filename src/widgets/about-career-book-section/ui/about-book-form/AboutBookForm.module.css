@@ -14,8 +14,8 @@
 
 .about-book-form__orb--purple {
   position: absolute;
-  top: min(-57px, calc(97 * 100vw / 1920));
-  right: min(162px, calc(262 * 100vw / 1920));
+  top: min(-57px, calc(-57 * 100vw / 1920));
+  right: min(162px, calc(162 * 100vw / 1920));
   width: min(200px, calc(200 * 100vw / 1920));
   height: min(200px, calc(200 * 100vw / 1920));
   border-radius: 50%;
@@ -64,14 +64,16 @@
 }
 
 .about-book-form__row > :first-child {
-  flex: 1 1 min(376px, calc(376 * 100vw / 1920));
+  flex: 0 1 min(376px, calc(376 * 100vw / 1920));
   min-width: 0;
+  width: min(376px, calc(376 * 100vw / 1920));
   max-width: min(376px, calc(376 * 100vw / 1920));
   gap: 0;
 }
 
 .about-book-form__submit {
   flex-shrink: 0;
+  width: min(346px, calc(346 * 100vw / 1920));
   height: var(--about-book-form-control-height);
   min-height: var(--about-book-form-control-height);
   align-self: stretch;
@@ -98,14 +100,197 @@
   text-underline-offset: 2px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1440px) {
+  .about-book-form {
+    padding: 32px;
+    border-radius: var(--radius-md);
+  }
+
+  .about-book-form__fields {
+    max-width: 648px;
+  }
+
   .about-book-form__row {
-    flex-direction: column;
-    align-items: stretch;
+    --about-book-form-control-height: 40px;
+  }
+
+  .about-book-form__row > :first-child {
+    width: 368px;
+    max-width: 368px;
+  }
+
+  .about-book-form__submit {
+    width: 272px;
+  }
+}
+
+@media (max-width: 992px) {
+  .about-book-form {
+    padding: 24px;
+    border-radius: var(--radius-control);
+  }
+
+  .about-book-form__fields {
+    gap: 20px;
+    max-width: 576px;
+  }
+
+  .about-book-form__row {
+    --about-book-form-control-height: 40px;
+  }
+
+  .about-book-form__row > :first-child {
+    width: 276px;
+    max-width: 276px;
+  }
+
+  .about-book-form__submit {
+    width: 272px;
   }
 
   .about-book-form__consent {
-    font-size: 16px;
-    line-height: 1.35;
+    font-size: var(--text-body-sm);
+    line-height: var(--line-body-sm);
+  }
+}
+
+@media (max-width: 768px) {
+  .about-book-form {
+    padding: 28px;
+    border-radius: var(--radius-md);
+  }
+
+  .about-book-form__fields {
+    gap: 28px;
+    max-width: 576px;
+  }
+
+  .about-book-form__row {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    --about-book-form-control-height: 40px;
+  }
+
+  .about-book-form__row > :first-child {
+    flex: 0 0 276px;
+    width: 276px;
+    max-width: 276px;
+  }
+
+  .about-book-form__submit {
+    align-self: stretch;
+    width: 272px;
+  }
+}
+
+@media (max-width: 576px) {
+  .about-book-form {
+    padding: 24px;
+    border-radius: var(--radius-control);
+  }
+
+  .about-book-form__fields {
+    gap: 20px;
+    max-width: none;
+  }
+
+  .about-book-form__row {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 8px;
+    --about-book-form-control-height: 32px;
+  }
+
+  .about-book-form__row > :first-child {
+    flex: 1 1 240px;
+    min-width: 0;
+    width: auto;
+    max-width: 240px;
+  }
+
+  .about-book-form__submit {
+    flex: 1 1 231px;
+    min-width: 0;
+    align-self: stretch;
+    width: auto;
+    max-width: 231px;
+  }
+
+  .about-book-form__input {
+    padding: 0 16px;
+    font-size: var(--text-body-sm);
+    line-height: var(--line-body-sm);
+  }
+
+  .about-book-form__consent {
+    font-size: var(--text-body-sm);
+    line-height: var(--line-body-sm);
+  }
+
+  .about-book-form__orb--purple {
+    top: 34px;
+    right: 101px;
+    width: 96px;
+    height: 96px;
+    filter: blur(40px);
+    transform: none;
+  }
+
+  .about-book-form__orb--orange {
+    right: -28px;
+    bottom: -125px;
+    width: 180px;
+    height: 180px;
+    filter: blur(40px);
+    transform: none;
+  }
+}
+
+@media (max-width: 360px) {
+  .about-book-form {
+    padding: 16px;
+  }
+
+  .about-book-form__fields {
+    gap: 20px;
+    max-width: none;
+  }
+
+  .about-book-form__row {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 8px;
+    --about-book-form-control-height: 32px;
+  }
+
+  .about-book-form__row > :first-child {
+    flex: none;
+    width: 100%;
+    max-width: none;
+  }
+
+  .about-book-form__submit {
+    flex: none;
+    align-self: flex-start;
+    width: 205px;
+    max-width: 100%;
+  }
+
+  .about-book-form__orb--purple {
+    top: 45px;
+    right: 101px;
+    width: 80px;
+    height: 80px;
+  }
+
+  .about-book-form__orb--orange {
+    top: 225px;
+    right: -28px;
+    bottom: auto;
+    width: 140px;
+    height: 140px;
   }
 }

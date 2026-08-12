@@ -55,3 +55,23 @@
     margin-top: 32px;
   }
 }
+
+@media (max-width: 360px) {
+  .media-section {
+    padding-block: 104px 100px;
+  }
+
+  .media-section__title {
+    font-size: var(--text-h1);
+    line-height: var(--line-h1);
+  }
+
+  .media-section__grid {
+    gap: 8px;
+    margin-top: 34px;
+  }
+
+  .media-section__pagination {
+    margin-top: 20px;
+  }
+}

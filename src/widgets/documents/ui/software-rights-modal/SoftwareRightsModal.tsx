@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useRef } from "react";
+import { useId, useRef } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 
@@ -8,8 +8,9 @@ import type {
   DocumentItem,
   DocumentsPageContent,
 } from "@/entities/landing";
+import { useModalLock } from "@/shared/ui/modal-shell";
 
-import { useDocumentModal } from "../../lib/use-document-modal";
+import shellStyles from "@/shared/ui/modal-shell/modal-shell.module.css";
 import styles from "./SoftwareRightsModal.module.css";
 
 type SoftwareRightsModalProps = {
@@ -27,28 +28,36 @@ export function SoftwareRightsModal({
   const closeRef = useRef<HTMLButtonElement>(null);
   const open = activeDocument !== null;
 
-  useDocumentModal(open, onClose);
-
-  useEffect(() => {
-    if (open) {
-      closeRef.current?.focus();
-    }
-  }, [open]);
+  useModalLock(open, onClose, closeRef);
 
   if (!activeDocument) {
     return null;
   }
 
   return createPortal(
-    <div className={styles["software-rights-modal"]}>
+    <div
+      className={[
+        shellStyles["modal-shell"],
+        styles["software-rights-modal"],
+      ]
+        .filter(Boolean)
+        .join(" ")}
+    >
       <button
         type="button"
-        className={styles["software-rights-modal__overlay"]}
+        className={shellStyles["modal-shell__overlay"]}
         aria-label="Закрыть просмотр документа"
         onClick={onClose}
       />
       <section
-        className={styles["software-rights-modal__panel"]}
+        className={[
+          shellStyles["modal-shell__panel"],
+          shellStyles["modal-shell__panel--scroll"],
+          shellStyles["modal-shell__panel--wide"],
+          styles["software-rights-modal__panel"],
+        ]
+          .filter(Boolean)
+          .join(" ")}
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}

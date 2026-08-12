@@ -12,9 +12,18 @@ import {
 import { CompanyConnectionModal } from "./CompanyConnectionModal";
 import { FeedbackFormSuccessModal } from "./FeedbackFormSuccessModal";
 
+export type FeedbackFormSuccessContent = {
+  title: string;
+  description: string;
+  homeLabel: string;
+  illustrationSrc: string;
+  illustrationWidth: number;
+  illustrationHeight: number;
+};
+
 type FeedbackFormSuccessModalContextValue = {
   openCompanyConnectionModal: () => void;
-  openSuccessModal: () => void;
+  openSuccessModal: (content?: FeedbackFormSuccessContent) => void;
 };
 
 const FeedbackFormSuccessModalContext =
@@ -29,11 +38,21 @@ export function FeedbackFormSuccessModalProvider({
 }: FeedbackFormSuccessModalProviderProps) {
   const [companyConnectionOpen, setCompanyConnectionOpen] = useState(false);
   const [successOpen, setSuccessOpen] = useState(false);
+  const [successContent, setSuccessContent] = useState<FeedbackFormSuccessContent | null>(
+    null,
+  );
   const openCompanyConnectionModal = useCallback(
     () => setCompanyConnectionOpen(true),
     [],
   );
-  const openSuccessModal = useCallback(() => setSuccessOpen(true), []);
+  const openSuccessModal = useCallback((content?: FeedbackFormSuccessContent) => {
+    setSuccessContent(content ?? null);
+    setSuccessOpen(true);
+  }, []);
+  const closeSuccessModal = useCallback(() => {
+    setSuccessOpen(false);
+    setSuccessContent(null);
+  }, []);
   const contextValue = useMemo(
     () => ({ openCompanyConnectionModal, openSuccessModal }),
     [openCompanyConnectionModal, openSuccessModal],
@@ -48,7 +67,8 @@ export function FeedbackFormSuccessModalProvider({
       />
       <FeedbackFormSuccessModal
         open={successOpen}
-        onClose={() => setSuccessOpen(false)}
+        onClose={closeSuccessModal}
+        content={successContent}
       />
     </FeedbackFormSuccessModalContext>
   );

@@ -15,18 +15,25 @@
   background: var(--color-accent);
   color: var(--color-white);
   font-family: var(--font-heading);
-  font-size: 20px;
+  font-size: var(--text-h4);
   font-weight: 600;
 }
 
 .step-item__title {
-  font-size: 20px;
-  line-height: 26px;
+  font-size: var(--text-h4);
+  line-height: var(--line-h4);
   font-weight: 500;
 }
 
 .step-item__text {
-  font-size: 16px;
-  line-height: 22px;
+  font-size: var(--text-body-md);
+  line-height: var(--line-body);
   color: var(--color-grey-600);
+}
+
+@media (max-width: 576px) {
+  .step-item__number {
+    width: 40px;
+    height: 40px;
+  }
 }

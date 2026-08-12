@@ -32,27 +32,125 @@
   align-items: stretch;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1440px) {
+  .about-benefits-section__title {
+    font-size: var(--text-h1);
+    line-height: var(--line-h1);
+  }
+
+  .about-benefits-section__grid {
+    gap: 8px;
+  }
+}
+
+.about-benefits-section__stack {
+  display: contents;
+}
+
+@media (max-width: 992px) {
+  .about-benefits-section {
+    padding-bottom: 168px;
+  }
+
+  .about-benefits-section__inner {
+    gap: 48px;
+  }
+
   .about-benefits-section__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-areas:
-      "flex flex"
-      "security platform"
+      "flex security"
+      "platform security"
       "expertise expertise";
+    gap: 8px;
   }
 }
 
 @media (max-width: 768px) {
+  .about-benefits-section {
+    padding-bottom: 96px;
+  }
+
+  .about-benefits-section__inner {
+    gap: 36px;
+  }
+
   .about-benefits-section__title {
-    font-size: clamp(32px, 8vw, 56px);
+    max-width: none;
+    font-size: var(--text-h1);
+    line-height: var(--line-h1);
+  }
+
+  .about-benefits-section__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      "flex flex"
+      "expertise side";
+    gap: 8px;
+    align-items: start;
+  }
+
+  .about-benefits-section__stack {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    grid-area: side;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .about-benefits-section {
+    padding-bottom: 120px;
+  }
+
+  .about-benefits-section__inner {
+    gap: 40px;
+  }
+
+  .about-benefits-section__title {
+    max-width: none;
+    font-size: var(--text-h1);
+    line-height: var(--line-h1);
   }
 
   .about-benefits-section__grid {
     grid-template-columns: 1fr;
     grid-template-areas:
       "flex"
+      "expertise"
       "security"
-      "platform"
-      "expertise";
+      "platform";
+    gap: 8px;
+  }
+
+  .about-benefits-section__stack {
+    display: contents;
+  }
+}
+
+@media (max-width: 360px) {
+  .about-benefits-section {
+    padding-bottom: 64px;
+  }
+
+  .about-benefits-section__inner {
+    gap: 32px;
+  }
+
+  .about-benefits-section__title {
+    max-width: 333px;
+    font-size: var(--text-h1);
+    line-height: var(--line-h1);
+  }
+
+  .about-benefits-section__grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "flex"
+      "expertise"
+      "security"
+      "platform";
+    gap: 8px;
   }
 }

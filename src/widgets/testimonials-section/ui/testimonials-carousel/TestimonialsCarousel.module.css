@@ -29,6 +29,11 @@
   gap: 8px;
 }
 
+.testimonials-carousel__card {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+}
+
 .testimonials-carousel__track > * {
   scroll-snap-align: start;
 }
@@ -53,8 +58,24 @@
   transition: background-color 0.2s ease;
 }
 
+@media (max-width: 576px) {
+  .testimonials-carousel__nav-button {
+    width: 44px;
+    height: 44px;
+  }
+}
+
 .testimonials-carousel__nav-button:hover {
   background: var(--color-grey-300);
+}
+
+.testimonials-carousel__nav-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.testimonials-carousel__nav-button:disabled:hover {
+  background: var(--color-grey-200);
 }
 
 .testimonials-carousel__nav-icon {

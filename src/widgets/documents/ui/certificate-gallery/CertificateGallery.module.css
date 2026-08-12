@@ -125,3 +125,26 @@
     left: calc(50% + 8px);
   }
 }
+
+@media (max-width: 360px) {
+  .certificate-gallery {
+    padding: 64px 16px 72px;
+  }
+
+  .certificate-gallery__back {
+    top: 16px;
+    left: 16px;
+    font-size: var(--text-body-sm);
+    line-height: var(--line-body-sm);
+  }
+
+  .certificate-gallery__document {
+    max-height: calc(100vh - 120px);
+  }
+
+  .certificate-gallery__control {
+    bottom: 12px;
+    width: 40px;
+    height: 40px;
+  }
+}

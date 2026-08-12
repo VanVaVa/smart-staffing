@@ -1,4 +1,4 @@
-import { demoSection, partnerCta, stepsSection } from "@/entities/landing";
+import type { PlatformOnboardingBlockProps } from "@/entities/landing/model/home-blocks";
 import { Section } from "@/shared/ui/section";
 
 import { PlatformOnboardingDemo } from "./platform-onboarding-demo";
@@ -7,18 +7,30 @@ import { PlatformOnboardingSteps } from "./platform-onboarding-steps";
 
 import styles from "./PlatformOnboardingSection.module.css";
 
-export function PlatformOnboardingSection() {
+type PlatformOnboardingSectionProps = {
+  content: PlatformOnboardingBlockProps;
+  interactive?: boolean;
+};
+
+export function PlatformOnboardingSection({
+  content,
+  interactive = true,
+}: PlatformOnboardingSectionProps) {
   return (
     <Section id="demo" tone="muted" className={styles["platform-onboarding-section"]}>
-      <PlatformOnboardingPartner {...partnerCta} />
+      <PlatformOnboardingPartner
+        {...content.partner}
+        interactive={interactive}
+      />
       <div className={styles["platform-onboarding-section__bleed"]}>
-        <PlatformOnboardingDemo {...demoSection} />
+        <PlatformOnboardingDemo {...content.demo} interactive={interactive} />
       </div>
       <div className={styles["platform-onboarding-section__bleed"]}>
         <PlatformOnboardingSteps
-          title={stepsSection.title}
-          cta={stepsSection.cta}
-          steps={[...stepsSection.steps]}
+          title={content.steps.title}
+          cta={content.steps.cta}
+          steps={[...content.steps.steps]}
+          interactive={interactive}
         />
       </div>
     </Section>

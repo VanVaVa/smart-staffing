@@ -1,0 +1,50 @@
+.editable-tag-list {
+  list-style: none;
+}
+
+.editable-tag-list__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.editable-tag-list__tag-wrap {
+  cursor: text;
+  display: inline-flex;
+}
+
+.editable-tag-list__tag {
+  pointer-events: none;
+}
+
+.editable-tag-list__input {
+  min-width: 72px;
+  padding: 4px 8px;
+  border: 1px solid rgb(21 101 192 / 45%);
+  border-radius: 999px;
+  font: inherit;
+  font-size: inherit;
+}
+
+.editable-tag-list__remove {
+  border: none;
+  background: none;
+  color: #757575;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 0 2px;
+}
+
+.editable-tag-list__add-wrap {
+  display: inline-flex;
+}
+
+.editable-tag-list__add {
+  border: 1px dashed rgb(21 101 192 / 40%);
+  border-radius: 999px;
+  background: none;
+  padding: 4px 10px;
+  font-size: 13px;
+  color: #1565c0;
+  cursor: pointer;
+}

@@ -13,9 +13,6 @@ export function AboutCareerBookSection() {
 
   return (
     <section className={styles["about-career-book-section"]}>
-      <div className={styles["about-career-book-section__decor"]} aria-hidden>
-        <div className={styles["about-career-book-section__orb"]} />
-      </div>
       <Container wide>
         <div className={styles["about-career-book-section__inner"]}>
           <div className={styles["about-career-book-section__career"]}>
@@ -29,33 +26,38 @@ export function AboutCareerBookSection() {
                 {career.subtitle.tail}
               </p>
             </header>
-            <AboutCareerCta
-              text={career.cta.text}
-              buttonLabel={career.cta.buttonLabel}
-              buttonHref={career.cta.buttonHref}
-              photoSrc={career.cta.photoSrc}
-              photoAlt={career.cta.photoAlt}
-            />
+            <div className={styles["about-career-book-section__career-cta-wrap"]}>
+              <div className={styles["about-career-book-section__career-orb"]} aria-hidden />
+              <AboutCareerCta
+                text={career.cta.text}
+                buttonLabel={career.cta.buttonLabel}
+                buttonHref={career.cta.buttonHref}
+                photoSrc={career.cta.photoSrc}
+                photoAlt={career.cta.photoAlt}
+              />
+            </div>
           </div>
           <div className={styles["about-career-book-section__book"]}>
-            <figure className={styles["about-career-book-section__book-spread"]}>
-              <Image
-                className={styles["about-career-book-section__book-spread-image"]}
-                src={book.spreadSrc}
-                alt={book.spreadAlt}
-                width={752}
-                height={682}
-                sizes="(max-width: 1200px) 60vw, 752px"
-              />
-            </figure>
-            <div className={styles["about-career-book-section__book-copy"]}>
-              <h2 className={styles["about-career-book-section__book-title"]}>{book.title}</h2>
-              <p className={styles["about-career-book-section__book-description"]}>
-                <span className={styles["about-career-book-section__accent"]}>
-                  {book.description.accent}
-                </span>
-                {book.description.rest}
-              </p>
+            <div className={styles["about-career-book-section__book-head"]}>
+              <figure className={styles["about-career-book-section__book-spread"]}>
+                <Image
+                  className={styles["about-career-book-section__book-spread-image"]}
+                  src={book.spreadSrc}
+                  alt={book.spreadAlt}
+                  width={752}
+                  height={682}
+                  sizes="(max-width: 576px) 260px, (max-width: 768px) 400px, (max-width: 992px) 481px, (max-width: 1200px) 560px, 752px"
+                />
+              </figure>
+              <div className={styles["about-career-book-section__book-copy"]}>
+                <h2 className={styles["about-career-book-section__book-title"]}>{book.title}</h2>
+                <p className={styles["about-career-book-section__book-description"]}>
+                  <span className={styles["about-career-book-section__accent"]}>
+                    {book.description.accent}
+                  </span>
+                  {book.description.rest}
+                </p>
+              </div>
             </div>
             <div className={styles["about-career-book-section__book-form"]}>
               <AboutBookForm

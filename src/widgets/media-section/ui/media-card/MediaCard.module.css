@@ -129,3 +129,37 @@
     line-height: var(--line-body-lg);
   }
 }
+
+@media (max-width: 360px) {
+  .media-card {
+    height: 226px;
+    min-height: 226px;
+    border-radius: 16px;
+  }
+
+  .media-card__visual {
+    flex: 0 0 132px;
+    aspect-ratio: auto;
+  }
+
+  .media-card__tag {
+    top: 12px;
+    left: 12px;
+    min-height: 28px;
+    padding: 6px 12px;
+    font-size: var(--text-body-sm);
+    line-height: var(--line-body-sm);
+  }
+
+  .media-card__content {
+    min-height: 0;
+    gap: 6px;
+    padding: 16px;
+  }
+
+  .media-card__date,
+  .media-card__title {
+    font-size: var(--text-body-sm);
+    line-height: var(--line-body-sm);
+  }
+}

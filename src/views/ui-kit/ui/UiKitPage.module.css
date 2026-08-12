@@ -1,4 +1,5 @@
 .ui-kit-page__hero {
+  margin-top: 80px;
   padding-block: clamp(48px, 6vw, 80px);
 }
 
@@ -23,6 +24,7 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  min-width: 0;
 }
 
 .ui-kit-page__color-sample {
@@ -46,15 +48,6 @@
 .ui-kit-page__type-label {
   text-transform: uppercase;
   letter-spacing: 0.06em;
-}
-
-.ui-kit-page__display-sample {
-  margin: 0;
-  font-family: var(--font-heading);
-  font-weight: 600;
-  font-size: var(--text-display);
-  line-height: var(--line-display);
-  letter-spacing: -0.02em;
 }
 
 .ui-kit-page__block {
@@ -81,6 +74,12 @@
   max-width: 960px;
 }
 
+.ui-kit-page__form-grid > *,
+.ui-kit-page__cards-grid > *,
+.ui-kit-page__cards-grid-wide > * {
+  min-width: 0;
+}
+
 .ui-kit-page__cards-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -102,6 +101,12 @@
   gap: 24px;
 }
 
+.ui-kit-page__logo-dark {
+  padding: 16px 24px;
+  border-radius: var(--radius-md);
+  background: var(--color-grey-800);
+}
+
 .ui-kit-page__dots {
   width: 4px;
   height: 4px;
@@ -112,10 +117,82 @@
     0 8px 0 currentColor;
 }
 
-@media (max-width: 960px) {
-  .ui-kit-page__form-grid,
+@media (max-width: 1440px) {
+  .ui-kit-page__hero {
+    margin-top: 72px;
+  }
+
+  .ui-kit-page__color-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 16px;
+  }
+
+  .ui-kit-page__form-grid {
+    max-width: none;
+  }
+
+  .ui-kit-page__cards-grid,
+  .ui-kit-page__cards-grid-wide {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 992px) {
+  .ui-kit-page__cards-grid,
+  .ui-kit-page__cards-grid-wide {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .ui-kit-page__form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ui-kit-page__hero-inner {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .ui-kit-page__color-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 12px;
+  }
+
   .ui-kit-page__cards-grid,
   .ui-kit-page__cards-grid-wide {
     grid-template-columns: 1fr;
+  }
+
+  .ui-kit-page__cards-grid > *,
+  .ui-kit-page__cards-grid-wide > * {
+    width: 100%;
+  }
+
+  .ui-kit-page__block + .ui-kit-page__block {
+    margin-top: 24px;
+  }
+
+  .ui-kit-page__type-stack {
+    gap: 16px;
+  }
+
+  .ui-kit-page__row {
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 360px) {
+  .ui-kit-page__hero {
+    padding-block: clamp(32px, 5vw, 48px);
+  }
+
+  .ui-kit-page__color-sample {
+    height: 56px;
+  }
+
+  .ui-kit-page__row {
+    gap: 12px;
   }
 }

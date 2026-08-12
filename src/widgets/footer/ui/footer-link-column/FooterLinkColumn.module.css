@@ -12,3 +12,14 @@
 .footer-link-column__link:hover {
   color: var(--color-accent);
 }
+
+@media (max-width: 1440px) {
+  .footer-link-column__links {
+    gap: 6px;
+  }
+
+  a.footer-link-column__link {
+    font-size: var(--text-body-md);
+    line-height: var(--line-body);
+  }
+}

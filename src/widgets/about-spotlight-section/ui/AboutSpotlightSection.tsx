@@ -14,34 +14,34 @@ export function AboutSpotlightSection() {
         <div className={styles["about-spotlight-section__orb--large"]} />
       </div>
       <div className={styles["about-spotlight-section__grid"]}>
-          <article className={styles["about-spotlight-section__card"]}>
-            <div className={styles["about-spotlight-section__tag"]}>
-              <span className={styles["about-spotlight-section__tag-icon"]}>
-                <Image src={leftTag.iconSrc} alt="" width={24} height={24} />
-              </span>
-              <span className={styles["about-spotlight-section__tag-label"]}>{leftTag.label}</span>
-            </div>
-          </article>
-          <figure className={styles["about-spotlight-section__collage"]}>
-            <Image
-              className={styles["about-spotlight-section__collage-image"]}
-              src={collageSrc}
-              alt={collageAlt}
-              width={908}
-              height={408}
-              sizes="(max-width: 1200px) 50vw, 908px"
-            />
-          </figure>
-          <article className={styles["about-spotlight-section__book-card"]}>
-            <div className={styles["about-spotlight-section__book-card-orb"]} aria-hidden />
-            <Image
-              className={styles["about-spotlight-section__book-cover"]}
-              src={bookCoverSrc}
-              alt={bookCoverAlt}
-              width={318}
-              height={226}
-            />
-          </article>
+        <article className={styles["about-spotlight-section__card"]}>
+          <div className={styles["about-spotlight-section__tag"]}>
+            <span className={styles["about-spotlight-section__tag-icon"]}>
+              <Image src={leftTag.iconSrc} alt="" width={24} height={24} />
+            </span>
+            <span className={styles["about-spotlight-section__tag-label"]}>{leftTag.label}</span>
+          </div>
+        </article>
+        <figure className={styles["about-spotlight-section__preview"]}>
+          <Image
+            className={styles["about-spotlight-section__preview-image"]}
+            src={bookCoverSrc}
+            alt={bookCoverAlt}
+            width={124}
+            height={90}
+            sizes="124px"
+          />
+        </figure>
+        <figure className={styles["about-spotlight-section__collage"]}>
+          <Image
+            className={styles["about-spotlight-section__collage-image"]}
+            src={collageSrc}
+            alt={collageAlt}
+            width={908}
+            height={408}
+            sizes="(max-width: 360px) 328px, (max-width: 768px) 720px, (max-width: 992px) 100vw, 679px"
+          />
+        </figure>
       </div>
     </section>
   );

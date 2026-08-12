@@ -8,34 +8,37 @@
   border-radius: var(--radius-control);
   background: var(--color-white-40);
   width: fit-content;
+  max-width: 100%;
   overflow: hidden;
   cursor: default;
 }
 
 .hero-segment__active-bg {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 232px;
-  height: 68px;
+  inset: 0;
   border-radius: var(--radius-control);
   background: var(--color-white);
   transform: translateX(-100%);
-  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.hero-segment:hover .hero-segment__active-bg,
-.hero-segment:focus-within .hero-segment__active-bg {
-  transform: translateX(0);
+.hero-segment--animate.hero-segment--active .hero-segment__active-bg {
+  animation: hero-segment-slide-in var(--hero-segment-slide-duration, 4s)
+    linear forwards;
+}
+
+@keyframes hero-segment-slide-in {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-segment__active-bg {
-    transition: none;
-  }
-
-  .hero-segment:hover .hero-segment__active-bg,
-  .hero-segment:focus-within .hero-segment__active-bg {
+  .hero-segment--animate.hero-segment--active .hero-segment__active-bg {
+    animation: none;
     transform: translateX(0);
   }
 }
@@ -65,4 +68,69 @@
   font-weight: 500;
   line-height: var(--line-body-xl);
   color: var(--color-black);
+}
+
+@media (max-width: 992px) {
+  .hero-segment {
+    gap: 12px;
+    min-height: 54px;
+    padding-right: 20px;
+  }
+
+  .hero-segment__thumb {
+    width: 54px;
+    height: 54px;
+  }
+
+  .hero-segment__label {
+    font-size: var(--text-body-md);
+    line-height: var(--line-body);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-segment {
+    min-height: 56px;
+  }
+
+  .hero-segment__thumb {
+    width: 56px;
+    height: 56px;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-segment {
+    min-height: 48px;
+    padding-right: 16px;
+  }
+
+  .hero-segment__thumb {
+    width: 48px;
+    height: 48px;
+  }
+
+  .hero-segment__label {
+    font-size: var(--text-body-sm);
+    line-height: var(--line-body-sm);
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-segment {
+    gap: 12px;
+    min-height: 40px;
+    padding-right: 16px;
+    max-width: 246px;
+  }
+
+  .hero-segment__thumb {
+    width: 40px;
+    height: 40px;
+  }
+
+  .hero-segment__label {
+    font-size: var(--text-body-sm);
+    line-height: var(--line-body-sm);
+  }
 }

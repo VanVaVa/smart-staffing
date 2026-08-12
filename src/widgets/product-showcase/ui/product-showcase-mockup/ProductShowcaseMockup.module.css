@@ -32,3 +32,9 @@
   object-fit: cover;
   object-position: left top;
 }
+
+@media (max-width: 360px) {
+  .product-showcase-mockup__screen-slot {
+    border-radius: 10px;
+  }
+}

@@ -1,49 +1,23 @@
-.company-connection-modal {
-  position: fixed;
-  inset: 0;
-  z-index: 200;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 40px 16px;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-}
-
-.company-connection-modal__overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  padding: 0;
-  background: rgb(0 0 0 / 20%);
-}
-
 .company-connection-modal__panel {
-  position: relative;
-  z-index: 1;
-  width: min(778px, 100%);
-  max-height: calc(100vh - 80px);
-  padding: 40px 33px 28px 40px;
-  overflow: hidden;
-  border-radius: 20px;
-  background: var(--color-white);
-  color: var(--color-black);
+  padding-top: calc(var(--modal-panel-padding) + 8px);
+  padding-bottom: calc(var(--modal-panel-padding) - 12px);
 }
 
 .company-connection-modal__header {
+  position: relative;
   padding-right: 48px;
 }
 
 .company-connection-modal__title {
-  font-size: 26px;
-  line-height: 32px;
-  letter-spacing: -0.01em;
+  font-size: var(--text-h3);
+  line-height: var(--line-h3);
+  letter-spacing: var(--letter-heading);
 }
 
 .company-connection-modal__close {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 12px;
+  right: 12px;
   display: grid;
   width: 48px;
   height: 48px;
@@ -80,7 +54,9 @@
 }
 
 .company-connection-modal__content {
-  max-height: calc(100vh - 192px);
+  max-height: calc(
+    100vh - var(--modal-root-padding-top) - var(--modal-root-padding-bottom) - 120px
+  );
   margin-top: 40px;
   padding-right: 7px;
   overflow-y: auto;
@@ -92,7 +68,7 @@
   min-height: 326px;
   padding: 28px;
   overflow: hidden;
-  border-radius: 20px;
+  border-radius: var(--modal-panel-radius);
   background: #0e0d18;
   color: var(--color-white);
 }
@@ -218,43 +194,41 @@
   transform: rotate(45deg);
 }
 
-:global(html.company-connection-modal-open) > body > header,
-:global(html.company-connection-modal-open) > body > main,
-:global(html.company-connection-modal-open) > body > footer {
-  filter: blur(48px);
-}
-
-:global(html.company-connection-modal-open),
-:global(html.company-connection-modal-open) body {
-  overflow: hidden;
-  overscroll-behavior: none;
-}
-
-@media (max-width: 768px) {
-  .company-connection-modal {
-    align-items: center;
-    padding: 16px;
+@media (max-width: 1440px) {
+  .company-connection-modal__content {
+    margin-top: 32px;
   }
 
-  .company-connection-modal__panel {
-    max-height: calc(100vh - 32px);
-    padding: 24px 16px 20px 20px;
+  .company-connection-modal__sales-title {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .company-connection-modal__sales-description,
+  .company-connection-modal__summary,
+  .company-connection-modal__features-title,
+  .company-connection-modal__feature {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .company-connection-modal__sales-action {
+    margin-top: 40px;
+  }
+
+  .company-connection-modal__summary {
+    margin-top: 40px;
+  }
+}
+
+@media (max-width: 992px) {
+  .company-connection-modal__content {
+    margin-top: 28px;
   }
 
   .company-connection-modal__title {
     font-size: 22px;
     line-height: 28px;
-  }
-
-  .company-connection-modal__close {
-    top: 10px;
-    right: 8px;
-  }
-
-  .company-connection-modal__content {
-    max-height: calc(100vh - 104px);
-    margin-top: 24px;
-    padding-right: 4px;
   }
 
   .company-connection-modal__sales-card {
@@ -291,10 +265,163 @@
   .company-connection-modal__features {
     margin-top: 20px;
   }
+}
 
-  :global(html.company-connection-modal-open) > body > header,
-  :global(html.company-connection-modal-open) > body > main,
-  :global(html.company-connection-modal-open) > body > footer {
-    filter: blur(32px);
+@media (max-width: 768px) {
+  .company-connection-modal__close {
+    top: -4px;
+    right: -4px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .company-connection-modal__content {
+    margin-top: 24px;
+    padding-right: 4px;
+  }
+
+  .company-connection-modal__title {
+    font-size: 22px;
+    line-height: 28px;
+  }
+
+  .company-connection-modal__sales-card {
+    padding: 24px 20px;
+  }
+
+  .company-connection-modal__sales-title {
+    font-size: 22px;
+    line-height: 29px;
+  }
+
+  .company-connection-modal__sales-description,
+  .company-connection-modal__summary,
+  .company-connection-modal__features-title,
+  .company-connection-modal__feature {
+    font-size: 17px;
+    line-height: 23px;
+  }
+
+  .company-connection-modal__sales-action {
+    width: 100%;
+    margin-top: 32px;
+  }
+
+  .company-connection-modal__summary {
+    margin-top: 32px;
+  }
+
+  .company-connection-modal__features-title {
+    margin-top: 20px;
+  }
+
+  .company-connection-modal__features {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .company-connection-modal__header {
+    padding-right: 40px;
+  }
+
+  .company-connection-modal__close {
+    top: -8px;
+    right: -8px;
+    width: 36px;
+    height: 36px;
+  }
+
+  .company-connection-modal__close-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .company-connection-modal__close-icon::before,
+  .company-connection-modal__close-icon::after {
+    top: 8px;
+    left: -3px;
+    width: 24px;
+  }
+
+  .company-connection-modal__content {
+    margin-top: 20px;
+  }
+
+  .company-connection-modal__title {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .company-connection-modal__sales-card {
+    padding: 20px 16px;
+    border-radius: var(--radius-control);
+  }
+
+  .company-connection-modal__sales-title {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .company-connection-modal__sales-description,
+  .company-connection-modal__summary,
+  .company-connection-modal__features-title,
+  .company-connection-modal__feature {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .company-connection-modal__sales-action {
+    margin-top: 24px;
+  }
+
+  .company-connection-modal__summary {
+    margin-top: 24px;
+  }
+
+  .company-connection-modal__features {
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  .company-connection-modal__check {
+    width: 20px;
+    height: 20px;
+    flex-basis: 20px;
+  }
+}
+
+@media (max-width: 360px) {
+  .company-connection-modal__content {
+    margin-top: 16px;
+  }
+
+  .company-connection-modal__title {
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: 0;
+  }
+
+  .company-connection-modal__sales-card {
+    padding: 16px;
+  }
+
+  .company-connection-modal__sales-title {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .company-connection-modal__sales-description,
+  .company-connection-modal__summary,
+  .company-connection-modal__features-title,
+  .company-connection-modal__feature {
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  .company-connection-modal__feature {
+    gap: 8px;
   }
 }

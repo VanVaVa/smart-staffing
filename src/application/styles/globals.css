@@ -61,3 +61,24 @@ h4 {
   font-weight: 600;
   letter-spacing: -0.02em;
 }
+
+@media (max-width: 768px) {
+  h1,
+  h2,
+  h3,
+  h4 {
+    max-width: none !important;
+  }
+}
+
+html.modal-open > body > header,
+html.modal-open > body > main,
+html.modal-open > body > footer {
+  filter: blur(var(--modal-blur));
+}
+
+html.modal-open,
+html.modal-open body {
+  overflow: hidden;
+  overscroll-behavior: none;
+}

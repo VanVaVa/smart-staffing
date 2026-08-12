@@ -24,10 +24,14 @@ export function ClientsPartnersExperienceSection({
             href={caseStudy.href}
             panelSrc={caseStudy.panelSrc}
             panelAlt={caseStudy.panelAlt}
+            logoSrc={caseStudy.logoSrc}
+            logoWidth={caseStudy.logoWidth}
+            logoHeight={caseStudy.logoHeight}
             tag={caseStudy.tag}
             description={caseStudy.description}
             metric={caseStudy.metric}
             metricLabel={caseStudy.metricLabel}
+            layout="compact-horizontal"
           />
         </div>
       </Container>

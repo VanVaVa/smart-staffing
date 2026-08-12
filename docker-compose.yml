@@ -1,0 +1,78 @@
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: smart_staffing
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U postgres -d smart_staffing && psql -U postgres -d smart_staffing -c 'SELECT 1'",
+        ]
+      interval: 5s
+      timeout: 5s
+      retries: 15
+      start_period: 20s
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@db:5432/smart_staffing?schema=public
+      ADMIN_SESSION_SECRET: ${ADMIN_SESSION_SECRET:-change-me-to-a-long-random-string}
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-admin@example.com}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-change-me}
+    ports:
+      - "3000:3000"
+    volumes:
+      - uploads_data:/app/public/landing/uploads
+
+  app-dev:
+    profiles: [dev]
+    image: node:20-alpine
+    working_dir: /app
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@db:5432/smart_staffing?schema=public
+      ADMIN_SESSION_SECRET: ${ADMIN_SESSION_SECRET:-change-me-to-a-long-random-string}
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-admin@example.com}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-change-me}
+      WATCHPACK_POLLING: "true"
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - app_node_modules:/app/node_modules
+      - uploads_data:/app/public/landing/uploads
+    command:
+      - sh
+      - -c
+      - |
+        apk add --no-cache netcat-openbsd
+        chmod +x docker/wait-for-db.sh
+        ./docker/wait-for-db.sh
+        npm ci
+        npx prisma generate
+        npx prisma migrate deploy
+        npx prisma db seed
+        npm run dev -- --hostname 0.0.0.0 --port 3000
+
+volumes:
+  postgres_data:
+  uploads_data:
+  app_node_modules:
