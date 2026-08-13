@@ -42,12 +42,12 @@ COPY --from=builder /app/package.json ./package.json
 COPY --from=builder /app/prisma ./prisma
 COPY --from=builder /app/prisma.config.ts ./
 COPY --from=builder /app/src/generated ./src/generated
-COPY --from=builder /app/src/entities/landing/model/content.ts ./src/entities/landing/model/content.ts
+COPY --from=builder /app/src/entities/landing/model ./src/entities/landing/model
+COPY --from=builder /app/src/entities/landing/lib/block-parse-utils.ts ./src/entities/landing/lib/block-parse-utils.ts
 COPY docker/entrypoint.sh ./docker/entrypoint.sh
 COPY docker/wait-for-db.sh ./docker/wait-for-db.sh
 
-RUN mkdir -p src/entities/landing/model \
-  && chmod +x ./docker/entrypoint.sh ./docker/wait-for-db.sh \
+RUN chmod +x ./docker/entrypoint.sh ./docker/wait-for-db.sh \
   && chown -R nextjs:nodejs /app
 
 USER nextjs
