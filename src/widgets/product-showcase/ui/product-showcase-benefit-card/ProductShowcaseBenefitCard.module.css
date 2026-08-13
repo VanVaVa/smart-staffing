@@ -107,7 +107,6 @@
 .product-showcase-benefit-card--wide-media .product-showcase-benefit-card__copy {
   position: relative;
   z-index: 1;
-  max-width: 411px;
   min-height: 324px;
   padding: 28px;
 }
@@ -303,13 +302,12 @@
   }
 
   .product-showcase-benefit-card--wide-media .product-showcase-benefit-card__copy {
-    max-width: min(50%, 411px);
     min-height: auto;
     padding: 24px;
   }
 
   .product-showcase-benefit-card__media-side {
-    width: min(50%, 450px);
+    width: 50%;
     max-width: none;
   }
 
@@ -362,6 +360,26 @@
   }
 }
 
+@media (max-width: 768px) {
+  .product-showcase-benefit-card--wide-media {
+    min-height: min(200px, calc(200 * 100vw / 768));
+  }
+
+
+  .product-showcase-benefit-card__stat-panel {
+    height: min(105px, calc(105 * 100vw / 768));
+    min-height: min(105px, calc(105 * 100vw / 768));
+  }
+
+  .product-showcase-benefit-card__stat-value {
+    font-size: min(49px, calc(49 * 100vw / 768));
+  }
+
+  .product-showcase-benefit-card__media-bottom {
+    width: min(100%, min(349px, calc(349 * 100vw / 768)));
+  }
+}
+
 @media (max-width: 576px) {
   .product-showcase-benefit-card {
     min-height: auto;
@@ -396,13 +414,12 @@
 
   .product-showcase-benefit-card--wide-media .product-showcase-benefit-card__copy {
     min-height: auto;
-    max-width: none;
     padding: 16px;
   }
 
   .product-showcase-benefit-card__media-side {
-    width: 450px;
-    max-width: 49.5%;
+    width: 50%;
+    max-width: none;
   }
 
   .product-showcase-benefit-card--tall-media {
@@ -411,34 +428,37 @@
   }
 
   .product-showcase-benefit-card--tall-media .product-showcase-benefit-card__copy {
-    padding: 16px;
+    padding: 16px 16px 0;
   }
 
   .product-showcase-benefit-card__media-bottom {
-    width: min(100%, 450px);
+    width: min(100%, 280px);
   }
 
   .product-showcase-benefit-card--stat {
     min-height: auto;
     height: auto;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 0;
     row-gap: 0;
     padding: 4px;
   }
 
   .product-showcase-benefit-card--stat .product-showcase-benefit-card__copy {
-    justify-content: flex-start;
-    gap: 8px;
+    justify-content: center;
+    gap: 6px;
     padding: 16px;
   }
 
   .product-showcase-benefit-card__stat-panel {
     min-height: 136px;
+    height: auto;
+    align-self: stretch;
   }
 
   .product-showcase-benefit-card__stat-value {
-    font-size: clamp(48px, 10vw, 76px);
-    line-height: 1.05;
+    font-size: 48px;
+    line-height: 1;
   }
 }
 

@@ -59,6 +59,17 @@
   }
 }
 
+@media (min-width: 577px) and (max-width: 768px) {
+  .features-section {
+    padding-top: min(68px, calc(68 * 100vw / 768));
+    padding-bottom: min(13px, calc(13 * 100vw / 768));
+  }
+
+  .features-section__list {
+    gap: min(148px, calc(148 * 100vw / 768));
+  }
+}
+
 @media (max-width: 576px) {
   .features-section {
     padding-top: 60px;

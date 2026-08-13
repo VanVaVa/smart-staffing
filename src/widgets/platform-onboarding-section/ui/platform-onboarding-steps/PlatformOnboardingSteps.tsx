@@ -75,20 +75,34 @@ export function PlatformOnboardingSteps({
               className={styles["platform-onboarding-steps__step"]}
               data-step={index}
             >
-          <EditableCollectionItem
-            arrayPath="steps.steps"
-            index={index}
-            variant="step-inline"
-          >
+              <EditableCollectionItem
+                arrayPath="steps.steps"
+                index={index}
+                variant="step-inline"
+              >
                 <StepCard {...step} stepIndex={index} />
               </EditableCollectionItem>
-              {index < steps.length - 1 ? (
-                <div className={styles["platform-onboarding-steps__arrow"]} aria-hidden>
-                  <ArrowIcon
-                    name="round"
-                    className={styles["platform-onboarding-steps__arrow-icon"]}
-                  />
-                </div>
+              {index === 1 ? (
+                <>
+                  <div
+                    className={`${styles["platform-onboarding-steps__arrow"]} ${styles["platform-onboarding-steps__arrow--leading"]}`}
+                    aria-hidden
+                  >
+                    <ArrowIcon
+                      name="round"
+                      className={styles["platform-onboarding-steps__arrow-icon"]}
+                    />
+                  </div>
+                  <div
+                    className={`${styles["platform-onboarding-steps__arrow"]} ${styles["platform-onboarding-steps__arrow--trailing"]}`}
+                    aria-hidden
+                  >
+                    <ArrowIcon
+                      name="round"
+                      className={styles["platform-onboarding-steps__arrow-icon"]}
+                    />
+                  </div>
+                </>
               ) : null}
             </div>
           ))}

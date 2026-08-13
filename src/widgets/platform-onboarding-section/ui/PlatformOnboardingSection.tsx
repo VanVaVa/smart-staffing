@@ -19,7 +19,12 @@ export function PlatformOnboardingSection({
   return (
     <Section id="demo" tone="muted" className={styles["platform-onboarding-section"]}>
       <PlatformOnboardingPartner
-        {...content.partner}
+        title={content.partner.title}
+        subtitle={content.partner.subtitle}
+        subtitleAccent={content.partner.subtitleAccent}
+        cardText={content.partner.cardText}
+        imageSrc={content.partner.imageSrc}
+        cta={content.partner.cta}
         interactive={interactive}
       />
       <div className={styles["platform-onboarding-section__bleed"]}>

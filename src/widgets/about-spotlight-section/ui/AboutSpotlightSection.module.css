@@ -48,8 +48,8 @@
   max-width: var(--container-max);
   margin-inline: auto;
   display: grid;
-  grid-template-columns: minmax(0, 450fr) minmax(0, 908fr);
-  grid-template-areas: "tag collage";
+  grid-template-columns: minmax(0, 450fr) minmax(0, 908fr) minmax(0, 450fr);
+  grid-template-areas: "tag collage preview";
   gap: 8px;
   align-items: stretch;
   min-height: min(408px, calc(408 * 100vw / 1920));
@@ -68,10 +68,17 @@
 }
 
 .about-spotlight-section__preview {
-  display: none;
   grid-area: preview;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
   margin: 0;
+  min-height: min(408px, calc(408 * 100vw / 1920));
+  padding: 40px 48px;
+  border-radius: 40px;
+  background: rgb(119 119 142 / 8%);
+  backdrop-filter: blur(80px);
   overflow: hidden;
 }
 
@@ -111,10 +118,13 @@
 }
 
 .about-spotlight-section__preview-image {
+  position: relative;
+  z-index: 1;
   display: block;
-  width: 100%;
-  height: 100%;
+  width: min(318px, calc(318 * 100vw / 1920));
+  height: min(226px, calc(226 * 100vw / 1920));
   object-fit: cover;
+  border-radius: var(--radius-sm);
 }
 
 .about-spotlight-section__collage-image {
@@ -126,18 +136,29 @@
 
 @media (max-width: 1440px) {
   .about-spotlight-section__grid {
-    grid-template-columns: minmax(0, 336fr) minmax(0, 679fr);
+    grid-template-columns: minmax(0, 336fr) minmax(0, 679fr) minmax(0, 336fr);
+    grid-template-areas: "tag collage preview";
     min-height: 306px;
   }
 
   .about-spotlight-section__card,
-  .about-spotlight-section__collage {
+  .about-spotlight-section__collage,
+  .about-spotlight-section__preview {
     min-height: 306px;
     border-radius: var(--radius-xl);
   }
 
   .about-spotlight-section__card {
     padding: 30px 36px;
+  }
+
+  .about-spotlight-section__preview {
+    padding: 30px 36px;
+  }
+
+  .about-spotlight-section__preview-image {
+    width: 232px;
+    height: 168px;
   }
 
   .about-spotlight-section__tag-label {
@@ -158,6 +179,10 @@
     grid-template-columns: minmax(0, 393fr) minmax(0, 527fr);
     grid-template-areas: "tag collage";
     min-height: 0;
+  }
+
+  .about-spotlight-section__preview {
+    display: none;
   }
 
   .about-spotlight-section__card {
@@ -211,19 +236,14 @@
 
   .about-spotlight-section__preview {
     display: flex;
-    align-items: center;
-    justify-content: center;
     min-height: 180px;
+    padding: 20px 24px;
     border-radius: 24px;
-    background: rgb(119 119 142 / 8%);
-    backdrop-filter: blur(80px);
   }
 
   .about-spotlight-section__preview-image {
     width: 124px;
     height: 90px;
-    object-fit: cover;
-    border-radius: var(--radius-sm);
   }
 
   .about-spotlight-section__collage {

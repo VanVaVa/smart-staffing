@@ -121,9 +121,15 @@
   }
 }
 
+@media (min-width: 577px) and (max-width: 768px) {
+  .feature-row__content {
+    gap: min(80px, calc(80 * 100vw / 768));
+  }
+}
+
 @media (max-width: 576px) {
   .feature-row__content {
-    gap: 60px;
+    gap: 64px;
   }
 
   .feature-row__intro {

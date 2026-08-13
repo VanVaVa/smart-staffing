@@ -12,13 +12,19 @@
 .logo__mark {
   display: block;
   width: auto;
-  height: clamp(28px, 4vw, 36px);
+  height: 54px;
   flex-shrink: 0;
 }
 
 @media (max-width: 1440px) {
   .logo__mark {
-    height: 28px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 576px) {
+  .logo__mark {
+    height: 32px;
   }
 }
 

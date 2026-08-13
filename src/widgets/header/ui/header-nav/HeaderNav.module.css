@@ -1,6 +1,6 @@
 .header-nav {
   display: flex;
-  gap: clamp(16px, 2vw, 40px);
+  gap: 20px;
   min-width: 0;
 }
 
@@ -103,8 +103,12 @@
   }
 }
 
-@media (max-width: 960px) {
+@media (max-width: 576px) {
   .header-nav {
+    display: none;
+  }
+
+  .header-nav__dropdown {
     display: none;
   }
 }

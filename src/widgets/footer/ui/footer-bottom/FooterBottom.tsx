@@ -19,7 +19,7 @@ export function FooterBottom() {
           </Text>
         ))}
       </nav>
-      <Text as="span" size="xl" className={styles["footer-bottom__muted"]}>
+      <Text as="span" size="xl" className={`${styles["footer-bottom__muted"]} ${styles["footer-bottom__copyright"]}`}>
         {footerContent.copyright}
       </Text>
     </div>

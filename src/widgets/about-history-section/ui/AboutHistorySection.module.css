@@ -89,7 +89,7 @@
 
 .about-history-section__body {
   display: grid;
-  grid-template-columns: minmax(0, 929fr) minmax(0, 908fr);
+  grid-template-columns: minmax(0, 932fr) minmax(0, 908fr);
   gap: min(28px, calc(28 * 100vw / 1920));
   align-items: start;
 }
@@ -149,7 +149,7 @@
 
 .about-history-section__mission-column {
   margin-top: min(918px, calc(918 * 100vw / 1920));
-  margin-bottom: min(144px, calc(144 * 100vw / 1920));
+  margin-bottom: 0;
   padding-inline-start: 8px;
   min-width: 0;
   overflow: visible;
@@ -158,14 +158,15 @@
 .about-history-section__mission {
   --mission-marker-size: 48px;
   --mission-marker-icon-size: 28px;
-  --mission-marker-offset: -88px;
+  --mission-marker-offset: -96px;
 
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  width: min(680px, 100%);
-  padding: 32px;
-  border-radius: var(--radius-xl);
+  gap: 28px;
+  width: 100%;
+  min-height: min(424px, calc(424 * 100vw / 1920));
+  padding: min(40px, calc(40 * 100vw / 1920));
+  border-radius: 40px;
   background: var(--color-white);
   color: var(--color-black);
   overflow: visible;
@@ -184,7 +185,7 @@
 .about-history-section__mission-list {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 28px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -233,11 +234,18 @@
     gap: 28px;
   }
 
+  .about-history-section__mission-column {
+    margin-top: 786px;
+    margin-bottom: 0;
+  }
+
   .about-history-section__mission {
-    width: 680px;
-    max-width: 100%;
+    width: 100%;
+    max-width: none;
+    min-height: 346px;
     padding: 32px;
     gap: 24px;
+    border-radius: var(--radius-xl);
   }
 
   .about-history-section__mission-list {
@@ -318,7 +326,7 @@
   .about-history-section__mission {
     --mission-marker-size: 48px;
     --mission-marker-icon-size: 28px;
-    --mission-marker-offset: -80px;
+    --mission-marker-offset: -88px;
 
     width: 100%;
     max-width: 614px;
@@ -373,7 +381,7 @@
   .about-history-section__mission {
     --mission-marker-size: 48px;
     --mission-marker-icon-size: 28px;
-    --mission-marker-offset: -76px;
+    --mission-marker-offset: -84px;
 
     width: 100%;
     max-width: 599px;
@@ -460,7 +468,7 @@
   .about-history-section__mission {
     --mission-marker-size: 40px;
     --mission-marker-icon-size: 24px;
-    --mission-marker-offset: -68px;
+    --mission-marker-offset: -76px;
 
     max-width: calc(100% - var(--mission-marker-size));
     margin-inline-start: auto;
@@ -545,7 +553,7 @@
   .about-history-section__mission {
     --mission-marker-size: 36px;
     --mission-marker-icon-size: 20px;
-    --mission-marker-offset: -62px;
+    --mission-marker-offset: -70px;
 
     margin-left: var(--mission-marker-size);
     padding: 16px;

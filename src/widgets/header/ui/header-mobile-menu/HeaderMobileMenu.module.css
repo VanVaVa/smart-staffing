@@ -1,0 +1,119 @@
+.header-mobile-menu {
+  display: none;
+  flex: 0 1 auto;
+  min-width: 0;
+  padding-block: 16px 0;
+}
+
+.header-mobile-menu__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 32px;
+  width: 100%;
+}
+
+.header-mobile-menu__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.header-mobile-menu__sign-up {
+  padding: 7px 16px;
+  font-size: var(--text-body-sm);
+  line-height: var(--line-body-sm);
+}
+
+.header-mobile-menu__ghost-on-dark {
+  color: var(--color-white);
+}
+
+.header-mobile-menu__ghost-on-dark:hover:not(:disabled) {
+  color: var(--color-white-64);
+}
+
+.header-mobile-menu__toggle {
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  aspect-ratio: 1;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--color-black);
+  color: var(--color-white);
+  cursor: pointer;
+  flex: 0 0 32px;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.header-mobile-menu__toggle-icon {
+  display: block;
+  flex-shrink: 0;
+}
+
+.header-mobile-menu__toggle-bar {
+  transition: opacity 0.2s ease;
+}
+
+.header-mobile-menu__toggle-bar line {
+  stroke: var(--color-white);
+  stroke-width: 2;
+  stroke-linecap: butt;
+  vector-effect: non-scaling-stroke;
+  shape-rendering: geometricPrecision;
+}
+
+.header-mobile-menu__panel {
+  position: static;
+  top: auto;
+  left: auto;
+  z-index: 1;
+  width: 100vw;
+  min-width: 100vw;
+  max-width: 100vw;
+  margin-top: 12px;
+  margin-inline: calc(50% - 50vw);
+  border-radius: 0;
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.header-mobile-menu__panel[hidden] {
+  display: none;
+}
+
+.header-mobile-menu__group-title {
+  display: block;
+  padding: 15px;
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: var(--text-body-md);
+  line-height: var(--line-body);
+  font-weight: 400;
+  color: var(--color-grey-500);
+  user-select: none;
+  pointer-events: none;
+}
+
+@media (max-width: 576px) {
+  .header-mobile-menu {
+    display: block;
+    width: 100%;
+    padding-block: 16px 0;
+  }
+}
+
+@media (max-width: 360px) {
+  .header-mobile-menu {
+    padding-block: 12px 0;
+  }
+}

@@ -167,8 +167,9 @@
   }
 
   .feedback-form-panel__form-slot {
-    width: 100%;
-    max-width: none;
+    width: min(460px, calc(460 * 100vw / 992));
+    max-width: 460px;
+    align-self: flex-start;
   }
 
   .feedback-form-panel__orb--orange-small {
@@ -197,10 +198,25 @@
 
 @media (max-width: 768px) {
   .feedback-form-panel__panel {
-    gap: clamp(40px, 8vw, 60px);
-    padding: clamp(20px, 3.5vw, 28px) clamp(20px, 3.5vw, 28px);
-    min-height: clamp(380px, 64vw, 492px);
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: clamp(40px, calc(40px + (100vw - 577px) * 20 / 191), 60px);
+    padding: clamp(20px, calc(20px + (100vw - 577px) * 4 / 191), 24px)
+      clamp(20px, calc(20px + (100vw - 577px) * 8 / 191), 28px);
+    min-height: clamp(360px, calc(360px + (100vw - 577px) * 40 / 191), 400px);
     height: auto;
+  }
+
+  .feedback-form-panel__intro {
+    max-width: none;
+    flex: none;
+  }
+
+  .feedback-form-panel__form-slot {
+    width: 100%;
+    max-width: none;
+    align-self: stretch;
   }
 
   .feedback-form-panel__orb--purple {
@@ -219,12 +235,22 @@
   }
 }
 
+@media (min-width: 577px) and (max-width: 768px) {
+  .feedback-form-panel__panel {
+    gap: min(60px, calc(60 * 100vw / 768));
+    padding: min(24px, calc(24 * 100vw / 768)) min(28px, calc(28 * 100vw / 768));
+    min-height: min(400px, calc(400 * 100vw / 768));
+  }
+}
+
 @media (max-width: 576px) {
   .feedback-form-panel__intro {
     gap: 8px;
   }
 
   .feedback-form-panel__panel {
+    flex-direction: column;
+    align-items: stretch;
     gap: clamp(32px, calc(32px + (100vw - 360px) * 8 / 216), 40px);
     padding: clamp(16px, calc(16px + (100vw - 360px) * 8 / 216), 24px);
     border-radius: var(--radius-lg);

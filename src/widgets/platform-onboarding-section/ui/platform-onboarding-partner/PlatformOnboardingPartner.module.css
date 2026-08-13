@@ -13,8 +13,6 @@
   display: flex;
   justify-content: center;
   overflow: visible;
-  box-sizing: content-box;
-  padding-inline-start: 23px;
 }
 
 .platform-onboarding-partner__orb {
@@ -37,42 +35,42 @@
   position: relative;
   z-index: 1;
   display: flex;
+  flex-direction: row;
   align-items: center;
   gap: 80px;
   width: min(100%, 1274px);
-  padding: 40px 28px 40px 200px;
+  padding: 40px 28px;
   border-radius: var(--radius-lg);
   background: rgb(119 119 142 / 8%);
   backdrop-filter: blur(80px);
   overflow: visible;
 }
 
-.platform-onboarding-partner__media-slot {
-  position: absolute;
-  left: -23px;
-  top: 0;
-  z-index: 1;
-  width: 213px;
-  height: 188px;
-  margin: 0;
-  border-radius: 0;
-}
-
 .platform-onboarding-partner__media {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 152px;
+  height: 143px;
+  margin-inline-start: -23px;
 }
 
 .platform-onboarding-partner__image {
-  position: absolute;
-  left: 46px;
-  top: 9px;
   display: block;
-  width: 152px;
-  height: 143px;
-  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+}
+
+.platform-onboarding-partner__content {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 80px;
+  min-width: 0;
 }
 
 .platform-onboarding-partner__card-text {
@@ -107,16 +105,18 @@
 
   .platform-onboarding-partner__card {
     width: min(100%, 1143px);
-    padding: 32px 24px 32px 168px;
+    padding: 32px 24px;
     gap: 64px;
     border-radius: var(--radius-md);
   }
 
-  .platform-onboarding-partner__image {
-    left: 47px;
-    top: 0;
+  .platform-onboarding-partner__media {
     width: 130px;
     height: 122px;
+  }
+
+  .platform-onboarding-partner__content {
+    gap: 64px;
   }
 }
 
@@ -132,22 +132,18 @@
   }
 
   .platform-onboarding-partner__card {
-    padding: 32px 24px 32px 156px;
     gap: 48px;
     overflow: hidden;
   }
 
-  .platform-onboarding-partner__media-slot {
-    left: 0;
-    width: 138px;
-    height: 116px;
-  }
-
-  .platform-onboarding-partner__image {
-    left: 8px;
-    top: 0;
+  .platform-onboarding-partner__media {
     width: 122px;
     height: 116px;
+    margin-inline-start: 0;
+  }
+
+  .platform-onboarding-partner__content {
+    gap: 48px;
   }
 }
 
@@ -157,64 +153,98 @@
   }
 
   .platform-onboarding-partner__card {
-    padding: min(32px, calc(32 * 100vw / 992)) 24px min(32px, calc(32 * 100vw / 992))
-      min(156px, calc(156 * 100vw / 992));
+    padding: min(32px, calc(32 * 100vw / 992)) 24px;
     gap: min(48px, calc(48 * 100vw / 992));
   }
 
-  .platform-onboarding-partner__media-slot {
-    width: min(138px, calc(138 * 100vw / 992));
+  .platform-onboarding-partner__media {
+    width: min(122px, calc(122 * 100vw / 992));
     height: min(116px, calc(116 * 100vw / 992));
   }
 
-  .platform-onboarding-partner__image {
-    left: min(8px, calc(8 * 100vw / 992));
-    width: min(122px, calc(122 * 100vw / 992));
-    height: min(116px, calc(116 * 100vw / 992));
+  .platform-onboarding-partner__content {
+    gap: min(48px, calc(48 * 100vw / 992));
   }
 }
 
 @media (max-width: 768px) {
   .platform-onboarding-partner__card {
-    flex-direction: column;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
     width: min(100%, 652px);
-    padding: 24px 24px 24px 172px;
+    padding: 24px;
+    column-gap: 20px;
+    row-gap: 20px;
   }
 
-  .platform-onboarding-partner__media-slot {
-    width: 171px;
-    height: 160px;
+  .platform-onboarding-partner__media {
+    grid-column: 1;
+    grid-row: 1;
+    width: 153px;
+    height: 144px;
+    margin-inline-start: 0;
   }
 
-  .platform-onboarding-partner__image {
-    left: 24px;
-    top: 0;
-    width: 130px;
-    height: 122px;
+  .platform-onboarding-partner__content {
+    display: contents;
+  }
+
+  .platform-onboarding-partner__card-text {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .platform-onboarding-partner__cta {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    width: 100%;
+    display: flex;
+    box-sizing: border-box;
   }
 }
 
 @media (max-width: 576px) {
+  .platform-onboarding-partner {
+    gap: 48px;
+  }
+
   .platform-onboarding-partner__card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
     width: 100%;
-    padding: 20px 20px 20px 136px;
-    gap: 20px;
+    padding: 20px;
+    column-gap: 16px;
+    row-gap: 20px;
   }
 
-  .platform-onboarding-partner__media-slot {
-    left: 0;
+  .platform-onboarding-partner__media {
+    grid-column: 1;
+    grid-row: 1;
+    flex: 0 0 auto;
     width: 128px;
-    height: 136px;
+    height: 122px;
+    margin-inline-start: 0;
   }
 
-  .platform-onboarding-partner__image {
-    left: 0;
-    top: 50%;
-    width: 128px;
-    height: auto;
-    max-height: 122px;
-    transform: translateY(-50%);
+  .platform-onboarding-partner__content {
+    display: contents;
+  }
+
+  .platform-onboarding-partner__card-text {
+    grid-column: 2;
+    grid-row: 1;
+    font-size: var(--text-body-md);
+    line-height: var(--line-body-sm);
+  }
+
+  .platform-onboarding-partner__cta {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    width: 100%;
+    display: flex;
+    box-sizing: border-box;
   }
 
   .platform-onboarding-partner__orb {
@@ -225,50 +255,17 @@
 
 @media (max-width: 360px) {
   .platform-onboarding-partner__card {
-    display: grid;
-    grid-template-columns: 62px minmax(0, 1fr);
-    grid-template-rows: auto auto;
-    grid-template-areas:
-      "media text"
-      "cta cta";
-    align-items: center;
-    column-gap: 6px;
-    row-gap: 20px;
     width: min(100%, 284px);
     margin-inline: auto;
     padding: 16px;
+    column-gap: 12px;
+    row-gap: 16px;
     border-radius: var(--radius-control);
-    overflow: visible;
-  }
-
-  .platform-onboarding-partner__media-slot {
-    grid-area: media;
-    position: static;
-    width: 62px;
-    height: 48px;
   }
 
   .platform-onboarding-partner__media {
-    overflow: visible;
-  }
-
-  .platform-onboarding-partner__image {
-    position: static;
     width: 61px;
     height: 48px;
-    margin-top: -3px;
-    margin-left: 1px;
-    transform: none;
-  }
-
-  .platform-onboarding-partner__card-text {
-    grid-area: text;
-  }
-
-  .platform-onboarding-partner__cta {
-    grid-area: cta;
-    justify-self: stretch;
-    width: 100%;
   }
 
   .platform-onboarding-partner__orb {

@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: column;
   min-height: 0;
+  overflow: hidden;
 }
 
 .testimonial-card__body {
@@ -23,10 +24,12 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 16px;
+  min-width: 0;
 }
 
 .testimonial-card__author {
   display: flex;
+  flex: 1 1 auto;
   align-items: center;
   gap: 12px;
   min-width: 0;
@@ -62,11 +65,17 @@
   font-size: var(--text-body-xl);
   line-height: var(--line-body-xl);
   font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .testimonial-card__role {
   font-size: var(--text-body-sm);
   line-height: var(--line-body-sm);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .testimonial-card__date {
@@ -85,6 +94,7 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 4;
   line-clamp: 4;
+  overflow-wrap: anywhere;
   text-overflow: ellipsis;
   font-size: var(--text-body-xl);
   line-height: var(--line-body-xl);
@@ -145,6 +155,14 @@
   }
 }
 
+@media (min-width: 577px) and (max-width: 768px) {
+  .testimonial-card {
+    flex-basis: min(356px, calc(356 * 100vw / 768));
+    width: min(356px, calc(356 * 100vw / 768));
+    min-height: min(258px, calc(258 * 100vw / 768));
+  }
+}
+
 @media (max-width: 576px) {
   .testimonial-card {
     flex-basis: min(400px, calc(100vw - 2 * var(--container-padding)));
@@ -161,5 +179,46 @@
     width: 40px;
     height: 40px;
     padding: 8px;
+  }
+}
+
+@media (max-width: 360px) {
+  .testimonial-card {
+    flex-basis: 300px;
+    width: 300px;
+    height: 184px;
+    min-height: 184px;
+    max-height: 184px;
+    padding: 16px;
+  }
+
+  .testimonial-card__body {
+    gap: 16px;
+  }
+
+  .testimonial-card__header {
+    gap: 12px;
+  }
+
+  .testimonial-card__author {
+    gap: 8px;
+  }
+
+  .testimonial-card__logo {
+    width: 36px;
+    height: 36px;
+    padding: 6px;
+  }
+
+  .testimonial-card__company {
+    font-size: var(--text-body-md);
+    line-height: var(--line-body-sm);
+  }
+
+  .testimonial-card__quote {
+    font-size: var(--text-body-md);
+    line-height: var(--line-body-sm);
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
   }
 }

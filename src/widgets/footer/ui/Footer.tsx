@@ -15,7 +15,7 @@ export function Footer() {
           <FooterAbout />
           <div className={styles.footer__columns}>
             <FooterLinkColumn title="Меню" items={footerContent.menu} />
-            <FooterLinkColumn title="Решения" items={footerContent.solutions} />
+            <FooterLinkColumn title="Клиентам" items={footerContent.solutions} />
             <FooterContacts />
           </div>
         </div>

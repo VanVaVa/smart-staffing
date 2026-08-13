@@ -12,8 +12,6 @@ type PlatformOnboardingPartnerProps = {
   subtitleAccent: string;
   cardText: string;
   imageSrc: string;
-  imageWidth: number;
-  imageHeight: number;
   cta: string;
   interactive?: boolean;
 };
@@ -23,8 +21,6 @@ export function PlatformOnboardingPartner({
   subtitle,
   cardText,
   imageSrc,
-  imageWidth,
-  imageHeight,
   cta,
   interactive = true,
 }: PlatformOnboardingPartnerProps) {
@@ -49,37 +45,37 @@ export function PlatformOnboardingPartner({
           <EditableMedia
             path="partner.imageSrc"
             label="Partner — изображение"
-            className={styles["platform-onboarding-partner__media-slot"]}
+            className={styles["platform-onboarding-partner__media"]}
           >
-            <div className={styles["platform-onboarding-partner__media"]}>
-              <Image
-                className={styles["platform-onboarding-partner__image"]}
-                src={imageSrc}
-                alt=""
-                width={imageWidth}
-                height={imageHeight}
-                sizes="152px"
-              />
-            </div>
+            <Image
+              className={styles["platform-onboarding-partner__image"]}
+              src={imageSrc}
+              alt=""
+              width={304}
+              height={286}
+              sizes="(max-width: 576px) 128px, (max-width: 768px) 153px, 152px"
+            />
           </EditableMedia>
-          <EditableText
-            path="partner.cardText"
-            label="Partner — текст карточки"
-            as="p"
-            className={styles["platform-onboarding-partner__card-text"]}
-            multiline
-          >
-            {cardText}
-          </EditableText>
-          <CompanyConnectionButton
-            withArrow
-            className={styles["platform-onboarding-partner__cta"]}
-            interactive={interactive}
-          >
-            <EditableText path="partner.cta" label="Partner — CTA">
-              {cta}
+          <div className={styles["platform-onboarding-partner__content"]}>
+            <EditableText
+              path="partner.cardText"
+              label="Partner — текст карточки"
+              as="p"
+              className={styles["platform-onboarding-partner__card-text"]}
+              multiline
+            >
+              {cardText}
             </EditableText>
-          </CompanyConnectionButton>
+            <CompanyConnectionButton
+              withArrow
+              className={styles["platform-onboarding-partner__cta"]}
+              interactive={interactive}
+            >
+              <EditableText path="partner.cta" label="Partner — CTA">
+                {cta}
+              </EditableText>
+            </CompanyConnectionButton>
+          </div>
         </article>
       </div>
     </div>

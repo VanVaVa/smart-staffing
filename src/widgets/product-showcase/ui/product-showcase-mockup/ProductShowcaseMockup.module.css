@@ -33,6 +33,18 @@
   object-position: left top;
 }
 
+@media (max-width: 768px) {
+  .product-showcase-mockup__screen-slot {
+    border-radius: 16px;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+  .product-showcase-mockup__screen-slot {
+    border-radius: min(16px, calc(16 * 100vw / 768));
+  }
+}
+
 @media (max-width: 360px) {
   .product-showcase-mockup__screen-slot {
     border-radius: 10px;

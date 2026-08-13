@@ -124,6 +124,12 @@
   }
 }
 
+@media (min-width: 577px) and (max-width: 768px) {
+  .hero-visual__dashboard-stack {
+    height: min(292px, calc(292 * 100vw / 768));
+  }
+}
+
 @media (max-width: 576px) {
   .hero-visual {
     border-radius: var(--radius-md) 0 0 var(--radius-md);

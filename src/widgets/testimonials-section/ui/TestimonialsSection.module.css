@@ -43,3 +43,13 @@
     align-items: flex-start;
   }
 }
+
+@media (max-width: 360px) {
+  .testimonials-section {
+    padding-top: 100px;
+  }
+
+  .testimonials-section :global(.section__inner) {
+    gap: 36px;
+  }
+}

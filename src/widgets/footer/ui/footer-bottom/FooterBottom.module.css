@@ -59,9 +59,16 @@
 
 @media (max-width: 768px) {
   .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
     height: 110px;
     min-height: 110px;
     padding-block: 24px;
+    gap: 8px;
+  }
+
+  .footer-bottom__copyright {
+    order: 1;
   }
 
   .footer-bottom__legal {
@@ -78,5 +85,18 @@
     min-height: 98px;
     gap: 8px;
     padding-block: 20px;
+  }
+}
+
+@media (max-width: 360px) {
+  .footer-bottom {
+    height: 126px;
+    min-height: 126px;
+    gap: 12px;
+    padding-block: 16px;
+  }
+
+  .footer-bottom__legal {
+    gap: 16px;
   }
 }
