@@ -40,16 +40,17 @@ export type ClientsPlatformBenefitsVisual = {
   imageAlt: string;
 };
 
-export type ClientsPlatformBenefitsCardVariant =
-  | "roles"
-  | "access"
-  | "analytics"
-  | "realtime";
+export type ClientsPlatformBenefitsCardBackground =
+  | "full-bg"
+  | "light-bg"
+  | "dark-bg"
+  | "geometry-bg";
 
 export type ClientsPlatformBenefitsCardContent = {
   title: string;
-  titleTone: "dark" | "light";
-  variant: ClientsPlatformBenefitsCardVariant;
+  backgroundType: ClientsPlatformBenefitsCardBackground;
+  visualAlign?: "start" | "end";
+  inProgress?: boolean;
   visual: ClientsPlatformBenefitsVisual;
 };
 
@@ -145,8 +146,7 @@ const enterprisePlatformBenefits: ClientsPlatformBenefitsContent = {
   cards: [
     {
       title: "Роли по отраслям и компетенциям",
-      titleTone: "dark",
-      variant: "roles",
+      backgroundType: "full-bg",
       visual: {
         imageSrc: "/landing/clients/enterprise/benefits-roles-visual.png",
         imageWidth: 436,
@@ -156,8 +156,7 @@ const enterprisePlatformBenefits: ClientsPlatformBenefitsContent = {
     },
     {
       title: "Уровни доступа",
-      titleTone: "dark",
-      variant: "access",
+      backgroundType: "light-bg",
       visual: {
         imageSrc: "/landing/clients/enterprise/benefits-access-visual.png",
         imageWidth: 619,
@@ -167,8 +166,8 @@ const enterprisePlatformBenefits: ClientsPlatformBenefitsContent = {
     },
     {
       title: "Аналитика по партнёрским сетям",
-      titleTone: "light",
-      variant: "analytics",
+      backgroundType: "dark-bg",
+      inProgress: true,
       visual: {
         imageSrc: "/landing/clients/enterprise/benefits-analytics-visual.png",
         imageWidth: 396,
@@ -178,12 +177,11 @@ const enterprisePlatformBenefits: ClientsPlatformBenefitsContent = {
     },
     {
       title: "Результаты в реальном времени",
-      titleTone: "dark",
-      variant: "realtime",
+      backgroundType: "geometry-bg",
       visual: {
-        imageSrc: "/landing/clients/enterprise/benefits-realtime-visual.png",
-        imageWidth: 436,
-        imageHeight: 540,
+        imageSrc: "/landing/clients/enterprise/benefits-realtime-card.png",
+        imageWidth: 396,
+        imageHeight: 236,
         imageAlt: "",
       },
     },
@@ -292,8 +290,7 @@ const outstaffingPlatformBenefits: ClientsPlatformBenefitsContent = {
   cards: [
     {
       title: "Публикация доступных компетенций",
-      titleTone: "dark",
-      variant: "roles",
+      backgroundType: "light-bg",
       visual: {
         imageSrc: "/landing/clients/outstaffing/benefits-roles-visual.png",
         imageWidth: 401,
@@ -303,8 +300,7 @@ const outstaffingPlatformBenefits: ClientsPlatformBenefitsContent = {
     },
     {
       title: "Умный поиск по стеку, грейду и ставке",
-      titleTone: "dark",
-      variant: "access",
+      backgroundType: "full-bg",
       visual: {
         imageSrc: "/landing/clients/outstaffing/benefits-access-visual.png",
         imageWidth: 436,
@@ -314,8 +310,7 @@ const outstaffingPlatformBenefits: ClientsPlatformBenefitsContent = {
     },
     {
       title: "Статус занятости специалистов",
-      titleTone: "dark",
-      variant: "roles",
+      backgroundType: "light-bg",
       visual: {
         imageSrc: "/landing/clients/outstaffing/benefits-analytics-visual.png",
         imageWidth: 396,
@@ -325,12 +320,11 @@ const outstaffingPlatformBenefits: ClientsPlatformBenefitsContent = {
     },
     {
       title: "Результаты в реальном времени",
-      titleTone: "light",
-      variant: "analytics",
+      backgroundType: "dark-bg",
       visual: {
         imageSrc: "/landing/clients/outstaffing/benefits-realtime-visual.png",
         imageWidth: 396,
-        imageHeight: 358,
+        imageHeight: 436,
         imageAlt: "",
       },
     },
@@ -359,8 +353,8 @@ const outstaffingPlatformBenefits: ClientsPlatformBenefitsContent = {
       },
       visual: {
         imageSrc: "/landing/clients/outstaffing/benefits-showcase-quality-visual.png",
-        imageWidth: 1141,
-        imageHeight: 396,
+        imageWidth: 889,
+        imageHeight: 334,
         imageAlt: "",
       },
     },
@@ -434,8 +428,7 @@ const midMarketPlatformBenefits: ClientsPlatformBenefitsContent = {
   cards: [
     {
       title: "Поиск специалистов",
-      titleTone: "dark",
-      variant: "roles",
+      backgroundType: "light-bg",
       visual: {
         imageSrc: "/landing/clients/mid-market/benefits-roles-visual.png",
         imageWidth: 560,
@@ -445,8 +438,7 @@ const midMarketPlatformBenefits: ClientsPlatformBenefitsContent = {
     },
     {
       title: "Подтверждённый опыт",
-      titleTone: "dark",
-      variant: "access",
+      backgroundType: "light-bg",
       visual: {
         imageSrc: "/landing/clients/mid-market/benefits-access-visual.png",
         imageWidth: 489,
@@ -456,8 +448,7 @@ const midMarketPlatformBenefits: ClientsPlatformBenefitsContent = {
     },
     {
       title: "Контроль качества исполнителей",
-      titleTone: "dark",
-      variant: "realtime",
+      backgroundType: "full-bg",
       visual: {
         imageSrc: "/landing/clients/mid-market/benefits-analytics-visual.png",
         imageWidth: 584,
@@ -542,46 +533,43 @@ const agenciesPlatformBenefits: ClientsPlatformBenefitsContent = {
     "Формируйте команды точно под задачи проекта в кратчайшие сроки",
   cards: [
     {
-      title: "Сокращение срока подбора",
-      titleTone: "dark",
-      variant: "roles",
-      visual: {
-        imageSrc: "/landing/clients/agencies/benefits-speed-visual.png",
-        imageWidth: 436,
-        imageHeight: 550,
-        imageAlt: "",
-      },
-    },
-    {
       title: "Релевантный список специалистов",
-      titleTone: "dark",
-      variant: "roles",
+      backgroundType: "light-bg",
       visual: {
         imageSrc: "/landing/clients/agencies/benefits-relevant-visual.png",
-        imageWidth: 436,
-        imageHeight: 540,
+        imageWidth: 276,
+        imageHeight: 214,
         imageAlt: "",
       },
     },
     {
       title: "Роли в командах",
-      titleTone: "dark",
-      variant: "roles",
+      backgroundType: "dark-bg",
+      visualAlign: "start",
       visual: {
         imageSrc: "/landing/clients/agencies/benefits-roles-visual.png",
-        imageWidth: 436,
-        imageHeight: 540,
+        imageWidth: 285,
+        imageHeight: 104,
         imageAlt: "",
       },
     },
     {
       title: "Чёткие критерии отбора",
-      titleTone: "dark",
-      variant: "roles",
+      backgroundType: "light-bg",
       visual: {
         imageSrc: "/landing/clients/agencies/benefits-criteria-visual.png",
-        imageWidth: 436,
-        imageHeight: 540,
+        imageWidth: 417,
+        imageHeight: 470,
+        imageAlt: "",
+      },
+    },
+    {
+      title: "Сокращение срока подбора",
+      backgroundType: "full-bg",
+      visual: {
+        imageSrc: "/landing/clients/agencies/benefits-speed-visual.png",
+        imageWidth: 323,
+        imageHeight: 408,
         imageAlt: "",
       },
     },

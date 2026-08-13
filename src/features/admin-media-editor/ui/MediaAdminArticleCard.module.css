@@ -1,0 +1,36 @@
+.wrap {
+  position: relative;
+  min-width: 0;
+}
+
+.delete {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  display: flex;
+  width: 32px;
+  height: 32px;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 92%);
+  color: #c62828;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 12%);
+  transition: opacity 0.2s ease;
+}
+
+.wrap:hover .delete,
+.wrap:focus-within .delete {
+  opacity: 1;
+}
+
+.delete:disabled {
+  cursor: default;
+  opacity: 1;
+}

@@ -1,6 +1,7 @@
 import type { ClientsPartnersExperienceContent } from "@/entities/landing";
 import { CaseStudyCard } from "@/shared/ui/case-study-card";
 import { Container } from "@/shared/ui/container";
+import { EditableText } from "@/shared/ui/editable-field";
 
 import styles from "./ClientsPartnersExperienceSection.module.css";
 
@@ -16,11 +17,17 @@ export function ClientsPartnersExperienceSection({
   return (
     <section className={styles["clients-partners-experience-section"]}>
       <Container wide className={styles["clients-partners-experience-section__container"]}>
-        <h2 className={styles["clients-partners-experience-section__title"]}>
+        <EditableText
+          path="sectionTitle"
+          label="Опыт партнёров — заголовок"
+          as="h2"
+          className={styles["clients-partners-experience-section__title"]}
+        >
           {content.sectionTitle}
-        </h2>
+        </EditableText>
         <div className={styles["clients-partners-experience-section__card"]}>
           <CaseStudyCard
+            editPrefix="caseStudy."
             href={caseStudy.href}
             panelSrc={caseStudy.panelSrc}
             panelAlt={caseStudy.panelAlt}

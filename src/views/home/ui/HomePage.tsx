@@ -3,7 +3,11 @@
 import type { ReactNode } from "react";
 
 import type { HomeBlock } from "@/entities/landing/model/home-blocks";
-import { AdminInlineEditLayer } from "@/features/admin-home-editor";
+import {
+  AdminInlineEditLayer,
+} from "@/features/admin-landing-editor";
+import { getLandingPageSchema } from "@/entities/landing/lib/landing-page-registry";
+import { LANDING_PAGE_SLUGS } from "@/entities/landing/model/landing-page-slugs";
 
 import { HomeBlockRenderer } from "./HomeBlockRenderer";
 
@@ -16,6 +20,8 @@ type HomePageProps = {
   renderBlock?: (block: HomeBlock, index: number, node: ReactNode) => ReactNode;
 };
 
+const homeSchema = getLandingPageSchema(LANDING_PAGE_SLUGS.home);
+
 export function HomePage({
   blocks,
   mode = "view",
@@ -23,7 +29,7 @@ export function HomePage({
   renderBlock,
 }: HomePageProps) {
   const interactive = mode === "view";
-  const inlineEdit = mode === "edit" && Boolean(onBlockUpdate);
+  const inlineEdit = mode === "edit" && Boolean(onBlockUpdate) && !renderBlock;
 
   return (
     <>
@@ -33,7 +39,21 @@ export function HomePage({
         );
         if (inlineEdit && onBlockUpdate) {
           node = (
-            <AdminInlineEditLayer block={block} onUpdateBlock={onBlockUpdate}>
+            <AdminInlineEditLayer
+              block={block}
+              onUpdateBlock={onBlockUpdate}
+              defaultCollectionItem={homeSchema.defaultCollectionItem}
+              prepareCollectionItem={(current, _arrayPath, collectionKey, item) => {
+                if (collectionKey === "rows" && current.type === "features") {
+                  const nextIndex = current.props.rows.length;
+                  return {
+                    ...(item as Record<string, unknown>),
+                    reversed: nextIndex % 2 === 1,
+                  };
+                }
+                return item;
+              }}
+            >
               {node}
             </AdminInlineEditLayer>
           );

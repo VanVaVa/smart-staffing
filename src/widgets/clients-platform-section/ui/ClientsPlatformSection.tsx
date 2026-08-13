@@ -5,6 +5,12 @@ import { headerBackdropProps } from "@/shared/config";
 import { ArrowIcon } from "@/shared/ui/arrow-icon";
 import { Badge } from "@/shared/ui/badge";
 import { Container } from "@/shared/ui/container";
+import {
+  EditableCollectionAdd,
+  EditableCollectionItem,
+  EditableMedia,
+  EditableText,
+} from "@/shared/ui/editable-field";
 
 import styles from "./ClientsPlatformSection.module.css";
 
@@ -33,51 +39,91 @@ export function ClientsPlatformSection({ content }: ClientsPlatformSectionProps)
       <Container className={styles["clients-platform-section__container"]}>
         <div className={styles["clients-platform-section__layout"]}>
           <ul className={styles["clients-platform-section__pain-list"]}>
-            {content.painPoints.map((point) => (
-              <li
-                key={point}
-                className={styles["clients-platform-section__pain-item"]}
+            {content.painPoints.map((point, index) => (
+              <EditableCollectionItem
+                key={`${point}-${index}`}
+                arrayPath="painPoints"
+                index={index}
               >
-                <span
-                  className={styles["clients-platform-section__pain-marker"]}
-                  aria-hidden
-                >
-                  <ArrowIcon
-                    name="cta"
-                    className={styles["clients-platform-section__pain-icon"]}
-                  />
-                </span>
-                <span className={styles["clients-platform-section__pain-text"]}>
-                  {point}
-                </span>
-              </li>
+                <li className={styles["clients-platform-section__pain-item"]}>
+                  <span
+                    className={styles["clients-platform-section__pain-marker"]}
+                    aria-hidden
+                  >
+                    <ArrowIcon
+                      name="cta"
+                      className={styles["clients-platform-section__pain-icon"]}
+                    />
+                  </span>
+                  <EditableText
+                    path={`painPoints.${index}`}
+                    label="Платформа — pain point"
+                    className={styles["clients-platform-section__pain-text"]}
+                    multiline
+                  >
+                    {point}
+                  </EditableText>
+                </li>
+              </EditableCollectionItem>
             ))}
           </ul>
+          <EditableCollectionAdd
+            arrayPath="painPoints"
+            collectionKey="platform.painPoints"
+            addLabel="Pain point"
+          />
           <div className={styles["clients-platform-section__main"]}>
             <figure className={styles["clients-platform-section__preview"]}>
-              <Image
-                className={styles["clients-platform-section__preview-image"]}
-                src={content.imageSrc}
-                alt={content.imageAlt}
-                width={content.imageWidth}
-                height={content.imageHeight}
-                sizes="(max-width: 360px) 328px, (max-width: 768px) 359px, (max-width: 992px) 540px, (max-width: 1440px) 680px, 602px"
-              />
+              <EditableMedia path="imageSrc" label="Платформа — превью">
+                <Image
+                  className={styles["clients-platform-section__preview-image"]}
+                  src={content.imageSrc}
+                  alt={content.imageAlt}
+                  width={content.imageWidth}
+                  height={content.imageHeight}
+                  sizes="(max-width: 360px) 328px, (max-width: 768px) 359px, (max-width: 992px) 540px, (max-width: 1440px) 680px, 602px"
+                />
+              </EditableMedia>
             </figure>
             <div className={styles["clients-platform-section__copy"]}>
-              <h2 className={styles["clients-platform-section__title"]}>
+              <EditableText
+                path="title"
+                label="Платформа — заголовок"
+                as="h2"
+                className={styles["clients-platform-section__title"]}
+                multiline
+              >
                 {content.title}
-              </h2>
-              <p className={styles["clients-platform-section__subtitle"]}>
+              </EditableText>
+              <EditableText
+                path="subtitle"
+                label="Платформа — подзаголовок"
+                as="p"
+                className={styles["clients-platform-section__subtitle"]}
+                multiline
+              >
                 {content.subtitle}
-              </p>
+              </EditableText>
             </div>
             <div className={styles["clients-platform-section__tags"]}>
-              {content.tags.map((tag) => (
-                <Badge key={tag} variant="chip">
-                  {tag}
-                </Badge>
+              {content.tags.map((tag, index) => (
+                <EditableCollectionItem
+                  key={`${tag}-${index}`}
+                  arrayPath="tags"
+                  index={index}
+                >
+                  <Badge variant="chip">
+                    <EditableText path={`tags.${index}`} label="Платформа — тег">
+                      {tag}
+                    </EditableText>
+                  </Badge>
+                </EditableCollectionItem>
               ))}
+              <EditableCollectionAdd
+                arrayPath="tags"
+                collectionKey="platform.tags"
+                addLabel="Тег"
+              />
             </div>
           </div>
         </div>

@@ -1,3 +1,8 @@
-export { useHomePageDraft } from "./lib/use-home-page-draft";
-export { AdminEditorToolbar } from "./ui/AdminEditorToolbar";
-export { AdminInlineEditLayer, PageStructureMenu } from "./ui/AdminInlineEditLayer";
+export {
+  useHomePageDraft,
+  useLandingPageDraft,
+  AdminEditorToolbar,
+  AdminInlineEditLayer,
+  PageStructureMenu,
+} from "@/features/admin-landing-editor";
+export type { LandingPageDraftConfig } from "@/features/admin-landing-editor";

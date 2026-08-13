@@ -2,21 +2,29 @@
 
 import { useCallback, useMemo, useState } from "react";
 
-import {
-  defaultBlockProps,
-  type HomeBlock,
-  type HomeBlockType,
-} from "@/entities/landing";
+import type { LandingBlockLike } from "@/shared/ui/editable-field";
 
-function cloneBlocks(blocks: HomeBlock[]): HomeBlock[] {
-  return structuredClone(blocks) as HomeBlock[];
+function cloneBlocks<TBlock extends LandingBlockLike>(blocks: TBlock[]): TBlock[] {
+  return structuredClone(blocks) as TBlock[];
 }
 
-function normalizeOrder(blocks: HomeBlock[]): HomeBlock[] {
+function normalizeOrder<TBlock extends LandingBlockLike>(blocks: TBlock[]): TBlock[] {
   return blocks.map((block, index) => ({ ...block, order: index }));
 }
 
-export function useHomePageDraft(initialBlocks: HomeBlock[]) {
+export type LandingPageDraftConfig<TBlock extends LandingBlockLike, TBlockType extends string> = {
+  slug: string;
+  blockTypes: readonly TBlockType[];
+  defaultBlockProps: (type: TBlockType) => TBlock["props"];
+};
+
+export function useLandingPageDraft<
+  TBlock extends LandingBlockLike,
+  TBlockType extends string,
+>(
+  initialBlocks: TBlock[],
+  config: LandingPageDraftConfig<TBlock, TBlockType>,
+) {
   const [savedBlocks, setSavedBlocks] = useState(initialBlocks);
   const [blocks, setBlocks] = useState(initialBlocks);
   const [saving, setSaving] = useState(false);
@@ -27,7 +35,7 @@ export function useHomePageDraft(initialBlocks: HomeBlock[]) {
     [blocks, savedBlocks],
   );
 
-  const updateBlock = useCallback((blockId: string, next: HomeBlock) => {
+  const updateBlock = useCallback((blockId: string, next: TBlock) => {
     setBlocks((current) =>
       current.map((block) => (block.id === blockId ? next : block)),
     );
@@ -52,23 +60,26 @@ export function useHomePageDraft(initialBlocks: HomeBlock[]) {
     );
   }, []);
 
-  const addBlock = useCallback((type: HomeBlockType, afterIndex: number) => {
-    const id = crypto.randomUUID();
-    const props = defaultBlockProps(type);
-    setBlocks((current) => {
-      const next = cloneBlocks(current);
-      const insertAt = Math.min(afterIndex + 1, next.length);
-      const block = {
-        id,
-        order: insertAt,
-        type,
-        props,
-      } as HomeBlock;
-      next.splice(insertAt, 0, block);
-      return normalizeOrder(next);
-    });
-    return id;
-  }, []);
+  const addBlock = useCallback(
+    (type: TBlockType, afterIndex: number) => {
+      const id = crypto.randomUUID();
+      const props = config.defaultBlockProps(type);
+      setBlocks((current) => {
+        const next = cloneBlocks(current);
+        const insertAt = Math.min(afterIndex + 1, next.length);
+        const block = {
+          id,
+          order: insertAt,
+          type,
+          props,
+        } as unknown as TBlock;
+        next.splice(insertAt, 0, block);
+        return normalizeOrder(next);
+      });
+      return id;
+    },
+    [config],
+  );
 
   const save = useCallback(async () => {
     setSaving(true);
@@ -81,7 +92,7 @@ export function useHomePageDraft(initialBlocks: HomeBlock[]) {
         props: block.props,
       }));
 
-      const response = await fetch("/api/admin/home", {
+      const response = await fetch(`/api/admin/pages/${config.slug}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ blocks: payload }),
@@ -92,7 +103,7 @@ export function useHomePageDraft(initialBlocks: HomeBlock[]) {
         throw new Error(data.error ?? "Save failed");
       }
 
-      const data = (await response.json()) as { blocks: HomeBlock[] };
+      const data = (await response.json()) as { blocks: TBlock[] };
       setSavedBlocks(data.blocks);
       setBlocks(data.blocks);
     } catch (error) {
@@ -100,7 +111,7 @@ export function useHomePageDraft(initialBlocks: HomeBlock[]) {
     } finally {
       setSaving(false);
     }
-  }, [blocks]);
+  }, [blocks, config.slug]);
 
   return {
     blocks,
@@ -113,4 +124,11 @@ export function useHomePageDraft(initialBlocks: HomeBlock[]) {
     addBlock,
     save,
   };
+}
+
+export function useHomePageDraft<TBlock extends LandingBlockLike>(
+  initialBlocks: TBlock[],
+  config: LandingPageDraftConfig<TBlock, string>,
+) {
+  return useLandingPageDraft(initialBlocks, config);
 }

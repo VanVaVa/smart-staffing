@@ -1,65 +1,53 @@
 "use client";
 
-import type { ReactNode } from "react";
-
-import type { HomeBlock, HomeBlockType } from "@/entities/landing";
 import {
-  AdminEditorToolbar,
-  useHomePageDraft,
-  PageStructureMenu,
-} from "@/features/admin-home-editor";
+  defaultBlockProps,
+  defaultCollectionItem,
+  HOME_BLOCK_TYPES,
+  HOME_BLOCK_TYPE_LABELS,
+  type HomeBlock,
+  type HomeBlockType,
+} from "@/entities/landing";
+import { getLandingPageSchema } from "@/entities/landing/lib/landing-page-registry";
+import { LANDING_PAGE_SLUGS } from "@/entities/landing/model/landing-page-slugs";
+import { AdminLandingEditorPage } from "@/views/admin-landing-editor";
 import { HomePage } from "@/views/home";
-import { PublicPageShell } from "@/widgets/public-page-shell";
-
-import styles from "./AdminHomeEditorPage.module.css";
 
 type AdminHomeEditorPageProps = {
   initialBlocks: HomeBlock[];
 };
 
+const homeSchema = getLandingPageSchema(LANDING_PAGE_SLUGS.home);
+
 export function AdminHomeEditorPage({ initialBlocks }: AdminHomeEditorPageProps) {
-  const {
-    blocks,
-    isDirty,
-    saving,
-    saveError,
-    updateBlock,
-    moveBlock,
-    removeBlock,
-    addBlock,
-    save,
-  } = useHomePageDraft(initialBlocks);
-
-  function handleAddBlock(type: HomeBlockType, afterIndex: number) {
-    addBlock(type, afterIndex);
-  }
-
   return (
-    <>
-      <div className={styles["admin-home-editor__content"]}>
-        <PublicPageShell>
-          <HomePage
-            blocks={blocks}
-            mode="edit"
-            onBlockUpdate={(block) => updateBlock(block.id, block)}
-          />
-        </PublicPageShell>
-      </div>
-      <AdminEditorToolbar
-        isDirty={isDirty}
-        saving={saving}
-        saveError={saveError}
-        onSave={save}
-        structureMenu={
-          <PageStructureMenu
-            blocks={blocks}
-            onMoveUp={(id) => moveBlock(id, "up")}
-            onMoveDown={(id) => moveBlock(id, "down")}
-            onRemove={removeBlock}
-            onAdd={handleAddBlock}
-          />
+    <AdminLandingEditorPage
+      slug={LANDING_PAGE_SLUGS.home}
+      initialBlocks={initialBlocks}
+      draftConfig={{
+        slug: LANDING_PAGE_SLUGS.home,
+        blockTypes: HOME_BLOCK_TYPES,
+        defaultBlockProps,
+      }}
+      pageSchema={homeSchema}
+      prepareCollectionItem={(block, _arrayPath, collectionKey, item) => {
+        if (collectionKey === "rows" && block.type === "features") {
+          const nextIndex = block.props.rows.length;
+          return {
+            ...(item as Record<string, unknown>),
+            reversed: nextIndex % 2 === 1,
+          };
         }
-      />
-    </>
+        return item;
+      }}
+      renderPage={({ blocks, renderBlock }) => (
+        <HomePage
+          blocks={blocks}
+          mode="edit"
+          onBlockUpdate={() => undefined}
+          renderBlock={(block, index, node) => renderBlock(block, index, node)}
+        />
+      )}
+    />
   );
 }

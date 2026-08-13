@@ -15,24 +15,25 @@
   letter-spacing: var(--letter-heading);
 }
 
-.article-body__copy {
+.article-body__blocks {
   display: grid;
   gap: 20px;
-}
-
-.article-body__copy--before-image {
   margin-top: 80px;
 }
 
-.article-body__copy--after-image {
-  margin: 28px 0 0 12px;
-  line-height: var(--line-body-xl);
+.article-body__paragraph {
+  margin: 0;
+}
+
+.article-body__add-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .article-body__visual {
   position: relative;
   overflow: hidden;
-  margin-top: 28px;
   aspect-ratio: 854 / 267;
   border-radius: var(--radius-lg);
 }
@@ -57,7 +58,7 @@
       clamp(28px, calc(40 * 100vw / 1440), 40px);
   }
 
-  .article-body__copy--before-image {
+  .article-body__blocks {
     margin-top: clamp(48px, calc(80 * 100vw / 1440), 80px);
   }
 }
@@ -78,12 +79,8 @@
     letter-spacing: 0;
   }
 
-  .article-body__copy--before-image {
+  .article-body__blocks {
     margin-top: 48px;
-  }
-
-  .article-body__copy--after-image {
-    line-height: var(--line-body);
   }
 
   .article-body__source {
@@ -92,12 +89,8 @@
 }
 
 @media (max-width: 992px) {
-  .article-body__copy {
+  .article-body__blocks {
     gap: 0;
-  }
-
-  .article-body__copy--after-image {
-    margin-left: 0;
   }
 
   .article-body__visual {
@@ -129,21 +122,12 @@
     line-height: var(--line-body);
   }
 
-  .article-body__copy {
+  .article-body__blocks {
     gap: 16px;
-  }
-
-  .article-body__copy--before-image {
     margin-top: 32px;
   }
 
-  .article-body__copy--after-image {
-    margin-top: 20px;
-    line-height: var(--line-body-sm);
-  }
-
   .article-body__visual {
-    margin-top: 20px;
     aspect-ratio: 311 / 184;
     border-radius: var(--radius-sm);
   }
@@ -166,20 +150,12 @@
     line-height: var(--line-body-sm);
   }
 
-  .article-body__copy {
+  .article-body__blocks {
     gap: 12px;
-  }
-
-  .article-body__copy--before-image {
     margin-top: 20px;
   }
 
-  .article-body__copy--after-image {
-    margin-top: 12px;
-  }
-
   .article-body__visual {
-    margin-top: 12px;
     aspect-ratio: 296 / 186;
     border-radius: 8px;
   }

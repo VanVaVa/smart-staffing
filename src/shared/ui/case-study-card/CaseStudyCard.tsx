@@ -26,6 +26,7 @@ type CaseStudyCardProps = {
   tag?: string;
   actionLabel?: string;
   itemIndex?: number;
+  editPrefix?: string;
   layout?: CaseStudyCardLayout;
 };
 
@@ -78,17 +79,19 @@ export function CaseStudyCard({
   tag,
   actionLabel = "Читать дальше",
   itemIndex,
+  editPrefix,
   layout = "default",
 }: CaseStudyCardProps) {
   const edit = useAdminBlockEditOptional();
-  const editable = edit !== null && itemIndex !== undefined;
+  const prefix =
+    editPrefix ?? (itemIndex !== undefined ? `items.${itemIndex}.` : "");
+  const editable = edit !== null && prefix !== "";
   const rootClassName = [
     styles["case-study-card"],
     layout === "compact-horizontal" && styles["case-study-card--compact-horizontal"],
   ]
     .filter(Boolean)
     .join(" ");
-  const prefix = itemIndex !== undefined ? `items.${itemIndex}.` : "";
   const ariaLabel = `${panelAlt}. ${actionLabel}`;
   const logoStyle = {
     "--case-study-logo-max-width": `${logoWidth}px`,
@@ -158,9 +161,17 @@ export function CaseStudyCard({
         </div>
         {layout === "compact-horizontal" && tag ? (
           <div className={styles["case-study-card__panel-header"]}>
-            <Badge variant="tag" className={styles["case-study-card__panel-tag"]}>
-              {tag}
-            </Badge>
+            {editable ? (
+              <EditableText path={`${prefix}tag`} label="Кейс — тег">
+                <Badge variant="tag" className={styles["case-study-card__panel-tag"]}>
+                  {tag}
+                </Badge>
+              </EditableText>
+            ) : (
+              <Badge variant="tag" className={styles["case-study-card__panel-tag"]}>
+                {tag}
+              </Badge>
+            )}
           </div>
         ) : null}
         <div className={styles["case-study-card__metric-block"]}>
@@ -197,9 +208,17 @@ export function CaseStudyCard({
       <div className={styles["case-study-card__content"]}>
         <div className={styles["case-study-card__lead"]}>
           {tag ? (
-            <Badge variant="tag" className={styles["case-study-card__tag"]}>
-              {tag}
-            </Badge>
+            editable ? (
+              <EditableText path={`${prefix}tag`} label="Кейс — тег">
+                <Badge variant="tag" className={styles["case-study-card__tag"]}>
+                  {tag}
+                </Badge>
+              </EditableText>
+            ) : (
+              <Badge variant="tag" className={styles["case-study-card__tag"]}>
+                {tag}
+              </Badge>
+            )
           ) : null}
           {editable ? (
             <EditableText

@@ -3,6 +3,7 @@
 import {
   type ChangeEvent,
   type FormEvent,
+  type ReactNode,
   useEffect,
   useMemo,
   useRef,
@@ -54,13 +55,13 @@ const UPLOAD_DELAY_MS = 1200;
 type AttachState = "idle" | "loading" | "uploaded";
 
 export type FeedbackFormResumeAttach = {
-  label: string;
-  loadingLabel: string;
+  label: ReactNode;
+  loadingLabel: ReactNode;
 };
 
 export type FeedbackFormProps = {
   className?: string;
-  submitLabel?: string;
+  submitLabel?: ReactNode;
   tone?: "dark" | "light";
   fullNamePlaceholder?: string;
   resumeAttach?: FeedbackFormResumeAttach;

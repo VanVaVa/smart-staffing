@@ -1,14 +1,24 @@
 import Image from "next/image";
 
-import { aboutHistory } from "@/entities/landing";
+import type { AboutHistoryBlockProps } from "@/entities/landing/model/about-blocks";
 import { headerBackdropProps } from "@/shared/config";
 import { ArrowIcon } from "@/shared/ui/arrow-icon";
 import { Container } from "@/shared/ui/container";
+import {
+  EditableCollectionAdd,
+  EditableCollectionItem,
+  EditableMedia,
+  EditableText,
+} from "@/shared/ui/editable-field";
 
 import styles from "./AboutHistorySection.module.css";
 
-export function AboutHistorySection() {
-  const { title, timeline, mission } = aboutHistory;
+type AboutHistorySectionProps = {
+  content: AboutHistoryBlockProps;
+};
+
+export function AboutHistorySection({ content }: AboutHistorySectionProps) {
+  const { title, timeline, mission } = content;
 
   return (
     <section
@@ -23,40 +33,103 @@ export function AboutHistorySection() {
       </div>
       <Container wide>
         <div className={styles["about-history-section__inner"]}>
-          <h2 className={styles["about-history-section__title"]}>{title}</h2>
+          <EditableText
+            path="title"
+            label="Заголовок истории"
+            as="h2"
+            className={styles["about-history-section__title"]}
+            multiline
+          >
+            {title}
+          </EditableText>
           <div className={styles["about-history-section__body"]}>
             <ol className={styles["about-history-section__timeline"]}>
-              {timeline.map((item) => (
-                <li key={item.year} className={styles["about-history-section__timeline-item"]}>
-                  <span className={styles["about-history-section__timeline-arrow"]} aria-hidden>
-                    <ArrowIcon name="2Right" className={styles["about-history-section__timeline-arrow-icon"]} />
-                  </span>
-                  <div className={styles["about-history-section__timeline-copy"]}>
-                    <span className={styles["about-history-section__timeline-year"]}>{item.year}</span>
-                    <p className={styles["about-history-section__timeline-text"]}>{item.text}</p>
-                  </div>
-                </li>
+              {timeline.map((item, index) => (
+                <EditableCollectionItem
+                  key={`${item.year}-${index}`}
+                  arrayPath="timeline"
+                  index={index}
+                >
+                  <li className={styles["about-history-section__timeline-item"]}>
+                    <span className={styles["about-history-section__timeline-arrow"]} aria-hidden>
+                      <ArrowIcon name="2Right" className={styles["about-history-section__timeline-arrow-icon"]} />
+                    </span>
+                    <div className={styles["about-history-section__timeline-copy"]}>
+                      <EditableText
+                        path={`timeline.${index}.year`}
+                        label="История — год"
+                        className={styles["about-history-section__timeline-year"]}
+                      >
+                        {item.year}
+                      </EditableText>
+                      <EditableText
+                        path={`timeline.${index}.text`}
+                        label="История — событие"
+                        as="p"
+                        className={styles["about-history-section__timeline-text"]}
+                        multiline
+                      >
+                        {item.text}
+                      </EditableText>
+                    </div>
+                  </li>
+                </EditableCollectionItem>
               ))}
             </ol>
+            <EditableCollectionAdd
+              arrayPath="timeline"
+              collectionKey="history.timeline"
+              addLabel="Событие"
+            />
             <div className={styles["about-history-section__mission-column"]}>
               <article className={styles["about-history-section__mission"]}>
-                <span className={styles["about-history-section__mission-tag"]}>{mission.tag}</span>
+                <EditableText
+                  path="mission.tag"
+                  label="Миссия — тег"
+                  className={styles["about-history-section__mission-tag"]}
+                >
+                  {mission.tag}
+                </EditableText>
                 <ul className={styles["about-history-section__mission-list"]}>
                   {mission.items.map((item, index) => {
                     const marker = mission.markers[index];
 
                     return (
-                      <li key={item} className={styles["about-history-section__mission-item"]}>
-                        {marker ? (
-                          <span className={styles["about-history-section__mission-marker"]} aria-hidden>
-                            <Image src={marker.iconSrc} alt={marker.alt} width={28} height={28} />
-                          </span>
-                        ) : null}
-                        <p className={styles["about-history-section__mission-item-text"]}>{item}</p>
-                      </li>
+                      <EditableCollectionItem
+                        key={`${item}-${index}`}
+                        arrayPath="mission.items"
+                        index={index}
+                      >
+                        <li className={styles["about-history-section__mission-item"]}>
+                          {marker ? (
+                            <EditableMedia
+                              path={`mission.markers.${index}.iconSrc`}
+                              label="Миссия — иконка"
+                            >
+                              <span className={styles["about-history-section__mission-marker"]} aria-hidden>
+                                <Image src={marker.iconSrc} alt={marker.alt} width={28} height={28} />
+                              </span>
+                            </EditableMedia>
+                          ) : null}
+                          <EditableText
+                            path={`mission.items.${index}`}
+                            label="Миссия — пункт"
+                            as="p"
+                            className={styles["about-history-section__mission-item-text"]}
+                            multiline
+                          >
+                            {item}
+                          </EditableText>
+                        </li>
+                      </EditableCollectionItem>
                     );
                   })}
                 </ul>
+                <EditableCollectionAdd
+                  arrayPath="mission.items"
+                  collectionKey="history.mission.items"
+                  addLabel="Пункт миссии"
+                />
               </article>
             </div>
           </div>

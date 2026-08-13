@@ -2,24 +2,25 @@
 
 import {
   useCallback,
+  useEffect,
   useLayoutEffect,
   useRef,
   useState,
   type PointerEvent as ReactPointerEvent,
 } from "react";
 
+import type { VacanciesBlockProps } from "@/entities/landing/model/vacancies-blocks";
+import {
+  EditableCollectionAdd,
+  EditableCollectionItem,
+} from "@/shared/ui/editable-field";
+
 import { VacanciesListItem } from "../vacancies-list-item";
 
 import styles from "./VacanciesList.module.css";
 
-type Vacancy = {
-  id: string;
-  title: string;
-  employment: string;
-};
-
 type VacanciesListProps = {
-  vacancies: readonly Vacancy[];
+  vacancies: VacanciesBlockProps["vacancies"];
 };
 
 type ScrollMetrics = {
@@ -53,7 +54,13 @@ function measureScroll(viewport: HTMLDivElement): ScrollMetrics {
 }
 
 export function VacanciesList({ vacancies }: VacanciesListProps) {
-  const [selectedId, setSelectedId] = useState(vacancies[0]?.id ?? "");
+  const [selectedId, setSelectedId] = useState<string>(vacancies[0]?.id ?? "");
+
+  useEffect(() => {
+    if (!vacancies.some((vacancy) => vacancy.id === selectedId)) {
+      setSelectedId(vacancies[0]?.id ?? "");
+    }
+  }, [selectedId, vacancies]);
   const viewportRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const dragRef = useRef<{ startY: number; startScrollTop: number } | null>(null);
@@ -182,14 +189,17 @@ export function VacanciesList({ vacancies }: VacanciesListProps) {
         tabIndex={0}
       >
         <ul className={styles["vacancies-list-panel__items"]}>
-          {vacancies.map((vacancy) => (
+          {vacancies.map((vacancy, index) => (
             <li key={vacancy.id} className={styles["vacancies-list-panel__item"]}>
-              <VacanciesListItem
-                title={vacancy.title}
-                employment={vacancy.employment}
-                selected={vacancy.id === selectedId}
-                onSelect={() => setSelectedId(vacancy.id)}
-              />
+              <EditableCollectionItem arrayPath="vacancies" index={index}>
+                <VacanciesListItem
+                  title={vacancy.title}
+                  employment={vacancy.employment}
+                  selected={vacancy.id === selectedId}
+                  onSelect={() => setSelectedId(vacancy.id)}
+                  itemIndex={index}
+                />
+              </EditableCollectionItem>
             </li>
           ))}
         </ul>
@@ -217,6 +227,7 @@ export function VacanciesList({ vacancies }: VacanciesListProps) {
           onPointerCancel={handleThumbPointerUp}
         />
       </div>
+      <EditableCollectionAdd arrayPath="vacancies" collectionKey={"vacancies" as never} addLabel="Вакансия" />
     </div>
   );
 }

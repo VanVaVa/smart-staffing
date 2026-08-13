@@ -55,6 +55,14 @@
   max-width: min(728px, calc(728 * 100vw / 1920));
 }
 
+.about-book-form__placeholder-edit {
+  font-family: var(--font-body);
+  font-size: var(--text-body-sm);
+  line-height: var(--line-body-sm);
+  color: rgb(255 255 255 / 72%);
+  word-break: break-all;
+}
+
 .about-book-form__row {
   display: flex;
   flex-wrap: nowrap;

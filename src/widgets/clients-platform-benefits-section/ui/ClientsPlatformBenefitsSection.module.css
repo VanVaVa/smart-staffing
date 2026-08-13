@@ -187,6 +187,10 @@
     gap: 8px;
   }
 
+  .clients-platform-benefits-section__cards:not(:has(> :nth-child(4))) {
+    grid-template-rows: auto;
+  }
+
   .clients-platform-benefits-section__card:nth-child(1) > *,
   .clients-platform-benefits-section__card:nth-child(2) > * {
     min-height: min(288px, calc(288 * 100vw / 992));
@@ -195,6 +199,12 @@
   .clients-platform-benefits-section__card:nth-child(3) {
     grid-row: 1 / span 2;
     grid-column: 3;
+  }
+
+  .clients-platform-benefits-section__cards:not(:has(> :nth-child(4)))
+    .clients-platform-benefits-section__card:nth-child(3) {
+    grid-row: auto;
+    grid-column: auto;
   }
 
   .clients-platform-benefits-section__card:nth-child(3) > * {

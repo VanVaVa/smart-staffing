@@ -1,17 +1,18 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import type { DocumentItem } from "@/entities/landing";
+import type { DocumentViewBlockProps } from "@/entities/landing/model/document-view-blocks";
+import { EditableMedia, EditableText } from "@/shared/ui/editable-field";
 import { ArrowIcon, Container } from "@/shared/ui";
 
 import { PdfViewer } from "../pdf-viewer";
 import styles from "./DocumentViewer.module.css";
 
 type DocumentViewerProps = {
-  document: DocumentItem;
+  content: DocumentViewBlockProps;
 };
 
-export function DocumentViewer({ document }: DocumentViewerProps) {
+export function DocumentViewer({ content }: DocumentViewerProps) {
   return (
     <section className={styles["document-viewer"]}>
       <Container wide className={styles["document-viewer__container"]}>
@@ -20,22 +21,33 @@ export function DocumentViewer({ document }: DocumentViewerProps) {
             <ArrowIcon name="2Left" />
             Документы
           </Link>
-          <h1 className={styles["document-viewer__title"]}>{document.title}</h1>
-          <a
-            className={styles["document-viewer__download"]}
-            href={document.pdfSrc}
-            download
-            aria-label="Скачать PDF"
+          <EditableText
+            path="title"
+            label="Заголовок документа"
+            as="h1"
+            className={styles["document-viewer__title"]}
           >
-            <Image
-              src="/icons/download.svg"
-              alt=""
-              width={24}
-              height={26}
-            />
-          </a>
+            {content.title}
+          </EditableText>
+          <EditableMedia path="pdfSrc" label="PDF документа">
+            <a
+              className={styles["document-viewer__download"]}
+              href={content.pdfSrc}
+              download
+              aria-label="Скачать PDF"
+            >
+              <Image
+                src="/icons/download.svg"
+                alt=""
+                width={24}
+                height={26}
+              />
+            </a>
+          </EditableMedia>
         </header>
-        <PdfViewer src={document.pdfSrc} title={document.title} />
+        <EditableMedia path="pdfSrc" label="PDF документа">
+          <PdfViewer src={content.pdfSrc} title={content.title} />
+        </EditableMedia>
       </Container>
     </section>
   );

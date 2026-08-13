@@ -39,6 +39,10 @@ export function RelatedArticles({ articles }: RelatedArticlesProps) {
   const visibleArticles = articles.slice(0, 5);
   const hiddenArticles = articles.slice(4);
 
+  if (articles.length === 0) {
+    return null;
+  }
+
   return (
     <section className={styles["related-articles"]}>
       <h2 className={styles["related-articles__heading"]}>Читать далее</h2>

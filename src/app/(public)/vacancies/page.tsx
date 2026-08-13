@@ -1,13 +1,9 @@
-import type { Metadata } from "next";
-
+import { getVacanciesPageContent } from "@/entities/landing/server";
 import { VacanciesPage } from "@/views/vacancies";
 
-export const metadata: Metadata = {
-  title: "Вакансии — СмартСтаффинг",
-  description:
-    "Открытые вакансии СмартСтаффинг: выберите направление, отправьте резюме и присоединяйтесь к команде.",
-};
+export const dynamic = "force-dynamic";
 
-export default function Page() {
-  return <VacanciesPage />;
+export default async function Page() {
+  const { blocks } = await getVacanciesPageContent();
+  return <VacanciesPage blocks={blocks} />;
 }

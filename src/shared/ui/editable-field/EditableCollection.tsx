@@ -2,14 +2,12 @@
 
 import type { ReactNode } from "react";
 
-import type { HomeCollectionKey } from "@/entities/landing/model/home-blocks";
-
 import { useAdminBlockEditOptional } from "./context";
 import styles from "./EditableCollection.module.css";
 
 type EditableCollectionAddProps = {
   arrayPath: string;
-  collectionKey: HomeCollectionKey;
+  collectionKey: string;
   addLabel: string;
   className?: string;
   variant?: "inline" | "grid-span";

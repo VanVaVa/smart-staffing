@@ -59,6 +59,21 @@
   flex-shrink: 0;
 }
 
+.about-career-cta__button:has(.about-career-cta__href-edit) {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.about-career-cta__href-edit {
+  font-family: var(--font-body);
+  font-size: var(--text-body-sm);
+  line-height: var(--line-body-sm);
+  color: var(--color-grey-600);
+  word-break: break-all;
+}
+
 @media (max-width: 1440px) {
   .about-career-cta {
     width: min(100%, 1048px);

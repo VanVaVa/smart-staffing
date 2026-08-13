@@ -2,37 +2,55 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import {
-  getMediaArticle,
-  mediaArticleSlugs,
-} from "@/entities/landing";
+  buildRelatedArticles,
+  getMediaArticlePageContent,
+  listMediaArticles,
+  mediaArticleExists,
+} from "@/entities/landing/server";
 import { MediaArticlePage } from "@/views/media-article";
+
+export const dynamic = "force-dynamic";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
 };
 
-export function generateStaticParams() {
-  return mediaArticleSlugs.map((slug) => ({ slug }));
-}
-
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const article = getMediaArticle(slug);
 
-  if (!article) {
+  if (!(await mediaArticleExists(slug))) {
     return {};
   }
 
-  return article.meta;
+  try {
+    const { blocks, meta } = await getMediaArticlePageContent(slug);
+    const articleBlock = blocks.find((block) => block.type === "mediaArticle");
+
+    return articleBlock?.props.meta ?? meta ?? {};
+  } catch {
+    return {};
+  }
 }
 
 export default async function Page({ params }: PageProps) {
   const { slug } = await params;
-  const article = getMediaArticle(slug);
 
-  if (!article) {
+  if (!(await mediaArticleExists(slug))) {
     notFound();
   }
 
-  return <MediaArticlePage article={article} />;
+  try {
+    const [{ blocks }, articles] = await Promise.all([
+      getMediaArticlePageContent(slug),
+      listMediaArticles(),
+    ]);
+
+    const relatedArticles = buildRelatedArticles(slug, articles);
+
+    return (
+      <MediaArticlePage blocks={blocks} relatedArticles={relatedArticles} />
+    );
+  } catch {
+    notFound();
+  }
 }

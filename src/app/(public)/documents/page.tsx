@@ -1,14 +1,25 @@
 import type { Metadata } from "next";
 
-import { documentsPage } from "@/entities/landing";
+import { getDocumentsLandingPageContent } from "@/entities/landing/server";
 import { DocumentsPage } from "@/views/documents";
 
-export const metadata: Metadata = {
-  title: "Документы — СмартСтаффинг",
-  description:
-    "Юридические документы, сведения о платформе и свидетельства СмартСтаффинг.",
-};
+export const dynamic = "force-dynamic";
 
-export default function Page() {
-  return <DocumentsPage content={documentsPage} />;
+export async function generateMetadata(): Promise<Metadata> {
+  const { meta } = await getDocumentsLandingPageContent();
+
+  if (meta) {
+    return meta;
+  }
+
+  return {
+    title: "Документы — СмартСтаффинг",
+    description:
+      "Юридические документы, сведения о платформе и свидетельства СмартСтаффинг.",
+  };
+}
+
+export default async function Page() {
+  const { blocks } = await getDocumentsLandingPageContent();
+  return <DocumentsPage blocks={blocks} />;
 }

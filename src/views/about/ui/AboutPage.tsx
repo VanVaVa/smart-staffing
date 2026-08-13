@@ -1,25 +1,56 @@
-import { AboutBenefitsSection } from "@/widgets/about-benefits-section";
-import { AboutCareerBookSection } from "@/widgets/about-career-book-section";
-import { AboutLeadershipSection } from "@/widgets/about-leadership-section";
-import { AboutHistorySection } from "@/widgets/about-history-section";
-import { AboutIntroSection } from "@/widgets/about-intro-section";
-import { AboutPartnerSection } from "@/widgets/about-partner-section";
-import { AboutSpotlightSection } from "@/widgets/about-spotlight-section";
-import { AboutTrustedSection } from "@/widgets/about-trusted-section";
+"use client";
 
+import type { ReactNode } from "react";
+
+import type { AboutBlock } from "@/entities/landing/model/about-blocks";
+import {
+  AdminInlineEditLayer,
+} from "@/features/admin-landing-editor";
+import { getLandingPageSchema } from "@/entities/landing/lib/landing-page-registry";
+import { LANDING_PAGE_SLUGS } from "@/entities/landing/model/landing-page-slugs";
+
+import { AboutBlockRenderer } from "./AboutBlockRenderer";
 import styles from "./AboutPage.module.css";
 
-export function AboutPage() {
+export type AboutPageMode = "view" | "edit";
+
+type AboutPageProps = {
+  blocks: AboutBlock[];
+  mode?: AboutPageMode;
+  onBlockUpdate?: (block: AboutBlock) => void;
+  renderBlock?: (block: AboutBlock, index: number, node: ReactNode) => ReactNode;
+};
+
+const aboutSchema = getLandingPageSchema(LANDING_PAGE_SLUGS.about);
+
+export function AboutPage({
+  blocks,
+  mode = "view",
+  onBlockUpdate,
+  renderBlock,
+}: AboutPageProps) {
+  const inlineEdit = mode === "edit" && Boolean(onBlockUpdate) && !renderBlock;
+
   return (
     <div className={styles["about-page"]}>
-      <AboutIntroSection />
-      <AboutSpotlightSection />
-      <AboutHistorySection />
-      <AboutPartnerSection />
-      <AboutTrustedSection />
-      <AboutBenefitsSection />
-      <AboutLeadershipSection />
-      <AboutCareerBookSection />
+      {blocks.map((block, index) => {
+        let node = <AboutBlockRenderer block={block} />;
+        if (inlineEdit && onBlockUpdate) {
+          node = (
+            <AdminInlineEditLayer
+              block={block}
+              onUpdateBlock={onBlockUpdate}
+              defaultCollectionItem={aboutSchema.defaultCollectionItem}
+            >
+              {node}
+            </AdminInlineEditLayer>
+          );
+        }
+        if (renderBlock) {
+          return <div key={block.id}>{renderBlock(block, index, node)}</div>;
+        }
+        return <div key={block.id}>{node}</div>;
+      })}
     </div>
   );
 }

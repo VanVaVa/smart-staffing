@@ -1,13 +1,10 @@
 import { NextResponse } from "next/server";
 
 import {
-  isHomeBlockType,
-  parseHomeBlockProps,
-} from "@/entities/landing";
-import {
-  getHomePageContent,
-  saveHomePageBlocks,
+  getLandingPageContent,
+  validateAndSaveLandingPageBlocks,
 } from "@/entities/landing/server";
+import { LANDING_PAGE_SLUGS } from "@/entities/landing/model/landing-page-slugs";
 
 type SaveBlockPayload = {
   id?: string;
@@ -22,7 +19,7 @@ type SaveBody = {
 
 export async function GET() {
   try {
-    const content = await getHomePageContent();
+    const content = await getLandingPageContent(LANDING_PAGE_SLUGS.home);
     return NextResponse.json(content);
   } catch (error) {
     const message =
@@ -43,34 +40,15 @@ export async function PUT(request: Request) {
     return NextResponse.json({ error: "blocks array required" }, { status: 400 });
   }
 
-  const sorted = [...body.blocks].sort((a, b) => a.order - b.order);
-
-  for (let index = 0; index < sorted.length; index += 1) {
-    const block = sorted[index];
-    if (block.order !== index) {
-      return NextResponse.json({ error: "Invalid block order" }, { status: 400 });
-    }
-    if (!isHomeBlockType(block.type)) {
-      return NextResponse.json({ error: `Unknown block type: ${block.type}` }, { status: 400 });
-    }
-    const props = parseHomeBlockProps(block.type, block.props);
-    if (!props) {
-      return NextResponse.json(
-        { error: `Invalid props for block type: ${block.type}` },
-        { status: 400 },
-      );
-    }
-    block.props = props;
-  }
-
   try {
-    const { pageId } = await getHomePageContent();
-    await saveHomePageBlocks(pageId, sorted);
-    const content = await getHomePageContent();
+    const content = await validateAndSaveLandingPageBlocks(
+      LANDING_PAGE_SLUGS.home,
+      body.blocks,
+    );
     return NextResponse.json(content);
   } catch (error) {
     const message =
       error instanceof Error ? error.message : "Failed to save home content";
-    return NextResponse.json({ error: message }, { status: 500 });
+    return NextResponse.json({ error: message }, { status: 400 });
   }
 }

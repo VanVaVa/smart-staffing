@@ -1,20 +1,15 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import {
-  clientSegmentSlugs,
-  getClientsSegment,
-  isClientSegmentSlug,
-} from "@/entities/landing";
+import { isClientSegmentSlug } from "@/entities/landing";
+import { getClientsPageContent } from "@/entities/landing/server";
 import { ClientsPage } from "@/views/clients";
+
+export const dynamic = "force-dynamic";
 
 type PageProps = {
   params: Promise<{ segment: string }>;
 };
-
-export function generateStaticParams() {
-  return clientSegmentSlugs.map((segment) => ({ segment }));
-}
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { segment } = await params;
@@ -23,7 +18,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return {};
   }
 
-  const { meta } = getClientsSegment(segment);
+  const { meta } = await getClientsPageContent(segment);
+
+  if (!meta) {
+    return {};
+  }
 
   return {
     title: meta.title,
@@ -38,5 +37,7 @@ export default async function Page({ params }: PageProps) {
     notFound();
   }
 
-  return <ClientsPage segment={segment} />;
+  const { blocks } = await getClientsPageContent(segment);
+
+  return <ClientsPage blocks={blocks} segment={segment} />;
 }

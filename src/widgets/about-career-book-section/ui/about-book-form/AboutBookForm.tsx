@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 
+import { EditableText, useAdminBlockEditOptional } from "@/shared/ui/editable-field";
 import { Button } from "@/shared/ui/button";
 import { Checkbox } from "@/shared/ui/checkbox";
 import { Input } from "@/shared/ui/input";
@@ -15,6 +16,8 @@ type AboutBookFormProps = {
 };
 
 export function AboutBookForm({ inputPlaceholder, buttonLabel }: AboutBookFormProps) {
+  const blockEdit = useAdminBlockEditOptional();
+  const inAdminEdit = Boolean(blockEdit);
   const [telegramId, setTelegramId] = useState("");
   const [consented, setConsented] = useState(false);
 
@@ -46,7 +49,9 @@ export function AboutBookForm({ inputPlaceholder, buttonLabel }: AboutBookFormPr
             disabled={!canSubmit}
             className={styles["about-book-form__submit"]}
           >
-            {buttonLabel}
+            <EditableText path="book.form.buttonLabel" label="Книга — подпись кнопки">
+              {buttonLabel}
+            </EditableText>
           </Button>
         </div>
         <Checkbox
@@ -63,6 +68,15 @@ export function AboutBookForm({ inputPlaceholder, buttonLabel }: AboutBookFormPr
             </>
           }
         />
+        {inAdminEdit ? (
+          <EditableText
+            path="book.form.inputPlaceholder"
+            label="Книга — placeholder поля"
+            className={styles["about-book-form__placeholder-edit"]}
+          >
+            {inputPlaceholder}
+          </EditableText>
+        ) : null}
       </div>
     </form>
   );

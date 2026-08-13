@@ -1,4 +1,5 @@
-import type { AboutLeadershipMemberLayout } from "@/entities/landing";
+import type { AboutLeadershipMemberLayout } from "@/entities/landing/model/about-content";
+import { EditableMedia, EditableText } from "@/shared/ui/editable-field";
 
 import styles from "./AboutLeadershipCard.module.css";
 
@@ -7,6 +8,7 @@ type AboutLeadershipCardProps = {
   name: string;
   imageSrc: string;
   layout: AboutLeadershipMemberLayout;
+  itemIndex: number;
 };
 
 export function AboutLeadershipCard({
@@ -14,25 +16,42 @@ export function AboutLeadershipCard({
   name,
   imageSrc,
   layout,
+  itemIndex,
 }: AboutLeadershipCardProps) {
+  const prefix = `members.${itemIndex}.`;
+
   return (
     <article
       className={`${styles["about-leadership-card"]} ${styles[`about-leadership-card--${layout}`]}`}
     >
-      <img
-        src={imageSrc}
-        alt=""
-        className={styles["about-leadership-card__photo"]}
-        width={603}
-        height={396}
-      />
+      <EditableMedia path={`${prefix}imageSrc`} label="Руководство — фото">
+        <img
+          src={imageSrc}
+          alt=""
+          className={styles["about-leadership-card__photo"]}
+          width={603}
+          height={396}
+        />
+      </EditableMedia>
       <div
         className={styles["about-leadership-card__overlay"]}
         aria-hidden
       />
       <div className={styles["about-leadership-card__caption"]}>
-        <p className={styles["about-leadership-card__role"]}>{role}</p>
-        <p className={styles["about-leadership-card__name"]}>{name}</p>
+        <EditableText
+          path={`${prefix}role`}
+          label="Руководство — роль"
+          className={styles["about-leadership-card__role"]}
+        >
+          {role}
+        </EditableText>
+        <EditableText
+          path={`${prefix}name`}
+          label="Руководство — имя"
+          className={styles["about-leadership-card__name"]}
+        >
+          {name}
+        </EditableText>
       </div>
     </article>
   );

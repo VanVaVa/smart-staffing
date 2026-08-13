@@ -7,13 +7,14 @@ import styles from "./MediaCard.module.css";
 
 type MediaCardProps = {
   article: MediaArticle;
+  href?: string;
 };
 
-export function MediaCard({ article }: MediaCardProps) {
+export function MediaCard({ article, href }: MediaCardProps) {
   return (
     <NextLink
       id={`publication-${article.id}`}
-      href={article.href}
+      href={href ?? article.href}
       className={styles["media-card"]}
     >
       <div className={styles["media-card__visual"]}>

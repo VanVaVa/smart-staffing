@@ -1,13 +1,9 @@
-import type { Metadata } from "next";
-
+import { getAboutPageContent } from "@/entities/landing/server";
 import { AboutPage } from "@/views/about";
 
-export const metadata: Metadata = {
-  title: "О компании — СмартСтаффинг",
-  description:
-    "СмартСтаффинг — эксперт гибкой проектной занятости. История компании, миссия и подход к подбору ИТ-специалистов.",
-};
+export const dynamic = "force-dynamic";
 
-export default function Page() {
-  return <AboutPage />;
+export default async function Page() {
+  const { blocks } = await getAboutPageContent();
+  return <AboutPage blocks={blocks} />;
 }

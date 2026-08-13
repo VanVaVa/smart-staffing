@@ -2,6 +2,11 @@ import type { CSSProperties } from "react";
 
 import type { ClientsPlatformBenefitsContent } from "@/entities/landing";
 import { Container } from "@/shared/ui/container";
+import {
+  EditableCollectionAdd,
+  EditableCollectionItem,
+  EditableText,
+} from "@/shared/ui/editable-field";
 
 import { ClientsPlatformBenefitsCard } from "./clients-platform-benefits-card";
 import { ClientsPlatformBenefitsShowcaseCard } from "./clients-platform-benefits-showcase-card";
@@ -20,17 +25,33 @@ export function ClientsPlatformBenefitsSection({
   return (
     <section className={styles["clients-platform-benefits-section"]}>
       <Container wide className={styles["clients-platform-benefits-section__container"]}>
-        <h2 className={styles["clients-platform-benefits-section__title"]}>
+        <EditableText
+          path="sectionTitle"
+          label="Преимущества — заголовок секции"
+          as="h2"
+          className={styles["clients-platform-benefits-section__title"]}
+        >
           {content.sectionTitle}
-        </h2>
+        </EditableText>
         <div className={styles["clients-platform-benefits-section__panel"]}>
           <div className={styles["clients-platform-benefits-section__panel-header"]}>
-            <p className={styles["clients-platform-benefits-section__panel-title"]}>
+            <EditableText
+              path="panelTitle"
+              label="Преимущества — заголовок панели"
+              as="p"
+              className={styles["clients-platform-benefits-section__panel-title"]}
+            >
               {content.panelTitle}
-            </p>
-            <p className={styles["clients-platform-benefits-section__panel-subtitle"]}>
+            </EditableText>
+            <EditableText
+              path="panelSubtitle"
+              label="Преимущества — подзаголовок панели"
+              as="p"
+              className={styles["clients-platform-benefits-section__panel-subtitle"]}
+              multiline
+            >
               {content.panelSubtitle}
-            </p>
+            </EditableText>
           </div>
           <ul
             className={styles["clients-platform-benefits-section__cards"]}
@@ -40,22 +61,37 @@ export function ClientsPlatformBenefitsSection({
               } as CSSProperties
             }
           >
-            {content.cards.map((card) => (
-              <li
-                key={card.title}
-                className={styles["clients-platform-benefits-section__card"]}
+            {content.cards.map((card, index) => (
+              <EditableCollectionItem
+                key={`${card.title}-${index}`}
+                arrayPath="cards"
+                index={index}
+                variant="benefit"
               >
-                <ClientsPlatformBenefitsCard card={card} />
-              </li>
+                <li className={styles["clients-platform-benefits-section__card"]}>
+                  <ClientsPlatformBenefitsCard card={card} cardIndex={index} />
+                </li>
+              </EditableCollectionItem>
             ))}
           </ul>
+          <EditableCollectionAdd
+            arrayPath="cards"
+            collectionKey="platformBenefits.cards"
+            addLabel="Карточка"
+          />
         </div>
         <div className={styles["clients-platform-benefits-section__showcase"]}>
           <div className={styles["clients-platform-benefits-section__showcase-row"]}>
-            <ClientsPlatformBenefitsShowcaseCard item={showcaseItCosts} />
-            <ClientsPlatformBenefitsShowcaseCard item={showcaseQuality} />
+            <EditableCollectionItem arrayPath="showcase" index={0} variant="benefit">
+              <ClientsPlatformBenefitsShowcaseCard item={showcaseItCosts} itemIndex={0} />
+            </EditableCollectionItem>
+            <EditableCollectionItem arrayPath="showcase" index={1} variant="benefit">
+              <ClientsPlatformBenefitsShowcaseCard item={showcaseQuality} itemIndex={1} />
+            </EditableCollectionItem>
           </div>
-          <ClientsPlatformBenefitsShowcaseCard item={showcaseScaling} />
+          <EditableCollectionItem arrayPath="showcase" index={2} variant="benefit">
+            <ClientsPlatformBenefitsShowcaseCard item={showcaseScaling} itemIndex={2} />
+          </EditableCollectionItem>
         </div>
       </Container>
     </section>

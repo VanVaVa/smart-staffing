@@ -1,4 +1,5 @@
 import { ArrowIcon } from "@/shared/ui/arrow-icon";
+import { EditableText } from "@/shared/ui/editable-field";
 
 import styles from "./AboutPartnerAwardCard.module.css";
 
@@ -9,6 +10,7 @@ type AboutPartnerAwardCardProps = {
   project: string;
   href?: string;
   onClick?: () => void;
+  itemIndex?: number;
 };
 
 export function AboutPartnerAwardCard({
@@ -18,26 +20,48 @@ export function AboutPartnerAwardCard({
   project,
   href,
   onClick,
+  itemIndex,
 }: AboutPartnerAwardCardProps) {
+  const prefix = itemIndex !== undefined ? `awards.${itemIndex}.` : "";
   const rootClass = styles["about-partner-award-card"];
   const ariaLabel = `Подробнее: ${title.replace(/\n/g, " ")}`;
 
   const content = (
     <>
-      <h3 className={styles["about-partner-award-card__title"]}>{title}</h3>
+      <EditableText
+        path={`${prefix}title`}
+        label="Награда — заголовок"
+        as="h3"
+        className={styles["about-partner-award-card__title"]}
+        multiline
+      >
+        {title}
+      </EditableText>
       <div className={styles["about-partner-award-card__body"]}>
         <dl className={styles["about-partner-award-card__fields"]}>
           <div className={styles["about-partner-award-card__field"]}>
             <dt className={styles["about-partner-award-card__field-label"]}>Статус</dt>
-            <dd className={styles["about-partner-award-card__field-value"]}>{status}</dd>
+            <dd className={styles["about-partner-award-card__field-value"]}>
+              <EditableText path={`${prefix}status`} label="Награда — статус">
+                {status}
+              </EditableText>
+            </dd>
           </div>
           <div className={styles["about-partner-award-card__field"]}>
             <dt className={styles["about-partner-award-card__field-label"]}>Номинация</dt>
-            <dd className={styles["about-partner-award-card__field-value"]}>{nomination}</dd>
+            <dd className={styles["about-partner-award-card__field-value"]}>
+              <EditableText path={`${prefix}nomination`} label="Награда — номинация" multiline>
+                {nomination}
+              </EditableText>
+            </dd>
           </div>
           <div className={styles["about-partner-award-card__field"]}>
             <dt className={styles["about-partner-award-card__field-label"]}>Проект</dt>
-            <dd className={styles["about-partner-award-card__field-value"]}>{project}</dd>
+            <dd className={styles["about-partner-award-card__field-value"]}>
+              <EditableText path={`${prefix}project`} label="Награда — проект">
+                {project}
+              </EditableText>
+            </dd>
           </div>
         </dl>
         <span className={styles["about-partner-award-card__action"]} aria-hidden>

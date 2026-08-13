@@ -14,7 +14,7 @@ function isPublicAdminPath(pathname: string): boolean {
 }
 
 function requiresAdminAuth(pathname: string): boolean {
-  if (pathname.startsWith("/admin/home")) {
+  if (pathname.startsWith("/admin") && !isPublicAdminPath(pathname)) {
     return true;
   }
   if (pathname.startsWith("/api/admin/") && !isPublicAdminPath(pathname)) {
@@ -29,9 +29,12 @@ export async function middleware(request: NextRequest) {
   if (pathname === "/admin") {
     const token = request.cookies.get(ADMIN_SESSION_COOKIE)?.value;
     const session = token ? await verifyAdminSessionToken(token) : null;
-    const url = request.nextUrl.clone();
-    url.pathname = session ? "/admin/home" : "/admin/login";
-    return NextResponse.redirect(url);
+    if (!session) {
+      const url = request.nextUrl.clone();
+      url.pathname = "/admin/login";
+      return NextResponse.redirect(url);
+    }
+    return NextResponse.next();
   }
 
   if (!requiresAdminAuth(pathname)) {
@@ -56,5 +59,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/admin", "/admin/home/:path*", "/api/admin/:path*"],
+  matcher: ["/admin", "/admin/:path*", "/api/admin/:path*"],
 };

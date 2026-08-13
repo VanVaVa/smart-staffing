@@ -1,5 +1,7 @@
 import type { CSSProperties } from "react";
 
+import { EditableMedia } from "@/shared/ui/editable-field";
+
 import styles from "./AboutTrustedLogoCard.module.css";
 
 type AboutTrustedLogoCardProps = {
@@ -7,6 +9,7 @@ type AboutTrustedLogoCardProps = {
   src: string;
   logoWidth: number;
   logoHeight: number;
+  mediaPath: string;
 };
 
 export function AboutTrustedLogoCard({
@@ -14,6 +17,7 @@ export function AboutTrustedLogoCard({
   src,
   logoWidth,
   logoHeight,
+  mediaPath,
 }: AboutTrustedLogoCardProps) {
   const style = {
     "--about-trusted-card-width": `${cellWidth}px`,
@@ -23,12 +27,14 @@ export function AboutTrustedLogoCard({
 
   return (
     <div className={styles["about-trusted-logo-card"]} style={style}>
-      <img
-        src={src}
-        alt=""
-        draggable={false}
-        className={styles["about-trusted-logo-card__logo"]}
-      />
+      <EditableMedia path={mediaPath} label="Логотип партнёра">
+        <img
+          src={src}
+          alt=""
+          draggable={false}
+          className={styles["about-trusted-logo-card__logo"]}
+        />
+      </EditableMedia>
     </div>
   );
 }

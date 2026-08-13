@@ -8,6 +8,11 @@ import type {
   DocumentItem,
   DocumentsPageContent,
 } from "@/entities/landing";
+import {
+  EditableCollectionAdd,
+  EditableCollectionItem,
+  EditableText,
+} from "@/shared/ui/editable-field";
 import { useModalLock } from "@/shared/ui/modal-shell";
 
 import shellStyles from "@/shared/ui/modal-shell/modal-shell.module.css";
@@ -84,13 +89,49 @@ export function SoftwareRightsModal({
         <div className={styles["software-rights-modal__scroll"]}>
           <div className={styles["software-rights-modal__content"]}>
             <ul className={styles["software-rights-modal__registrations"]}>
-              {content.registrations.map((registration) => (
-                <li key={registration}>{registration}</li>
+              {content.registrations.map((registration, index) => (
+                <EditableCollectionItem
+                  key={`${registration}-${index}`}
+                  arrayPath="softwareRights.registrations"
+                  index={index}
+                >
+                  <li>
+                    <EditableText
+                      path={`softwareRights.registrations.${index}`}
+                      label="Регистрация"
+                    >
+                      {registration}
+                    </EditableText>
+                  </li>
+                </EditableCollectionItem>
               ))}
             </ul>
-            {content.paragraphs.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
+            <EditableCollectionAdd
+              arrayPath="softwareRights.registrations"
+              collectionKey="softwareRights.registrations"
+              addLabel="Регистрация"
+            />
+            {content.paragraphs.map((paragraph, index) => (
+              <EditableCollectionItem
+                key={`${paragraph}-${index}`}
+                arrayPath="softwareRights.paragraphs"
+                index={index}
+              >
+                <EditableText
+                  path={`softwareRights.paragraphs.${index}`}
+                  label="Абзац"
+                  as="p"
+                  multiline
+                >
+                  {paragraph}
+                </EditableText>
+              </EditableCollectionItem>
             ))}
+            <EditableCollectionAdd
+              arrayPath="softwareRights.paragraphs"
+              collectionKey="softwareRights.paragraphs"
+              addLabel="Абзац"
+            />
           </div>
         </div>
       </section>

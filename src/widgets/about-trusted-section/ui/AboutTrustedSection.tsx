@@ -1,12 +1,21 @@
-import { aboutTrusted } from "@/entities/landing";
+import type { AboutTrustedBlockProps } from "@/entities/landing/model/about-blocks";
+import {
+  EditableCollectionAdd,
+  EditableCollectionItem,
+  EditableText,
+} from "@/shared/ui/editable-field";
 import { Container } from "@/shared/ui/container";
 
 import { AboutTrustedMarquee } from "./about-trusted-marquee";
 
 import styles from "./AboutTrustedSection.module.css";
 
-export function AboutTrustedSection() {
-  const { title, rows } = aboutTrusted;
+type AboutTrustedSectionProps = {
+  content: AboutTrustedBlockProps;
+};
+
+export function AboutTrustedSection({ content }: AboutTrustedSectionProps) {
+  const { title, rows } = content;
 
   return (
     <section className={styles["about-trusted-section"]}>
@@ -16,11 +25,29 @@ export function AboutTrustedSection() {
       </div>
       <Container wide>
         <div className={styles["about-trusted-section__inner"]}>
-          <h2 className={styles["about-trusted-section__title"]}>{title}</h2>
+          <EditableText
+            path="title"
+            label="Заголовок «Нам доверяют»"
+            as="h2"
+            className={styles["about-trusted-section__title"]}
+          >
+            {title}
+          </EditableText>
           <div className={styles["about-trusted-section__rows"]}>
-            {rows.map((row) => (
-              <AboutTrustedMarquee key={row.id} items={row.items} />
+            {rows.map((row, rowIndex) => (
+              <EditableCollectionItem
+                key={row.id}
+                arrayPath="rows"
+                index={rowIndex}
+              >
+                <AboutTrustedMarquee rowIndex={rowIndex} items={row.items} />
+              </EditableCollectionItem>
             ))}
+            <EditableCollectionAdd
+              arrayPath="rows"
+              collectionKey="trusted.rows"
+              addLabel="Ряд логотипов"
+            />
           </div>
         </div>
       </Container>

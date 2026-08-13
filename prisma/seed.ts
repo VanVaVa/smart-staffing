@@ -6,6 +6,12 @@ import { PrismaPg } from "@prisma/adapter-pg";
 import { Pool } from "pg";
 
 import { PrismaClient } from "../src/generated/prisma/client";
+import { aboutBlocksFromStaticContent } from "../src/entities/landing/model/about-blocks";
+import {
+  clientsBlocksFromStaticContent,
+  clientsMetaFromStaticContent,
+} from "../src/entities/landing/model/clients-blocks";
+import { clientSegmentSlugs } from "../src/entities/landing/model/clients-content";
 import {
   caseStudies,
   contactSection,
@@ -17,14 +23,28 @@ import {
   stepsSection,
   testimonials,
 } from "../src/entities/landing/model/content";
+import { documentViewBlocksFromItem } from "../src/entities/landing/model/document-view-blocks";
+import { documentsBlocksFromStaticContent } from "../src/entities/landing/model/documents-blocks";
+import {
+  documentSlugs,
+  getDocument,
+} from "../src/entities/landing/model/documents-content";
+import {
+  documentPageSlug,
+  clientsPageSlug,
+  LANDING_PAGE_SLUGS,
+  mediaArticlePageSlug,
+} from "../src/entities/landing/model/landing-page-slugs";
+import { mediaArticleBlocksFromContent } from "../src/entities/landing/model/media-article-blocks";
+import { mediaBlocksFromStaticContent } from "../src/entities/landing/model/media-blocks";
+import { EXAMPLE_MEDIA_ARTICLE } from "../src/entities/landing/model/media-content";
+import { vacanciesBlocksFromStaticContent } from "../src/entities/landing/model/vacancies-blocks";
 
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 const adapter = new PrismaPg(pool);
 const prisma = new PrismaClient({ adapter });
 
-const HOME_SLUG = "home";
-
-const seedBlocks = [
+const homeSeedBlocks = [
   {
     order: 0,
     type: "hero",
@@ -36,9 +56,9 @@ const seedBlocks = [
       registryLabel: heroContent.registryLabel,
       registryHref: heroContent.registryHref,
       dashboardImageSrc: "/landing/hero-segment-enterprise.png",
-      segments: heroContent.segments.map((s) => ({
-        label: s.label,
-        imageSrc: s.imageSrc,
+      segments: heroContent.segments.map((segment) => ({
+        label: segment.label,
+        imageSrc: segment.imageSrc,
       })),
     },
   },
@@ -50,13 +70,13 @@ const seedBlocks = [
       title: productShowcase.title,
       subtitle: productShowcase.subtitle,
       benefitsTitle: productShowcase.benefitsTitle,
-      benefits: productShowcase.benefits.map((b) => ({
-        id: b.id,
-        layout: b.layout,
-        title: b.title,
-        text: b.text,
-        ...(b.layout === "stat" && "statValue" in b
-          ? { statValue: b.statValue }
+      benefits: productShowcase.benefits.map((benefit) => ({
+        id: benefit.id,
+        layout: benefit.layout,
+        title: benefit.title,
+        text: benefit.text,
+        ...(benefit.layout === "stat" && "statValue" in benefit
+          ? { statValue: benefit.statValue }
           : {}),
       })),
       benefitMedia: {
@@ -98,7 +118,7 @@ const seedBlocks = [
       steps: {
         title: stepsSection.title,
         cta: stepsSection.cta,
-        steps: stepsSection.steps.map((s) => ({ ...s })),
+        steps: stepsSection.steps.map((step) => ({ ...step })),
       },
     },
   },
@@ -125,13 +145,136 @@ const seedBlocks = [
   },
 ];
 
-async function main() {
-  const pageMeta = {
-    title: "СмартСтаффинг — управление подрядчиками и проектами",
-    description:
-      "Платформа для подбора специалистов, планирования загрузки и контроля проектов в одном контуре.",
-  };
+type SeedBlock = {
+  order: number;
+  type: string;
+  props: unknown;
+};
 
+type SeedPage = {
+  slug: string;
+  title: string;
+  meta: { title: string; description: string };
+  blocks: SeedBlock[];
+};
+
+async function seedLandingPage(page: SeedPage) {
+  const record = await prisma.landingPage.upsert({
+    where: { slug: page.slug },
+    create: {
+      slug: page.slug,
+      title: page.title,
+      meta: page.meta,
+    },
+    update: {
+      title: page.title,
+      meta: page.meta,
+    },
+  });
+
+  await prisma.block.deleteMany({ where: { landingPageId: record.id } });
+
+  for (const block of page.blocks) {
+    await prisma.block.create({
+      data: {
+        landingPageId: record.id,
+        type: block.type,
+        order: block.order,
+        props: block.props as object,
+      },
+    });
+  }
+}
+
+function buildSeedPages(): SeedPage[] {
+  const pages: SeedPage[] = [
+    {
+      slug: LANDING_PAGE_SLUGS.home,
+      title: "Главная",
+      meta: {
+        title: "СмартСтаффинг — управление подрядчиками и проектами",
+        description:
+          "Платформа для подбора специалистов, планирования загрузки и контроля проектов в одном контуре.",
+      },
+      blocks: homeSeedBlocks,
+    },
+    {
+      slug: LANDING_PAGE_SLUGS.about,
+      title: "О компании",
+      meta: {
+        title: "О компании — СмартСтаффинг",
+        description:
+          "СмартСтаффинг — эксперт гибкой проектной занятости. История компании, миссия и подход к подбору ИТ-специалистов.",
+      },
+      blocks: aboutBlocksFromStaticContent(),
+    },
+    {
+      slug: LANDING_PAGE_SLUGS.vacancies,
+      title: "Вакансии",
+      meta: {
+        title: "Вакансии — СмартСтаффинг",
+        description: "Присоединяйтесь к команде СмартСтаффинг.",
+      },
+      blocks: vacanciesBlocksFromStaticContent(),
+    },
+    {
+      slug: LANDING_PAGE_SLUGS.documents,
+      title: "Документы",
+      meta: {
+        title: "Документы — СмартСтаффинг",
+        description:
+          "Юридические документы, сведения о платформе и свидетельства СмартСтаффинг.",
+      },
+      blocks: documentsBlocksFromStaticContent(),
+    },
+    {
+      slug: LANDING_PAGE_SLUGS.media,
+      title: "Медиа",
+      meta: {
+        title: "Медиа — СмартСтаффинг",
+        description: "Новости и публикации СмартСтаффинг.",
+      },
+      blocks: mediaBlocksFromStaticContent(),
+    },
+  ];
+
+  for (const segment of clientSegmentSlugs) {
+    const meta = clientsMetaFromStaticContent(segment);
+    pages.push({
+      slug: clientsPageSlug(segment),
+      title: `Клиенты: ${segment}`,
+      meta,
+      blocks: clientsBlocksFromStaticContent(segment),
+    });
+  }
+
+  for (const slug of documentSlugs) {
+    const document = getDocument(slug);
+    if (!document) {
+      continue;
+    }
+    pages.push({
+      slug: documentPageSlug(slug),
+      title: document.title,
+      meta: {
+        title: `${document.title} — СмартСтаффинг`,
+        description: `Документ «${document.title}» платформы СмартСтаффинг.`,
+      },
+      blocks: documentViewBlocksFromItem(document),
+    });
+  }
+
+  pages.push({
+    slug: mediaArticlePageSlug(EXAMPLE_MEDIA_ARTICLE.slug),
+    title: EXAMPLE_MEDIA_ARTICLE.title,
+    meta: EXAMPLE_MEDIA_ARTICLE.meta,
+    blocks: mediaArticleBlocksFromContent(EXAMPLE_MEDIA_ARTICLE),
+  });
+
+  return pages;
+}
+
+async function main() {
   async function ensureAdminUser() {
     const adminEmail = process.env.ADMIN_EMAIL;
     const adminPassword = process.env.ADMIN_PASSWORD;
@@ -146,30 +289,8 @@ async function main() {
     }
   }
 
-  const page = await prisma.landingPage.upsert({
-    where: { slug: HOME_SLUG },
-    create: {
-      slug: HOME_SLUG,
-      title: "Главная",
-      meta: pageMeta,
-    },
-    update: {
-      title: "Главная",
-      meta: pageMeta,
-    },
-  });
-
-  await prisma.block.deleteMany({ where: { landingPageId: page.id } });
-
-  for (const block of seedBlocks) {
-    await prisma.block.create({
-      data: {
-        landingPageId: page.id,
-        type: block.type,
-        order: block.order,
-        props: block.props,
-      },
-    });
+  for (const page of buildSeedPages()) {
+    await seedLandingPage(page);
   }
 
   await ensureAdminUser();

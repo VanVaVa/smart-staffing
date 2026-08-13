@@ -8,19 +8,25 @@ import { Button } from "@/shared/ui/button";
 import styles from "./AdminEditorToolbar.module.css";
 
 type AdminEditorToolbarProps = {
+  pageLabel: string;
+  publicHref?: string;
   isDirty: boolean;
   saving: boolean;
   saveError: string | null;
   onSave: () => void;
   structureMenu?: ReactNode;
+  extraActions?: ReactNode;
 };
 
 export function AdminEditorToolbar({
+  pageLabel,
+  publicHref = "/",
   isDirty,
   saving,
   saveError,
   onSave,
   structureMenu,
+  extraActions,
 }: AdminEditorToolbarProps) {
   const router = useRouter();
 
@@ -34,7 +40,7 @@ export function AdminEditorToolbar({
     <div className={styles["admin-editor-toolbar"]}>
       <div className={styles["admin-editor-toolbar__inner"]}>
         <span className={styles["admin-editor-toolbar__label"]}>
-          Редактор главной
+          Редактор: {pageLabel}
           {isDirty ? (
             <span className={styles["admin-editor-toolbar__dirty"]}>
               · есть несохранённые изменения
@@ -42,13 +48,17 @@ export function AdminEditorToolbar({
           ) : null}
         </span>
         <div className={styles["admin-editor-toolbar__actions"]}>
+          {extraActions}
           {structureMenu}
           {saveError ? (
             <span className={styles["admin-editor-toolbar__error"]} role="alert">
               {saveError}
             </span>
           ) : null}
-          <Button variant="secondary" size="sm" href="/">
+          <Button variant="secondary" size="sm" href="/admin">
+            Все страницы
+          </Button>
+          <Button variant="secondary" size="sm" href={publicHref}>
             Открыть сайт
           </Button>
           <Button

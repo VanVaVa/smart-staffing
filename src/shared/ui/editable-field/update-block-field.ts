@@ -1,7 +1,7 @@
-import type { HomeBlock } from "@/entities/landing/model/home-blocks";
+import type { LandingBlockLike } from "./types";
 
-function cloneBlock(block: HomeBlock): HomeBlock {
-  return structuredClone(block) as HomeBlock;
+function cloneBlock<TBlock extends LandingBlockLike>(block: TBlock): TBlock {
+  return structuredClone(block) as TBlock;
 }
 
 function setNestedValue(
@@ -40,13 +40,13 @@ function setNestedValue(
   }
 }
 
-export function updateHomeBlockField(
-  block: HomeBlock,
+export function updateBlockField<TBlock extends LandingBlockLike>(
+  block: TBlock,
   path: string,
   value: unknown,
-): HomeBlock {
+): TBlock {
   const next = cloneBlock(block);
-  const props = next.props as unknown as Record<string, unknown>;
+  const props = next.props as Record<string, unknown>;
   setNestedValue(props, path.split("."), value);
   return next;
 }
@@ -71,13 +71,13 @@ function readNestedValue(props: Record<string, unknown>, segments: string[]): un
   return current;
 }
 
-export function addHomeBlockArrayItem(
-  block: HomeBlock,
+export function addBlockArrayItem<TBlock extends LandingBlockLike>(
+  block: TBlock,
   arrayPath: string,
   item: unknown,
-): HomeBlock {
+): TBlock {
   const next = cloneBlock(block);
-  const props = next.props as unknown as Record<string, unknown>;
+  const props = next.props as Record<string, unknown>;
   const segments = arrayPath.split(".");
   const current = readNestedValue(props, segments);
   const list = Array.isArray(current) ? [...current] : [];
@@ -86,24 +86,27 @@ export function addHomeBlockArrayItem(
   return next;
 }
 
-export function removeHomeBlockArrayItem(
-  block: HomeBlock,
+export function removeBlockArrayItem<TBlock extends LandingBlockLike>(
+  block: TBlock,
   arrayPath: string,
   index: number,
-): HomeBlock {
+): TBlock {
   const next = cloneBlock(block);
-  const props = next.props as unknown as Record<string, unknown>;
+  const props = next.props as Record<string, unknown>;
   const segments = arrayPath.split(".");
   const current = readNestedValue(props, segments);
   if (!Array.isArray(current) || index < 0 || index >= current.length) {
     return next;
   }
-  const list = current.filter((_, i) => i !== index);
+  const list = current.filter((_, itemIndex) => itemIndex !== index);
   setNestedValue(props, segments, list);
   return next;
 }
 
-export function readHomeBlockField(block: HomeBlock, path: string): string {
+export function readBlockField<TBlock extends LandingBlockLike>(
+  block: TBlock,
+  path: string,
+): string {
   const segments = path.split(".");
   let current: unknown = block.props;
 
@@ -125,3 +128,8 @@ export function readHomeBlockField(block: HomeBlock, path: string): string {
 
   return typeof current === "string" ? current : "";
 }
+
+export const updateHomeBlockField = updateBlockField;
+export const addHomeBlockArrayItem = addBlockArrayItem;
+export const removeHomeBlockArrayItem = removeBlockArrayItem;
+export const readHomeBlockField = readBlockField;

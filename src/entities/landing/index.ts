@@ -59,7 +59,7 @@ export type {
   ClientsPartnersExperienceContent,
   ClientsPartnershipCtaContent,
   ClientsPlatformBenefitsCardContent,
-  ClientsPlatformBenefitsCardVariant,
+  ClientsPlatformBenefitsCardBackground,
   ClientsPlatformBenefitsContent,
   ClientsPlatformBenefitsShowcaseItem,
   ClientsPlatformBenefitsShowcaseStat,
@@ -68,14 +68,11 @@ export type {
   ClientsPlatformContent,
   ClientsSegmentContent,
 } from "./model/clients-content";
-export {
-  getMediaArticle,
-  getMediaPage,
-  mediaArticleSlugs,
-} from "./model/media-content";
+export { EXAMPLE_MEDIA_ARTICLE } from "./model/media-content";
 export type {
   MediaArticle,
-  MediaArticleDetail,
+  MediaArticleBodyBlock,
+  MediaArticleContent,
   MediaArticleRelated,
   MediaArticleTag,
   MediaPageContent,
