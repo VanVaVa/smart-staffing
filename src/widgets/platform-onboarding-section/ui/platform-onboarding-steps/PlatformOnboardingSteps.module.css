@@ -486,7 +486,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .platform-onboarding-steps__inner {
     gap: 36px;
     padding-block: 100px;
@@ -503,17 +503,17 @@
   }
 
   .platform-onboarding-steps__step[data-step="0"] {
-    width: 288px;
+    width: calc(100% - 40px);
     margin-left: 0;
   }
 
   .platform-onboarding-steps__step[data-step="1"] {
-    width: 328px;
+    width: 100%;
     margin-left: 0;
   }
 
   .platform-onboarding-steps__step[data-step="2"] {
-    width: 288px;
+    width: calc(100% - 40px);
     margin-left: 40px;
   }
 

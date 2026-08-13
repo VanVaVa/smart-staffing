@@ -162,7 +162,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .certificate-gallery {
     padding: 64px var(--container-padding) 72px;
   }

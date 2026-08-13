@@ -134,7 +134,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .icon-button--lg,
   .icon-button--md {
     width: 32px;

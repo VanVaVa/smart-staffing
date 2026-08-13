@@ -282,7 +282,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .clients-hero-section {
     min-height: 0;
     margin-bottom: 100px;

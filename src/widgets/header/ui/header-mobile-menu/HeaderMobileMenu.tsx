@@ -109,7 +109,12 @@ export function HeaderMobileMenu({
           <button
             ref={toggleRef}
             type="button"
-            className={styles["header-mobile-menu__toggle"]}
+            className={[
+              styles["header-mobile-menu__toggle"],
+              useLightHeaderChrome ? styles["header-mobile-menu__toggle--on-dark-backdrop"] : "",
+            ]
+              .filter(Boolean)
+              .join(" ")}
             aria-expanded={open}
             aria-controls={panelId}
             aria-label={open ? "Закрыть меню" : "Открыть меню"}

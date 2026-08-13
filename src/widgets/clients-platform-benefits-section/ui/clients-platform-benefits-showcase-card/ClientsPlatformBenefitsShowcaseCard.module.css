@@ -451,7 +451,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .clients-platform-benefits-showcase-card {
     border-radius: 12px;
   }

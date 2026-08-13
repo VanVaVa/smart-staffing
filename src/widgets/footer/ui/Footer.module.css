@@ -123,7 +123,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .footer {
     margin-top: -16px;
     border-top-left-radius: 16px;

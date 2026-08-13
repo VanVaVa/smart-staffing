@@ -84,7 +84,7 @@
 
 @media (max-width: 576px) {
   .checkbox {
-    gap: clamp(8px, calc(8px + (100vw - 360px) * 4 / 216), 12px);
+    gap: clamp(8px, calc(8px + (100vw - 450px) * 4 / 126), 12px);
     font-size: var(--text-body-sm);
     line-height: 18px;
   }
@@ -103,7 +103,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .checkbox {
     gap: 8px;
     line-height: var(--line-body-sm);

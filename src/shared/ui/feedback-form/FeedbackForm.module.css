@@ -219,7 +219,7 @@
   }
 
   .feedback-form__fields {
-    gap: clamp(6px, calc(8px - (100vw - 360px) * 2 / 216), 8px);
+    gap: clamp(6px, calc(8px - (100vw - 450px) * 2 / 126), 8px);
   }
 }
 
@@ -320,7 +320,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .feedback-form {
     gap: 20px;
   }

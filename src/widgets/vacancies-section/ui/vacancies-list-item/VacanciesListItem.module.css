@@ -179,7 +179,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .vacancies-list-panel {
     max-width: 328px;
   }

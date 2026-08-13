@@ -398,7 +398,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .about-benefits-card__title {
     max-width: 296px;
     font-size: 14px;
@@ -429,7 +429,7 @@
   .about-benefits-card--expertise .about-benefits-card__copy {
     padding: 0 16px 16px;
     gap: 8px;
-    max-width: 296px;
+    max-width: unset;
   }
 
   .about-benefits-card--security {
@@ -446,8 +446,8 @@
   .about-benefits-card__security-visual {
     top: 140px;
     bottom: auto;
-    left: 144px;
-    right: auto;
+    left: auto;
+    right: 20px;
     width: 183px;
     height: 140px;
     aspect-ratio: auto;

@@ -297,7 +297,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .article-hero {
     width: 100%;
     min-height: 288px;

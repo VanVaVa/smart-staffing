@@ -124,7 +124,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 525px) {
   .hero-registry-link {
     width: 100%;
   }

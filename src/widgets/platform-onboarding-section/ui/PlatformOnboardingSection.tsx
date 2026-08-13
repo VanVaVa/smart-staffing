@@ -21,7 +21,6 @@ export function PlatformOnboardingSection({
       <PlatformOnboardingPartner
         title={content.partner.title}
         subtitle={content.partner.subtitle}
-        subtitleAccent={content.partner.subtitleAccent}
         cardText={content.partner.cardText}
         imageSrc={content.partner.imageSrc}
         cta={content.partner.cta}

@@ -284,7 +284,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .platform-onboarding-demo__stage {
     display: flex;
     flex-direction: column;

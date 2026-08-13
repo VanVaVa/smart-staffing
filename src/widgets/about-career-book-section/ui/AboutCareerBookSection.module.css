@@ -5,29 +5,6 @@
   padding-bottom: min(112px, calc(112 * 100vw / 1920));
 }
 
-.about-career-book-section__career-cta-wrap {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  overflow: visible;
-}
-
-.about-career-book-section__career-orb {
-  position: absolute;
-  left: clamp(0px, 12vw, 328px);
-  bottom: 28px;
-  width: clamp(120px, 12vw, 180px);
-  height: clamp(120px, 12vw, 180px);
-  border-radius: 50%;
-  background: linear-gradient(
-    135deg,
-    var(--color-blue-muted) 0%,
-    #7175c7 50%,
-    var(--color-purple-mid) 100%
-  );
-  pointer-events: none;
-}
-
 .about-career-book-section__inner {
   position: relative;
   z-index: 1;
@@ -186,7 +163,7 @@
 
   .about-career-book-section__book {
     gap: 0;
-    margin-top: clamp(100px, calc(100 * 100vw / 360), 160px);
+    margin-top: clamp(100px, calc(100 * 100vw / 450), 160px);
   }
 
   .about-career-book-section__book-head {
@@ -219,10 +196,6 @@
   .about-career-book-section__book-form {
     margin-top: 80px;
   }
-
-  .about-career-book-section__career-orb {
-    left: 20px;
-  }
 }
 
 @media (max-width: 768px) {
@@ -248,13 +221,6 @@
   .about-career-book-section__career-subtitle {
     font-size: var(--text-body-xl);
     line-height: var(--line-body-xl);
-  }
-
-  .about-career-book-section__career-orb {
-    left: 20px;
-    bottom: 28px;
-    width: 120px;
-    height: 120px;
   }
 
   .about-career-book-section__book-copy {
@@ -325,16 +291,9 @@
   .about-career-book-section__book-form {
     margin-top: 180px;
   }
-
-  .about-career-book-section__career-orb {
-    left: 0;
-    bottom: 8px;
-    width: 96px;
-    height: 96px;
-  }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .about-career-book-section {
     padding-bottom: 48px;
   }
@@ -357,14 +316,6 @@
 
   .about-career-book-section__book-description {
     max-width: 328px;
-  }
-
-  .about-career-book-section__career-orb {
-    top: -24px;
-    left: 32px;
-    bottom: auto;
-    width: 80px;
-    height: 80px;
   }
 
   .about-career-book-section__book-spread {

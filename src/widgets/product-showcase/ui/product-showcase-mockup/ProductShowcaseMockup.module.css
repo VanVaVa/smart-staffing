@@ -45,7 +45,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .product-showcase-mockup__screen-slot {
     border-radius: 10px;
   }

@@ -208,7 +208,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .related-articles {
     margin-top: 60px;
   }

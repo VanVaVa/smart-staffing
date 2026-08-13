@@ -179,7 +179,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .media-card {
     height: 226px;
     min-height: 226px;

@@ -52,6 +52,14 @@
   flex: 0 0 32px;
   overflow: hidden;
   line-height: 0;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.header-mobile-menu__toggle--on-dark-backdrop {
+  background: var(--color-white);
+  color: var(--color-black);
 }
 
 .header-mobile-menu__toggle-icon {
@@ -64,7 +72,7 @@
 }
 
 .header-mobile-menu__toggle-bar line {
-  stroke: var(--color-white);
+  stroke: currentColor;
   stroke-width: 2;
   stroke-linecap: butt;
   vector-effect: non-scaling-stroke;
@@ -112,7 +120,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .header-mobile-menu {
     padding-block: 12px 0;
   }

@@ -48,14 +48,17 @@ export function AboutSpotlightSection({ content }: AboutSpotlightSectionProps) {
           </EditableMedia>
         </figure>
         <figure className={styles["about-spotlight-section__collage"]}>
-          <EditableMedia path="collageSrc" label="Spotlight — коллаж">
+          <EditableMedia
+            path="collageSrc"
+            label="Spotlight — коллаж"
+            className={styles["about-spotlight-section__collage-media"]}
+          >
             <Image
               className={styles["about-spotlight-section__collage-image"]}
               src={collageSrc}
               alt={collageAlt}
-              width={908}
-              height={408}
-              sizes="(max-width: 360px) 328px, (max-width: 768px) 720px, (max-width: 992px) 100vw, 679px"
+              fill
+              sizes="(max-width: 450px) 328px, (max-width: 768px) 720px, (max-width: 992px) 100vw, 679px"
             />
           </EditableMedia>
         </figure>

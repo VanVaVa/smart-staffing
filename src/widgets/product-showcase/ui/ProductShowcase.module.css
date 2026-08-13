@@ -310,7 +310,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .product-showcase {
     padding-block: 100px
   }

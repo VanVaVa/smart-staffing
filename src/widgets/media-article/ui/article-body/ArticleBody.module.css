@@ -137,7 +137,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .article-body {
     padding: 16px;
     border-radius: 20px;

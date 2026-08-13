@@ -153,15 +153,17 @@ export function ProductShowcaseBenefitWideMediaCard({
           {text}
         </EditableText>
       </div>
-      <ProductShowcaseBenefitMedia
-        src={mediaImageSrc}
-        alt=""
-        className={styles["product-showcase-benefit-card__media-side"]}
-        width={450}
-        height={324}
-        mediaPath={mediaPath}
-        mediaLabel="Benefit — медиа"
-      />
+      <div className={styles["product-showcase-benefit-card__media-slot"]}>
+        <ProductShowcaseBenefitMedia
+          src={mediaImageSrc}
+          alt=""
+          className={styles["product-showcase-benefit-card__media-side"]}
+          width={450}
+          height={324}
+          mediaPath={mediaPath}
+          mediaLabel="Benefit — медиа"
+        />
+      </div>
     </article>
   );
 }

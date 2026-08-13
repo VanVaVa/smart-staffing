@@ -364,7 +364,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .clients-platform-benefits-section {
     padding-top: 40px;
     padding-bottom: 0;

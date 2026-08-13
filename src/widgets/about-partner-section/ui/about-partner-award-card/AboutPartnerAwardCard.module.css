@@ -212,7 +212,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .about-partner-award-card {
     width: 264px;
     min-height: 348px;

@@ -129,7 +129,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .about-benefits-section {
     padding-bottom: 64px;
   }

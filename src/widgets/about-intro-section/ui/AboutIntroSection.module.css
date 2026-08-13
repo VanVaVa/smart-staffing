@@ -121,7 +121,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .about-intro-section {
     padding-top: 60px;
     padding-bottom: 24px;

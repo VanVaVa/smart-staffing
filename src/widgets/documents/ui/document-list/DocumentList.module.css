@@ -310,7 +310,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .document-list {
     padding-block: 64px 100px;
   }

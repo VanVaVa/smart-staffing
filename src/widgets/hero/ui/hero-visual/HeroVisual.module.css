@@ -144,7 +144,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .hero-visual {
     padding: 12px;
     padding-right: var(--container-padding);

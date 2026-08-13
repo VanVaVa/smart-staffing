@@ -57,7 +57,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .about-trusted-marquee {
     --about-trusted-card-height: 67px;
     --about-trusted-sequence-gap: 4px;

@@ -79,7 +79,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .pdf-viewer {
     width: min(328px, 100%);
   }

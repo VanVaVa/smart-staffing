@@ -1,5 +1,4 @@
 import type { ProductShowcaseBlockProps } from "@/entities/landing/model/home-blocks";
-import { headerBackdropProps } from "@/shared/config";
 
 import { ProductShowcaseBenefits } from "./product-showcase-benefits";
 import { ProductShowcaseIntro } from "./product-showcase-intro";
@@ -15,7 +14,6 @@ export function ProductShowcase({ content }: ProductShowcaseProps) {
     <section
       id="platform"
       className={styles["product-showcase"]}
-      {...headerBackdropProps("dark")}
     >
       <div className={styles["product-showcase__decor"]} aria-hidden>
         <div className={styles["product-showcase__gradient"]} />

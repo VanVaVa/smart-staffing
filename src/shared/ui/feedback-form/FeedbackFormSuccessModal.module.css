@@ -176,7 +176,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .feedback-form-success-modal__illustration {
     width: 138px;
     aspect-ratio: 138 / 96;

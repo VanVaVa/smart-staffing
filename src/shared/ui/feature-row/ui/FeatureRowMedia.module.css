@@ -172,7 +172,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .feature-row-media--0 {
     height: 240px;
   }

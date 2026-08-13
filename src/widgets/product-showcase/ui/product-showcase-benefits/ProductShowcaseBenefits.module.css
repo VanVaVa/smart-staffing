@@ -21,10 +21,10 @@
 .product-showcase-benefits__grid {
   display: grid;
   grid-template-columns: minmax(0, 450fr) minmax(0, 909fr) minmax(0, 450fr);
-  grid-template-rows: 324px 548px;
+  grid-template-rows: 324px 324px;
   grid-template-areas:
-    "cost stat stat"
-    "contractors contractors competencies";
+    "cost contractors competencies"
+    ". stat competencies";
   gap: 8px;
   align-items: stretch;
 }
@@ -48,7 +48,7 @@
   }
 
   .product-showcase-benefits__grid {
-    grid-template-rows: 258px 436px;
+    grid-template-rows: 258px 258px;
   }
 }
 
@@ -56,7 +56,7 @@
   .product-showcase-benefits__grid {
     grid-template-rows:
       min(258px, calc(258 * 100vw / 1440))
-      min(436px, calc(436 * 100vw / 1440));
+      min(258px, calc(258 * 100vw / 1440));
   }
 }
 
@@ -141,7 +141,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .product-showcase-benefits__title {
     margin-bottom: 32px;
   }

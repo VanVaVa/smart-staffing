@@ -444,7 +444,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .clients-platform-section {
     border-radius: 20px;
     padding-block: 48px 56px;

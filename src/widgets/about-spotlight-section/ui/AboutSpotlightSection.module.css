@@ -13,10 +13,10 @@
 
 .about-spotlight-section__orb--small {
   position: absolute;
-  top: calc(-28px - (100vw - 360px) * 68 / 1560);
-  left: calc(8px + (100vw - 360px) * 95 / 1560);
-  width: clamp(80px, calc(80px + (100vw - 360px) * 120 / 1560), 200px);
-  height: clamp(80px, calc(80px + (100vw - 360px) * 120 / 1560), 200px);
+  top: calc(-28px - (100vw - 450px) * 68 / 1470);
+  left: calc(8px + (100vw - 450px) * 95 / 1470);
+  width: clamp(80px, calc(80px + (100vw - 450px) * 120 / 1470), 200px);
+  height: clamp(80px, calc(80px + (100vw - 450px) * 120 / 1470), 200px);
   border-radius: 50%;
   background: linear-gradient(
     225deg,
@@ -28,10 +28,10 @@
 
 .about-spotlight-section__orb--large {
   position: absolute;
-  top: calc(80px + (100vw - 360px) * 214 / 1560);
-  left: calc(64px + (100vw - 360px) * 139 / 1560);
-  width: clamp(140px, calc(140px + (100vw - 360px) * 260 / 1560), 400px);
-  height: clamp(140px, calc(140px + (100vw - 360px) * 260 / 1560), 400px);
+  top: calc(80px + (100vw - 450px) * 214 / 1470);
+  left: calc(64px + (100vw - 450px) * 139 / 1470);
+  width: clamp(140px, calc(140px + (100vw - 450px) * 260 / 1470), 400px);
+  height: clamp(140px, calc(140px + (100vw - 450px) * 260 / 1470), 400px);
   border-radius: 50%;
   background: linear-gradient(
     135deg,
@@ -48,11 +48,11 @@
   max-width: var(--container-max);
   margin-inline: auto;
   display: grid;
-  grid-template-columns: minmax(0, 450fr) minmax(0, 908fr) minmax(0, 450fr);
+  grid-template-columns: minmax(200px, 450fr) minmax(0, 908fr) minmax(200px, 450fr);
   grid-template-areas: "tag collage preview";
   gap: 8px;
   align-items: stretch;
-  min-height: min(408px, calc(408 * 100vw / 1920));
+  min-height: 408px;
 }
 
 .about-spotlight-section__card {
@@ -60,11 +60,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: min(408px, calc(408 * 100vw / 1920));
+  height: 408px;
+  min-height: 408px;
   padding: 40px 48px;
   border-radius: 40px;
   background: rgb(119 119 142 / 8%);
   backdrop-filter: blur(80px);
+  overflow: visible;
 }
 
 .about-spotlight-section__preview {
@@ -74,18 +76,20 @@
   justify-content: center;
   position: relative;
   margin: 0;
-  min-height: min(408px, calc(408 * 100vw / 1920));
+  height: 408px;
+  min-height: 408px;
   padding: 40px 48px;
   border-radius: 40px;
   background: rgb(119 119 142 / 8%);
   backdrop-filter: blur(80px);
-  overflow: hidden;
+  overflow: visible;
 }
 
 .about-spotlight-section__tag {
   display: flex;
   align-items: center;
   gap: 16px;
+  min-width: 0;
 }
 
 .about-spotlight-section__tag-icon {
@@ -101,50 +105,61 @@
 
 .about-spotlight-section__tag-label {
   font-family: var(--font-heading);
-  font-size: min(26px, calc(26 * 100vw / 1920));
+  font-size: 26px;
   font-weight: 600;
   line-height: 32px;
   letter-spacing: -0.01em;
   color: var(--color-accent-2);
+  min-width: 0;
 }
 
 .about-spotlight-section__collage {
   grid-area: collage;
   position: relative;
   margin: 0;
-  min-height: min(408px, calc(408 * 100vw / 1920));
+  min-width: 0;
+  height: 408px;
   overflow: hidden;
   border-radius: 40px;
+}
+
+.about-spotlight-section__collage-media {
+  position: absolute;
+  inset: 0;
 }
 
 .about-spotlight-section__preview-image {
   position: relative;
   z-index: 1;
   display: block;
-  width: min(318px, calc(318 * 100vw / 1920));
-  height: min(226px, calc(226 * 100vw / 1920));
-  object-fit: cover;
+  width: 318px;
+  height: 226px;
+  max-width: 100%;
+  object-fit: contain;
   border-radius: var(--radius-sm);
 }
 
 .about-spotlight-section__collage-image {
-  display: block;
-  width: 100%;
-  height: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
 @media (max-width: 1440px) {
   .about-spotlight-section__grid {
-    grid-template-columns: minmax(0, 336fr) minmax(0, 679fr) minmax(0, 336fr);
+    grid-template-columns: minmax(180px, 336fr) minmax(0, 679fr) minmax(180px, 336fr);
     grid-template-areas: "tag collage preview";
     min-height: 306px;
   }
 
   .about-spotlight-section__card,
-  .about-spotlight-section__collage,
   .about-spotlight-section__preview {
+    height: 306px;
     min-height: 306px;
+    border-radius: var(--radius-xl);
+  }
+
+  .about-spotlight-section__collage {
+    height: 306px;
     border-radius: var(--radius-xl);
   }
 
@@ -176,9 +191,9 @@
   }
 
   .about-spotlight-section__grid {
-    grid-template-columns: minmax(0, 393fr) minmax(0, 527fr);
+    grid-template-columns: minmax(180px, 393fr) minmax(0, 527fr);
     grid-template-areas: "tag collage";
-    min-height: 0;
+    min-height: 228px;
   }
 
   .about-spotlight-section__preview {
@@ -186,13 +201,14 @@
   }
 
   .about-spotlight-section__card {
+    height: 228px;
     min-height: 228px;
     padding: 20px 24px;
     border-radius: 20px;
   }
 
   .about-spotlight-section__collage {
-    min-height: 228px;
+    height: 228px;
     border-radius: 20px;
   }
 
@@ -229,6 +245,7 @@
 
   .about-spotlight-section__card {
     display: flex;
+    height: 180px;
     min-height: 180px;
     padding: 20px 24px;
     border-radius: 20px;
@@ -236,6 +253,7 @@
 
   .about-spotlight-section__preview {
     display: flex;
+    height: 180px;
     min-height: 180px;
     padding: 20px 24px;
     border-radius: 24px;
@@ -247,7 +265,7 @@
   }
 
   .about-spotlight-section__collage {
-    min-height: 300px;
+    height: 300px;
     border-radius: 24px;
   }
 
@@ -301,17 +319,19 @@
   }
 
   .about-spotlight-section__card {
+    height: 148px;
     min-height: 148px;
     padding: 16px 20px;
   }
 
   .about-spotlight-section__preview {
+    height: 148px;
     min-height: 148px;
     border-radius: 20px;
   }
 
   .about-spotlight-section__collage {
-    min-height: 288px;
+    height: 288px;
   }
 
   .about-spotlight-section__tag {
@@ -347,7 +367,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .about-spotlight-section {
     padding-bottom: 40px;
   }
@@ -358,12 +378,14 @@
   }
 
   .about-spotlight-section__card {
+    height: 120px;
     min-height: 120px;
     padding: 16px;
     justify-content: flex-start;
   }
 
   .about-spotlight-section__preview {
+    height: 120px;
     min-height: 120px;
   }
 
@@ -373,7 +395,7 @@
   }
 
   .about-spotlight-section__collage {
-    min-height: 232px;
+    height: 232px;
   }
 
   .about-spotlight-section__tag {

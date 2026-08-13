@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 import type { AboutHistoryBlockProps } from "@/entities/landing/model/about-blocks";
-import { headerBackdropProps } from "@/shared/config";
 import { ArrowIcon } from "@/shared/ui/arrow-icon";
 import { Container } from "@/shared/ui/container";
 import {
@@ -23,7 +22,6 @@ export function AboutHistorySection({ content }: AboutHistorySectionProps) {
   return (
     <section
       className={styles["about-history-section"]}
-      {...headerBackdropProps("dark")}
     >
       <div className={styles["about-history-section__decor"]} aria-hidden>
         <div className={styles["about-history-section__gradient"]} />

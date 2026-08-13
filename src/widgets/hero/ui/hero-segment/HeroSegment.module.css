@@ -145,7 +145,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .hero-segment {
     gap: 12px;
     min-height: 40px;

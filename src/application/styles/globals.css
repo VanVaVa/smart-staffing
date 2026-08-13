@@ -82,3 +82,10 @@ html.modal-open body {
   overflow: hidden;
   overscroll-behavior: none;
 }
+
+@media (max-width: 992px) {
+  html.company-connection-modal-open > body > header {
+    z-index: 210;
+    filter: none;
+  }
+}

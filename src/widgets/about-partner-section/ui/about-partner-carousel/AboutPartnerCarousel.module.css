@@ -122,7 +122,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .about-partner-carousel__nav-button {
     width: 32px;
     height: 32px;

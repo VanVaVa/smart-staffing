@@ -55,7 +55,7 @@ export function VacanciesSection({ content }: VacanciesSectionProps) {
       width={heroImageMobileWidth}
       height={heroImageMobileHeight}
       priority
-      sizes="(max-width: 360px) 328px, (max-width: 576px) 416px, 478px"
+      sizes="(max-width: 450px) 328px, (max-width: 576px) 416px, 478px"
     />
   );
 
@@ -87,12 +87,14 @@ export function VacanciesSection({ content }: VacanciesSectionProps) {
             </EditableText>
           </p>
         </header>
+        <div className={styles["vacancies-section__hero-media"]}>
+          <EditableMedia path="heroImageMobileSrc" label="Hero — mobile">
+            {mobileHero}
+          </EditableMedia>
+        </div>
         <div className={styles["vacancies-section__body"]}>
           <div className={styles["vacancies-section__list-row"]}>
             <VacanciesList vacancies={vacancies} />
-            <EditableMedia path="heroImageMobileSrc" label="Hero — mobile">
-              {mobileHero}
-            </EditableMedia>
           </div>
           <div className={styles["vacancies-section__form-panel"]}>
             <div className={styles["vacancies-section__form-decor"]} aria-hidden>

@@ -100,7 +100,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .media-section {
     padding-block: 104px 100px;
   }

@@ -891,7 +891,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .case-study-card {
     height: 362px;
     min-height: 362px;

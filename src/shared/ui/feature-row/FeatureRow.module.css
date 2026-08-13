@@ -137,7 +137,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .feature-row__content {
     gap: 48px;
   }

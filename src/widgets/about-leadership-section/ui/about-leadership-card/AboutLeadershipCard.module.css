@@ -207,7 +207,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .about-leadership-card {
     min-height: 104px;
   }

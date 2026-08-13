@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 import type { ClientsPlatformContent } from "@/entities/landing";
-import { headerBackdropProps } from "@/shared/config";
 import { ArrowIcon } from "@/shared/ui/arrow-icon";
 import { Badge } from "@/shared/ui/badge";
 import { Container } from "@/shared/ui/container";
@@ -22,7 +21,6 @@ export function ClientsPlatformSection({ content }: ClientsPlatformSectionProps)
   return (
     <section
       className={styles["clients-platform-section"]}
-      {...headerBackdropProps("dark")}
     >
       <div className={styles["clients-platform-section__decor"]} aria-hidden>
         <div className={styles["clients-platform-section__gradient"]} />
@@ -81,7 +79,7 @@ export function ClientsPlatformSection({ content }: ClientsPlatformSectionProps)
                   alt={content.imageAlt}
                   width={content.imageWidth}
                   height={content.imageHeight}
-                  sizes="(max-width: 360px) 328px, (max-width: 768px) 359px, (max-width: 992px) 540px, (max-width: 1440px) 680px, 602px"
+                  sizes="(max-width: 450px) 328px, (max-width: 768px) 359px, (max-width: 992px) 540px, (max-width: 1440px) 680px, 602px"
                 />
               </EditableMedia>
             </figure>

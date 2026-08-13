@@ -81,7 +81,7 @@
 
 .about-book-form__submit {
   flex-shrink: 0;
-  width: min(346px, calc(346 * 100vw / 1920));
+  width: auto;
   height: var(--about-book-form-control-height);
   min-height: var(--about-book-form-control-height);
   align-self: stretch;
@@ -127,9 +127,6 @@
     max-width: 368px;
   }
 
-  .about-book-form__submit {
-    width: 272px;
-  }
 }
 
 @media (max-width: 992px) {
@@ -150,10 +147,6 @@
   .about-book-form__row > :first-child {
     width: 276px;
     max-width: 276px;
-  }
-
-  .about-book-form__submit {
-    width: 272px;
   }
 
   .about-book-form__consent {
@@ -184,11 +177,6 @@
     flex: 0 0 276px;
     width: 276px;
     max-width: 276px;
-  }
-
-  .about-book-form__submit {
-    align-self: stretch;
-    width: 272px;
   }
 }
 
@@ -256,7 +244,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .about-book-form {
     padding: 16px;
   }
@@ -283,7 +271,6 @@
   .about-book-form__submit {
     flex: none;
     align-self: flex-start;
-    width: 205px;
     max-width: 100%;
   }
 

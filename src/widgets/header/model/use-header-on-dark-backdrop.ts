@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-import { headerBackdropDarkSelector } from "@/shared/config/header-backdrop";
+import { isDarkBackdropAt } from "../lib/resolve-backdrop-tone";
 
 const HEADER_PROBE_Y = 40;
 
@@ -14,22 +14,7 @@ function isDarkBackdropBehindHeader(): boolean {
 
   const sampleXs = [width * 0.2, width * 0.5, width * 0.8];
 
-  for (const x of sampleXs) {
-    const stack = document.elementsFromPoint(x, HEADER_PROBE_Y);
-    for (const el of stack) {
-      if (!(el instanceof Element)) {
-        continue;
-      }
-      if (el.closest("header")) {
-        continue;
-      }
-      if (el.closest(headerBackdropDarkSelector)) {
-        return true;
-      }
-    }
-  }
-
-  return false;
+  return sampleXs.some((x) => isDarkBackdropAt(x, HEADER_PROBE_Y));
 }
 
 export function useHeaderOnDarkBackdrop() {

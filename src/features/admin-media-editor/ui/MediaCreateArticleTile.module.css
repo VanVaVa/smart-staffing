@@ -120,7 +120,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .tile {
     height: 226px;
     min-height: 226px;

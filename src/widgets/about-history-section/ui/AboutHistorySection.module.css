@@ -470,7 +470,7 @@
     --mission-marker-icon-size: 24px;
     --mission-marker-offset: -76px;
 
-    max-width: calc(100% - var(--mission-marker-size));
+    max-width: calc(100% - var(--mission-marker-size) - 16px);
     margin-inline-start: auto;
     padding: 20px;
     gap: 20px;
@@ -515,7 +515,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .about-history-section {
     padding-block: 100px 48px;
     border-radius: var(--radius-control);
@@ -554,8 +554,7 @@
     --mission-marker-size: 36px;
     --mission-marker-icon-size: 20px;
     --mission-marker-offset: -70px;
-
-    margin-left: var(--mission-marker-size);
+    
     padding: 16px;
     gap: 16px;
   }

@@ -69,14 +69,14 @@
 @media (max-width: 576px) {
   .input__control {
     height: 32px;
-    padding: clamp(6px, calc(6px + (100vw - 360px) * 2 / 216), 8px)
-      clamp(12px, calc(12px + (100vw - 360px) * 4 / 216), 16px);
+    padding: clamp(6px, calc(6px + (100vw - 450px) * 2 / 126), 8px)
+      clamp(12px, calc(12px + (100vw - 450px) * 4 / 126), 16px);
     font-size: var(--text-body-sm);
     line-height: var(--line-body-sm);
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .input__control {
     padding: 6px 12px;
   }

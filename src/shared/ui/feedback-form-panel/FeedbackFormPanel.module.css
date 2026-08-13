@@ -251,8 +251,8 @@
   .feedback-form-panel__panel {
     flex-direction: column;
     align-items: stretch;
-    gap: clamp(32px, calc(32px + (100vw - 360px) * 8 / 216), 40px);
-    padding: clamp(16px, calc(16px + (100vw - 360px) * 8 / 216), 24px);
+    gap: clamp(32px, calc(32px + (100vw - 450px) * 8 / 126), 40px);
+    padding: clamp(16px, calc(16px + (100vw - 450px) * 8 / 126), 24px);
     border-radius: var(--radius-lg);
     min-height: clamp(360px, 73vw, 420px);
     height: auto;
@@ -274,7 +274,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .feedback-form-panel__panel {
     gap: 32px;
     padding: 16px;

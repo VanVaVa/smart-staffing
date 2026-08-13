@@ -542,7 +542,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .clients-platform-benefits-card__title {
     padding: 16px 16px 0;
     font-size: var(--text-body-md);

@@ -127,7 +127,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .vacancies-list-panel__viewport {
     height: auto;
     max-height: none;

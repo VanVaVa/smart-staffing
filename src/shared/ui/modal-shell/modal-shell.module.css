@@ -52,3 +52,50 @@
 .modal-shell__panel--wide {
   width: min(778px, 100%);
 }
+
+@media (min-width: 993px) {
+  .modal-shell--full-page {
+    align-items: flex-start;
+    justify-content: center;
+    padding: 56px var(--modal-root-padding-x) 48px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+}
+
+@media (min-width: 993px) and (max-width: 1440px) {
+  .modal-shell--full-page {
+    padding-top: 28px;
+  }
+}
+
+@media (max-width: 992px) {
+  .modal-shell--full-page {
+    align-items: stretch;
+    padding: 0;
+    overflow: hidden;
+    background: var(--color-bg);
+  }
+
+  .modal-shell--full-page .modal-shell__overlay {
+    pointer-events: none;
+    background: var(--color-bg);
+  }
+
+  .modal-shell--full-page .modal-shell__panel {
+    width: 100%;
+    max-height: none;
+    height: 100%;
+    border-radius: 0;
+    padding: 0;
+    background: transparent;
+    overflow-y: auto;
+  }
+
+  .modal-shell--full-page .modal-shell__panel--scroll {
+    display: flex;
+    flex-direction: column;
+    max-height: none;
+    overflow: visible;
+  }
+}

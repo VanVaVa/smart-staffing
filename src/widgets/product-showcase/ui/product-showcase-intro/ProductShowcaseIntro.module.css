@@ -106,7 +106,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .product-showcase-intro {
     gap: 6px;
   }

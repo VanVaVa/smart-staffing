@@ -41,7 +41,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .section-title {
     gap: 8px;
   }

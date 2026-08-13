@@ -4,8 +4,9 @@ import type { AboutCareerBookBlockProps } from "@/entities/landing/model/about-b
 import { EditableMedia, EditableText } from "@/shared/ui/editable-field";
 import { Container } from "@/shared/ui/container";
 
+import { PlatformOnboardingPartner } from "@/widgets/platform-onboarding-section/ui/platform-onboarding-partner";
+
 import { AboutBookForm } from "./about-book-form";
-import { AboutCareerCta } from "./about-career-cta";
 
 import styles from "./AboutCareerBookSection.module.css";
 
@@ -46,16 +47,26 @@ export function AboutCareerBookSection({ content }: AboutCareerBookSectionProps)
                 </EditableText>
               </p>
             </header>
-            <div className={styles["about-career-book-section__career-cta-wrap"]}>
-              <div className={styles["about-career-book-section__career-orb"]} aria-hidden />
-              <AboutCareerCta
-                text={career.cta.text}
-                buttonLabel={career.cta.buttonLabel}
-                buttonHref={career.cta.buttonHref}
-                photoSrc={career.cta.photoSrc}
-                photoAlt={career.cta.photoAlt}
-              />
-            </div>
+            <PlatformOnboardingPartner
+              showTitle={false}
+              cardText={career.cta.text}
+              imageSrc={career.cta.photoSrc}
+              imageAlt={career.cta.photoAlt}
+              cta={career.cta.buttonLabel}
+              ctaHref={career.cta.buttonHref}
+              paths={{
+                cardText: "career.cta.text",
+                imageSrc: "career.cta.photoSrc",
+                cta: "career.cta.buttonLabel",
+                buttonHref: "career.cta.buttonHref",
+              }}
+              labels={{
+                cardText: "Карьера — текст CTA",
+                imageSrc: "Карьера — фото CTA",
+                cta: "Карьера — подпись кнопки",
+                buttonHref: "Карьера — ссылка кнопки",
+              }}
+            />
           </div>
           <div className={styles["about-career-book-section__book"]}>
             <div className={styles["about-career-book-section__book-head"]}>

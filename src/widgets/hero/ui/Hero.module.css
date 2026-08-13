@@ -532,7 +532,19 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 525px) {
+  .hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 60px;
+  }
+
+  .hero__primary-cta {
+    align-self: flex-start;
+  }
+}
+
+@media (max-width: 450px) {
   .hero {
     padding-top: 24px;
     padding-bottom: 56px;
@@ -572,16 +584,6 @@
 
   .hero__content {
     gap: 36px;
-  }
-
-  .hero__actions {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 60px;
-  }
-
-  .hero__primary-cta {
-    align-self: flex-start;
   }
 
   .hero__layout {

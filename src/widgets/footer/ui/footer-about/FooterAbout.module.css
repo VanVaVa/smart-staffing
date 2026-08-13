@@ -92,7 +92,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .footer-about {
     margin-bottom: 0;
     gap: 16px;

@@ -120,7 +120,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .footer-contacts__social-link {
     width: 70px;
     height: 40px;

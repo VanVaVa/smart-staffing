@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { headerBackdropProps, routes } from "@/shared/config";
+import { routes } from "@/shared/config";
 import { Button } from "@/shared/ui/button";
 
 import styles from "./NotFoundPage.module.css";
@@ -13,7 +13,6 @@ export function NotFoundPage() {
     <div className={styles["not-found-page"]}>
       <section
         className={styles["not-found-page__section"]}
-        {...headerBackdropProps("dark")}
       >
         <div className={styles["not-found-page__decor"]} aria-hidden>
           <div className={styles["not-found-page__gradient"]} />

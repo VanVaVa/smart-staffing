@@ -150,7 +150,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 450px) {
   .about-trusted-section {
     padding-bottom: 64px;
   }
