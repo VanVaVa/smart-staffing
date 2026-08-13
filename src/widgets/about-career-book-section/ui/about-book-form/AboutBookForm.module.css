@@ -289,3 +289,11 @@
     height: 140px;
   }
 }
+
+.about-book-form__error {
+  margin: 0;
+  width: 100%;
+  color: #ff6b6b;
+  font-size: 14px;
+  line-height: 1.4;
+}

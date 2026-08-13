@@ -41,44 +41,46 @@ export function AboutHistorySection({ content }: AboutHistorySectionProps) {
             {title}
           </EditableText>
           <div className={styles["about-history-section__body"]}>
-            <ol className={styles["about-history-section__timeline"]}>
-              {timeline.map((item, index) => (
-                <EditableCollectionItem
-                  key={`${item.year}-${index}`}
-                  arrayPath="timeline"
-                  index={index}
-                >
-                  <li className={styles["about-history-section__timeline-item"]}>
-                    <span className={styles["about-history-section__timeline-arrow"]} aria-hidden>
-                      <ArrowIcon name="2Right" className={styles["about-history-section__timeline-arrow-icon"]} />
-                    </span>
-                    <div className={styles["about-history-section__timeline-copy"]}>
-                      <EditableText
-                        path={`timeline.${index}.year`}
-                        label="История — год"
-                        className={styles["about-history-section__timeline-year"]}
-                      >
-                        {item.year}
-                      </EditableText>
-                      <EditableText
-                        path={`timeline.${index}.text`}
-                        label="История — событие"
-                        as="p"
-                        className={styles["about-history-section__timeline-text"]}
-                        multiline
-                      >
-                        {item.text}
-                      </EditableText>
-                    </div>
-                  </li>
-                </EditableCollectionItem>
-              ))}
-            </ol>
-            <EditableCollectionAdd
-              arrayPath="timeline"
-              collectionKey="history.timeline"
-              addLabel="Событие"
-            />
+            <div className={styles["about-history-section__timeline-column"]}>
+              <ol className={styles["about-history-section__timeline"]}>
+                {timeline.map((item, index) => (
+                  <EditableCollectionItem
+                    key={`${item.year}-${index}`}
+                    arrayPath="timeline"
+                    index={index}
+                  >
+                    <li className={styles["about-history-section__timeline-item"]}>
+                      <span className={styles["about-history-section__timeline-arrow"]} aria-hidden>
+                        <ArrowIcon name="2Right" className={styles["about-history-section__timeline-arrow-icon"]} />
+                      </span>
+                      <div className={styles["about-history-section__timeline-copy"]}>
+                        <EditableText
+                          path={`timeline.${index}.year`}
+                          label="История — год"
+                          className={styles["about-history-section__timeline-year"]}
+                        >
+                          {item.year}
+                        </EditableText>
+                        <EditableText
+                          path={`timeline.${index}.text`}
+                          label="История — событие"
+                          as="p"
+                          className={styles["about-history-section__timeline-text"]}
+                          multiline
+                        >
+                          {item.text}
+                        </EditableText>
+                      </div>
+                    </li>
+                  </EditableCollectionItem>
+                ))}
+              </ol>
+              <EditableCollectionAdd
+                arrayPath="timeline"
+                collectionKey="history.timeline"
+                addLabel="Событие"
+              />
+            </div>
             <div className={styles["about-history-section__mission-column"]}>
               <article className={styles["about-history-section__mission"]}>
                 <EditableText

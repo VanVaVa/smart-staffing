@@ -1,6 +1,7 @@
 "use client";
 
 import type { MediaArticleRelated } from "@/entities/landing";
+import type { FooterBlockProps } from "@/entities/landing/model/footer-blocks";
 import {
   defaultMediaArticleBlockProps,
   MEDIA_ARTICLE_BLOCK_TYPES,
@@ -15,12 +16,14 @@ type AdminMediaArticleEditorPageProps = {
   articleSlug: string;
   initialBlocks: MediaArticleBlock[];
   relatedArticles: MediaArticleRelated[];
+  footerContent: FooterBlockProps;
 };
 
 export function AdminMediaArticleEditorPage({
   articleSlug,
   initialBlocks,
   relatedArticles,
+  footerContent,
 }: AdminMediaArticleEditorPageProps) {
   const pageSlug = mediaArticlePageSlug(articleSlug);
   const articleSchema = getLandingPageSchema(pageSlug);
@@ -29,6 +32,7 @@ export function AdminMediaArticleEditorPage({
     <AdminLandingEditorPage
       slug={pageSlug}
       initialBlocks={initialBlocks}
+      footerContent={footerContent}
       draftConfig={{
         slug: pageSlug,
         blockTypes: MEDIA_ARTICLE_BLOCK_TYPES,

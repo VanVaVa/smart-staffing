@@ -1,5 +1,6 @@
 "use client";
 
+import type { FooterBlockProps } from "@/entities/landing/model/footer-blocks";
 import {
   defaultDocumentsBlockProps,
   DOCUMENTS_BLOCK_TYPES,
@@ -14,15 +15,18 @@ const documentsSchema = getLandingPageSchema(LANDING_PAGE_SLUGS.documents);
 
 type AdminDocumentsEditorPageProps = {
   initialBlocks: DocumentsBlock[];
+  footerContent: FooterBlockProps;
 };
 
 export function AdminDocumentsEditorPage({
   initialBlocks,
+  footerContent,
 }: AdminDocumentsEditorPageProps) {
   return (
     <AdminLandingEditorPage
       slug={LANDING_PAGE_SLUGS.documents}
       initialBlocks={initialBlocks}
+      footerContent={footerContent}
       draftConfig={{
         slug: LANDING_PAGE_SLUGS.documents,
         blockTypes: DOCUMENTS_BLOCK_TYPES,

@@ -25,6 +25,7 @@ import {
 } from "../src/entities/landing/model/content";
 import { documentViewBlocksFromItem } from "../src/entities/landing/model/document-view-blocks";
 import { documentsBlocksFromStaticContent } from "../src/entities/landing/model/documents-blocks";
+import { footerBlocksFromStaticContent } from "../src/entities/landing/model/footer-blocks";
 import {
   documentSlugs,
   getDocument,
@@ -235,6 +236,15 @@ function buildSeedPages(): SeedPage[] {
         description: "Новости и публикации СмартСтаффинг.",
       },
       blocks: mediaBlocksFromStaticContent(),
+    },
+    {
+      slug: LANDING_PAGE_SLUGS.footer,
+      title: "Футер",
+      meta: {
+        title: "Футер — СмартСтаффинг",
+        description: "Глобальные настройки футера сайта.",
+      },
+      blocks: footerBlocksFromStaticContent(),
     },
   ];
 

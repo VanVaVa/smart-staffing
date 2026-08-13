@@ -1,5 +1,6 @@
 "use client";
 
+import type { FooterBlockProps } from "@/entities/landing/model/footer-blocks";
 import {
   defaultBlockProps,
   defaultCollectionItem,
@@ -15,15 +16,17 @@ import { HomePage } from "@/views/home";
 
 type AdminHomeEditorPageProps = {
   initialBlocks: HomeBlock[];
+  footerContent: FooterBlockProps;
 };
 
 const homeSchema = getLandingPageSchema(LANDING_PAGE_SLUGS.home);
 
-export function AdminHomeEditorPage({ initialBlocks }: AdminHomeEditorPageProps) {
+export function AdminHomeEditorPage({ initialBlocks, footerContent }: AdminHomeEditorPageProps) {
   return (
     <AdminLandingEditorPage
       slug={LANDING_PAGE_SLUGS.home}
       initialBlocks={initialBlocks}
+      footerContent={footerContent}
       draftConfig={{
         slug: LANDING_PAGE_SLUGS.home,
         blockTypes: HOME_BLOCK_TYPES,

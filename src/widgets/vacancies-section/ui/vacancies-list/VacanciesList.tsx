@@ -2,7 +2,6 @@
 
 import {
   useCallback,
-  useEffect,
   useLayoutEffect,
   useRef,
   useState,
@@ -21,6 +20,8 @@ import styles from "./VacanciesList.module.css";
 
 type VacanciesListProps = {
   vacancies: VacanciesBlockProps["vacancies"];
+  selectedId: string;
+  onSelect: (id: string) => void;
 };
 
 type ScrollMetrics = {
@@ -53,14 +54,7 @@ function measureScroll(viewport: HTMLDivElement): ScrollMetrics {
   return { thumbHeight, thumbTop, scrollable: true };
 }
 
-export function VacanciesList({ vacancies }: VacanciesListProps) {
-  const [selectedId, setSelectedId] = useState<string>(vacancies[0]?.id ?? "");
-
-  useEffect(() => {
-    if (!vacancies.some((vacancy) => vacancy.id === selectedId)) {
-      setSelectedId(vacancies[0]?.id ?? "");
-    }
-  }, [selectedId, vacancies]);
+export function VacanciesList({ vacancies, selectedId, onSelect }: VacanciesListProps) {
   const viewportRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const dragRef = useRef<{ startY: number; startScrollTop: number } | null>(null);
@@ -182,50 +176,56 @@ export function VacanciesList({ vacancies }: VacanciesListProps) {
 
   return (
     <div className={styles["vacancies-list-panel"]}>
-      <div
-        ref={viewportRef}
-        id="vacancies-list-viewport"
-        className={styles["vacancies-list-panel__viewport"]}
-        tabIndex={0}
-      >
-        <ul className={styles["vacancies-list-panel__items"]}>
-          {vacancies.map((vacancy, index) => (
-            <li key={vacancy.id} className={styles["vacancies-list-panel__item"]}>
-              <EditableCollectionItem arrayPath="vacancies" index={index}>
-                <VacanciesListItem
-                  title={vacancy.title}
-                  employment={vacancy.employment}
-                  selected={vacancy.id === selectedId}
-                  onSelect={() => setSelectedId(vacancy.id)}
-                  itemIndex={index}
-                />
-              </EditableCollectionItem>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div
-        ref={trackRef}
-        className={styles["vacancies-list-panel__scrollbar"]}
-        onPointerDown={handleTrackPointerDown}
-        role="scrollbar"
-        aria-controls="vacancies-list-viewport"
-        aria-valuenow={metrics.scrollable ? Math.round(metrics.thumbTop) : 0}
-        aria-valuemin={0}
-        aria-valuemax={100}
-        aria-hidden={!metrics.scrollable}
-      >
+      <div className={styles["vacancies-list-panel__scroll-row"]}>
         <div
-          className={styles["vacancies-list-panel__scrollbar-thumb"]}
-          style={{
-            height: metrics.thumbHeight > 0 ? `${metrics.thumbHeight}px` : undefined,
-            transform: `translateY(${metrics.thumbTop}px)`,
-          }}
-          onPointerDown={handleThumbPointerDown}
-          onPointerMove={handleThumbPointerMove}
-          onPointerUp={handleThumbPointerUp}
-          onPointerCancel={handleThumbPointerUp}
-        />
+          ref={viewportRef}
+          id="vacancies-list-viewport"
+          className={styles["vacancies-list-panel__viewport"]}
+          tabIndex={0}
+        >
+          <ul className={styles["vacancies-list-panel__items"]}>
+            {vacancies.map((vacancy, index) => (
+              <li key={vacancy.id} className={styles["vacancies-list-panel__item"]}>
+                <EditableCollectionItem
+                  arrayPath="vacancies"
+                  index={index}
+                  variant="list-entry"
+                >
+                  <VacanciesListItem
+                    title={vacancy.title}
+                    employment={vacancy.employment}
+                    selected={vacancy.id === selectedId}
+                    onSelect={() => onSelect(vacancy.id)}
+                    itemIndex={index}
+                  />
+                </EditableCollectionItem>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div
+          ref={trackRef}
+          className={styles["vacancies-list-panel__scrollbar"]}
+          onPointerDown={handleTrackPointerDown}
+          role="scrollbar"
+          aria-controls="vacancies-list-viewport"
+          aria-valuenow={metrics.scrollable ? Math.round(metrics.thumbTop) : 0}
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-hidden={!metrics.scrollable}
+        >
+          <div
+            className={styles["vacancies-list-panel__scrollbar-thumb"]}
+            style={{
+              height: metrics.thumbHeight > 0 ? `${metrics.thumbHeight}px` : undefined,
+              transform: `translateY(${metrics.thumbTop}px)`,
+            }}
+            onPointerDown={handleThumbPointerDown}
+            onPointerMove={handleThumbPointerMove}
+            onPointerUp={handleThumbPointerUp}
+            onPointerCancel={handleThumbPointerUp}
+          />
+        </div>
       </div>
       <EditableCollectionAdd arrayPath="vacancies" collectionKey={"vacancies" as never} addLabel="Вакансия" />
     </div>

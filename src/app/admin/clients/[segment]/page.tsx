@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 
 import { isClientSegmentSlug } from "@/entities/landing";
-import { getClientsPageContent } from "@/entities/landing/server";
+import { getClientsPageContent, getFooterContent } from "@/entities/landing/server";
 import { AdminClientsEditorPage } from "@/views/admin-clients-editor";
 
 export const dynamic = "force-dynamic";
@@ -17,7 +17,16 @@ export default async function Page({ params }: PageProps) {
     notFound();
   }
 
-  const { blocks } = await getClientsPageContent(segment);
+  const [{ blocks }, footerContent] = await Promise.all([
+    getClientsPageContent(segment),
+    getFooterContent(),
+  ]);
 
-  return <AdminClientsEditorPage segment={segment} initialBlocks={blocks} />;
+  return (
+    <AdminClientsEditorPage
+      segment={segment}
+      initialBlocks={blocks}
+      footerContent={footerContent}
+    />
+  );
 }

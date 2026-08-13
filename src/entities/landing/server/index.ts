@@ -16,6 +16,10 @@ import {
 import type { ClientSegmentSlug } from "../model/clients-content";
 import type { VacanciesPageContent } from "../model/vacancies-blocks";
 import {
+  getFooterContent,
+  getFooterPageBlocks,
+} from "../lib/get-footer-content";
+import {
   getLandingPageContent,
   saveLandingPageBlocks,
   validateAndSaveLandingPageBlocks,
@@ -35,6 +39,8 @@ export {
   saveLandingPageBlocks,
   validateAndSaveLandingPageBlocks,
   getHomePageContent,
+  getFooterContent,
+  getFooterPageBlocks,
   buildRelatedArticles,
   createMediaArticle,
   deleteMediaArticle,

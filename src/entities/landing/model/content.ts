@@ -1,3 +1,5 @@
+import { clientSegmentNavItems } from "./clients-content";
+
 export const landingNav = [
   { label: "О компании", href: "/about" },
   { label: "Медиа", href: "/media" },
@@ -330,20 +332,16 @@ export const contactSection = {
 } as const;
 
 export const footerContent = {
-  about:
-    "СмартСтаффинг — платформа для управления подрядчиками, ресурсами и проектами в едином контуре.",
+  menuTitle: "Меню",
+  solutionsTitle: "Клиентам",
+  contactsTitle: "Контакты",
   menu: [
     { label: "О СмартСтаффинг", href: "/about" },
-    { label: "Тарифы", href: "#platform" },
+    { label: "Тарифы", href: "#open-pricing-modal" },
     { label: "Медиа", href: "/media" },
     { label: "Документы", href: "/documents" },
   ],
-  solutions: [
-    { label: "Аутстаффинг", href: "#solutions" },
-    { label: "Управление проектами", href: "#solutions" },
-    { label: "Рекрутмент", href: "#solutions" },
-    { label: "Аналитика загрузки", href: "#solutions" },
-  ],
+  solutions: clientSegmentNavItems.map(({ label, href }) => ({ label, href })),
   contacts: {
     phone: "+7 (495) 000-00-00",
     email: "hello@smartstaffing.ru",
@@ -372,8 +370,8 @@ export const footerContent = {
     ],
   },
   legal: [
-    { label: "Политика обработки персональных данных", href: "#" },
-    { label: "ГК ТИМ ФОРС", href: "#" },
+    { label: "Политика обработки персональных данных", href: "/documents/privacy-policy" },
+    { label: "ГК ТИМ ФОРС", href: "https://teamforce.ru/" },
   ],
   copyright: '© 2008-2026 , ООО "СмартCтаффинг"',
-} as const;
+};

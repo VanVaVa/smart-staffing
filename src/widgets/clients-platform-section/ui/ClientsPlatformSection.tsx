@@ -36,40 +36,42 @@ export function ClientsPlatformSection({ content }: ClientsPlatformSectionProps)
       </div>
       <Container className={styles["clients-platform-section__container"]}>
         <div className={styles["clients-platform-section__layout"]}>
-          <ul className={styles["clients-platform-section__pain-list"]}>
-            {content.painPoints.map((point, index) => (
-              <EditableCollectionItem
-                key={`${point}-${index}`}
-                arrayPath="painPoints"
-                index={index}
-              >
-                <li className={styles["clients-platform-section__pain-item"]}>
-                  <span
-                    className={styles["clients-platform-section__pain-marker"]}
-                    aria-hidden
-                  >
-                    <ArrowIcon
-                      name="cta"
-                      className={styles["clients-platform-section__pain-icon"]}
-                    />
-                  </span>
-                  <EditableText
-                    path={`painPoints.${index}`}
-                    label="Платформа — pain point"
-                    className={styles["clients-platform-section__pain-text"]}
-                    multiline
-                  >
-                    {point}
-                  </EditableText>
-                </li>
-              </EditableCollectionItem>
-            ))}
-          </ul>
-          <EditableCollectionAdd
-            arrayPath="painPoints"
-            collectionKey="platform.painPoints"
-            addLabel="Pain point"
-          />
+          <div className={styles["clients-platform-section__pain-column"]}>
+            <ul className={styles["clients-platform-section__pain-list"]}>
+              {content.painPoints.map((point, index) => (
+                <EditableCollectionItem
+                  key={`${point}-${index}`}
+                  arrayPath="painPoints"
+                  index={index}
+                >
+                  <li className={styles["clients-platform-section__pain-item"]}>
+                    <span
+                      className={styles["clients-platform-section__pain-marker"]}
+                      aria-hidden
+                    >
+                      <ArrowIcon
+                        name="cta"
+                        className={styles["clients-platform-section__pain-icon"]}
+                      />
+                    </span>
+                    <EditableText
+                      path={`painPoints.${index}`}
+                      label="Платформа — pain point"
+                      className={styles["clients-platform-section__pain-text"]}
+                      multiline
+                    >
+                      {point}
+                    </EditableText>
+                  </li>
+                </EditableCollectionItem>
+              ))}
+            </ul>
+            <EditableCollectionAdd
+              arrayPath="painPoints"
+              collectionKey="platform.painPoints"
+              addLabel="Pain point"
+            />
+          </div>
           <div className={styles["clients-platform-section__main"]}>
             <figure className={styles["clients-platform-section__preview"]}>
               <EditableMedia path="imageSrc" label="Платформа — превью">

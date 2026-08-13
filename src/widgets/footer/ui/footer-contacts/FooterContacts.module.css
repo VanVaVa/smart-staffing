@@ -55,6 +55,27 @@
   filter: brightness(0);
 }
 
+.footer-contacts__social-edit {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 120px;
+  padding: 8px;
+  border-radius: var(--radius-control);
+  background: var(--color-grey-700);
+}
+
+.footer-contacts__social-label {
+  font-size: var(--text-body-sm);
+  color: var(--color-white);
+}
+
+.footer-contacts__social-href {
+  font-size: var(--text-body-sm);
+  color: var(--color-grey-400);
+  word-break: break-all;
+}
+
 @media (max-width: 1440px) {
   .footer-contacts__contacts {
     gap: 6px;

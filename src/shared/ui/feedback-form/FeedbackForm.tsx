@@ -1,5 +1,6 @@
 "use client";
 
+import type { FormSubmissionType } from "@/entities/form-submission";
 import {
   type ChangeEvent,
   type FormEvent,
@@ -18,6 +19,7 @@ import {
 } from "@/shared/ui/feedback-form-channel-toggle";
 import { Input } from "@/shared/ui/input";
 import { Link } from "@/shared/ui/link";
+import { submitForm } from "@/shared/lib/submit-form";
 
 import {
   type FeedbackFormSuccessContent,
@@ -50,9 +52,7 @@ const CHANNEL_FIELDS: Record<
   },
 };
 
-const UPLOAD_DELAY_MS = 1200;
-
-type AttachState = "idle" | "loading" | "uploaded";
+type AttachState = "idle" | "uploaded";
 
 export type FeedbackFormResumeAttach = {
   label: ReactNode;
@@ -66,6 +66,11 @@ export type FeedbackFormProps = {
   fullNamePlaceholder?: string;
   resumeAttach?: FeedbackFormResumeAttach;
   successContent?: FeedbackFormSuccessContent;
+  submissionType: FormSubmissionType;
+  sourcePath: string;
+  sourceLabel?: string;
+  vacancyId?: string;
+  disabled?: boolean;
 };
 
 function formatResumeLabel(file: File, fullName: string): string {
@@ -84,6 +89,11 @@ export function FeedbackForm({
   fullNamePlaceholder,
   resumeAttach,
   successContent,
+  submissionType,
+  sourcePath,
+  sourceLabel,
+  vacancyId,
+  disabled = false,
 }: FeedbackFormProps) {
   const [channel, setChannel] = useState<FeedbackFormChannel>("telegram");
   const [consented, setConsented] = useState(false);
@@ -91,8 +101,9 @@ export function FeedbackForm({
   const [fullName, setFullName] = useState("");
   const [attachState, setAttachState] = useState<AttachState>("idle");
   const [resumeDisplayName, setResumeDisplayName] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const resumeFileRef = useRef<File | null>(null);
-  const uploadTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { openSuccessModal } = useFeedbackFormSuccessModal();
 
   const field = useMemo(() => CHANNEL_FIELDS[channel], [channel]);
@@ -101,17 +112,11 @@ export function FeedbackForm({
   const hasResumeAttach = resumeAttach !== undefined;
 
   const canSubmit =
+    !disabled &&
+    !submitting &&
     consented &&
     contactValue.trim().length > 0 &&
     (!requiresFullName || fullName.trim().length > 0);
-
-  useEffect(() => {
-    return () => {
-      if (uploadTimerRef.current) {
-        clearTimeout(uploadTimerRef.current);
-      }
-    };
-  }, []);
 
   useEffect(() => {
     if (attachState !== "uploaded" || !resumeFileRef.current) {
@@ -121,14 +126,16 @@ export function FeedbackForm({
     setResumeDisplayName(formatResumeLabel(resumeFileRef.current, fullName));
   }, [attachState, fullName]);
 
-  const formClassName = [
-    styles["feedback-form"],
-    tone === "light" ? styles["feedback-form--light"] : "",
-    hasResumeAttach ? styles["feedback-form--with-resume"] : "",
-    className,
-  ]
-    .filter(Boolean)
-    .join(" ");
+  const resetForm = () => {
+    setChannel("telegram");
+    setConsented(false);
+    setContactValue("");
+    setFullName("");
+    setAttachState("idle");
+    setResumeDisplayName("");
+    resumeFileRef.current = null;
+    setSubmitError(null);
+  };
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -137,41 +144,51 @@ export function FeedbackForm({
     }
 
     resumeFileRef.current = file;
-    setAttachState("loading");
-    setResumeDisplayName("");
-
-    if (uploadTimerRef.current) {
-      clearTimeout(uploadTimerRef.current);
-    }
-
-    uploadTimerRef.current = setTimeout(() => {
-      setResumeDisplayName(formatResumeLabel(file, fullName));
-      setAttachState("uploaded");
-    }, UPLOAD_DELAY_MS);
+    setResumeDisplayName(formatResumeLabel(file, fullName));
+    setAttachState("uploaded");
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!canSubmit) {
       return;
     }
+
+    setSubmitting(true);
+    setSubmitError(null);
+
+    const result = await submitForm({
+      type: submissionType,
+      channel,
+      contactValue: contactValue.trim(),
+      fullName: requiresFullName ? fullName.trim() : undefined,
+      consent: true,
+      sourcePath,
+      sourceLabel,
+      vacancyId,
+      resume: resumeFileRef.current,
+    });
+
+    setSubmitting(false);
+
+    if (!result.ok) {
+      setSubmitError(result.error);
+      return;
+    }
+
+    resetForm();
     openSuccessModal(successContent);
   };
 
   const attachClassName = [
     styles["feedback-form__attach"],
-    attachState === "loading" ? styles["feedback-form__attach--loading"] : "",
     attachState === "uploaded" ? styles["feedback-form__attach--uploaded"] : "",
   ]
     .filter(Boolean)
     .join(" ");
 
   const attachText =
-    attachState === "loading"
-      ? resumeAttach?.loadingLabel
-      : attachState === "uploaded"
-        ? resumeDisplayName
-        : resumeAttach?.label;
+    attachState === "uploaded" ? resumeDisplayName : resumeAttach?.label;
 
   const submitButton = (
     <Button
@@ -181,12 +198,21 @@ export function FeedbackForm({
       disabled={!canSubmit}
       className={hasResumeAttach ? styles["feedback-form__submit"] : undefined}
     >
-      {submitLabel}
+      {submitting ? "Отправка..." : submitLabel}
     </Button>
   );
 
+  const rootClassName = [
+    styles["feedback-form"],
+    tone === "light" ? styles["feedback-form--light"] : "",
+    hasResumeAttach ? styles["feedback-form--with-resume"] : "",
+    className,
+  ]
+    .filter(Boolean)
+    .join(" ");
+
   return (
-    <form className={formClassName} action="#" method="post" onSubmit={handleSubmit}>
+    <form className={rootClassName} action="#" method="post" onSubmit={handleSubmit}>
       <input type="hidden" name="channel" value={channel} />
       <div className={styles["feedback-form__fields"]}>
         <FeedbackFormChannelToggle
@@ -206,6 +232,7 @@ export function FeedbackForm({
           value={contactValue}
           onChange={(event) => setContactValue(event.target.value)}
           className={styles["feedback-form__input"]}
+          disabled={disabled || submitting}
         />
         {requiresFullName ? (
           <Input
@@ -217,6 +244,7 @@ export function FeedbackForm({
             value={fullName}
             onChange={(event) => setFullName(event.target.value)}
             className={styles["feedback-form__input"]}
+            disabled={disabled || submitting}
           />
         ) : null}
       </div>
@@ -225,6 +253,7 @@ export function FeedbackForm({
         checked={consented}
         onChange={(event) => setConsented(event.target.checked)}
         className={styles["feedback-form__consent"]}
+        disabled={disabled || submitting}
         label={
           <>
             Я даю согласие на обработку персональных данных в соответствии с{" "}
@@ -234,18 +263,16 @@ export function FeedbackForm({
           </>
         }
       />
+      {submitError ? <p className={styles["feedback-form__error"]}>{submitError}</p> : null}
       {hasResumeAttach ? (
         <div className={styles["feedback-form__actions"]}>
           <label className={attachClassName}>
-            {attachState === "loading" ? (
-              <span className={styles["feedback-form__attach-progress"]} aria-hidden />
-            ) : null}
             <span className={styles["feedback-form__attach-label"]}>{attachText}</span>
             <input
               type="file"
               name="resume"
               accept=".pdf,.doc,.docx"
-              disabled={attachState === "loading"}
+              disabled={disabled || submitting}
               className={styles["feedback-form__attach-input"]}
               onChange={handleFileChange}
             />

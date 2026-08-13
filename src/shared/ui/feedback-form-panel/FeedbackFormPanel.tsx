@@ -1,5 +1,6 @@
 import { FeedbackForm } from "@/shared/ui/feedback-form";
 import { EditableText } from "@/shared/ui/editable-field";
+import type { FormSubmissionType } from "@/entities/form-submission";
 
 import styles from "./FeedbackFormPanel.module.css";
 
@@ -14,6 +15,9 @@ type FeedbackFormPanelProps = FeedbackFormPanelContent & {
   className?: string;
   interactive?: boolean;
   editPrefix?: string;
+  submissionType: FormSubmissionType;
+  sourcePath: string;
+  sourceLabel?: string;
 };
 
 function FeedbackFormPanelSubtitle({
@@ -79,6 +83,9 @@ export function FeedbackFormPanel({
   className,
   interactive = true,
   editPrefix = "",
+  submissionType,
+  sourcePath,
+  sourceLabel,
 }: FeedbackFormPanelProps) {
   const rootClassName = [styles["feedback-form-panel"], className].filter(Boolean).join(" ");
 
@@ -115,7 +122,13 @@ export function FeedbackFormPanel({
             .filter(Boolean)
             .join(" ")}
         >
-          <FeedbackForm submitLabel={submitLabel} />
+          <FeedbackForm
+            submitLabel={submitLabel}
+            submissionType={submissionType}
+            sourcePath={sourcePath}
+            sourceLabel={sourceLabel}
+            disabled={!interactive}
+          />
         </div>
       </div>
     </div>

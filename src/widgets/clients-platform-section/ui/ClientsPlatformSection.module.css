@@ -71,6 +71,13 @@
   align-items: start;
 }
 
+.clients-platform-section__pain-column {
+  display: flex;
+  flex-direction: column;
+  gap: min(16px, calc(16 * 100vw / 1920));
+  min-width: 0;
+}
+
 .clients-platform-section__pain-list {
   display: flex;
   flex-direction: column;

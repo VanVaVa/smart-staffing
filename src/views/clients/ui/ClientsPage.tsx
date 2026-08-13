@@ -34,7 +34,7 @@ export function ClientsPage({
   return (
     <div className={styles["clients-page"]}>
       {blocks.map((block, index) => {
-        let node = <ClientsBlockRenderer block={block} />;
+        let node = <ClientsBlockRenderer block={block} segment={segment} />;
         if (inlineEdit && onBlockUpdate) {
           node = (
             <AdminInlineEditLayer

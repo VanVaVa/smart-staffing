@@ -25,9 +25,17 @@ function createPrismaClient() {
   return new PrismaClient({ adapter });
 }
 
+function isPrismaClientCurrent(client: PrismaClient): boolean {
+  return typeof client.formSubmission?.groupBy === "function";
+}
+
 export function getPrismaClient(): PrismaClient {
-  if (!globalForPrisma.prisma) {
-    globalForPrisma.prisma = createPrismaClient();
+  const cached = globalForPrisma.prisma;
+  if (cached && isPrismaClientCurrent(cached)) {
+    return cached;
   }
-  return globalForPrisma.prisma;
+
+  const client = createPrismaClient();
+  globalForPrisma.prisma = client;
+  return client;
 }

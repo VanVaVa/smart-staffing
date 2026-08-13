@@ -10,11 +10,15 @@ import styles from "./VacanciesApplicationForm.module.css";
 type VacanciesApplicationFormProps = {
   form: VacanciesBlockProps["form"];
   applicationSuccessModal: VacanciesBlockProps["applicationSuccessModal"];
+  selectedVacancyId: string;
+  selectedVacancyTitle: string;
 };
 
 export function VacanciesApplicationForm({
   form,
   applicationSuccessModal,
+  selectedVacancyId,
+  selectedVacancyTitle,
 }: VacanciesApplicationFormProps) {
   const blockEdit = useAdminBlockEditOptional();
 
@@ -41,6 +45,10 @@ export function VacanciesApplicationForm({
           ),
         }}
         successContent={applicationSuccessModal}
+        submissionType="vacancy"
+        sourcePath="/vacancies"
+        sourceLabel={selectedVacancyTitle || undefined}
+        vacancyId={selectedVacancyId || undefined}
       />
       {blockEdit ? (
         <div className={styles["vacancies-application-form__edit-fields"]}>

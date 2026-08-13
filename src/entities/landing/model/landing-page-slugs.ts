@@ -7,6 +7,7 @@ export const LANDING_PAGE_SLUGS = {
   vacancies: "vacancies",
   documents: "documents",
   media: "media",
+  footer: "footer",
 } as const;
 
 export type StaticLandingPageSlug =
@@ -86,7 +87,7 @@ export function isStaticLandingPageSlug(slug: string): boolean {
 }
 
 export function isKnownLandingPageSlug(slug: string): boolean {
-  return isStaticLandingPageSlug(slug) || isMediaArticlePageSlug(slug);
+  return slug === LANDING_PAGE_SLUGS.footer || isStaticLandingPageSlug(slug) || isMediaArticlePageSlug(slug);
 }
 
 export const ALL_LANDING_PAGE_SLUGS = STATIC_LANDING_PAGE_SLUGS;

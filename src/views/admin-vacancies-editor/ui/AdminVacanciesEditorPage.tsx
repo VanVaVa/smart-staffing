@@ -1,5 +1,6 @@
 "use client";
 
+import type { FooterBlockProps } from "@/entities/landing/model/footer-blocks";
 import {
   defaultVacanciesBlockProps,
   VACANCIES_BLOCK_TYPES,
@@ -14,15 +15,18 @@ const vacanciesSchema = getLandingPageSchema(LANDING_PAGE_SLUGS.vacancies);
 
 type AdminVacanciesEditorPageProps = {
   initialBlocks: VacanciesBlock[];
+  footerContent: FooterBlockProps;
 };
 
 export function AdminVacanciesEditorPage({
   initialBlocks,
+  footerContent,
 }: AdminVacanciesEditorPageProps) {
   return (
     <AdminLandingEditorPage
       slug={LANDING_PAGE_SLUGS.vacancies}
       initialBlocks={initialBlocks}
+      footerContent={footerContent}
       draftConfig={{
         slug: LANDING_PAGE_SLUGS.vacancies,
         blockTypes: VACANCIES_BLOCK_TYPES,

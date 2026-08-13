@@ -28,6 +28,11 @@
   gap: 32px;
 }
 
+.submissionsGroup {
+  max-width: 960px;
+  margin: 0 auto 32px;
+}
+
 .groupTitle {
   margin: 0 0 16px;
   font-size: 18px;

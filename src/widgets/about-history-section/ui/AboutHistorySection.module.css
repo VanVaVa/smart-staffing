@@ -94,6 +94,13 @@
   align-items: start;
 }
 
+.about-history-section__timeline-column {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  min-width: 0;
+}
+
 .about-history-section__timeline {
   display: flex;
   flex-direction: column;

@@ -35,6 +35,10 @@ export function AboutLeadershipSection({ content }: AboutLeadershipSectionProps)
                 key={member.id}
                 arrayPath="members"
                 index={index}
+                variant="leadership"
+                className={
+                  styles[`about-leadership-section__grid-item--${member.layout}`]
+                }
               >
                 <AboutLeadershipCard
                   role={member.role}

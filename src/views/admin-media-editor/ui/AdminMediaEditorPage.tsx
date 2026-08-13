@@ -1,5 +1,6 @@
 "use client";
 
+import type { FooterBlockProps } from "@/entities/landing/model/footer-blocks";
 import type { MediaArticle } from "@/entities/landing";
 import {
   defaultMediaBlockProps,
@@ -16,16 +17,19 @@ const mediaSchema = getLandingPageSchema(LANDING_PAGE_SLUGS.media);
 type AdminMediaEditorPageProps = {
   initialBlocks: MediaBlock[];
   articles: MediaArticle[];
+  footerContent: FooterBlockProps;
 };
 
 export function AdminMediaEditorPage({
   initialBlocks,
   articles,
+  footerContent,
 }: AdminMediaEditorPageProps) {
   return (
     <AdminLandingEditorPage
       slug={LANDING_PAGE_SLUGS.media}
       initialBlocks={initialBlocks}
+      footerContent={footerContent}
       draftConfig={{
         slug: LANDING_PAGE_SLUGS.media,
         blockTypes: MEDIA_BLOCK_TYPES,

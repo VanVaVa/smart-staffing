@@ -1,0 +1,116 @@
+.page {
+  min-height: 100vh;
+  padding: 48px 24px 96px;
+  background: #0f1115;
+  color: #f5f5f7;
+}
+
+.header {
+  max-width: 1200px;
+  margin: 0 auto 32px;
+}
+
+.backLink {
+  display: inline-block;
+  margin-bottom: 16px;
+  color: rgb(245 245 247 / 70%);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.backLink:hover {
+  color: #fff;
+}
+
+.title {
+  margin: 0 0 8px;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.subtitle {
+  margin: 0;
+  color: rgb(245 245 247 / 70%);
+}
+
+.empty {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 24px;
+  border-radius: 16px;
+  background: rgb(255 255 255 / 6%);
+  text-align: center;
+  color: rgb(245 245 247 / 70%);
+}
+
+.tableWrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow-x: auto;
+  border-radius: 16px;
+  background: rgb(255 255 255 / 6%);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.table th,
+.table td {
+  padding: 14px 16px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid rgb(255 255 255 / 8%);
+}
+
+.table th {
+  color: rgb(245 245 247 / 70%);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.table tbody tr:hover {
+  background: rgb(255 255 255 / 4%);
+}
+
+.downloadLink {
+  color: #8ab4ff;
+  text-decoration: none;
+}
+
+.downloadLink:hover {
+  text-decoration: underline;
+}
+
+.pagination {
+  max-width: 1200px;
+  margin: 32px auto 0;
+  display: flex;
+  justify-content: center;
+}
+
+.pagination :global(.pagination) {
+  color: #f5f5f7;
+}
+
+.pagination :global(.pagination__page) {
+  color: rgb(245 245 247 / 80%);
+}
+
+.pagination :global(.pagination__page--active) {
+  color: #fff;
+}
+
+.pagination :global(.pagination__ellipsis) {
+  color: rgb(245 245 247 / 50%);
+}
+
+.pagination :global(.pagination__next) {
+  color: rgb(245 245 247 / 80%);
+}

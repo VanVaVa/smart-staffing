@@ -1,5 +1,10 @@
 import Link from "next/link";
 
+import {
+  FORM_SUBMISSION_ADMIN_PATHS,
+  FORM_SUBMISSION_TYPE_LABELS,
+  FORM_SUBMISSION_TYPES,
+} from "@/entities/form-submission";
 import { clientSegmentSlugs } from "@/entities/landing/model/clients-content";
 import { documentSlugs } from "@/entities/landing/model/documents-content";
 import {
@@ -28,6 +33,10 @@ export default async function AdminIndexPage() {
   const mediaArticleSlugs = await listMediaArticlePageSlugs();
 
   const adminGroups: AdminGroup[] = [
+    {
+      title: "Глобальные",
+      slugs: [LANDING_PAGE_SLUGS.footer],
+    },
     {
       title: "Основные",
       slugs: [
@@ -62,6 +71,23 @@ export default async function AdminIndexPage() {
         <h1 className={styles.title}>Админ-панель</h1>
         <p className={styles.subtitle}>Выберите страницу для редактирования</p>
       </header>
+      <section className={styles.submissionsGroup}>
+        <h2 className={styles.groupTitle}>Заявки</h2>
+        <ul className={styles.list}>
+          <li className={styles.item}>
+            <Link className={styles.link} href="/admin/submissions">
+              Все заявки
+            </Link>
+          </li>
+          {FORM_SUBMISSION_TYPES.map((type) => (
+            <li key={type} className={styles.item}>
+              <Link className={styles.link} href={FORM_SUBMISSION_ADMIN_PATHS[type]}>
+                {FORM_SUBMISSION_TYPE_LABELS[type]}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
       <div className={styles.groups}>
         {adminGroups.map((group) => (
           <section key={group.title} className={styles.group}>

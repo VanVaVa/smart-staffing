@@ -63,3 +63,27 @@ model AdminUser {
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 }
+
+enum FormSubmissionType {
+  contact
+  partnership
+  vacancy
+  book
+}
+
+model FormSubmission {
+  id                 String             @id @default(cuid())
+  type               FormSubmissionType
+  channel            String?
+  contactValue       String
+  fullName           String?
+  consent            Boolean            @default(true)
+  sourcePath         String
+  sourceLabel        String?
+  vacancyId          String?
+  resumeStoragePath  String?
+  resumeOriginalName String?
+  createdAt          DateTime           @default(now())
+
+  @@index([type, createdAt(sort: Desc)])
+}

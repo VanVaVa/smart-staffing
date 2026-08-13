@@ -720,6 +720,18 @@ export const clientsSegments: Record<ClientSegmentSlug, ClientsSegmentContent> =
   },
 };
 
+const clientSegmentNavLabels: Record<ClientSegmentSlug, string> = {
+  enterprise: "Крупные корпорации",
+  outstaffing: "Аутстаффинговые и аутсорсинговые компании",
+  "mid-market": "Средний бизнес",
+  agencies: "Кадровые агентства",
+};
+
+export const clientSegmentNavItems = clientSegmentSlugs.map((slug) => ({
+  label: clientSegmentNavLabels[slug],
+  href: `/clients/${slug}`,
+}));
+
 export function isClientSegmentSlug(value: string): value is ClientSegmentSlug {
   return (clientSegmentSlugs as readonly string[]).includes(value);
 }

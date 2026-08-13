@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 
 import {
   buildRelatedArticles,
+  getFooterContent,
   getMediaArticlePageContent,
   listMediaArticles,
 } from "@/entities/landing/server";
@@ -17,9 +18,10 @@ export default async function Page({ params }: PageProps) {
   const { slug } = await params;
 
   try {
-    const [{ blocks }, articles] = await Promise.all([
+    const [{ blocks }, articles, footerContent] = await Promise.all([
       getMediaArticlePageContent(slug),
       listMediaArticles(),
+      getFooterContent(),
     ]);
 
     const relatedArticles = buildRelatedArticles(slug, articles);
@@ -29,6 +31,7 @@ export default async function Page({ params }: PageProps) {
         articleSlug={slug}
         initialBlocks={blocks}
         relatedArticles={relatedArticles}
+        footerContent={footerContent}
       />
     );
   } catch {

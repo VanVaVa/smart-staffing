@@ -1,4 +1,8 @@
 .editable-collection__add {
+  flex: 0 0 100%;
+  width: 100%;
+  max-width: 100%;
+  grid-column: 1 / -1;
   margin-top: 12px;
   padding: 10px 16px;
   border: 1px dashed rgb(21 101 192 / 45%);
@@ -7,13 +11,15 @@
   color: #1565c0;
   font-size: 14px;
   cursor: pointer;
-  width: 100%;
   box-sizing: border-box;
 }
 
 .editable-collection__add--inline {
-  margin-top: 0;
+  flex: 0 0 auto;
   width: auto;
+  max-width: none;
+  grid-column: auto;
+  margin-top: 0;
   flex-shrink: 0;
   align-self: center;
 }
@@ -83,6 +89,24 @@
   .editable-collection-item--benefit .editable-collection-item__content > * {
     height: auto;
   }
+}
+
+.editable-collection-item--leadership {
+  min-width: 0;
+}
+
+.editable-collection-item--leadership .editable-collection-item__content,
+.editable-collection-item--leadership .editable-collection-item__content > * {
+  height: 100%;
+}
+
+.editable-collection-item--list-entry {
+  width: 100%;
+}
+
+.editable-collection-item--list-entry .editable-collection-item__content,
+.editable-collection-item--list-entry .editable-collection-item__content > * {
+  width: 100%;
 }
 
 .editable-collection-item--step {

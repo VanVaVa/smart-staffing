@@ -1,5 +1,6 @@
 "use client";
 
+import type { FooterBlockProps } from "@/entities/landing/model/footer-blocks";
 import {
   CLIENTS_BLOCK_TYPES,
   defaultClientsBlockProps,
@@ -14,11 +15,13 @@ import { ClientsPage } from "@/views/clients";
 type AdminClientsEditorPageProps = {
   segment: ClientSegmentSlug;
   initialBlocks: ClientsBlock[];
+  footerContent: FooterBlockProps;
 };
 
 export function AdminClientsEditorPage({
   segment,
   initialBlocks,
+  footerContent,
 }: AdminClientsEditorPageProps) {
   const slug = clientsPageSlug(segment);
   const clientsSchema = getLandingPageSchema(slug);
@@ -27,6 +30,7 @@ export function AdminClientsEditorPage({
     <AdminLandingEditorPage
       slug={slug}
       initialBlocks={initialBlocks}
+      footerContent={footerContent}
       draftConfig={{
         slug,
         blockTypes: CLIENTS_BLOCK_TYPES,

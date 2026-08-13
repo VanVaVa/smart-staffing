@@ -46,7 +46,7 @@ type EditableCollectionItemProps = {
   index: number;
   children: ReactNode;
   className?: string;
-  variant?: "segment" | "carousel-card" | "feature-row" | "case-study" | "benefit" | "step" | "step-inline";
+  variant?: "segment" | "carousel-card" | "feature-row" | "case-study" | "benefit" | "step" | "step-inline" | "leadership" | "list-entry";
 };
 
 export function EditableCollectionItem({

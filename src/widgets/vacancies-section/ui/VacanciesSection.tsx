@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 
 import type { VacanciesBlockProps } from "@/entities/landing/model/vacancies-blocks";
@@ -28,6 +31,19 @@ export function VacanciesSection({ content }: VacanciesSectionProps) {
     form,
     applicationSuccessModal,
   } = content;
+
+  const [selectedVacancyId, setSelectedVacancyId] = useState<string>(vacancies[0]?.id ?? "");
+
+  useEffect(() => {
+    if (!vacancies.some((vacancy) => vacancy.id === selectedVacancyId)) {
+      setSelectedVacancyId(vacancies[0]?.id ?? "");
+    }
+  }, [selectedVacancyId, vacancies]);
+
+  const selectedVacancyTitle = useMemo(
+    () => vacancies.find((vacancy) => vacancy.id === selectedVacancyId)?.title ?? "",
+    [selectedVacancyId, vacancies],
+  );
 
   const desktopHero = (
     <Image
@@ -94,7 +110,11 @@ export function VacanciesSection({ content }: VacanciesSectionProps) {
         </div>
         <div className={styles["vacancies-section__body"]}>
           <div className={styles["vacancies-section__list-row"]}>
-            <VacanciesList vacancies={vacancies} />
+            <VacanciesList
+              vacancies={vacancies}
+              selectedId={selectedVacancyId}
+              onSelect={setSelectedVacancyId}
+            />
           </div>
           <div className={styles["vacancies-section__form-panel"]}>
             <div className={styles["vacancies-section__form-decor"]} aria-hidden>
@@ -102,7 +122,12 @@ export function VacanciesSection({ content }: VacanciesSectionProps) {
               <div className={styles["vacancies-section__form-orb--accent"]} />
             </div>
             <div className={styles["vacancies-section__form-content"]}>
-              <VacanciesApplicationForm form={form} applicationSuccessModal={applicationSuccessModal} />
+              <VacanciesApplicationForm
+                form={form}
+                applicationSuccessModal={applicationSuccessModal}
+                selectedVacancyId={selectedVacancyId}
+                selectedVacancyTitle={selectedVacancyTitle}
+              />
             </div>
           </div>
         </div>

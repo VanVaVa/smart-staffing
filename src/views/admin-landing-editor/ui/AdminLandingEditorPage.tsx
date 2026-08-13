@@ -9,6 +9,7 @@ import {
   useLandingPageDraft,
   type LandingPageDraftConfig,
 } from "@/features/admin-landing-editor";
+import type { FooterBlockProps } from "@/entities/landing/model/footer-blocks";
 import type { LandingPageSchema } from "@/entities/landing/lib/landing-page-registry";
 import { getAdminPageLabel, getPublicPagePath } from "@/entities/landing/lib/landing-page-registry";
 import type { LandingBlockLike } from "@/shared/ui/editable-field";
@@ -22,6 +23,7 @@ type AdminLandingEditorPageProps<
 > = {
   slug: string;
   initialBlocks: TBlock[];
+  footerContent: FooterBlockProps;
   draftConfig: LandingPageDraftConfig<TBlock, TBlockType>;
   pageSchema: Pick<
     LandingPageSchema,
@@ -35,6 +37,14 @@ type AdminLandingEditorPageProps<
     item: unknown,
   ) => unknown;
   toolbarExtra?: ReactNode;
+  renderFooter?: (props: {
+    block: TBlock;
+    renderBlock: (
+      block: TBlock,
+      index: number,
+      node: ReactNode,
+    ) => ReactNode;
+  }) => (footer: ReactNode) => ReactNode;
   renderPage: (props: {
     blocks: TBlock[];
     mode: "edit";
@@ -53,11 +63,13 @@ export function AdminLandingEditorPage<
 >({
   slug,
   initialBlocks,
+  footerContent,
   draftConfig,
   pageSchema,
   allowAddRemove = true,
   prepareCollectionItem,
   toolbarExtra,
+  renderFooter,
   renderPage,
 }: AdminLandingEditorPageProps<TBlock, TBlockType>) {
   const {
@@ -94,10 +106,26 @@ export function AdminLandingEditorPage<
     );
   }
 
+  const shellFooterContent =
+    renderFooter && blocks[0]
+      ? (blocks[0].props as FooterBlockProps)
+      : footerContent;
+
   return (
     <>
       <div className={styles["admin-landing-editor__content"]}>
-        <PublicPageShell>
+        <PublicPageShell
+          footerContent={shellFooterContent}
+          renderFooter={
+            renderFooter && blocks[0]
+              ? (footer) =>
+                  renderFooter({
+                    block: blocks[0],
+                    renderBlock,
+                  })(footer)
+              : undefined
+          }
+        >
           {renderPage({
             blocks,
             mode: "edit",

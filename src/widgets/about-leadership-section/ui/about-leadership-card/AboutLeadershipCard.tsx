@@ -24,7 +24,11 @@ export function AboutLeadershipCard({
     <article
       className={`${styles["about-leadership-card"]} ${styles[`about-leadership-card--${layout}`]}`}
     >
-      <EditableMedia path={`${prefix}imageSrc`} label="Руководство — фото">
+      <EditableMedia
+        path={`${prefix}imageSrc`}
+        label="Руководство — фото"
+        className={styles["about-leadership-card__media"]}
+      >
         <img
           src={imageSrc}
           alt=""

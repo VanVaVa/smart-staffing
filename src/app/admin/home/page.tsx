@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { getHomePageContent } from "@/entities/landing/server";
+import { getFooterContent, getHomePageContent } from "@/entities/landing/server";
 import { AdminHomeEditorPage } from "@/views/admin-home-editor";
 
 export const dynamic = "force-dynamic";
@@ -11,6 +11,9 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-  const { blocks } = await getHomePageContent();
-  return <AdminHomeEditorPage initialBlocks={blocks} />;
+  const [{ blocks }, footerContent] = await Promise.all([
+    getHomePageContent(),
+    getFooterContent(),
+  ]);
+  return <AdminHomeEditorPage initialBlocks={blocks} footerContent={footerContent} />;
 }

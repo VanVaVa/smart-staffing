@@ -1,0 +1,90 @@
+.page {
+  min-height: 100vh;
+  padding: 48px 24px 96px;
+  background: #0f1115;
+  color: #f5f5f7;
+}
+
+.header {
+  max-width: 960px;
+  margin: 0 auto 40px;
+}
+
+.backLink {
+  display: inline-block;
+  margin-bottom: 16px;
+  color: rgb(245 245 247 / 70%);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.backLink:hover {
+  color: #fff;
+}
+
+.title {
+  margin: 0 0 8px;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.subtitle {
+  margin: 0;
+  color: rgb(245 245 247 / 70%);
+}
+
+.grid {
+  max-width: 960px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px;
+  border-radius: 16px;
+  background: rgb(255 255 255 / 6%);
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.15s ease;
+}
+
+.card:hover {
+  background: rgb(255 255 255 / 10%);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 12%);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.cardHint {
+  margin: 0;
+  color: rgb(245 245 247 / 60%);
+  font-size: 14px;
+}

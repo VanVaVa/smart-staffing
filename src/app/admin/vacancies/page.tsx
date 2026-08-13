@@ -1,9 +1,12 @@
-import { getVacanciesPageContent } from "@/entities/landing/server";
+import { getFooterContent, getVacanciesPageContent } from "@/entities/landing/server";
 import { AdminVacanciesEditorPage } from "@/views/admin-vacancies-editor";
 
 export const dynamic = "force-dynamic";
 
 export default async function Page() {
-  const { blocks } = await getVacanciesPageContent();
-  return <AdminVacanciesEditorPage initialBlocks={blocks} />;
+  const [{ blocks }, footerContent] = await Promise.all([
+    getVacanciesPageContent(),
+    getFooterContent(),
+  ]);
+  return <AdminVacanciesEditorPage initialBlocks={blocks} footerContent={footerContent} />;
 }

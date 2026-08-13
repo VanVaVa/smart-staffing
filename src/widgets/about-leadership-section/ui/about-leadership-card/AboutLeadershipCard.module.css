@@ -6,6 +6,11 @@
   min-height: min(396px, calc(396 * 100vw / 1920));
 }
 
+.about-leadership-card__media {
+  position: absolute;
+  inset: 0;
+}
+
 .about-leadership-card__photo {
   position: absolute;
   inset: 0;

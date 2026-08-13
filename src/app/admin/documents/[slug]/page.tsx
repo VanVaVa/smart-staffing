@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 
 import { documentSlugs } from "@/entities/landing";
-import { getDocumentViewPageContent } from "@/entities/landing/server";
+import { getDocumentViewPageContent, getFooterContent } from "@/entities/landing/server";
 import { AdminDocumentViewEditorPage } from "@/views/admin-document-view-editor";
 
 type PageProps = {
@@ -17,8 +17,16 @@ export default async function Page({ params }: PageProps) {
     notFound();
   }
 
-  const { blocks } = await getDocumentViewPageContent(slug);
+  const [{ blocks }, footerContent] = await Promise.all([
+    getDocumentViewPageContent(slug),
+    getFooterContent(),
+  ]);
+
   return (
-    <AdminDocumentViewEditorPage documentSlug={slug} initialBlocks={blocks} />
+    <AdminDocumentViewEditorPage
+      documentSlug={slug}
+      initialBlocks={blocks}
+      footerContent={footerContent}
+    />
   );
 }

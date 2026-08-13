@@ -33,6 +33,42 @@
   align-items: stretch;
 }
 
+.about-leadership-section__grid-item {
+  min-width: 0;
+}
+
+.about-leadership-section__grid-item--featured {
+  grid-area: featured;
+}
+
+.about-leadership-section__grid-item--strategy {
+  grid-area: strategy;
+}
+
+.about-leadership-section__grid-item--alliance {
+  grid-area: alliance;
+}
+
+.about-leadership-section__grid-item--development {
+  grid-area: development;
+}
+
+.about-leadership-section__grid-item--analytics {
+  grid-area: analytics;
+}
+
+.about-leadership-section__grid-item--marketing {
+  grid-area: marketing;
+}
+
+.about-leadership-section__grid-item--investors {
+  grid-area: investors;
+}
+
+.about-leadership-section__grid-item--finance {
+  grid-area: finance;
+}
+
 @media (max-width: 1440px) {
   .about-leadership-section__title {
     font-size: var(--text-h1);

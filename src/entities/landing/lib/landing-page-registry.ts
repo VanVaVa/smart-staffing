@@ -38,6 +38,15 @@ import {
   type DocumentsBlockType,
 } from "../model/documents-blocks";
 import {
+  defaultFooterBlockProps,
+  defaultFooterCollectionItem,
+  FOOTER_BLOCK_TYPES,
+  FOOTER_BLOCK_TYPE_LABELS,
+  isFooterBlockType,
+  parseFooterBlock,
+  parseFooterBlockProps,
+} from "../model/footer-blocks";
+import {
   defaultBlockProps as defaultHomeBlockProps,
   defaultCollectionItem as defaultHomeCollectionItem,
   HOME_BLOCK_TYPES,
@@ -225,12 +234,24 @@ function createClientsSchema(slug: string, segment: string): LandingPageSchema {
   });
 }
 
+const FOOTER_SCHEMA = createSchema({
+  slug: LANDING_PAGE_SLUGS.footer,
+  blockTypes: FOOTER_BLOCK_TYPES,
+  blockTypeLabels: FOOTER_BLOCK_TYPE_LABELS,
+  isBlockType: isFooterBlockType,
+  parseBlockProps: parseFooterBlockProps,
+  parseBlock: parseFooterBlock,
+  defaultBlockProps: () => defaultFooterBlockProps(),
+  defaultCollectionItem: (key) => defaultFooterCollectionItem(key as never),
+});
+
 const STATIC_SCHEMAS: Record<string, LandingPageSchema> = {
   [LANDING_PAGE_SLUGS.home]: HOME_SCHEMA,
   [LANDING_PAGE_SLUGS.about]: ABOUT_SCHEMA,
   [LANDING_PAGE_SLUGS.vacancies]: VACANCIES_SCHEMA,
   [LANDING_PAGE_SLUGS.documents]: DOCUMENTS_SCHEMA,
   [LANDING_PAGE_SLUGS.media]: MEDIA_SCHEMA,
+  [LANDING_PAGE_SLUGS.footer]: FOOTER_SCHEMA,
 };
 
 export function getLandingPageSchema(slug: string): LandingPageSchema {
@@ -266,6 +287,7 @@ export function getAdminPageLabel(slug: string): string {
   if (slug === LANDING_PAGE_SLUGS.vacancies) return "Вакансии";
   if (slug === LANDING_PAGE_SLUGS.documents) return "Документы";
   if (slug === LANDING_PAGE_SLUGS.media) return "Медиа";
+  if (slug === LANDING_PAGE_SLUGS.footer) return "Футер";
 
   const clientSegment = parseClientSegmentFromSlug(slug);
   if (clientSegment) {
@@ -287,6 +309,7 @@ export function getAdminPageLabel(slug: string): string {
 
 export function getAdminPagePath(slug: string): string {
   if (slug === LANDING_PAGE_SLUGS.home) return "/admin/home";
+  if (slug === LANDING_PAGE_SLUGS.footer) return "/admin/footer";
 
   const clientSegment = parseClientSegmentFromSlug(slug);
   if (clientSegment) {
@@ -308,6 +331,7 @@ export function getAdminPagePath(slug: string): string {
 
 export function getPublicPagePath(slug: string): string {
   if (slug === LANDING_PAGE_SLUGS.home) return "/";
+  if (slug === LANDING_PAGE_SLUGS.footer) return "/";
 
   const clientSegment = parseClientSegmentFromSlug(slug);
   if (clientSegment) {

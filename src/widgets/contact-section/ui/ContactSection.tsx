@@ -15,7 +15,12 @@ export function ContactSection({
 }: ContactSectionProps) {
   return (
     <Section id="contacts" tone="muted" className={styles["contact-section"]}>
-      <FeedbackFormPanel {...content} interactive={interactive} />
+      <FeedbackFormPanel
+        {...content}
+        interactive={interactive}
+        submissionType="contact"
+        sourcePath="/"
+      />
     </Section>
   );
 }

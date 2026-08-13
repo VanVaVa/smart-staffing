@@ -1,8 +1,17 @@
 .vacancies-list-panel {
   display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: min(12px, calc(12 * 100vw / 1920));
+  flex-shrink: 1;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.vacancies-list-panel__scroll-row {
+  display: flex;
   align-items: flex-start;
   gap: min(16px, calc(16 * 100vw / 1920));
-  flex-shrink: 1;
   min-width: 0;
   max-width: 100%;
 }

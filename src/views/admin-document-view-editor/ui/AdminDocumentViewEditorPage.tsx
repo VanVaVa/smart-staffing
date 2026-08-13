@@ -1,5 +1,6 @@
 "use client";
 
+import type { FooterBlockProps } from "@/entities/landing/model/footer-blocks";
 import {
   defaultDocumentViewBlockProps,
   DOCUMENT_VIEW_BLOCK_TYPES,
@@ -13,11 +14,13 @@ import { DocumentViewPage } from "@/views/document-view";
 type AdminDocumentViewEditorPageProps = {
   documentSlug: string;
   initialBlocks: DocumentViewBlock[];
+  footerContent: FooterBlockProps;
 };
 
 export function AdminDocumentViewEditorPage({
   documentSlug,
   initialBlocks,
+  footerContent,
 }: AdminDocumentViewEditorPageProps) {
   const pageSlug = documentPageSlug(documentSlug);
   const documentViewSchema = getLandingPageSchema(pageSlug);
@@ -26,6 +29,7 @@ export function AdminDocumentViewEditorPage({
     <AdminLandingEditorPage
       slug={pageSlug}
       initialBlocks={initialBlocks}
+      footerContent={footerContent}
       draftConfig={{
         slug: pageSlug,
         blockTypes: DOCUMENT_VIEW_BLOCK_TYPES,
