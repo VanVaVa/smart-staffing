@@ -65,6 +65,23 @@ export function ProductShowcaseBenefits({
             />
           </EditableCollectionItem>
         ) : null}
+        {stat ? (
+          <EditableCollectionItem
+            arrayPath="benefits"
+            index={findBenefitIndex(benefits, "stat")}
+            variant="benefit"
+            className={cardStyles["product-showcase-benefit-card--stat"]}
+          >
+            <ProductShowcaseBenefitStatCard
+              benefitIndex={findBenefitIndex(benefits, "stat")}
+              statValue={stat.statValue ?? ""}
+              title={stat.title}
+              text={stat.text}
+              mediaImageSrc={benefitMedia.stat}
+              mediaPath="benefitMedia.stat"
+            />
+          </EditableCollectionItem>
+        ) : null}
         {contractors ? (
           <EditableCollectionItem
             arrayPath="benefits"
@@ -94,23 +111,6 @@ export function ProductShowcaseBenefits({
               text={competencies.text}
               mediaImageSrc={benefitMedia.competencies}
               mediaPath="benefitMedia.competencies"
-            />
-          </EditableCollectionItem>
-        ) : null}
-        {stat ? (
-          <EditableCollectionItem
-            arrayPath="benefits"
-            index={findBenefitIndex(benefits, "stat")}
-            variant="benefit"
-            className={cardStyles["product-showcase-benefit-card--stat"]}
-          >
-            <ProductShowcaseBenefitStatCard
-              benefitIndex={findBenefitIndex(benefits, "stat")}
-              statValue={stat.statValue ?? ""}
-              title={stat.title}
-              text={stat.text}
-              mediaImageSrc={benefitMedia.stat}
-              mediaPath="benefitMedia.stat"
             />
           </EditableCollectionItem>
         ) : null}

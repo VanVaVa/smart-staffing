@@ -146,16 +146,6 @@ async function main() {
     }
   }
 
-  const existingPage = await prisma.landingPage.findUnique({
-    where: { slug: HOME_SLUG },
-    include: { _count: { select: { blocks: true } } },
-  });
-
-  if (existingPage && existingPage._count.blocks > 0) {
-    await ensureAdminUser();
-    return;
-  }
-
   const page = await prisma.landingPage.upsert({
     where: { slug: HOME_SLUG },
     create: {

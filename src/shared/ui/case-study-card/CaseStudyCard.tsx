@@ -150,24 +150,17 @@ export function CaseStudyCard({
       <div className={styles["case-study-card__panel"]}>
         <div className={styles["case-study-card__panel-media"]}>
           <div className={styles["case-study-card__panel-bg"]}>{panelBackground}</div>
-          {layout !== "compact-horizontal" && panelLogo ? (
+          {panelLogo ? (
             <div className={styles["case-study-card__panel-logo"]} style={logoStyle}>
               {panelLogo}
             </div>
           ) : null}
         </div>
-        {layout === "compact-horizontal" && (panelLogo || tag) ? (
+        {layout === "compact-horizontal" && tag ? (
           <div className={styles["case-study-card__panel-header"]}>
-            {panelLogo ? (
-              <div className={styles["case-study-card__panel-logo"]} style={logoStyle}>
-                {panelLogo}
-              </div>
-            ) : null}
-            {tag ? (
-              <Badge variant="tag" className={styles["case-study-card__panel-tag"]}>
-                {tag}
-              </Badge>
-            ) : null}
+            <Badge variant="tag" className={styles["case-study-card__panel-tag"]}>
+              {tag}
+            </Badge>
           </div>
         ) : null}
         <div className={styles["case-study-card__metric-block"]}>
@@ -203,7 +196,7 @@ export function CaseStudyCard({
       </div>
       <div className={styles["case-study-card__content"]}>
         <div className={styles["case-study-card__lead"]}>
-          {tag && layout !== "compact-horizontal" ? (
+          {tag ? (
             <Badge variant="tag" className={styles["case-study-card__tag"]}>
               {tag}
             </Badge>

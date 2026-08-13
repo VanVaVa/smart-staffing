@@ -12,9 +12,41 @@
   gap: 28px;
 }
 
+@media (max-width: 1440px) {
+  .case-studies-section {
+    padding-top: 168px;
+  }
+
+  .case-studies-section :global(.section__inner) {
+    gap: 48px;
+  }
+
+  .case-studies-section__list {
+    gap: 28px;
+  }
+}
+
 @media (max-width: 992px) {
+  .case-studies-section {
+    padding-top: 168px;
+  }
+
+  .case-studies-section :global(.section__inner) {
+    gap: 48px;
+  }
+
   .case-studies-section__list {
     gap: 16px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+  .case-studies-section {
+    padding-top: min(168px, calc(168 * 100vw / 992));
+  }
+
+  .case-studies-section :global(.section__inner) {
+    gap: min(48px, calc(48 * 100vw / 992));
   }
 }
 

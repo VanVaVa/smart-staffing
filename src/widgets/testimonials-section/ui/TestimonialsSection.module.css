@@ -2,6 +2,16 @@
   max-width: none;
 }
 
+@media (max-width: 1440px) {
+  .testimonials-section {
+    padding-top: 168px;
+  }
+
+  .testimonials-section :global(.section__inner) {
+    gap: 48px;
+  }
+}
+
 @media (min-width: 769px) and (max-width: 992px) {
   .testimonials-section {
     padding-top: 108px;

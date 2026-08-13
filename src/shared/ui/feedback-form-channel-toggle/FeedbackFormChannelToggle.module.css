@@ -108,7 +108,7 @@
   }
 
   .feedback-form-channel-toggle__option {
-    padding-inline: 12px;
+    padding-inline: clamp(8px, calc(8px + (100vw - 360px) * 4 / 216), 12px);
     font-size: var(--text-body-sm);
     line-height: var(--line-body-sm);
     overflow: hidden;

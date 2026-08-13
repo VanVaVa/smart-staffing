@@ -31,7 +31,7 @@
 .certificate-gallery__back {
   position: absolute;
   top: 40px;
-  left: 48px;
+  left: var(--container-padding);
   display: flex;
   align-items: center;
   gap: 8px;
@@ -39,6 +39,7 @@
   background: transparent;
   font: inherit;
   font-size: var(--text-body-xl);
+  line-height: var(--line-body-xl);
 }
 
 .certificate-gallery__control {
@@ -79,9 +80,9 @@
   box-shadow: 0 20px 60px rgb(0 0 0 / 18%);
 }
 
-@media (max-width: 1120px) {
+@media (max-width: 1440px) {
   .certificate-gallery {
-    grid-template-columns: 48px minmax(0, 600px) 48px;
+    grid-template-columns: 48px minmax(0, 512px) 48px;
     gap: 20px;
     padding-top: 96px;
   }
@@ -91,17 +92,30 @@
   }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 992px) {
+  .certificate-gallery {
+    grid-template-columns: 48px minmax(0, 410px) 48px;
+    gap: 16px;
+    padding: 96px var(--container-padding) 40px;
+  }
+
+  .certificate-gallery__document {
+    max-height: calc(100vh - 136px);
+  }
+}
+
+@media (max-width: 768px) {
   .certificate-gallery {
     grid-template-columns: minmax(0, 1fr);
     align-items: center;
-    padding: 72px 16px 80px;
+    padding: 72px var(--container-padding) 80px;
   }
 
   .certificate-gallery__back {
     top: 24px;
-    left: 16px;
-    font-size: 18px;
+    left: var(--container-padding);
+    font-size: var(--text-body-lg);
+    line-height: var(--line-body-lg);
   }
 
   .certificate-gallery__document {
@@ -126,14 +140,35 @@
   }
 }
 
+@media (max-width: 576px) {
+  .certificate-gallery {
+    padding: 64px var(--container-padding) 72px;
+  }
+
+  .certificate-gallery__back {
+    top: 20px;
+    font-size: var(--text-body-md);
+    line-height: var(--line-body);
+  }
+
+  .certificate-gallery__document {
+    max-height: calc(100vh - 140px);
+  }
+
+  .certificate-gallery__control {
+    bottom: 12px;
+    width: 44px;
+    height: 44px;
+  }
+}
+
 @media (max-width: 360px) {
   .certificate-gallery {
-    padding: 64px 16px 72px;
+    padding: 64px var(--container-padding) 72px;
   }
 
   .certificate-gallery__back {
     top: 16px;
-    left: 16px;
     font-size: var(--text-body-sm);
     line-height: var(--line-body-sm);
   }

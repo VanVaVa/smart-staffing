@@ -409,7 +409,7 @@ export function BlockEditPanel({ block, onChange, onClose }: BlockEditPanelProps
                       title: "Новая строка",
                       description: "",
                       tags: [],
-                      imageSrc: "/landing/feature-projects.png",
+                      imageSrc: "/landing/features/feature-projects.png",
                       imageAlt: "",
                       imageWidth: 956,
                       imageHeight: 542,

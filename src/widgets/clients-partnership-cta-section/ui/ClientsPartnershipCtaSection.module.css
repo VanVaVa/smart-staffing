@@ -23,7 +23,14 @@
 
 @media (max-width: 768px) {
   .clients-partnership-cta-section {
-    padding-top: 148px;
+    padding-top: clamp(100px, 19vw, 148px);
+    padding-bottom: clamp(64px, 10vw, 80px);
+  }
+}
+
+@media (max-width: 576px) {
+  .clients-partnership-cta-section {
+    padding-top: 120px;
     padding-bottom: 64px;
   }
 }

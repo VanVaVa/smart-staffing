@@ -626,10 +626,10 @@ export function defaultCollectionItem(key: HomeCollectionKey): unknown {
         title: "Новое решение",
         description: "Описание",
         tags: ["Тег"],
-        imageSrc: "/landing/feature-projects.png",
+        imageSrc: "",
         imageAlt: "",
-        imageWidth: 571,
-        imageHeight: 484,
+        imageWidth: 716,
+        imageHeight: 506,
       };
     case "caseStudies.items":
       return {

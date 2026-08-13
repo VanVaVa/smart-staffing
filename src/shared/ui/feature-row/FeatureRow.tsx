@@ -1,9 +1,10 @@
 import type { ReactNode } from "react";
 
 import { Badge } from "@/shared/ui/badge";
-import { EditableMedia, EditableTagList, EditableText } from "@/shared/ui/editable-field";
+import { EditableTagList, EditableText } from "@/shared/ui/editable-field";
 
 import styles from "./FeatureRow.module.css";
+import { FeatureRowMedia } from "./ui/FeatureRowMedia";
 
 type FeatureRowProps = {
   rowIndex?: number;
@@ -93,16 +94,6 @@ export function FeatureRow({
       />
     ) : null;
 
-  const imageNode = (
-    <img
-      src={imageSrc}
-      alt={imageAlt}
-      width={imageWidth}
-      height={imageHeight}
-      className={styles["feature-row__image"]}
-    />
-  );
-
   return (
     <article className={rootClass}>
       <div className={styles["feature-row__content"]}>
@@ -113,15 +104,24 @@ export function FeatureRow({
         {tagsNode}
         {action}
       </div>
-      <figure className={styles["feature-row__media"]}>
-        {pathPrefix ? (
-          <EditableMedia path={`${pathPrefix}imageSrc`} label="Решение — изображение">
-            {imageNode}
-          </EditableMedia>
-        ) : (
-          imageNode
-        )}
-      </figure>
+      {rowIndex !== undefined ? (
+        <FeatureRowMedia
+          rowIndex={rowIndex}
+          mediaSrc={imageSrc}
+          mediaAlt={imageAlt}
+          mediaWidth={imageWidth}
+          mediaHeight={imageHeight}
+          mediaPath={`${pathPrefix}imageSrc`}
+        />
+      ) : (
+        <FeatureRowMedia
+          rowIndex={0}
+          mediaSrc={imageSrc}
+          mediaAlt={imageAlt}
+          mediaWidth={imageWidth}
+          mediaHeight={imageHeight}
+        />
+      )}
     </article>
   );
 }

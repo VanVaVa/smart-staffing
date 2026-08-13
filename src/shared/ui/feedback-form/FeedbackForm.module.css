@@ -23,6 +23,7 @@
 }
 
 .feedback-form__consent {
+  width: 100%;
   color: var(--color-white);
 }
 
@@ -206,7 +207,7 @@
 
 @media (max-width: 768px) {
   .feedback-form {
-    gap: 20px;
+    gap: clamp(20px, 3.5vw, 28px);
     width: 100%;
   }
 }
@@ -218,11 +219,16 @@
   }
 
   .feedback-form__fields {
-    gap: 6px;
+    gap: clamp(6px, calc(8px - (100vw - 360px) * 2 / 216), 8px);
   }
 }
 
 @media (max-width: 992px) {
+  .feedback-form {
+    width: 100%;
+    max-width: none;
+  }
+
   .feedback-form--with-resume {
     width: 100%;
     gap: 24px;
@@ -321,6 +327,14 @@
 }
 
 @media (max-width: 360px) {
+  .feedback-form {
+    gap: 20px;
+  }
+
+  .feedback-form__fields {
+    gap: 8px;
+  }
+
   .feedback-form--with-resume {
     gap: 20px;
   }

@@ -26,7 +26,7 @@ export function ArticleHero({ article }: ArticleHeroProps) {
           alt={article.imageAlt}
           fill
           priority
-          sizes="(max-width: 360px) 360px, (max-width: 640px) calc(100vw - 32px), 32vw"
+          sizes="(max-width: 360px) 328px, (max-width: 576px) 164px, (max-width: 992px) 304px, (max-width: 1440px) 445px, 601px"
           className={styles["article-hero__image"]}
         />
         <span className={styles["article-hero__tag"]}>{article.tagLabel}</span>

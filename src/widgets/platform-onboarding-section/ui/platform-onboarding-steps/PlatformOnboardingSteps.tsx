@@ -75,11 +75,11 @@ export function PlatformOnboardingSteps({
               className={styles["platform-onboarding-steps__step"]}
               data-step={index}
             >
-              <EditableCollectionItem
-                arrayPath="steps.steps"
-                index={index}
-                variant={index === 0 ? "step-inline" : "step"}
-              >
+          <EditableCollectionItem
+            arrayPath="steps.steps"
+            index={index}
+            variant="step-inline"
+          >
                 <StepCard {...step} stepIndex={index} />
               </EditableCollectionItem>
               {index < steps.length - 1 ? (

@@ -12,6 +12,12 @@
   margin-inline: calc(50% - 50vw);
 }
 
+@media (max-width: 1440px) {
+  .platform-onboarding-section {
+    padding-top: 168px;
+  }
+}
+
 @media (max-width: 992px) {
   .platform-onboarding-section {
     padding-top: 114px;

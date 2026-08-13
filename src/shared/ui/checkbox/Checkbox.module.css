@@ -84,6 +84,7 @@
 
 @media (max-width: 576px) {
   .checkbox {
+    gap: clamp(8px, calc(8px + (100vw - 360px) * 4 / 216), 12px);
     font-size: var(--text-body-sm);
     line-height: 18px;
   }

@@ -195,7 +195,7 @@
 
   .button--with-arrow.button--md,
   .button--with-arrow.button--lg {
-    padding: 2px 2px 2px 16px;
+    padding: 2px 2px 2px clamp(16px, calc(16px + (100vw - 360px) * 4 / 216), 20px);
   }
 }
 

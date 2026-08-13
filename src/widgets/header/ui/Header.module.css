@@ -52,6 +52,27 @@
   }
 }
 
+@media (max-width: 992px) {
+  .header__inner {
+    gap: 24px;
+    min-height: 72px;
+  }
+
+  .header__start {
+    gap: 28px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+  .header__inner {
+    gap: min(24px, calc(24 * 100vw / 992));
+  }
+
+  .header__start {
+    gap: min(28px, calc(28 * 100vw / 992));
+  }
+}
+
 @media (max-width: 576px) {
   .header__inner {
     gap: 12px;

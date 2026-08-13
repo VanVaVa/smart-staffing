@@ -134,6 +134,120 @@
   margin-top: -90px;
 }
 
+@media (max-width: 1440px) {
+  .hero {
+    padding-top: 110px;
+    padding-bottom: 216px;
+  }
+
+  .hero__orb--orange {
+    top: 130px;
+    left: 929px;
+    right: auto;
+    width: 320px;
+    height: 320px;
+  }
+
+  .hero__orb--purple-large {
+    top: 336px;
+    left: 609px;
+    right: auto;
+    width: 305px;
+    height: 305px;
+  }
+
+  .hero__orb--orange-small {
+    top: 488px;
+    left: 1124px;
+    right: auto;
+    width: 320px;
+    height: 320px;
+  }
+
+  .hero__orb--purple-small {
+    top: 498px;
+    left: 680px;
+    right: auto;
+    width: 160px;
+    height: 160px;
+  }
+
+  .hero__inset {
+    padding-left: var(--container-padding);
+    padding-right: 0;
+  }
+
+  .hero__layout {
+    grid-template-columns: minmax(0, 728px) minmax(0, 802px);
+    gap: 8px;
+  }
+
+  .hero__content {
+    gap: 48px;
+    padding-top: 96px;
+    max-width: 728px;
+  }
+
+  .hero__copy {
+    gap: 16px;
+  }
+
+  .hero__title {
+    max-width: 728px;
+  }
+
+  .hero__subtitle {
+    max-width: 685px;
+  }
+
+  .hero__actions {
+    gap: 145px;
+  }
+
+  .hero__visual-slot {
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 993px) and (max-width: 1440px) {
+  .hero {
+    --hero-copy-width: max(520px, min(728px, calc(728 * 100vw / 1440)));
+    --hero-visual-width: min(
+      802px,
+      calc(802 * 100vw / 1440),
+      calc(100vw - var(--container-padding) - var(--hero-copy-width) - 8px)
+    );
+  }
+
+  .hero__layout {
+    grid-template-columns: minmax(0, var(--hero-copy-width)) minmax(0, var(--hero-visual-width));
+  }
+
+  .hero__content {
+    max-width: var(--hero-copy-width);
+  }
+
+  .hero__title {
+    max-width: var(--hero-copy-width);
+  }
+
+  .hero__orb--orange {
+    left: min(929px, calc(929 * 100vw / 1440));
+  }
+
+  .hero__orb--purple-large {
+    left: min(609px, calc(609 * 100vw / 1440));
+  }
+
+  .hero__orb--orange-small {
+    left: min(1124px, calc(1124 * 100vw / 1440));
+  }
+
+  .hero__orb--purple-small {
+    left: min(680px, calc(680 * 100vw / 1440));
+  }
+}
+
 @media (max-width: 992px) {
   .hero {
     margin-top: 80px;
@@ -141,12 +255,36 @@
     padding-bottom: 168px;
   }
 
+  .hero__orb--orange {
+    top: 130px;
+    width: 320px;
+    height: 320px;
+  }
+
+  .hero__orb--purple-large {
+    top: 336px;
+    width: 305px;
+    height: 305px;
+  }
+
+  .hero__orb--orange-small {
+    top: 488px;
+    width: 320px;
+    height: 320px;
+  }
+
+  .hero__orb--purple-small {
+    top: 498px;
+    width: 160px;
+    height: 160px;
+  }
+
   .hero__orb--orange,
   .hero__orb--purple-large,
   .hero__orb--orange-small,
   .hero__orb--purple-small {
     left: auto;
-    right: -120px;
+    right: max(-120px, calc(-120 * 100vw / 992));
   }
 
   .hero__orb--purple-small {
@@ -164,8 +302,16 @@
     max-width: none;
   }
 
+  .hero__copy {
+    gap: 16px;
+  }
+
   .hero__title {
-    max-width: 616px;
+    max-width: min(616px, calc(616 * 100vw / 992));
+  }
+
+  .hero__subtitle {
+    max-width: min(616px, calc(616 * 100vw / 992));
   }
 
   .hero__visual-slot {
@@ -187,9 +333,37 @@
 }
 
 @media (min-width: 769px) and (max-width: 992px) {
-  .hero__copy {
-    height: 194px;
-    overflow: hidden;
+  .hero {
+    padding-top: min(56px, calc(56 * 100vw / 992));
+    padding-bottom: min(168px, calc(168 * 100vw / 992));
+  }
+
+  .hero__layout {
+    row-gap: min(80px, calc(80 * 100vw / 992));
+  }
+
+  .hero__orb--orange {
+    top: min(130px, calc(130 * 100vw / 992));
+    width: min(320px, calc(320 * 100vw / 992));
+    height: min(320px, calc(320 * 100vw / 992));
+  }
+
+  .hero__orb--purple-large {
+    top: min(336px, calc(336 * 100vw / 992));
+    width: min(305px, calc(305 * 100vw / 992));
+    height: min(305px, calc(305 * 100vw / 992));
+  }
+
+  .hero__orb--orange-small {
+    top: min(488px, calc(488 * 100vw / 992));
+    width: min(320px, calc(320 * 100vw / 992));
+    height: min(320px, calc(320 * 100vw / 992));
+  }
+
+  .hero__orb--purple-small {
+    top: min(498px, calc(498 * 100vw / 992));
+    width: min(160px, calc(160 * 100vw / 992));
+    height: min(160px, calc(160 * 100vw / 992));
   }
 }
 

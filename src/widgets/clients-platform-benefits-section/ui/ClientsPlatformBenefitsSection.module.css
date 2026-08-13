@@ -283,12 +283,69 @@
   }
 }
 
-@media (max-width: 576px) {
+@media (min-width: 577px) and (max-width: 768px) {
   .clients-platform-benefits-section__card:nth-child(1) > *,
   .clients-platform-benefits-section__card:nth-child(2) > *,
   .clients-platform-benefits-section__card:nth-child(3) > *,
   .clients-platform-benefits-section__card:nth-child(4) > * {
-    min-height: clamp(160px, 44vw, 280px);
+    min-height: clamp(240px, 44vw, 336px);
+  }
+}
+
+@media (max-width: 576px) {
+  .clients-platform-benefits-section {
+    padding-top: 64px;
+    padding-bottom: 0;
+  }
+
+  .clients-platform-benefits-section__container {
+    gap: 40px;
+  }
+
+  .clients-platform-benefits-section__panel {
+    gap: 20px;
+    padding: 20px;
+    border-radius: var(--radius-control);
+  }
+
+  .clients-platform-benefits-section__panel-header {
+    gap: 4px;
+  }
+
+  .clients-platform-benefits-section__panel-title {
+    font-size: var(--text-h3);
+    line-height: var(--line-h3);
+  }
+
+  .clients-platform-benefits-section__panel-subtitle {
+    font-size: var(--text-body-md);
+    line-height: var(--line-body);
+  }
+
+  .clients-platform-benefits-section__cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4px;
+  }
+
+  .clients-platform-benefits-section__card:nth-child(1),
+  .clients-platform-benefits-section__card:nth-child(4) {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+
+  .clients-platform-benefits-section__card:nth-child(1) > *,
+  .clients-platform-benefits-section__card:nth-child(4) > * {
+    min-height: 140px;
+  }
+
+  .clients-platform-benefits-section__card:nth-child(2) > *,
+  .clients-platform-benefits-section__card:nth-child(3) > * {
+    min-height: 240px;
+  }
+
+  .clients-platform-benefits-section__showcase {
+    margin-top: 0;
+    gap: 8px;
   }
 
   .clients-platform-benefits-section__showcase-row {
@@ -320,16 +377,19 @@
   }
 
   .clients-platform-benefits-section__panel-header {
+    gap: 4px;
     max-width: none;
   }
 
   .clients-platform-benefits-section__panel-title {
-    font-size: var(--text-h3);
-    line-height: var(--line-h3);
+    font-family: var(--font-body);
+    font-size: var(--text-body-md);
+    font-weight: 500;
+    line-height: var(--line-body-xl);
   }
 
   .clients-platform-benefits-section__panel-subtitle {
-    font-size: var(--text-body-md);
+    font-size: var(--text-body-sm);
     line-height: var(--line-body-sm);
   }
 

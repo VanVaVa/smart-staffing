@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: column;
   gap: 0;
-  padding-bottom: 82px;
+  padding-bottom: 96px;
   margin-top: 196px;
 }
 
@@ -104,6 +104,52 @@
   flex-shrink: 0;
 }
 
+@media (max-width: 1440px) {
+  .platform-onboarding-demo__stage {
+    margin-top: 168px;
+    padding-bottom: 96px;
+  }
+
+  .platform-onboarding-demo__mockup {
+    top: 88px;
+    right: 36px;
+    width: 657px;
+  }
+
+  .platform-onboarding-demo__copy {
+    max-width: 794px;
+    margin-bottom: 168px;
+  }
+
+  .platform-onboarding-demo__promo {
+    min-height: 88px;
+    padding: 28px 40px;
+    margin-inline: var(--container-padding);
+    max-width: 1368px;
+  }
+
+  .platform-onboarding-demo__promo-text {
+    max-width: 530px;
+    font-size: var(--text-body-md);
+    line-height: var(--line-body);
+  }
+}
+
+@media (min-width: 993px) and (max-width: 1440px) {
+  .platform-onboarding-demo__mockup {
+    width: min(657px, calc(657 * 100vw / 1440));
+  }
+
+  .platform-onboarding-demo__copy {
+    max-width: min(794px, calc(794 * 100vw / 1440));
+    margin-bottom: min(168px, calc(168 * 100vw / 1440));
+  }
+
+  .platform-onboarding-demo__stage {
+    padding-bottom: min(96px, calc(96 * 100vw / 1440));
+  }
+}
+
 @media (max-width: 768px) {
   .platform-onboarding-demo__stage {
     padding-bottom: 48px;
@@ -145,18 +191,18 @@
 
 @media (min-width: 769px) and (max-width: 992px) {
   .platform-onboarding-demo__stage {
-    padding-bottom: 48px;
-    margin-top: 136px;
+    padding-bottom: min(48px, calc(48 * 100vw / 992));
+    margin-top: min(136px, calc(136 * 100vw / 992));
   }
 
   .platform-onboarding-demo__mockup {
-    top: 556px;
-    right: 52px;
-    width: 444px;
+    top: min(556px, calc(556 * 100vw / 992));
+    right: min(52px, calc(52 * 100vw / 992));
+    width: min(444px, calc(444 * 100vw / 992));
   }
 
   .platform-onboarding-demo__copy {
-    margin-bottom: 142px;
+    margin-bottom: min(142px, calc(142 * 100vw / 992));
   }
 
   .platform-onboarding-demo__promo {
@@ -164,17 +210,17 @@
   }
 
   .platform-onboarding-demo__promo-glow {
-    right: 154px;
-    top: 78px;
-    width: 160px;
-    height: 160px;
+    right: min(154px, calc(154 * 100vw / 992));
+    top: min(78px, calc(78 * 100vw / 992));
+    width: min(160px, calc(160 * 100vw / 992));
+    height: min(160px, calc(160 * 100vw / 992));
   }
 
   .platform-onboarding-demo__promo-glow::after {
-    left: -97px;
-    top: 222px;
-    width: 220px;
-    height: 220px;
+    left: min(-97px, calc(-97 * 100vw / 992));
+    top: min(222px, calc(222 * 100vw / 992));
+    width: min(220px, calc(220 * 100vw / 992));
+    height: min(220px, calc(220 * 100vw / 992));
   }
 }
 

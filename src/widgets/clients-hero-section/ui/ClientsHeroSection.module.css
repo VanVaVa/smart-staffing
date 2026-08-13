@@ -255,14 +255,30 @@
 
   .clients-hero-section__image {
     width: min(calc(100vw - var(--container-padding)), 744px);
-    height: 408px;
+    height: clamp(364px, 53vw, 408px);
     border-radius: 24px 0 0 24px;
   }
 }
 
+@media (min-width: 577px) and (max-width: 768px) {
+  .clients-hero-section__content {
+    padding-top: clamp(104px, 18vw, 136px);
+  }
+}
+
 @media (max-width: 576px) {
+  .clients-hero-section__content {
+    gap: 48px;
+  }
+
+  .clients-hero-section__subtitle {
+    font-size: var(--text-body-md);
+    line-height: var(--line-body);
+  }
+
   .clients-hero-section__image {
-    height: clamp(288px, 53vw, 408px);
+    height: clamp(288px, 63vw, 364px);
+    border-radius: var(--radius-lg) 0 0 var(--radius-lg);
   }
 }
 

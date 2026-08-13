@@ -390,6 +390,17 @@
   }
 }
 
+@media (min-width: 577px) and (max-width: 768px) {
+  .clients-platform-section__preview-image {
+    height: clamp(264px, 34vw, 408px);
+    aspect-ratio: auto;
+  }
+
+  .clients-platform-section__layout {
+    gap: clamp(28px, 4vw, 32px);
+  }
+}
+
 @media (max-width: 576px) {
   .clients-platform-section {
     padding-block: min(120px, calc(120 * 100vw / 576)) min(80px, calc(80 * 100vw / 576));
@@ -402,11 +413,15 @@
       "pain"
       "copy"
       "tags";
-    gap: min(24px, calc(24 * 100vw / 576));
+    gap: 28px;
   }
 
   .clients-platform-section__preview-image {
-    aspect-ratio: 359 / 264;
+    width: 100%;
+    height: 264px;
+    aspect-ratio: auto;
+    object-fit: cover;
+    border-radius: var(--radius-control);
   }
 
   .clients-platform-section__orb--orange {
@@ -448,7 +463,7 @@
   }
 
   .clients-platform-section__pain-list {
-    gap: 12px;
+    gap: 8px;
   }
 
   .clients-platform-section__pain-text {

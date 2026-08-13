@@ -227,6 +227,34 @@
   }
 }
 
+@media (max-width: 576px) {
+  .clients-platform-benefits-card {
+    min-height: 0;
+    border-radius: var(--radius-control);
+  }
+
+  .clients-platform-benefits-card__title {
+    padding: 16px 16px 0;
+    font-size: var(--text-body-md);
+    line-height: var(--line-body);
+    font-weight: 400;
+  }
+
+  .clients-platform-benefits-card--access .clients-platform-benefits-card__visual {
+    padding-inline: 10px;
+    padding-bottom: 10px;
+  }
+
+  .clients-platform-benefits-card--access .clients-platform-benefits-card__image {
+    border-radius: 10px;
+  }
+
+  .clients-platform-benefits-card--analytics .clients-platform-benefits-card__visual {
+    padding-inline: 10px;
+    padding-bottom: 6px;
+  }
+}
+
 @media (max-width: 360px) {
   .clients-platform-benefits-card__title {
     padding: 16px 16px 0;

@@ -46,7 +46,11 @@ export function PlatformOnboardingPartner({
       <div className={styles["platform-onboarding-partner__card-wrap"]}>
         <div className={styles["platform-onboarding-partner__orb"]} aria-hidden />
         <article className={styles["platform-onboarding-partner__card"]}>
-          <EditableMedia path="partner.imageSrc" label="Partner — изображение">
+          <EditableMedia
+            path="partner.imageSrc"
+            label="Partner — изображение"
+            className={styles["platform-onboarding-partner__media-slot"]}
+          >
             <div className={styles["platform-onboarding-partner__media"]}>
               <Image
                 className={styles["platform-onboarding-partner__image"]}
@@ -54,7 +58,7 @@ export function PlatformOnboardingPartner({
                 alt=""
                 width={imageWidth}
                 height={imageHeight}
-                sizes="213px"
+                sizes="152px"
               />
             </div>
           </EditableMedia>

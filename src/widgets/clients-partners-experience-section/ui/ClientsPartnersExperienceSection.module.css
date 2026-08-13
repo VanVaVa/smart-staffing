@@ -55,15 +55,25 @@
 
 @media (max-width: 768px) {
   .clients-partners-experience-section {
-    padding-top: 64px;
+    padding-top: clamp(64px, 12vw, 120px);
   }
 
   .clients-partners-experience-section__container {
-    gap: 31px;
+    gap: clamp(36px, 6vw, 48px);
   }
 
   .clients-partners-experience-section__title {
     font-size: clamp(32px, 8vw, 56px);
+  }
+}
+
+@media (max-width: 576px) {
+  .clients-partners-experience-section {
+    padding-top: 120px;
+  }
+
+  .clients-partners-experience-section__container {
+    gap: 40px;
   }
 }
 
