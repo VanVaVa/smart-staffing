@@ -3,6 +3,8 @@ import type { ReactNode } from "react";
 import { getFooterContent } from "@/entities/landing/server";
 import { PublicPageShell } from "@/widgets/public-page-shell";
 
+export const dynamic = "force-dynamic";
+
 type PublicLayoutProps = {
   children: ReactNode;
 };

@@ -1,18 +1,20 @@
 import type { ReactNode } from "react";
-import { Golos_Text, Montserrat } from "next/font/google";
+import localFont from "next/font/local";
 
 import "@/application/styles/globals.css";
 
-const montserrat = Montserrat({
-  subsets: ["latin", "cyrillic"],
+const montserrat = localFont({
+  src: "../application/styles/fonts/montserrat-variable.woff2",
   variable: "--font-montserrat",
-  weight: ["500", "600", "700"],
+  weight: "500 700",
+  display: "swap",
 });
 
-const golos = Golos_Text({
-  subsets: ["latin", "cyrillic"],
+const golos = localFont({
+  src: "../application/styles/fonts/golos-text-variable.woff2",
   variable: "--font-golos",
-  weight: ["400", "500"],
+  weight: "400 500",
+  display: "swap",
 });
 
 type RootLayoutProps = {
