@@ -121,7 +121,7 @@ export async function verifyAdminSessionToken(
 export function getAdminSessionCookieOptions() {
   return {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
+    secure: process.env.ADMIN_COOKIE_SECURE === "true",
     sameSite: "lax" as const,
     path: "/",
     maxAge: SESSION_TTL_MS / 1000,

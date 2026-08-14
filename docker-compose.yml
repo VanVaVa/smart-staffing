@@ -34,6 +34,7 @@ services:
       ADMIN_SESSION_SECRET: ${ADMIN_SESSION_SECRET:-change-me-to-a-long-random-string}
       ADMIN_EMAIL: ${ADMIN_EMAIL:-admin@example.com}
       ADMIN_PASSWORD: ${ADMIN_PASSWORD:-change-me}
+      ADMIN_COOKIE_SECURE: ${ADMIN_COOKIE_SECURE:-false}
     ports:
       - "3000:3000"
     volumes:
@@ -52,6 +53,7 @@ services:
       ADMIN_SESSION_SECRET: ${ADMIN_SESSION_SECRET:-change-me-to-a-long-random-string}
       ADMIN_EMAIL: ${ADMIN_EMAIL:-admin@example.com}
       ADMIN_PASSWORD: ${ADMIN_PASSWORD:-change-me}
+      ADMIN_COOKIE_SECURE: ${ADMIN_COOKIE_SECURE:-false}
       WATCHPACK_POLLING: "true"
     ports:
       - "3000:3000"
