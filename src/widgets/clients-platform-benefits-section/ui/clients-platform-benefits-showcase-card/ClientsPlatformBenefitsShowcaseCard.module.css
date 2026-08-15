@@ -64,6 +64,16 @@
   pointer-events: none;
 }
 
+.clients-platform-benefits-showcase-card__it-visual.clients-platform-benefits-showcase-card__it-visual--portrait {
+  right: 0;
+  bottom: 0;
+  width: auto;
+  height: 72%;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: right bottom;
+}
+
 .clients-platform-benefits-showcase-card--quality {
   display: flex;
   flex-direction: column;

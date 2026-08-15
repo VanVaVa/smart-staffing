@@ -553,16 +553,15 @@
   }
 
   .case-study-card--compact-horizontal .case-study-card__panel {
-    display: block;
-    grid-column: 1;
-    grid-row: 1 / -1;
     position: relative;
     z-index: 1;
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-template-rows: subgrid;
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
     width: 100%;
-    height: 258px;
-    min-height: 258px;
-    max-height: none;
-    overflow: hidden;
+    min-height: 100%;
   }
 
   .case-study-card--compact-horizontal .case-study-card__panel-media {
@@ -580,9 +579,11 @@
   }
 
   .case-study-card--compact-horizontal .case-study-card__panel-header {
-    top: 24px;
-    left: 24px;
-    right: 24px;
+    display: none;
+  }
+
+  .case-study-card--compact-horizontal .case-study-card__tag {
+    display: flex;
   }
 
   .case-study-card--compact-horizontal .case-study-card__panel-logo {
@@ -595,14 +596,16 @@
   }
 
   .case-study-card--compact-horizontal .case-study-card__metric-block {
-    position: absolute;
-    z-index: 3;
-    inset: auto 24px 24px 24px;
+    position: static;
+    z-index: 2;
+    grid-column: 2;
+    grid-row: 2;
     display: flex;
     flex-direction: row;
     align-items: stretch;
+    align-self: end;
     gap: 16px;
-    padding: 0;
+    padding: 0 56px 24px 24px;
   }
 
   .case-study-card--compact-horizontal .case-study-card__metric-bar {
@@ -617,13 +620,11 @@
   }
 
   .case-study-card--compact-horizontal .case-study-card__metric {
-    color: var(--color-white);
     font-size: var(--text-h1);
     line-height: var(--line-h1);
   }
 
   .case-study-card--compact-horizontal .case-study-card__metric-label {
-    color: var(--color-white);
     font-size: var(--text-body-md);
     line-height: var(--line-body);
   }
@@ -645,18 +646,8 @@
     -webkit-line-clamp: 4;
   }
 
-  .case-study-card--compact-horizontal .case-study-card__footer {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    grid-column: 2;
-    grid-row: 2;
-    min-width: 0;
-    padding: 0 56px 24px 24px;
-  }
-
   .case-study-card--compact-horizontal .case-study-card__read-more {
-    display: inline-flex;
+    display: none;
   }
 
   .case-study-card--compact-horizontal .case-study-card__action {

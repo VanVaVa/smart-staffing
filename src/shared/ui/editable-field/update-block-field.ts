@@ -4,40 +4,33 @@ function cloneBlock<TBlock extends LandingBlockLike>(block: TBlock): TBlock {
   return structuredClone(block) as TBlock;
 }
 
-function setNestedValue(
-  target: Record<string, unknown>,
-  segments: string[],
-  value: unknown,
-): void {
-  if (segments.length === 0) {
+function setNestedValue(target: unknown, segments: string[], value: unknown): void {
+  if (segments.length === 0 || target === null || typeof target !== "object") {
     return;
   }
 
   const [head, ...tail] = segments;
-  if (tail.length === 0) {
-    target[head] = value;
-    return;
-  }
 
-  const index = Number(head);
-  const current = target[head];
-  if (Array.isArray(current) && !Number.isNaN(index)) {
-    const next = [...current] as unknown[];
-    const item = next[index];
-    if (typeof item === "object" && item !== null && !Array.isArray(item)) {
-      const copy = { ...(item as Record<string, unknown>) };
-      setNestedValue(copy, tail, value);
-      next[index] = copy;
-      target[head] = next;
+  if (Array.isArray(target)) {
+    const index = Number(head);
+    if (!Number.isInteger(index) || index < 0 || index >= target.length) {
+      return;
     }
+    if (tail.length === 0) {
+      target[index] = value;
+      return;
+    }
+    setNestedValue(target[index], tail, value);
     return;
   }
 
-  if (typeof current === "object" && current !== null && !Array.isArray(current)) {
-    const copy = { ...(current as Record<string, unknown>) };
-    setNestedValue(copy, tail, value);
-    target[head] = copy;
+  const record = target as Record<string, unknown>;
+  if (tail.length === 0) {
+    record[head] = value;
+    return;
   }
+
+  setNestedValue(record[head], tail, value);
 }
 
 export function updateBlockField<TBlock extends LandingBlockLike>(

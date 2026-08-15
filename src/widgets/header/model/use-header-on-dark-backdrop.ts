@@ -36,10 +36,17 @@ export function useHeaderOnDarkBackdrop() {
     window.addEventListener("scroll", scheduleUpdate, { passive: true });
     window.addEventListener("resize", scheduleUpdate);
 
+    const overlayObserver = new MutationObserver(scheduleUpdate);
+    overlayObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
     return () => {
       cancelAnimationFrame(frame);
       window.removeEventListener("scroll", scheduleUpdate);
       window.removeEventListener("resize", scheduleUpdate);
+      overlayObserver.disconnect();
     };
   }, []);
 

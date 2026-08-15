@@ -38,6 +38,10 @@
   scroll-snap-align: start;
 }
 
+.about-partner-carousel__track > *:last-child {
+  scroll-snap-align: end;
+}
+
 .about-partner-carousel__fade {
   position: absolute;
   top: 0;

@@ -5,6 +5,7 @@ import { Fragment, useCallback, useEffect, useId, useRef, useState } from "react
 
 import { landingNav } from "@/entities/landing";
 import { routes } from "@/shared/config";
+import { contactsHref, scrollToContactsOnPage } from "@/shared/lib/scroll-to-contacts";
 import { Button } from "@/shared/ui/button";
 import { Logo } from "@/shared/ui/logo";
 import linkStyles from "@/shared/ui/link/Link.module.css";
@@ -99,7 +100,8 @@ export function HeaderMobileMenu({
             Вход
           </Button>
           <Button
-            href="#contacts"
+            href={contactsHref}
+            onClick={scrollToContactsOnPage}
             size="md"
             variant={signUpVariant}
             className={styles["header-mobile-menu__sign-up"]}

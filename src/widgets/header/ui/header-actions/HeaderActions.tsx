@@ -1,4 +1,5 @@
 import { routes } from "@/shared/config";
+import { contactsHref, scrollToContactsOnPage } from "@/shared/lib/scroll-to-contacts";
 import { Button } from "@/shared/ui/button";
 
 import styles from "./HeaderActions.module.css";
@@ -20,7 +21,8 @@ export function HeaderActions({ onDarkBackdrop = false }: HeaderActionsProps) {
         Вход
       </Button>
       <Button
-        href="#contacts"
+        href={contactsHref}
+        onClick={scrollToContactsOnPage}
         size="md"
         variant={onDarkBackdrop ? "light" : "dark"}
         className={styles["header-actions__sign-up"]}

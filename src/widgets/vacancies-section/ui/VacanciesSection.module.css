@@ -200,8 +200,8 @@
   }
 
   .vacancies-section__form-panel {
-    flex-basis: min(448px, calc(448 * 100vw / 1440));
-    max-width: min(448px, calc(448 * 100vw / 1440));
+    flex-basis: clamp(360px, calc(448 * 100vw / 1440), 448px);
+    max-width: clamp(360px, calc(448 * 100vw / 1440), 448px);
   }
 }
 
@@ -260,13 +260,24 @@
     margin-top: 168px;
     padding: 16px;
     border-radius: 24px;
-    background: rgb(119 119 142 / 8%);
-    -webkit-backdrop-filter: blur(20px);
-    backdrop-filter: blur(20px);
+    background: none;
     box-sizing: border-box;
   }
 
+  .vacancies-section__form-panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: inherit;
+    background: rgb(119 119 142 / 8%);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    pointer-events: none;
+  }
+
   .vacancies-section__form-content {
+    z-index: 2;
     width: min(568px, 100%);
     max-width: 568px;
     padding: 0;
@@ -298,10 +309,12 @@
   }
 
   .vacancies-section__form-orb--accent {
-    width: 320px;
-    height: 320px;
-    left: 871px;
-    top: 240px;
+    width: min(320px, 34%);
+    height: auto;
+    aspect-ratio: 1;
+    left: auto;
+    right: 6%;
+    top: -14%;
   }
 }
 
@@ -398,10 +411,10 @@
   }
 
   .vacancies-section__form-orb--accent {
-    width: 240px;
-    height: 240px;
-    left: 692px;
-    top: 222px;
+    width: min(240px, 34%);
+    left: auto;
+    right: 6%;
+    top: -14%;
   }
 }
 
@@ -455,10 +468,10 @@
   }
 
   .vacancies-section__form-orb--accent {
-    width: 180px;
-    height: 180px;
-    left: 511px;
-    top: 120px;
+    width: min(180px, 34%);
+    left: auto;
+    right: 6%;
+    top: -14%;
   }
 }
 
@@ -511,9 +524,9 @@
   }
 
   .vacancies-section__form-orb--accent {
-    width: 140px;
-    height: 140px;
-    left: 314px;
-    top: 286px;
+    width: min(140px, 38%);
+    left: auto;
+    right: 6%;
+    top: -14%;
   }
 }

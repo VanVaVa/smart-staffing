@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useRef } from "react";
+import { useEffect, useId, useRef } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 
@@ -14,9 +14,12 @@ import {
   EditableText,
 } from "@/shared/ui/editable-field";
 import { useModalLock } from "@/shared/ui/modal-shell";
+import { usePageFooter } from "@/shared/ui/page-chrome";
 
 import shellStyles from "@/shared/ui/modal-shell/modal-shell.module.css";
 import styles from "./SoftwareRightsModal.module.css";
+
+const MODAL_OPEN_CLASS = "software-rights-modal-open";
 
 type SoftwareRightsModalProps = {
   document: DocumentItem | null;
@@ -31,9 +34,22 @@ export function SoftwareRightsModal({
 }: SoftwareRightsModalProps) {
   const titleId = useId();
   const closeRef = useRef<HTMLButtonElement>(null);
+  const pageFooter = usePageFooter();
   const open = activeDocument !== null;
 
   useModalLock(open, onClose, closeRef);
+
+  useEffect(() => {
+    if (!open) {
+      return;
+    }
+
+    document.documentElement.classList.add(MODAL_OPEN_CLASS);
+
+    return () => {
+      document.documentElement.classList.remove(MODAL_OPEN_CLASS);
+    };
+  }, [open]);
 
   if (!activeDocument) {
     return null;
@@ -132,6 +148,9 @@ export function SoftwareRightsModal({
               collectionKey="softwareRights.paragraphs"
               addLabel="Абзац"
             />
+          </div>
+          <div className={styles["software-rights-modal__page-footer"]}>
+            {pageFooter}
           </div>
         </div>
       </section>

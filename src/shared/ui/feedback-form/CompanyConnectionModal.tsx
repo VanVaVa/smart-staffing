@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 
 import { ArrowIcon } from "@/shared/ui/arrow-icon";
 import { useModalLock } from "@/shared/ui/modal-shell";
+import { usePageFooter } from "@/shared/ui/page-chrome";
 import { Button } from "@/shared/ui/button";
 
 import shellStyles from "@/shared/ui/modal-shell/modal-shell.module.css";
@@ -31,6 +32,7 @@ export function CompanyConnectionModal({
 }: CompanyConnectionModalProps) {
   const titleId = useId();
   const panelRef = useRef<HTMLDivElement>(null);
+  const pageFooter = usePageFooter();
 
   useModalLock(open, onClose, panelRef);
 
@@ -161,6 +163,9 @@ export function CompanyConnectionModal({
               ))}
             </ul>
           </div>
+        </div>
+        <div className={styles["company-connection-modal__page-footer"]}>
+          {pageFooter}
         </div>
       </div>
     </div>,

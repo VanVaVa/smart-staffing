@@ -47,6 +47,8 @@ function getScrollLeftForDirection(
 ): number {
   const maxScrollLeft = Math.max(0, viewport.scrollWidth - viewport.clientWidth);
   const viewportRect = viewport.getBoundingClientRect();
+  const paddingLeft = parseFloat(getComputedStyle(viewport).paddingLeft) || 0;
+  const startEdge = viewportRect.left + paddingLeft;
   const edgeOffset = 4;
   const currentScrollLeft = viewport.scrollLeft;
 
@@ -54,26 +56,13 @@ function getScrollLeftForDirection(
     for (const card of cards) {
       const cardRect = card.getBoundingClientRect();
 
-      if (cardRect.left > viewportRect.left + edgeOffset) {
-        const target = Math.min(
-          currentScrollLeft + cardRect.left - viewportRect.left,
-          maxScrollLeft,
-        );
+      if (cardRect.left > startEdge + edgeOffset) {
+        const target = Math.min(currentScrollLeft + cardRect.left - startEdge, maxScrollLeft);
 
         if (target > currentScrollLeft + edgeOffset) {
           return target;
         }
       }
-    }
-
-    const lastCard = cards[cards.length - 1];
-    const lastCardRect = lastCard.getBoundingClientRect();
-
-    if (lastCardRect.right > viewportRect.right + edgeOffset) {
-      return Math.min(
-        currentScrollLeft + lastCardRect.right - viewportRect.right,
-        maxScrollLeft,
-      );
     }
 
     return maxScrollLeft;
@@ -82,8 +71,8 @@ function getScrollLeftForDirection(
   for (let index = cards.length - 1; index >= 0; index -= 1) {
     const cardRect = cards[index].getBoundingClientRect();
 
-    if (cardRect.left < viewportRect.left - edgeOffset) {
-      const target = Math.max(currentScrollLeft + cardRect.left - viewportRect.left, 0);
+    if (cardRect.left < startEdge - edgeOffset) {
+      const target = Math.max(currentScrollLeft + cardRect.left - startEdge, 0);
 
       if (target < currentScrollLeft - edgeOffset) {
         return target;
@@ -112,9 +101,10 @@ export function AboutPartnerCarousel({ awards }: AboutPartnerCarouselProps) {
     canScrollNext: false,
   });
 
-  const activeAward = activeAwardId
-    ? awards.find((award) => award.id === activeAwardId)
-    : undefined;
+  const activeAwardIndex = activeAwardId
+    ? awards.findIndex((award) => award.id === activeAwardId)
+    : -1;
+  const activeAward = activeAwardIndex >= 0 ? awards[activeAwardIndex] : undefined;
 
   const updateScrollState = useCallback(() => {
     const viewport = viewportRef.current;
@@ -243,6 +233,7 @@ export function AboutPartnerCarousel({ awards }: AboutPartnerCarouselProps) {
         <AboutPartnerAwardModal
           open
           onClose={() => setActiveAwardId(null)}
+          itemIndex={activeAwardIndex}
           documentSrc={activeAward.document.src}
           documentAlt={activeAward.document.alt}
           documentWidth={activeAward.document.width}

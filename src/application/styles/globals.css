@@ -85,7 +85,8 @@ html.modal-open body {
 }
 
 @media (max-width: 992px) {
-  html.company-connection-modal-open > body > header {
+  html.company-connection-modal-open > body > header,
+  html.software-rights-modal-open > body > header {
     z-index: 210;
     filter: none;
   }

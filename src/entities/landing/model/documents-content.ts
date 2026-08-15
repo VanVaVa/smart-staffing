@@ -63,21 +63,6 @@ const categories: DocumentCategory[] = [
     ],
   },
   {
-    id: "product",
-    title: "О продукте",
-    items: [
-      createDocument("license", "Лицензия"),
-      createDocument(
-        "exclusive-software-rights",
-        "Исключительные права на ПО",
-        "modal",
-      ),
-      createDocument("domestic-software-registry", "Реестр отечественного ПО"),
-      createDocument("technology-stack", "Стек технологий продукта"),
-      createDocument("glossary", "Глоссарий"),
-    ],
-  },
-  {
     id: "platform",
     title: "Документы платформы",
     items: [
@@ -88,6 +73,21 @@ const categories: DocumentCategory[] = [
       ),
       createDocument("installation-guide", "Инструкция по установке"),
       createDocument("user-guide", "Руководство пользователя"),
+    ],
+  },
+  {
+    id: "product",
+    title: "О продукте",
+    items: [
+      createDocument("domestic-software-registry", "Реестр отечественного ПО"),
+      createDocument("license", "Лицензия"),
+      createDocument(
+        "exclusive-software-rights",
+        "Исключительные права на ПО",
+        "modal",
+      ),
+      createDocument("technology-stack", "Стек технологий продукта"),
+      createDocument("glossary", "Глоссарий"),
     ],
   },
 ];

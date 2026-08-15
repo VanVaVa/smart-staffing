@@ -14,7 +14,15 @@ export function ClientsHeroSection({ content }: ClientsHeroSectionProps) {
   return (
     <section className={styles["clients-hero-section"]}>
       <figure className={styles["clients-hero-section__media"]}>
-        <EditableMedia path="imageSrc" label="Hero — изображение">
+        <EditableMedia
+          path="imageSrc"
+          label="Hero — изображение"
+          className={
+            content.imageMobileSrc
+              ? styles["clients-hero-section__slot--desktop"]
+              : undefined
+          }
+        >
           <Image
             className={styles["clients-hero-section__image"]}
             src={content.imageSrc}
@@ -25,6 +33,22 @@ export function ClientsHeroSection({ content }: ClientsHeroSectionProps) {
             priority
           />
         </EditableMedia>
+        {content.imageMobileSrc ? (
+          <EditableMedia
+            path="imageMobileSrc"
+            label="Hero — изображение для мобильных"
+            className={styles["clients-hero-section__slot--mobile"]}
+          >
+            <Image
+              className={styles["clients-hero-section__image"]}
+              src={content.imageMobileSrc}
+              alt={content.imageAlt}
+              width={content.imageMobileWidth ?? content.imageWidth}
+              height={content.imageMobileHeight ?? content.imageHeight}
+              sizes="(max-width: 450px) 344px, (max-width: 768px) 744px, 960px"
+            />
+          </EditableMedia>
+        ) : null}
       </figure>
       <div className={styles["clients-hero-section__inset"]}>
         <div className={styles["clients-hero-section__layout"]}>

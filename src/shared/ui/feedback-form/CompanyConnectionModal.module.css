@@ -58,6 +58,10 @@
   display: none;
 }
 
+.company-connection-modal__page-footer {
+  display: none;
+}
+
 .company-connection-modal__content {
   margin-top: 40px;
 }
@@ -324,12 +328,19 @@
     flex-shrink: 0;
     height: 80px;
     margin-top: -40px;
+    margin-inline: -40px;
     border-radius: 32px 32px 0 0;
     background: var(--color-bg);
   }
 
+  .company-connection-modal--full-page .company-connection-modal__page-footer {
+    display: block;
+  }
+
   .company-connection-modal--full-page .company-connection-modal__body {
     flex: 1;
+    margin-inline: -40px;
+    margin-bottom: -40px;
     padding: 40px 32px 48px;
     background: var(--color-bg);
   }

@@ -204,6 +204,11 @@
     grid-column: 1 / -1;
   }
 
+  .document-list__category:last-child:nth-child(3) .document-list__links {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 40px;
+  }
+
   .document-list__category {
     padding: 24px;
     border-radius: 16px;
@@ -295,6 +300,11 @@
 
   .document-list__category:last-child:nth-child(3) {
     grid-column: 1 / -1;
+  }
+
+  .document-list__category:last-child:nth-child(3) .document-list__links {
+    grid-template-columns: minmax(0, 1fr);
+    column-gap: 0;
   }
 
   .document-list__requisite dd,

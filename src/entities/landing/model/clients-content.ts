@@ -21,6 +21,9 @@ export type ClientsHeroContent = {
   imageWidth: number;
   imageHeight: number;
   imageAlt: string;
+  imageMobileSrc?: string;
+  imageMobileWidth?: number;
+  imageMobileHeight?: number;
 };
 
 export type ClientsPlatformContent = {
@@ -409,6 +412,9 @@ const midMarketHero: ClientsHeroContent = {
   imageWidth: 956,
   imageHeight: 960,
   imageAlt: "Средний бизнес запускает проекты на платформе СмартСтаффинг",
+  imageMobileSrc: "/landing/clients/mid-market/hero-mobile.png",
+  imageMobileWidth: 1488,
+  imageMobileHeight: 816,
 };
 
 const midMarketPlatform: ClientsPlatformContent = {

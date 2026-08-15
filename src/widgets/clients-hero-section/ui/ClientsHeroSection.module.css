@@ -16,6 +16,10 @@
   pointer-events: none;
 }
 
+.clients-hero-section__slot--mobile {
+  display: none;
+}
+
 .clients-hero-section__image {
   display: block;
   width: min(956px, calc(956 * 100vw / 1920));
@@ -169,6 +173,14 @@
     flex-direction: column;
     min-height: 0;
     margin-bottom: min(80px, calc(80 * 100vw / 992));
+  }
+
+  .clients-hero-section__slot--desktop {
+    display: none;
+  }
+
+  .clients-hero-section__slot--mobile {
+    display: block;
   }
 
   .clients-hero-section__media {
