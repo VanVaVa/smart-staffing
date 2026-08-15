@@ -16,8 +16,12 @@ ENV NEXT_TELEMETRY_DISABLED=1
 ARG DATABASE_URL=postgresql://postgres:postgres@db:5432/smart_staffing?schema=public
 ENV DATABASE_URL=$DATABASE_URL
 
+RUN gunzip -c docker/engines/schema-engine-linux-musl-openssl-3.0.x.gz > /usr/local/bin/schema-engine \
+  && chmod +x /usr/local/bin/schema-engine
+ENV PRISMA_SCHEMA_ENGINE_BINARY=/usr/local/bin/schema-engine
+
 RUN npx prisma generate
-RUN npm run build
+RUN npx next build
 
 FROM node:20-alpine AS runner
 
@@ -27,6 +31,7 @@ ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV HOSTNAME=0.0.0.0
 ENV PORT=3000
+ENV PRISMA_SCHEMA_ENGINE_BINARY=/usr/local/bin/schema-engine
 
 RUN addgroup --system --gid 1001 nodejs \
   && adduser --system --uid 1001 nextjs \
@@ -34,6 +39,7 @@ RUN addgroup --system --gid 1001 nodejs \
   && mkdir -p public/landing/uploads \
   && chown -R nextjs:nodejs public
 
+COPY --from=builder /usr/local/bin/schema-engine /usr/local/bin/schema-engine
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
