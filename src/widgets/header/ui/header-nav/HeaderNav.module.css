@@ -35,8 +35,7 @@
   position: relative;
 }
 
-.header-nav__dropdown:hover .header-nav__chevron,
-.header-nav__dropdown:focus-within .header-nav__chevron {
+.header-nav__dropdown--open .header-nav__chevron {
   transform: rotate(180deg);
 }
 
@@ -74,8 +73,7 @@
   height: 12px;
 }
 
-.header-nav__dropdown:hover .header-nav__dropdown-menu,
-.header-nav__dropdown:focus-within .header-nav__dropdown-menu {
+.header-nav__dropdown--open .header-nav__dropdown-menu {
   opacity: 1;
   visibility: visible;
   transform: translate(-50%, 0);

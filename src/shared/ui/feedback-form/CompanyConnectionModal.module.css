@@ -463,7 +463,12 @@
   }
 
   .company-connection-modal--full-page .company-connection-modal__body {
-    padding: 8px 16px 32px;
+    padding: 24px 16px 40px;
+  }
+
+  .company-connection-modal--full-page .company-connection-modal__features {
+    gap: 14px;
+    margin-top: 20px;
   }
 
   .company-connection-modal--full-page .company-connection-modal__feature {

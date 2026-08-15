@@ -157,13 +157,14 @@
     
   .platform-onboarding-partner__card {
     gap: 18px;
+    overflow: hidden;
   }
 
   .platform-onboarding-partner__media {
+    align-self: flex-end;
     width: 122px;
     height: 116px;
-    margin: -20px;
-    margin-inline-end: 0;
+    margin: 0 0 -20px;
   }
 
   .platform-onboarding-partner__content {
@@ -185,9 +186,10 @@
   .platform-onboarding-partner__media {
     grid-column: 1;
     grid-row: 1;
+    align-self: start;
     width: 153px;
     height: 144px;
-    margin-inline-start: 0;
+    margin: 0;
   }
 
   .platform-onboarding-partner__content {
@@ -231,7 +233,7 @@
     flex: 0 0 auto;
     width: 128px;
     height: 122px;
-    margin-inline-start: 0;
+    margin: 0;
   }
 
   .platform-onboarding-partner__card-text {

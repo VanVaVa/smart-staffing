@@ -361,7 +361,7 @@
   .document-list__categories {
     grid-template-columns: minmax(0, 1fr);
     margin-top: 16px;
-    gap: 8px;
+    gap: 16px;
   }
 
   .document-list__category {
@@ -386,7 +386,7 @@
   }
 
   .document-list__certificates {
-    margin-top: 60px;
+    margin-top: 36px;
   }
 
   .document-list__certificate {

@@ -13,7 +13,7 @@
   margin-inline: calc(-1 * var(--container-padding));
   padding-left: var(--container-padding);
   padding-right: 0;
-  scroll-snap-type: x mandatory;
+  scroll-snap-type: x proximity;
   scroll-padding-left: var(--container-padding);
   scrollbar-width: none;
   -ms-overflow-style: none;

@@ -61,6 +61,9 @@
   z-index: 1;
   width: min(728px, calc(728 * 100vw / 1920));
   height: auto;
+  max-height: 72%;
+  object-fit: contain;
+  object-position: right bottom;
   pointer-events: none;
 }
 
@@ -158,12 +161,11 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  width: auto;
-  height: auto;
-  object-position: top left;
+  width: 100%;
   height: 100%;
-  min-width: 100%;
   max-width: unset;
+  object-fit: cover;
+  object-position: right center;
 }
 
 .clients-platform-benefits-showcase-card--scaling
@@ -314,6 +316,12 @@
   .clients-platform-benefits-showcase-card--scaling
     .clients-platform-benefits-showcase-card__copy {
     max-width: min(412px, calc(412 * 100vw / 992));
+  }
+
+  .clients-platform-benefits-showcase-card__scaling-photo {
+    right: 0;
+    left: auto;
+    width: 135%;
   }
 }
 

@@ -116,8 +116,8 @@
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 5;
-  font-size: var(--text-body-md);
-  line-height: var(--line-body);
+  font-size: var(--text-body-xl);
+  line-height: var(--line-body-xl);
   color: var(--color-black);
 }
 
@@ -199,7 +199,6 @@
   border-radius: 50%;
   background: var(--color-grey-200);
   color: var(--color-black);
-  transform: rotate(-90deg);
   pointer-events: none;
   transition:
     background 0.2s ease,
@@ -534,7 +533,6 @@
   .case-study-card--compact-horizontal .case-study-card__action {
     position: static;
     flex-shrink: 0;
-    transform: rotate(-90deg);
     width: 40px;
     height: 40px;
   }
@@ -777,7 +775,6 @@
   .case-study-card__action {
     position: static;
     flex-shrink: 0;
-    transform: rotate(-90deg);
     width: 36px;
     height: 36px;
   }
@@ -843,7 +840,6 @@
   .case-study-card--compact-horizontal .case-study-card__action {
     position: static;
     flex-shrink: 0;
-    transform: rotate(-90deg);
     width: 36px;
     height: 36px;
   }

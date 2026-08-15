@@ -37,9 +37,14 @@ function getCards(track: HTMLDivElement): HTMLElement[] {
 
 function getCardScrollTargets(viewport: HTMLDivElement, cards: HTMLElement[]): number[] {
   const viewportLeft = viewport.getBoundingClientRect().left;
+  const scrollPaddingLeft = parseFloat(getComputedStyle(viewport).scrollPaddingLeft) || 0;
 
   return cards.map(
-    (card) => viewport.scrollLeft + card.getBoundingClientRect().left - viewportLeft,
+    (card) =>
+      viewport.scrollLeft +
+      card.getBoundingClientRect().left -
+      viewportLeft -
+      scrollPaddingLeft,
   );
 }
 

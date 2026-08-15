@@ -132,11 +132,11 @@ const enterprisePlatform: ClientsPlatformContent = {
   painPoints: [
     "Растёт число поставщиков",
     "Усложняется управление ресурсами",
-    "Раздуваются сроки и бюджет",
+    "Раздуваются сроки и\u00a0бюджет",
   ],
   title: "СмартСтаффинг-платформа организует работу ",
   subtitle:
-    "Быстро собирайте команды под проекты и работайте с множеством поставщиков в одном окне, не переходя с ресурса на ресурс",
+    "Быстро собирайте команды под\u00a0проекты и\u00a0работайте с\u00a0множеством поставщиков в\u00a0одном окне, не\u00a0переходя с\u00a0ресурса на\u00a0ресурс",
   tags: ["Оптимизация бюджета", "Загрузка команды", "Контроль сроков"],
   imageSrc: "/landing/clients/enterprise/platform-preview.png",
   imageWidth: 602,
@@ -145,12 +145,12 @@ const enterprisePlatform: ClientsPlatformContent = {
 };
 
 const enterprisePlatformBenefits: ClientsPlatformBenefitsContent = {
-  sectionTitle: "С платформой вы получаете",
-  panelTitle: "Полный контроль над поставщиками",
-  panelSubtitle: "Управляйте участниками без ручного контроля",
+  sectionTitle: "С\u00a0платформой вы\u00a0получаете",
+  panelTitle: "Полный контроль над\u00a0поставщиками",
+  panelSubtitle: "Управляйте участниками без\u00a0ручного контроля",
   cards: [
     {
-      title: "Роли по отраслям и компетенциям",
+      title: "Роли по\u00a0отраслям и\u00a0компетенциям",
       backgroundType: "full-bg",
       visual: {
         imageSrc: "/landing/clients/enterprise/benefits-roles-visual.png",
@@ -170,7 +170,7 @@ const enterprisePlatformBenefits: ClientsPlatformBenefitsContent = {
       },
     },
     {
-      title: "Аналитика по партнёрским сетям",
+      title: "Аналитика по\u00a0партнёрским сетям",
       backgroundType: "dark-bg",
       inProgress: true,
       visual: {
@@ -181,7 +181,7 @@ const enterprisePlatformBenefits: ClientsPlatformBenefitsContent = {
       },
     },
     {
-      title: "Результаты в реальном времени",
+      title: "Результаты в\u00a0реальном времени",
       backgroundType: "geometry-bg",
       visual: {
         imageSrc: "/landing/clients/enterprise/benefits-realtime-card.png",
@@ -194,9 +194,9 @@ const enterprisePlatformBenefits: ClientsPlatformBenefitsContent = {
   showcase: [
     {
       variant: "it-costs",
-      title: "Снижение затрат на ИТ-ресурсы",
+      title: "Снижение затрат на\u00a0ИТ-ресурсы",
       subtitle:
-        "Сократите простои, дублирование функций и неэффективное распределение специалистов",
+        "Сократите простои, дублирование функций и\u00a0неэффективное распределение специалистов",
       visual: {
         imageSrc: "/landing/clients/enterprise/benefits-showcase-it-visual.png",
         imageWidth: 728,
@@ -206,12 +206,12 @@ const enterprisePlatformBenefits: ClientsPlatformBenefitsContent = {
     },
     {
       variant: "quality",
-      title: "Предсказуемые сроки и качество",
+      title: "Предсказуемые сроки и\u00a0качество",
       subtitle:
-        "Работайте с прозрачной моделью ресурсов и контролируйте выполнение задач на каждом этапе",
+        "Работайте с\u00a0прозрачной моделью ресурсов и\u00a0контролируйте выполнение задач на\u00a0каждом этапе",
       stat: {
         value: "50%",
-        description: "сократили временные затраты на управление проектами",
+        description: "сократили временные затраты на\u00a0управление проектами",
       },
       visual: {
         imageSrc: "/landing/clients/enterprise/benefits-showcase-quality-visual.png",
@@ -224,7 +224,7 @@ const enterprisePlatformBenefits: ClientsPlatformBenefitsContent = {
       variant: "scaling",
       title: "Быстрое масштабирование",
       subtitle:
-        "Подключайте проверенных подрядчиков и специалистов без долгого найма и бюрократии",
+        "Подключайте проверенных подрядчиков и\u00a0специалистов без\u00a0долгого найма и\u00a0бюрократии",
       visual: {
         imageSrc: "/landing/clients/enterprise/benefits-showcase-scaling-visual.png",
         imageWidth: 1824,
@@ -248,40 +248,40 @@ const enterprisePartnersExperience: ClientsPartnersExperienceContent = {
     logoWidth: 260,
     logoHeight: 80,
     description:
-      "Платформа помогла выстроить централизованное управление подрядчиками и ресурсами, сократить сроки формирования команд и повысить прозрачность работы по ИТ-проектам",
+      "Платформа помогла выстроить централизованное управление подрядчиками и\u00a0ресурсами, сократить сроки формирования команд и\u00a0повысить прозрачность работы по\u00a0ИТ-проектам",
     metric: "20%",
-    metricLabel: "Снижение затрат на фонд оплаты труда",
+    metricLabel: "Снижение затрат на\u00a0фонд оплаты труда",
   },
 };
 
 const enterprisePartnershipCta: ClientsPartnershipCtaContent = {
-  title: "Масштабируйтесь через партнёрства на своих условиях",
-  subtitle: "Оставьте контакты — организуем встречу и ответим на ваши вопросы",
+  title: "Масштабируйтесь через партнёрства на\u00a0своих условиях",
+  subtitle: "Оставьте контакты — организуем встречу и\u00a0ответим на\u00a0ваши вопросы",
   subtitleAccent: "Оставьте контакты",
 };
 
 const outstaffingHero: ClientsHeroContent = {
-  title: "Монетизируйте простои команд и ресурсов",
+  title: "Монетизируйте простои команд и\u00a0ресурсов",
   subtitle: {
     before: "Размещайте свободных специалистов, находите проекты, ",
-    accent: "масштабируйтесь в партнёрских сетях",
+    accent: "масштабируйтесь в\u00a0партнёрских сетях",
   },
   cta: "Подключить компанию",
   imageSrc: "/landing/clients/outstaffing/outstaffing-hero.png",
   imageWidth: 956,
   imageHeight: 960,
-  imageAlt: "Аутстаффинговая компания на платформе СмартСтаффинг",
+  imageAlt: "Аутстаффинговая компания на\u00a0платформе СмартСтаффинг",
 };
 
 const outstaffingPlatform: ClientsPlatformContent = {
   painPoints: [
-    "Команда простаивает без задач без ключевых специалистов",
-    "Увеличиваются сроки и бюджет на поиск подходящего кандидата",
+    "Команда простаивает без\u00a0задач без\u00a0ключевых специалистов",
+    "Увеличиваются сроки и\u00a0бюджет на\u00a0поиск подходящего кандидата",
     "Без прозрачного распределения падает загрузка",
   ],
-  title: "Поможем использовать ресурсы с максимальной отдачей",
+  title: "Поможем использовать ресурсы с\u00a0максимальной отдачей",
   subtitle:
-    "СмартСтаффинг-платформа объединяет заказчиков, партнёров и доступных специалистов в едином пространстве",
+    "СмартСтаффинг-платформа объединяет заказчиков, партнёров и\u00a0доступных специалистов в\u00a0едином пространстве",
   tags: ["Загрузка специалистов", "Повышение выручки"],
   imageSrc: "/landing/clients/outstaffing/outstaffing-platform-preview.png",
   imageWidth: 602,
@@ -290,9 +290,9 @@ const outstaffingPlatform: ClientsPlatformContent = {
 };
 
 const outstaffingPlatformBenefits: ClientsPlatformBenefitsContent = {
-  sectionTitle: "С платформой вы получаете",
-  panelTitle: "Все данные в одном окне",
-  panelSubtitle: "Настройте управление без постоянного контроля",
+  sectionTitle: "С\u00a0платформой вы\u00a0получаете",
+  panelTitle: "Все данные в\u00a0одном окне",
+  panelSubtitle: "Настройте управление без\u00a0постоянного контроля",
   cards: [
     {
       title: "Публикация доступных компетенций",
@@ -306,7 +306,7 @@ const outstaffingPlatformBenefits: ClientsPlatformBenefitsContent = {
       },
     },
     {
-      title: "Умный поиск по стеку, грейду и ставке",
+      title: "Умный поиск по\u00a0стеку, грейду и\u00a0ставке",
       backgroundType: "full-bg",
       visual: {
         imageSrc: "/landing/clients/outstaffing/benefits-access-visual.png",
@@ -327,7 +327,7 @@ const outstaffingPlatformBenefits: ClientsPlatformBenefitsContent = {
       },
     },
     {
-      title: "Результаты в реальном времени",
+      title: "Результаты в\u00a0реальном времени",
       backgroundType: "dark-bg",
       visual: {
         imageSrc: "/landing/clients/outstaffing/benefits-realtime-visual.png",
@@ -340,9 +340,9 @@ const outstaffingPlatformBenefits: ClientsPlatformBenefitsContent = {
   showcase: [
     {
       variant: "it-costs",
-      title: "Доступ к новым проектам и заказчикам",
+      title: "Доступ к\u00a0новым проектам и\u00a0заказчикам",
       subtitle:
-        "Получаете поток проектных запросов от корпораций и партнёрской сети, не завися от одного канала продаж",
+        "Получаете поток проектных запросов от\u00a0корпораций и\u00a0партнёрской сети, не\u00a0завися от\u00a0одного канала продаж",
       visual: {
         imageSrc: "/landing/clients/outstaffing/benefits-showcase-it-visual.png",
         imageWidth: 1000,
@@ -354,7 +354,7 @@ const outstaffingPlatformBenefits: ClientsPlatformBenefitsContent = {
       variant: "quality",
       title: "Максимальная загрузка команды",
       subtitle:
-        "Минимизируйте простой и подключайте свободных специалистов к проектам",
+        "Минимизируйте простой и\u00a0подключайте свободных специалистов к\u00a0проектам",
       stat: {
         value: "15%",
         description: "рост производительности проектной команды",
@@ -370,7 +370,7 @@ const outstaffingPlatformBenefits: ClientsPlatformBenefitsContent = {
       variant: "scaling",
       title: "Работа через сеть проверенных партнёров",
       subtitle:
-        "Профессиональный тариф открывает возможность создавать собственные партнёрские сети и оперативно собирать проектные команды под требования заказчика",
+        "Дополнительный функционал позволяет создавать закрытые и\u00a0открытые партнёрские сети, сегментировать поставщиков по\u00a0отраслям, компетенциям и\u00a0уровню доступа",
       visual: {
         imageSrc: "/landing/clients/outstaffing/benefits-showcase-scaling-visual.png",
         imageWidth: 1824,
@@ -389,29 +389,29 @@ const outstaffingPartnersExperience: ClientsPartnersExperienceContent = {
     panelSrc: "/landing/case-studies/panel-bg-case-3.png",
     panelWidth: 571,
     panelHeight: 484,
-    panelAlt: "Логотип партнёра на платформе СмартСтаффинг",
+    panelAlt: "Логотип партнёра на\u00a0платформе СмартСтаффинг",
     logoSrc: "/landing/case-studies/logo-case-3.svg",
     logoWidth: 260,
     logoHeight: 80,
     description:
-      "Платформа помогла выстроить централизованное управление подрядчиками и ресурсами, сократить сроки формирования команд и повысить прозрачность работы по ИТ-проектам",
+      "Платформа помогла выстроить централизованное управление подрядчиками и\u00a0ресурсами, сократить сроки формирования команд и\u00a0повысить прозрачность работы по\u00a0ИТ-проектам",
     metric: "20%",
-    metricLabel: "Снижение затрат на фонд оплаты труда",
+    metricLabel: "Снижение затрат на\u00a0фонд оплаты труда",
   },
 };
 
 const midMarketHero: ClientsHeroContent = {
-  title: "Запускайте проекты, не дожидаясь найма",
+  title: "Запускайте проекты, не\u00a0дожидаясь найма",
   subtitle: {
     before: "Быстро находите проверенных специалистов, собирайте проектные команды и ",
-    accent: "запускайте проекты без лишних затрат",
-    after: " и бюрократии",
+    accent: "запускайте проекты без\u00a0лишних затрат",
+    after: " и\u00a0бюрократии",
   },
   cta: "Подключить компанию",
   imageSrc: "/landing/clients/mid-market/hero.png",
   imageWidth: 956,
   imageHeight: 960,
-  imageAlt: "Средний бизнес запускает проекты на платформе СмартСтаффинг",
+  imageAlt: "Средний бизнес запускает проекты на\u00a0платформе СмартСтаффинг",
   imageMobileSrc: "/landing/clients/mid-market/hero-mobile.png",
   imageMobileWidth: 1488,
   imageMobileHeight: 816,
@@ -419,12 +419,12 @@ const midMarketHero: ClientsHeroContent = {
 
 const midMarketPlatform: ClientsPlatformContent = {
   painPoints: [
-    "Проект буксует — нужных специалистов не найти вовремя",
-    "Штат перегружен и работает на пределе",
+    "Проект буксует — нужных специалистов не\u00a0найти вовремя",
+    "Штат перегружен и\u00a0работает на\u00a0пределе",
   ],
-  title: "Найдём подрядчиков\nпод любые задачи",
+  title: "Найдём подрядчиков\nпод\u00a0любые задачи",
   subtitle:
-    "Платформа объединяет заказчиков, партнёров и экспертов под любые задачи в едином пространстве",
+    "Платформа объединяет заказчиков, партнёров и\u00a0экспертов под\u00a0любые задачи в\u00a0едином пространстве",
   tags: ["Быстрый запуск проектов", "Единое рабочее пространство"],
   imageSrc: "/landing/clients/mid-market/platform-preview.png",
   imageWidth: 602,
@@ -433,10 +433,10 @@ const midMarketPlatform: ClientsPlatformContent = {
 };
 
 const midMarketPlatformBenefits: ClientsPlatformBenefitsContent = {
-  sectionTitle: "С платформой вы получаете",
-  panelTitle: "Надёжные специалисты без рисков",
+  sectionTitle: "С\u00a0платформой вы\u00a0получаете",
+  panelTitle: "Надёжные специалисты без\u00a0рисков",
   panelSubtitle:
-    "Усиливайте команду исполнителями, которых уже проверили в реальных проектах",
+    "Усиливайте команду исполнителями, которых уже проверили в\u00a0реальных проектах",
   cards: [
     {
       title: "Поиск специалистов",
@@ -473,9 +473,9 @@ const midMarketPlatformBenefits: ClientsPlatformBenefitsContent = {
   showcase: [
     {
       variant: "it-costs",
-      title: "Контроль сроков и выполнения задач",
+      title: "Контроль сроков и\u00a0выполнения задач",
       subtitle:
-        "Управляйте проектами и командами в одном месте. Следите за загрузкой, статусами и ролями без лишних коммуникаций",
+        "Управляйте проектами и\u00a0командами в\u00a0одном месте. Следите за\u00a0загрузкой, статусами и\u00a0ролями без\u00a0лишних коммуникаций.",
       visual: {
         imageSrc: "/landing/clients/mid-market/benefits-showcase-it-visual.png",
         imageWidth: 486,
@@ -485,9 +485,9 @@ const midMarketPlatformBenefits: ClientsPlatformBenefitsContent = {
     },
     {
       variant: "quality",
-      title: "Оптимизация затрат на разработку",
+      title: "Оптимизация затрат на\u00a0разработку",
       subtitle:
-        "Снижайте расходы и находите специалистов точно под задачу",
+        "Снижайте расходы и\u00a0находите специалистов точно под\u00a0задачу",
       stat: {
         value: "5%",
         description: "рост рентабельности проектов",
@@ -501,9 +501,9 @@ const midMarketPlatformBenefits: ClientsPlatformBenefitsContent = {
     },
     {
       variant: "scaling",
-      title: "Быстрый доступ к нужным специалистам",
+      title: "Быстрый доступ к\u00a0нужным специалистам",
       subtitle:
-        "Подбирайте не только специалистов, но и формируйте проектные команды под задачи без долгого найма",
+        "Подбирайте не\u00a0только специалистов, но и\u00a0формируйте проектные команды под\u00a0задачи без\u00a0долгого найма",
       visual: {
         imageSrc: "/landing/clients/mid-market/benefits-showcase-scaling-visual.png",
         imageWidth: 1824,
@@ -527,23 +527,23 @@ const midMarketPartnersExperience: ClientsPartnersExperienceContent = {
     logoWidth: 260,
     logoHeight: 80,
     description:
-      "Платформа помогла выстроить централизованное управление подрядчиками и ресурсами, сократить сроки формирования команд и повысить прозрачность работы по ИТ-проектам",
+      "Платформа помогла выстроить централизованное управление подрядчиками и\u00a0ресурсами, сократить сроки формирования команд и\u00a0повысить прозрачность работы по\u00a0ИТ-проектам",
     metric: "20%",
-    metricLabel: "Снижение затрат на фонд оплаты труда",
+    metricLabel: "Снижение затрат на\u00a0фонд оплаты труда",
   },
 };
 
 const midMarketPartnershipCta: ClientsPartnershipCtaContent = {
-  title: "Снизим ваши затраты на ресурсы",
+  title: "Снизим ваши затраты на\u00a0ресурсы",
   subtitle:
-    "Покажем, как закрыть нехватку специалистов без расширения штата",
+    "Покажем, как закрыть нехватку специалистов без\u00a0расширения штата",
 };
 
 const agenciesPlatformBenefits: ClientsPlatformBenefitsContent = {
-  sectionTitle: "С платформой вы получаете",
+  sectionTitle: "С\u00a0платформой вы\u00a0получаете",
   panelTitle: "Быстрое закрытие вакансий",
   panelSubtitle:
-    "Формируйте команды точно под задачи проекта в кратчайшие сроки",
+    "Формируйте команды точно под\u00a0задачи проекта в\u00a0кратчайшие сроки",
   cards: [
     {
       title: "Релевантный список специалистов",
@@ -557,7 +557,7 @@ const agenciesPlatformBenefits: ClientsPlatformBenefitsContent = {
       },
     },
     {
-      title: "Роли в командах",
+      title: "Роли в\u00a0командах",
       backgroundType: "dark-bg",
       visualAlign: "start",
       visual: {
@@ -591,9 +591,9 @@ const agenciesPlatformBenefits: ClientsPlatformBenefitsContent = {
   showcase: [
     {
       variant: "it-costs",
-      title: "Доступ к кандидатам с узкопрофильной специальностью",
+      title: "Доступ к\u00a0кандидатам с\u00a0узкопрофильной специальностью",
       subtitle:
-        "Работайте со специалистами, которых нет в открытом доступе. Находите нужные компетенции под сложные запросы.",
+        "Работайте со\u00a0специалистами, которых нет в\u00a0открытом доступе. Находите нужные компетенции под\u00a0сложные запросы.",
       visual: {
         imageSrc:
           "/landing/clients/agencies/benefits-showcase-specialists-visual.png",
@@ -606,10 +606,10 @@ const agenciesPlatformBenefits: ClientsPlatformBenefitsContent = {
       variant: "quality",
       title: "Повышение эффективности подбора",
       subtitle:
-        "Работайте с кандидатами с подтверждённым опытом и повышайте конверсию закрытия вакансий",
+        "Работайте с\u00a0кандидатами с\u00a0подтверждённым опытом и\u00a0повышайте конверсию закрытия вакансий",
       stat: {
         value: "48 ч",
-        description: "на вывод специалистов",
+        description: "на\u00a0вывод специалистов",
       },
       visual: {
         imageSrc:
@@ -621,9 +621,9 @@ const agenciesPlatformBenefits: ClientsPlatformBenefitsContent = {
     },
     {
       variant: "scaling",
-      title: "Усиление позиций на рынке",
+      title: "Усиление позиций на\u00a0рынке",
       subtitle:
-        "Подбирайте не только специалистов, но и формируйте проектные команды под задачи заказчиков",
+        "Быстро закрывайте вакансии за\u00a0счёт доступа к\u00a0готовому списку специалистов",
       visual: {
         imageSrc:
           "/landing/clients/agencies/benefits-showcase-market-visual.png",
@@ -646,15 +646,15 @@ const agenciesPartnersExperience: ClientsPartnersExperienceContent = {
 
 const agenciesPartnershipCta: ClientsPartnershipCtaContent = {
   title: "Начните закрывать больше вакансий уже сегодня",
-  subtitle: "Оставьте контакты — организуем встречу и ответим на ваши вопросы",
+  subtitle: "Оставьте контакты — организуем встречу и\u00a0ответим на\u00a0ваши вопросы",
   subtitleAccent: "Оставьте контакты",
 };
 
 const enterpriseHero: ClientsHeroContent = {
-  title: "С нами порядок: \nединая сеть доверенных поставщиков",
+  title: "С\u00a0нами порядок: \nединая сеть доверенных поставщиков",
   subtitle: {
     before: "Создавайте партнёрские сети и ",
-    accent: "управляйте десятками подрядчиков без бюрократии",
+    accent: "управляйте десятками подрядчиков без\u00a0бюрократии",
   },
   cta: "Подключить компанию",
   imageSrc: "/landing/clients/enterprise/hero.png",
@@ -668,7 +668,7 @@ export const clientsSegments: Record<ClientSegmentSlug, ClientsSegmentContent> =
     meta: {
       title: "Крупные корпорации — СмартСтаффинг",
       description:
-        "Единая сеть доверенных поставщиков и управление подрядчиками для крупных корпораций на платформе СмартСтаффинг.",
+        "Единая сеть доверенных поставщиков и\u00a0управление подрядчиками для\u00a0крупных корпораций на\u00a0платформе СмартСтаффинг.",
     },
     hero: enterpriseHero,
     platform: enterprisePlatform,
@@ -678,9 +678,9 @@ export const clientsSegments: Record<ClientSegmentSlug, ClientsSegmentContent> =
   },
   outstaffing: {
     meta: {
-      title: "Аутстаффинговые и аутсорсинговые компании — СмартСтаффинг",
+      title: "Аутстаффинговые и\u00a0аутсорсинговые компании — СмартСтаффинг",
       description:
-        "Монетизируйте простои команд: размещайте специалистов, находите проекты и масштабируйтесь в партнёрских сетях на СмартСтаффинг.",
+        "Монетизируйте простои команд: размещайте специалистов, находите проекты и\u00a0масштабируйтесь в\u00a0партнёрских сетях на\u00a0СмартСтаффинг.",
     },
     hero: outstaffingHero,
     platform: outstaffingPlatform,
@@ -692,7 +692,7 @@ export const clientsSegments: Record<ClientSegmentSlug, ClientsSegmentContent> =
     meta: {
       title: "Средний бизнес — СмартСтаффинг",
       description:
-        "Быстро находите проверенных специалистов, собирайте проектные команды и запускайте проекты без лишних затрат на СмартСтаффинг.",
+        "Быстро находите проверенных специалистов, собирайте проектные команды и\u00a0запускайте проекты без\u00a0лишних затрат на\u00a0СмартСтаффинг.",
     },
     hero: midMarketHero,
     platform: midMarketPlatform,
@@ -704,15 +704,15 @@ export const clientsSegments: Record<ClientSegmentSlug, ClientsSegmentContent> =
     meta: {
       title: "Кадровые агентства — СмартСтаффинг",
       description:
-        "Кадровым агентствам: витрина специалистов, запросы заказчиков и прозрачная работа на СмартСтаффинг.",
+        "Кадровым агентствам: витрина специалистов, запросы заказчиков и\u00a0прозрачная работа на\u00a0СмартСтаффинг.",
     },
     hero: {
       ...enterpriseHero,
-      title: "Быстрый доступ к редким компетенциям рынка",
+      title: "Быстрый доступ к\u00a0редким компетенциям рынка",
       subtitle: {
         before: "Получите ",
-        accent: "доступ к проверенным специалистам,",
-        after: " которых нет на job-сайтах",
+        accent: "доступ к\u00a0проверенным специалистам,",
+        after: " которых нет на\u00a0job-сайтах",
       },
       imageSrc: "/landing/clients/agencies/hero.png",
       imageAlt: "Кадровое агентство находит редких специалистов",
@@ -720,13 +720,13 @@ export const clientsSegments: Record<ClientSegmentSlug, ClientsSegmentContent> =
     platform: {
       ...enterprisePlatform,
       painPoints: [
-        "Узкопрофильных экспертов на открытых площадках почти нет",
-        "Поиск нужного специалиста растягивается на недели",
+        "Узкопрофильных экспертов на\u00a0открытых площадках почти нет",
+        "Поиск нужного специалиста растягивается на\u00a0недели",
         "Требования клиентов всё жёстче, времени всё меньше",
       ],
-      title: "Найдём подрядчиков под любые задачи",
+      title: "Даём доступ к\u00a0редким специалистам",
       subtitle:
-        "Платформа объединяет работодателей, специалистов и партнёров, помогая быстрее находить нужные компетенции и закрывать вакансии через доверенные сети",
+        "Платформа объединяет работодателей, специалистов и\u00a0партнёров, помогая быстрее находить нужные компетенции и\u00a0закрывать вакансии через доверенные сети",
       tags: ["Усиление команд", "Рост выручки"],
       imageSrc: "/landing/clients/agencies/platform-agencies-preview.png",
     },
@@ -736,15 +736,15 @@ export const clientsSegments: Record<ClientSegmentSlug, ClientsSegmentContent> =
   },
 };
 
-const clientSegmentNavLabels: Record<ClientSegmentSlug, string> = {
-  enterprise: "Крупные корпорации",
-  outstaffing: "Аутстаффинговые и аутсорсинговые компании",
-  "mid-market": "Средний бизнес",
-  agencies: "Кадровые агентства",
+const clientSegmentFooterLabels: Record<ClientSegmentSlug, string> = {
+  enterprise: "Крупным корпорациям",
+  outstaffing: "Аутстаффинговым и\u00a0аутсорсинговым компаниям",
+  "mid-market": "Среднему бизнесу",
+  agencies: "Кадровым агентствам",
 };
 
-export const clientSegmentNavItems = clientSegmentSlugs.map((slug) => ({
-  label: clientSegmentNavLabels[slug],
+export const clientSegmentFooterItems = clientSegmentSlugs.map((slug) => ({
+  label: clientSegmentFooterLabels[slug],
   href: `/clients/${slug}`,
 }));
 

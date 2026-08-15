@@ -141,9 +141,14 @@
     margin-bottom: 20px;
   }
 
-  .document-viewer__header svg, .document-viewer__download img {
+  .document-viewer__header svg {
     width: 16px;
     height: 16px;
+  }
+
+  .document-viewer__download img {
+    width: 13px;
+    height: 14px;
   }
 
   .document-viewer__title {

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 import { isDarkBackdropAt } from "../lib/resolve-backdrop-tone";
 
-const HEADER_PROBE_Y = 40;
+const HEADER_PROBE_YS = [24, 40, 56];
 
 function isDarkBackdropBehindHeader(): boolean {
   const width = document.documentElement.clientWidth;
@@ -14,7 +14,7 @@ function isDarkBackdropBehindHeader(): boolean {
 
   const sampleXs = [width * 0.2, width * 0.5, width * 0.8];
 
-  return sampleXs.some((x) => isDarkBackdropAt(x, HEADER_PROBE_Y));
+  return sampleXs.some((x) => HEADER_PROBE_YS.some((y) => isDarkBackdropAt(x, y)));
 }
 
 export function useHeaderOnDarkBackdrop() {

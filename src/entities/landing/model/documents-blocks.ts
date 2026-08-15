@@ -100,7 +100,7 @@ export function defaultDocumentsCollectionItem(collectionKey: DocumentsCollectio
         pdfSrc: "/landing/documents/certificate-1.pdf",
       };
     case "softwareRights.registrations":
-      return "2026000000 от 01.01.2026";
+      return "2026000000 от\u00a001.01.2026";
     case "softwareRights.paragraphs":
       return "Новый абзац";
   }

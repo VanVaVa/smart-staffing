@@ -302,11 +302,11 @@
 
 @media (max-width: 450px) {
   .article-hero {
-    width: 100%;
+    width: calc(100% - 2 * var(--container-padding));
     min-height: 288px;
     grid-template-columns: minmax(0, 1fr);
     gap: 0;
-    margin-inline: 0;
+    margin-inline: auto;
     padding-inline: var(--container-padding);
     border-radius: 16px;
     overflow: hidden;

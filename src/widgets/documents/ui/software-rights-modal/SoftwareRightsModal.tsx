@@ -2,12 +2,12 @@
 
 import { useEffect, useId, useRef } from "react";
 import { createPortal } from "react-dom";
-import Image from "next/image";
 
 import type {
   DocumentItem,
   DocumentsPageContent,
 } from "@/entities/landing";
+import { ArrowIcon } from "@/shared/ui";
 import {
   EditableCollectionAdd,
   EditableCollectionItem,
@@ -84,23 +84,18 @@ export function SoftwareRightsModal({
         aria-labelledby={titleId}
       >
         <header className={styles["software-rights-modal__header"]}>
-          <h2 id={titleId} className={styles["software-rights-modal__title"]}>
-            {activeDocument.title}
-          </h2>
           <button
             ref={closeRef}
             type="button"
-            className={styles["software-rights-modal__close"]}
-            aria-label="Закрыть"
+            className={styles["software-rights-modal__back"]}
             onClick={onClose}
           >
-            <Image
-              src="/icons/close-grey.svg"
-              alt=""
-              width={48}
-              height={48}
-            />
+            <ArrowIcon name="2Left" />
+            Документы
           </button>
+          <h2 id={titleId} className={styles["software-rights-modal__title"]}>
+            {activeDocument.title}
+          </h2>
         </header>
         <div className={styles["software-rights-modal__scroll"]}>
           <div className={styles["software-rights-modal__content"]}>

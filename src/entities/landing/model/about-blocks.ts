@@ -71,7 +71,7 @@ export const ABOUT_BLOCK_TYPE_LABELS: Record<AboutBlockType, string> = {
   trusted: "Нам доверяют",
   benefits: "Преимущества",
   leadership: "Руководство",
-  careerBook: "Карьера и книга",
+  careerBook: "Карьера и\u00a0книга",
 };
 
 function parseIntroProps(value: unknown): AboutIntroBlockProps | null {

@@ -144,8 +144,9 @@ export function isDarkBackdropAt(x: number, y: number): boolean {
       return true;
     }
 
-    if (resolveToneFromElement(element) === "dark") {
-      return true;
+    const tone = resolveToneFromElement(element);
+    if (tone !== null) {
+      return tone === "dark";
     }
   }
 

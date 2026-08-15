@@ -14,6 +14,7 @@ export function useHeroSegmentCarousel({
   enabled,
 }: UseHeroSegmentCarouselOptions) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [cycleKey, setCycleKey] = useState(0);
   const [reducedMotion, setReducedMotion] = useState(false);
 
@@ -40,10 +41,13 @@ export function useHeroSegmentCarousel({
   }, [activeIndex, segmentCount]);
 
   const carouselEnabled = enabled && !reducedMotion && segmentCount > 1;
-  const displayIndex = !enabled ? 0 : segmentCount > 0 ? activeIndex % segmentCount : 0;
+  const autoplayEnabled = carouselEnabled && hoveredIndex === null;
+  const displayIndex = !enabled
+    ? 0
+    : (hoveredIndex ?? (segmentCount > 0 ? activeIndex % segmentCount : 0));
 
   useEffect(() => {
-    if (!carouselEnabled) {
+    if (!autoplayEnabled) {
       return;
     }
 
@@ -68,12 +72,25 @@ export function useHeroSegmentCarousel({
       cancelled = true;
       window.clearTimeout(holdTimeoutId);
     };
-  }, [carouselEnabled, segmentCount]);
+  }, [autoplayEnabled, segmentCount]);
+
+  const hoverSegment = (index: number | null) => {
+    if (!carouselEnabled) {
+      return;
+    }
+
+    setHoveredIndex(index);
+
+    if (index !== null) {
+      setActiveIndex(index);
+    }
+  };
 
   return {
     displayIndex,
     cycleKey,
-    animateSegment: carouselEnabled,
+    hoverSegment,
+    animateSegment: autoplayEnabled,
     animateImage: carouselEnabled,
     holdMs: HERO_SEGMENT_HOLD_MS,
     carouselEnabled,

@@ -16,7 +16,7 @@
 }
 
 .footer-contacts__link:hover {
-  color: var(--color-accent);
+  color: var(--color-grey-200);
 }
 
 .footer-contacts__social-links {
@@ -52,6 +52,10 @@
 }
 
 @media (max-width: 576px) {
+  .footer-contacts__social-links {
+    justify-content: flex-end;
+  }
+
   .footer-contacts__social-icon {
     width: 20px;
     height: 20px;

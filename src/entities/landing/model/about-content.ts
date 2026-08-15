@@ -3,20 +3,20 @@ export const aboutIntro = {
   subtitle: {
     lead: "Помогаем компаниям ",
     teamsAccent: "формировать команды",
-    middle: " для реализации проектов и гибко ",
+    middle: " для\u00a0реализации проектов и\u00a0гибко ",
     resourcesAccent: "управлять ресурсами",
   },
 } as const;
 
 export const aboutSpotlight = {
   leftTag: {
-    label: "ресурсы для роста",
+    label: "ресурсы для\u00a0роста",
     iconSrc: "/landing/about/icons/hr-search.svg",
   },
   collageSrc: "/landing/about/spotlight-collage.png",
   collageAlt: "Команда СмартСтаффинг",
   bookCoverSrc: "/landing/about/book-cover.png",
-  bookCoverAlt: "Обложка книги о стаффинге",
+  bookCoverAlt: "Обложка книги о\u00a0стаффинге",
 } as const;
 
 export const aboutHistory = {
@@ -28,7 +28,7 @@ export const aboutHistory = {
     },
     {
       year: "2013",
-      text: "Запуск первой федеральной платформы для крупнейшей нефтяной компании",
+      text: "Запуск первой федеральной платформы для\u00a0крупнейшей нефтяной компании",
     },
     {
       year: "2016",
@@ -40,7 +40,7 @@ export const aboutHistory = {
     },
     {
       year: "2020",
-      text: "Расширение портфеля проектов в направлении SAP и разработки банковских систем",
+      text: "Расширение портфеля проектов в\u00a0направлении SAP и\u00a0разработки банковских систем",
     },
     {
       year: "2024",
@@ -58,9 +58,9 @@ export const aboutHistory = {
   mission: {
     tag: "Миссия",
     items: [
-      "Помогать выполнять сложные и масштабные проекты, объединяя нужную экспертизу",
+      "Помогать выполнять сложные и\u00a0масштабные проекты, объединяя нужную экспертизу",
       "Перераспределять свободных специалистов внутри доверенного партнёрского пула",
-      "Переводить бизнес от жёсткой штатной модели к гибкому управлению ресурсами",
+      "Переводить бизнес от\u00a0жёсткой штатной модели к\u00a0гибкому управлению ресурсами",
     ],
     markers: [
       {
@@ -212,7 +212,7 @@ export type AboutLeadershipMemberLayout =
   | "finance";
 
 export const aboutLeadership = {
-  title: "Познакомьтесь с нашим руководством",
+  title: "Познакомьтесь с\u00a0нашим руководством",
   members: [
     {
       id: "ruslan-gaynanov",
@@ -251,7 +251,7 @@ export const aboutLeadership = {
     },
     {
       id: "alexandra-sadikova",
-      role: "Маркетинг и PR",
+      role: "Маркетинг и\u00a0PR",
       name: "Александра Садикова",
       imageSrc: "/landing/about/leadership/alexandra-sadikova.png",
       layout: "marketing",
@@ -274,38 +274,38 @@ export const aboutLeadership = {
 } as const;
 
 export const aboutBenefits = {
-  title: "Преимущества работы с нами",
+  title: "Преимущества работы с\u00a0нами",
   flex: {
     iconSrc: "/landing/about/benefits/flex-icon.png",
-    title: "Гибкость под разные модели работы",
-    text: "Предоставляем возможность кастомизации СмартСтаффинг-платформы под ваши процессы\u00a0— от\u00a0white-label до\u00a0полной интеграции\nс\u00a0внутренними системами (ERP, HRM) и\u00a0on-premise",
+    title: "Гибкость под\u00a0разные модели работы",
+    text: "Предоставляем возможность кастомизации СмартСтаффинг-платформы под\u00a0ваши процессы\u00a0— от\u00a0white-label до\u00a0полной интеграции\nс\u00a0внутренними системами (ERP, HRM) и\u00a0on-premise",
   },
   security: {
     imageSrc: "/landing/about/benefits/security-visual.png",
-    title: "Соответствие требованиям безопасности и регуляторов",
+    title: "Соответствие требованиям безопасности и\u00a0регуляторов",
     text: "Имеем лицензии ФСБ, ФСТЭК и\u00a0Минцифры, соответствуем требованиям оператора персональных данных и\u00a0включены в\u00a0реестр отечественного ПО\u00a0(№\u202f14\u202f503)",
   },
   platform: {
     title: "Собственная платформа",
-    text: "Объединяем подбор, планирование \nи управление командами в единой системе, синхронизируя все процессы работы с ресурсами",
+    text: "Объединяем подбор, планирование \nи\u00a0управление командами в\u00a0единой системе, синхронизируя все процессы работы с\u00a0ресурсами",
   },
   expertise: {
     imageSrc: "/landing/about/benefits/expertise-photo.png",
-    title: "Подтвержденная экспертиза в сложных проектах",
+    title: "Подтвержденная экспертиза в\u00a0сложных проектах",
     text: "Опыт реализации ИТ-проектов разного уровня сложности позволяет нам понимать реальные боли бизнеса",
   },
 } as const;
 
 export const aboutCareerBook = {
   career: {
-    title: "Работа в СмартСтаффинг",
+    title: "Работа в\u00a0СмартСтаффинг",
     subtitle: {
-      lead: "Мы растём и ",
+      lead: "Мы\u00a0растём и ",
       accent: "ищем талантливых специалистов",
-      tail: ", готовых развиваться вместе с нами",
+      tail: ", готовых развиваться вместе с\u00a0нами",
     },
     cta: {
-      text: "Найдите свою роль и станьте частью нашей команды!",
+      text: "Найдите свою роль и\u00a0станьте частью нашей команды!",
       buttonLabel: "Смотрите доступные вакансии",
       buttonHref: "/vacancies",
       photoSrc: "/landing/about/career-cta-photo.png",
@@ -316,10 +316,10 @@ export const aboutCareerBook = {
     title: "Узнайте секреты стаффинга",
     description: {
       accent: "Получите экспертную литературу",
-      rest: ". В ней мы поделились опытом сложных ИТ-проектов, подходами к подбору команд, а также уникальными решениями для корпоративного аутсорсинга.",
+      rest: ". В\u00a0ней мы\u00a0поделились опытом сложных ИТ-проектов, подходами к\u00a0подбору команд, а\u00a0также уникальными решениями для\u00a0корпоративного аутсорсинга.",
     },
     spreadSrc: "/landing/about/book-spread.png",
-    spreadAlt: "Книга о стаффинге",
+    spreadAlt: "Книга о\u00a0стаффинге",
     form: {
       inputPlaceholder: "@telegram_id",
       buttonLabel: "Забрать книгу бесплатно",
@@ -328,7 +328,7 @@ export const aboutCareerBook = {
 } as const;
 
 export const aboutPartner = {
-  title: "СмартСтаффинг – признанный партнёр на рынке",
+  title: "СмартСтаффинг – признанный партнёр на\u00a0рынке",
   awards: [
     {
       id: "digital-leaders-2025",
@@ -348,7 +348,7 @@ export const aboutPartner = {
       title: "Ассоциация «РУССОФТ» и\u00a0Комитет по\u00a0МСП Ассоциации «РУССОФТ»",
       status: "Благодарственное письмо",
       nomination:
-        "За участие и выступление в рамках серии бесплатных обучающих вебинаров, а также вклад в развитие предпринимательского ИТ-сообщества в 2025 году.",
+        "За\u00a0участие и\u00a0выступление в\u00a0рамках серии бесплатных обучающих вебинаров, а\u00a0также вклад в\u00a0развитие предпринимательского ИТ-сообщества в\u00a02025 году.",
       project: "СмартСтаффинг",
       document: {
         src: "/landing/about/partner/documents/russoft-2025.png",
@@ -361,7 +361,7 @@ export const aboutPartner = {
       id: "global-cio",
       title: "Конкурс «Проект года»\nGlobal CIO",
       status: "Номинант",
-      nomination: "Сервисы и аутсорсинг",
+      nomination: "Сервисы и\u00a0аутсорсинг",
       project: "B2BCloud",
       document: {
         src: "/landing/about/partner/documents/global-cio.png",

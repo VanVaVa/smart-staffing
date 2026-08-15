@@ -21,7 +21,7 @@ type HeroVisualProps = {
 
 export function HeroVisual({ segments }: HeroVisualProps) {
   const blockEdit = useAdminBlockEditOptional();
-  const { displayIndex, cycleKey, animateSegment, animateImage, holdMs } =
+  const { displayIndex, cycleKey, hoverSegment, animateSegment, animateImage, holdMs } =
     useHeroSegmentCarousel({
       segmentCount: segments.length,
       enabled: !blockEdit,
@@ -94,6 +94,8 @@ export function HeroVisual({ segments }: HeroVisualProps) {
               isActive={index === displayIndex}
               animate={animateSegment}
               cycleKey={cycleKey}
+              onHoverStart={() => hoverSegment(index)}
+              onHoverEnd={() => hoverSegment(null)}
             />
           </EditableCollectionItem>
         ))}

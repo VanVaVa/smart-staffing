@@ -53,7 +53,7 @@
   }
 
   .media-article__content {
-    width: 100%;
+    width: calc(100% - 2 * var(--container-padding));
     margin-top: 20px;
   }
 }

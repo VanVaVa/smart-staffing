@@ -8,6 +8,7 @@ import {
   useMemo,
   useState,
 } from "react";
+import { usePathname } from "next/navigation";
 
 import { CompanyConnectionModal } from "./CompanyConnectionModal";
 import { FeedbackFormSuccessModal } from "./FeedbackFormSuccessModal";
@@ -36,14 +37,18 @@ type FeedbackFormSuccessModalProviderProps = {
 export function FeedbackFormSuccessModalProvider({
   children,
 }: FeedbackFormSuccessModalProviderProps) {
-  const [companyConnectionOpen, setCompanyConnectionOpen] = useState(false);
+  const pathname = usePathname();
+  const [companyConnectionPathname, setCompanyConnectionPathname] = useState<
+    string | null
+  >(null);
+  const companyConnectionOpen = companyConnectionPathname === pathname;
   const [successOpen, setSuccessOpen] = useState(false);
   const [successContent, setSuccessContent] = useState<FeedbackFormSuccessContent | null>(
     null,
   );
   const openCompanyConnectionModal = useCallback(
-    () => setCompanyConnectionOpen(true),
-    [],
+    () => setCompanyConnectionPathname(pathname),
+    [pathname],
   );
   const openSuccessModal = useCallback((content?: FeedbackFormSuccessContent) => {
     setSuccessContent(content ?? null);
@@ -63,7 +68,7 @@ export function FeedbackFormSuccessModalProvider({
       {children}
       <CompanyConnectionModal
         open={companyConnectionOpen}
-        onClose={() => setCompanyConnectionOpen(false)}
+        onClose={() => setCompanyConnectionPathname(null)}
       />
       <FeedbackFormSuccessModal
         open={successOpen}

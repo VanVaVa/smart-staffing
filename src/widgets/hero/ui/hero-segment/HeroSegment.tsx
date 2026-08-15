@@ -11,6 +11,8 @@ type HeroSegmentProps = {
   isActive: boolean;
   animate: boolean;
   cycleKey: number;
+  onHoverStart: () => void;
+  onHoverEnd: () => void;
 };
 
 export function HeroSegment({
@@ -20,6 +22,8 @@ export function HeroSegment({
   isActive,
   animate,
   cycleKey,
+  onHoverStart,
+  onHoverEnd,
 }: HeroSegmentProps) {
   const segmentClass = [
     styles["hero-segment"],
@@ -30,7 +34,11 @@ export function HeroSegment({
     .join(" ");
 
   return (
-    <div className={segmentClass}>
+    <div
+      className={segmentClass}
+      onMouseEnter={onHoverStart}
+      onMouseLeave={onHoverEnd}
+    >
       <span
         key={isActive ? cycleKey : `idle-${index}`}
         className={styles["hero-segment__active-bg"]}

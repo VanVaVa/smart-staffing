@@ -205,7 +205,7 @@ export function AboutPartnerCarousel({ awards }: AboutPartnerCarouselProps) {
             onClick={() => scroll("prev")}
           >
             <Image
-              src="/landing/testimonials/arrow-icon.svg"
+              src="/landing/about/icons/chevron-icon.svg"
               alt=""
               width={32}
               height={32}
@@ -220,7 +220,7 @@ export function AboutPartnerCarousel({ awards }: AboutPartnerCarouselProps) {
             onClick={() => scroll("next")}
           >
             <Image
-              src="/landing/testimonials/arrow-icon.svg"
+              src="/landing/about/icons/chevron-icon.svg"
               alt=""
               width={32}
               height={32}

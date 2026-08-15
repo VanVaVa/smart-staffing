@@ -61,12 +61,16 @@ export function DocumentList({
                 </dd>
               </div>
               <div className={styles["document-list__requisite"]}>
-                <dt>ИНН / ОГРН</dt>
+                <dt>ИНН</dt>
                 <dd>
                   <EditableText path="company.inn" label="ИНН">
                     {company.inn}
                   </EditableText>
-                  {" / "}
+                </dd>
+              </div>
+              <div className={styles["document-list__requisite"]}>
+                <dt>ОГРН</dt>
+                <dd>
                   <EditableText path="company.ogrn" label="ОГРН">
                     {company.ogrn}
                   </EditableText>

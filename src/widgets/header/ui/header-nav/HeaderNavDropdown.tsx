@@ -1,3 +1,8 @@
+"use client";
+
+import { useState } from "react";
+import { usePathname } from "next/navigation";
+
 import { Link } from "@/shared/ui";
 
 import styles from "./HeaderNav.module.css";
@@ -14,8 +19,33 @@ type HeaderNavDropdownProps = {
 };
 
 export function HeaderNavDropdown({ label, href, items }: HeaderNavDropdownProps) {
+  const pathname = usePathname();
+  const [openedOnPathname, setOpenedOnPathname] = useState<string | null>(null);
+  const open = openedOnPathname === pathname;
+
+  const setOpen = (nextOpen: boolean) => {
+    setOpenedOnPathname(nextOpen ? pathname : null);
+  };
+
+  const dropdownClass = [
+    styles["header-nav__dropdown"],
+    open ? styles["header-nav__dropdown--open"] : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+
   return (
-    <div className={styles["header-nav__dropdown"]}>
+    <div
+      className={dropdownClass}
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+      onFocus={() => setOpen(true)}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) {
+          setOpen(false);
+        }
+      }}
+    >
       <Link
         href={href}
         variant="nav"

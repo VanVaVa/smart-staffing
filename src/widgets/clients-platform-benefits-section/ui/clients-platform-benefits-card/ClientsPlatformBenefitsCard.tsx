@@ -21,7 +21,11 @@ function ClientsPlatformBenefitsInProgressIcon() {
       aria-hidden
     >
       <path
-        d="M5.25 22.75V14H8.75V22.75H5.25ZM12.25 22.75V9.625H15.75V22.75H12.25ZM19.25 22.75V5.25H22.75V22.75H19.25Z"
+        d="M4.667 3.5v19.25a1.75 1.75 0 0 0 1.75 1.75h17.5v-2.333H7V3.5H4.667Z"
+        fill="currentColor"
+      />
+      <path
+        d="M9.333 5.833h12.834v3.5H9.333v-3.5Zm0 5.834h8.167v3.5H9.333v-3.5Zm2.334 5.833h9.333v3.5h-9.333v-3.5Z"
         fill="currentColor"
       />
     </svg>
@@ -103,7 +107,7 @@ export function ClientsPlatformBenefitsCard({
             <div className={styles["clients-platform-benefits-card__in-progress"]}>
               <ClientsPlatformBenefitsInProgressIcon />
               <span className={styles["clients-platform-benefits-card__in-progress-text"]}>
-                скоро реализуем
+                скоро
               </span>
             </div>
           </>
