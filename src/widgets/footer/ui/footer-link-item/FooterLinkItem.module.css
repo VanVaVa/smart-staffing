@@ -14,7 +14,7 @@
 }
 
 .footer-link-item__link:hover {
-  color: var(--color-accent);
+  color: var(--color-grey-200);
 }
 
 .footer-link-item__button {

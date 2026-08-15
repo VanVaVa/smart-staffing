@@ -29,7 +29,7 @@ export function DocumentViewer({ content }: DocumentViewerProps) {
           >
             {content.title}
           </EditableText>
-          <EditableMedia path="pdfSrc" label="PDF документа">
+          <EditableMedia path="pdfSrc" label="PDF документа" className={styles["document-viewer__download-wrapper"]}>
             <a
               className={styles["document-viewer__download"]}
               href={content.pdfSrc}

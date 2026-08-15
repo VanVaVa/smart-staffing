@@ -1,6 +1,6 @@
 .feature-row {
   display: grid;
-  grid-template-columns: minmax(0, 892fr) minmax(0, 956fr);
+  grid-template-columns: 1fr 1fr;
   grid-template-areas: "content media";
   gap: 24px;
   align-items: center;
@@ -48,9 +48,12 @@
 
 .feature-row__lead {
   font-family: var(--font-body);
-  font-size: var(--text-body-md);
-  line-height: var(--line-body);
-  color: var(--color-grey-600);
+  font-size: var(--text-body-xl);
+  line-height: var(--line-body-xl);
+}
+
+.feature-row__lead-accent {
+  color: var(--color-accent);
 }
 
 .feature-row__tags {

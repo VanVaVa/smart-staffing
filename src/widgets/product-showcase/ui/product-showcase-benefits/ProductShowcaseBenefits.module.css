@@ -48,7 +48,12 @@
   }
 
   .product-showcase-benefits__grid {
-    grid-template-rows: 258px 258px;
+    grid-template-rows: 258px 258px 200px;
+    grid-template-areas:
+        "cost        stat        stat        " 
+        "contractors contractors competencies"
+        ". . competencies";
+  grid-template-columns: 1fr 1fr 1fr;
   }
 }
 

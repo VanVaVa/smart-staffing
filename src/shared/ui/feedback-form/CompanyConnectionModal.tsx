@@ -94,10 +94,6 @@ export function CompanyConnectionModal({
         aria-modal="true"
         aria-labelledby={titleId}
       >
-        <div className={styles["company-connection-modal__header"]}>
-          <h2 id={titleId} className={styles["company-connection-modal__title"]}>
-            Тарифы
-          </h2>
           <button
             type="button"
             className={styles["company-connection-modal__close"]}
@@ -106,7 +102,6 @@ export function CompanyConnectionModal({
           >
             <span className={styles["company-connection-modal__close-icon"]} aria-hidden />
           </button>
-        </div>
         <div className={styles["company-connection-modal__content"]}>
           <section
             className={styles["company-connection-modal__sales-card"]}

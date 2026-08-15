@@ -1,7 +1,16 @@
-.software-rights-modal__panel {
+.software-rights-modal {
+  --software-rights-modal-root-padding-top: 40px;
+  align-items: flex-start;
+  padding-top: var(--software-rights-modal-root-padding-top);
+}
+
+.software-rights-modal .software-rights-modal__panel {
   max-height: min(
     880px,
-    calc(100vh - var(--modal-root-padding-top) - var(--modal-root-padding-bottom))
+    calc(
+      100vh - var(--software-rights-modal-root-padding-top) -
+        var(--modal-root-padding-bottom)
+    )
   );
   padding-bottom: calc(var(--modal-panel-padding) - 8px);
 }
@@ -168,13 +177,16 @@
 
 @media (max-width: 450px) {
   .software-rights-modal {
-    padding: 0;
+    padding: var(--software-rights-modal-root-padding-top) 0 0;
     align-items: stretch;
   }
 
-  .software-rights-modal__panel {
+  .software-rights-modal .software-rights-modal__panel {
     width: 100%;
-    max-height: calc(100vh - var(--modal-root-padding-top) - var(--modal-root-padding-bottom));
+    max-height: calc(
+      100vh - var(--software-rights-modal-root-padding-top) -
+        var(--modal-root-padding-bottom)
+    );
     border-radius: 0;
   }
 

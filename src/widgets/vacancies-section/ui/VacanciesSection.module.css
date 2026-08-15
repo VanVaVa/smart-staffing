@@ -261,8 +261,8 @@
     padding: 16px;
     border-radius: 24px;
     background: rgb(119 119 142 / 8%);
-    -webkit-backdrop-filter: blur(80px);
-    backdrop-filter: blur(80px);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
     box-sizing: border-box;
   }
 

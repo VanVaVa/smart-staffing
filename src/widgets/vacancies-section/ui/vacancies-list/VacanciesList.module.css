@@ -99,10 +99,6 @@
     max-height: 264px;
   }
 
-  .vacancies-list-panel__scrollbar {
-    display: none;
-  }
-
   .vacancies-list-panel__items {
     gap: 8px;
   }

@@ -1,5 +1,5 @@
 .about-intro-section {
-  padding-top: min(118px, calc(118 * 100vw / 1920));
+  padding-top: 192px;
   padding-bottom: min(96px, calc(96 * 100vw / 1920));
 }
 
@@ -99,7 +99,7 @@
 
 @media (max-width: 576px) {
   .about-intro-section {
-    padding-top: 64px;
+    padding-top: 134px;
     padding-bottom: 60px;
   }
 
@@ -123,8 +123,8 @@
 
 @media (max-width: 450px) {
   .about-intro-section {
-    padding-top: 60px;
-    padding-bottom: 24px;
+    padding-top: 160px;
+    padding-bottom: 84px;
   }
 
   .about-intro-section__inner {

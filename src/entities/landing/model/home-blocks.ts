@@ -71,6 +71,7 @@ export type ProductShowcaseBlockProps = {
 export type FeatureRow = {
   title: string;
   description: string;
+  descriptionAccent?: string;
   tags: string[];
   imageSrc: string;
   imageAlt: string;
@@ -370,6 +371,10 @@ function parseFeatureRow(value: unknown): FeatureRow | null {
     imageWidth: value.imageWidth,
     imageHeight: value.imageHeight,
   };
+  if (value.descriptionAccent !== undefined) {
+    if (!isString(value.descriptionAccent)) return null;
+    row.descriptionAccent = value.descriptionAccent;
+  }
   if (value.reversed !== undefined) {
     if (typeof value.reversed !== "boolean") return null;
     row.reversed = value.reversed;

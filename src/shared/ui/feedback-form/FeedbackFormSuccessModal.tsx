@@ -18,7 +18,7 @@ const DEFAULT_SUCCESS_CONTENT: FeedbackFormSuccessContent = {
   description:
     "Спасибо за интерес к нашему продукту!\nМенеджер свяжется с вами в ближайшее время,\nи поможет подключиться к платформе.",
   homeLabel: "На главную",
-  illustrationSrc: "/landing/vacancies/application-success-illustration.png",
+  illustrationSrc: "/landing/about/book-cover.png",
   illustrationWidth: 490,
   illustrationHeight: 344,
 };

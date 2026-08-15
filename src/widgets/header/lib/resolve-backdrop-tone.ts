@@ -140,6 +140,10 @@ export function isDarkBackdropAt(x: number, y: number): boolean {
       continue;
     }
 
+    if (element.closest("[data-header-backdrop='dark']")) {
+      return true;
+    }
+
     if (resolveToneFromElement(element) === "dark") {
       return true;
     }

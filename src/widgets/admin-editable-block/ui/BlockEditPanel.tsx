@@ -341,6 +341,18 @@ export function BlockEditPanel({ block, onChange, onClose }: BlockEditPanelProps
                     setProps({ ...block.props, rows });
                   }}
                 />
+                <Input
+                  label="Акцент описания"
+                  value={row.descriptionAccent ?? ""}
+                  onChange={(e) => {
+                    const rows = [...block.props.rows];
+                    rows[index] = {
+                      ...rows[index],
+                      descriptionAccent: e.target.value || undefined,
+                    };
+                    setProps({ ...block.props, rows });
+                  }}
+                />
                 <TextAreaField
                   label="Теги (через перенос строки)"
                   value={row.tags.join("\n")}
@@ -446,6 +458,16 @@ export function BlockEditPanel({ block, onChange, onClose }: BlockEditPanelProps
                 })
               }
             />
+            <Input
+              label="Акцент подзаголовка"
+              value={block.props.partner.subtitleAccent}
+              onChange={(e) =>
+                setProps({
+                  ...block.props,
+                  partner: { ...block.props.partner, subtitleAccent: e.target.value },
+                })
+              }
+            />
             <MediaField
               label="Изображение"
               value={block.props.partner.imageSrc}
@@ -464,6 +486,26 @@ export function BlockEditPanel({ block, onChange, onClose }: BlockEditPanelProps
                 setProps({
                   ...block.props,
                   demo: { ...block.props.demo, title: e.target.value },
+                })
+              }
+            />
+            <TextAreaField
+              label="Подзаголовок"
+              value={block.props.demo.subtitle}
+              onChange={(subtitle) =>
+                setProps({
+                  ...block.props,
+                  demo: { ...block.props.demo, subtitle },
+                })
+              }
+            />
+            <Input
+              label="Акцент подзаголовка"
+              value={block.props.demo.subtitleAccent}
+              onChange={(e) =>
+                setProps({
+                  ...block.props,
+                  demo: { ...block.props.demo, subtitleAccent: e.target.value },
                 })
               }
             />

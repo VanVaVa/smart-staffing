@@ -93,6 +93,8 @@
     --modal-panel-padding: 36px;
     --modal-panel-radius: 16px;
     --modal-panel-gap: 48px;
+    --text-body-xl: 16px;
+    --line-body-xl: 22px;
   }
 }
 
@@ -105,13 +107,11 @@
     --text-h3: 26px;
     --text-h4: 20px;
     --text-lead: 26px;
-    --text-body-xl: 20px;
     --line-h1: 46px;
     --line-h2: 46px;
     --line-h3: 32px;
     --line-h4: 28px;
     --line-lead: 36px;
-    --line-body-xl: 26px;
     --modal-root-padding-top: 100px;
     --modal-panel-max-width: 394px;
     --modal-panel-padding: 17px;

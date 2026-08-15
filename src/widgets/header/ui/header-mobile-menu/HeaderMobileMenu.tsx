@@ -93,7 +93,7 @@ export function HeaderMobileMenu({
         .join(" ")}
     >
       <div className={styles["header-mobile-menu__bar"]}>
-        <Logo light={useLightHeaderChrome} />
+        <Logo />
         <div className={styles["header-mobile-menu__actions"]}>
           <Button href={routes.login} variant="ghost" className={ghostClass}>
             Вход

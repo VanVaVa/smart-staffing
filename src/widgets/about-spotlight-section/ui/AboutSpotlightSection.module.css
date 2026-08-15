@@ -65,7 +65,7 @@
   padding: 40px 48px;
   border-radius: 40px;
   background: rgb(119 119 142 / 8%);
-  backdrop-filter: blur(80px);
+  backdrop-filter: blur(20px);
   overflow: visible;
 }
 
@@ -81,7 +81,7 @@
   padding: 40px 48px;
   border-radius: 40px;
   background: rgb(119 119 142 / 8%);
-  backdrop-filter: blur(80px);
+  backdrop-filter: blur(20px);
   overflow: visible;
 }
 
@@ -369,7 +369,7 @@
 
 @media (max-width: 450px) {
   .about-spotlight-section {
-    padding-bottom: 40px;
+    padding-bottom: 120px;
   }
 
   .about-spotlight-section__grid {

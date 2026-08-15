@@ -26,6 +26,7 @@ export function FeaturesSection({ content }: FeaturesSectionProps) {
               rowIndex={index}
               title={row.title}
               description={row.description}
+              descriptionAccent={row.descriptionAccent}
               tags={[...row.tags]}
               imageSrc={row.imageSrc}
               imageAlt={row.imageAlt}

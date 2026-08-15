@@ -1,5 +1,6 @@
 .contact-section {
   overflow-x: clip;
+  padding-bottom: 196px;
 }
 
 @media (max-width: 1440px) {

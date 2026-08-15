@@ -4,6 +4,8 @@
   padding-block: min(196px, calc(196 * 100vw / 1920))
     min(278px, calc(278 * 100vw / 1920));
   border-radius: 40px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
   color: var(--color-white);
 }
 
@@ -18,6 +20,8 @@
   pointer-events: none;
   overflow: hidden;
   border-radius: 40px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .clients-platform-section__gradient {
@@ -38,7 +42,7 @@
   width: min(400px, calc(400 * 100vw / 1920));
   height: min(400px, calc(400 * 100vw / 1920));
   background: linear-gradient(135deg, #d7def0 0%, #ec673a 47.12%, #f75827 100%);
-  filter: blur(56px);
+  filter: blur(20px);
 }
 
 .clients-platform-section__orb--purple-large {
@@ -47,7 +51,7 @@
   width: min(800px, calc(800 * 100vw / 1920));
   height: min(800px, calc(800 * 100vw / 1920));
   background: linear-gradient(135deg, #d7def0 0%, #7175c7 50%, #5b589f 100%);
-  filter: blur(60px);
+  filter: blur(20px);
 }
 
 .clients-platform-section__orb--purple-small {
@@ -56,7 +60,7 @@
   width: min(200px, calc(200 * 100vw / 1920));
   height: min(200px, calc(200 * 100vw / 1920));
   background: linear-gradient(135deg, #d7def0 0%, #7175c7 50%, #5b589f 100%);
-  filter: blur(32px);
+  filter: blur(20px);
 }
 
 .clients-platform-section__container {
@@ -108,7 +112,7 @@
 
 .clients-platform-section__pain-icon {
   color: var(--color-white);
-  transform: rotate(-45deg);
+  transform: rotate(45deg);
 }
 
 .clients-platform-section__pain-text {
@@ -172,11 +176,15 @@
   .clients-platform-section {
     padding-block: 168px 211px;
     border-radius: 32px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
   }
 
   .clients-platform-section__decor,
   .clients-platform-section__gradient {
     border-radius: 32px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
   }
 
   .clients-platform-section__orb--orange {
@@ -242,12 +250,16 @@
 @media (max-width: 992px) {
   .clients-platform-section {
     border-radius: 24px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
     padding-block: min(168px, calc(168 * 100vw / 992))
       min(96px, calc(96 * 100vw / 992));
   }
 
   .clients-platform-section__decor {
     border-radius: 24px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
   }
 
   .clients-platform-section__gradient {
@@ -315,11 +327,15 @@
   .clients-platform-section {
     padding-block: 148px 188px;
     border-radius: 24px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
   }
 
   .clients-platform-section__decor,
   .clients-platform-section__gradient {
     border-radius: 24px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
   }
 
   .clients-platform-section__layout {
@@ -411,13 +427,15 @@
 @media (max-width: 576px) {
   .clients-platform-section {
     padding-block: min(120px, calc(120 * 100vw / 576)) min(80px, calc(80 * 100vw / 576));
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
   }
 
   .clients-platform-section__layout {
     grid-template-columns: 1fr;
     grid-template-areas:
-      "preview"
       "pain"
+      "preview"
       "copy"
       "tags";
     gap: 28px;
@@ -454,11 +472,15 @@
 @media (max-width: 450px) {
   .clients-platform-section {
     border-radius: 20px;
-    padding-block: 48px 56px;
+    padding-block: 48px 106px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
   }
 
   .clients-platform-section__decor {
     border-radius: 20px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
   }
 
   .clients-platform-section__gradient {

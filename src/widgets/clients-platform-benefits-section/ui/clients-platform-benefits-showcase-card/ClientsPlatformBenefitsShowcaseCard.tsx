@@ -19,7 +19,7 @@ export function ClientsPlatformBenefitsShowcaseCard({
   if (item.variant === "it-costs") {
     return (
       <article
-        className={`${styles["clients-platform-benefits-showcase-card"]} ${styles["clients-platform-benefits-showcase-card--it-costs"]}`}
+        className={`${styles["clients-platform-benefits-showcase-card"]} ${styles["clients-platform-benefits-showcase-card--it-costs"]} ${styles["clients-platform-benefits-showcase-card--dark-bg"]}`}
       >
         <div className={styles["clients-platform-benefits-showcase-card__copy"]}>
           <EditableText

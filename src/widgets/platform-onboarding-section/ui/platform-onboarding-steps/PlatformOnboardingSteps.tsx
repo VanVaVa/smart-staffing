@@ -18,6 +18,7 @@ type PlatformOnboardingStepsProps = {
   cta: string;
   steps: Step[];
   interactive?: boolean;
+  flushTop?: boolean;
 };
 
 function StepCard({
@@ -53,9 +54,17 @@ export function PlatformOnboardingSteps({
   cta,
   steps,
   interactive = true,
+  flushTop = false,
 }: PlatformOnboardingStepsProps) {
+  const rootClass = [
+    styles["platform-onboarding-steps"],
+    flushTop ? styles["platform-onboarding-steps--flush-top"] : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+
   return (
-    <div className={styles["platform-onboarding-steps"]}>
+    <div className={rootClass}>
       <div className={styles["platform-onboarding-steps__glow"]} aria-hidden />
       <div className={styles["platform-onboarding-steps__glow--accent"]} aria-hidden />
       <div className={styles["platform-onboarding-steps__glow--bottom"]} aria-hidden />
@@ -82,6 +91,17 @@ export function PlatformOnboardingSteps({
               >
                 <StepCard {...step} stepIndex={index} />
               </EditableCollectionItem>
+              {index === 0 ? (
+                <div
+                  className={`${styles["platform-onboarding-steps__arrow"]} ${styles["platform-onboarding-steps__arrow--trailing"]}`}
+                  aria-hidden
+                >
+                  <ArrowIcon
+                    name="round"
+                    className={styles["platform-onboarding-steps__arrow-icon"]}
+                  />
+                </div>
+              ) : null}
               {index === 1 ? (
                 <>
                   <div
@@ -103,6 +123,17 @@ export function PlatformOnboardingSteps({
                     />
                   </div>
                 </>
+              ) : null}
+              {index === 2 ? (
+                <div
+                  className={`${styles["platform-onboarding-steps__arrow"]} ${styles["platform-onboarding-steps__arrow--leading"]}`}
+                  aria-hidden
+                >
+                  <ArrowIcon
+                    name="round"
+                    className={styles["platform-onboarding-steps__arrow-icon"]}
+                  />
+                </div>
               ) : null}
             </div>
           ))}

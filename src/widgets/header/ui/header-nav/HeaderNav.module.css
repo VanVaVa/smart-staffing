@@ -87,8 +87,8 @@
   text-align: center;
   color: var(--color-grey-700);
   transition:
-    color 0.2s ease,
-    background 0.2s ease;
+    color 0.4s ease,
+    background 0.4s ease;
 }
 
 .header-nav__dropdown-menu .header-nav__dropdown-item:hover {

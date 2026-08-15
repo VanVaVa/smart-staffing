@@ -41,7 +41,7 @@ const CHANNEL_FIELDS: Record<
   phone: {
     name: "phone",
     type: "tel",
-    placeholder: "+7 (___) ___-__-__",
+    placeholder: "+7 000 00 00",
     autoComplete: "tel",
   },
   email: {
@@ -257,7 +257,7 @@ export function FeedbackForm({
         label={
           <>
             Я даю согласие на обработку персональных данных в соответствии с{" "}
-            <Link href="#" variant="inline" className={styles["feedback-form__consent-link"]}>
+            <Link href="/documents/privacy-policy" variant="inline" className={styles["feedback-form__consent-link"]}>
               политикой конфиденциальности
             </Link>
           </>

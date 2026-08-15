@@ -24,6 +24,7 @@
   padding: 0;
   place-items: center;
   color: #939393;
+  z-index: 10;
 }
 
 .company-connection-modal__close-icon {
@@ -73,6 +74,12 @@
   border-radius: var(--modal-panel-radius);
   background: #0e0d18;
   color: var(--color-white);
+  margin-top: -88px;
+  margin-inline: -40px;
+  margin-bottom: -20px;
+  padding-bottom: 68px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .company-connection-modal__sales-orb--purple,
@@ -148,7 +155,6 @@
 }
 
 .company-connection-modal__summary {
-  margin-top: 55px;
   font-weight: 400;
 }
 
@@ -194,6 +200,17 @@
   border-bottom: 2px solid #2fd124;
   content: "";
   transform: rotate(45deg);
+}
+
+.company-connection-modal__body {
+  background: var(--color-white);
+  padding-inline: 40px;
+  padding-block: 40px 56px;
+  margin-inline: -40px;
+  margin-bottom: -40px;
+  border-radius: 20px;
+  margin-top: -40px;
+  position: relative;
 }
 
 @media (max-width: 1440px) {
@@ -267,13 +284,14 @@
     margin-top: 0;
     padding-right: 0;
     overflow: visible;
+    margin: 40px;
   }
 
   .company-connection-modal--full-page .company-connection-modal__sales-card {
     display: flex;
     flex-direction: column;
     min-height: 660px;
-    padding: 136px 32px 242px;
+    padding: 186px 32px 182px;
     border-radius: 0;
   }
 
@@ -312,7 +330,7 @@
 
   .company-connection-modal--full-page .company-connection-modal__body {
     flex: 1;
-    padding: 8px 32px 48px;
+    padding: 40px 32px 48px;
     background: var(--color-bg);
   }
 
@@ -352,6 +370,10 @@
     width: 8px;
     height: 13px;
   }
+
+  .company-connection-modal__close {
+    display: none;
+  }
 }
 
 @media (max-width: 768px) {
@@ -367,7 +389,7 @@
   }
 
   .company-connection-modal--full-page .company-connection-modal__body {
-    padding: 8px 24px 40px;
+    padding: 40px 24px 40px;
   }
 }
 
@@ -378,7 +400,7 @@
 
   .company-connection-modal--full-page .company-connection-modal__sales-card {
     min-height: 564px;
-    padding: 120px 20px 166px;
+    padding: 160px 20px 166px;
   }
 
   .company-connection-modal--full-page .company-connection-modal__sales-title {
@@ -387,7 +409,6 @@
   }
 
   .company-connection-modal--full-page .company-connection-modal__sales-action {
-    width: 100%;
     margin-top: 32px;
   }
 

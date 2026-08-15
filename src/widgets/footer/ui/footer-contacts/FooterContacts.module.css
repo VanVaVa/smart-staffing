@@ -51,6 +51,13 @@
   transition: filter 0.2s ease;
 }
 
+@media (max-width: 576px) {
+  .footer-contacts__social-icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
 .footer-contacts__social-link:hover .footer-contacts__social-icon {
   filter: brightness(0);
 }
@@ -126,8 +133,8 @@
 
 @media (max-width: 576px) {
   .footer-contacts__body {
-    flex-direction: column;
     align-items: flex-start;
+    flex-wrap: wrap;
   }
 
   .footer-contacts__social-links {
@@ -143,7 +150,16 @@
 
 @media (max-width: 450px) {
   .footer-contacts__social-link {
-    width: 70px;
-    height: 40px;
+    width: 52px;
+    height: 52px;
+  }
+
+  .footer-contacts__social-links {
+    margin-top: 0;
+  }
+
+  .footer-contacts__body {
+    justify-content: space-between;
+    width: 100%;
   }
 }

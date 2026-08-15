@@ -4,8 +4,11 @@
   min-height: 398px;
   grid-template-columns: minmax(0, 1fr) minmax(500px, 601px);
   gap: min(89px, calc(89 * 100vw / 1920));
-  margin-inline: var(--container-padding);
+  margin-right: var(--container-padding);
+  padding-left: var(--container-padding);
   background: var(--color-white);
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
 }
 
 .article-hero__content {

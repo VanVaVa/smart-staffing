@@ -12,6 +12,7 @@ import styles from "./PlatformOnboardingPartner.module.css";
 type PlatformOnboardingPartnerPaths = {
   title: string;
   subtitle: string;
+  subtitleAccent: string;
   cardText: string;
   imageSrc: string;
   cta: string;
@@ -23,6 +24,7 @@ type PlatformOnboardingPartnerLabels = PlatformOnboardingPartnerPaths;
 type PlatformOnboardingPartnerProps = {
   title?: string;
   subtitle?: string;
+  subtitleAccent?: string;
   cardText: string;
   imageSrc: string;
   imageAlt?: string;
@@ -37,6 +39,7 @@ type PlatformOnboardingPartnerProps = {
 const defaultPaths: PlatformOnboardingPartnerPaths = {
   title: "partner.title",
   subtitle: "partner.subtitle",
+  subtitleAccent: "partner.subtitleAccent",
   cardText: "partner.cardText",
   imageSrc: "partner.imageSrc",
   cta: "partner.cta",
@@ -46,15 +49,62 @@ const defaultPaths: PlatformOnboardingPartnerPaths = {
 const defaultLabels: PlatformOnboardingPartnerLabels = {
   title: "Partner — заголовок",
   subtitle: "Partner — подзаголовок",
+  subtitleAccent: "Partner — акцент подзаголовка",
   cardText: "Partner — текст карточки",
   imageSrc: "Partner — изображение",
   cta: "Partner — CTA",
   buttonHref: "Partner — ссылка кнопки",
 };
 
+function PlatformOnboardingPartnerSubtitle({
+  subtitle,
+  subtitleAccent,
+  paths,
+  labels,
+}: {
+  subtitle: string;
+  subtitleAccent?: string;
+  paths: PlatformOnboardingPartnerPaths;
+  labels: PlatformOnboardingPartnerLabels;
+}) {
+  if (!subtitleAccent) {
+    return (
+      <EditableText path={paths.subtitle} label={labels.subtitle} multiline>
+        {subtitle}
+      </EditableText>
+    );
+  }
+
+  const accentIndex = subtitle.indexOf(subtitleAccent);
+
+  if (accentIndex === -1) {
+    return (
+      <EditableText path={paths.subtitle} label={labels.subtitle} multiline>
+        {subtitle}
+      </EditableText>
+    );
+  }
+
+  const before = subtitle.slice(0, accentIndex);
+  const after = subtitle.slice(accentIndex + subtitleAccent.length);
+
+  return (
+    <>
+      {before}
+      <EditableText path={paths.subtitleAccent} label={labels.subtitleAccent}>
+        <span className={styles["platform-onboarding-partner__subtitle-accent"]}>
+          {subtitleAccent}
+        </span>
+      </EditableText>
+      {after}
+    </>
+  );
+}
+
 export function PlatformOnboardingPartner({
   title = "",
   subtitle = "",
+  subtitleAccent,
   cardText,
   imageSrc,
   imageAlt = "",
@@ -119,16 +169,19 @@ export function PlatformOnboardingPartner({
             </EditableText>
           }
           subtitle={
-            <EditableText path={paths.subtitle} label={labels.subtitle} multiline>
-              {subtitle}
-            </EditableText>
+            <PlatformOnboardingPartnerSubtitle
+              subtitle={subtitle}
+              subtitleAccent={subtitleAccent}
+              paths={paths}
+              labels={labels}
+            />
           }
           centered
         />
       ) : null}
       <div className={styles["platform-onboarding-partner__card-wrap"]}>
-        <div className={styles["platform-onboarding-partner__orb"]} aria-hidden />
         <article className={styles["platform-onboarding-partner__card"]}>
+          <div className={styles["platform-onboarding-partner__orb"]} aria-hidden />
           <EditableMedia
             path={paths.imageSrc}
             label={labels.imageSrc}

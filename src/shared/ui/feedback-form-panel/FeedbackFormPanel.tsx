@@ -93,7 +93,7 @@ export function FeedbackFormPanel({
     <div className={rootClassName}>
       <div className={styles["feedback-form-panel__decor"]} aria-hidden>
         <div className={styles["feedback-form-panel__orb--purple"]} />
-        <div className={styles["feedback-form-panel__orb--orange-small"]} />
+        {/* <div className={styles["feedback-form-panel__orb--orange-small"]} /> */}
         <div className={styles["feedback-form-panel__orb--orange"]} />
       </div>
       <div className={styles["feedback-form-panel__panel"]}>

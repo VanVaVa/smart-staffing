@@ -11,6 +11,7 @@ type FeatureRowMediaProps = {
   mediaWidth: number;
   mediaHeight: number;
   mediaPath?: string;
+  reversed?: boolean;
 };
 
 function resolveMediaVariant(rowIndex: number): FeatureRowMediaVariant | undefined {
@@ -40,12 +41,16 @@ export function FeatureRowMedia({
   mediaWidth,
   mediaHeight,
   mediaPath,
+  reversed,
 }: FeatureRowMediaProps) {
   const variant = resolveMediaVariant(rowIndex);
   const rootClass = [
     styles["feature-row-media"],
     styles[`feature-row-media--${rowIndex}`],
     variant ? styles[`feature-row-media--${variant}`] : "",
+    reversed
+      ? styles["feature-row-media--edge-inline-start"]
+      : styles["feature-row-media--edge-inline-end"],
   ]
     .filter(Boolean)
     .join(" ");

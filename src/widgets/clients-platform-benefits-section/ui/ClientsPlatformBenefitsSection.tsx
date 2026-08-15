@@ -69,7 +69,11 @@ export function ClientsPlatformBenefitsSection({
                 variant="benefit"
               >
                 <li className={styles["clients-platform-benefits-section__card"]}>
-                  <ClientsPlatformBenefitsCard card={card} cardIndex={index} />
+                  <ClientsPlatformBenefitsCard
+                    card={card}
+                    cardIndex={index}
+                    cardCount={content.cards.length}
+                  />
                 </li>
               </EditableCollectionItem>
             ))}

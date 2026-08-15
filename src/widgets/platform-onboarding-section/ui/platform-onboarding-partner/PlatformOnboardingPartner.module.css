@@ -9,7 +9,6 @@
 }
 
 .platform-onboarding-partner__card-wrap {
-  position: relative;
   display: flex;
   justify-content: center;
   overflow: visible;
@@ -17,8 +16,9 @@
 
 .platform-onboarding-partner__orb {
   position: absolute;
-  left: clamp(0px, 12vw, 328px);
-  bottom: 28px;
+  top: -60px;
+  left: 5px;
+  z-index: 0;
   width: clamp(120px, 12vw, 180px);
   height: clamp(120px, 12vw, 180px);
   border-radius: 50%;
@@ -33,20 +33,31 @@
 
 .platform-onboarding-partner__card {
   position: relative;
-  z-index: 1;
+  isolation: isolate;
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 80px;
   width: min(100%, 1274px);
-  padding: 40px 28px;
+  padding: 0 28px;
   border-radius: var(--radius-lg);
-  background: rgb(119 119 142 / 8%);
-  backdrop-filter: blur(80px);
   overflow: visible;
 }
 
+.platform-onboarding-partner__card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: rgb(119 119 142 / 8%);
+  backdrop-filter: blur(20px);
+  z-index: 1;
+  pointer-events: none;
+}
+
 .platform-onboarding-partner__media {
+  position: relative;
+  z-index: 2;
   flex: 0 0 auto;
   display: flex;
   align-items: center;
@@ -65,6 +76,8 @@
 }
 
 .platform-onboarding-partner__content {
+  position: relative;
+  z-index: 2;
   flex: 1 1 auto;
   display: flex;
   flex-direction: row;
@@ -115,7 +128,7 @@
 
   .platform-onboarding-partner__card {
     width: min(100%, 1143px);
-    padding: 32px 24px;
+    padding: 0 24px;
     gap: 64px;
     border-radius: var(--radius-md);
   }
@@ -128,22 +141,29 @@
   .platform-onboarding-partner__content {
     gap: 64px;
   }
+
+  .platform-onboarding-partner__orb {
+    left: 20px;
+  }
 }
 
 @media (max-width: 992px) {
   .platform-onboarding-partner {
     gap: 60px;
   }
-
+  .platform-onboarding-partner__orb {
+    top: -48px;
+  }
+    
   .platform-onboarding-partner__card {
     gap: 18px;
-    overflow: hidden;
   }
 
   .platform-onboarding-partner__media {
     width: 122px;
     height: 116px;
-    margin-inline-start: 0;
+    margin: -20px;
+    margin-inline-end: 0;
   }
 
   .platform-onboarding-partner__content {
@@ -174,6 +194,7 @@
     display: flex;
     flex-direction: column;
     align-items: start;
+    height: 100%;
   }
 
   .platform-onboarding-partner__card-text {
@@ -221,8 +242,8 @@
   }
 
   .platform-onboarding-partner__orb {
-    left: 0;
-    bottom: 8px;
+    left: 50px;
+    bottom: 0;
   }
 }
 
@@ -240,14 +261,21 @@
     display: contents;
   }
 
+  .platform-onboarding-partner__card-text,
+  .platform-onboarding-partner__cta {
+    position: relative;
+    z-index: 2;
+  }
+
   .platform-onboarding-partner__media {
     width: 61px;
     height: 48px;
   }
 
   .platform-onboarding-partner__orb {
-    top: -24px;
-    left: 32px;
+    top: 8px;
+    bottom: auto;
+    left: 27px;
     width: 80px;
     height: 80px;
   }

@@ -2,6 +2,9 @@
   padding-block: var(--section-gap);
   background: var(--color-bg);
   overflow-x: clip;
+  margin-top: -60px;
+  position: relative;
+  border-radius: 24px;
 }
 
 .features-section__list {

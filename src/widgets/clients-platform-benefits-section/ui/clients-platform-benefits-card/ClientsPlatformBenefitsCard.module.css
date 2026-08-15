@@ -15,8 +15,35 @@
   padding: 0;
 }
 
+.clients-platform-benefits-card--dark-bg img {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%);
+}
+
+.clients-platform-benefits-card--light-bg:not(
+    .clients-platform-benefits-card--dark-visual
+  )
+  .clients-platform-benefits-card__visual {
+  width: auto;
+  height: auto;
+  max-width: 200% !important;
+}
+
 .clients-platform-benefits-card--full-bg {
   background: #eef0f4;
+}
+
+.clients-platform-benefits-card--full-bg div {
+  height: 100%;
+}
+
+.clients-platform-benefits-card--full-bg img {
+  object-fit: unset;
+  object-position: top center;
+  width: auto;
+  height: auto;
+  min-height: 100%;
 }
 
 .clients-platform-benefits-card--full-bg .clients-platform-benefits-card__visual {
@@ -45,7 +72,10 @@
   );
 }
 
-.clients-platform-benefits-card--light-bg .clients-platform-benefits-card__visual {
+.clients-platform-benefits-card--light-bg:not(
+    .clients-platform-benefits-card--dark-visual
+  )
+  .clients-platform-benefits-card__visual {
   position: absolute;
   top: min(142px, calc(142 * 100vw / 1920));
   left: min(44px, calc(44 * 100vw / 1920));
@@ -56,12 +86,16 @@
   padding: 0;
 }
 
-.clients-platform-benefits-card--light-bg .clients-platform-benefits-card__image {
+.clients-platform-benefits-card--light-bg:not(
+    .clients-platform-benefits-card--dark-visual
+  )
+  .clients-platform-benefits-card__image {
   width: auto;
-  max-width: min(619px, calc(619 * 100vw / 1920));
   height: auto;
   border-radius: 0;
   object-fit: contain;
+  max-width: 200%;
+  min-height: 100%;
 }
 
 .clients-platform-benefits-card--dark-bg {
@@ -70,9 +104,9 @@
 
 .clients-platform-benefits-card--dark-bg .clients-platform-benefits-card__visual {
   position: absolute;
-  top: min(142px, calc(142 * 100vw / 1920));
   right: min(20px, calc(20 * 100vw / 1920));
   bottom: 0;
+  top: auto;
   left: min(20px, calc(20 * 100vw / 1920));
   flex: none;
   display: flex;
@@ -80,6 +114,7 @@
   justify-content: center;
   margin: 0;
   padding: 0;
+  aspect-ratio: 1/1;
 }
 
 .clients-platform-benefits-card--dark-bg .clients-platform-benefits-card__image {
@@ -100,6 +135,26 @@
   width: auto;
   max-width: 100%;
   border-radius: 20px;
+}
+
+.clients-platform-benefits-card--light-bg.clients-platform-benefits-card--dark-visual
+  .clients-platform-benefits-card__visual {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: min(20px, calc(20 * 100vw / 1920));
+}
+
+.clients-platform-benefits-card--light-bg.clients-platform-benefits-card--dark-visual
+  .clients-platform-benefits-card__image {
+  width: auto;
+  max-width: min(396px, calc(396 * 100vw / 1920));
+  height: auto;
+  border-radius: 20px;
+  object-fit: contain;
 }
 
 .clients-platform-benefits-card--dark-bg.clients-platform-benefits-card--in-progress
@@ -283,17 +338,15 @@
     line-height: var(--line-body);
   }
 
-  .clients-platform-benefits-card--light-bg .clients-platform-benefits-card__visual {
+  .clients-platform-benefits-card--light-bg:not(
+      .clients-platform-benefits-card--dark-visual
+    )
+    .clients-platform-benefits-card__visual {
     top: 107px;
     left: 33px;
   }
 
-  .clients-platform-benefits-card--light-bg .clients-platform-benefits-card__image {
-    max-width: min(467px, calc(619 * 100vw / 1920));
-  }
-
   .clients-platform-benefits-card--dark-bg .clients-platform-benefits-card__visual {
-    top: 107px;
     right: 16px;
     left: 16px;
   }
@@ -305,6 +358,18 @@
 
   .clients-platform-benefits-card--dark-bg.clients-platform-benefits-card--visual-align-start
     .clients-platform-benefits-card__image {
+    border-radius: 16px;
+  }
+
+  .clients-platform-benefits-card--light-bg.clients-platform-benefits-card--dark-visual
+    .clients-platform-benefits-card__visual {
+    inset: 0;
+    padding: 20px;
+  }
+
+  .clients-platform-benefits-card--light-bg.clients-platform-benefits-card--dark-visual
+    .clients-platform-benefits-card__image {
+    max-width: 285px;
     border-radius: 16px;
   }
 
@@ -370,19 +435,19 @@
     z-index: 2;
   }
 
-  .clients-platform-benefits-card--light-bg .clients-platform-benefits-card__visual {
+  .clients-platform-benefits-card--light-bg:not(
+      .clients-platform-benefits-card--dark-visual
+    )
+    .clients-platform-benefits-card__visual {
     top: min(78px, calc(78 * 100vw / 992));
     left: min(24px, calc(24 * 100vw / 992));
   }
 
-  .clients-platform-benefits-card--light-bg .clients-platform-benefits-card__image {
-    max-width: min(283px, calc(283 * 100vw / 992));
-  }
-
   .clients-platform-benefits-card--dark-bg .clients-platform-benefits-card__visual {
-    top: min(72px, calc(72 * 100vw / 992));
     right: min(16px, calc(16 * 100vw / 992));
     left: min(16px, calc(16 * 100vw / 992));
+    bottom: 54px;
+    border-radius: 20px !important;
   }
 
   .clients-platform-benefits-card--dark-bg .clients-platform-benefits-card__image {
@@ -393,6 +458,19 @@
     .clients-platform-benefits-card__image {
     width: auto;
     max-width: 100%;
+  }
+
+  .clients-platform-benefits-card--light-bg.clients-platform-benefits-card--dark-visual
+    .clients-platform-benefits-card__visual {
+    inset: 0;
+    padding: min(20px, calc(20 * 100vw / 992));
+    border-radius: 0 !important;
+  }
+
+  .clients-platform-benefits-card--light-bg.clients-platform-benefits-card--dark-visual
+    .clients-platform-benefits-card__image {
+    max-width: min(248px, calc(248 * 100vw / 992));
+    border-radius: 16px;
   }
 
   .clients-platform-benefits-card__geometry-blob--purple {
@@ -425,7 +503,64 @@
   }
 }
 
+@media (min-width: 769px) and (max-width: 992px) {
+  
+  .clients-platform-benefits-card--slot-4-geometry-layout
+    .clients-platform-benefits-card__visual {
+    position: absolute;
+    top: 10px !important;
+    right: 16px;
+    bottom: 16px;
+    left: auto !important;
+    z-index: 1;
+    width: 248px !important;
+    flex: none;
+    display: flex;
+    align-items: cetner;
+    justify-content: right;
+    margin: 0;
+    padding: 0;
+  }
+
+  .clients-platform-benefits-card--slot-4-geometry-layout div {
+    display: flex;
+    justify-content: right;
+    width: 100%;
+    height: 100%;
+  }
+
+  .clients-platform-benefits-card--slot-4-geometry-layout .clients-platform-benefits-card__title--dark {
+    max-width: 50%;
+  }
+
+  .clients-platform-benefits-card--slot-4-geometry-layout img {
+    position: static;
+    transform: none;
+    top: none;
+    max-width: unset !important;
+    max-height: unset !important;
+    width: 100% !important;
+    object-fit: cover !important;
+    object-position: top;
+  }
+
+  .clients-platform-benefits-card--slot-4-geometry-layout
+    .clients-platform-benefits-card__image {
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 0 12px rgb(36 41 83 / 8%);
+    object-fit: contain;
+  }
+}
+
 @media (max-width: 768px) {
+  .clients-platform-benefits-card--dark-bg img {
+    top: 0;
+  }
+  
   .clients-platform-benefits-card {
     height: 100%;
     min-height: clamp(280px, 44vw, 336px);
@@ -436,19 +571,18 @@
     line-height: 1.35;
   }
 
-  .clients-platform-benefits-card--light-bg .clients-platform-benefits-card__visual {
+  .clients-platform-benefits-card--light-bg:not(
+      .clients-platform-benefits-card--dark-visual
+    )
+    .clients-platform-benefits-card__visual {
     top: clamp(56px, 12vw, 78px);
     left: 16px;
   }
 
-  .clients-platform-benefits-card--light-bg .clients-platform-benefits-card__image {
-    max-width: min(283px, 100%);
-  }
-
   .clients-platform-benefits-card--dark-bg .clients-platform-benefits-card__visual {
-    top: clamp(48px, 10vw, 72px);
     right: 12px;
     left: 12px;
+    bottom: -84px;
   }
 
   .clients-platform-benefits-card--dark-bg .clients-platform-benefits-card__image {
@@ -459,6 +593,18 @@
     .clients-platform-benefits-card__image {
     width: auto;
     max-width: 100%;
+  }
+
+  .clients-platform-benefits-card--light-bg.clients-platform-benefits-card--dark-visual
+    .clients-platform-benefits-card__visual {
+    inset: 0;
+    padding: 16px;
+  }
+
+  .clients-platform-benefits-card--light-bg.clients-platform-benefits-card--dark-visual
+    .clients-platform-benefits-card__image {
+    max-width: min(248px, 100%);
+    border-radius: 12px;
   }
 
   .clients-platform-benefits-card__geometry-blob--purple {
@@ -489,6 +635,62 @@
     max-width: 100%;
     border-radius: 12px;
   }
+
+  .clients-platform-benefits-card--slot-3-wide-layout
+    .clients-platform-benefits-card__visual {
+    position: absolute;
+    top: 10px !important;
+    right: 16px;
+    bottom: 16px;
+    left: auto !important;
+    z-index: 1;
+    width: 50% !important;
+    flex: none;
+    display: flex;
+    align-items: cetner;
+    justify-content: right;
+    margin: 0;
+    padding: 0 !important;
+    box-shadow: unset;
+  }
+
+  .clients-platform-benefits-card--slot-3-wide-layout div {
+    display: flex;
+    justify-content: right;
+    width: 100%;
+    height: 100%;
+  }
+
+  .clients-platform-benefits-card--slot-3-wide-layout
+    .clients-platform-benefits-card__title--dark {
+    max-width: 50%;
+  }
+
+  .clients-platform-benefits-card--slot-3-wide-layout img {
+    position: static;
+    transform: none;
+    top: none;
+    max-width: unset !important;
+    max-height: unset !important;
+    width: 100% !important;
+    object-fit: cover !important;
+    object-position: top;
+  }
+
+  .clients-platform-benefits-card--slot-3-wide-layout
+    .clients-platform-benefits-card__image {
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 0 12px rgb(36 41 83 / 8%);
+    object-fit: contain;
+  }
+
+  .clients-platform-benefits-card--slot-3-wide-layout {
+    min-height: 0;
+  }
 }
 
 @media (max-width: 576px) {
@@ -505,19 +707,18 @@
     font-weight: 400;
   }
 
-  .clients-platform-benefits-card--light-bg .clients-platform-benefits-card__visual {
+  .clients-platform-benefits-card--light-bg:not(
+      .clients-platform-benefits-card--dark-visual
+    )
+    .clients-platform-benefits-card__visual {
     top: 48px;
     left: 10px;
   }
 
-  .clients-platform-benefits-card--light-bg .clients-platform-benefits-card__image {
-    max-width: 283px;
-  }
-
   .clients-platform-benefits-card--dark-bg .clients-platform-benefits-card__visual {
-    top: 40px;
     right: 10px;
     left: 10px;
+    bottom: -60px;
   }
 
   .clients-platform-benefits-card--dark-bg .clients-platform-benefits-card__image {
@@ -525,6 +726,17 @@
   }
 
   .clients-platform-benefits-card--dark-bg.clients-platform-benefits-card--visual-align-start
+    .clients-platform-benefits-card__image {
+    border-radius: 10px;
+  }
+
+  .clients-platform-benefits-card--light-bg.clients-platform-benefits-card--dark-visual
+    .clients-platform-benefits-card__visual {
+    inset: 0;
+    padding: 16px;
+  }
+
+  .clients-platform-benefits-card--light-bg.clients-platform-benefits-card--dark-visual
     .clients-platform-benefits-card__image {
     border-radius: 10px;
   }
@@ -540,6 +752,13 @@
   .clients-platform-benefits-card--geometry-bg .clients-platform-benefits-card__image {
     border-radius: 10px;
   }
+
+  .clients-platform-benefits-card--full-bg img {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
 }
 
 @media (max-width: 450px) {
@@ -550,13 +769,18 @@
     font-weight: 500;
   }
 
-  .clients-platform-benefits-card--light-bg .clients-platform-benefits-card__visual {
+  .clients-platform-benefits-card--light-bg:not(
+      .clients-platform-benefits-card--dark-visual
+    )
+    .clients-platform-benefits-card__visual {
     top: 40px;
     left: 8px;
   }
 
-  .clients-platform-benefits-card--light-bg .clients-platform-benefits-card__image {
-    max-width: none;
+  .clients-platform-benefits-card--light-bg:not(
+      .clients-platform-benefits-card--dark-visual
+    )
+    .clients-platform-benefits-card__image {
     object-fit: contain;
   }
 
@@ -571,7 +795,6 @@
   }
 
   .clients-platform-benefits-card--dark-bg .clients-platform-benefits-card__visual {
-    top: 36px;
     right: 8px;
     left: 8px;
   }
@@ -587,6 +810,20 @@
     width: auto;
     max-width: 100%;
     object-fit: contain;
+  }
+
+  .clients-platform-benefits-card--light-bg.clients-platform-benefits-card--dark-visual
+    .clients-platform-benefits-card__visual {
+    inset: 0;
+    padding: 16px;
+  }
+
+  .clients-platform-benefits-card--light-bg.clients-platform-benefits-card--dark-visual
+    .clients-platform-benefits-card__image {
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    border-radius: 8px;
   }
 
   .clients-platform-benefits-card__geometry-blob--purple {

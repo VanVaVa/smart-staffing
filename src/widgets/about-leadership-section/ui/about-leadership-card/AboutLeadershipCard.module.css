@@ -27,6 +27,7 @@
   background: linear-gradient(
     180deg,
     rgb(0 0 0 / 0%) 0%,
+    rgb(0 0 0 / 0%) 60%,
     rgb(0 0 0 / 80%) 90%
   );
   pointer-events: none;

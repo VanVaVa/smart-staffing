@@ -9,7 +9,7 @@
   padding-inline: calc(36px * var(--about-trusted-scale, 1));
   border-radius: max(var(--radius-sm), calc(20px * var(--about-trusted-scale, 1)));
   background: color-mix(in srgb, var(--color-grey-600) 8%, transparent);
-  backdrop-filter: blur(80px);
+  backdrop-filter: blur(20px);
 }
 
 .about-trusted-logo-card__logo {

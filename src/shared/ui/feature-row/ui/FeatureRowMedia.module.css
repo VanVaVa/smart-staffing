@@ -7,6 +7,18 @@
   overflow: hidden;
 }
 
+@media (min-width: 993px) {
+  .feature-row-media--edge-inline-end {
+    border-start-end-radius: 0;
+    border-end-end-radius: 0;
+  }
+
+  .feature-row-media--edge-inline-start {
+    border-start-start-radius: 0;
+    border-end-start-radius: 0;
+  }
+}
+
 .feature-row-media--soft {
   background: #f8f9fb;
 }
@@ -79,96 +91,22 @@
   }
 }
 
-@media (min-width: 993px) and (max-width: 1440px) {
-  .feature-row-media--0 {
-    height: min(495px, calc(495 * 100vw / 1440));
-  }
-
-  .feature-row-media--1 {
-    height: min(436px, calc(436 * 100vw / 1440));
-  }
-
-  .feature-row-media--2 {
-    height: min(465px, calc(465 * 100vw / 1440));
-  }
-
-  .feature-row-media--3 {
-    height: min(471px, calc(471 * 100vw / 1440));
-  }
-
-  .feature-row-media--4 {
-    height: min(412px, calc(412 * 100vw / 1440));
-  }
-}
-
 @media (max-width: 992px) {
   .feature-row-media {
     width: calc(100% - var(--container-padding));
     margin-left: var(--container-padding);
+    border-start-end-radius: 0;
+    border-end-end-radius: 0;
   }
 
-  .feature-row-media--0 {
-    height: 341px;
-  }
-
-  .feature-row-media--1 {
-    height: 300px;
-  }
-
-  .feature-row-media--2 {
-    height: 320px;
-  }
-
-  .feature-row-media--3 {
-    height: 324px;
-  }
-
-  .feature-row-media--4 {
-    height: 284px;
-  }
-}
-
-@media (min-width: 769px) and (max-width: 992px) {
-  .feature-row-media--0 {
-    height: min(341px, calc(341 * 100vw / 992));
-  }
-
-  .feature-row-media--1 {
-    height: min(300px, calc(300 * 100vw / 992));
-  }
-
-  .feature-row-media--2 {
-    height: min(320px, calc(320 * 100vw / 992));
-  }
-
-  .feature-row-media--3 {
-    height: min(324px, calc(324 * 100vw / 992));
-  }
-
-  .feature-row-media--4 {
-    height: min(284px, calc(284 * 100vw / 992));
+  .feature-row-media--0, .feature-row-media--1, .feature-row-media--2, .feature-row-media--3, .feature-row-media--4 {
+    height: 480;
   }
 }
 
 @media (max-width: 576px) {
-  .feature-row-media--0 {
-    height: 320px;
-  }
-
-  .feature-row-media--1 {
+  .feature-row-media--0, .feature-row-media--1, .feature-row-media--2, .feature-row-media--3, .feature-row-media--4 {
     height: 284px;
-  }
-
-  .feature-row-media--2 {
-    height: 300px;
-  }
-
-  .feature-row-media--3 {
-    height: 304px;
-  }
-
-  .feature-row-media--4 {
-    height: 268px;
   }
 }
 

@@ -78,6 +78,7 @@ export function AboutPartnerAwardCard({
     return (
       <a
         className={rootClass}
+        data-partner-award-card
         href={href}
         target="_blank"
         rel="noopener noreferrer"
@@ -89,7 +90,13 @@ export function AboutPartnerAwardCard({
   }
 
   return (
-    <button type="button" className={rootClass} aria-label={ariaLabel} onClick={onClick}>
+    <button
+      type="button"
+      className={rootClass}
+      data-partner-award-card
+      aria-label={ariaLabel}
+      onClick={onClick}
+    >
       {content}
     </button>
   );

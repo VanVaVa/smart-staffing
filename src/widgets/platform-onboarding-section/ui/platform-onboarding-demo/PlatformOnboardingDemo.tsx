@@ -18,9 +18,51 @@ type PlatformOnboardingDemoProps = {
   interactive?: boolean;
 };
 
+function PlatformOnboardingDemoSubtitle({
+  subtitle,
+  subtitleAccent,
+}: {
+  subtitle: string;
+  subtitleAccent?: string;
+}) {
+  if (!subtitleAccent) {
+    return (
+      <EditableText path="demo.subtitle" label="Demo — подзаголовок" multiline>
+        {subtitle}
+      </EditableText>
+    );
+  }
+
+  const accentIndex = subtitle.indexOf(subtitleAccent);
+
+  if (accentIndex === -1) {
+    return (
+      <EditableText path="demo.subtitle" label="Demo — подзаголовок" multiline>
+        {subtitle}
+      </EditableText>
+    );
+  }
+
+  const before = subtitle.slice(0, accentIndex);
+  const after = subtitle.slice(accentIndex + subtitleAccent.length);
+
+  return (
+    <>
+      {before}
+      <EditableText path="demo.subtitleAccent" label="Demo — акцент подзаголовка">
+        <span className={styles["platform-onboarding-demo__subtitle-accent"]}>
+          {subtitleAccent}
+        </span>
+      </EditableText>
+      {after}
+    </>
+  );
+}
+
 export function PlatformOnboardingDemo({
   title,
   subtitle,
+  subtitleAccent,
   promoText,
   promoCta,
   mockupSrc,
@@ -51,9 +93,10 @@ export function PlatformOnboardingDemo({
               </EditableText>
             }
             subtitle={
-              <EditableText path="demo.subtitle" label="Demo — подзаголовок" multiline>
-                {subtitle}
-              </EditableText>
+              <PlatformOnboardingDemoSubtitle
+                subtitle={subtitle}
+                subtitleAccent={subtitleAccent}
+              />
             }
           />
         </div>

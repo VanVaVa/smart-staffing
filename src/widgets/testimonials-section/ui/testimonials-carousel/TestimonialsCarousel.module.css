@@ -3,13 +3,12 @@
   flex-direction: column;
   gap: 16px;
   min-width: 0;
-  max-width: 100%;
+  margin-right: -72px;
 }
 
 .testimonials-carousel__viewport {
   container-type: inline-size;
   min-width: 0;
-  max-width: 100%;
   overflow-x: auto;
   margin-inline: calc(-1 * var(--container-padding));
   padding-left: var(--container-padding);
@@ -42,6 +41,7 @@
   display: flex;
   justify-content: flex-end;
   gap: 8px;
+  padding-right: 72px;
 }
 
 .testimonials-carousel__nav-button {
@@ -133,36 +133,11 @@
     gap: 48px;
   }
 
-  .testimonials-carousel__nav-button {
-    width: 40px;
-    height: 40px;
-    min-width: 40px;
-    min-height: 40px;
-  }
-
-  .testimonials-carousel__nav-icon {
-    width: 24px;
-    height: 24px;
+  .testimonials-carousel__nav {
+    display: none;
   }
 }
 
-@media (min-width: 577px) and (max-width: 768px) {
-  .testimonials-carousel {
-    gap: min(48px, calc(48 * 100vw / 768));
-  }
-
-  .testimonials-carousel__nav-button {
-    width: min(40px, calc(40 * 100vw / 768));
-    height: min(40px, calc(40 * 100vw / 768));
-    min-width: min(40px, calc(40 * 100vw / 768));
-    min-height: min(40px, calc(40 * 100vw / 768));
-  }
-
-  .testimonials-carousel__nav-icon {
-    width: min(24px, calc(24 * 100vw / 768));
-    height: min(24px, calc(24 * 100vw / 768));
-  }
-}
 
 @media (max-width: 576px) {
   .testimonials-carousel {

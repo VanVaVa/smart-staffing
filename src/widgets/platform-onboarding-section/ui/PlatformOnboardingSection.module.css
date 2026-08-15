@@ -13,6 +13,44 @@
   overflow: hidden;
 }
 
+.platform-onboarding-section__bleed--demo {
+  overflow: visible;
+}
+
+.platform-onboarding-section__bleed--demo + .platform-onboarding-section__bleed--steps {
+  margin-top: -96px;
+}
+
+@media (min-width: 993px) and (max-width: 1440px) {
+  .platform-onboarding-section__bleed--demo + .platform-onboarding-section__bleed--steps {
+    margin-top: min(-96px, calc(-96 * 100vw / 1440));
+  }
+}
+
+@media (max-width: 992px) {
+  .platform-onboarding-section__bleed--demo + .platform-onboarding-section__bleed--steps {
+    margin-top: -48px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+  .platform-onboarding-section__bleed--demo + .platform-onboarding-section__bleed--steps {
+    margin-top: min(-48px, calc(-48 * 100vw / 992));
+  }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+  .platform-onboarding-section__bleed--demo + .platform-onboarding-section__bleed--steps {
+    margin-top: min(-48px, calc(-48 * 100vw / 768));
+  }
+}
+
+@media (max-width: 576px) {
+  .platform-onboarding-section__bleed--demo + .platform-onboarding-section__bleed--steps {
+    margin-top: -28px;
+  }
+}
+
 @media (max-width: 1440px) {
   .platform-onboarding-section {
     padding-top: 168px;

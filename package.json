@@ -12,6 +12,7 @@
     "db:migrate:deploy": "prisma migrate deploy",
     "db:seed": "prisma db seed",
     "db:studio": "prisma studio",
+    "cache:images:clear": "rm -rf .next/dev/cache/images .next/cache/images",
     "postinstall": "prisma generate"
   },
   "prisma": {

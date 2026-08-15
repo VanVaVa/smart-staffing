@@ -24,6 +24,7 @@ export function CertificateGallery({
   onClose,
 }: CertificateGalleryProps) {
   const backRef = useRef<HTMLButtonElement>(null);
+  const boundsRef = useRef<HTMLDivElement>(null);
   const open = activeIndex !== null;
   const activeCertificate =
     activeIndex === null ? null : certificates[activeIndex];
@@ -86,16 +87,23 @@ export function CertificateGallery({
         <ArrowIcon name="2Left" />
       </button>
       <div
-        className={styles["certificate-gallery__document"]}
-        role="dialog"
-        aria-modal="true"
-        aria-label={activeCertificate.title}
+        ref={boundsRef}
+        className={styles["certificate-gallery__slot"]}
       >
-        <PdfViewer
-          src={activeCertificate.pdfSrc}
-          title={activeCertificate.title}
-          compact
-        />
+        <div
+          className={styles["certificate-gallery__document"]}
+          role="dialog"
+          aria-modal="true"
+          aria-label={activeCertificate.title}
+        >
+          <PdfViewer
+            src={activeCertificate.pdfSrc}
+            title={activeCertificate.title}
+            compact
+            fitToContainer
+            boundsRef={boundsRef}
+          />
+        </div>
       </div>
       <button
         type="button"

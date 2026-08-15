@@ -10,6 +10,7 @@ type FeatureRowProps = {
   rowIndex?: number;
   title: string;
   description: string;
+  descriptionAccent?: string;
   tags?: string[];
   imageSrc: string;
   imageAlt: string;
@@ -19,10 +20,75 @@ type FeatureRowProps = {
   action?: ReactNode;
 };
 
+function FeatureRowDescription({
+  description,
+  descriptionAccent,
+  pathPrefix,
+}: {
+  description: string;
+  descriptionAccent?: string;
+  pathPrefix: string | null;
+}) {
+  if (!descriptionAccent) {
+    return pathPrefix ? (
+      <EditableText
+        path={`${pathPrefix}description`}
+        label="Решение — описание"
+        as="p"
+        className={styles["feature-row__lead"]}
+        multiline
+      >
+        {description}
+      </EditableText>
+    ) : (
+      <p className={styles["feature-row__lead"]}>{description}</p>
+    );
+  }
+
+  const accentIndex = description.indexOf(descriptionAccent);
+
+  if (accentIndex === -1) {
+    return pathPrefix ? (
+      <EditableText
+        path={`${pathPrefix}description`}
+        label="Решение — описание"
+        as="p"
+        className={styles["feature-row__lead"]}
+        multiline
+      >
+        {description}
+      </EditableText>
+    ) : (
+      <p className={styles["feature-row__lead"]}>{description}</p>
+    );
+  }
+
+  const before = description.slice(0, accentIndex);
+  const after = description.slice(accentIndex + descriptionAccent.length);
+
+  return (
+    <p className={styles["feature-row__lead"]}>
+      {before}
+      {pathPrefix ? (
+        <EditableText
+          path={`${pathPrefix}descriptionAccent`}
+          label="Решение — акцент описания"
+        >
+          <span className={styles["feature-row__lead-accent"]}>{descriptionAccent}</span>
+        </EditableText>
+      ) : (
+        <span className={styles["feature-row__lead-accent"]}>{descriptionAccent}</span>
+      )}
+      {after}
+    </p>
+  );
+}
+
 export function FeatureRow({
   rowIndex,
   title,
   description,
+  descriptionAccent,
   tags,
   imageSrc,
   imageAlt,
@@ -53,18 +119,12 @@ export function FeatureRow({
     <h3 className={styles["feature-row__heading"]}>{title}</h3>
   );
 
-  const descriptionNode = pathPrefix ? (
-    <EditableText
-      path={`${pathPrefix}description`}
-      label="Решение — описание"
-      as="p"
-      className={styles["feature-row__lead"]}
-      multiline
-    >
-      {description}
-    </EditableText>
-  ) : (
-    <p className={styles["feature-row__lead"]}>{description}</p>
+  const descriptionNode = (
+    <FeatureRowDescription
+      description={description}
+      descriptionAccent={descriptionAccent}
+      pathPrefix={pathPrefix}
+    />
   );
 
   const tagsNode =
@@ -112,6 +172,7 @@ export function FeatureRow({
           mediaWidth={imageWidth}
           mediaHeight={imageHeight}
           mediaPath={`${pathPrefix}imageSrc`}
+          reversed={reversed}
         />
       ) : (
         <FeatureRowMedia
@@ -120,6 +181,7 @@ export function FeatureRow({
           mediaAlt={imageAlt}
           mediaWidth={imageWidth}
           mediaHeight={imageHeight}
+          reversed={reversed}
         />
       )}
     </article>

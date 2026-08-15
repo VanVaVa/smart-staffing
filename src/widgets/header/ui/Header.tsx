@@ -30,7 +30,7 @@ export function Header() {
         <div className={styles.header__inner}>
           <div className={styles.header__start}>
             <div className={styles.header__logo}>
-              <Logo light={onDarkBackdrop && !mobileMenuOpen} />
+              <Logo />
             </div>
             <div className={styles["header__desktop-nav"]}>
               <HeaderNav onDarkBackdrop={onDarkBackdrop} />

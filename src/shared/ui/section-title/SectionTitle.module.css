@@ -18,15 +18,20 @@
 }
 
 .section-title__subtitle {
-  font-size: var(--text-body-md);
-  line-height: var(--line-body);
-  color: var(--color-grey-600);
+  font-size: var(--text-body-xl);
+  line-height: var(--line-body-xl);
   font-weight: 400;
   font-family: var(--font-body);
 }
 
 .section-title--dark .section-title__subtitle {
   color: var(--color-white-40);
+}
+
+@media (max-width: 992px) {
+  .section-title--centered {
+    max-width: 615px;
+  }
 }
 
 @media (max-width: 768px) {

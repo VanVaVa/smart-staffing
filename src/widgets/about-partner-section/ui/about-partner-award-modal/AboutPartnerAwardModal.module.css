@@ -77,8 +77,8 @@
 
 .about-partner-award-modal__document {
   display: block;
-  width: 100%;
-  height: auto;
+  width: auto;
+  max-height: 80vh;
   border-radius: 4px;
 }
 

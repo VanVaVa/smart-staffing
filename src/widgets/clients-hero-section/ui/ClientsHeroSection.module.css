@@ -243,10 +243,6 @@
     padding-top: 136px;
   }
 
-  .clients-hero-section__title {
-    font-size: clamp(32px, 8vw, 56px);
-  }
-
   .clients-hero-section__subtitle {
     max-width: min(528px, calc(528 * 100vw / 768));
     font-size: clamp(18px, 4vw, 26px);
@@ -269,11 +265,17 @@
 @media (max-width: 576px) {
   .clients-hero-section__content {
     gap: 48px;
+    max-width: unset;
+  }
+
+  .clients-hero-section__layout {
+    max-width: unset;
   }
 
   .clients-hero-section__subtitle {
     font-size: var(--text-body-md);
     line-height: var(--line-body);
+    max-width: unset;
   }
 
   .clients-hero-section__image {

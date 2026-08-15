@@ -18,9 +18,9 @@
   max-width: 100%;
   overflow-x: auto;
   padding-left: var(--container-padding);
-  padding-right: 0;
+  padding-right: var(--container-padding);
   scroll-snap-type: x mandatory;
-  scroll-padding-left: var(--container-padding);
+  scroll-padding-inline: var(--container-padding);
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -79,6 +79,15 @@
 
 .about-partner-carousel__nav-button:hover {
   background: var(--color-grey-300);
+}
+
+.about-partner-carousel__nav-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.about-partner-carousel__nav-button:disabled:hover {
+  background: var(--color-grey-200);
 }
 
 .about-partner-carousel__nav-icon {

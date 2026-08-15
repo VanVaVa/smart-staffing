@@ -36,10 +36,16 @@
   .about-benefits-section__title {
     font-size: var(--text-h1);
     line-height: var(--line-h1);
+    max-width: unset;
   }
 
   .about-benefits-section__grid {
     gap: 8px;
+    grid-template-areas:
+    "flex security security"
+    "expertise expertise platform";
+    grid-template-rows: 252px 180px;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
 

@@ -10,6 +10,7 @@ export type ClientSegmentSlug = (typeof clientSegmentSlugs)[number];
 export type ClientsHeroSubtitle = {
   before: string;
   accent?: string;
+  after?: string;
 };
 
 export type ClientsHeroContent = {
@@ -49,6 +50,7 @@ export type ClientsPlatformBenefitsCardBackground =
 export type ClientsPlatformBenefitsCardContent = {
   title: string;
   backgroundType: ClientsPlatformBenefitsCardBackground;
+  visualLayout?: "dark-bg";
   visualAlign?: "start" | "end";
   inProgress?: boolean;
   visual: ClientsPlatformBenefitsVisual;
@@ -252,13 +254,14 @@ const enterprisePartnersExperience: ClientsPartnersExperienceContent = {
 const enterprisePartnershipCta: ClientsPartnershipCtaContent = {
   title: "Масштабируйтесь через партнёрства на своих условиях",
   subtitle: "Оставьте контакты — организуем встречу и ответим на ваши вопросы",
+  subtitleAccent: "Оставьте контакты",
 };
 
 const outstaffingHero: ClientsHeroContent = {
   title: "Монетизируйте простои команд и ресурсов",
   subtitle: {
-    before:
-      "Размещайте свободных специалистов, находите проекты, масштабируйтесь в партнёрских сетях",
+    before: "Размещайте свободных специалистов, находите проекты, ",
+    accent: "масштабируйтесь в партнёрских сетях",
   },
   cta: "Подключить компанию",
   imageSrc: "/landing/clients/outstaffing/outstaffing-hero.png",
@@ -291,6 +294,7 @@ const outstaffingPlatformBenefits: ClientsPlatformBenefitsContent = {
     {
       title: "Публикация доступных компетенций",
       backgroundType: "light-bg",
+      visualLayout: "dark-bg",
       visual: {
         imageSrc: "/landing/clients/outstaffing/benefits-roles-visual.png",
         imageWidth: 401,
@@ -311,6 +315,7 @@ const outstaffingPlatformBenefits: ClientsPlatformBenefitsContent = {
     {
       title: "Статус занятости специалистов",
       backgroundType: "light-bg",
+      visualLayout: "dark-bg",
       visual: {
         imageSrc: "/landing/clients/outstaffing/benefits-analytics-visual.png",
         imageWidth: 396,
@@ -395,8 +400,9 @@ const outstaffingPartnersExperience: ClientsPartnersExperienceContent = {
 const midMarketHero: ClientsHeroContent = {
   title: "Запускайте проекты, не дожидаясь найма",
   subtitle: {
-    before:
-      "Быстро находите проверенных специалистов, собирайте проектные команды и запускайте проекты без лишних затрат и бюрократии",
+    before: "Быстро находите проверенных специалистов, собирайте проектные команды и ",
+    accent: "запускайте проекты без лишних затрат",
+    after: " и бюрократии",
   },
   cta: "Подключить компанию",
   imageSrc: "/landing/clients/mid-market/hero.png",
@@ -410,7 +416,7 @@ const midMarketPlatform: ClientsPlatformContent = {
     "Проект буксует — нужных специалистов не найти вовремя",
     "Штат перегружен и работает на пределе",
   ],
-  title: "Даём доступ к редким специалистам",
+  title: "Найдём подрядчиков\nпод любые задачи",
   subtitle:
     "Платформа объединяет заказчиков, партнёров и экспертов под любые задачи в едином пространстве",
   tags: ["Быстрый запуск проектов", "Единое рабочее пространство"],
@@ -439,6 +445,7 @@ const midMarketPlatformBenefits: ClientsPlatformBenefitsContent = {
     {
       title: "Подтверждённый опыт",
       backgroundType: "light-bg",
+      visualLayout: "dark-bg",
       visual: {
         imageSrc: "/landing/clients/mid-market/benefits-access-visual.png",
         imageWidth: 489,
@@ -490,7 +497,7 @@ const midMarketPlatformBenefits: ClientsPlatformBenefitsContent = {
       variant: "scaling",
       title: "Быстрый доступ к нужным специалистам",
       subtitle:
-        "Закрывайте вакансии и усиливайте проекты точечной экспертизой без долгого найма",
+        "Подбирайте не только специалистов, но и формируйте проектные команды под задачи без долгого найма",
       visual: {
         imageSrc: "/landing/clients/mid-market/benefits-showcase-scaling-visual.png",
         imageWidth: 1824,
@@ -535,6 +542,7 @@ const agenciesPlatformBenefits: ClientsPlatformBenefitsContent = {
     {
       title: "Релевантный список специалистов",
       backgroundType: "light-bg",
+      visualLayout: "dark-bg",
       visual: {
         imageSrc: "/landing/clients/agencies/benefits-relevant-visual.png",
         imageWidth: 276,
@@ -554,22 +562,22 @@ const agenciesPlatformBenefits: ClientsPlatformBenefitsContent = {
       },
     },
     {
-      title: "Чёткие критерии отбора",
-      backgroundType: "light-bg",
-      visual: {
-        imageSrc: "/landing/clients/agencies/benefits-criteria-visual.png",
-        imageWidth: 417,
-        imageHeight: 470,
-        imageAlt: "",
-      },
-    },
-    {
       title: "Сокращение срока подбора",
       backgroundType: "full-bg",
       visual: {
         imageSrc: "/landing/clients/agencies/benefits-speed-visual.png",
         imageWidth: 323,
         imageHeight: 408,
+        imageAlt: "",
+      },
+    },
+    {
+      title: "Чёткие критерии отбора",
+      backgroundType: "light-bg",
+      visual: {
+        imageSrc: "/landing/clients/agencies/benefits-criteria-visual.png",
+        imageWidth: 417,
+        imageHeight: 470,
         imageAlt: "",
       },
     },
@@ -633,6 +641,7 @@ const agenciesPartnersExperience: ClientsPartnersExperienceContent = {
 const agenciesPartnershipCta: ClientsPartnershipCtaContent = {
   title: "Начните закрывать больше вакансий уже сегодня",
   subtitle: "Оставьте контакты — организуем встречу и ответим на ваши вопросы",
+  subtitleAccent: "Оставьте контакты",
 };
 
 const enterpriseHero: ClientsHeroContent = {
@@ -695,8 +704,9 @@ export const clientsSegments: Record<ClientSegmentSlug, ClientsSegmentContent> =
       ...enterpriseHero,
       title: "Быстрый доступ к редким компетенциям рынка",
       subtitle: {
-        before:
-          "Получите доступ к проверенным специалистам, которых нет на job-сайтах",
+        before: "Получите ",
+        accent: "доступ к проверенным специалистам,",
+        after: " которых нет на job-сайтах",
       },
       imageSrc: "/landing/clients/agencies/hero.png",
       imageAlt: "Кадровое агентство находит редких специалистов",

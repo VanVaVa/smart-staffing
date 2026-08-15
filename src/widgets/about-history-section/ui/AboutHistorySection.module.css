@@ -34,7 +34,7 @@
     var(--color-purple-mid) 47.12%,
     var(--color-purple-deep) 100%
   );
-  filter: blur(80px);
+  filter: blur(20px);
 }
 
 .about-history-section__orb--orange-top {
@@ -45,12 +45,12 @@
   height: min(400px, calc(400 * 100vw / 1920));
   border-radius: 50%;
   background: linear-gradient(
-    225deg,
+    -45deg,
     var(--color-accent-lead) 0%,
     var(--color-accent-hover) 52.88%,
     var(--color-blue-muted) 100%
   );
-  filter: blur(80px);
+  filter: blur(20px);
 }
 
 .about-history-section__orb--orange-bottom {
@@ -61,12 +61,12 @@
   height: min(400px, calc(400 * 100vw / 1920));
   border-radius: 50%;
   background: linear-gradient(
-    225deg,
+    -45deg,
     var(--color-accent-lead) 0%,
     var(--color-accent-hover) 52.88%,
     var(--color-blue-muted) 100%
   );
-  filter: blur(80px);
+  filter: blur(20px);
 }
 
 .about-history-section__inner {

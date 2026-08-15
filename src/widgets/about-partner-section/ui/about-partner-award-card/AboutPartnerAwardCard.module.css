@@ -16,6 +16,7 @@
   cursor: pointer;
   appearance: none;
   -webkit-tap-highlight-color: transparent;
+  position: relative;
 }
 
 .about-partner-award-card:focus-visible {
@@ -58,16 +59,16 @@
 
 .about-partner-award-card__field-label {
   font-family: var(--font-body);
-  font-size: 14px;
-  line-height: 20px;
+  font-size: var(--text-body-md);
+  line-height: var(--line-body-md);
   color: var(--color-grey-400);
 }
 
 .about-partner-award-card__field-value {
   margin: 0;
   font-family: var(--font-body);
-  font-size: 20px;
-  line-height: 26px;
+  font-size: var(--text-body-xl);
+  line-height: var(--line-body-xl);
 }
 
 .about-partner-award-card__action {
@@ -83,14 +84,13 @@
   background: var(--color-grey-200);
   color: var(--color-black);
   transition: background-color 0.2s ease;
+  position: absolute;
+  bottom: 24px
 }
 
 .about-partner-award-card:hover .about-partner-award-card__action {
-  background: var(--color-grey-300);
-}
-
-.about-partner-award-card__action-icon {
-  transform: rotate(-90deg);
+  background: var(--color-accent);
+  color: var(--color-white);
 }
 
 @media (max-width: 1440px) {
@@ -113,12 +113,17 @@
     width: 40px;
     height: 40px;
   }
+
+  .about-partner-award-card__field-value, .about-partner-award-card__field-label {
+    font-size: var(--text-caption);
+    line-height: var(--line-caption);
+  }
 }
 
 @media (max-width: 992px) {
   .about-partner-award-card {
     width: 340px;
-    min-height: 372px;
+    max-height: 372px;
     padding: 24px;
   }
 
@@ -147,19 +152,9 @@
     padding: 24px;
   }
 
-  .about-partner-award-card__title {
-    font-size: var(--text-lead);
-    line-height: var(--line-lead);
-  }
-
   .about-partner-award-card__body {
     margin-top: 48px;
     min-height: auto;
-  }
-
-  .about-partner-award-card__field-value {
-    font-size: var(--text-body-md);
-    line-height: var(--line-body);
   }
 
   .about-partner-award-card__action {
@@ -184,7 +179,7 @@
   }
 
   .about-partner-award-card__body {
-    margin-top: 32px;
+    margin-top: 12px;
     gap: 20px;
   }
 

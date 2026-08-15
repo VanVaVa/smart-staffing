@@ -52,6 +52,11 @@ export function ClientsHeroSection({ content }: ClientsHeroSectionProps) {
                     {content.subtitle.accent}
                   </EditableText>
                 ) : null}
+                {content.subtitle.after ? (
+                  <EditableText path="subtitle.after" label="Hero — подзаголовок (продолжение)">
+                    {content.subtitle.after}
+                  </EditableText>
+                ) : null}
               </p>
             </div>
             <CompanyConnectionButton

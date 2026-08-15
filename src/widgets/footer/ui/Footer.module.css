@@ -142,6 +142,10 @@
     gap: 32px;
   }
 
+  .footer__columns > div {
+    width: 100%;
+  }
+
   .footer__columns > :nth-child(1) {
     order: 2;
   }

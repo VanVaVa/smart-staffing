@@ -34,9 +34,23 @@
   width: 100%;
 }
 
+.pdf-viewer--compact.pdf-viewer--fit {
+  width: fit-content;
+}
+
 .pdf-viewer--compact .pdf-viewer__page {
   border-radius: 0;
   box-shadow: none;
+}
+
+.pdf-viewer--fit {
+  width: fit-content;
+  max-width: 100%;
+}
+
+.pdf-viewer__fit-container {
+  width: fit-content;
+  max-width: 100%;
 }
 
 @media (max-width: 1440px) {
