@@ -313,7 +313,7 @@
 
   .platform-onboarding-demo__copy {
     order: -1;
-    margin-bottom: 0;
+    margin-bottom: 24px;
   }
 
   .platform-onboarding-demo__copy :global(.section-title) {
@@ -333,8 +333,8 @@
 
   .platform-onboarding-demo__mockup {
     position: static;
-    width: 100%;
-    margin-block: 24px;
+    width: 86%;
+    margin: 0 0 -45.7% 22.5%;
   }
 
   .platform-onboarding-demo__promo-text {
