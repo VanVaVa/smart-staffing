@@ -17,6 +17,8 @@ export function ClientsPlatformBenefitsShowcaseCard({
   const prefix = `showcase.${itemIndex}.`;
 
   if (item.variant === "it-costs") {
+    const isPortraitVisual = item.visual.imageHeight > item.visual.imageWidth;
+
     return (
       <article
         className={`${styles["clients-platform-benefits-showcase-card"]} ${styles["clients-platform-benefits-showcase-card--it-costs"]} ${styles["clients-platform-benefits-showcase-card--dark-bg"]}`}
@@ -40,13 +42,13 @@ export function ClientsPlatformBenefitsShowcaseCard({
             {item.subtitle}
           </EditableText>
         </div>
-        <EditableMedia
-          path={`${prefix}visual.imageSrc`}
-          label="Showcase — изображение"
-          className={styles["clients-platform-benefits-showcase-card__it-media"]}
-        >
+        <EditableMedia path={`${prefix}visual.imageSrc`} label="Showcase — изображение">
           <Image
-            className={styles["clients-platform-benefits-showcase-card__it-visual"]}
+            className={`${styles["clients-platform-benefits-showcase-card__it-visual"]}${
+              isPortraitVisual
+                ? ` ${styles["clients-platform-benefits-showcase-card__it-visual--portrait"]}`
+                : ""
+            }`}
             src={item.visual.imageSrc}
             alt={item.visual.imageAlt}
             width={item.visual.imageWidth}
