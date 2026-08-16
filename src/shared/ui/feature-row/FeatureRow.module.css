@@ -1,5 +1,5 @@
 .feature-row {
-  --feature-row-gap: 24px;
+  --feature-row-gap: 40px;
   display: grid;
   grid-template-columns: calc(50% - var(--feature-row-gap)) minmax(0, 1fr);
   grid-template-areas: "content media";
@@ -77,7 +77,7 @@
 
 @media (max-width: 1440px) {
   .feature-row {
-    --feature-row-gap: 8px;
+    --feature-row-gap: 32px;
   }
 
   .feature-row__content {
