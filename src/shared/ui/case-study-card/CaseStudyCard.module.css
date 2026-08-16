@@ -110,6 +110,10 @@
   flex-shrink: 0;
 }
 
+.case-study-card--compact-horizontal .case-study-card__panel-tag {
+  background: var(--color-white);
+}
+
 .case-study-card__description {
   margin: 0;
   overflow: hidden;
