@@ -51,30 +51,27 @@
 }
 
 .clients-platform-benefits-showcase-card--it-costs {
+  display: flex;
+  flex-direction: column;
   min-height: min(600px, calc(600 * 100vw / 1920));
+}
+
+.clients-platform-benefits-showcase-card__it-media {
+  position: relative;
+  flex: 1 0 min(300px, calc(300 * 100vw / 1920));
+  margin-right: max(-100px, calc(-100 * 100vw / 1920));
+  margin-bottom: max(-40px, calc(-40 * 100vw / 1920));
+  pointer-events: none;
 }
 
 .clients-platform-benefits-showcase-card__it-visual {
   position: absolute;
-  right: max(-100px, calc(-100 * 100vw / 1920));
-  bottom: max(-40px, calc(-40 * 100vw / 1920));
-  z-index: 1;
-  width: min(728px, calc(728 * 100vw / 1920));
-  height: auto;
-  max-height: 72%;
-  object-fit: contain;
-  object-position: right bottom;
-  pointer-events: none;
-}
-
-.clients-platform-benefits-showcase-card__it-visual.clients-platform-benefits-showcase-card__it-visual--portrait {
-  right: 0;
-  bottom: 0;
-  width: auto;
-  height: 72%;
-  max-width: 100%;
-  object-fit: contain;
-  object-position: right bottom;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
 }
 
 .clients-platform-benefits-showcase-card--quality {
@@ -173,6 +170,20 @@
   max-width: min(575px, calc(575 * 100vw / 1920));
 }
 
+.clients-platform-benefits-showcase-card--scaling::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    90deg,
+    rgb(255 255 255 / 92%) 0%,
+    rgb(255 255 255 / 78%) 45%,
+    rgb(255 255 255 / 0%) 78%
+  );
+  pointer-events: none;
+}
+
 @media (max-width: 1440px) {
   .clients-platform-benefits-showcase-card {
     border-radius: 24px;
@@ -203,10 +214,10 @@
     min-height: 480px;
   }
 
-  .clients-platform-benefits-showcase-card__it-visual {
-    right: -45px;
-    bottom: -28px;
-    width: 541px;
+  .clients-platform-benefits-showcase-card__it-media {
+    flex-basis: 240px;
+    margin-right: -45px;
+    margin-bottom: -28px;
   }
 
   .clients-platform-benefits-showcase-card__quality-top {
@@ -276,10 +287,10 @@
     min-height: min(288px, calc(288 * 100vw / 992));
   }
 
-  .clients-platform-benefits-showcase-card__it-visual {
-    right: max(-20px, calc(-20 * 100vw / 992));
-    bottom: max(-10px, calc(-10 * 100vw / 992));
-    width: min(460px, calc(460 * 100vw / 992));
+  .clients-platform-benefits-showcase-card__it-media {
+    flex-basis: min(200px, calc(200 * 100vw / 992));
+    margin-right: max(-20px, calc(-20 * 100vw / 992));
+    margin-bottom: max(-10px, calc(-10 * 100vw / 992));
   }
 
   .clients-platform-benefits-showcase-card__quality-top {
@@ -323,27 +334,9 @@
     left: auto;
     width: 135%;
   }
-
-  .clients-platform-benefits-showcase-card--scaling::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    background: linear-gradient(
-      90deg,
-      rgb(255 255 255 / 92%) 0%,
-      rgb(255 255 255 / 78%) 45%,
-      rgb(255 255 255 / 0%) 78%
-    );
-    pointer-events: none;
-  }
 }
 
 @media (min-width: 769px) and (max-width: 992px) {
-  .clients-platform-benefits-showcase-card__it-visual {
-    width: min(460px, calc(460 * 100vw / 992));
-  }
-
   .clients-platform-benefits-showcase-card__quality-top {
     grid-template-columns: 1fr;
   }
@@ -412,13 +405,10 @@
     font-size: clamp(40px, 10vw, 56px);
   }
 
-  .clients-platform-benefits-showcase-card__it-visual {
-    right: max(-20px, calc(-20 * 100vw / 768));
-    bottom: max(-10px, calc(-10 * 100vw / 768));
-    width: min(460px, calc(460 * 100vw / 768));
-    position: absolute;
-    margin: 0;
-    padding: 0;
+  .clients-platform-benefits-showcase-card__it-media {
+    flex-basis: min(200px, calc(200 * 100vw / 768));
+    margin-right: max(-20px, calc(-20 * 100vw / 768));
+    margin-bottom: max(-10px, calc(-10 * 100vw / 768));
   }
 }
 
@@ -447,10 +437,10 @@
     min-height: 240px;
   }
 
-  .clients-platform-benefits-showcase-card__it-visual {
-    right: -20px;
-    bottom: -20px;
-    width: 200px;
+  .clients-platform-benefits-showcase-card__it-media {
+    flex-basis: 160px;
+    margin-right: -20px;
+    margin-bottom: -20px;
   }
 
   .clients-platform-benefits-showcase-card--quality {
@@ -514,13 +504,10 @@
     min-height: 180px;
   }
 
-  .clients-platform-benefits-showcase-card__it-visual {
-    position: absolute;
-    right: -20px;
-    bottom: -20px;
-    width: 164px;
-    margin: 0;
-    padding: 0;
+  .clients-platform-benefits-showcase-card__it-media {
+    flex-basis: 130px;
+    margin-right: -16px;
+    margin-bottom: -16px;
   }
 
   .clients-platform-benefits-showcase-card--quality {

@@ -9,8 +9,8 @@ export function CompanyConnectionPage() {
       <div
         className={[
           styles["company-connection-page__panel"],
-          modalStyles["company-connection-modal__panel"],
           modalStyles["company-connection-modal--full-page"],
+          modalStyles["company-connection-modal--page"],
         ].join(" ")}
       >
         <CompanyConnectionOffer contactHref="/#contacts" />

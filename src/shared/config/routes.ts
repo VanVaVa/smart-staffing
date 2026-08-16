@@ -9,5 +9,5 @@ export const routes = {
   pricing: "#pricing",
   pricingModal: "#open-pricing-modal",
   contacts: "#contacts",
-  login: "/admin",
+  login: "https://ru.b2bcloud.com/auth",
 } as const;

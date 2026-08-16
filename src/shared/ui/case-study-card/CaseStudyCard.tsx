@@ -77,7 +77,7 @@ export function CaseStudyCard({
   metric,
   metricLabel,
   tag,
-  actionLabel = "Читать дальше",
+  actionLabel = "Читать далее",
   itemIndex,
   editPrefix,
   layout = "default",
@@ -238,7 +238,7 @@ export function CaseStudyCard({
       <div className={styles["case-study-card__footer"]}>
         <span className={styles["case-study-card__read-more"]}>
           {actionLabel}
-          <ArrowIcon name="cta" className={styles["case-study-card__read-more-icon"]} />
+          <ArrowIcon name="2Right" className={styles["case-study-card__read-more-icon"]} />
         </span>
         <span className={styles["case-study-card__action"]} aria-hidden>
           <ArrowIcon name="round" />

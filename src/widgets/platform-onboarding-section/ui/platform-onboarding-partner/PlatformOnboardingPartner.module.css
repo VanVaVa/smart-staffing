@@ -181,6 +181,7 @@
     padding: 24px;
     column-gap: 20px;
     row-gap: 20px;
+    overflow: visible;
   }
 
   .platform-onboarding-partner__media {
@@ -190,6 +191,15 @@
     width: 153px;
     height: 144px;
     margin: 0;
+  }
+
+  .platform-onboarding-partner__orb {
+    top: calc(-1 * clamp(28px, 5vw, 40px));
+    bottom: auto;
+    left: 100px;
+    width: clamp(80px, 16vw, 120px);
+    height: clamp(80px, 16vw, 120px);
+    transform: translateX(-50%);
   }
 
   .platform-onboarding-partner__content {
@@ -244,8 +254,7 @@
   }
 
   .platform-onboarding-partner__orb {
-    left: 50px;
-    bottom: 0;
+    left: 84px;
   }
 }
 
@@ -275,10 +284,6 @@
   }
 
   .platform-onboarding-partner__orb {
-    top: 8px;
-    bottom: auto;
-    left: 27px;
-    width: 80px;
-    height: 80px;
+    left: 46px;
   }
 }

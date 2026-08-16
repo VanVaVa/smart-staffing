@@ -53,16 +53,6 @@ const createDocument = (
 
 const categories: DocumentCategory[] = [
   {
-    id: "clients",
-    title: "Клиентам",
-    items: [
-      createDocument("service-agreement", "Договор услуг"),
-      createDocument("license-agreement", "Лицензионное соглашение"),
-      createDocument("privacy-policy", "Политика конфиденциальности"),
-      createDocument("terms-of-use", "Пользовательское соглашение"),
-    ],
-  },
-  {
     id: "product",
     title: "О\u00a0продукте",
     items: [
@@ -75,6 +65,16 @@ const categories: DocumentCategory[] = [
       ),
       createDocument("technology-stack", "Стек технологий продукта"),
       createDocument("glossary", "Глоссарий"),
+    ],
+  },
+  {
+    id: "clients",
+    title: "Клиентам",
+    items: [
+      createDocument("service-agreement", "Договор услуг"),
+      createDocument("license-agreement", "Лицензионное соглашение"),
+      createDocument("privacy-policy", "Политика конфиденциальности"),
+      createDocument("terms-of-use", "Пользовательское соглашение"),
     ],
   },
   {

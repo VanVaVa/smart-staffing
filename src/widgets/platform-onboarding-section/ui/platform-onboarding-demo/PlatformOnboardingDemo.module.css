@@ -155,6 +155,27 @@
 }
 
 
+@media (min-width: 993px) and (max-width: 1440px) {
+  .platform-onboarding-demo__mockup {
+    right: -19%;
+    width: 59.7%;
+  }
+
+  .platform-onboarding-demo__copy {
+    max-width: min(794px, calc(722 * 100vw / 1440 + 2 * var(--container-padding)));
+  }
+
+  .platform-onboarding-demo__copy h2 {
+    font-size: min(48px, calc(48 * 100vw / 1440));
+    line-height: var(--line-h1);
+  }
+
+  .platform-onboarding-demo__copy p {
+    font-size: min(16px, calc(16 * 100vw / 1440));
+    line-height: min(22px, calc(22 * 100vw / 1440));
+  }
+}
+
 @media (max-width: 768px) {
   .platform-onboarding-demo__stage {
     padding-bottom: 48px;
