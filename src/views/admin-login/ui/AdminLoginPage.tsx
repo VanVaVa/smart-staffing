@@ -49,14 +49,16 @@ export function AdminLoginPage() {
       <form className={styles["admin-login-page__form"]} onSubmit={handleSubmit}>
         <h1 className={styles["admin-login-page__title"]}>Вход в админ-панель</h1>
         <Input
+          className={styles["admin-login-page__input"]}
           label="Email"
-          type="email"
+          type="text"
           autoComplete="username"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
           required
         />
         <Input
+          className={styles["admin-login-page__input"]}
           label="Пароль"
           type="password"
           autoComplete="current-password"
