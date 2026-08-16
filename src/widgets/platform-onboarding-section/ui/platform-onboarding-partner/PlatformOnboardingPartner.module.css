@@ -157,7 +157,6 @@
     
   .platform-onboarding-partner__card {
     gap: 18px;
-    overflow: hidden;
   }
 
   .platform-onboarding-partner__media {
@@ -165,6 +164,7 @@
     width: 122px;
     height: 116px;
     margin: 0 0 -20px;
+    clip-path: inset(0 0 20px);
   }
 
   .platform-onboarding-partner__content {
@@ -191,6 +191,7 @@
     width: 153px;
     height: 144px;
     margin: 0;
+    clip-path: none;
   }
 
   .platform-onboarding-partner__orb {
