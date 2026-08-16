@@ -1,8 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import Image from "next/image";
 
+import { ArrowIcon } from "@/shared/ui/arrow-icon";
 import {
   EditableCollectionAdd,
   EditableCollectionItem,
@@ -167,11 +167,8 @@ export function TestimonialsCarousel({ items }: TestimonialsCarouselProps) {
           disabled={!scrollState.canScrollPrev}
           onClick={() => scroll("prev")}
         >
-          <Image
-            src="/landing/testimonials/arrow-icon.svg"
-            alt=""
-            width={32}
-            height={32}
+          <ArrowIcon
+            name="2Left"
             className={styles["testimonials-carousel__nav-icon"]}
           />
         </button>
@@ -182,12 +179,9 @@ export function TestimonialsCarousel({ items }: TestimonialsCarouselProps) {
           disabled={!scrollState.canScrollNext}
           onClick={() => scroll("next")}
         >
-          <Image
-            src="/landing/testimonials/arrow-icon.svg"
-            alt=""
-            width={32}
-            height={32}
-            className={`${styles["testimonials-carousel__nav-icon"]} ${styles["testimonials-carousel__nav-icon--next"]}`}
+          <ArrowIcon
+            name="2Right"
+            className={styles["testimonials-carousel__nav-icon"]}
           />
         </button>
       </div>
