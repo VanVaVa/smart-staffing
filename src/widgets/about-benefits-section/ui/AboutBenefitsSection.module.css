@@ -44,8 +44,13 @@
     grid-template-areas:
     "flex security security"
     "expertise expertise platform";
-    grid-template-rows: 252px 180px;
     grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (min-width: 993px) and (max-width: 1440px) {
+  .about-benefits-section__grid {
+    grid-template-rows: minmax(252px, auto) minmax(180px, auto);
   }
 }
 

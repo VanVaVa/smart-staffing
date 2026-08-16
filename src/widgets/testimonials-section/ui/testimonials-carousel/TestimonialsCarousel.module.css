@@ -3,7 +3,6 @@
   flex-direction: column;
   gap: 16px;
   min-width: 0;
-  margin-right: -72px;
 }
 
 .testimonials-carousel__viewport {
@@ -11,8 +10,7 @@
   min-width: 0;
   overflow-x: auto;
   margin-inline: calc(-1 * var(--container-padding));
-  padding-left: var(--container-padding);
-  padding-right: 0;
+  padding-inline: var(--container-padding);
   scroll-snap-type: x proximity;
   scroll-padding-left: var(--container-padding);
   scrollbar-width: none;
@@ -41,7 +39,6 @@
   display: flex;
   justify-content: flex-end;
   gap: 8px;
-  padding-right: 72px;
 }
 
 .testimonials-carousel__nav-button {

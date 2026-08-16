@@ -13,6 +13,7 @@ export type HomeBlockType = (typeof HOME_BLOCK_TYPES)[number];
 export type HeroSegment = {
   label: string;
   imageSrc: string;
+  href: string;
 };
 
 export type HeroBlockProps = {
@@ -217,7 +218,11 @@ function isStringArray(value: unknown): value is string[] {
 function parseHeroSegment(value: unknown): HeroSegment | null {
   if (!isRecord(value)) return null;
   if (!isString(value.label) || !isString(value.imageSrc)) return null;
-  return { label: value.label, imageSrc: value.imageSrc };
+  return {
+    label: value.label,
+    imageSrc: value.imageSrc,
+    href: isString(value.href) ? value.href : "/pricing",
+  };
 }
 
 function parseHeroProps(value: unknown): HeroBlockProps | null {
@@ -617,6 +622,7 @@ export function defaultCollectionItem(key: HomeCollectionKey): unknown {
       return {
         label: "Новый сегмент",
         imageSrc: "/landing/hero-segment-enterprise.png",
+        href: "/pricing",
       };
     case "benefits":
       return {

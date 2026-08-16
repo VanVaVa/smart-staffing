@@ -104,6 +104,15 @@ export function BlockEditPanel({ block, onChange, onClose }: BlockEditPanelProps
                       setProps({ ...block.props, segments });
                     }}
                   />
+                  <Input
+                    label="Ссылка"
+                    value={segment.href}
+                    onChange={(e) => {
+                      const segments = [...block.props.segments];
+                      segments[index] = { ...segments[index], href: e.target.value };
+                      setProps({ ...block.props, segments });
+                    }}
+                  />
                   <Button
                     variant="ghost"
                     size="sm"
@@ -126,7 +135,11 @@ export function BlockEditPanel({ block, onChange, onClose }: BlockEditPanelProps
                     ...block.props,
                     segments: [
                       ...block.props.segments,
-                      { label: "Новый сегмент", imageSrc: "/landing/hero-segment-enterprise.png" },
+                      {
+                        label: "Новый сегмент",
+                        imageSrc: "/landing/hero-segment-enterprise.png",
+                        href: "/pricing",
+                      },
                     ],
                   })
                 }

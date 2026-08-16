@@ -63,6 +63,7 @@ const homeSeedBlocks = [
       segments: heroContent.segments.map((segment) => ({
         label: segment.label,
         imageSrc: segment.imageSrc,
+        href: segment.href,
       })),
     },
   },

@@ -1,0 +1,31 @@
+.company-connection-page {
+  background: var(--color-bg);
+}
+
+.company-connection-page__panel {
+  width: 100%;
+  padding: 0;
+}
+
+@media (max-width: 992px) {
+  .company-connection-page {
+    padding-top: 48px;
+  }
+}
+
+@media (min-width: 993px) {
+  .company-connection-page__panel {
+    width: min(778px, 100%);
+    margin: 56px auto 48px;
+    padding: var(--modal-panel-padding);
+    border-radius: var(--modal-panel-radius);
+    background: var(--color-white);
+    color: var(--color-black);
+  }
+}
+
+@media (min-width: 993px) and (max-width: 1440px) {
+  .company-connection-page__panel {
+    margin-top: 28px;
+  }
+}

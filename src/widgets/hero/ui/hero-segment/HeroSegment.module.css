@@ -10,7 +10,8 @@
   width: fit-content;
   max-width: 100%;
   overflow: hidden;
-  cursor: default;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .hero-segment__active-bg {
@@ -19,11 +20,18 @@
   border-radius: var(--radius-control);
   background: var(--color-white);
   transform: translateX(-100%);
+  transition: transform 0.3s ease;
 }
 
 .hero-segment--animate.hero-segment--active .hero-segment__active-bg {
   animation: hero-segment-slide-in var(--hero-segment-slide-duration, 4s)
     linear forwards;
+}
+
+.hero-segment:hover .hero-segment__active-bg,
+.hero-segment:focus-visible .hero-segment__active-bg {
+  animation: none;
+  transform: translateX(0);
 }
 
 @keyframes hero-segment-slide-in {
@@ -40,6 +48,10 @@
   .hero-segment--animate.hero-segment--active .hero-segment__active-bg {
     animation: none;
     transform: translateX(0);
+  }
+
+  .hero-segment__active-bg {
+    transition: none;
   }
 }
 

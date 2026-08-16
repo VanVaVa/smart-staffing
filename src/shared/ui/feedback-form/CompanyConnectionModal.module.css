@@ -54,10 +54,6 @@
   transform: rotate(-45deg);
 }
 
-.company-connection-modal__back {
-  display: none;
-}
-
 .company-connection-modal__page-footer {
   display: none;
 }
@@ -245,33 +241,6 @@
 }
 
 @media (max-width: 992px) {
-  .company-connection-modal__back {
-    position: fixed;
-    top: calc(16px + 40px + 16px);
-    left: var(--container-padding);
-    z-index: 211;
-    display: grid;
-    width: 40px;
-    height: 40px;
-    padding: 0;
-    place-items: center;
-    border: none;
-    background: transparent;
-    color: var(--color-white);
-    cursor: pointer;
-  }
-
-  .company-connection-modal__back:focus-visible {
-    border-radius: 4px;
-    outline: none;
-    box-shadow: var(--shadow-focus);
-  }
-
-  .company-connection-modal__back-icon {
-    width: 32px;
-    height: 32px;
-  }
-
   .company-connection-modal--full-page .company-connection-modal__panel {
     padding: 0;
   }
@@ -382,8 +351,12 @@
     height: 13px;
   }
 
-  .company-connection-modal__close {
-    display: none;
+  .company-connection-modal--full-page .company-connection-modal__close {
+    position: fixed;
+    top: calc(16px + 40px + 16px);
+    right: var(--container-padding);
+    z-index: 211;
+    color: var(--color-white);
   }
 }
 
@@ -405,10 +378,6 @@
 }
 
 @media (max-width: 576px) {
-  .company-connection-modal__back {
-    top: calc(16px + 32px + 12px);
-  }
-
   .company-connection-modal--full-page .company-connection-modal__sales-card {
     min-height: 564px;
     padding: 160px 20px 166px;
@@ -440,10 +409,6 @@
 }
 
 @media (max-width: 450px) {
-  .company-connection-modal__back {
-    top: calc(12px + 32px + 12px);
-  }
-
   .company-connection-modal--full-page .company-connection-modal__sales-card {
     min-height: 458px;
     padding: 96px 16px 130px;

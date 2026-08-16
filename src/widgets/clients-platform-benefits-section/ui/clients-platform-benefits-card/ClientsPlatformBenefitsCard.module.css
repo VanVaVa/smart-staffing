@@ -65,24 +65,18 @@
 
 .clients-platform-benefits-card--light-bg,
 .clients-platform-benefits-card--geometry-bg {
-  background: linear-gradient(
-    165deg,
-    #d7def0 0%,
-    #ffffff 72%
-  );
+  background: var(--color-blue-muted);
 }
 
 .clients-platform-benefits-card--light-bg:not(
     .clients-platform-benefits-card--dark-visual
   )
   .clients-platform-benefits-card__visual {
-  position: absolute;
-  top: min(142px, calc(142 * 100vw / 1920));
-  left: min(44px, calc(44 * 100vw / 1920));
   width: auto;
   max-width: none;
   flex: none;
-  margin: 0;
+  margin: min(96px, calc(96 * 100vw / 1920)) 0 0
+    min(44px, calc(44 * 100vw / 1920));
   padding: 0;
 }
 
@@ -139,8 +133,8 @@
 
 .clients-platform-benefits-card--light-bg.clients-platform-benefits-card--dark-visual
   .clients-platform-benefits-card__visual {
-  position: absolute;
-  inset: 0;
+  flex: 1;
+  min-height: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -149,10 +143,18 @@
 }
 
 .clients-platform-benefits-card--light-bg.clients-platform-benefits-card--dark-visual
+  .clients-platform-benefits-card__visual
+  > div {
+  min-height: 0;
+  max-height: 100%;
+}
+
+.clients-platform-benefits-card--light-bg.clients-platform-benefits-card--dark-visual
   .clients-platform-benefits-card__image {
   width: auto;
   max-width: min(396px, calc(396 * 100vw / 1920));
   height: auto;
+  max-height: 100%;
   border-radius: 20px;
   object-fit: contain;
 }
@@ -343,8 +345,8 @@
       .clients-platform-benefits-card--dark-visual
     )
     .clients-platform-benefits-card__visual {
-    top: min(107px, calc(107 * 100vw / 1440));
-    left: min(33px, calc(33 * 100vw / 1440));
+    margin: min(65px, calc(65 * 100vw / 1440)) 0 0
+      min(33px, calc(33 * 100vw / 1440));
   }
 
   .clients-platform-benefits-card--dark-bg .clients-platform-benefits-card__visual {
@@ -364,7 +366,6 @@
 
   .clients-platform-benefits-card--light-bg.clients-platform-benefits-card--dark-visual
     .clients-platform-benefits-card__visual {
-    inset: 0;
     padding: min(20px, calc(20 * 100vw / 1440));
   }
 
@@ -440,8 +441,8 @@
       .clients-platform-benefits-card--dark-visual
     )
     .clients-platform-benefits-card__visual {
-    top: min(78px, calc(78 * 100vw / 992));
-    left: min(24px, calc(24 * 100vw / 992));
+    margin: min(36px, calc(36 * 100vw / 992)) 0 0
+      min(24px, calc(24 * 100vw / 992));
   }
 
   .clients-platform-benefits-card--dark-bg .clients-platform-benefits-card__visual {
@@ -463,7 +464,6 @@
 
   .clients-platform-benefits-card--light-bg.clients-platform-benefits-card--dark-visual
     .clients-platform-benefits-card__visual {
-    inset: 0;
     padding: min(20px, calc(20 * 100vw / 992));
     border-radius: 0 !important;
   }
@@ -576,9 +576,7 @@
       .clients-platform-benefits-card--dark-visual
     )
     .clients-platform-benefits-card__visual {
-    top: clamp(56px, 12vw, 78px);
-    right: 16px;
-    left: 16px;
+    margin: clamp(20px, 4vw, 35px) 16px 0;
   }
 
   .clients-platform-benefits-card--light-bg:not(
@@ -610,7 +608,6 @@
 
   .clients-platform-benefits-card--light-bg.clients-platform-benefits-card--dark-visual
     .clients-platform-benefits-card__visual {
-    inset: 0;
     padding: 16px;
   }
 
@@ -724,8 +721,7 @@
       .clients-platform-benefits-card--dark-visual
     )
     .clients-platform-benefits-card__visual {
-    top: 48px;
-    left: 10px;
+    margin: 10px 16px 0 10px;
   }
 
   .clients-platform-benefits-card--dark-bg .clients-platform-benefits-card__visual {
@@ -745,7 +741,6 @@
 
   .clients-platform-benefits-card--light-bg.clients-platform-benefits-card--dark-visual
     .clients-platform-benefits-card__visual {
-    inset: 0;
     padding: 16px;
   }
 
@@ -786,8 +781,7 @@
       .clients-platform-benefits-card--dark-visual
     )
     .clients-platform-benefits-card__visual {
-    top: 40px;
-    left: 8px;
+    margin: 6px 16px 0 8px;
   }
 
   .clients-platform-benefits-card--light-bg:not(
@@ -827,7 +821,6 @@
 
   .clients-platform-benefits-card--light-bg.clients-platform-benefits-card--dark-visual
     .clients-platform-benefits-card__visual {
-    inset: 0;
     padding: 16px;
   }
 

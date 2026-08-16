@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type PointerEvent } from "react";
 import { usePathname } from "next/navigation";
 
 import { Link } from "@/shared/ui";
@@ -14,17 +14,22 @@ type HeaderNavDropdownChild = {
 
 type HeaderNavDropdownProps = {
   label: string;
-  href: string;
   items: readonly HeaderNavDropdownChild[];
 };
 
-export function HeaderNavDropdown({ label, href, items }: HeaderNavDropdownProps) {
+export function HeaderNavDropdown({ label, items }: HeaderNavDropdownProps) {
   const pathname = usePathname();
   const [openedOnPathname, setOpenedOnPathname] = useState<string | null>(null);
   const open = openedOnPathname === pathname;
 
   const setOpen = (nextOpen: boolean) => {
     setOpenedOnPathname(nextOpen ? pathname : null);
+  };
+
+  const hoverOpen = (nextOpen: boolean) => (event: PointerEvent<HTMLDivElement>) => {
+    if (event.pointerType === "mouse") {
+      setOpen(nextOpen);
+    }
   };
 
   const dropdownClass = [
@@ -37,8 +42,8 @@ export function HeaderNavDropdown({ label, href, items }: HeaderNavDropdownProps
   return (
     <div
       className={dropdownClass}
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
+      onPointerEnter={hoverOpen(true)}
+      onPointerLeave={hoverOpen(false)}
       onFocus={() => setOpen(true)}
       onBlur={(event) => {
         if (!event.currentTarget.contains(event.relatedTarget)) {
@@ -46,11 +51,12 @@ export function HeaderNavDropdown({ label, href, items }: HeaderNavDropdownProps
         }
       }}
     >
-      <Link
-        href={href}
-        variant="nav"
-        className={styles["header-nav__link"]}
+      <button
+        type="button"
+        className={`${styles["header-nav__link"]} ${styles["header-nav__trigger"]}`}
         aria-haspopup="menu"
+        aria-expanded={open}
+        onClick={() => setOpen(!open)}
       >
         {label}
         <svg
@@ -69,7 +75,7 @@ export function HeaderNavDropdown({ label, href, items }: HeaderNavDropdownProps
             strokeLinejoin="round"
           />
         </svg>
-      </Link>
+      </button>
       <ul className={styles["header-nav__dropdown-menu"]} role="menu">
         {items.map((child) => (
           <li key={child.href} role="none">

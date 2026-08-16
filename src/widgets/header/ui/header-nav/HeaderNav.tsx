@@ -23,7 +23,6 @@ export function HeaderNav({ onDarkBackdrop = false }: HeaderNavProps) {
           <HeaderNavDropdown
             key={item.label}
             label={item.label}
-            href={item.href}
             items={item.children}
           />
         ) : (

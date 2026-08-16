@@ -90,6 +90,7 @@ export function HeroVisual({ segments }: HeroVisualProps) {
             <HeroSegmentCard
               label={segment.label}
               imageSrc={segment.imageSrc}
+              href={segment.href}
               index={index}
               isActive={index === displayIndex}
               animate={animateSegment}
