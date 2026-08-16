@@ -1,7 +1,6 @@
 .hero {
   position: relative;
   overflow-x: clip;
-  clip-path: inset(-1000px 0 -1000px 0);
   margin-top: 82px;
   padding-top: 118px;
   padding-bottom: 196px;
