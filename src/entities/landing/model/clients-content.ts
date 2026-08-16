@@ -170,6 +170,16 @@ const enterprisePlatformBenefits: ClientsPlatformBenefitsContent = {
       },
     },
     {
+      title: "Результаты в\u00a0реальном времени",
+      backgroundType: "geometry-bg",
+      visual: {
+        imageSrc: "/landing/clients/enterprise/benefits-realtime-card.png",
+        imageWidth: 396,
+        imageHeight: 236,
+        imageAlt: "",
+      },
+    },
+    {
       title: "Аналитика по\u00a0партнёрским сетям",
       backgroundType: "dark-bg",
       inProgress: true,
@@ -177,16 +187,6 @@ const enterprisePlatformBenefits: ClientsPlatformBenefitsContent = {
         imageSrc: "/landing/clients/enterprise/benefits-analytics-visual.png",
         imageWidth: 396,
         imageHeight: 394,
-        imageAlt: "",
-      },
-    },
-    {
-      title: "Результаты в\u00a0реальном времени",
-      backgroundType: "geometry-bg",
-      visual: {
-        imageSrc: "/landing/clients/enterprise/benefits-realtime-card.png",
-        imageWidth: 396,
-        imageHeight: 236,
         imageAlt: "",
       },
     },
