@@ -42,6 +42,9 @@ export type ClientsPlatformBenefitsVisual = {
   imageWidth: number;
   imageHeight: number;
   imageAlt: string;
+  imageMobileSrc?: string;
+  imageMobileWidth?: number;
+  imageMobileHeight?: number;
 };
 
 export type ClientsPlatformBenefitsCardBackground =
@@ -157,6 +160,9 @@ const enterprisePlatformBenefits: ClientsPlatformBenefitsContent = {
         imageWidth: 436,
         imageHeight: 540,
         imageAlt: "",
+        imageMobileSrc: "/landing/clients/enterprise/benefits-roles-visual-mobile.png",
+        imageMobileWidth: 592,
+        imageMobileHeight: 240,
       },
     },
     {

@@ -88,7 +88,15 @@ export function ClientsPlatformBenefitsCard({
         {card.title}
       </EditableText>
       <div className={styles["clients-platform-benefits-card__visual"]}>
-        <EditableMedia path={`${prefix}visual.imageSrc`} label="Карточка — изображение">
+        <EditableMedia
+          path={`${prefix}visual.imageSrc`}
+          label="Карточка — изображение"
+          className={
+            card.visual.imageMobileSrc
+              ? styles["clients-platform-benefits-card__slot--desktop"]
+              : undefined
+          }
+        >
           <Image
             className={styles["clients-platform-benefits-card__image"]}
             src={card.visual.imageSrc}
@@ -98,6 +106,22 @@ export function ClientsPlatformBenefitsCard({
             sizes="(max-width: 768px) 100vw, (max-width: 992px) 288px, 25vw"
           />
         </EditableMedia>
+        {card.visual.imageMobileSrc ? (
+          <EditableMedia
+            path={`${prefix}visual.imageMobileSrc`}
+            label="Карточка — изображение для мобильных"
+            className={styles["clients-platform-benefits-card__slot--mobile"]}
+          >
+            <Image
+              className={styles["clients-platform-benefits-card__image"]}
+              src={card.visual.imageMobileSrc}
+              alt={card.visual.imageAlt}
+              width={card.visual.imageMobileWidth ?? card.visual.imageWidth}
+              height={card.visual.imageMobileHeight ?? card.visual.imageHeight}
+              sizes="100vw"
+            />
+          </EditableMedia>
+        ) : null}
         {card.inProgress ? (
           <>
             <div
