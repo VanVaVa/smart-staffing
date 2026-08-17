@@ -8,6 +8,7 @@ type ClientsPlatformBenefitsCardProps = {
   card: ClientsPlatformBenefitsCardContent;
   cardIndex: number;
   cardCount: number;
+  mobileFullWidth: boolean;
 };
 
 function ClientsPlatformBenefitsInProgressIcon() {
@@ -35,6 +36,7 @@ export function ClientsPlatformBenefitsCard({
   card,
   cardIndex,
   cardCount,
+  mobileFullWidth,
 }: ClientsPlatformBenefitsCardProps) {
   const toneClass =
     card.backgroundType === "dark-bg"
@@ -53,6 +55,12 @@ export function ClientsPlatformBenefitsCard({
         ? styles["clients-platform-benefits-card--slot-3-wide-layout"]
         : "";
 
+  const mobileFullWidthClass = mobileFullWidth
+    ? card.backgroundType === "full-bg"
+      ? styles["clients-platform-benefits-card--mobile-full-bleed"]
+      : styles["clients-platform-benefits-card--mobile-wide"]
+    : "";
+
   const inProgressClass = card.inProgress
     ? styles["clients-platform-benefits-card--in-progress"]
     : "";
@@ -64,7 +72,7 @@ export function ClientsPlatformBenefitsCard({
 
   return (
     <article
-      className={`${styles["clients-platform-benefits-card"]} ${styles[`clients-platform-benefits-card--${card.backgroundType}`]} ${visualLayoutClass} ${slotLayoutClass} ${inProgressClass} ${visualAlignClass}`}
+      className={`${styles["clients-platform-benefits-card"]} ${styles[`clients-platform-benefits-card--${card.backgroundType}`]} ${visualLayoutClass} ${slotLayoutClass} ${mobileFullWidthClass} ${inProgressClass} ${visualAlignClass}`}
     >
       {card.backgroundType === "geometry-bg" ? (
         <div className={styles["clients-platform-benefits-card__geometry"]} aria-hidden>

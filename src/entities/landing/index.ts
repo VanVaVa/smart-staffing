@@ -54,6 +54,7 @@ export type { AboutLeadershipMemberLayout } from "./model/about-content";
 export { vacanciesPage } from "./model/vacancies-content";
 export {
   clientSegmentSlugs,
+  clientsPlatformBenefitsMobileOrder,
   clientsSegments,
   getClientsSegment,
   isClientSegmentSlug,

@@ -27,7 +27,9 @@ export function ClientsBlockRenderer({ block, segment }: ClientsBlockRendererPro
     case "platform":
       return <ClientsPlatformSection content={block.props} />;
     case "platformBenefits":
-      return <ClientsPlatformBenefitsSection content={block.props} />;
+      return (
+        <ClientsPlatformBenefitsSection content={block.props} segment={segment} />
+      );
     case "partnersExperience":
       return <ClientsPartnersExperienceSection content={block.props} />;
     case "partnershipCta":

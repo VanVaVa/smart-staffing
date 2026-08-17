@@ -389,12 +389,12 @@
   }
 
   .clients-platform-benefits-showcase-card__title {
-    font-size: clamp(20px, 5vw, 26px);
+    font-size: 20px;
     line-height: 1.25;
   }
 
   .clients-platform-benefits-showcase-card__subtitle {
-    font-size: clamp(16px, 4vw, 20px);
+    font-size: 16px;
     line-height: 1.35;
   }
 
@@ -409,7 +409,8 @@
   }
 
   .clients-platform-benefits-showcase-card__stat-value {
-    font-size: clamp(40px, 10vw, 56px);
+    font-size: var(--text-h1);
+    line-height: var(--line-h1);
   }
 
   .clients-platform-benefits-showcase-card__it-visual {
@@ -444,6 +445,11 @@
     min-height: 240px;
   }
 
+  .clients-platform-benefits-showcase-card--it-costs
+    .clients-platform-benefits-showcase-card__copy {
+    max-width: 58%;
+  }
+
   .clients-platform-benefits-showcase-card__it-visual {
     right: -20px;
     bottom: -20px;
@@ -472,6 +478,11 @@
   .clients-platform-benefits-showcase-card__stat-text {
     font-size: var(--text-body-md);
     line-height: var(--line-body);
+  }
+
+  .clients-platform-benefits-showcase-card__quality-visual {
+    flex: none;
+    height: auto;
   }
 
   .clients-platform-benefits-showcase-card--scaling {

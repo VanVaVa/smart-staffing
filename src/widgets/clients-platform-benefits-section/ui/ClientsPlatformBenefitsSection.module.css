@@ -191,10 +191,6 @@
     gap: 8px;
   }
 
-  .clients-platform-benefits-section__cards:not(:has(> :nth-child(4))) {
-    grid-template-rows: auto;
-  }
-
   .clients-platform-benefits-section__card:nth-child(1) > *,
   .clients-platform-benefits-section__card:nth-child(2) > * {
     min-height: min(288px, calc(288 * 100vw / 992));
@@ -203,12 +199,6 @@
   .clients-platform-benefits-section__card:nth-child(3) {
     grid-row: 1 / span 2;
     grid-column: 3;
-  }
-
-  .clients-platform-benefits-section__cards:not(:has(> :nth-child(4)))
-    .clients-platform-benefits-section__card:nth-child(3) {
-    grid-row: auto;
-    grid-column: auto;
   }
 
   .clients-platform-benefits-section__card:nth-child(3) > * {
@@ -228,6 +218,18 @@
   .clients-platform-benefits-section__showcase-row {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: min(8px, calc(8 * 100vw / 992));
+  }
+}
+
+@media (min-width: 577px) and (max-width: 992px) {
+  .clients-platform-benefits-section__cards:not(:has(> :nth-child(4))) {
+    grid-template-rows: auto;
+  }
+
+  .clients-platform-benefits-section__cards:not(:has(> :nth-child(4)))
+    .clients-platform-benefits-section__card:nth-child(3) {
+    grid-row: auto;
+    grid-column: auto;
   }
 }
 
@@ -282,6 +284,25 @@
     grid-row: auto;
   }
 
+  .clients-platform-benefits-section__card:nth-child(1) > *,
+  .clients-platform-benefits-section__card:nth-child(2) > *,
+  .clients-platform-benefits-section__card:nth-child(3) > *,
+  .clients-platform-benefits-section__card:nth-child(4) > * {
+    min-height: clamp(280px, 44vw, 336px);
+  }
+
+  .clients-platform-benefits-section__showcase {
+    margin-top: 8px;
+    gap: 8px;
+  }
+
+  .clients-platform-benefits-section__showcase-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
   .clients-platform-benefits-section__cards:not(:has(> :nth-child(4)))
     .clients-platform-benefits-section__card:nth-child(1) {
     order: 1;
@@ -303,25 +324,6 @@
     min-height: min(140px, calc(140 * 100vw / 992));
   }
 
-  .clients-platform-benefits-section__card:nth-child(1) > *,
-  .clients-platform-benefits-section__card:nth-child(2) > *,
-  .clients-platform-benefits-section__card:nth-child(3) > *,
-  .clients-platform-benefits-section__card:nth-child(4) > * {
-    min-height: clamp(280px, 44vw, 336px);
-  }
-
-  .clients-platform-benefits-section__showcase {
-    margin-top: 8px;
-    gap: 8px;
-  }
-
-  .clients-platform-benefits-section__showcase-row {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px;
-  }
-}
-
-@media (min-width: 577px) and (max-width: 768px) {
   .clients-platform-benefits-section__card:nth-child(1) > *,
   .clients-platform-benefits-section__card:nth-child(2) > *,
   .clients-platform-benefits-section__card:nth-child(3) > *,
@@ -366,46 +368,25 @@
     gap: 4px;
   }
 
-  .clients-platform-benefits-section__card:nth-child(1),
-  .clients-platform-benefits-section__card:nth-child(4) {
+  .clients-platform-benefits-section__card {
+    order: var(--clients-platform-benefits-card-mobile-order, 0);
+  }
+
+  .clients-platform-benefits-section__card[data-mobile-full] {
     grid-column: 1 / -1;
     grid-row: auto;
   }
 
-  .clients-platform-benefits-section__card:nth-child(1) > *,
-  .clients-platform-benefits-section__card:nth-child(4) > * {
-    min-height: 140px;
-  }
-
-  .clients-platform-benefits-section__card:nth-child(2) > *,
-  .clients-platform-benefits-section__card:nth-child(3) > * {
-    min-height: 240px;
-  }
-
-  .clients-platform-benefits-section__cards:not(:has(> :nth-child(4)))
-    .clients-platform-benefits-section__card:nth-child(2) > * {
-    min-height: min(140px, calc(140 * 100vw / 992));
-  }
-
-  .clients-platform-benefits-section__cards:has(> :nth-child(4))
-    .clients-platform-benefits-section__card:nth-child(3) {
-    order: 4;
-    grid-column: 1 / -1;
-  }
-
-  .clients-platform-benefits-section__cards:has(> :nth-child(4))
-    .clients-platform-benefits-section__card:nth-child(4) {
-    order: 3;
+  .clients-platform-benefits-section__card:not([data-mobile-full]) {
     grid-column: auto;
+    grid-row: auto;
   }
 
-  .clients-platform-benefits-section__cards:has(> :nth-child(4))
-    .clients-platform-benefits-section__card:nth-child(3) > * {
+  .clients-platform-benefits-section__card[data-mobile-full] > * {
     min-height: 140px;
   }
 
-  .clients-platform-benefits-section__cards:has(> :nth-child(4))
-    .clients-platform-benefits-section__card:nth-child(4) > * {
+  .clients-platform-benefits-section__card:not([data-mobile-full]) > * {
     min-height: 240px;
   }
 
@@ -464,43 +445,11 @@
     gap: 8px;
   }
 
-  .clients-platform-benefits-section__card:first-child,
-  .clients-platform-benefits-section__card:last-child {
-    grid-column: 1 / -1;
-  }
-
-  .clients-platform-benefits-section__cards:not(:has(> :nth-child(4)))
-    .clients-platform-benefits-section__card:nth-child(3) {
-    grid-column: auto;
-  }
-
-  .clients-platform-benefits-section__cards:not(:has(> :nth-child(4)))
-    .clients-platform-benefits-section__card:nth-child(2) {
-    grid-column: 1 / -1;
-  }
-
-  .clients-platform-benefits-section__card:first-child > *,
-  .clients-platform-benefits-section__card:last-child > * {
+  .clients-platform-benefits-section__card[data-mobile-full] > * {
     min-height: 120px;
   }
 
-  .clients-platform-benefits-section__card:nth-child(2) > *,
-  .clients-platform-benefits-section__card:nth-child(3) > * {
-    min-height: 160px;
-  }
-
-  .clients-platform-benefits-section__cards:not(:has(> :nth-child(4)))
-    .clients-platform-benefits-section__card:nth-child(2) > * {
-    min-height: min(140px, calc(140 * 100vw / 992));
-  }
-
-  .clients-platform-benefits-section__cards:has(> :nth-child(4))
-    .clients-platform-benefits-section__card:nth-child(3) > * {
-    min-height: 120px;
-  }
-
-  .clients-platform-benefits-section__cards:has(> :nth-child(4))
-    .clients-platform-benefits-section__card:nth-child(4) > * {
+  .clients-platform-benefits-section__card:not([data-mobile-full]) > * {
     min-height: 160px;
   }
 

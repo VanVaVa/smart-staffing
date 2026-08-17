@@ -1,6 +1,10 @@
 import type { CSSProperties } from "react";
 
-import type { ClientsPlatformBenefitsContent } from "@/entities/landing";
+import type {
+  ClientSegmentSlug,
+  ClientsPlatformBenefitsContent,
+} from "@/entities/landing";
+import { clientsPlatformBenefitsMobileOrder } from "@/entities/landing";
 import { Container } from "@/shared/ui/container";
 
 import { ClientsPlatformBenefitsCard } from "./clients-platform-benefits-card";
@@ -10,12 +14,16 @@ import styles from "./ClientsPlatformBenefitsSection.module.css";
 
 type ClientsPlatformBenefitsSectionProps = {
   content: ClientsPlatformBenefitsContent;
+  segment: ClientSegmentSlug;
 };
 
 export function ClientsPlatformBenefitsSection({
   content,
+  segment,
 }: ClientsPlatformBenefitsSectionProps) {
   const [showcaseItCosts, showcaseQuality, showcaseScaling] = content.showcase;
+  const cardCount = content.cards.length;
+  const mobileOrder = clientsPlatformBenefitsMobileOrder[segment];
 
   return (
     <section className={styles["clients-platform-benefits-section"]}>
@@ -36,19 +44,38 @@ export function ClientsPlatformBenefitsSection({
             className={styles["clients-platform-benefits-section__cards"]}
             style={
               {
-                "--clients-platform-benefits-card-count": content.cards.length,
+                "--clients-platform-benefits-card-count": cardCount,
               } as CSSProperties
             }
           >
-            {content.cards.map((card, index) => (
-              <li key={`${card.title}-${index}`} className={styles["clients-platform-benefits-section__card"]}>
-                <ClientsPlatformBenefitsCard
-                  card={card}
-                  cardIndex={index}
-                  cardCount={content.cards.length}
-                />
-              </li>
-            ))}
+            {content.cards.map((card, index) => {
+              const mobilePosition = mobileOrder?.[index] ?? index + 1;
+              const isMobileFullWidth =
+                cardCount === 3 ||
+                mobilePosition === 1 ||
+                mobilePosition === cardCount;
+
+              return (
+                <li
+                  key={`${card.title}-${index}`}
+                  className={styles["clients-platform-benefits-section__card"]}
+                  data-mobile-full={isMobileFullWidth ? "" : undefined}
+                  style={
+                    {
+                      "--clients-platform-benefits-card-mobile-order":
+                        mobilePosition,
+                    } as CSSProperties
+                  }
+                >
+                  <ClientsPlatformBenefitsCard
+                    card={card}
+                    cardIndex={index}
+                    cardCount={cardCount}
+                    mobileFullWidth={isMobileFullWidth}
+                  />
+                </li>
+              );
+            })}
           </ul>
         </div>
         <div className={styles["clients-platform-benefits-section__showcase"]}>

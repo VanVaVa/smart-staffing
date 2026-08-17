@@ -293,6 +293,7 @@
   }
 
   .company-connection-modal--full-page .company-connection-modal__hero-cap {
+    position: relative;
     display: block;
     flex-shrink: 0;
     height: 80px;

@@ -7,6 +7,16 @@ export const clientSegmentSlugs = [
 
 export type ClientSegmentSlug = (typeof clientSegmentSlugs)[number];
 
+export const clientsPlatformBenefitsMobileOrder: Record<
+  ClientSegmentSlug,
+  readonly number[]
+> = {
+  enterprise: [1, 2, 4, 3],
+  outstaffing: [2, 4, 1, 3],
+  "mid-market": [1, 3, 2],
+  agencies: [3, 1, 2, 4],
+};
+
 export type ClientsHeroSubtitle = {
   before: string;
   accent?: string;
@@ -319,6 +329,10 @@ const outstaffingPlatformBenefits: ClientsPlatformBenefitsContent = {
         imageWidth: 436,
         imageHeight: 540,
         imageAlt: "",
+        imageMobileSrc:
+          "/landing/clients/outstaffing/benefits-search-visual-mobile.png",
+        imageMobileWidth: 992,
+        imageMobileHeight: 280,
       },
     },
     {
@@ -473,6 +487,10 @@ const midMarketPlatformBenefits: ClientsPlatformBenefitsContent = {
         imageWidth: 584,
         imageHeight: 540,
         imageAlt: "",
+        imageMobileSrc:
+          "/landing/clients/mid-market/benefits-analytics-visual-mobile.png",
+        imageMobileWidth: 992,
+        imageMobileHeight: 280,
       },
     },
   ],
