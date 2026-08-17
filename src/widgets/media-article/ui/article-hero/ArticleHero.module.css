@@ -279,9 +279,11 @@
 
 @media (max-width: 576px) {
   .article-hero {
+    width: 100%;
     min-height: 172px;
     grid-template-columns: minmax(0, 330px) minmax(164px, 1fr);
     gap: 16px;
+    margin-inline: 0;
   }
 
   .article-hero__content {
@@ -302,11 +304,11 @@
 
 @media (max-width: 450px) {
   .article-hero {
-    width: calc(100% - 2 * var(--container-padding));
+    width: 100%;
     min-height: 288px;
     grid-template-columns: minmax(0, 1fr);
     gap: 0;
-    margin-inline: auto;
+    margin-inline: 0;
     padding-inline: var(--container-padding);
     border-radius: 16px;
     overflow: hidden;

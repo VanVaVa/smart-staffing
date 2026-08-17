@@ -47,13 +47,19 @@
   }
 }
 
+@media (max-width: 576px) {
+  .media-article__content {
+    width: 100%;
+  }
+}
+
 @media (max-width: 450px) {
   .media-article {
     padding-block: 104px 100px;
   }
 
   .media-article__content {
-    width: calc(100% - 2 * var(--container-padding));
+    width: 100%;
     margin-top: 20px;
   }
 }
