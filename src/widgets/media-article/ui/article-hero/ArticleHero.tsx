@@ -1,13 +1,6 @@
-"use client";
-
 import Image from "next/image";
 
 import type { MediaArticleBlockProps } from "@/entities/landing/model/media-article-blocks";
-import {
-  EditableMedia,
-  EditableText,
-  useAdminBlockEditOptional,
-} from "@/shared/ui/editable-field";
 
 import styles from "./ArticleHero.module.css";
 
@@ -18,8 +11,6 @@ type ArticleHeroProps = {
 function ArticleHeroImage({
   src,
   alt,
-  path,
-  label,
   placeholder,
   className,
   imageClassName,
@@ -28,8 +19,6 @@ function ArticleHeroImage({
 }: {
   src: string;
   alt: string;
-  path: string;
-  label: string;
   placeholder: string;
   className?: string;
   imageClassName?: string;
@@ -37,7 +26,7 @@ function ArticleHeroImage({
   priority?: boolean;
 }) {
   return (
-    <EditableMedia path={path} label={label} className={className}>
+    <div className={className}>
       {src ? (
         <Image
           src={src}
@@ -55,13 +44,11 @@ function ArticleHeroImage({
           <span className={styles["article-hero__placeholder-text"]}>{placeholder}</span>
         </div>
       )}
-    </EditableMedia>
+    </div>
   );
 }
 
 export function ArticleHero({ content }: ArticleHeroProps) {
-  const blockEdit = useAdminBlockEditOptional();
-
   return (
     <header className={styles["article-hero"]}>
       <div className={styles["article-hero__content"]}>
@@ -69,49 +56,18 @@ export function ArticleHero({ content }: ArticleHeroProps) {
           dateTime={content.publishedAt}
           className={styles["article-hero__date"]}
         >
-          <EditableText path="publishedLabel" label="Дата публикации">
+          <span>
             {content.publishedLabel}
-          </EditableText>
+          </span>
         </time>
-        <EditableText
-          path="title"
-          label="Заголовок статьи"
-          as="h1"
-          className={styles["article-hero__title"]}
-        >
+        <h1 className={styles["article-hero__title"]}>
           {content.title}
-        </EditableText>
-        {blockEdit ? (
-          <div className={styles["article-hero__listing-preview"]}>
-            <span className={styles["article-hero__listing-preview-label"]}>
-              Превью в списке /media
-            </span>
-            <div className={styles["article-hero__listing-preview-card"]}>
-              <div className={styles["article-hero__listing-preview-visual"]}>
-                <ArticleHeroImage
-                  src={content.imageSrc}
-                  alt={content.imageAlt}
-                  path="imageSrc"
-                  label="Превью для списка"
-                  placeholder="Добавить превью"
-                  className={styles["article-hero__listing-preview-media"]}
-                  imageClassName={styles["article-hero__listing-preview-image"]}
-                  sizes="120px"
-                />
-              </div>
-              <p className={styles["article-hero__listing-preview-title"]}>
-                {content.title || "Заголовок статьи"}
-              </p>
-            </div>
-          </div>
-        ) : null}
+        </h1>
       </div>
       <div className={styles["article-hero__visual"]}>
         <ArticleHeroImage
           src={content.heroImageSrc}
           alt={content.heroImageAlt}
-          path="heroImageSrc"
-          label="Заглавное изображение"
           placeholder="Добавить заглавное изображение"
           className={styles["article-hero__hero-media"]}
           imageClassName={styles["article-hero__image"]}
@@ -119,13 +75,10 @@ export function ArticleHero({ content }: ArticleHeroProps) {
           priority
         />
         <span className={styles["article-hero__tag"]}>
-          <EditableText path="tagLabel" label="Тег статьи">
+          <span>
             {content.tagLabel}
-          </EditableText>
+          </span>
         </span>
-        {blockEdit ? (
-          <span className={styles["article-hero__visual-label"]}>Заглавное изображение</span>
-        ) : null}
       </div>
     </header>
   );

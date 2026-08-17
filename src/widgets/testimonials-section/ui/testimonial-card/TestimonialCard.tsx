@@ -1,6 +1,5 @@
 import Image from "next/image";
 
-import { EditableMedia, EditableText } from "@/shared/ui/editable-field";
 
 import styles from "./TestimonialCard.module.css";
 
@@ -23,16 +22,13 @@ export function TestimonialCard({
   logoSrc,
   logoWidth,
   logoHeight,
-  itemIndex,
 }: TestimonialCardProps) {
-  const prefix = itemIndex !== undefined ? `items.${itemIndex}.` : "";
-
   return (
     <article className={styles["testimonial-card"]}>
       <div className={styles["testimonial-card__body"]}>
         <header className={styles["testimonial-card__header"]}>
           <div className={styles["testimonial-card__author"]}>
-            <EditableMedia path={`${prefix}logoSrc`} label="Отзыв — логотип">
+            <div>
               <div className={styles["testimonial-card__logo"]}>
                 <Image
                   src={logoSrc}
@@ -42,42 +38,23 @@ export function TestimonialCard({
                   className={styles["testimonial-card__logo-image"]}
                 />
               </div>
-            </EditableMedia>
+            </div>
             <div className={styles["testimonial-card__meta"]}>
-              <EditableText
-                path={`${prefix}company`}
-                label="Отзыв — компания"
-                className={styles["testimonial-card__company"]}
-              >
+              <span className={styles["testimonial-card__company"]}>
                 {company}
-              </EditableText>
-              <EditableText
-                path={`${prefix}role`}
-                label="Отзыв — роль"
-                className={styles["testimonial-card__role"]}
-              >
+              </span>
+              <span className={styles["testimonial-card__role"]}>
                 {role}
-              </EditableText>
+              </span>
             </div>
           </div>
-          <EditableText
-            path={`${prefix}date`}
-            label="Отзыв — дата"
-            as="time"
-            className={styles["testimonial-card__date"]}
-          >
+          <time className={styles["testimonial-card__date"]}>
             {date}
-          </EditableText>
+          </time>
         </header>
-        <EditableText
-          path={`${prefix}quote`}
-          label="Отзыв — цитата"
-          as="p"
-          className={styles["testimonial-card__quote"]}
-          multiline
-        >
+        <p className={styles["testimonial-card__quote"]}>
           {quote}
-        </EditableText>
+        </p>
       </div>
     </article>
   );

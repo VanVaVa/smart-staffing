@@ -15,7 +15,6 @@ type TrustedLogoItem = {
 };
 
 type AboutTrustedMarqueeProps = {
-  rowIndex: number;
   items: readonly TrustedLogoItem[];
 };
 
@@ -23,12 +22,10 @@ const MARQUEE_DURATION_MS = 90_000;
 
 function TrustedSequence({
   items,
-  rowIndex,
   copyRef,
   hidden,
 }: {
   items: readonly TrustedLogoItem[];
-  rowIndex: number;
   copyRef?: RefObject<HTMLDivElement | null>;
   hidden?: boolean;
 }) {
@@ -38,21 +35,20 @@ function TrustedSequence({
       className={styles["about-trusted-marquee__sequence"]}
       aria-hidden={hidden}
     >
-      {items.map((item, itemIndex) => (
+      {items.map((item) => (
         <AboutTrustedLogoCard
           key={hidden ? `${item.id}-copy` : item.id}
           cellWidth={item.cellWidth}
           src={item.src}
           logoWidth={item.logoWidth}
           logoHeight={item.logoHeight}
-          mediaPath={`rows.${rowIndex}.items.${itemIndex}.src`}
         />
       ))}
     </div>
   );
 }
 
-export function AboutTrustedMarquee({ rowIndex, items }: AboutTrustedMarqueeProps) {
+export function AboutTrustedMarquee({ items }: AboutTrustedMarqueeProps) {
   const trackRef = useRef<HTMLDivElement>(null);
   const firstCopyRef = useRef<HTMLDivElement>(null);
 
@@ -150,8 +146,8 @@ export function AboutTrustedMarquee({ rowIndex, items }: AboutTrustedMarqueeProp
   return (
     <div className={styles["about-trusted-marquee"]}>
       <div ref={trackRef} className={styles["about-trusted-marquee__track"]}>
-        <TrustedSequence items={items} rowIndex={rowIndex} copyRef={firstCopyRef} />
-        <TrustedSequence items={items} rowIndex={rowIndex} hidden />
+        <TrustedSequence items={items} copyRef={firstCopyRef} />
+        <TrustedSequence items={items} hidden />
       </div>
     </div>
   );

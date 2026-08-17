@@ -1,7 +1,6 @@
 "use client";
 
 import { routes } from "@/shared/config";
-import { EditableText, useAdminBlockEditOptional } from "@/shared/ui/editable-field";
 import { useFeedbackFormSuccessModal } from "@/shared/ui/feedback-form/FeedbackFormSuccessModalProvider";
 import { Text } from "@/shared/ui";
 import textStyles from "@/shared/ui/text/Text.module.css";
@@ -15,46 +14,11 @@ function isPricingModalHref(href: string) {
 type FooterLinkItemProps = {
   label: string;
   href: string;
-  labelPath: string;
-  hrefPath: string;
   linkClassName?: string;
-  hrefEditClassName?: string;
 };
 
-export function FooterLinkItem({
-  label,
-  href,
-  labelPath,
-  hrefPath,
-  linkClassName,
-  hrefEditClassName,
-}: FooterLinkItemProps) {
-  const blockEdit = useAdminBlockEditOptional();
+export function FooterLinkItem({ label, href, linkClassName }: FooterLinkItemProps) {
   const { openCompanyConnectionModal } = useFeedbackFormSuccessModal();
-
-  if (blockEdit) {
-    return (
-      <div className={styles["footer-link-item"]}>
-        <EditableText
-          path={labelPath}
-          label="Текст ссылки"
-          as="span"
-          className={styles["footer-link-item__label"]}
-        >
-          {label}
-        </EditableText>
-        <EditableText
-          path={hrefPath}
-          label="URL ссылки"
-          className={[styles["footer-link-item__href-edit"], hrefEditClassName]
-            .filter(Boolean)
-            .join(" ")}
-        >
-          {href}
-        </EditableText>
-      </div>
-    );
-  }
 
   if (isPricingModalHref(href)) {
     return (

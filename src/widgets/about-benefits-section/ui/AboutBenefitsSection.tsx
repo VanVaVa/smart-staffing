@@ -1,5 +1,4 @@
 import type { AboutBenefitsBlockProps } from "@/entities/landing/model/about-blocks";
-import { EditableText } from "@/shared/ui/editable-field";
 import { Container } from "@/shared/ui/container";
 
 import {
@@ -22,14 +21,9 @@ export function AboutBenefitsSection({ content }: AboutBenefitsSectionProps) {
     <section className={styles["about-benefits-section"]}>
       <Container wide>
         <div className={styles["about-benefits-section__inner"]}>
-          <EditableText
-            path="title"
-            label="Заголовок преимуществ"
-            as="h2"
-            className={styles["about-benefits-section__title"]}
-          >
+          <h2 className={styles["about-benefits-section__title"]}>
             {title}
-          </EditableText>
+          </h2>
           <div className={styles["about-benefits-section__grid"]}>
             <AboutBenefitsFlexCard
               iconSrc={flex.iconSrc}

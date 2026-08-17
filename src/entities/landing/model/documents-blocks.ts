@@ -19,9 +19,7 @@ export type DocumentsLandingPageContent = {
   blocks: DocumentsBlock[];
 };
 
-export const DOCUMENTS_BLOCK_TYPE_LABELS: Record<DocumentsBlockType, string> = {
-  documentsPage: "Документы",
-};
+;
 
 function parseDocumentsPageProps(value: unknown): DocumentsBlockProps | null {
   if (!isRecord(value) || !isString(value.title) || !Array.isArray(value.categories)) {
@@ -63,47 +61,6 @@ export function parseDocumentsBlock(input: {
 
 export function isDocumentsBlockType(value: string): value is DocumentsBlockType {
   return DOCUMENTS_BLOCK_TYPES.includes(value as DocumentsBlockType);
-}
-
-export function defaultDocumentsBlockProps(): DocumentsBlockProps {
-  return cloneProps(documentsPage);
-}
-
-export type DocumentsCollectionKey =
-  | "categories"
-  | "categories.items"
-  | "certificates"
-  | "softwareRights.registrations"
-  | "softwareRights.paragraphs";
-
-export function defaultDocumentsCollectionItem(collectionKey: DocumentsCollectionKey): unknown {
-  switch (collectionKey) {
-    case "categories":
-      return {
-        id: crypto.randomUUID(),
-        title: "Категория",
-        items: [],
-      };
-    case "categories.items":
-      return {
-        id: crypto.randomUUID(),
-        slug: "new-document",
-        title: "Новый документ",
-        href: "/documents/new-document",
-        pdfSrc: "/landing/documents/new-document.pdf",
-        presentation: "page",
-      };
-    case "certificates":
-      return {
-        id: crypto.randomUUID(),
-        title: "Свидетельство",
-        pdfSrc: "/landing/documents/certificate-1.pdf",
-      };
-    case "softwareRights.registrations":
-      return "2026000000 от\u00a001.01.2026";
-    case "softwareRights.paragraphs":
-      return "Новый абзац";
-  }
 }
 
 export function documentsBlocksFromStaticContent(): Array<{

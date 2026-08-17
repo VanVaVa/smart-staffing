@@ -1,5 +1,4 @@
 import { clientSegmentSlugs, type ClientSegmentSlug } from "./clients-content";
-import { documentSlugs } from "./documents-content";
 
 export const LANDING_PAGE_SLUGS = {
   home: "home",
@@ -41,24 +40,11 @@ export function parseClientSegmentFromSlug(slug: string): ClientSegmentSlug | nu
 }
 
 export function isDocumentPageSlug(slug: string): slug is `documents-${string}` {
-  if (slug === LANDING_PAGE_SLUGS.documents) {
-    return false;
-  }
-  if (!slug.startsWith("documents-")) {
-    return false;
-  }
-  const documentSlug = slug.slice("documents-".length);
-  return documentSlugs.includes(documentSlug as (typeof documentSlugs)[number]);
+  return slug.startsWith("documents-") && slug !== LANDING_PAGE_SLUGS.documents;
 }
 
 export function parseDocumentSlugFromPageSlug(slug: string): string | null {
-  if (!slug.startsWith("documents-") || slug === LANDING_PAGE_SLUGS.documents) {
-    return null;
-  }
-  const documentSlug = slug.slice("documents-".length);
-  return documentSlugs.includes(documentSlug as (typeof documentSlugs)[number])
-    ? documentSlug
-    : null;
+  return isDocumentPageSlug(slug) ? slug.slice("documents-".length) : null;
 }
 
 export function isMediaArticlePageSlug(slug: string): slug is `media-${string}` {
@@ -79,7 +65,6 @@ export const STATIC_LANDING_PAGE_SLUGS: readonly string[] = [
   LANDING_PAGE_SLUGS.documents,
   LANDING_PAGE_SLUGS.media,
   ...clientSegmentSlugs.map(clientsPageSlug),
-  ...documentSlugs.map(documentPageSlug),
 ];
 
 export function isStaticLandingPageSlug(slug: string): boolean {
@@ -87,7 +72,12 @@ export function isStaticLandingPageSlug(slug: string): boolean {
 }
 
 export function isKnownLandingPageSlug(slug: string): boolean {
-  return slug === LANDING_PAGE_SLUGS.footer || isStaticLandingPageSlug(slug) || isMediaArticlePageSlug(slug);
+  return (
+    slug === LANDING_PAGE_SLUGS.footer ||
+    isStaticLandingPageSlug(slug) ||
+    isDocumentPageSlug(slug) ||
+    isMediaArticlePageSlug(slug)
+  );
 }
 
 export const ALL_LANDING_PAGE_SLUGS = STATIC_LANDING_PAGE_SLUGS;

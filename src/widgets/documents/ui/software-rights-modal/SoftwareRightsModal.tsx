@@ -8,11 +8,6 @@ import type {
   DocumentsPageContent,
 } from "@/entities/landing";
 import { ArrowIcon } from "@/shared/ui";
-import {
-  EditableCollectionAdd,
-  EditableCollectionItem,
-  EditableText,
-} from "@/shared/ui/editable-field";
 import { useModalLock } from "@/shared/ui/modal-shell";
 import { usePageFooter } from "@/shared/ui/page-chrome";
 
@@ -101,48 +96,18 @@ export function SoftwareRightsModal({
           <div className={styles["software-rights-modal__content"]}>
             <ul className={styles["software-rights-modal__registrations"]}>
               {content.registrations.map((registration, index) => (
-                <EditableCollectionItem
-                  key={`${registration}-${index}`}
-                  arrayPath="softwareRights.registrations"
-                  index={index}
-                >
-                  <li>
-                    <EditableText
-                      path={`softwareRights.registrations.${index}`}
-                      label="Регистрация"
-                    >
-                      {registration}
-                    </EditableText>
-                  </li>
-                </EditableCollectionItem>
+                <li key={`${registration}-${index}`}>
+                  <span>
+                    {registration}
+                  </span>
+                </li>
               ))}
             </ul>
-            <EditableCollectionAdd
-              arrayPath="softwareRights.registrations"
-              collectionKey="softwareRights.registrations"
-              addLabel="Регистрация"
-            />
             {content.paragraphs.map((paragraph, index) => (
-              <EditableCollectionItem
-                key={`${paragraph}-${index}`}
-                arrayPath="softwareRights.paragraphs"
-                index={index}
-              >
-                <EditableText
-                  path={`softwareRights.paragraphs.${index}`}
-                  label="Абзац"
-                  as="p"
-                  multiline
-                >
-                  {paragraph}
-                </EditableText>
-              </EditableCollectionItem>
+              <p key={`${paragraph}-${index}`}>
+                {paragraph}
+              </p>
             ))}
-            <EditableCollectionAdd
-              arrayPath="softwareRights.paragraphs"
-              collectionKey="softwareRights.paragraphs"
-              addLabel="Абзац"
-            />
           </div>
           <div className={styles["software-rights-modal__page-footer"]}>
             {pageFooter}

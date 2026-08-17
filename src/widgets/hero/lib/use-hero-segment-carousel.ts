@@ -6,12 +6,10 @@ export const HERO_SEGMENT_HOLD_MS = 4000;
 
 type UseHeroSegmentCarouselOptions = {
   segmentCount: number;
-  enabled: boolean;
 };
 
 export function useHeroSegmentCarousel({
   segmentCount,
-  enabled,
 }: UseHeroSegmentCarouselOptions) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -40,11 +38,10 @@ export function useHeroSegmentCarousel({
     }
   }, [activeIndex, segmentCount]);
 
-  const carouselEnabled = enabled && !reducedMotion && segmentCount > 1;
+  const carouselEnabled = !reducedMotion && segmentCount > 1;
   const autoplayEnabled = carouselEnabled && hoveredIndex === null;
-  const displayIndex = !enabled
-    ? 0
-    : (hoveredIndex ?? (segmentCount > 0 ? activeIndex % segmentCount : 0));
+  const displayIndex =
+    hoveredIndex ?? (segmentCount > 0 ? activeIndex % segmentCount : 0);
 
   useEffect(() => {
     if (!autoplayEnabled) {

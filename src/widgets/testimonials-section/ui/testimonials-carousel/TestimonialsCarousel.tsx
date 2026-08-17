@@ -3,10 +3,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { ArrowIcon } from "@/shared/ui/arrow-icon";
-import {
-  EditableCollectionAdd,
-  EditableCollectionItem,
-} from "@/shared/ui/editable-field";
 
 import { TestimonialCard } from "../testimonial-card";
 
@@ -140,23 +136,10 @@ export function TestimonialsCarousel({ items }: TestimonialsCarouselProps) {
       <div ref={viewportRef} className={styles["testimonials-carousel__viewport"]}>
         <div ref={trackRef} className={styles["testimonials-carousel__track"]}>
           {items.map((item, index) => (
-            <EditableCollectionItem
-              key={`${item.company}-${index}`}
-              arrayPath="items"
-              index={index}
-              variant="carousel-card"
-            >
-              <div data-testimonial-card className={styles["testimonials-carousel__card"]}>
-                <TestimonialCard itemIndex={index} {...item} />
-              </div>
-            </EditableCollectionItem>
+            <div key={`${item.company}-${index}`} data-testimonial-card className={styles["testimonials-carousel__card"]}>
+              <TestimonialCard itemIndex={index} {...item} />
+            </div>
           ))}
-          <EditableCollectionAdd
-            arrayPath="items"
-            collectionKey="testimonials.items"
-            addLabel="Отзыв"
-            variant="inline"
-          />
         </div>
       </div>
       <div className={styles["testimonials-carousel__nav"]}>

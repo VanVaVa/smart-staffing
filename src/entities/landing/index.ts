@@ -1,4 +1,15 @@
 export {
+  ADMIN_SECTIONS,
+  ADMIN_SECTION_GROUPS,
+  adminSectionPath,
+  getAdminSection,
+} from "./model/admin-sections";
+export type {
+  AdminCollectionSection,
+  AdminSection,
+  AdminSingletonSection,
+} from "./model/admin-sections";
+export {
   benefitsCards,
   benefitsSection,
   caseStudies,
@@ -14,9 +25,6 @@ export {
   testimonials,
 } from "./model/content";
 export {
-  defaultBlockProps,
-  defaultCollectionItem,
-  HOME_BLOCK_TYPE_LABELS,
   HOME_BLOCK_TYPES,
   isHomeBlockType,
   parseHomeBlock,
@@ -27,7 +35,6 @@ export {
   type HeroBlockProps,
   type HomeBlock,
   type HomeBlockType,
-  type HomeCollectionKey,
   type HomePageContent,
   type PlatformOnboardingBlockProps,
   type ProductShowcaseBlockProps,

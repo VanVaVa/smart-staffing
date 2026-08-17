@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 import type { ClientsPlatformBenefitsShowcaseItem } from "@/entities/landing";
-import { EditableMedia, EditableText } from "@/shared/ui/editable-field";
 
 import styles from "./ClientsPlatformBenefitsShowcaseCard.module.css";
 
@@ -12,10 +11,7 @@ type ClientsPlatformBenefitsShowcaseCardProps = {
 
 export function ClientsPlatformBenefitsShowcaseCard({
   item,
-  itemIndex,
 }: ClientsPlatformBenefitsShowcaseCardProps) {
-  const prefix = `showcase.${itemIndex}.`;
-
   if (item.variant === "it-costs") {
     const isPortraitVisual = item.visual.imageHeight > item.visual.imageWidth;
 
@@ -24,25 +20,14 @@ export function ClientsPlatformBenefitsShowcaseCard({
         className={`${styles["clients-platform-benefits-showcase-card"]} ${styles["clients-platform-benefits-showcase-card--it-costs"]} ${styles["clients-platform-benefits-showcase-card--dark-bg"]}`}
       >
         <div className={styles["clients-platform-benefits-showcase-card__copy"]}>
-          <EditableText
-            path={`${prefix}title`}
-            label="Showcase — заголовок"
-            as="h3"
-            className={styles["clients-platform-benefits-showcase-card__title"]}
-          >
+          <h3 className={styles["clients-platform-benefits-showcase-card__title"]}>
             {item.title}
-          </EditableText>
-          <EditableText
-            path={`${prefix}subtitle`}
-            label="Showcase — подзаголовок"
-            as="p"
-            className={styles["clients-platform-benefits-showcase-card__subtitle"]}
-            multiline
-          >
+          </h3>
+          <p className={styles["clients-platform-benefits-showcase-card__subtitle"]}>
             {item.subtitle}
-          </EditableText>
+          </p>
         </div>
-        <EditableMedia path={`${prefix}visual.imageSrc`} label="Showcase — изображение">
+        <div>
           <Image
             className={`${styles["clients-platform-benefits-showcase-card__it-visual"]}${
               isPortraitVisual
@@ -55,7 +40,7 @@ export function ClientsPlatformBenefitsShowcaseCard({
             height={item.visual.imageHeight}
             sizes="(max-width: 768px) 100vw, (max-width: 992px) 460px, 31vw"
           />
-        </EditableMedia>
+        </div>
       </article>
     );
   }
@@ -67,23 +52,12 @@ export function ClientsPlatformBenefitsShowcaseCard({
       >
         <div className={styles["clients-platform-benefits-showcase-card__quality-top"]}>
           <div className={styles["clients-platform-benefits-showcase-card__copy"]}>
-            <EditableText
-              path={`${prefix}title`}
-              label="Showcase — заголовок"
-              as="h3"
-              className={`${styles["clients-platform-benefits-showcase-card__title"]} ${styles["clients-platform-benefits-showcase-card__title--dark"]}`}
-            >
+            <h3 className={`${styles["clients-platform-benefits-showcase-card__title"]} ${styles["clients-platform-benefits-showcase-card__title--dark"]}`}>
               {item.title}
-            </EditableText>
-            <EditableText
-              path={`${prefix}subtitle`}
-              label="Showcase — подзаголовок"
-              as="p"
-              className={`${styles["clients-platform-benefits-showcase-card__subtitle"]} ${styles["clients-platform-benefits-showcase-card__subtitle--dark"]}`}
-              multiline
-            >
+            </h3>
+            <p className={`${styles["clients-platform-benefits-showcase-card__subtitle"]} ${styles["clients-platform-benefits-showcase-card__subtitle--dark"]}`}>
               {item.subtitle}
-            </EditableText>
+            </p>
           </div>
           {item.stat ? (
             <div className={styles["clients-platform-benefits-showcase-card__stat"]}>
@@ -91,28 +65,17 @@ export function ClientsPlatformBenefitsShowcaseCard({
                 className={styles["clients-platform-benefits-showcase-card__stat-bar"]}
                 aria-hidden
               />
-              <EditableText
-                path={`${prefix}stat.value`}
-                label="Showcase — значение метрики"
-                as="p"
-                className={styles["clients-platform-benefits-showcase-card__stat-value"]}
-              >
+              <p className={styles["clients-platform-benefits-showcase-card__stat-value"]}>
                 {item.stat.value}
-              </EditableText>
-              <EditableText
-                path={`${prefix}stat.description`}
-                label="Showcase — описание метрики"
-                as="p"
-                className={styles["clients-platform-benefits-showcase-card__stat-text"]}
-                multiline
-              >
+              </p>
+              <p className={styles["clients-platform-benefits-showcase-card__stat-text"]}>
                 {item.stat.description}
-              </EditableText>
+              </p>
             </div>
           ) : null}
         </div>
         <div className={styles["clients-platform-benefits-showcase-card__quality-visual"]}>
-          <EditableMedia path={`${prefix}visual.imageSrc`} label="Showcase — изображение">
+          <div>
             <Image
               className={styles["clients-platform-benefits-showcase-card__quality-image"]}
               src={item.visual.imageSrc}
@@ -121,7 +84,7 @@ export function ClientsPlatformBenefitsShowcaseCard({
               height={item.visual.imageHeight}
               sizes="(max-width: 768px) 100vw, (max-width: 992px) 460px, 66vw"
             />
-          </EditableMedia>
+          </div>
         </div>
       </article>
     );
@@ -131,7 +94,7 @@ export function ClientsPlatformBenefitsShowcaseCard({
     <article
       className={`${styles["clients-platform-benefits-showcase-card"]} ${styles["clients-platform-benefits-showcase-card--scaling"]}`}
     >
-      <EditableMedia path={`${prefix}visual.imageSrc`} label="Showcase — изображение">
+      <div>
         <Image
           className={styles["clients-platform-benefits-showcase-card__scaling-photo"]}
           src={item.visual.imageSrc}
@@ -140,25 +103,14 @@ export function ClientsPlatformBenefitsShowcaseCard({
           height={item.visual.imageHeight}
           sizes="(max-width: 992px) 928px, 100vw"
         />
-      </EditableMedia>
+      </div>
       <div className={styles["clients-platform-benefits-showcase-card__copy"]}>
-        <EditableText
-          path={`${prefix}title`}
-          label="Showcase — заголовок"
-          as="h3"
-          className={`${styles["clients-platform-benefits-showcase-card__title"]} ${styles["clients-platform-benefits-showcase-card__title--dark"]}`}
-        >
+        <h3 className={`${styles["clients-platform-benefits-showcase-card__title"]} ${styles["clients-platform-benefits-showcase-card__title--dark"]}`}>
           {item.title}
-        </EditableText>
-        <EditableText
-          path={`${prefix}subtitle`}
-          label="Showcase — подзаголовок"
-          as="p"
-          className={`${styles["clients-platform-benefits-showcase-card__subtitle"]} ${styles["clients-platform-benefits-showcase-card__subtitle--dark"]}`}
-          multiline
-        >
+        </h3>
+        <p className={`${styles["clients-platform-benefits-showcase-card__subtitle"]} ${styles["clients-platform-benefits-showcase-card__subtitle--dark"]}`}>
           {item.subtitle}
-        </EditableText>
+        </p>
       </div>
     </article>
   );

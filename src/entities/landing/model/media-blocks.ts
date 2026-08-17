@@ -20,9 +20,7 @@ export type MediaLandingPageContent = {
   blocks: MediaBlock[];
 };
 
-export const MEDIA_BLOCK_TYPE_LABELS: Record<MediaBlockType, string> = {
-  mediaListing: "Медиа",
-};
+;
 
 function parseMediaListingProps(value: unknown): MediaListingBlockProps | null {
   if (!isRecord(value) || !isString(value.title)) {
@@ -64,10 +62,6 @@ export function parseMediaBlock(input: {
 
 export function isMediaBlockType(value: string): value is MediaBlockType {
   return MEDIA_BLOCK_TYPES.includes(value as MediaBlockType);
-}
-
-export function defaultMediaBlockProps(): MediaListingBlockProps {
-  return { title: "Медиа" };
 }
 
 export function mediaBlocksFromStaticContent(): Array<{

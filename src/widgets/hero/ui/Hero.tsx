@@ -1,5 +1,4 @@
 import type { HeroBlockProps } from "@/entities/landing/model/home-blocks";
-import { EditableText } from "@/shared/ui/editable-field";
 import { CompanyConnectionButton } from "@/shared/ui/feedback-form";
 
 import { HeroRegistryLink } from "./hero-registry-link";
@@ -24,30 +23,16 @@ export function Hero({ content, interactive = true }: HeroProps) {
         <div className={styles.hero__layout}>
           <div className={styles.hero__content}>
             <div className={styles.hero__copy}>
-              <EditableText
-                path="title"
-                label="Заголовок Hero"
-                as="h1"
-                className={styles.hero__title}
-                multiline
-              >
+              <h1 className={styles.hero__title}>
                 {content.title}
-              </EditableText>
+              </h1>
               <p className={styles.hero__subtitle}>
-                <EditableText
-                  path="subtitleLead"
-                  label="Подзаголовок (lead)"
-                  className={styles["hero__subtitle-lead"]}
-                >
+                <span className={styles["hero__subtitle-lead"]}>
                   {content.subtitleLead}
-                </EditableText>{" "}
-                <EditableText
-                  path="subtitleTail"
-                  label="Подзаголовок (tail)"
-                  className={styles["hero__subtitle-tail"]}
-                >
+                </span>{" "}
+                <span className={styles["hero__subtitle-tail"]}>
                   {content.subtitleTail}
-                </EditableText>
+                </span>
               </p>
             </div>
             <div className={styles.hero__actions}>
@@ -58,9 +43,9 @@ export function Hero({ content, interactive = true }: HeroProps) {
                 className={styles["hero__primary-cta"]}
                 interactive={interactive}
               >
-                <EditableText path="primaryCta" label="Текст CTA">
+                <span>
                   {content.primaryCta}
-                </EditableText>
+                </span>
               </CompanyConnectionButton>
               <HeroRegistryLink
                 registryHref={content.registryHref}

@@ -18,9 +18,7 @@ export type VacanciesPageContent = {
   blocks: VacanciesBlock[];
 };
 
-export const VACANCIES_BLOCK_TYPE_LABELS: Record<VacanciesBlockType, string> = {
-  vacancies: "Вакансии",
-};
+;
 
 function parseVacanciesProps(value: unknown): VacanciesBlockProps | null {
   if (!isRecord(value) || !isString(value.title) || !Array.isArray(value.vacancies)) {
@@ -62,24 +60,6 @@ export function parseVacanciesBlock(input: {
 
 export function isVacanciesBlockType(value: string): value is VacanciesBlockType {
   return VACANCIES_BLOCK_TYPES.includes(value as VacanciesBlockType);
-}
-
-export function defaultVacanciesBlockProps(): VacanciesBlockProps {
-  return cloneProps(vacanciesPage);
-}
-
-export type VacanciesCollectionKey = "vacancies";
-
-export function defaultVacanciesCollectionItem(): {
-  id: string;
-  title: string;
-  employment: string;
-} {
-  return {
-    id: crypto.randomUUID(),
-    title: "Новая вакансия",
-    employment: "Полная занятость",
-  };
 }
 
 export function vacanciesBlocksFromStaticContent(): Array<{

@@ -1,0 +1,52 @@
+.group {
+  margin-bottom: 32px;
+}
+
+.groupTitle {
+  margin: 0 0 12px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 8px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: rgb(255 255 255 / 6%);
+  color: #f5f5f7;
+  text-decoration: none;
+}
+
+.row:hover {
+  background: rgb(255 255 255 / 10%);
+}
+
+.rowText {
+  display: grid;
+  gap: 4px;
+}
+
+.rowTitle {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.rowDescription {
+  font-size: 13px;
+  color: rgb(245 245 247 / 55%);
+  line-height: 1.45;
+}
+
+.count {
+  flex: none;
+  min-width: 32px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 10%);
+  font-size: 13px;
+  text-align: center;
+}

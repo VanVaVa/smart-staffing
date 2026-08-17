@@ -1,5 +1,4 @@
 import type { TestimonialsBlockProps } from "@/entities/landing/model/home-blocks";
-import { EditableText } from "@/shared/ui/editable-field";
 import { Section } from "@/shared/ui/section";
 import { SectionTitle } from "@/shared/ui/section-title";
 
@@ -18,9 +17,9 @@ export function TestimonialsSection({ content }: TestimonialsSectionProps) {
         centered
         className={styles["testimonials-section__title"]}
         title={
-          <EditableText path="title" label="Заголовок отзывов">
+          <span>
             {content.title}
-          </EditableText>
+          </span>
         }
       />
       <TestimonialsCarousel items={content.items} />

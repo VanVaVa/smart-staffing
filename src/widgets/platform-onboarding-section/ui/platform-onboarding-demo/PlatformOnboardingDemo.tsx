@@ -1,6 +1,5 @@
 import Image from "next/image";
 
-import { EditableMedia, EditableText } from "@/shared/ui/editable-field";
 import { CompanyConnectionButton } from "@/shared/ui/feedback-form";
 import { SectionTitle } from "@/shared/ui/section-title";
 
@@ -27,9 +26,9 @@ function PlatformOnboardingDemoSubtitle({
 }) {
   if (!subtitleAccent) {
     return (
-      <EditableText path="demo.subtitle" label="Demo — подзаголовок" multiline>
+      <span>
         {subtitle}
-      </EditableText>
+      </span>
     );
   }
 
@@ -37,9 +36,9 @@ function PlatformOnboardingDemoSubtitle({
 
   if (accentIndex === -1) {
     return (
-      <EditableText path="demo.subtitle" label="Demo — подзаголовок" multiline>
+      <span>
         {subtitle}
-      </EditableText>
+      </span>
     );
   }
 
@@ -49,11 +48,11 @@ function PlatformOnboardingDemoSubtitle({
   return (
     <>
       {before}
-      <EditableText path="demo.subtitleAccent" label="Demo — акцент подзаголовка">
+      <span>
         <span className={styles["platform-onboarding-demo__subtitle-accent"]}>
           {subtitleAccent}
         </span>
-      </EditableText>
+      </span>
       {after}
     </>
   );
@@ -73,7 +72,7 @@ export function PlatformOnboardingDemo({
   return (
     <div className={styles["platform-onboarding-demo"]}>
       <div className={styles["platform-onboarding-demo__stage"]}>
-        <EditableMedia path="demo.mockupSrc" label="Demo — mockup">
+        <div>
           <figure className={styles["platform-onboarding-demo__mockup"]} aria-hidden>
             <Image
               className={styles["platform-onboarding-demo__mockup-image"]}
@@ -84,13 +83,13 @@ export function PlatformOnboardingDemo({
               sizes="(max-width: 1024px) 72vw, 812px"
             />
           </figure>
-        </EditableMedia>
+        </div>
         <div className={styles["platform-onboarding-demo__copy"]}>
           <SectionTitle
             title={
-              <EditableText path="demo.title" label="Demo — заголовок">
+              <span>
                 {title}
-              </EditableText>
+              </span>
             }
             subtitle={
               <PlatformOnboardingDemoSubtitle
@@ -101,24 +100,18 @@ export function PlatformOnboardingDemo({
           />
         </div>
         <div className={styles["platform-onboarding-demo__promo"]}>
-          <EditableText
-            path="demo.promoText"
-            label="Demo — promo"
-            as="p"
-            className={styles["platform-onboarding-demo__promo-text"]}
-            multiline
-          >
+          <p className={styles["platform-onboarding-demo__promo-text"]}>
             {promoText}
-          </EditableText>
+          </p>
           <div className={styles["platform-onboarding-demo__promo-glow"]} aria-hidden />
           <CompanyConnectionButton
             withArrow
             className={styles["platform-onboarding-demo__promo-cta"]}
             interactive={interactive}
           >
-            <EditableText path="demo.promoCta" label="Demo — CTA">
+            <span>
               {promoCta}
-            </EditableText>
+            </span>
           </CompanyConnectionButton>
         </div>
       </div>

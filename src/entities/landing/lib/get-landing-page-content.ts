@@ -6,9 +6,6 @@ import type { LandingPageMeta } from "../model/landing-block-base";
 import {
   isKnownLandingPageSlug,
   LANDING_PAGE_SLUGS,
-  parseClientSegmentFromSlug,
-  parseDocumentSlugFromPageSlug,
-  parseMediaArticleSlugFromPageSlug,
 } from "../model/landing-page-slugs";
 import {
   getLandingPageSchema,

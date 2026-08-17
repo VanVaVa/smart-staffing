@@ -8,14 +8,7 @@ import {
   aboutSpotlight,
   aboutTrusted,
 } from "./about-content";
-import {
-  cloneProps,
-  isNumber,
-  isRecord,
-  isString,
-  isStringArray,
-  parseRecordArray,
-} from "../lib/block-parse-utils";
+import { cloneProps, isRecord, isString } from "../lib/block-parse-utils";
 import type { LandingBlockBase } from "./landing-block-base";
 
 export const ABOUT_BLOCK_TYPES = [
@@ -63,16 +56,7 @@ export type AboutPageContent = {
   blocks: AboutBlock[];
 };
 
-export const ABOUT_BLOCK_TYPE_LABELS: Record<AboutBlockType, string> = {
-  intro: "Вступление",
-  spotlight: "Spotlight",
-  history: "История",
-  partner: "Партнёрства",
-  trusted: "Нам доверяют",
-  benefits: "Преимущества",
-  leadership: "Руководство",
-  careerBook: "Карьера и\u00a0книга",
-};
+;
 
 function parseIntroProps(value: unknown): AboutIntroBlockProps | null {
   if (!isRecord(value) || !isString(value.title) || !isRecord(value.subtitle)) {
@@ -191,72 +175,6 @@ export function parseAboutBlock(input: {
 
 export function isAboutBlockType(value: string): value is AboutBlockType {
   return ABOUT_BLOCK_TYPES.includes(value as AboutBlockType);
-}
-
-export function defaultAboutBlockProps(
-  type: AboutBlockType,
-): AboutBlockPropsByType[AboutBlockType] {
-  switch (type) {
-    case "intro":
-      return cloneProps(aboutIntro);
-    case "spotlight":
-      return cloneProps(aboutSpotlight);
-    case "history":
-      return cloneProps(aboutHistory);
-    case "partner":
-      return cloneProps(aboutPartner);
-    case "trusted":
-      return cloneProps(aboutTrusted);
-    case "benefits":
-      return cloneProps(aboutBenefits);
-    case "leadership":
-      return cloneProps(aboutLeadership);
-    case "careerBook":
-      return cloneProps(aboutCareerBook);
-  }
-}
-
-export type AboutCollectionKey =
-  | "history.timeline"
-  | "history.mission.items"
-  | "partner.awards"
-  | "trusted.rows"
-  | "leadership.members";
-
-export function defaultAboutCollectionItem(collectionKey: AboutCollectionKey): unknown {
-  switch (collectionKey) {
-    case "history.timeline":
-      return { year: "2026", text: "Событие" };
-    case "history.mission.items":
-      return "Новый пункт миссии";
-    case "partner.awards":
-      return {
-        id: crypto.randomUUID(),
-        title: "Награда",
-        status: "Статус",
-        nomination: "Номинация",
-        project: "Проект",
-        document: {
-          src: "/landing/about/partner/documents/digital-leaders-2025.png",
-          alt: "",
-          width: 684,
-          height: 968,
-        },
-      };
-    case "trusted.rows":
-      return {
-        id: crypto.randomUUID(),
-        items: [],
-      };
-    case "leadership.members":
-      return {
-        id: crypto.randomUUID(),
-        role: "Роль",
-        name: "Имя",
-        imageSrc: "/landing/about/leadership/ruslan-gaynanov.png",
-        layout: "strategy",
-      };
-  }
 }
 
 export function aboutBlocksFromStaticContent(): Array<{

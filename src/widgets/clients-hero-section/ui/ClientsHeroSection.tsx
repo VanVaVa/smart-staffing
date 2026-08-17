@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 import type { ClientsHeroContent } from "@/entities/landing";
-import { EditableMedia, EditableText } from "@/shared/ui/editable-field";
 import { CompanyConnectionButton } from "@/shared/ui/feedback-form";
 
 import styles from "./ClientsHeroSection.module.css";
@@ -14,15 +13,11 @@ export function ClientsHeroSection({ content }: ClientsHeroSectionProps) {
   return (
     <section className={styles["clients-hero-section"]}>
       <figure className={styles["clients-hero-section__media"]}>
-        <EditableMedia
-          path="imageSrc"
-          label="Hero — изображение"
-          className={
+        <div className={
             content.imageMobileSrc
               ? styles["clients-hero-section__slot--desktop"]
               : undefined
-          }
-        >
+          }>
           <Image
             className={styles["clients-hero-section__image"]}
             src={content.imageSrc}
@@ -32,13 +27,9 @@ export function ClientsHeroSection({ content }: ClientsHeroSectionProps) {
             sizes="(max-width: 450px) 344px, (max-width: 768px) 744px, (max-width: 992px) 960px, (max-width: 1440px) 716px, 956px"
             priority
           />
-        </EditableMedia>
+        </div>
         {content.imageMobileSrc ? (
-          <EditableMedia
-            path="imageMobileSrc"
-            label="Hero — изображение для мобильных"
-            className={styles["clients-hero-section__slot--mobile"]}
-          >
+          <div className={styles["clients-hero-section__slot--mobile"]}>
             <Image
               className={styles["clients-hero-section__image"]}
               src={content.imageMobileSrc}
@@ -47,39 +38,29 @@ export function ClientsHeroSection({ content }: ClientsHeroSectionProps) {
               height={content.imageMobileHeight ?? content.imageHeight}
               sizes="(max-width: 450px) 344px, (max-width: 768px) 744px, 960px"
             />
-          </EditableMedia>
+          </div>
         ) : null}
       </figure>
       <div className={styles["clients-hero-section__inset"]}>
         <div className={styles["clients-hero-section__layout"]}>
           <div className={styles["clients-hero-section__content"]}>
             <div className={styles["clients-hero-section__copy"]}>
-              <EditableText
-                path="title"
-                label="Hero — заголовок"
-                as="h1"
-                className={styles["clients-hero-section__title"]}
-                multiline
-              >
+              <h1 className={styles["clients-hero-section__title"]}>
                 {content.title}
-              </EditableText>
+              </h1>
               <p className={styles["clients-hero-section__subtitle"]}>
-                <EditableText path="subtitle.before" label="Hero — подзаголовок">
+                <span>
                   {content.subtitle.before}
-                </EditableText>
+                </span>
                 {content.subtitle.accent ? (
-                  <EditableText
-                    path="subtitle.accent"
-                    label="Hero — акцент подзаголовка"
-                    className={styles["clients-hero-section__subtitle-accent"]}
-                  >
+                  <span className={styles["clients-hero-section__subtitle-accent"]}>
                     {content.subtitle.accent}
-                  </EditableText>
+                  </span>
                 ) : null}
                 {content.subtitle.after ? (
-                  <EditableText path="subtitle.after" label="Hero — подзаголовок (продолжение)">
+                  <span>
                     {content.subtitle.after}
-                  </EditableText>
+                  </span>
                 ) : null}
               </p>
             </div>
@@ -89,9 +70,9 @@ export function ClientsHeroSection({ content }: ClientsHeroSectionProps) {
               withArrow
               className={styles["clients-hero-section__cta"]}
             >
-              <EditableText path="cta" label="Hero — CTA">
+              <span>
                 {content.cta}
-              </EditableText>
+              </span>
             </CompanyConnectionButton>
           </div>
         </div>

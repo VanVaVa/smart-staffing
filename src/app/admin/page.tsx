@@ -1,131 +1,32 @@
-import Link from "next/link";
+import type { Metadata } from "next";
 
-import {
-  FORM_SUBMISSION_ADMIN_PATHS,
-  FORM_SUBMISSION_TYPE_LABELS,
-  FORM_SUBMISSION_TYPES,
-} from "@/entities/form-submission";
-import { clientSegmentSlugs } from "@/entities/landing/model/clients-content";
-import { documentSlugs } from "@/entities/landing/model/documents-content";
-import {
-  getAdminPageLabel,
-  getAdminPagePath,
-  getPublicPagePath,
-} from "@/entities/landing/lib/landing-page-registry";
-import {
-  STATIC_LANDING_PAGE_SLUGS,
-  clientsPageSlug,
-  documentPageSlug,
-  LANDING_PAGE_SLUGS,
-} from "@/entities/landing/model/landing-page-slugs";
-import { listMediaArticlePageSlugs } from "@/entities/landing/server";
-
-import styles from "./AdminIndexPage.module.css";
+import { countFormSubmissionsByType } from "@/entities/form-submission/server";
+import { ADMIN_SECTIONS } from "@/entities/landing";
+import { countAdminSectionItems } from "@/entities/landing/server";
+import { AdminDashboardPage } from "@/views/admin-dashboard";
 
 export const dynamic = "force-dynamic";
 
-type AdminGroup = {
-  title: string;
-  slugs: string[];
+export const metadata: Metadata = {
+  title: "Админ-панель",
+  robots: { index: false, follow: false },
 };
 
-export default async function AdminIndexPage() {
-  const mediaArticleSlugs = await listMediaArticlePageSlugs();
-
-  const adminGroups: AdminGroup[] = [
-    {
-      title: "Глобальные",
-      slugs: [LANDING_PAGE_SLUGS.footer],
-    },
-    {
-      title: "Основные",
-      slugs: [
-        LANDING_PAGE_SLUGS.home,
-        LANDING_PAGE_SLUGS.about,
-        LANDING_PAGE_SLUGS.vacancies,
-      ],
-    },
-    {
-      title: "Документы",
-      slugs: [
-        LANDING_PAGE_SLUGS.documents,
-        ...documentSlugs.map(documentPageSlug),
-      ],
-    },
-    {
-      title: "Медиа",
-      slugs: [LANDING_PAGE_SLUGS.media, ...mediaArticleSlugs],
-    },
-    {
-      title: "Клиенты",
-      slugs: clientSegmentSlugs.map(clientsPageSlug),
-    },
-  ];
-
-  const listedSlugs = new Set(adminGroups.flatMap((group) => group.slugs));
-  const missingSlugs = STATIC_LANDING_PAGE_SLUGS.filter((slug) => !listedSlugs.has(slug));
+export default async function Page() {
+  const [submissionCounts, counts] = await Promise.all([
+    countFormSubmissionsByType(),
+    Promise.all(
+      ADMIN_SECTIONS.map(async (section) => [
+        section.key,
+        section.mode === "collection" ? await countAdminSectionItems(section) : null,
+      ] as const),
+    ),
+  ]);
 
   return (
-    <div className={styles.page}>
-      <header className={styles.header}>
-        <h1 className={styles.title}>Админ-панель</h1>
-        <p className={styles.subtitle}>Выберите страницу для редактирования</p>
-      </header>
-      <section className={styles.submissionsGroup}>
-        <h2 className={styles.groupTitle}>Заявки</h2>
-        <ul className={styles.list}>
-          <li className={styles.item}>
-            <Link className={styles.link} href="/admin/submissions">
-              Все заявки
-            </Link>
-          </li>
-          {FORM_SUBMISSION_TYPES.map((type) => (
-            <li key={type} className={styles.item}>
-              <Link className={styles.link} href={FORM_SUBMISSION_ADMIN_PATHS[type]}>
-                {FORM_SUBMISSION_TYPE_LABELS[type]}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </section>
-      <div className={styles.groups}>
-        {adminGroups.map((group) => (
-          <section key={group.title} className={styles.group}>
-            <h2 className={styles.groupTitle}>{group.title}</h2>
-            <ul className={styles.list}>
-              {group.slugs.map((slug) => (
-                <li key={slug} className={styles.item}>
-                  <Link className={styles.link} href={getAdminPagePath(slug)}>
-                    {getAdminPageLabel(slug)}
-                  </Link>
-                  <a
-                    className={styles.publicLink}
-                    href={getPublicPagePath(slug)}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Открыть на сайте
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </section>
-        ))}
-        {missingSlugs.length > 0 ? (
-          <section className={styles.group}>
-            <h2 className={styles.groupTitle}>Прочие</h2>
-            <ul className={styles.list}>
-              {missingSlugs.map((slug) => (
-                <li key={slug} className={styles.item}>
-                  <Link className={styles.link} href={getAdminPagePath(slug)}>
-                    {getAdminPageLabel(slug)}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </section>
-        ) : null}
-      </div>
-    </div>
+    <AdminDashboardPage
+      submissionCounts={submissionCounts}
+      sectionCounts={Object.fromEntries(counts)}
+    />
   );
 }

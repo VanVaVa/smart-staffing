@@ -1,5 +1,5 @@
 import type { DocumentItem } from "./documents-content";
-import { cloneProps, isRecord, isString } from "../lib/block-parse-utils";
+import { isRecord, isString } from "../lib/block-parse-utils";
 import type { LandingBlockBase } from "./landing-block-base";
 
 export const DOCUMENT_VIEW_BLOCK_TYPES = ["documentView"] as const;
@@ -21,9 +21,7 @@ export type DocumentViewPageContent = {
   blocks: DocumentViewBlock[];
 };
 
-export const DOCUMENT_VIEW_BLOCK_TYPE_LABELS: Record<DocumentViewBlockType, string> = {
-  documentView: "Документ",
-};
+;
 
 function parseDocumentViewProps(value: unknown): DocumentViewBlockProps | null {
   if (
@@ -76,18 +74,6 @@ export function parseDocumentViewBlock(input: {
 
 export function isDocumentViewBlockType(value: string): value is DocumentViewBlockType {
   return DOCUMENT_VIEW_BLOCK_TYPES.includes(value as DocumentViewBlockType);
-}
-
-export function defaultDocumentViewBlockProps(
-  slug: string,
-  title: string,
-): DocumentViewBlockProps {
-  return {
-    slug,
-    title,
-    href: `/documents/${slug}`,
-    pdfSrc: `/landing/documents/${slug}.pdf`,
-  };
 }
 
 export function documentViewBlocksFromItem(item: DocumentItem): Array<{

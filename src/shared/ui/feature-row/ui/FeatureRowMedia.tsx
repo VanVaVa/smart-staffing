@@ -1,5 +1,3 @@
-import { EditableMedia } from "@/shared/ui/editable-field";
-
 import styles from "./FeatureRowMedia.module.css";
 
 type FeatureRowMediaVariant = "soft" | "muted";
@@ -10,7 +8,6 @@ type FeatureRowMediaProps = {
   mediaAlt: string;
   mediaWidth: number;
   mediaHeight: number;
-  mediaPath?: string;
   reversed?: boolean;
 };
 
@@ -30,17 +27,12 @@ function isVideoSrc(src: string): boolean {
   return /\.(mp4|webm)$/i.test(src);
 }
 
-function hasMediaSrc(src: string): boolean {
-  return src.trim().length > 0;
-}
-
 export function FeatureRowMedia({
   rowIndex,
   mediaSrc,
   mediaAlt,
   mediaWidth,
   mediaHeight,
-  mediaPath,
   reversed,
 }: FeatureRowMediaProps) {
   const variant = resolveMediaVariant(rowIndex);
@@ -55,49 +47,34 @@ export function FeatureRowMedia({
     .filter(Boolean)
     .join(" ");
 
-  const hasMedia = hasMediaSrc(mediaSrc);
-
-  const mediaNode = hasMedia
-    ? isVideoSrc(mediaSrc)
-      ? (
-          <video
-            className={styles["feature-row-media__animation"]}
-            src={mediaSrc}
-            width={mediaWidth}
-            height={mediaHeight}
-            autoPlay
-            loop
-            muted
-            playsInline
-            aria-label={mediaAlt}
-          />
-        )
-      : (
-          <img
-            className={styles["feature-row-media__animation"]}
-            src={mediaSrc}
-            alt={mediaAlt}
-            width={mediaWidth}
-            height={mediaHeight}
-          />
-        )
-    : null;
-
-  const slotNode = mediaPath ? (
-    <EditableMedia
-      path={mediaPath}
-      label="Решение — медиа"
-      className={styles["feature-row-media__slot"]}
-    >
-      {mediaNode}
-    </EditableMedia>
-  ) : (
-    mediaNode
-  );
-
   return (
     <figure className={rootClass}>
-      <div className={styles["feature-row-media__viewport"]}>{slotNode}</div>
+      <div className={styles["feature-row-media__viewport"]}>
+        <div className={styles["feature-row-media__slot"]}>
+          {mediaSrc.trim().length === 0 ? null : isVideoSrc(mediaSrc) ? (
+            <video
+              className={styles["feature-row-media__animation"]}
+              src={mediaSrc}
+              width={mediaWidth}
+              height={mediaHeight}
+              autoPlay
+              loop
+              muted
+              playsInline
+              aria-label={mediaAlt}
+            />
+          ) : (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              className={styles["feature-row-media__animation"]}
+              src={mediaSrc}
+              alt={mediaAlt}
+              width={mediaWidth}
+              height={mediaHeight}
+            />
+          )}
+        </div>
+      </div>
     </figure>
   );
 }

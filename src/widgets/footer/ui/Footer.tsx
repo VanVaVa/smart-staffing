@@ -19,16 +19,10 @@ export function Footer({ content }: FooterProps) {
           <div className={styles.footer__columns}>
             <FooterLinkColumn
               title={content.menuTitle}
-              titlePath="menuTitle"
-              arrayPath="menu"
-              collectionKey="menu"
               items={content.menu}
             />
             <FooterLinkColumn
               title={content.solutionsTitle}
-              titlePath="solutionsTitle"
-              arrayPath="solutions"
-              collectionKey="solutions"
               items={content.solutions}
             />
             <FooterContacts contactsTitle={content.contactsTitle} contacts={content.contacts} />

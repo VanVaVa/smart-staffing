@@ -6,6 +6,8 @@ import {
   articleToMediaArticle,
   createDefaultMediaArticleProps,
   parseMediaArticleBlock,
+  parseMediaArticleBlockProps,
+  type MediaArticleBlockProps,
 } from "../model/media-article-blocks";
 import type { MediaArticle, MediaArticleRelated } from "../model/media-content";
 import {
@@ -63,6 +65,80 @@ export async function listMediaArticles(): Promise<MediaArticle[]> {
     .filter((article): article is MediaArticle => article !== null);
 
   return articles.sort(compareArticlesByDate);
+}
+
+export async function listMediaArticleProps(): Promise<MediaArticleBlockProps[]> {
+  const prisma = getPrismaClient();
+  const pages = await prisma.landingPage.findMany({
+    where: { slug: { startsWith: "media-" } },
+    include: { blocks: { orderBy: { order: "asc" } } },
+  });
+
+  return pages
+    .map((page) => page.blocks.find((block) => block.type === "mediaArticle"))
+    .map((block) =>
+      block ? parseMediaArticleBlockProps("mediaArticle", block.props) : null,
+    )
+    .filter((props): props is MediaArticleBlockProps => props !== null)
+    .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
+}
+
+export async function getMediaArticleProps(
+  articleSlug: string,
+): Promise<MediaArticleBlockProps | null> {
+  const prisma = getPrismaClient();
+  const page = await prisma.landingPage.findUnique({
+    where: { slug: mediaArticlePageSlug(articleSlug) },
+    include: { blocks: { orderBy: { order: "asc" } } },
+  });
+
+  const block = page?.blocks.find((item) => item.type === "mediaArticle");
+  return block ? parseMediaArticleBlockProps("mediaArticle", block.props) : null;
+}
+
+export async function saveMediaArticleProps(
+  currentSlug: string,
+  rawProps: unknown,
+): Promise<string> {
+  const props = parseMediaArticleBlockProps("mediaArticle", rawProps);
+  if (!props) {
+    throw new Error("Не удалось сохранить статью: проверьте заголовок и адрес");
+  }
+
+  const prisma = getPrismaClient();
+  const page = await prisma.landingPage.findUnique({
+    where: { slug: mediaArticlePageSlug(currentSlug) },
+    include: { blocks: { orderBy: { order: "asc" } } },
+  });
+
+  const block = page?.blocks.find((item) => item.type === "mediaArticle");
+  if (!page || !block) {
+    throw new Error(`Статья "${currentSlug}" не найдена`);
+  }
+
+  const nextPageSlug = mediaArticlePageSlug(props.slug);
+  if (nextPageSlug !== page.slug) {
+    const conflict = await prisma.landingPage.findUnique({
+      where: { slug: nextPageSlug },
+      select: { id: true },
+    });
+    if (conflict) {
+      throw new Error(`Адрес "${props.slug}" уже занят другой статьёй`);
+    }
+  }
+
+  await prisma.$transaction([
+    prisma.landingPage.update({
+      where: { id: page.id },
+      data: { slug: nextPageSlug, title: props.title, meta: props.meta },
+    }),
+    prisma.block.update({
+      where: { id: block.id },
+      data: { props: props as object },
+    }),
+  ]);
+
+  return props.slug;
 }
 
 export async function listMediaArticlePageSlugs(): Promise<string[]> {

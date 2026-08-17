@@ -4,7 +4,6 @@ import type { AboutPageContent } from "../model/about-blocks";
 import type { ClientsPageContent } from "../model/clients-blocks";
 import type { DocumentViewPageContent } from "../model/document-view-blocks";
 import type { DocumentsLandingPageContent } from "../model/documents-blocks";
-import type { HomePageContent } from "../model/home-blocks";
 import type { MediaArticlePageContent } from "../model/media-article-blocks";
 import type { MediaLandingPageContent } from "../model/media-blocks";
 import {
@@ -26,6 +25,19 @@ import {
 } from "../lib/get-landing-page-content";
 import { getHomePageContent } from "../lib/get-home-page-content";
 import {
+  countAdminSectionItems,
+  createAdminSectionItem,
+  deleteAdminSectionItem,
+  isReorderableSection,
+  listAdminSectionItems,
+  moveAdminSectionItem,
+  readAdminSectionItem,
+  readAdminSectionValues,
+  saveAdminSectionItem,
+  saveAdminSectionValues,
+  type AdminSectionItem,
+} from "./admin-content";
+import {
   buildRelatedArticles,
   createMediaArticle,
   deleteMediaArticle,
@@ -34,7 +46,19 @@ import {
   mediaArticleExists,
 } from "../lib/get-media-articles";
 
+export type { AdminSectionItem };
+
 export {
+  countAdminSectionItems,
+  createAdminSectionItem,
+  deleteAdminSectionItem,
+  isReorderableSection,
+  listAdminSectionItems,
+  moveAdminSectionItem,
+  readAdminSectionItem,
+  readAdminSectionValues,
+  saveAdminSectionItem,
+  saveAdminSectionValues,
   getLandingPageContent,
   saveLandingPageBlocks,
   validateAndSaveLandingPageBlocks,

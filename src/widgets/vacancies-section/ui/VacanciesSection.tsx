@@ -4,7 +4,6 @@ import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 
 import type { VacanciesBlockProps } from "@/entities/landing/model/vacancies-blocks";
-import { EditableMedia, EditableText } from "@/shared/ui/editable-field";
 import { Container } from "@/shared/ui/container";
 
 import { VacanciesApplicationForm } from "./vacancies-application-form";
@@ -77,36 +76,27 @@ export function VacanciesSection({ content }: VacanciesSectionProps) {
 
   return (
     <section className={styles["vacancies-section"]}>
-      <EditableMedia path="heroImageSrc" label="Hero — desktop">
+      <div>
         {desktopHero}
-      </EditableMedia>
+      </div>
       <Container className={styles["vacancies-section__container"]}>
         <header className={styles["vacancies-section__intro"]}>
-          <EditableText
-            path="title"
-            label="Заголовок"
-            as="h1"
-            className={styles["vacancies-section__title"]}
-          >
+          <h1 className={styles["vacancies-section__title"]}>
             {title}
-          </EditableText>
+          </h1>
           <p className={styles["vacancies-section__subtitle"]}>
-            <EditableText path="subtitle.lead" label="Подзаголовок (lead)">
+            <span>
               {subtitle.lead}
-            </EditableText>
-            <EditableText
-              path="subtitle.accent"
-              label="Подзаголовок (accent)"
-              className={styles["vacancies-section__subtitle-accent"]}
-            >
+            </span>
+            <span className={styles["vacancies-section__subtitle-accent"]}>
               {subtitle.accent}
-            </EditableText>
+            </span>
           </p>
         </header>
         <div className={styles["vacancies-section__hero-media"]}>
-          <EditableMedia path="heroImageMobileSrc" label="Hero — mobile">
+          <div>
             {mobileHero}
-          </EditableMedia>
+          </div>
         </div>
         <div className={styles["vacancies-section__body"]}>
           <div className={styles["vacancies-section__list-row"]}>

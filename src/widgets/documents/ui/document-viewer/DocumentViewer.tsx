@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 
 import type { DocumentViewBlockProps } from "@/entities/landing/model/document-view-blocks";
-import { EditableMedia, EditableText } from "@/shared/ui/editable-field";
 import { ArrowIcon, Container } from "@/shared/ui";
 
 import { PdfViewer } from "../pdf-viewer";
@@ -21,15 +20,10 @@ export function DocumentViewer({ content }: DocumentViewerProps) {
             <ArrowIcon name="2Left" />
             Документы
           </Link>
-          <EditableText
-            path="title"
-            label="Заголовок документа"
-            as="h1"
-            className={styles["document-viewer__title"]}
-          >
+          <h1 className={styles["document-viewer__title"]}>
             {content.title}
-          </EditableText>
-          <EditableMedia path="pdfSrc" label="PDF документа" className={styles["document-viewer__download-wrapper"]}>
+          </h1>
+          <div className={styles["document-viewer__download-wrapper"]}>
             <a
               className={styles["document-viewer__download"]}
               href={content.pdfSrc}
@@ -43,11 +37,11 @@ export function DocumentViewer({ content }: DocumentViewerProps) {
                 height={26}
               />
             </a>
-          </EditableMedia>
+          </div>
         </header>
-        <EditableMedia path="pdfSrc" label="PDF документа">
+        <div>
           <PdfViewer src={content.pdfSrc} title={content.title} />
-        </EditableMedia>
+        </div>
       </Container>
     </section>
   );

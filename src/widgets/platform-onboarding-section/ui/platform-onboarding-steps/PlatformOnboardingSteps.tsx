@@ -1,9 +1,4 @@
 import { ArrowIcon } from "@/shared/ui/arrow-icon";
-import {
-  EditableCollectionAdd,
-  EditableCollectionItem,
-  EditableText,
-} from "@/shared/ui/editable-field";
 import { CompanyConnectionButton } from "@/shared/ui/feedback-form";
 
 import styles from "./PlatformOnboardingSteps.module.css";
@@ -21,30 +16,15 @@ type PlatformOnboardingStepsProps = {
   flushTop?: boolean;
 };
 
-function StepCard({
-  title,
-  text,
-  stepIndex,
-}: Step & { stepIndex: number }) {
+function StepCard({ title, text }: Step) {
   return (
     <article className={styles["platform-onboarding-steps__card"]}>
-      <EditableText
-        path={`steps.steps.${stepIndex}.title`}
-        label="Шаг — заголовок"
-        as="h3"
-        className={styles["platform-onboarding-steps__card-title"]}
-      >
+      <h3 className={styles["platform-onboarding-steps__card-title"]}>
         {title}
-      </EditableText>
-      <EditableText
-        path={`steps.steps.${stepIndex}.text`}
-        label="Шаг — текст"
-        as="p"
-        className={styles["platform-onboarding-steps__card-text"]}
-        multiline
-      >
+      </h3>
+      <p className={styles["platform-onboarding-steps__card-text"]}>
         {text}
-      </EditableText>
+      </p>
     </article>
   );
 }
@@ -69,14 +49,9 @@ export function PlatformOnboardingSteps({
       <div className={styles["platform-onboarding-steps__glow--accent"]} aria-hidden />
       <div className={styles["platform-onboarding-steps__glow--bottom"]} aria-hidden />
       <div className={styles["platform-onboarding-steps__inner"]}>
-        <EditableText
-          path="steps.title"
-          label="Steps — заголовок"
-          as="h2"
-          className={styles["platform-onboarding-steps__title"]}
-        >
+        <h2 className={styles["platform-onboarding-steps__title"]}>
           {title}
-        </EditableText>
+        </h2>
         <div className={styles["platform-onboarding-steps__flow"]}>
           {steps.map((step, index) => (
             <div
@@ -84,13 +59,7 @@ export function PlatformOnboardingSteps({
               className={styles["platform-onboarding-steps__step"]}
               data-step={index}
             >
-              <EditableCollectionItem
-                arrayPath="steps.steps"
-                index={index}
-                variant="step-inline"
-              >
-                <StepCard {...step} stepIndex={index} />
-              </EditableCollectionItem>
+              <StepCard {...step} />
               {index === 0 ? (
                 <div
                   className={`${styles["platform-onboarding-steps__arrow"]} ${styles["platform-onboarding-steps__arrow--trailing"]}`}
@@ -142,16 +111,11 @@ export function PlatformOnboardingSteps({
             className={styles["platform-onboarding-steps__cta"]}
             interactive={interactive}
           >
-            <EditableText path="steps.cta" label="Steps — CTA">
+            <span>
               {cta}
-            </EditableText>
+            </span>
           </CompanyConnectionButton>
         </div>
-        <EditableCollectionAdd
-          arrayPath="steps.steps"
-          collectionKey="steps.steps"
-          addLabel="Шаг"
-        />
       </div>
     </div>
   );

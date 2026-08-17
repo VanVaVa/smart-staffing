@@ -2,7 +2,6 @@
 
 import { type FormEvent, useState } from "react";
 
-import { EditableText, useAdminBlockEditOptional } from "@/shared/ui/editable-field";
 import { Button } from "@/shared/ui/button";
 import { Checkbox } from "@/shared/ui/checkbox";
 import { Input } from "@/shared/ui/input";
@@ -18,16 +17,13 @@ type AboutBookFormProps = {
 };
 
 export function AboutBookForm({ inputPlaceholder, buttonLabel }: AboutBookFormProps) {
-  const blockEdit = useAdminBlockEditOptional();
-  const inAdminEdit = Boolean(blockEdit);
   const { openSuccessModal } = useFeedbackFormSuccessModal();
   const [telegramId, setTelegramId] = useState("");
   const [consented, setConsented] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
 
-  const canSubmit =
-    !inAdminEdit && !submitting && consented && telegramId.trim().length > 0;
+  const canSubmit = !submitting && consented && telegramId.trim().length > 0;
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -82,7 +78,7 @@ export function AboutBookForm({ inputPlaceholder, buttonLabel }: AboutBookFormPr
             value={telegramId}
             onChange={(event) => setTelegramId(event.target.value)}
             className={styles["about-book-form__input"]}
-            disabled={inAdminEdit || submitting}
+            disabled={submitting}
           />
           <Button
             type="submit"
@@ -92,9 +88,9 @@ export function AboutBookForm({ inputPlaceholder, buttonLabel }: AboutBookFormPr
             disabled={!canSubmit}
             className={styles["about-book-form__submit"]}
           >
-            <EditableText path="book.form.buttonLabel" label="Книга — подпись кнопки">
+            <span>
               {submitting ? "Отправка..." : buttonLabel}
-            </EditableText>
+            </span>
           </Button>
         </div>
         <Checkbox
@@ -102,7 +98,7 @@ export function AboutBookForm({ inputPlaceholder, buttonLabel }: AboutBookFormPr
           checked={consented}
           onChange={(event) => setConsented(event.target.checked)}
           className={styles["about-book-form__consent"]}
-          disabled={inAdminEdit || submitting}
+          disabled={submitting}
           label={
             <>
               Я даю согласие на обработку персональных данных в соответствии с{" "}
@@ -113,15 +109,6 @@ export function AboutBookForm({ inputPlaceholder, buttonLabel }: AboutBookFormPr
           }
         />
         {submitError ? <p className={styles["about-book-form__error"]}>{submitError}</p> : null}
-        {inAdminEdit ? (
-          <EditableText
-            path="book.form.inputPlaceholder"
-            label="Книга — placeholder поля"
-            className={styles["about-book-form__placeholder-edit"]}
-          >
-            {inputPlaceholder}
-          </EditableText>
-        ) : null}
       </div>
     </form>
   );

@@ -23,9 +23,7 @@ export type MediaArticlePageContent = {
   blocks: MediaArticleBlock[];
 };
 
-export const MEDIA_ARTICLE_BLOCK_TYPE_LABELS: Record<MediaArticleBlockType, string> = {
-  mediaArticle: "Статья",
-};
+;
 
 function parseBodyBlock(value: unknown): MediaArticleBodyBlock | null {
   if (!isRecord(value) || !isString(value.type)) {
@@ -180,13 +178,6 @@ export function createDefaultMediaArticleProps(slug: string): MediaArticleBlockP
   };
 }
 
-export function defaultMediaArticleBlockProps(slug: string): MediaArticleBlockProps {
-  if (slug === EXAMPLE_MEDIA_ARTICLE.slug) {
-    return cloneProps(EXAMPLE_MEDIA_ARTICLE);
-  }
-  return createDefaultMediaArticleProps(slug);
-}
-
 export function mediaArticleBlocksFromContent(
   content: MediaArticleContent,
 ): Array<{
@@ -216,20 +207,3 @@ export function mediaArticleBlocksFromStaticContent(
   return mediaArticleBlocksFromContent(EXAMPLE_MEDIA_ARTICLE);
 }
 
-export type MediaArticleCollectionKey = "bodyBlocks.paragraph" | "bodyBlocks.image";
-
-export function defaultMediaArticleCollectionItem(
-  collectionKey: MediaArticleCollectionKey,
-): unknown {
-  if (collectionKey === "bodyBlocks.paragraph") {
-    return { type: "paragraph", text: "Новый абзац" };
-  }
-  if (collectionKey === "bodyBlocks.image") {
-    return {
-      type: "image",
-      imageSrc: "/landing/media/media-news.png",
-      imageAlt: "",
-    };
-  }
-  return "";
-}

@@ -3,10 +3,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
-import {
-  EditableCollectionAdd,
-  EditableCollectionItem,
-} from "@/shared/ui/editable-field";
 
 import { AboutPartnerAwardModal } from "../about-partner-award-modal";
 import { AboutPartnerAwardCard } from "../about-partner-award-card";
@@ -170,29 +166,15 @@ export function AboutPartnerCarousel({ awards }: AboutPartnerCarouselProps) {
           />
           <div ref={viewportRef} className={styles["about-partner-carousel__viewport"]}>
             <div ref={trackRef} className={styles["about-partner-carousel__track"]}>
-              {awards.map((award, index) => (
-                <EditableCollectionItem
-                  key={award.id}
-                  arrayPath="awards"
-                  index={index}
-                  variant="carousel-card"
-                >
-                  <AboutPartnerAwardCard
-                    title={award.title}
-                    status={award.status}
-                    nomination={award.nomination}
-                    project={award.project}
-                    itemIndex={index}
-                    onClick={() => setActiveAwardId(award.id)}
-                  />
-                </EditableCollectionItem>
+              {awards.map((award) => (
+                <AboutPartnerAwardCard key={award.id}
+                  title={award.title}
+                  status={award.status}
+                  nomination={award.nomination}
+                  project={award.project}
+                  onClick={() => setActiveAwardId(award.id)}
+                />
               ))}
-              <EditableCollectionAdd
-                arrayPath="awards"
-                collectionKey="partner.awards"
-                addLabel="Награда"
-                variant="inline"
-              />
             </div>
           </div>
         </div>
@@ -233,7 +215,6 @@ export function AboutPartnerCarousel({ awards }: AboutPartnerCarouselProps) {
         <AboutPartnerAwardModal
           open
           onClose={() => setActiveAwardId(null)}
-          itemIndex={activeAwardIndex}
           documentSrc={activeAward.document.src}
           documentAlt={activeAward.document.alt}
           documentWidth={activeAward.document.width}

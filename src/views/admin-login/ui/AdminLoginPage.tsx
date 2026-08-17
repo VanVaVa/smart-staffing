@@ -11,7 +11,7 @@ import styles from "./AdminLoginPage.module.css";
 export function AdminLoginPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const nextPath = searchParams.get("next") ?? "/admin/home";
+  const nextPath = searchParams.get("next") ?? "/admin";
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

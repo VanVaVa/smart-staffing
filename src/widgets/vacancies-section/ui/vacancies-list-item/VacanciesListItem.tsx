@@ -1,5 +1,4 @@
 import { ArrowIcon } from "@/shared/ui/arrow-icon";
-import { EditableText } from "@/shared/ui/editable-field";
 
 import styles from "./VacanciesListItem.module.css";
 
@@ -8,7 +7,6 @@ type VacanciesListItemProps = {
   employment: string;
   selected: boolean;
   onSelect: () => void;
-  itemIndex: number;
 };
 
 export function VacanciesListItem({
@@ -16,7 +14,6 @@ export function VacanciesListItem({
   employment,
   selected,
   onSelect,
-  itemIndex,
 }: VacanciesListItemProps) {
   return (
     <button
@@ -31,20 +28,12 @@ export function VacanciesListItem({
       onClick={onSelect}
     >
       <span className={styles["vacancies-list-item__copy"]}>
-        <EditableText
-          path={`vacancies.${itemIndex}.title`}
-          label="Вакансия — название"
-          className={styles["vacancies-list-item__title"]}
-        >
+        <span className={styles["vacancies-list-item__title"]}>
           {title}
-        </EditableText>
-        <EditableText
-          path={`vacancies.${itemIndex}.employment`}
-          label="Вакансия — занятость"
-          className={styles["vacancies-list-item__employment"]}
-        >
+        </span>
+        <span className={styles["vacancies-list-item__employment"]}>
           {employment}
-        </EditableText>
+        </span>
       </span>
       <span className={styles["vacancies-list-item__arrow"]} aria-hidden>
         <ArrowIcon name="round" className={styles["vacancies-list-item__arrow-icon"]} />

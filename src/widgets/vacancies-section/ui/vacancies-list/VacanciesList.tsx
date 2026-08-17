@@ -9,10 +9,6 @@ import {
 } from "react";
 
 import type { VacanciesBlockProps } from "@/entities/landing/model/vacancies-blocks";
-import {
-  EditableCollectionAdd,
-  EditableCollectionItem,
-} from "@/shared/ui/editable-field";
 
 import { VacanciesListItem } from "../vacancies-list-item";
 
@@ -184,21 +180,14 @@ export function VacanciesList({ vacancies, selectedId, onSelect }: VacanciesList
           tabIndex={0}
         >
           <ul className={styles["vacancies-list-panel__items"]}>
-            {vacancies.map((vacancy, index) => (
+            {vacancies.map((vacancy) => (
               <li key={vacancy.id} className={styles["vacancies-list-panel__item"]}>
-                <EditableCollectionItem
-                  arrayPath="vacancies"
-                  index={index}
-                  variant="list-entry"
-                >
-                  <VacanciesListItem
-                    title={vacancy.title}
-                    employment={vacancy.employment}
-                    selected={vacancy.id === selectedId}
-                    onSelect={() => onSelect(vacancy.id)}
-                    itemIndex={index}
-                  />
-                </EditableCollectionItem>
+                <VacanciesListItem
+                  title={vacancy.title}
+                  employment={vacancy.employment}
+                  selected={vacancy.id === selectedId}
+                  onSelect={() => onSelect(vacancy.id)}
+                />
               </li>
             ))}
           </ul>
@@ -227,7 +216,6 @@ export function VacanciesList({ vacancies, selectedId, onSelect }: VacanciesList
           />
         </div>
       </div>
-      <EditableCollectionAdd arrayPath="vacancies" collectionKey={"vacancies" as never} addLabel="Вакансия" />
     </div>
   );
 }

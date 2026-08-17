@@ -1,13 +1,12 @@
 import type { ReactNode } from "react";
 
 import { Badge } from "@/shared/ui/badge";
-import { EditableTagList, EditableText } from "@/shared/ui/editable-field";
 
 import styles from "./FeatureRow.module.css";
 import { FeatureRowMedia } from "./ui/FeatureRowMedia";
 
 type FeatureRowProps = {
-  rowIndex?: number;
+  rowIndex: number;
   title: string;
   description: string;
   descriptionAccent?: string;
@@ -23,63 +22,23 @@ type FeatureRowProps = {
 function FeatureRowDescription({
   description,
   descriptionAccent,
-  pathPrefix,
 }: {
   description: string;
   descriptionAccent?: string;
-  pathPrefix: string | null;
 }) {
-  if (!descriptionAccent) {
-    return pathPrefix ? (
-      <EditableText
-        path={`${pathPrefix}description`}
-        label="Решение — описание"
-        as="p"
-        className={styles["feature-row__lead"]}
-        multiline
-      >
-        {description}
-      </EditableText>
-    ) : (
-      <p className={styles["feature-row__lead"]}>{description}</p>
-    );
+  const accentIndex = descriptionAccent
+    ? description.indexOf(descriptionAccent)
+    : -1;
+
+  if (!descriptionAccent || accentIndex === -1) {
+    return <p className={styles["feature-row__lead"]}>{description}</p>;
   }
-
-  const accentIndex = description.indexOf(descriptionAccent);
-
-  if (accentIndex === -1) {
-    return pathPrefix ? (
-      <EditableText
-        path={`${pathPrefix}description`}
-        label="Решение — описание"
-        as="p"
-        className={styles["feature-row__lead"]}
-        multiline
-      >
-        {description}
-      </EditableText>
-    ) : (
-      <p className={styles["feature-row__lead"]}>{description}</p>
-    );
-  }
-
-  const before = description.slice(0, accentIndex);
-  const after = description.slice(accentIndex + descriptionAccent.length);
 
   return (
     <p className={styles["feature-row__lead"]}>
-      {before}
-      {pathPrefix ? (
-        <EditableText
-          path={`${pathPrefix}descriptionAccent`}
-          label="Решение — акцент описания"
-        >
-          <span className={styles["feature-row__lead-accent"]}>{descriptionAccent}</span>
-        </EditableText>
-      ) : (
-        <span className={styles["feature-row__lead-accent"]}>{descriptionAccent}</span>
-      )}
-      {after}
+      {description.slice(0, accentIndex)}
+      <span className={styles["feature-row__lead-accent"]}>{descriptionAccent}</span>
+      {description.slice(accentIndex + descriptionAccent.length)}
     </p>
   );
 }
@@ -104,86 +63,35 @@ export function FeatureRow({
     .filter(Boolean)
     .join(" ");
 
-  const pathPrefix = rowIndex !== undefined ? `rows.${rowIndex}.` : null;
-
-  const titleNode = pathPrefix ? (
-    <EditableText
-      path={`${pathPrefix}title`}
-      label="Решение — заголовок"
-      as="h3"
-      className={styles["feature-row__heading"]}
-    >
-      {title}
-    </EditableText>
-  ) : (
-    <h3 className={styles["feature-row__heading"]}>{title}</h3>
-  );
-
-  const descriptionNode = (
-    <FeatureRowDescription
-      description={description}
-      descriptionAccent={descriptionAccent}
-      pathPrefix={pathPrefix}
-    />
-  );
-
-  const tagsNode =
-    tags && tags.length > 0 ? (
-      pathPrefix ? (
-        <EditableTagList
-          path={`${pathPrefix}tags`}
-          tags={tags}
-          className={styles["feature-row__tags"]}
-          itemClassName={styles["feature-row__tags-item"]}
-        />
-      ) : (
-        <ul className={styles["feature-row__tags"]}>
-          {tags.map((tag) => (
-            <li key={tag} className={styles["feature-row__tags-item"]}>
-              <Badge variant="tag">{tag}</Badge>
-            </li>
-          ))}
-        </ul>
-      )
-    ) : pathPrefix ? (
-      <EditableTagList
-        path={`${pathPrefix}tags`}
-        tags={[]}
-        className={styles["feature-row__tags"]}
-        itemClassName={styles["feature-row__tags-item"]}
-      />
-    ) : null;
-
   return (
     <article className={rootClass}>
       <div className={styles["feature-row__content"]}>
         <div className={styles["feature-row__intro"]}>
-          {titleNode}
-          {descriptionNode}
+          <h3 className={styles["feature-row__heading"]}>{title}</h3>
+          <FeatureRowDescription
+            description={description}
+            descriptionAccent={descriptionAccent}
+          />
         </div>
-        {tagsNode}
+        {tags ? (
+          <ul className={styles["feature-row__tags"]}>
+            {tags.map((tag) => (
+              <li key={tag} className={styles["feature-row__tags-item"]}>
+                <Badge variant="tag">{tag}</Badge>
+              </li>
+            ))}
+          </ul>
+        ) : null}
         {action}
       </div>
-      {rowIndex !== undefined ? (
-        <FeatureRowMedia
-          rowIndex={rowIndex}
-          mediaSrc={imageSrc}
-          mediaAlt={imageAlt}
-          mediaWidth={imageWidth}
-          mediaHeight={imageHeight}
-          mediaPath={`${pathPrefix}imageSrc`}
-          reversed={reversed}
-        />
-      ) : (
-        <FeatureRowMedia
-          rowIndex={0}
-          mediaSrc={imageSrc}
-          mediaAlt={imageAlt}
-          mediaWidth={imageWidth}
-          mediaHeight={imageHeight}
-          reversed={reversed}
-        />
-      )}
+      <FeatureRowMedia
+        rowIndex={rowIndex}
+        mediaSrc={imageSrc}
+        mediaAlt={imageAlt}
+        mediaWidth={imageWidth}
+        mediaHeight={imageHeight}
+        reversed={reversed}
+      />
     </article>
   );
 }

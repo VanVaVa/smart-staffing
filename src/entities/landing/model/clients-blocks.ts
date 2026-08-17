@@ -1,6 +1,5 @@
 import {
   clientsSegments,
-  getClientsSegment,
   type ClientSegmentSlug,
   type ClientsHeroContent,
   type ClientsPartnersExperienceContent,
@@ -41,13 +40,7 @@ export type ClientsPageContent = {
   blocks: ClientsBlock[];
 };
 
-export const CLIENTS_BLOCK_TYPE_LABELS: Record<ClientsBlockType, string> = {
-  hero: "Hero",
-  platform: "Платформа",
-  platformBenefits: "Преимущества платформы",
-  partnersExperience: "Опыт партнёров",
-  partnershipCta: "CTA партнёрства",
-};
+;
 
 function parseHeroProps(value: unknown): ClientsHeroContent | null {
   if (!isRecord(value) || !isString(value.title) || !isString(value.imageSrc)) {
@@ -131,63 +124,6 @@ export function parseClientsBlock(input: {
 
 export function isClientsBlockType(value: string): value is ClientsBlockType {
   return CLIENTS_BLOCK_TYPES.includes(value as ClientsBlockType);
-}
-
-export function defaultClientsBlockProps(
-  type: ClientsBlockType,
-  segment: ClientSegmentSlug = "enterprise",
-): ClientsBlockPropsByType[ClientsBlockType] {
-  const content = getClientsSegment(segment);
-  switch (type) {
-    case "hero":
-      return cloneProps(content.hero);
-    case "platform":
-      return cloneProps(content.platform);
-    case "platformBenefits":
-      return cloneProps(content.platformBenefits);
-    case "partnersExperience":
-      return cloneProps(content.partnersExperience);
-    case "partnershipCta":
-      return cloneProps(content.partnershipCta);
-  }
-}
-
-export type ClientsCollectionKey =
-  | "platform.painPoints"
-  | "platform.tags"
-  | "platformBenefits.cards"
-  | "platformBenefits.showcase";
-
-export function defaultClientsCollectionItem(collectionKey: ClientsCollectionKey): unknown {
-  switch (collectionKey) {
-    case "platform.painPoints":
-      return "Новая pain point";
-    case "platform.tags":
-      return "Новый тег";
-    case "platformBenefits.cards":
-      return {
-        title: "Новая карточка",
-        backgroundType: "light-bg",
-        visual: {
-          imageSrc: "/landing/clients/enterprise/benefits-roles-visual.png",
-          imageWidth: 436,
-          imageHeight: 540,
-          imageAlt: "",
-        },
-      };
-    case "platformBenefits.showcase":
-      return {
-        variant: "it-costs",
-        title: "Showcase",
-        subtitle: "",
-        visual: {
-          imageSrc: "/landing/clients/enterprise/benefits-showcase-it-visual.png",
-          imageWidth: 728,
-          imageHeight: 728,
-          imageAlt: "",
-        },
-      };
-  }
 }
 
 export function clientsBlocksFromStaticContent(segment: ClientSegmentSlug): Array<{

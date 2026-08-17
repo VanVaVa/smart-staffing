@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 import type { ClientsPlatformBenefitsCardContent } from "@/entities/landing";
-import { EditableMedia, EditableText } from "@/shared/ui/editable-field";
 
 import styles from "./ClientsPlatformBenefitsCard.module.css";
 
@@ -37,7 +36,6 @@ export function ClientsPlatformBenefitsCard({
   cardIndex,
   cardCount,
 }: ClientsPlatformBenefitsCardProps) {
-  const prefix = `cards.${cardIndex}.`;
   const toneClass =
     card.backgroundType === "dark-bg"
       ? styles["clients-platform-benefits-card__title--light"]
@@ -78,25 +76,15 @@ export function ClientsPlatformBenefitsCard({
           />
         </div>
       ) : null}
-      <EditableText
-        path={`${prefix}title`}
-        label="Карточка — заголовок"
-        as="p"
-        className={`${styles["clients-platform-benefits-card__title"]} ${toneClass}`}
-        multiline
-      >
+      <p className={`${styles["clients-platform-benefits-card__title"]} ${toneClass}`}>
         {card.title}
-      </EditableText>
+      </p>
       <div className={styles["clients-platform-benefits-card__visual"]}>
-        <EditableMedia
-          path={`${prefix}visual.imageSrc`}
-          label="Карточка — изображение"
-          className={
+        <div className={
             card.visual.imageMobileSrc
               ? styles["clients-platform-benefits-card__slot--desktop"]
               : undefined
-          }
-        >
+          }>
           <Image
             className={styles["clients-platform-benefits-card__image"]}
             src={card.visual.imageSrc}
@@ -105,13 +93,9 @@ export function ClientsPlatformBenefitsCard({
             height={card.visual.imageHeight}
             sizes="(max-width: 768px) 100vw, (max-width: 992px) 288px, 25vw"
           />
-        </EditableMedia>
+        </div>
         {card.visual.imageMobileSrc ? (
-          <EditableMedia
-            path={`${prefix}visual.imageMobileSrc`}
-            label="Карточка — изображение для мобильных"
-            className={styles["clients-platform-benefits-card__slot--mobile"]}
-          >
+          <div className={styles["clients-platform-benefits-card__slot--mobile"]}>
             <Image
               className={styles["clients-platform-benefits-card__image"]}
               src={card.visual.imageMobileSrc}
@@ -120,7 +104,7 @@ export function ClientsPlatformBenefitsCard({
               height={card.visual.imageMobileHeight ?? card.visual.imageHeight}
               sizes="100vw"
             />
-          </EditableMedia>
+          </div>
         ) : null}
         {card.inProgress ? (
           <>

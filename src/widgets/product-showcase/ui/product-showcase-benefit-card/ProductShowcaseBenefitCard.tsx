@@ -1,5 +1,4 @@
 import type { ProductShowcaseCostIcon } from "@/entities/landing/model/home-blocks";
-import { EditableMedia, EditableText } from "@/shared/ui/editable-field";
 
 import styles from "./ProductShowcaseBenefitCard.module.css";
 
@@ -9,8 +8,6 @@ type ProductShowcaseBenefitMediaProps = {
   className: string;
   width: number;
   height: number;
-  mediaPath?: string;
-  mediaLabel?: string;
 };
 
 function ProductShowcaseBenefitMedia({
@@ -19,27 +16,19 @@ function ProductShowcaseBenefitMedia({
   className,
   width,
   height,
-  mediaPath,
-  mediaLabel,
 }: ProductShowcaseBenefitMediaProps) {
-  const image = src ? (
-    <img className={className} src={src} alt={alt} width={width} height={height} />
-  ) : (
-    <div
-      className={`${className} ${styles["product-showcase-benefit-card__media-placeholder"]}`}
-      style={{ aspectRatio: `${width} / ${height}` }}
-      aria-hidden
-    />
-  );
-
-  if (!mediaPath || !mediaLabel) {
-    return image;
-  }
-
   return (
-    <EditableMedia path={mediaPath} label={mediaLabel}>
-      {image}
-    </EditableMedia>
+    <div>
+      {src ? (
+        <img className={className} src={src} alt={alt} width={width} height={height} />
+      ) : (
+        <div
+          className={`${className} ${styles["product-showcase-benefit-card__media-placeholder"]}`}
+          style={{ aspectRatio: `${width} / ${height}` }}
+          aria-hidden
+        />
+      )}
+    </div>
   );
 }
 
@@ -51,12 +40,7 @@ function ProductShowcaseBenefitCostIcons({ icons }: ProductShowcaseBenefitCostIc
   return (
     <div className={styles["product-showcase-benefit-card__icons"]} aria-hidden>
       {icons.map((icon, index) => (
-        <EditableMedia
-          key={index}
-          path={`benefitMedia.costIcons.${index}.imageSrc`}
-          label={`Cost icon ${index + 1}`}
-          className={styles["product-showcase-benefit-card__icon"]}
-        >
+        <div key={index} className={styles["product-showcase-benefit-card__icon"]}>
           {icon.imageSrc ? (
             <img
               className={styles["product-showcase-benefit-card__icon-image"]}
@@ -68,21 +52,19 @@ function ProductShowcaseBenefitCostIcons({ icons }: ProductShowcaseBenefitCostIc
           ) : (
             <span className={styles["product-showcase-benefit-card__icon-placeholder"]} />
           )}
-        </EditableMedia>
+        </div>
       ))}
     </div>
   );
 }
 
 type CostCardProps = {
-  benefitIndex: number;
   title: string;
   text: string;
   costIcons: ProductShowcaseCostIcon[];
 };
 
 export function ProductShowcaseBenefitCostCard({
-  benefitIndex,
   title,
   text,
   costIcons,
@@ -93,65 +75,39 @@ export function ProductShowcaseBenefitCostCard({
     >
       <ProductShowcaseBenefitCostIcons icons={costIcons} />
       <div className={styles["product-showcase-benefit-card__copy"]}>
-        <EditableText
-          path={`benefits.${benefitIndex}.title`}
-          label="Benefit — заголовок"
-          as="h3"
-          className={styles["product-showcase-benefit-card__title"]}
-        >
+        <h3 className={styles["product-showcase-benefit-card__title"]}>
           {title}
-        </EditableText>
-        <EditableText
-          path={`benefits.${benefitIndex}.text`}
-          label="Benefit — текст"
-          as="p"
-          className={styles["product-showcase-benefit-card__text"]}
-          multiline
-        >
+        </h3>
+        <p className={styles["product-showcase-benefit-card__text"]}>
           {text}
-        </EditableText>
+        </p>
       </div>
     </article>
   );
 }
 
 type WideMediaCardProps = {
-  benefitIndex: number;
   title: string;
   text: string;
   mediaImageSrc?: string;
-  mediaPath: string;
 };
 
 export function ProductShowcaseBenefitWideMediaCard({
-  benefitIndex,
   title,
   text,
   mediaImageSrc,
-  mediaPath,
 }: WideMediaCardProps) {
   return (
     <article
       className={`${styles["product-showcase-benefit-card"]} ${styles["product-showcase-benefit-card--wide-media"]}`}
     >
       <div className={styles["product-showcase-benefit-card__copy"]}>
-        <EditableText
-          path={`benefits.${benefitIndex}.title`}
-          label="Benefit — заголовок"
-          as="h3"
-          className={styles["product-showcase-benefit-card__title"]}
-        >
+        <h3 className={styles["product-showcase-benefit-card__title"]}>
           {title}
-        </EditableText>
-        <EditableText
-          path={`benefits.${benefitIndex}.text`}
-          label="Benefit — текст"
-          as="p"
-          className={styles["product-showcase-benefit-card__text"]}
-          multiline
-        >
+        </h3>
+        <p className={styles["product-showcase-benefit-card__text"]}>
           {text}
-        </EditableText>
+        </p>
       </div>
       <div className={styles["product-showcase-benefit-card__media-slot"]}>
         <ProductShowcaseBenefitMedia
@@ -160,8 +116,6 @@ export function ProductShowcaseBenefitWideMediaCard({
           className={styles["product-showcase-benefit-card__media-side"]}
           width={450}
           height={324}
-          mediaPath={mediaPath}
-          mediaLabel="Benefit — медиа"
         />
       </div>
     </article>
@@ -169,42 +123,27 @@ export function ProductShowcaseBenefitWideMediaCard({
 }
 
 type TallMediaCardProps = {
-  benefitIndex: number;
   title: string;
   text: string;
   mediaImageSrc?: string;
-  mediaPath: string;
 };
 
 export function ProductShowcaseBenefitTallMediaCard({
-  benefitIndex,
   title,
   text,
   mediaImageSrc,
-  mediaPath,
 }: TallMediaCardProps) {
   return (
     <article
       className={`${styles["product-showcase-benefit-card"]} ${styles["product-showcase-benefit-card--tall-media"]}`}
     >
       <div className={styles["product-showcase-benefit-card__copy"]}>
-        <EditableText
-          path={`benefits.${benefitIndex}.title`}
-          label="Benefit — заголовок"
-          as="h3"
-          className={styles["product-showcase-benefit-card__title"]}
-        >
+        <h3 className={styles["product-showcase-benefit-card__title"]}>
           {title}
-        </EditableText>
-        <EditableText
-          path={`benefits.${benefitIndex}.text`}
-          label="Benefit — текст"
-          as="p"
-          className={styles["product-showcase-benefit-card__text"]}
-          multiline
-        >
+        </h3>
+        <p className={styles["product-showcase-benefit-card__text"]}>
           {text}
-        </EditableText>
+        </p>
       </div>
       <ProductShowcaseBenefitMedia
         src={mediaImageSrc}
@@ -212,29 +151,23 @@ export function ProductShowcaseBenefitTallMediaCard({
         className={styles["product-showcase-benefit-card__media-bottom"]}
         width={472}
         height={275}
-        mediaPath={mediaPath}
-        mediaLabel="Benefit — медиа"
       />
     </article>
   );
 }
 
 type StatCardProps = {
-  benefitIndex: number;
   statValue: string;
   title: string;
   text: string;
   mediaImageSrc?: string;
-  mediaPath: string;
 };
 
 export function ProductShowcaseBenefitStatCard({
-  benefitIndex,
   statValue,
   title,
   text,
   mediaImageSrc,
-  mediaPath,
 }: StatCardProps) {
   return (
     <article
@@ -247,36 +180,18 @@ export function ProductShowcaseBenefitStatCard({
           className={styles["product-showcase-benefit-card__stat-bg"]}
           width={447}
           height={202}
-          mediaPath={mediaPath}
-          mediaLabel="Benefit stat — медиа"
         />
-        <EditableText
-          path={`benefits.${benefitIndex}.statValue`}
-          label="Benefit — stat"
-          as="p"
-          className={styles["product-showcase-benefit-card__stat-value"]}
-        >
+        <p className={styles["product-showcase-benefit-card__stat-value"]}>
           {statValue}
-        </EditableText>
+        </p>
       </div>
       <div className={styles["product-showcase-benefit-card__copy"]}>
-        <EditableText
-          path={`benefits.${benefitIndex}.title`}
-          label="Benefit — заголовок"
-          as="h3"
-          className={styles["product-showcase-benefit-card__title"]}
-        >
+        <h3 className={styles["product-showcase-benefit-card__title"]}>
           {title}
-        </EditableText>
-        <EditableText
-          path={`benefits.${benefitIndex}.text`}
-          label="Benefit — текст"
-          as="p"
-          className={styles["product-showcase-benefit-card__text"]}
-          multiline
-        >
+        </h3>
+        <p className={styles["product-showcase-benefit-card__text"]}>
           {text}
-        </EditableText>
+        </p>
       </div>
     </article>
   );

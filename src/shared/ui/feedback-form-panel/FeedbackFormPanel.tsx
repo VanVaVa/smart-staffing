@@ -1,5 +1,4 @@
 import { FeedbackForm } from "@/shared/ui/feedback-form";
-import { EditableText } from "@/shared/ui/editable-field";
 import type { FormSubmissionType } from "@/entities/form-submission";
 
 import styles from "./FeedbackFormPanel.module.css";
@@ -14,7 +13,6 @@ export type FeedbackFormPanelContent = {
 type FeedbackFormPanelProps = FeedbackFormPanelContent & {
   className?: string;
   interactive?: boolean;
-  editPrefix?: string;
   submissionType: FormSubmissionType;
   sourcePath: string;
   sourceLabel?: string;
@@ -23,23 +21,12 @@ type FeedbackFormPanelProps = FeedbackFormPanelContent & {
 function FeedbackFormPanelSubtitle({
   subtitle,
   subtitleAccent,
-  editPrefix,
-}: Pick<FeedbackFormPanelContent, "subtitle" | "subtitleAccent"> & {
-  editPrefix?: string;
-}) {
-  const pathBase = editPrefix ?? "";
-
+}: Pick<FeedbackFormPanelContent, "subtitle" | "subtitleAccent">) {
   if (!subtitleAccent) {
     return (
-      <EditableText
-        path={`${pathBase}subtitle`}
-        label="Подзаголовок формы"
-        as="p"
-        className={styles["feedback-form-panel__subtitle"]}
-        multiline
-      >
+      <p className={styles["feedback-form-panel__subtitle"]}>
         {subtitle}
-      </EditableText>
+      </p>
     );
   }
 
@@ -47,15 +34,9 @@ function FeedbackFormPanelSubtitle({
 
   if (accentIndex === -1) {
     return (
-      <EditableText
-        path={`${pathBase}subtitle`}
-        label="Подзаголовок формы"
-        as="p"
-        className={styles["feedback-form-panel__subtitle"]}
-        multiline
-      >
+      <p className={styles["feedback-form-panel__subtitle"]}>
         {subtitle}
-      </EditableText>
+      </p>
     );
   }
 
@@ -65,11 +46,11 @@ function FeedbackFormPanelSubtitle({
   return (
     <p className={styles["feedback-form-panel__subtitle"]}>
       {before}
-      <EditableText path={`${pathBase}subtitleAccent`} label="Акцент подзаголовка">
+      <span>
         <span className={styles["feedback-form-panel__subtitle-accent"]}>
           {subtitleAccent}
         </span>
-      </EditableText>
+      </span>
       {after}
     </p>
   );
@@ -82,7 +63,6 @@ export function FeedbackFormPanel({
   submitLabel,
   className,
   interactive = true,
-  editPrefix = "",
   submissionType,
   sourcePath,
   sourceLabel,
@@ -98,18 +78,12 @@ export function FeedbackFormPanel({
       </div>
       <div className={styles["feedback-form-panel__panel"]}>
         <div className={styles["feedback-form-panel__intro"]}>
-          <EditableText
-            path={`${editPrefix}title`}
-            label="Заголовок формы"
-            as="h2"
-            className={styles["feedback-form-panel__title"]}
-          >
+          <h2 className={styles["feedback-form-panel__title"]}>
             {title}
-          </EditableText>
+          </h2>
           <FeedbackFormPanelSubtitle
             subtitle={subtitle}
             subtitleAccent={subtitleAccent}
-            editPrefix={editPrefix}
           />
         </div>
         <div

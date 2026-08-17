@@ -5,7 +5,6 @@ import { createPortal } from "react-dom";
 import Image from "next/image";
 
 import { ArrowIcon } from "@/shared/ui/arrow-icon";
-import { EditableMedia } from "@/shared/ui/editable-field";
 
 import styles from "./AboutPartnerAwardModal.module.css";
 
@@ -14,7 +13,6 @@ const PAGE_BLUR_CLASS = "about-partner-award-modal-open";
 type AboutPartnerAwardModalProps = {
   open: boolean;
   onClose: () => void;
-  itemIndex: number;
   documentSrc: string;
   documentAlt: string;
   documentWidth: number;
@@ -24,7 +22,6 @@ type AboutPartnerAwardModalProps = {
 export function AboutPartnerAwardModal({
   open,
   onClose,
-  itemIndex,
   documentSrc,
   documentAlt,
   documentWidth,
@@ -117,10 +114,7 @@ export function AboutPartnerAwardModal({
           <span id={titleId}>Награды</span>
         </button>
         <div className={styles["about-partner-award-modal__scroll"]}>
-          <EditableMedia
-            path={`awards.${itemIndex}.document.src`}
-            label="Награда — изображение"
-          >
+          <div>
             <div className={styles["about-partner-award-modal__document-wrap"]}>
               <Image
                 className={styles["about-partner-award-modal__document"]}
@@ -132,7 +126,7 @@ export function AboutPartnerAwardModal({
                 priority
               />
             </div>
-          </EditableMedia>
+          </div>
         </div>
       </div>
     </div>,

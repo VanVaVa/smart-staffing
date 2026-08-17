@@ -1,6 +1,5 @@
 import Image from "next/image";
 
-import { EditableMedia } from "@/shared/ui/editable-field";
 
 import styles from "./ProductShowcaseMockup.module.css";
 
@@ -15,7 +14,7 @@ export function ProductShowcaseMockup({
 }: ProductShowcaseMockupProps) {
   return (
     <figure className={styles["product-showcase-mockup"]}>
-      <EditableMedia path="mockupDeviceSrc" label="Mockup — устройство">
+      <div>
         <Image
           className={styles["product-showcase-mockup__device"]}
           src={deviceSrc}
@@ -26,9 +25,9 @@ export function ProductShowcaseMockup({
           priority
           aria-hidden
         />
-      </EditableMedia>
+      </div>
       <div className={styles["product-showcase-mockup__screen-slot"]}>
-        <EditableMedia path="mockupScreenSrc" label="Mockup — экран">
+        <div>
           <Image
             className={styles["product-showcase-mockup__screen"]}
             src={screenSrc}
@@ -37,7 +36,7 @@ export function ProductShowcaseMockup({
             height={1068}
             sizes="(max-width: 768px) 88vw, 914px"
           />
-        </EditableMedia>
+        </div>
       </div>
     </figure>
   );

@@ -50,9 +50,7 @@ export type FooterPageContent = {
   blocks: FooterBlock[];
 };
 
-export const FOOTER_BLOCK_TYPE_LABELS: Record<FooterBlockType, string> = {
-  footer: "Футер",
-};
+;
 
 function parseLinkItem(value: unknown): FooterLinkItem | null {
   if (!isRecord(value) || !isString(value.label) || !isString(value.href)) {
@@ -204,20 +202,3 @@ export function footerBlocksFromStaticContent(): Array<{
   return [{ order: 0, type: "footer", props: defaultFooterBlockProps() }];
 }
 
-export type FooterCollectionKey = "menu" | "solutions" | "legal" | "contacts.social";
-
-export function defaultFooterCollectionItem(collectionKey: FooterCollectionKey): unknown {
-  if (collectionKey === "menu" || collectionKey === "solutions" || collectionKey === "legal") {
-    return { label: "Новая ссылка", href: "/" };
-  }
-  if (collectionKey === "contacts.social") {
-    return {
-      label: "Соцсеть",
-      href: "https://",
-      iconSrc: "/icons/social/telegram.svg",
-      width: 32,
-      height: 28,
-    };
-  }
-  return { label: "Новая ссылка", href: "/" };
-}

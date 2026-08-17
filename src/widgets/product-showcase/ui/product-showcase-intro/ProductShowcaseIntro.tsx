@@ -1,5 +1,4 @@
 import { Badge } from "@/shared/ui/badge";
-import { EditableText } from "@/shared/ui/editable-field";
 
 import styles from "./ProductShowcaseIntro.module.css";
 
@@ -17,28 +16,17 @@ export function ProductShowcaseIntro({
   return (
     <header className={styles["product-showcase-intro"]}>
       <Badge variant="tag" className={styles["product-showcase-intro__tag"]}>
-        <EditableText path="tag" label="Тег платформы">
+        <span>
           {tag}
-        </EditableText>
+        </span>
       </Badge>
       <div className={styles["product-showcase-intro__copy"]}>
-        <EditableText
-          path="title"
-          label="Заголовок платформы"
-          as="h2"
-          className={styles["product-showcase-intro__title"]}
-        >
+        <h2 className={styles["product-showcase-intro__title"]}>
           {title}
-        </EditableText>
-        <EditableText
-          path="subtitle"
-          label="Подзаголовок платформы"
-          as="p"
-          className={styles["product-showcase-intro__subtitle"]}
-          multiline
-        >
+        </h2>
+        <p className={styles["product-showcase-intro__subtitle"]}>
           {subtitle}
-        </EditableText>
+        </p>
       </div>
     </header>
   );

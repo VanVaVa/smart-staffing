@@ -1,5 +1,4 @@
 import type { AboutPartnerBlockProps } from "@/entities/landing/model/about-blocks";
-import { EditableText } from "@/shared/ui/editable-field";
 import { Container } from "@/shared/ui/container";
 
 import { AboutPartnerCarousel } from "./about-partner-carousel";
@@ -18,15 +17,9 @@ export function AboutPartnerSection({ content }: AboutPartnerSectionProps) {
       <Container wide>
         <div className={styles["about-partner-section__inner"]}>
           <header className={styles["about-partner-section__header"]}>
-            <EditableText
-              path="title"
-              label="Заголовок партнёрств"
-              as="h2"
-              className={styles["about-partner-section__title"]}
-              multiline
-            >
+            <h2 className={styles["about-partner-section__title"]}>
               {title}
-            </EditableText>
+            </h2>
           </header>
           <AboutPartnerCarousel awards={awards} />
         </div>
