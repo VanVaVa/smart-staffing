@@ -561,6 +561,7 @@ const midMarketPartnershipCta: ClientsPartnershipCtaContent = {
   title: "Снизим ваши затраты на\u00a0ресурсы",
   subtitle:
     "Покажем, как закрыть нехватку специалистов без\u00a0расширения штата",
+  subtitleAccent: "закрыть нехватку специалистов"
 };
 
 const agenciesPlatformBenefits: ClientsPlatformBenefitsContent = {

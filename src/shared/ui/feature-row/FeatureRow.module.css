@@ -55,6 +55,7 @@
 
 .feature-row__lead-accent {
   color: var(--color-accent);
+  font-weight: 500;
 }
 
 .feature-row__tags {

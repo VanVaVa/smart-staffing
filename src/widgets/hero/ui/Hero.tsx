@@ -1,5 +1,8 @@
+"use client";
+
 import type { HeroBlockProps } from "@/entities/landing/model/home-blocks";
-import { CompanyConnectionButton } from "@/shared/ui/feedback-form";
+import { contactsHref, scrollToContactsOnPage } from "@/shared/lib/scroll-to-contacts";
+import { Button } from "@/shared/ui/button";
 
 import { HeroRegistryLink } from "./hero-registry-link";
 import { HeroVisual } from "./hero-visual";
@@ -36,17 +39,31 @@ export function Hero({ content, interactive = true }: HeroProps) {
               </p>
             </div>
             <div className={styles.hero__actions}>
-              <CompanyConnectionButton
-                variant="primary"
-                size="md"
-                withArrow
-                className={styles["hero__primary-cta"]}
-                interactive={interactive}
-              >
-                <span>
-                  {content.primaryCta}
-                </span>
-              </CompanyConnectionButton>
+              {interactive ? (
+                <Button
+                  variant="primary"
+                  size="md"
+                  withArrow
+                  className={styles["hero__primary-cta"]}
+                  href={contactsHref}
+                  onClick={scrollToContactsOnPage}
+                >
+                  <span>
+                    {content.primaryCta}
+                  </span>
+                </Button>
+              ) : (
+                <Button
+                  variant="primary"
+                  size="md"
+                  withArrow
+                  className={styles["hero__primary-cta"]}
+                >
+                  <span>
+                    {content.primaryCta}
+                  </span>
+                </Button>
+              )}
               <HeroRegistryLink
                 registryHref={content.registryHref}
                 registryLabel={content.registryLabel}

@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 
 import { Link } from "@/shared/ui";
 
+import { isNavHrefActive } from "../../lib/is-nav-href-active";
 import styles from "./HeaderNav.module.css";
 
 type HeaderNavDropdownChild = {
@@ -14,13 +15,15 @@ type HeaderNavDropdownChild = {
 
 type HeaderNavDropdownProps = {
   label: string;
+  href: string;
   items: readonly HeaderNavDropdownChild[];
 };
 
-export function HeaderNavDropdown({ label, items }: HeaderNavDropdownProps) {
+export function HeaderNavDropdown({ label, href, items }: HeaderNavDropdownProps) {
   const pathname = usePathname();
   const [openedOnPathname, setOpenedOnPathname] = useState<string | null>(null);
   const open = openedOnPathname === pathname;
+  const current = isNavHrefActive(pathname, href);
 
   const setOpen = (nextOpen: boolean) => {
     setOpenedOnPathname(nextOpen ? pathname : null);
@@ -53,7 +56,13 @@ export function HeaderNavDropdown({ label, items }: HeaderNavDropdownProps) {
     >
       <button
         type="button"
-        className={`${styles["header-nav__link"]} ${styles["header-nav__trigger"]}`}
+        className={[
+          styles["header-nav__link"],
+          styles["header-nav__trigger"],
+          current ? styles["header-nav__link--current"] : "",
+        ]
+          .filter(Boolean)
+          .join(" ")}
         aria-haspopup="menu"
         aria-expanded={open}
         onClick={() => setOpen(!open)}
@@ -77,13 +86,27 @@ export function HeaderNavDropdown({ label, items }: HeaderNavDropdownProps) {
         </svg>
       </button>
       <ul className={styles["header-nav__dropdown-menu"]} role="menu">
-        {items.map((child) => (
-          <li key={child.href} role="none">
-            <Link href={child.href} variant="nav" className={styles["header-nav__dropdown-item"]}>
-              {child.label}
-            </Link>
-          </li>
-        ))}
+        {items.map((child) => {
+          const childCurrent = isNavHrefActive(pathname, child.href);
+
+          return (
+            <li key={child.href} role="none">
+              <Link
+                href={child.href}
+                variant="nav"
+                className={[
+                  styles["header-nav__dropdown-item"],
+                  childCurrent ? styles["header-nav__dropdown-item--current"] : "",
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
+                aria-current={childCurrent ? "page" : undefined}
+              >
+                {child.label}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

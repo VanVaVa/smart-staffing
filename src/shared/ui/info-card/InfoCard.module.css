@@ -17,6 +17,7 @@
 .info-card__stat-value {
   font-family: var(--font-heading);
   font-size: clamp(40px, 5vw, 64px);
+  font-weight: 500;
   line-height: 1;
   color: var(--color-accent);
 }

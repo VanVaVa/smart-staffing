@@ -237,6 +237,18 @@
     width: 100%;
     max-width: none;
   }
+
+  .feedback-form__fields {
+    width: auto;
+  }
+
+  .feedback-form__input {
+    width: min(500px, 70vw)
+  } 
+
+  .feedback-form-channel-toggle {
+    width: fit-content;
+  }
 }
 
 @media (max-width: 576px) {

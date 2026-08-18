@@ -199,9 +199,36 @@
     top: min(258px, calc(716 * 100vw / 1920));
     right: -81px;
   }
+}
+
+@media (max-width: 576px) {
+  .not-found-page__orb--purple-medium {
+    top: -23px;
+    right: -26px;
+    width: 180px;
+    height: 180px;
+  }
+
+  .not-found-page__orb--orange-medium {
+    top: 316px;
+    bottom: auto;
+    left: -115px;
+    width: 180px;
+    height: 180px;
+  }
 
   .not-found-page__orb--purple-large {
-    display: none;
+    left: -53px;
+    bottom: -200px;
+    width: 480px;
+    height: 480px;
+  }
+
+  .not-found-page__orb--orange-small {
+    top: 109px;
+    right: -48px;
+    width: 120px;
+    height: 120px;
   }
 }
 

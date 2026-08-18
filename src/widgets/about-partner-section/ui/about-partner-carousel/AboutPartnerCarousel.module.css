@@ -32,6 +32,7 @@
 .about-partner-carousel__track {
   display: inline-flex;
   gap: min(12px, calc(12 * 100vw / 1920));
+  margin-top: 40px;
 }
 
 .about-partner-carousel__track > * {

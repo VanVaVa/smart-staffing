@@ -85,6 +85,7 @@
   height: var(--about-book-form-control-height);
   min-height: var(--about-book-form-control-height);
   align-self: stretch;
+  min-width: fit-content;
 }
 
 .about-book-form__input {
@@ -177,6 +178,20 @@
     flex: 0 0 276px;
     width: 276px;
     max-width: 276px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-book-form__orb--orange {
+    top: 20px;
+    width: 220px;
+    height: 220px;
+  }
+
+  .about-book-form__orb--purple {
+    top: -20px;
+    width: 120px;
+    height: 120px;
   }
 }
 

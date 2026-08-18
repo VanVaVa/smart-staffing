@@ -27,7 +27,6 @@ export type DocumentsPageContent = {
     activity: string;
     activityCode: string;
     inn: string;
-    ogrn: string;
   };
   categories: DocumentCategory[];
   softwareRights: {
@@ -101,8 +100,7 @@ export const documentsPage: DocumentsPageContent = {
     activity:
       "62.0 — Разработка компьютерного программного обеспечения, консультационные услуги в\u00a0данной области и\u00a0другие сопутствующие услуги",
     activityCode: "1.01, 2.01",
-    inn: "7714744569",
-    ogrn: "1087746759319",
+    inn: "7714744569 / 1087746759319",
   },
   categories,
   softwareRights: {

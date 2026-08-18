@@ -34,7 +34,7 @@ export function AboutHistorySection({ content }: AboutHistorySectionProps) {
                 {timeline.map((item, index) => (
                   <li key={`${item.year}-${index}`} className={styles["about-history-section__timeline-item"]}>
                     <span className={styles["about-history-section__timeline-arrow"]} aria-hidden>
-                      <ArrowIcon name="2Right" className={styles["about-history-section__timeline-arrow-icon"]} />
+                      <ArrowIcon name="round" className={styles["about-history-section__timeline-arrow-icon"]} />
                     </span>
                     <div className={styles["about-history-section__timeline-copy"]}>
                       <span className={styles["about-history-section__timeline-year"]}>

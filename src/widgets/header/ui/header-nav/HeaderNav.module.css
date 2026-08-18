@@ -19,6 +19,12 @@
   }
 }
 
+.header-nav__link.header-nav__link--current,
+.header-nav__link.header-nav__link--current:hover {
+  color: var(--color-accent);
+  font-weight: 500;
+}
+
 .header-nav__trigger {
   margin: 0;
   padding: 0;
@@ -39,6 +45,11 @@
   .header-nav--on-dark-backdrop .header-nav__link:hover {
     color: var(--color-accent);
   }
+}
+
+.header-nav--on-dark-backdrop .header-nav__link.header-nav__link--current,
+.header-nav--on-dark-backdrop .header-nav__link.header-nav__link--current:hover {
+  color: var(--color-accent);
 }
 
 .header-nav__chevron {
@@ -103,6 +114,11 @@
   transition:
     color 0.4s ease,
     background 0.4s ease;
+}
+
+.header-nav__dropdown-item.header-nav__dropdown-item--current {
+  color: var(--color-accent);
+  font-weight: 500;
 }
 
 .header-nav__dropdown-menu .header-nav__dropdown-item:hover {

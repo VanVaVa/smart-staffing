@@ -8,11 +8,14 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  margin-left: 0 !important;
 }
 
 .footer-contacts__link {
   text-decoration: none;
   transition: color 0.2s ease;
+  font-size: var(--text-body-xl);
+  line-height: var(--line-body);
 }
 
 .footer-contacts__link:hover {

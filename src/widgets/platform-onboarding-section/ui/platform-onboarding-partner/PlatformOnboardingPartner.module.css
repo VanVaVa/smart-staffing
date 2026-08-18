@@ -6,12 +6,17 @@
 
 .platform-onboarding-partner__subtitle-accent {
   color: var(--color-accent);
+  font-weight: 500;
 }
 
 .platform-onboarding-partner__card-wrap {
   display: flex;
   justify-content: center;
   overflow: visible;
+}
+
+.platform-onboarding-partner__card-wrap svg {
+  color: var(--color-accent);
 }
 
 .platform-onboarding-partner__orb {
@@ -122,14 +127,23 @@
     align-items: center;
   }
 
+  .platform-onboarding-partner header {
+    max-width: 664px;
+  }
+
+  .platform-onboarding-partner__card-text {
+    font-size: 24px;
+    line-height: var(--line-h3);
+  }
+
   .platform-onboarding-partner__card-wrap {
     width: 100%;
   }
 
   .platform-onboarding-partner__card {
     width: min(100%, 1143px);
-    padding: 0 24px;
-    gap: 64px;
+    padding: 0 24px 0 56px;
+    gap: 0px;
     border-radius: var(--radius-md);
   }
 
@@ -139,7 +153,7 @@
   }
 
   .platform-onboarding-partner__content {
-    gap: 64px;
+    gap: 0;
   }
 
   .platform-onboarding-partner__orb {
@@ -157,6 +171,8 @@
     
   .platform-onboarding-partner__card {
     gap: 18px;
+    padding-block: 10px;
+    align-items: center;
   }
 
   .platform-onboarding-partner__media {
@@ -164,11 +180,17 @@
     width: 122px;
     height: 116px;
     margin: 0 0 -20px;
-    clip-path: inset(0 0 20px);
+    top: -10px;
+    left: -30px;
   }
 
   .platform-onboarding-partner__content {
     gap: 13px;
+  }
+
+  .platform-onboarding-partner__card-text {
+    font-size: 20px;
+    line-height: 22px;;
   }
 }
 
@@ -179,9 +201,8 @@
     align-items: start;
     width: min(100%, 652px);
     padding: 24px;
-    column-gap: 20px;
-    row-gap: 20px;
     overflow: visible;
+    gap: 0;
   }
 
   .platform-onboarding-partner__media {
@@ -192,6 +213,9 @@
     height: 144px;
     margin: 0;
     clip-path: none;
+    margin-left: 10px;
+    margin-bottom: -30px;
+    margin-top: -10px;
   }
 
   .platform-onboarding-partner__orb {
@@ -245,6 +269,7 @@
     width: 128px;
     height: 122px;
     margin: 0;
+    transform: translateX(20px);
   }
 
   .platform-onboarding-partner__card-text {
@@ -264,8 +289,7 @@
     width: auto;
     margin-inline: auto;
     padding: 16px;
-    column-gap: 12px;
-    row-gap: 16px;
+    gap: 0;
     border-radius: var(--radius-control);
   }
 
@@ -280,8 +304,8 @@
   }
 
   .platform-onboarding-partner__media {
-    width: 61px;
-    height: 48px;
+    width: 70px;
+    height: 70px;
   }
 
   .platform-onboarding-partner__orb {

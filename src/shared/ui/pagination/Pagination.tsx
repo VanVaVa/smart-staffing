@@ -60,10 +60,24 @@ export function Pagination({
   }
 
   const items = getPaginationItems(currentPage, totalPages);
-  const nextPage = Math.min(currentPage + 1, totalPages);
+  const showPrev = currentPage > 1;
+  const showNext = currentPage < totalPages;
 
   return (
     <nav className={styles.pagination} aria-label="Навигация по страницам">
+      {showPrev ? (
+        <NextLink
+          href={getPageHref(pathname, currentPage - 1)}
+          className={styles.pagination__arrow}
+          aria-label="Предыдущая страница"
+          scroll
+        >
+          <ArrowIcon
+            name="2Left"
+            className={styles["pagination__arrow-icon"]}
+          />
+        </NextLink>
+      ) : null}
       <div className={styles.pagination__pages}>
         {items.map((item, index) =>
           item === "ellipsis" ? (
@@ -95,32 +109,19 @@ export function Pagination({
           ),
         )}
       </div>
-      {currentPage < totalPages ? (
+      {showNext ? (
         <NextLink
-          href={getPageHref(pathname, nextPage)}
-          className={styles.pagination__next}
+          href={getPageHref(pathname, currentPage + 1)}
+          className={styles.pagination__arrow}
           aria-label="Следующая страница"
           scroll
         >
           <ArrowIcon
             name="2Right"
-            className={styles.pagination__nextIcon}
+            className={styles["pagination__arrow-icon"]}
           />
         </NextLink>
-      ) : (
-        <span
-          className={[
-            styles.pagination__next,
-            styles["pagination__next--disabled"],
-          ].join(" ")}
-          aria-hidden
-        >
-          <ArrowIcon
-            name="2Right"
-            className={styles.pagination__nextIcon}
-          />
-        </span>
-      )}
+      ) : null}
     </nav>
   );
 }

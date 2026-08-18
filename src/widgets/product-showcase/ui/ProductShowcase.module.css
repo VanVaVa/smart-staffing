@@ -147,30 +147,11 @@
   }
 
   .product-showcase__mockup-slot {
-    width: 960px;
+    width: 1260px;
   }
 
   .product-showcase__benefits-slot {
     margin-top: 168px;
-  }
-}
-
-@media (min-width: 993px) and (max-width: 1440px) {
-  .product-showcase {
-    padding-top: min(196px, calc(196 * 100vw / 1440));
-    padding-bottom: 168px;
-  }
-
-  .product-showcase__mockup-slot {
-    width: min(960px, calc(960 * 100vw / 1440));
-  }
-
-  .product-showcase__benefits-slot {
-    margin-top: min(168px, calc(168 * 100vw / 1440));
-  }
-
-  .product-showcase__stage {
-    margin-top: min(123px, calc(123 * 100vw / 1440));
   }
 }
 
@@ -224,30 +205,11 @@
   }
 
   .product-showcase__mockup-slot {
-    width: min(calc(100% - 2 * var(--container-padding)), 587px);
+    width: 768px;
   }
 
   .product-showcase__benefits-slot {
     margin-top: 168px;
-  }
-}
-
-@media (min-width: 769px) and (max-width: 992px) {
-  .product-showcase {
-    padding-top: min(168px, calc(168 * 100vw / 992));
-    padding-bottom: min(286px, calc(286 * 100vw / 992));
-  }
-
-  .product-showcase__stage {
-    margin-top: min(85px, calc(85 * 100vw / 992));
-  }
-
-  .product-showcase__mockup-slot {
-    width: min(calc(100% - 2 * var(--container-padding)), min(587px, calc(587 * 100vw / 992)));
-  }
-
-  .product-showcase__benefits-slot {
-    margin-top: min(168px, calc(168 * 100vw / 992));
   }
 }
 
@@ -262,30 +224,11 @@
   }
 
   .product-showcase__mockup-slot {
-    width: min(calc(100% - 2 * var(--container-padding)), 550px);
+    width: calc(100% - 2 * var(--container-padding));
   }
 
   .product-showcase__benefits-slot {
     margin-top: 148px;
-  }
-}
-
-@media (min-width: 577px) and (max-width: 768px) {
-  .product-showcase {
-    padding-top: min(148px, calc(148 * 100vw / 768));
-    padding-bottom: min(233px, calc(233 * 100vw / 768));
-  }
-
-  .product-showcase__stage {
-    margin-top: min(40px, calc(40 * 100vw / 768));
-  }
-
-  .product-showcase__mockup-slot {
-    width: min(calc(100% - 2 * var(--container-padding)), min(550px, calc(550 * 100vw / 768)));
-  }
-
-  .product-showcase__benefits-slot {
-    margin-top: min(148px, calc(148 * 100vw / 768));
   }
 }
 
@@ -308,7 +251,7 @@
   }
 
   .product-showcase__mockup-slot {
-    width: min(calc(100% - 2 * var(--container-padding)), 409px);
+    width: calc(100% - 2 * var(--container-padding));
   }
 
   .product-showcase__benefits-slot {

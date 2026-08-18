@@ -44,16 +44,19 @@
 
 .input__control--error {
   color: var(--color-accent);
+  font-weight: 500;
 }
 
 .input__control--error::placeholder {
   color: var(--color-accent);
+  font-weight: 500;
 }
 
 .input__error {
   font-size: var(--text-body-sm);
   line-height: var(--line-body-sm);
   color: var(--color-accent);
+  font-weight: 500;
 }
 
 @media (max-width: 1440px) and (min-width: 577px) {

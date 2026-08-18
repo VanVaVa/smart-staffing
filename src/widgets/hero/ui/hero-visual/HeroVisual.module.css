@@ -13,7 +13,7 @@
   position: relative;
   width: 100%;
   aspect-ratio: 12 / 5;
-  border-radius: var(--radius-control) 0 0 var(--radius-control);
+  border-radius: var(--radius-control);
   overflow: hidden;
 }
 

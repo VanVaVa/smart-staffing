@@ -33,6 +33,7 @@
 
 .about-intro-section__subtitle-accent {
   color: var(--color-accent);
+  font-weight: 500;
 }
 
 @media (max-width: 1440px) {
@@ -124,7 +125,7 @@
 @media (max-width: 450px) {
   .about-intro-section {
     padding-top: 160px;
-    padding-bottom: 84px;
+    padding-bottom: 24px;
   }
 
   .about-intro-section__inner {

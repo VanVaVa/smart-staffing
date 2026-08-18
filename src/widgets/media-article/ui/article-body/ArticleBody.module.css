@@ -49,6 +49,7 @@
 
 .article-body__source a {
   color: var(--color-accent);
+  font-weight: 500;
   text-decoration: none;
 }
 

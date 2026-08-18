@@ -58,9 +58,10 @@
   cursor: not-allowed;
 }
 
-.checkbox__label {
+.checkbox__label, .checkbox__label a {
   flex: 1;
   min-width: 0;
+  color: var(--color-white) !important;
 }
 
 @media (max-width: 1440px) {

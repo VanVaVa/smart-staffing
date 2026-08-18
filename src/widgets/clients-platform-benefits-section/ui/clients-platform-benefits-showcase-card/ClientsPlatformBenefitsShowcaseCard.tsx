@@ -29,11 +29,15 @@ export function ClientsPlatformBenefitsShowcaseCard({
         </div>
         <div>
           <Image
-            className={`${styles["clients-platform-benefits-showcase-card__it-visual"]}${
+            className={`${styles["clients-platform-benefits-showcase-card__it-visual"]} ${
               isPortraitVisual
                 ? ` ${styles["clients-platform-benefits-showcase-card__it-visual--portrait"]}`
                 : ""
-            }`}
+            } ${
+              item.title.includes("Контроль сроков") || item.title.includes("Доступ к кандидатам")
+                ? `${styles["clients-platform-benefits-showcase-card__it-visual--big-portrait"]}`
+                : ""}`
+            }
             src={item.visual.imageSrc}
             alt={item.visual.imageAlt}
             width={item.visual.imageWidth}

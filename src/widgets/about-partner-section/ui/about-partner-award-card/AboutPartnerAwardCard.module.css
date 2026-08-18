@@ -115,8 +115,8 @@
   }
 
   .about-partner-award-card__field-value, .about-partner-award-card__field-label {
-    font-size: var(--text-caption);
-    line-height: var(--line-caption);
+    font-size: 16px;
+    line-height: 1.25;
   }
 }
 

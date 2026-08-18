@@ -127,6 +127,9 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  max-width: 660px;
+  margin-top: 20px;
+  margin-bottom: 64px;
 }
 
 .company-connection-modal__sales-title {
@@ -375,6 +378,8 @@
 
   .company-connection-modal--full-page .company-connection-modal__body {
     padding: 40px 24px 40px;
+    padding-top: 0;
+    padding-bottom: 80px;
   }
 }
 
@@ -486,5 +491,9 @@
 
   .company-connection-modal--page .company-connection-modal__body {
     padding-bottom: 64px;
+  }
+
+  .company-connection-modal__sales-copy {
+    max-width: calc(100% - 52px);
   }
 }

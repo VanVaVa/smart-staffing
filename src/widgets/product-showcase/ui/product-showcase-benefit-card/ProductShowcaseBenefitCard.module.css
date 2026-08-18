@@ -392,6 +392,18 @@
   .product-showcase-benefit-card__media-bottom {
     width: min(100%, min(349px, calc(349 * 100vw / 768)));
   }
+
+  .product-showcase-benefit-card--cost {
+    width: 599px !important;
+  }
+
+  .product-showcase-benefit-card--stat {
+    height: 314px !important;
+  }
+
+  .product-showcase-benefit-card--stat div {
+    height: auto;
+  }
 }
 
 @media (max-width: 576px) {
@@ -412,12 +424,14 @@
   .product-showcase-benefit-card__text {
     font-size: var(--text-body-sm);
     line-height: var(--line-body-sm);
+    margin-top: 8px;
   }
 
   .product-showcase-benefit-card--cost {
     min-height: auto;
     height: auto;
     padding: 20px;
+    width: 100% !important;
   }
 
   .product-showcase-benefit-card--wide-media {
@@ -467,6 +481,13 @@
   .product-showcase-benefit-card__stat-value {
     font-size: 48px;
     line-height: 1;
+  }
+}
+
+@media (max-width: 576px) {
+  .product-showcase-benefit-card__icon-image {
+    width: 36px;
+    height: 36px;
   }
 }
 

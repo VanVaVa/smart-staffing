@@ -1,6 +1,7 @@
 "use client";
 
 import NextLink from "next/link";
+import { usePathname } from "next/navigation";
 import { Fragment, useCallback, useEffect, useId, useRef, useState } from "react";
 
 import { landingNav } from "@/entities/landing";
@@ -10,6 +11,7 @@ import { Button } from "@/shared/ui/button";
 import { Logo } from "@/shared/ui/logo";
 import linkStyles from "@/shared/ui/link/Link.module.css";
 
+import { isNavHrefActive } from "../../lib/is-nav-href-active";
 import navStyles from "../header-nav/HeaderNav.module.css";
 import styles from "./HeaderMobileMenu.module.css";
 
@@ -20,10 +22,20 @@ type HeaderMobileMenuProps = {
 
 const menuLinkClassName = `${linkStyles.link} ${linkStyles["link--nav"]} ${navStyles["header-nav__dropdown-item"]}`;
 
+function getMenuItemClassName(current: boolean) {
+  return [
+    menuLinkClassName,
+    current ? navStyles["header-nav__dropdown-item--current"] : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+}
+
 export function HeaderMobileMenu({
   onDarkBackdrop = false,
   onOpenChange,
 }: HeaderMobileMenuProps) {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const panelId = useId();
   const menuRef = useRef<HTMLDivElement>(null);
@@ -154,28 +166,48 @@ export function HeaderMobileMenu({
         role="menu"
         hidden={!open}
       >
-        {landingNav.map((item) =>
-          "children" in item ? (
-            <Fragment key={item.label}>
-              <li role="none">
-                <span className={styles["header-mobile-menu__group-title"]}>{item.label}</span>
-              </li>
-              {item.children.map((child) => (
-                <li key={child.href} role="none">
-                  <NextLink href={child.href} className={menuLinkClassName} onClick={close}>
-                    {child.label}
-                  </NextLink>
+        {landingNav.map((item) => {
+          if ("children" in item) {
+            return (
+              <Fragment key={item.label}>
+                <li role="none">
+                  <span className={styles["header-mobile-menu__group-title"]}>{item.label}</span>
                 </li>
-              ))}
-            </Fragment>
-          ) : (
+                {item.children.map((child) => {
+                  const current = isNavHrefActive(pathname, child.href);
+
+                  return (
+                    <li key={child.href} role="none">
+                      <NextLink
+                        href={child.href}
+                        className={getMenuItemClassName(current)}
+                        aria-current={current ? "page" : undefined}
+                        onClick={close}
+                      >
+                        {child.label}
+                      </NextLink>
+                    </li>
+                  );
+                })}
+              </Fragment>
+            );
+          }
+
+          const current = isNavHrefActive(pathname, item.href);
+
+          return (
             <li key={item.href} role="none">
-              <NextLink href={item.href} className={menuLinkClassName} onClick={close}>
+              <NextLink
+                href={item.href}
+                className={getMenuItemClassName(current)}
+                aria-current={current ? "page" : undefined}
+                onClick={close}
+              >
                 {item.label}
               </NextLink>
             </li>
-          ),
-        )}
+          );
+        })}
       </ul>
     </div>
   );

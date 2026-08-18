@@ -559,8 +559,7 @@ const documentsCompanySection: AdminSingletonSection = {
     { kind: "textarea", name: "legalAddress", label: "Юридический адрес", rows: 3 },
     { kind: "textarea", name: "activity", label: "Вид деятельности", rows: 3 },
     { kind: "text", name: "activityCode", label: "Коды деятельности" },
-    { kind: "text", name: "inn", label: "ИНН" },
-    { kind: "text", name: "ogrn", label: "ОГРН" },
+    { kind: "text", name: "inn", label: "ИНН / ОГРН" },
   ],
 };
 

@@ -93,6 +93,7 @@
 @media (min-width: 577px) and (max-width: 768px) {
   .feedback-form-channel-toggle {
     height: 40px;
+    width: fit-content;
   }
 
   .feedback-form-channel-toggle__option {

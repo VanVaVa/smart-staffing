@@ -99,6 +99,7 @@
 
 .feedback-form-panel__subtitle-accent {
   color: var(--color-accent);
+  font-weight: 500;
 }
 
 .feedback-form-panel__form-slot {

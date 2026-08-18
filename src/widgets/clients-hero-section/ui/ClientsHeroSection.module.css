@@ -78,6 +78,7 @@
 
 .clients-hero-section__subtitle-accent {
   color: var(--color-accent);
+  font-weight: 500;
 }
 
 .clients-hero-section__cta {
@@ -247,7 +248,7 @@
 
   .clients-hero-section__layout,
   .clients-hero-section__content {
-    max-width: min(624px, calc(624 * 100vw / 768));
+    max-width: 100%;
   }
 
   .clients-hero-section__content {
@@ -256,7 +257,7 @@
   }
 
   .clients-hero-section__subtitle {
-    max-width: min(528px, calc(528 * 100vw / 768));
+    max-width: 100%;
     font-size: clamp(18px, 4vw, 26px);
     line-height: 1.35;
   }

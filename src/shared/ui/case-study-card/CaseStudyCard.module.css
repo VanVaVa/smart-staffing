@@ -292,8 +292,8 @@
   }
 
   .case-study-card__description {
-    font-size: var(--text-body-xl);
-    line-height: var(--line-body-xl);
+    font-size: 24px;
+    line-height: var(--line-h3);
     -webkit-line-clamp: 4;
   }
 
@@ -349,6 +349,8 @@
 
   .case-study-card__description {
     -webkit-line-clamp: 4;
+    font-size: 16px;
+    line-height: 22px;
   }
 
   .case-study-card__metric-block {
@@ -572,7 +574,7 @@
     height: 100%;
     max-height: none;
     margin-bottom: 0;
-    border-radius: var(--radius-md) 0 0 var(--radius-md);
+    border-radius: var(--radius-md);
   }
 
   .case-study-card--compact-horizontal .case-study-card__panel-bg,
@@ -958,6 +960,11 @@
     inset: 16px auto auto 16px;
   }
 
+  .case-study-card__panel-bg {
+    border-radius: var(--radius-control);
+    overflow: hidden;
+  }
+
   .case-study-card--compact-horizontal .case-study-card__panel-logo-image {
     max-width: 140px;
     max-height: 32px;
@@ -978,7 +985,7 @@
   }
 
   .case-study-card__panel-logo {
-    padding: 26px 0 0 16px;
+    padding: 0;
   }
 
   .case-study-card__panel-logo-image {

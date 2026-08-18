@@ -11,6 +11,10 @@
   width: 100%;
 }
 
+.testimonial-card--open {
+  min-width: 909px;
+}
+
 .testimonial-card__quote {
   font-size: var(--text-body-md);
   line-height: var(--line-body);

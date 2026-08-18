@@ -1,5 +1,7 @@
 .footer-column-title {
   margin-bottom: 28px;
+  font-size: var(--text-body-xl);
+  line-height: var(--line-body);
 }
 
 @media (max-width: 1440px) {

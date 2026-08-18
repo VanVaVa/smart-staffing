@@ -204,8 +204,8 @@
   }
 
   .clients-platform-section__layout {
-    grid-template-columns: 304px minmax(0, 1fr);
-    gap: 159px;
+    grid-template-columns: 380px minmax(0, 1fr);
+    gap: 40px;
   }
 
   .clients-platform-section__pain-list {
@@ -395,21 +395,27 @@
 
   .clients-platform-section__orb--orange {
     top: auto;
-    right: auto;
-    bottom: max(-43px, calc(-43 * 100vw / 768));
-    left: max(-82px, calc(-82 * 100vw / 768));
-    width: min(320px, calc(320 * 100vw / 768));
-    height: min(320px, calc(320 * 100vw / 768));
-    filter: blur(36px);
+    right: 36px;
+    bottom: -146px;
+    left: auto;
+    width: 320px;
+    height: 320px;
+    filter: blur(20px);
   }
 
   .clients-platform-section__orb--purple-small {
     top: auto;
-    right: max(-160px, calc(-160 * 100vw / 768));
-    bottom: max(-40px, calc(-40 * 100vw / 768));
-    width: min(320px, calc(320 * 100vw / 768));
-    height: min(320px, calc(320 * 100vw / 768));
-    filter: blur(36px);
+    right: -62px;
+    bottom: -40px;
+    width: 160px;
+    height: 160px;
+    filter: blur(20px);
+  }
+
+  .clients-platform-section__orb--purple-large {
+    display: block;
+    left: 155px;
+    top: -238px;
   }
 }
 
@@ -426,7 +432,7 @@
 
 @media (max-width: 576px) {
   .clients-platform-section {
-    padding-block: min(120px, calc(120 * 100vw / 576)) min(80px, calc(80 * 100vw / 576));
+    padding-block: min(120px, calc(120 * 100vw / 576)) 160px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }

@@ -186,6 +186,7 @@
     min-height: 201px;
     grid-template-columns: minmax(0, 1fr) 445px;
     gap: 48px;
+    width: calc(100% - var(--container-padding));
   }
 
   .article-hero__content {

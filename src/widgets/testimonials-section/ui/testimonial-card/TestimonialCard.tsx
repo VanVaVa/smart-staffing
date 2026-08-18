@@ -1,7 +1,10 @@
+"use client";
+
 import Image from "next/image";
 
-
 import styles from "./TestimonialCard.module.css";
+import { useState } from "react";
+import cn from "classnames";
 
 type TestimonialCardProps = {
   company: string;
@@ -23,8 +26,10 @@ export function TestimonialCard({
   logoWidth,
   logoHeight,
 }: TestimonialCardProps) {
+  const [ isOpen, setIsOpen ] = useState(false);
+  
   return (
-    <article className={styles["testimonial-card"]}>
+    <article className={cn(styles["testimonial-card"], isOpen && styles["testimonial-card--open"])} onClick={() => setIsOpen(!isOpen)}>
       <div className={styles["testimonial-card__body"]}>
         <header className={styles["testimonial-card__header"]}>
           <div className={styles["testimonial-card__author"]}>

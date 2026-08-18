@@ -10,9 +10,16 @@ type LinkProps = {
   children: ReactNode;
   variant?: LinkVariant;
   className?: string;
+  "aria-current"?: "page";
 };
 
-export function Link({ href, children, variant = "inline", className }: LinkProps) {
+export function Link({
+  href,
+  children,
+  variant = "inline",
+  className,
+  "aria-current": ariaCurrent,
+}: LinkProps) {
   const rootClass = [
     styles.link,
     styles[`link--${variant}`],
@@ -23,14 +30,14 @@ export function Link({ href, children, variant = "inline", className }: LinkProp
 
   if (href.startsWith("#") || href.startsWith("http")) {
     return (
-      <a href={href} className={rootClass}>
+      <a href={href} className={rootClass} aria-current={ariaCurrent}>
         {children}
       </a>
     );
   }
 
   return (
-    <NextLink href={href} className={rootClass}>
+    <NextLink href={href} className={rootClass} aria-current={ariaCurrent}>
       {children}
     </NextLink>
   );

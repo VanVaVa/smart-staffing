@@ -50,6 +50,7 @@
 
 .about-career-book-section__accent {
   color: var(--color-accent);
+  font-weight: 500;
 }
 
 .about-career-book-section__book {
@@ -181,7 +182,9 @@
   }
 
   .about-career-book-section__book-description {
-    max-width: 548px;
+    max-width: 90%;
+    font-size: 20px;
+    line-height: 22px;
   }
 
   .about-career-book-section__book-spread {
