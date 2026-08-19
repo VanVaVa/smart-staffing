@@ -45,7 +45,8 @@ export function HeroVisual({ segments }: HeroVisualProps) {
                 src={segment.imageSrc}
                 alt="Интерфейс платформы СмартСтаффинг"
                 fill
-                sizes="(max-width: 1200px) 100vw, 880px"
+                quality={90}
+                sizes="(max-width: 992px) 100vw, (max-width: 1440px) 802px, 900px"
                 priority={index === 0}
               />
             </div>
@@ -57,7 +58,7 @@ export function HeroVisual({ segments }: HeroVisualProps) {
           <HeroSegmentCard
             key={`${segment.label}-${index}`}
             label={segment.label}
-            imageSrc={segment.imageSrc.split('/').map((el, idx) => idx === 2 ? `thumb-${el}` : el).join('/')}
+            imageSrc={segment.imageSrc}
             href={segment.href}
             isActive={index === displayIndex}
             animate={animateSegment}

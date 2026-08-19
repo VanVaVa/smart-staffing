@@ -56,11 +56,14 @@ export {
   clientSegmentSlugs,
   clientsPlatformBenefitsMobileOrder,
   clientsSegments,
+  getClientsPlatformBenefitsMobileOrder,
   getClientsSegment,
   isClientSegmentSlug,
+  pricingPlatformBenefitsMobileOrder,
 } from "./model/clients-content";
 export type {
   ClientSegmentSlug,
+  ClientsPageVariant,
   ClientsHeroContent,
   ClientsHeroSubtitle,
   ClientsPartnersExperienceCaseStudy,

@@ -261,7 +261,8 @@
 
 @media (max-width: 450px) {
   .product-showcase {
-    padding-block: 100px
+    padding-block: 100px;
+    padding-bottom: 150px;
   }
 
   .product-showcase__stage {

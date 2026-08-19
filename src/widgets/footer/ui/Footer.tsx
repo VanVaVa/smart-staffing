@@ -12,7 +12,7 @@ type FooterProps = {
 
 export function Footer({ content }: FooterProps) {
   return (
-    <footer className={styles.footer}>
+    <footer className={styles.footer} data-header-backdrop="dark">
       <div className={styles.footer__content}>
         <div className={styles.footer__inset}>
           <FooterAbout />

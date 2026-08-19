@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 import type { AboutHistoryBlockProps } from "@/entities/landing/model/about-blocks";
 import { ArrowIcon } from "@/shared/ui/arrow-icon";
 import { Container } from "@/shared/ui/container";
@@ -16,6 +14,7 @@ export function AboutHistorySection({ content }: AboutHistorySectionProps) {
   return (
     <section
       className={styles["about-history-section"]}
+      data-header-backdrop="dark"
     >
       <div className={styles["about-history-section__decor"]} aria-hidden>
         <div className={styles["about-history-section__gradient"]} />
@@ -62,7 +61,7 @@ export function AboutHistorySection({ content }: AboutHistorySectionProps) {
                         {marker ? (
                           <div>
                             <span className={styles["about-history-section__mission-marker"]} aria-hidden>
-                              <Image src={marker.iconSrc} alt={marker.alt} width={28} height={28} />
+                              <img src={marker.iconSrc} alt={marker.alt} />
                             </span>
                           </div>
                         ) : null}

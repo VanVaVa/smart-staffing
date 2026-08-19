@@ -28,7 +28,7 @@ export const vacanciesPage = {
   applicationSuccessModal: {
     title: "Резюме успешно отправлено",
     description:
-      "Спасибо за\u00a0интерес к\u00a0нашей компании!\nЕсли Ваш опыт соответствует требованиям, мы\u00a0свяжемся с\u00a0вами для\u00a0дальнейших шагов",
+      "Спасибо за\u00a0интерес к\u00a0нашей компании!\nЕсли\u00a0Ваш опыт соответствует требованиям, мы\u00a0свяжемся с\u00a0вами для\u00a0дальнейших шагов",
     homeLabel: "На\u00a0главную",
     illustrationSrc: "/landing/vacancies/application-success-illustration.png",
     illustrationWidth: 490,

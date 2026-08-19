@@ -70,12 +70,25 @@ export function ClientsPlatformBenefitsCard({
       ? styles["clients-platform-benefits-card--visual-align-start"]
       : "";
 
+  const showGeometry =
+    card.backgroundType === "geometry-bg" ||
+    (card.backgroundType === "light-bg" && mobileFullWidth);
+
+  const geometryMobileOnlyClass =
+    card.backgroundType === "light-bg" && mobileFullWidth
+      ? styles["clients-platform-benefits-card__geometry--mobile-only"]
+      : "";
+
   return (
     <article
       className={`${styles["clients-platform-benefits-card"]} ${styles[`clients-platform-benefits-card--${card.backgroundType}`]} ${visualLayoutClass} ${slotLayoutClass} ${mobileFullWidthClass} ${inProgressClass} ${visualAlignClass}`}
+      data-header-backdrop={card.backgroundType === "dark-bg" ? "dark" : undefined}
     >
-      {card.backgroundType === "geometry-bg" ? (
-        <div className={styles["clients-platform-benefits-card__geometry"]} aria-hidden>
+      {showGeometry ? (
+        <div
+          className={`${styles["clients-platform-benefits-card__geometry"]} ${geometryMobileOnlyClass}`}
+          aria-hidden
+        >
           <span
             className={styles["clients-platform-benefits-card__geometry-blob--purple"]}
           />

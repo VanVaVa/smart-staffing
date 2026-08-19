@@ -7,15 +7,34 @@ export const clientSegmentSlugs = [
 
 export type ClientSegmentSlug = (typeof clientSegmentSlugs)[number];
 
+export type ClientsPageVariant = "clients" | "pricing";
+
 export const clientsPlatformBenefitsMobileOrder: Record<
   ClientSegmentSlug,
   readonly number[]
 > = {
-  enterprise: [1, 2, 4, 3],
+  enterprise: [1, 2, 3, 4],
   outstaffing: [2, 4, 1, 3],
   "mid-market": [1, 3, 2],
   agencies: [3, 1, 2, 4],
 };
+
+export const pricingPlatformBenefitsMobileOrder: Partial<
+  Record<ClientSegmentSlug, readonly number[]>
+> = {
+  enterprise: [1, 2, 4, 3],
+};
+
+export function getClientsPlatformBenefitsMobileOrder(
+  segment: ClientSegmentSlug,
+  pageVariant: ClientsPageVariant = "clients",
+): readonly number[] {
+  if (pageVariant === "pricing") {
+    return pricingPlatformBenefitsMobileOrder[segment] ?? clientsPlatformBenefitsMobileOrder[segment];
+  }
+
+  return clientsPlatformBenefitsMobileOrder[segment];
+}
 
 export type ClientsHeroSubtitle = {
   before: string;
@@ -271,7 +290,7 @@ const enterprisePartnersExperience: ClientsPartnersExperienceContent = {
 };
 
 const enterprisePartnershipCta: ClientsPartnershipCtaContent = {
-  title: "Масштабируйтесь через партнёрства на\u00a0своих условиях",
+  title: "Масштабируйтесь через\u00a0партнёрства на\u00a0своих условиях",
   subtitle: "Оставьте контакты — организуем встречу и\u00a0ответим на\u00a0ваши вопросы",
   subtitleAccent: "Оставьте контакты",
 };
@@ -293,7 +312,7 @@ const outstaffingPlatform: ClientsPlatformContent = {
   painPoints: [
     "Команда простаивает без\u00a0задач без\u00a0ключевых специалистов",
     "Увеличиваются сроки и\u00a0бюджет на\u00a0поиск подходящего кандидата",
-    "Без прозрачного распределения падает загрузка",
+    "Без\u00a0прозрачного распределения падает загрузка",
   ],
   title: "Поможем использовать ресурсы с\u00a0максимальной отдачей",
   subtitle:
@@ -388,7 +407,7 @@ const outstaffingPlatformBenefits: ClientsPlatformBenefitsContent = {
     },
     {
       variant: "scaling",
-      title: "Работа через сеть проверенных партнёров",
+      title: "Работа через\u00a0сеть проверенных партнёров",
       subtitle:
         "Дополнительный функционал позволяет создавать закрытые и\u00a0открытые партнёрские сети, сегментировать поставщиков по\u00a0отраслям, компетенциям и\u00a0уровню доступа",
       visual: {
@@ -456,7 +475,7 @@ const midMarketPlatformBenefits: ClientsPlatformBenefitsContent = {
   sectionTitle: "С\u00a0платформой вы\u00a0получаете",
   panelTitle: "Надёжные специалисты без\u00a0рисков",
   panelSubtitle:
-    "Усиливайте команду исполнителями, которых уже проверили в\u00a0реальных проектах",
+    "Усиливайте команду исполнителями, которых уже\u00a0проверили в\u00a0реальных проектах",
   cards: [
     {
       title: "Поиск специалистов",
@@ -527,7 +546,7 @@ const midMarketPlatformBenefits: ClientsPlatformBenefitsContent = {
       variant: "scaling",
       title: "Быстрый доступ к\u00a0нужным специалистам",
       subtitle:
-        "Подбирайте не\u00a0только специалистов, но и\u00a0формируйте проектные команды под\u00a0задачи без\u00a0долгого найма",
+        "Подбирайте не\u00a0только специалистов, но\u00a0и\u00a0формируйте проектные команды под\u00a0задачи без\u00a0долгого найма",
       visual: {
         imageSrc: "/landing/clients/mid-market/benefits-showcase-scaling-visual.png",
         imageWidth: 1824,
@@ -560,7 +579,7 @@ const midMarketPartnersExperience: ClientsPartnersExperienceContent = {
 const midMarketPartnershipCta: ClientsPartnershipCtaContent = {
   title: "Снизим ваши затраты на\u00a0ресурсы",
   subtitle:
-    "Покажем, как закрыть нехватку специалистов без\u00a0расширения штата",
+    "Покажем, как\u00a0закрыть нехватку специалистов без\u00a0расширения штата",
   subtitleAccent: "закрыть нехватку специалистов"
 };
 
@@ -670,7 +689,7 @@ const agenciesPartnersExperience: ClientsPartnersExperienceContent = {
 };
 
 const agenciesPartnershipCta: ClientsPartnershipCtaContent = {
-  title: "Начните закрывать больше вакансий уже сегодня",
+  title: "Начните закрывать больше вакансий уже\u00a0сегодня",
   subtitle: "Оставьте контакты — организуем встречу и\u00a0ответим на\u00a0ваши вопросы",
   subtitleAccent: "Оставьте контакты",
 };
@@ -751,7 +770,7 @@ export const clientsSegments: Record<ClientSegmentSlug, ClientsSegmentContent> =
       ],
       title: "Даём доступ к\u00a0редким специалистам",
       subtitle:
-        "Платформа объединяет работодателей, специалистов и\u00a0партнёров, помогая быстрее находить нужные компетенции и\u00a0закрывать вакансии через доверенные сети",
+        "Платформа объединяет работодателей, специалистов и\u00a0партнёров, помогая быстрее находить нужные компетенции и\u00a0закрывать вакансии через\u00a0доверенные сети",
       tags: ["Усиление команд", "Рост выручки"],
       imageSrc: "/landing/clients/agencies/platform-agencies-preview.png",
     },

@@ -1,5 +1,8 @@
 import type { ClientsBlock } from "@/entities/landing/model/clients-blocks";
-import type { ClientSegmentSlug } from "@/entities/landing/model/clients-content";
+import type {
+  ClientSegmentSlug,
+  ClientsPageVariant,
+} from "@/entities/landing/model/clients-content";
 import {
   getAdminPageLabel,
   getPublicPagePath,
@@ -14,9 +17,14 @@ import { ClientsPlatformSection } from "@/widgets/clients-platform-section";
 type ClientsBlockRendererProps = {
   block: ClientsBlock;
   segment: ClientSegmentSlug;
+  pageVariant?: ClientsPageVariant;
 };
 
-export function ClientsBlockRenderer({ block, segment }: ClientsBlockRendererProps) {
+export function ClientsBlockRenderer({
+  block,
+  segment,
+  pageVariant = "clients",
+}: ClientsBlockRendererProps) {
   const pageSlug = clientsPageSlug(segment);
   const sourcePath = getPublicPagePath(pageSlug);
   const sourceLabel = getAdminPageLabel(pageSlug);
@@ -28,7 +36,11 @@ export function ClientsBlockRenderer({ block, segment }: ClientsBlockRendererPro
       return <ClientsPlatformSection content={block.props} />;
     case "platformBenefits":
       return (
-        <ClientsPlatformBenefitsSection content={block.props} segment={segment} />
+        <ClientsPlatformBenefitsSection
+          content={block.props}
+          segment={segment}
+          pageVariant={pageVariant}
+        />
       );
     case "partnersExperience":
       return <ClientsPartnersExperienceSection content={block.props} />;

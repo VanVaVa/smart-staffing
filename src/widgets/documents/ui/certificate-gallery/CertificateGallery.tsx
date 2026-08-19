@@ -2,12 +2,12 @@
 
 import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
+import Image from "next/image";
 
 import type { DocumentCertificate } from "@/entities/landing";
 import { ArrowIcon } from "@/shared/ui";
 
 import { useDocumentModal } from "../../lib/use-document-modal";
-import { PdfViewer } from "../pdf-viewer";
 import styles from "./CertificateGallery.module.css";
 
 type CertificateGalleryProps = {
@@ -24,7 +24,6 @@ export function CertificateGallery({
   onClose,
 }: CertificateGalleryProps) {
   const backRef = useRef<HTMLButtonElement>(null);
-  const boundsRef = useRef<HTMLDivElement>(null);
   const open = activeIndex !== null;
   const activeCertificate =
     activeIndex === null ? null : certificates[activeIndex];
@@ -86,22 +85,21 @@ export function CertificateGallery({
       >
         <ArrowIcon name="2Left" />
       </button>
-      <div
-        ref={boundsRef}
-        className={styles["certificate-gallery__slot"]}
-      >
+      <div className={styles["certificate-gallery__slot"]}>
         <div
           className={styles["certificate-gallery__document"]}
           role="dialog"
           aria-modal="true"
           aria-label={activeCertificate.title}
         >
-          <PdfViewer
-            src={activeCertificate.pdfSrc}
-            title={activeCertificate.title}
-            compact
-            fitToContainer
-            boundsRef={boundsRef}
+          <Image
+            className={styles["certificate-gallery__image"]}
+            src={activeCertificate.imageSrc}
+            alt={activeCertificate.imageAlt}
+            width={activeCertificate.imageWidth}
+            height={activeCertificate.imageHeight}
+            sizes="(max-width: 768px) 100vw, min(684px, 36vw)"
+            priority
           />
         </div>
       </div>

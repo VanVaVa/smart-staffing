@@ -14,6 +14,7 @@ export function ProductShowcase({ content }: ProductShowcaseProps) {
     <section
       id="platform"
       className={styles["product-showcase"]}
+      data-header-backdrop="dark"
     >
       <div className={styles["product-showcase__decor"]} aria-hidden>
         <div className={styles["product-showcase__gradient"]} />

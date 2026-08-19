@@ -62,7 +62,13 @@ export function AboutBookForm({ inputPlaceholder, buttonLabel }: AboutBookFormPr
   };
 
   return (
-    <form className={styles["about-book-form"]} action="#" method="post" onSubmit={handleSubmit}>
+    <form
+      className={styles["about-book-form"]}
+      action="#"
+      method="post"
+      data-header-backdrop="dark"
+      onSubmit={handleSubmit}
+    >
       <div className={styles["about-book-form__decor"]} aria-hidden>
         <div className={styles["about-book-form__orb--purple"]} />
         <div className={styles["about-book-form__orb--orange"]} />

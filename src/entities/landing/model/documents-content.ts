@@ -16,7 +16,10 @@ export type DocumentCategory = {
 export type DocumentCertificate = {
   id: string;
   title: string;
-  pdfSrc: string;
+  imageSrc: string;
+  imageAlt: string;
+  imageWidth: number;
+  imageHeight: number;
 };
 
 export type DocumentsPageContent = {
@@ -132,19 +135,48 @@ export const documentsPage: DocumentsPageContent = {
     ],
     paragraphs: [
       "Право использования программного обеспечения предоставляется на\u00a0условиях лицензионного договора, который заключается с\u00a0каждым лицензиатом.",
-      "ООО «Смартстаффинг» является обладателем исключительных прав на\u00a0программное обеспечение «Межкорпоративная сеть для\u00a0развития проектной кооперации между компаниями в\u00a0сфере ИТ-услуг „B2BCloud“. Право использования программного обеспечения „Межкорпоративная сеть для\u00a0развития проектной кооперации между компаниями в\u00a0сфере ИТ-услуг „B2BCloud“ предоставляется на\u00a0условиях лицензионного договора, который заключается с\u00a0каждым лицензиатом.",
+      "ООО «Смартстаффинг» является обладателем исключительных прав на\u00a0программное обеспечение «Межкорпоративная сеть для\u00a0развития проектной кооперации между\u00a0компаниями в\u00a0сфере ИТ-услуг „B2BCloud“. Право использования программного обеспечения „Межкорпоративная сеть для\u00a0развития проектной кооперации между\u00a0компаниями в\u00a0сфере ИТ-услуг „B2BCloud“ предоставляется на\u00a0условиях лицензионного договора, который заключается с\u00a0каждым лицензиатом.",
     ],
   },
   certificatesTitle: "Свидетельства",
-  certificates: Array.from({ length: 4 }, (_, index) => {
-    const number = index + 1;
-
-    return {
-      id: `certificate-${number}`,
-      title: `Свидетельство ${number}`,
-      pdfSrc: `/landing/documents/certificate-${number}.pdf`,
-    };
-  }),
+  certificates: [
+    {
+      id: "certificate-2021669533",
+      title: "Свидетельство №\u00a02021669533",
+      imageSrc: "/landing/documents/certificates/certificate-1.png",
+      imageAlt:
+        "Свидетельство о\u00a0государственной регистрации программы для\u00a0ЭВМ №\u00a02021669533 — онлайн сервис ресурсного планирования B2BCloud",
+      imageWidth: 725,
+      imageHeight: 1024,
+    },
+    {
+      id: "certificate-2022669457",
+      title: "Свидетельство №\u00a02022669457",
+      imageSrc: "/landing/documents/certificates/certificate-2.png",
+      imageAlt:
+        "Свидетельство о\u00a0государственной регистрации программы для\u00a0ЭВМ №\u00a02022669457 — онлайн сервис управления партнёрской сетью B2BCloud",
+      imageWidth: 723,
+      imageHeight: 1024,
+    },
+    {
+      id: "certificate-2021668415",
+      title: "Свидетельство №\u00a02021668415",
+      imageSrc: "/landing/documents/certificates/certificate-3.png",
+      imageAlt:
+        "Свидетельство о\u00a0государственной регистрации программы для\u00a0ЭВМ №\u00a02021668415 — онлайн сервис управления проектными командами B2BCloud",
+      imageWidth: 725,
+      imageHeight: 1024,
+    },
+    {
+      id: "certificate-2020661741",
+      title: "Свидетельство №\u00a02020061741",
+      imageSrc: "/landing/documents/certificates/certificate-4.png",
+      imageAlt:
+        "Свидетельство о\u00a0государственной регистрации программы для\u00a0ЭВМ №\u00a02020061741 — онлайн сервис формирования проектных команд B2BCloud",
+      imageWidth: 725,
+      imageHeight: 1024,
+    },
+  ],
 };
 
 const documents = categories.flatMap((category) => category.items);

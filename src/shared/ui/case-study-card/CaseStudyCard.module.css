@@ -410,7 +410,7 @@
   .case-study-card--compact-horizontal .case-study-card__panel-media {
     height: min(194px, calc(194 * 100vw / 768));
     max-height: min(194px, calc(194 * 100vw / 768));
-    border-radius: var(--radius-md) var(--radius-md) 0 0;
+    border-radius: var(--radius-md);
   }
 
   .case-study-card__panel-bg,

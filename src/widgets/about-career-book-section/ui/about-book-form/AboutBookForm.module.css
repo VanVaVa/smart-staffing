@@ -223,7 +223,7 @@
 
   .about-book-form__submit {
     flex: 1 1 231px;
-    min-width: 0;
+    min-width: fit-content;
     align-self: stretch;
     width: auto;
     max-width: 231px;

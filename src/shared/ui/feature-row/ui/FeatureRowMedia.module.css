@@ -19,12 +19,8 @@
   }
 }
 
-.feature-row-media--soft {
+.feature-row-media--animated {
   background: #f8f9fb;
-}
-
-.feature-row-media--muted {
-  background: #eef0f5;
 }
 
 .feature-row-media__viewport {
@@ -47,6 +43,10 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
+}
+
+.feature-row-media--animated .feature-row-media__animation {
+  object-fit: contain;
 }
 
 .feature-row-media--0 {

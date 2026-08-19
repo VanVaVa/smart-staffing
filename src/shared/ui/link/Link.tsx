@@ -11,6 +11,7 @@ type LinkProps = {
   variant?: LinkVariant;
   className?: string;
   "aria-current"?: "page";
+  "data-header-nav-link"?: string;
 };
 
 export function Link({
@@ -19,6 +20,7 @@ export function Link({
   variant = "inline",
   className,
   "aria-current": ariaCurrent,
+  "data-header-nav-link": dataHeaderNavLink,
 }: LinkProps) {
   const rootClass = [
     styles.link,
@@ -30,14 +32,24 @@ export function Link({
 
   if (href.startsWith("#") || href.startsWith("http")) {
     return (
-      <a href={href} className={rootClass} aria-current={ariaCurrent}>
+      <a
+        href={href}
+        className={rootClass}
+        aria-current={ariaCurrent}
+        data-header-nav-link={dataHeaderNavLink}
+      >
         {children}
       </a>
     );
   }
 
   return (
-    <NextLink href={href} className={rootClass} aria-current={ariaCurrent}>
+    <NextLink
+      href={href}
+      className={rootClass}
+      aria-current={ariaCurrent}
+      data-header-nav-link={dataHeaderNavLink}
+    >
       {children}
     </NextLink>
   );

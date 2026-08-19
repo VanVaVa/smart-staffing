@@ -273,6 +273,7 @@
     gap: 40px;
     min-height: 208px;
     padding: 16px;
+    max-width: 80%;
   }
 
   .about-benefits-card__icon {

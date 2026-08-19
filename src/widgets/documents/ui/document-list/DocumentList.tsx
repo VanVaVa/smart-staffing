@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import type {
@@ -7,7 +8,6 @@ import type {
 } from "@/entities/landing";
 import { Container } from "@/shared/ui";
 
-import { PdfViewer } from "../pdf-viewer";
 import styles from "./DocumentList.module.css";
 
 type DocumentListProps = {
@@ -122,8 +122,14 @@ export function DocumentList({
                 aria-label={`Открыть ${certificate.title.toLowerCase()}`}
                 onClick={() => onOpenCertificate(certificate)}
               >
-                <div>
-                  <PdfViewer src={certificate.pdfSrc} title={certificate.title} compact />
+                <div className={styles["document-list__certificate-image-wrap"]}>
+                  <Image
+                    className={styles["document-list__certificate-image"]}
+                    src={certificate.imageSrc}
+                    alt={certificate.imageAlt}
+                    fill
+                    sizes="(max-width: 576px) 300px, (max-width: 992px) 226px, 450px"
+                  />
                 </div>
               </button>
             ))}

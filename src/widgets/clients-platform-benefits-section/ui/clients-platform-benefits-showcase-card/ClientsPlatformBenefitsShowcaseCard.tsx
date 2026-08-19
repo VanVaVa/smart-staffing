@@ -18,6 +18,7 @@ export function ClientsPlatformBenefitsShowcaseCard({
     return (
       <article
         className={`${styles["clients-platform-benefits-showcase-card"]} ${styles["clients-platform-benefits-showcase-card--it-costs"]} ${styles["clients-platform-benefits-showcase-card--dark-bg"]}`}
+        data-header-backdrop="dark"
       >
         <div className={styles["clients-platform-benefits-showcase-card__copy"]}>
           <h3 className={styles["clients-platform-benefits-showcase-card__title"]}>

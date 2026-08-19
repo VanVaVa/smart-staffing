@@ -56,8 +56,8 @@ const homeSeedBlocks = [
     type: "hero",
     props: {
       title: heroContent.title,
-      subtitleLead: "50 000+ специалистов из 150+ компаний-партнёров",
-      subtitleTail: "на единой СмартСтаффинг-платформе",
+      subtitleLead: "50 000+ специалистов из\u00a0150+ компаний-партнёров",
+      subtitleTail: "на\u00a0единой СмартСтаффинг-платформе",
       primaryCta: heroContent.primaryCta,
       registryLabel: heroContent.registryLabel,
       registryHref: heroContent.registryHref,
@@ -202,9 +202,9 @@ function buildMockMediaArticles(): MediaArticleContent[] {
       slug,
       href: `/media/${slug}`,
       imageSrc: tagConfig.imageSrc,
-      imageAlt: "Иллюстрация к публикации",
+      imageAlt: "Иллюстрация к\u00a0публикации",
       heroImageSrc: tagConfig.imageSrc,
-      heroImageAlt: "Иллюстрация к публикации",
+      heroImageAlt: "Иллюстрация к\u00a0публикации",
       tag: tagConfig.tag,
       tagLabel: tagConfig.tagLabel,
       publishedAt,
@@ -261,19 +261,19 @@ function buildSeedPages(): SeedPage[] {
       slug: LANDING_PAGE_SLUGS.home,
       title: "Главная",
       meta: {
-        title: "СмартСтаффинг — управление подрядчиками и проектами",
+        title: "СмартСтаффинг — управление подрядчиками и\u00a0проектами",
         description:
-          "Платформа для подбора специалистов, планирования загрузки и контроля проектов в одном контуре.",
+          "Платформа для\u00a0подбора специалистов, планирования загрузки и\u00a0контроля проектов в\u00a0одном контуре.",
       },
       blocks: homeSeedBlocks,
     },
     {
       slug: LANDING_PAGE_SLUGS.about,
-      title: "О компании",
+      title: "О\u00a0компании",
       meta: {
-        title: "О компании — СмартСтаффинг",
+        title: "О\u00a0компании — СмартСтаффинг",
         description:
-          "СмартСтаффинг — эксперт гибкой проектной занятости. История компании, миссия и подход к подбору ИТ-специалистов.",
+          "СмартСтаффинг — эксперт гибкой проектной занятости. История компании, миссия и\u00a0подход к\u00a0подбору ИТ-специалистов.",
       },
       blocks: aboutBlocksFromStaticContent(),
     },
@@ -282,7 +282,7 @@ function buildSeedPages(): SeedPage[] {
       title: "Вакансии",
       meta: {
         title: "Вакансии — СмартСтаффинг",
-        description: "Присоединяйтесь к команде СмартСтаффинг.",
+        description: "Присоединяйтесь к\u00a0команде СмартСтаффинг.",
       },
       blocks: vacanciesBlocksFromStaticContent(),
     },
@@ -292,7 +292,7 @@ function buildSeedPages(): SeedPage[] {
       meta: {
         title: "Документы — СмартСтаффинг",
         description:
-          "Юридические документы, сведения о платформе и свидетельства СмартСтаффинг.",
+          "Юридические документы, сведения о\u00a0платформе и\u00a0свидетельства СмартСтаффинг.",
       },
       blocks: documentsBlocksFromStaticContent(),
     },
@@ -301,7 +301,7 @@ function buildSeedPages(): SeedPage[] {
       title: "Медиа",
       meta: {
         title: "Медиа — СмартСтаффинг",
-        description: "Новости и публикации СмартСтаффинг.",
+        description: "Новости и\u00a0публикации СмартСтаффинг.",
       },
       blocks: mediaBlocksFromStaticContent(),
     },

@@ -99,7 +99,10 @@ export function PlatformOnboardingDemo({
             }
           />
         </div>
-        <div className={styles["platform-onboarding-demo__promo"]}>
+        <div
+          className={styles["platform-onboarding-demo__promo"]}
+          data-header-backdrop="dark"
+        >
           <p className={styles["platform-onboarding-demo__promo-text"]}>
             {promoText}
           </p>

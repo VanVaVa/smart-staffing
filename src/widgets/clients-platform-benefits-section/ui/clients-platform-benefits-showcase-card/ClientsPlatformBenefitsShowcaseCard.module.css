@@ -10,7 +10,7 @@
   display: flex;
   flex-direction: column;
   gap: min(8px, calc(8 * 100vw / 1920));
-  max-width: min(575px, calc(575 * 100vw / 1920));
+  max-width: calc(575px + 28px * 2);
   padding: min(28px, calc(28 * 100vw / 1920));
 }
 
@@ -78,7 +78,7 @@
 }
 
 .clients-platform-benefits-showcase-card__it-visual--big-portrait {
-  transform: scale(1.5);
+  transform: scale(1.5) translateX(-25%);
   bottom: -120px !important;
 }
 
@@ -153,8 +153,9 @@
 
 .clients-platform-benefits-showcase-card__quality-image {
   display: block;
-  width: 100%;
+  width: 90%;
   height: auto;
+  margin-inline: auto;
 }
 
 .clients-platform-benefits-showcase-card--scaling {
@@ -175,7 +176,7 @@
 
 .clients-platform-benefits-showcase-card--scaling
   .clients-platform-benefits-showcase-card__copy {
-  max-width: min(575px, calc(575 * 100vw / 1920));
+  max-width: calc(575px + 28px * 2);
 }
 
 @media (max-width: 1440px) {
@@ -386,7 +387,7 @@
 @media (max-width: 768px) {
   .clients-platform-benefits-showcase-card--it-costs,
   .clients-platform-benefits-showcase-card--quality {
-    min-height: clamp(400px, 62vw, 480px);
+    min-height: 400px;
   }
 
   .clients-platform-benefits-showcase-card--scaling {
@@ -429,6 +430,7 @@
     margin: auto;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
+    margin-top: 10px;
   }
 }
 
@@ -451,6 +453,7 @@
   .clients-platform-benefits-showcase-card__subtitle {
     font-size: var(--text-caption);
     line-height: var(--line-caption);
+    max-width: 58%;
   }
 
   .clients-platform-benefits-showcase-card--it-costs {
@@ -459,14 +462,14 @@
 
   .clients-platform-benefits-showcase-card--it-costs
     .clients-platform-benefits-showcase-card__copy {
-    max-width: 58%;
+    max-width: 100%;
   }
 
   .clients-platform-benefits-showcase-card__it-visual {
     right: -20px;
     bottom: -20px;
     width: 200px;
-    transform: scale(1.5);
+    transform: scale(1.7);
     transform-origin: right bottom;
   }
 
@@ -507,6 +510,10 @@
     .clients-platform-benefits-showcase-card__copy {
     max-width: 368px;
     padding: 20px;
+  }
+
+  .clients-platform-benefits-showcase-card__it-visual.clients-platform-benefits-showcase-card__it-visual--portrait {
+    bottom: auto !important;
   }
 }
 

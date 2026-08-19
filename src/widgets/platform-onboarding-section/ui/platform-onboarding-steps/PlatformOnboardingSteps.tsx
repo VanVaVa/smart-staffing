@@ -44,7 +44,7 @@ export function PlatformOnboardingSteps({
     .join(" ");
 
   return (
-    <div className={rootClass}>
+    <div className={rootClass} data-header-backdrop="dark">
       <div className={styles["platform-onboarding-steps__glow"]} aria-hidden />
       <div className={styles["platform-onboarding-steps__glow--accent"]} aria-hidden />
       <div className={styles["platform-onboarding-steps__glow--bottom"]} aria-hidden />

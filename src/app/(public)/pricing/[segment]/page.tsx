@@ -39,5 +39,7 @@ export default async function Page({ params }: PageProps) {
 
   const { blocks } = await getClientsPageContent(segment);
 
-  return <ClientsPage blocks={blocks} segment={segment} />;
+  return (
+    <ClientsPage blocks={blocks} segment={segment} pageVariant="pricing" />
+  );
 }

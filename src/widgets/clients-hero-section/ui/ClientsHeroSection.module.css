@@ -5,6 +5,10 @@
   margin-bottom: min(196px, calc(196 * 100vw / 1920));
 }
 
+.clients-hero-section--pricing .clients-hero-section__image {
+  transform: translateY(40px);
+}
+
 .clients-hero-section__media {
   position: absolute;
   top: 0;
@@ -204,7 +208,7 @@
 
   .clients-hero-section__layout,
   .clients-hero-section__content {
-    max-width: min(624px, calc(624 * 100vw / 992));
+    max-width: 100%;
   }
 
   .clients-hero-section__content {
@@ -266,6 +270,7 @@
     width: min(calc(100vw - var(--container-padding)), 744px);
     height: clamp(364px, 53vw, 408px);
     border-radius: 24px 0 0 24px;
+    object-position: left 35%;
   }
 }
 

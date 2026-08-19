@@ -12,11 +12,11 @@ import { Logo } from "@/shared/ui/logo";
 import linkStyles from "@/shared/ui/link/Link.module.css";
 
 import { isNavHrefActive } from "../../lib/is-nav-href-active";
+import { useElementOnDarkBackdrop } from "../../model/use-element-on-dark-backdrop";
 import navStyles from "../header-nav/HeaderNav.module.css";
 import styles from "./HeaderMobileMenu.module.css";
 
 type HeaderMobileMenuProps = {
-  onDarkBackdrop?: boolean;
   onOpenChange?: (open: boolean) => void;
 };
 
@@ -31,15 +31,17 @@ function getMenuItemClassName(current: boolean) {
     .join(" ");
 }
 
-export function HeaderMobileMenu({
-  onDarkBackdrop = false,
-  onOpenChange,
-}: HeaderMobileMenuProps) {
+export function HeaderMobileMenu({ onOpenChange }: HeaderMobileMenuProps) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const panelId = useId();
   const menuRef = useRef<HTMLDivElement>(null);
+  const ghostRef = useRef<HTMLSpanElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
+  const signUpRef = useRef<HTMLSpanElement>(null);
+  const ghostOnDarkBackdrop = useElementOnDarkBackdrop(ghostRef);
+  const toggleOnDarkBackdrop = useElementOnDarkBackdrop(toggleRef);
+  const signUpOnDarkBackdrop = useElementOnDarkBackdrop(signUpRef);
 
   const setMenuOpen = useCallback(
     (nextOpen: boolean) => {
@@ -88,9 +90,7 @@ export function HeaderMobileMenu({
     };
   }, [close, open]);
 
-  const useLightHeaderChrome = onDarkBackdrop && !open;
-  const ghostClass = useLightHeaderChrome ? styles["header-mobile-menu__ghost-on-dark"] : undefined;
-  const signUpVariant = useLightHeaderChrome ? "light" : "dark";
+  const signUpVariant = open ? "dark" : signUpOnDarkBackdrop ? "light" : "dark";
   const topBarTransform = open ? "rotate(45 8 6) translate(0 5)" : undefined;
   const middleBarOpacity = open ? 0 : 1;
   const bottomBarTransform = open ? "rotate(-45 8 6) translate(0 -5)" : undefined;
@@ -106,26 +106,44 @@ export function HeaderMobileMenu({
         .join(" ")}
     >
       <div className={styles["header-mobile-menu__bar"]}>
-        <Logo />
+        <span className={styles["header-mobile-menu__logo"]}>
+          <Logo />
+        </span>
         <div className={styles["header-mobile-menu__actions"]}>
-          <Button href={routes.login} variant="ghost" className={ghostClass}>
-            Вход
-          </Button>
-          <Button
-            href={contactsHref}
-            onClick={scrollToContactsOnPage}
-            size="md"
-            variant={signUpVariant}
-            className={styles["header-mobile-menu__sign-up"]}
+          <span
+            ref={ghostRef}
+            className={[
+              styles["header-mobile-menu__ghost-wrap"],
+              !open && ghostOnDarkBackdrop
+                ? styles["header-mobile-menu__ghost-wrap--on-dark-backdrop"]
+                : "",
+            ]
+              .filter(Boolean)
+              .join(" ")}
           >
-            Регистрация
-          </Button>
+            <Button href={routes.login} variant="ghost" className={styles["header-mobile-menu__ghost"]}>
+              Вход
+            </Button>
+          </span>
+          <span ref={signUpRef} className={styles["header-mobile-menu__sign-up-wrap"]}>
+            <Button
+              href={contactsHref}
+              onClick={scrollToContactsOnPage}
+              size="md"
+              variant={signUpVariant}
+              className={styles["header-mobile-menu__sign-up"]}
+            >
+              Регистрация
+            </Button>
+          </span>
           <button
             ref={toggleRef}
             type="button"
             className={[
               styles["header-mobile-menu__toggle"],
-              useLightHeaderChrome ? styles["header-mobile-menu__toggle--on-dark-backdrop"] : "",
+              !open && toggleOnDarkBackdrop
+                ? styles["header-mobile-menu__toggle--on-dark-backdrop"]
+                : "",
             ]
               .filter(Boolean)
               .join(" ")}

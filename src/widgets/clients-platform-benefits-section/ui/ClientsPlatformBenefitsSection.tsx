@@ -2,9 +2,10 @@ import type { CSSProperties } from "react";
 
 import type {
   ClientSegmentSlug,
+  ClientsPageVariant,
   ClientsPlatformBenefitsContent,
 } from "@/entities/landing";
-import { clientsPlatformBenefitsMobileOrder } from "@/entities/landing";
+import { getClientsPlatformBenefitsMobileOrder } from "@/entities/landing";
 import { Container } from "@/shared/ui/container";
 
 import { ClientsPlatformBenefitsCard } from "./clients-platform-benefits-card";
@@ -15,15 +16,17 @@ import styles from "./ClientsPlatformBenefitsSection.module.css";
 type ClientsPlatformBenefitsSectionProps = {
   content: ClientsPlatformBenefitsContent;
   segment: ClientSegmentSlug;
+  pageVariant?: ClientsPageVariant;
 };
 
 export function ClientsPlatformBenefitsSection({
   content,
   segment,
+  pageVariant = "clients",
 }: ClientsPlatformBenefitsSectionProps) {
   const [showcaseItCosts, showcaseQuality, showcaseScaling] = content.showcase;
   const cardCount = content.cards.length;
-  const mobileOrder = clientsPlatformBenefitsMobileOrder[segment];
+  const mobileOrder = getClientsPlatformBenefitsMobileOrder(segment, pageVariant);
 
   return (
     <section className={styles["clients-platform-benefits-section"]}>
@@ -60,6 +63,7 @@ export function ClientsPlatformBenefitsSection({
                   key={`${card.title}-${index}`}
                   className={styles["clients-platform-benefits-section__card"]}
                   data-mobile-full={isMobileFullWidth ? "" : undefined}
+                  data-mobile-order={mobilePosition}
                   style={
                     {
                       "--clients-platform-benefits-card-mobile-order":

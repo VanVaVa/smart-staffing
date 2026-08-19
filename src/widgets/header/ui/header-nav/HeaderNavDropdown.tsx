@@ -17,9 +17,15 @@ type HeaderNavDropdownProps = {
   label: string;
   href: string;
   items: readonly HeaderNavDropdownChild[];
+  onDarkBackdrop?: boolean;
 };
 
-export function HeaderNavDropdown({ label, href, items }: HeaderNavDropdownProps) {
+export function HeaderNavDropdown({
+  label,
+  href,
+  items,
+  onDarkBackdrop = false,
+}: HeaderNavDropdownProps) {
   const pathname = usePathname();
   const [openedOnPathname, setOpenedOnPathname] = useState<string | null>(null);
   const open = openedOnPathname === pathname;
@@ -56,10 +62,12 @@ export function HeaderNavDropdown({ label, href, items }: HeaderNavDropdownProps
     >
       <button
         type="button"
+        data-header-nav-link={href}
         className={[
           styles["header-nav__link"],
           styles["header-nav__trigger"],
           current ? styles["header-nav__link--current"] : "",
+          onDarkBackdrop ? styles["header-nav__link--on-dark-backdrop"] : "",
         ]
           .filter(Boolean)
           .join(" ")}

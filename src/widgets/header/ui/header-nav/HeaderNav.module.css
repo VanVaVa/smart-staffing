@@ -4,7 +4,7 @@
   min-width: 0;
 }
 
-.header-nav__link {
+.header-nav .header-nav__link {
   display: inline-flex;
   align-items: center;
   gap: 4px;
@@ -14,15 +14,30 @@
 }
 
 @media (hover: hover) {
-  .header-nav__link:hover {
+  .header-nav .header-nav__link:hover {
     color: var(--color-accent);
   }
 }
 
-.header-nav__link.header-nav__link--current,
-.header-nav__link.header-nav__link--current:hover {
+.header-nav .header-nav__link.header-nav__link--current,
+.header-nav .header-nav__link.header-nav__link--current:hover {
   color: var(--color-accent);
   font-weight: 500;
+}
+
+.header-nav .header-nav__link--on-dark-backdrop {
+  color: var(--color-white-64);
+}
+
+@media (hover: hover) {
+  .header-nav .header-nav__link--on-dark-backdrop:hover {
+    color: var(--color-accent);
+  }
+}
+
+.header-nav .header-nav__link--on-dark-backdrop.header-nav__link--current,
+.header-nav .header-nav__link--on-dark-backdrop.header-nav__link--current:hover {
+  color: var(--color-accent);
 }
 
 .header-nav__trigger {
@@ -35,21 +50,6 @@
   line-height: var(--line-body-xl);
   font-weight: 400;
   cursor: pointer;
-}
-
-.header-nav--on-dark-backdrop .header-nav__link {
-  color: var(--color-white-64);
-}
-
-@media (hover: hover) {
-  .header-nav--on-dark-backdrop .header-nav__link:hover {
-    color: var(--color-accent);
-  }
-}
-
-.header-nav--on-dark-backdrop .header-nav__link.header-nav__link--current,
-.header-nav--on-dark-backdrop .header-nav__link.header-nav__link--current:hover {
-  color: var(--color-accent);
 }
 
 .header-nav__chevron {

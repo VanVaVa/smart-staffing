@@ -1,7 +1,5 @@
 import styles from "./FeatureRowMedia.module.css";
 
-type FeatureRowMediaVariant = "soft" | "muted";
-
 type FeatureRowMediaProps = {
   rowIndex: number;
   mediaSrc: string;
@@ -11,20 +9,12 @@ type FeatureRowMediaProps = {
   reversed?: boolean;
 };
 
-function resolveMediaVariant(rowIndex: number): FeatureRowMediaVariant | undefined {
-  if (rowIndex === 0 || rowIndex === 1) {
-    return "soft";
-  }
-
-  if (rowIndex === 3 || rowIndex === 4) {
-    return "muted";
-  }
-
-  return undefined;
-}
-
 function isVideoSrc(src: string): boolean {
   return /\.(mp4|webm)$/i.test(src);
+}
+
+function isAnimatedSrc(src: string): boolean {
+  return /\.(gif|mp4|webm)$/i.test(src);
 }
 
 export function FeatureRowMedia({
@@ -35,11 +25,11 @@ export function FeatureRowMedia({
   mediaHeight,
   reversed,
 }: FeatureRowMediaProps) {
-  const variant = resolveMediaVariant(rowIndex);
+  const isAnimated = isAnimatedSrc(mediaSrc);
   const rootClass = [
     styles["feature-row-media"],
     styles[`feature-row-media--${rowIndex}`],
-    variant ? styles[`feature-row-media--${variant}`] : "",
+    isAnimated ? styles["feature-row-media--animated"] : "",
     reversed
       ? styles["feature-row-media--edge-inline-start"]
       : styles["feature-row-media--edge-inline-end"],

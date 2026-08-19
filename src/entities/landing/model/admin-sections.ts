@@ -649,11 +649,17 @@ const documentsCertificatesSection: AdminCollectionSection = {
   createValues: () => ({
     id: crypto.randomUUID(),
     title: "Свидетельство",
-    pdfSrc: "",
+    imageSrc: "",
+    imageAlt: "",
+    imageWidth: 725,
+    imageHeight: 1024,
   }),
   fields: [
     { kind: "text", name: "title", label: "Название" },
-    { kind: "file", name: "pdfSrc", label: "PDF-файл", accept: ".pdf" },
+    { kind: "image", name: "imageSrc", label: "Изображение" },
+    { kind: "text", name: "imageAlt", label: "Alt-текст" },
+    { kind: "number", name: "imageWidth", label: "Ширина" },
+    { kind: "number", name: "imageHeight", label: "Высота" },
   ],
 };
 

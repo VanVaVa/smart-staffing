@@ -5,10 +5,26 @@ type Rgba = {
   a: number;
 };
 
+export const HEADER_PROBE_YS = [24, 40, 56, 72];
+
 const LUMINANCE_DARK_THRESHOLD = 0.45;
 const MIN_ALPHA = 0.5;
 
-const SKIP_TAGS = new Set(["IMG", "VIDEO", "SVG", "PICTURE", "IFRAME", "CANVAS"]);
+const SKIP_TAGS = new Set(["VIDEO", "SVG", "PICTURE", "IFRAME", "CANVAS"]);
+let pixelContext: CanvasRenderingContext2D | null = null;
+
+function getPixelContext(): CanvasRenderingContext2D | null {
+  if (pixelContext || typeof document === "undefined") {
+    return pixelContext;
+  }
+
+  const canvas = document.createElement("canvas");
+  canvas.width = 1;
+  canvas.height = 1;
+  pixelContext = canvas.getContext("2d", { willReadFrequently: true });
+
+  return pixelContext;
+}
 
 function parseHexColor(value: string): Rgba | null {
   const normalized = value.replace("#", "");
@@ -115,7 +131,93 @@ function resolveBackgroundColor(style: CSSStyleDeclaration): Rgba | null {
   return extractColorFromBackgroundImage(style.backgroundImage);
 }
 
-function resolveToneFromElement(element: Element): "light" | "dark" | null {
+function resolveImagePixel(
+  image: HTMLImageElement,
+  x: number,
+  y: number,
+): Rgba | null {
+  const context = getPixelContext();
+  if (!context || !image.complete || image.naturalWidth === 0) {
+    return null;
+  }
+
+  const rect = image.getBoundingClientRect();
+  if (rect.width === 0 || rect.height === 0) {
+    return null;
+  }
+
+  const style = getComputedStyle(image);
+  const imageRatio = image.naturalWidth / image.naturalHeight;
+  const boxRatio = rect.width / rect.height;
+  const objectFit = style.objectFit;
+  let renderedWidth = rect.width;
+  let renderedHeight = rect.height;
+
+  if (objectFit === "contain" || objectFit === "scale-down") {
+    if (imageRatio > boxRatio) {
+      renderedHeight = rect.width / imageRatio;
+    } else {
+      renderedWidth = rect.height * imageRatio;
+    }
+  } else if (objectFit === "cover") {
+    if (imageRatio > boxRatio) {
+      renderedWidth = rect.height * imageRatio;
+    } else {
+      renderedHeight = rect.width / imageRatio;
+    }
+  }
+
+  const renderedLeft = rect.left + (rect.width - renderedWidth) / 2;
+  const renderedTop = rect.top + (rect.height - renderedHeight) / 2;
+  const relativeX = (x - renderedLeft) / renderedWidth;
+  const relativeY = (y - renderedTop) / renderedHeight;
+
+  if (
+    relativeX < 0 ||
+    relativeX > 1 ||
+    relativeY < 0 ||
+    relativeY > 1
+  ) {
+    return null;
+  }
+
+  try {
+    context.clearRect(0, 0, 1, 1);
+    context.drawImage(
+      image,
+      Math.min(image.naturalWidth - 1, relativeX * image.naturalWidth),
+      Math.min(image.naturalHeight - 1, relativeY * image.naturalHeight),
+      1,
+      1,
+      0,
+      0,
+      1,
+      1,
+    );
+
+    const [r, g, b, a] = context.getImageData(0, 0, 1, 1).data;
+    return { r, g, b, a: a / 255 };
+  } catch {
+    return null;
+  }
+}
+
+function resolveToneFromElement(
+  element: Element,
+  x: number,
+  y: number,
+): "light" | "dark" | null {
+  if (element instanceof HTMLImageElement) {
+    const pixel = resolveImagePixel(element, x, y);
+    if (!pixel || pixel.a < MIN_ALPHA) {
+      return null;
+    }
+
+    return relativeLuminance(pixel) < LUMINANCE_DARK_THRESHOLD
+      ? "dark"
+      : "light";
+  }
+
   if (SKIP_TAGS.has(element.tagName)) {
     return null;
   }
@@ -128,8 +230,26 @@ function resolveToneFromElement(element: Element): "light" | "dark" | null {
   return relativeLuminance(rgba) < LUMINANCE_DARK_THRESHOLD ? "dark" : "light";
 }
 
-export function isDarkBackdropAt(x: number, y: number): boolean {
+function getElementsFromPointBelowHeader(x: number, y: number): Element[] {
+  const header = document.querySelector("header");
+  const previousPointerEvents =
+    header instanceof HTMLElement ? header.style.pointerEvents : null;
+
+  if (header instanceof HTMLElement) {
+    header.style.pointerEvents = "none";
+  }
+
   const stack = document.elementsFromPoint(x, y);
+
+  if (header instanceof HTMLElement) {
+    header.style.pointerEvents = previousPointerEvents ?? "";
+  }
+
+  return stack;
+}
+
+export function isDarkBackdropAt(x: number, y: number): boolean {
+  const stack = getElementsFromPointBelowHeader(x, y);
 
   for (const element of stack) {
     if (!(element instanceof Element)) {
@@ -140,15 +260,22 @@ export function isDarkBackdropAt(x: number, y: number): boolean {
       continue;
     }
 
-    if (element.closest("[data-header-backdrop='dark']")) {
-      return true;
+    const backdropMarker = element.closest<HTMLElement>(
+      "[data-header-backdrop]",
+    );
+    if (backdropMarker) {
+      return backdropMarker.dataset.headerBackdrop === "dark";
     }
 
-    const tone = resolveToneFromElement(element);
+    const tone = resolveToneFromElement(element, x, y);
     if (tone !== null) {
       return tone === "dark";
     }
   }
 
   return false;
+}
+
+export function isDarkBackdropAtColumn(x: number): boolean {
+  return HEADER_PROBE_YS.some((y) => isDarkBackdropAt(x, y));
 }

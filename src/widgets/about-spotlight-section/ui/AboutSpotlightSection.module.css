@@ -103,6 +103,11 @@
   background: var(--color-accent-2);
 }
 
+.about-spotlight-section__tag-icon-image {
+  width: 24px;
+  height: 24px;
+}
+
 .about-spotlight-section__tag-label {
   font-family: var(--font-heading);
   font-size: 26px;
@@ -407,7 +412,7 @@
     height: 32px;
   }
 
-  .about-spotlight-section__tag-icon img {
+  .about-spotlight-section__tag-icon-image {
     width: 16px;
     height: 16px;
   }

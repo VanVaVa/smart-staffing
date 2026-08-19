@@ -79,17 +79,27 @@ export function SoftwareRightsModal({
         aria-labelledby={titleId}
       >
         <header className={styles["software-rights-modal__header"]}>
-          <h2 id={titleId} className={styles["software-rights-modal__title"]}>
-            {activeDocument.title}
-          </h2>
           <button
             ref={closeRef}
             type="button"
             className={styles["software-rights-modal__back"]}
             onClick={onClose}
           >
-            <span className={styles["company-connection-modal__close-icon"]} aria-hidden />
+            <ArrowIcon
+              name="2Left"
+              className={styles["software-rights-modal__back-icon"]}
+            />
+            <span className={styles["software-rights-modal__back-label"]}>
+              Документы
+            </span>
+            <span
+              className={styles["software-rights-modal__close-icon"]}
+              aria-hidden
+            />
           </button>
+          <h2 id={titleId} className={styles["software-rights-modal__title"]}>
+            {activeDocument.title}
+          </h2>
         </header>
         <div className={styles["software-rights-modal__scroll"]}>
           <div className={styles["software-rights-modal__content"]}>

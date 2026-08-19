@@ -22,7 +22,7 @@ export function AboutSpotlightSection({ content }: AboutSpotlightSectionProps) {
           <div className={styles["about-spotlight-section__tag"]}>
             <div>
               <span className={styles["about-spotlight-section__tag-icon"]}>
-                <Image src={leftTag.iconSrc} alt="" width={24} height={24} />
+                <img src={leftTag.iconSrc} alt="" className={styles["about-spotlight-section__tag-icon-image"]} />
               </span>
             </div>
             <span className={styles["about-spotlight-section__tag-label"]}>

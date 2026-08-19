@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 28px;
-  width: min(100%, 555px);
+  width: min(100%, 568px);
 }
 
 .feedback-form__fields {

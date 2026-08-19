@@ -103,7 +103,7 @@
 }
 
 .feedback-form-panel__form-slot {
-  width: min(100%, 555px);
+  width: min(100%, 568px);
   flex-shrink: 0;
 }
 
@@ -178,8 +178,8 @@
   }
 
   .feedback-form-panel__form-slot {
-    width: min(460px, calc(460 * 100vw / 992));
-    max-width: 460px;
+    width: 568px;
+    max-width: 568px;
     align-self: flex-start;
   }
 

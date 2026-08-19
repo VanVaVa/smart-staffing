@@ -47,8 +47,10 @@ export function HeroSegment({
           <Image
             src={imageSrc}
             alt=""
-            width={68}
-            height={68}
+            width={136}
+            height={136}
+            quality={90}
+            sizes="(max-width: 450px) 40px, (max-width: 576px) 48px, (max-width: 768px) 56px, (max-width: 992px) 54px, (max-width: 1440px) 60px, 68px"
             className={styles["hero-segment__thumb-image"]}
           />
         </div>
