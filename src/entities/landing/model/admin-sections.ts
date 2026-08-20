@@ -45,6 +45,8 @@ export type AdminCollectionSection = AdminSectionBase & {
 export type AdminSingletonSection = AdminSectionBase & {
   mode: "singleton";
   storage: Extract<AdminSectionStorage, { kind: "blockPath" }>;
+  toForm?: (values: AdminValues) => AdminValues;
+  fromForm?: (values: AdminValues) => AdminValues;
 };
 
 export type AdminSection = AdminCollectionSection | AdminSingletonSection;
@@ -63,6 +65,19 @@ function text(values: AdminValues, key: string): string {
 function formatPublishedLabel(publishedAt: string): string {
   const [year, month, day] = publishedAt.split("-");
   return year && month && day ? `${day}.${month}.${year}` : publishedAt;
+}
+
+function parseDisplayDate(date: string): string {
+  if (/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+    return date;
+  }
+
+  const [day, month, year] = date.split(".");
+  if (!year || !month || !day) {
+    return "";
+  }
+
+  return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
 }
 
 const CYRILLIC_TRANSLIT: Record<string, string> = {
@@ -94,8 +109,7 @@ function unwrapMarqueeItems(items: AdminValues[]): AdminValues[] {
 }
 
 function wrapMarqueeItems(rowId: string, items: AdminValues[]): AdminValues[] {
-  const sequence = [...items, ...items, ...items.slice(0, MARQUEE_TAIL)];
-  return sequence.map((item, index) => ({
+  return items.map((item, index) => ({
     ...item,
     id: `${rowId}-${String(index + 1).padStart(2, "0")}`,
   }));
@@ -306,16 +320,24 @@ const testimonialsSection: AdminCollectionSection = {
   createValues: () => ({
     company: "Компания",
     role: "",
-    date: "",
+    date: new Date().toISOString().slice(0, 10),
     quote: "",
     logoSrc: "",
     logoWidth: 32,
     logoHeight: 32,
   }),
+  toForm: (item) => ({
+    ...item,
+    date: parseDisplayDate(text(item, "date")),
+  }),
+  fromForm: (values) => ({
+    ...values,
+    date: formatPublishedLabel(text(values, "date")),
+  }),
   fields: [
     { kind: "text", name: "company", label: "Компания" },
     { kind: "text", name: "role", label: "Автор и должность" },
-    { kind: "text", name: "date", label: "Дата" },
+    { kind: "date", name: "date", label: "Дата" },
     { kind: "textarea", name: "quote", label: "Текст отзыва", rows: 8 },
     { kind: "image", name: "logoSrc", label: "Логотип" },
     { kind: "number", name: "logoWidth", label: "Ширина логотипа" },
@@ -467,28 +489,11 @@ const leadershipSection: AdminCollectionSection = {
     name: "Имя Фамилия",
     role: "Роль",
     imageSrc: "",
-    layout: "strategy",
   }),
   fields: [
     { kind: "text", name: "name", label: "Имя" },
-    { kind: "text", name: "role", label: "Направление" },
+    { kind: "text", name: "role", label: "Роль" },
     { kind: "image", name: "imageSrc", label: "Фото" },
-    {
-      kind: "select",
-      name: "layout",
-      label: "Место в сетке",
-      hint: "Каждая позиция рассчитана на одну карточку.",
-      options: [
-        { value: "featured", label: "Крупная карточка" },
-        { value: "strategy", label: "Стратегия" },
-        { value: "alliance", label: "Альянс" },
-        { value: "development", label: "Развитие" },
-        { value: "analytics", label: "Аналитика" },
-        { value: "marketing", label: "Маркетинг" },
-        { value: "investors", label: "Инвесторы" },
-        { value: "finance", label: "Финансы" },
-      ],
-    },
   ],
 };
 
@@ -516,6 +521,40 @@ const historySection: AdminCollectionSection = {
   ],
 };
 
+function missionItemsFromStored(values: AdminValues): AdminValues[] {
+  const rawItems = Array.isArray(values.items) ? values.items : [];
+  const markers = Array.isArray(values.markers)
+    ? values.markers.map((marker) => asValues(marker))
+    : [];
+  const length = Math.max(rawItems.length, markers.length);
+
+  return Array.from({ length }, (_, index) => {
+    const item = rawItems[index];
+    const marker = markers[index];
+
+    if (typeof item === "string") {
+      return {
+        text: item,
+        iconSrc: text(marker, "iconSrc"),
+        alt: text(marker, "alt"),
+      };
+    }
+
+    const record = asValues(item);
+    return {
+      text: text(record, "text"),
+      iconSrc: text(record, "iconSrc") || text(marker, "iconSrc"),
+      alt: text(record, "alt") || text(marker, "alt"),
+    };
+  });
+}
+
+function asValues(value: unknown): AdminValues {
+  return typeof value === "object" && value !== null && !Array.isArray(value)
+    ? (value as AdminValues)
+    : {};
+}
+
 const missionSection: AdminSingletonSection = {
   key: "mission",
   title: "Миссия",
@@ -529,14 +568,44 @@ const missionSection: AdminSingletonSection = {
     blockType: "history",
     path: ["mission"],
   },
+  toForm: (values) => ({
+    tag: text(values, "tag"),
+    items: missionItemsFromStored(values),
+  }),
+  fromForm: (values) => {
+    const formItems = Array.isArray(values.items)
+      ? (values.items as AdminValues[])
+      : [];
+
+    return {
+      tag: text(values, "tag"),
+      items: formItems.map((item) => text(item, "text")),
+      markers: formItems.map((item) => ({
+        iconSrc: text(item, "iconSrc"),
+        alt: text(item, "alt"),
+      })),
+    };
+  },
   fields: [
     { kind: "text", name: "tag", label: "Подпись блока" },
     {
-      kind: "stringList",
+      kind: "list",
       name: "items",
       label: "Пункты",
       addLabel: "Пункт",
-      multiline: true,
+      createItem: () => ({ text: "", iconSrc: "", alt: "" }),
+      itemTitle: (item, index) =>
+        text(item, "text").trim().slice(0, 60) || `Пункт ${index + 1}`,
+      fields: [
+        { kind: "textarea", name: "text", label: "Текст", rows: 3 },
+        {
+          kind: "image",
+          name: "iconSrc",
+          label: "Маркер (SVG)",
+          accept: ".svg,image/svg+xml",
+        },
+        { kind: "text", name: "alt", label: "Описание маркера" },
+      ],
     },
   ],
 };

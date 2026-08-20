@@ -45,9 +45,12 @@
 
 .badge--tag {
   padding: 8px 20px;
+  max-width: 100%;
   font-size: var(--text-body-md);
   line-height: var(--line-body);
   font-weight: 400;
+  white-space: normal;
+  overflow-wrap: anywhere;
   background: var(--color-grey-200);
   color: var(--color-black);
 }

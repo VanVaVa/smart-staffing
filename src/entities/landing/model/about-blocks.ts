@@ -7,6 +7,7 @@ import {
   aboutPartner,
   aboutSpotlight,
   aboutTrusted,
+  type AboutLeadershipContent,
 } from "./about-content";
 import { cloneProps, isRecord, isString } from "../lib/block-parse-utils";
 import type { LandingBlockBase } from "./landing-block-base";
@@ -30,7 +31,7 @@ export type AboutHistoryBlockProps = typeof aboutHistory;
 export type AboutPartnerBlockProps = typeof aboutPartner;
 export type AboutTrustedBlockProps = typeof aboutTrusted;
 export type AboutBenefitsBlockProps = typeof aboutBenefits;
-export type AboutLeadershipBlockProps = typeof aboutLeadership;
+export type AboutLeadershipBlockProps = AboutLeadershipContent;
 export type AboutCareerBookBlockProps = typeof aboutCareerBook;
 
 export type AboutBlockPropsByType = {

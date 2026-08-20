@@ -27,6 +27,8 @@ export function ClientsPlatformBenefitsSection({
   const [showcaseItCosts, showcaseQuality, showcaseScaling] = content.showcase;
   const cardCount = content.cards.length;
   const mobileOrder = getClientsPlatformBenefitsMobileOrder(segment, pageVariant);
+  const hasPricingEnterpriseTabletOrder =
+    pageVariant === "pricing" && segment === "enterprise";
 
   return (
     <section className={styles["clients-platform-benefits-section"]}>
@@ -45,6 +47,9 @@ export function ClientsPlatformBenefitsSection({
           </div>
           <ul
             className={styles["clients-platform-benefits-section__cards"]}
+            data-tablet-results-wide={
+              hasPricingEnterpriseTabletOrder ? "" : undefined
+            }
             style={
               {
                 "--clients-platform-benefits-card-count": cardCount,
@@ -53,6 +58,11 @@ export function ClientsPlatformBenefitsSection({
           >
             {content.cards.map((card, index) => {
               const mobilePosition = mobileOrder?.[index] ?? index + 1;
+              const tabletWide =
+                cardCount >= 4 &&
+                (hasPricingEnterpriseTabletOrder
+                  ? mobilePosition === cardCount
+                  : index === 3);
               const isMobileFullWidth =
                 cardCount === 3 ||
                 mobilePosition === 1 ||
@@ -76,6 +86,7 @@ export function ClientsPlatformBenefitsSection({
                     cardIndex={index}
                     cardCount={cardCount}
                     mobileFullWidth={isMobileFullWidth}
+                    tabletWide={tabletWide}
                   />
                 </li>
               );

@@ -78,7 +78,7 @@ li:nth-of-type(2) .clients-platform-benefits-card--dark-bg img {
     .clients-platform-benefits-card--dark-visual
   )
   .clients-platform-benefits-card__visual {
-  width: auto;
+  width: 100%;
   max-width: none;
   flex: none;
   margin: min(96px, calc(96 * 100vw / 1920)) 0 0
@@ -94,7 +94,7 @@ li:nth-of-type(2) .clients-platform-benefits-card--dark-bg img {
   height: auto;
   border-radius: 0;
   object-fit: contain;
-  max-width: 200%;
+  max-width: 100%;
   min-height: 100%;
 }
 
@@ -132,7 +132,7 @@ li:nth-of-type(2) .clients-platform-benefits-card--dark-bg img {
 
 .clients-platform-benefits-card--dark-bg.clients-platform-benefits-card--visual-align-start
   .clients-platform-benefits-card__image {
-  width: auto;
+  width: 100%;
   max-width: 100%;
   border-radius: 20px;
 }
@@ -964,7 +964,9 @@ li:nth-of-type(2) .clients-platform-benefits-card--dark-bg img {
     .clients-platform-benefits-card__title {
     flex: 0 0 45%;
     max-width: 45%;
+    min-width: 0;
     padding: 16px 0 16px 16px;
+    overflow-wrap: anywhere;
   }
 
   .clients-platform-benefits-card.clients-platform-benefits-card--mobile-wide

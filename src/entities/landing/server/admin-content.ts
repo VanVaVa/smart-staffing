@@ -256,16 +256,35 @@ export async function moveAdminSectionItem(
   await writeCollection(section, next);
 }
 
+function toSingletonFormValues(
+  section: AdminSingletonSection,
+  values: AdminValues,
+): AdminValues {
+  return section.toForm ? section.toForm(values) : values;
+}
+
+function toSingletonStoredValues(
+  section: AdminSingletonSection,
+  existing: AdminValues,
+  values: AdminValues,
+): AdminValues {
+  const merged = { ...existing, ...values };
+  return section.fromForm ? section.fromForm(merged) : merged;
+}
+
 export async function readAdminSectionValues(
   section: AdminSingletonSection,
 ): Promise<AdminValues> {
-  return asValues(await readBlockPath(section.storage));
+  return toSingletonFormValues(section, asValues(await readBlockPath(section.storage)));
 }
 
 export async function saveAdminSectionValues(
   section: AdminSingletonSection,
   values: AdminValues,
 ): Promise<void> {
-  const existing = await readAdminSectionValues(section);
-  await writeBlockPath(section.storage, { ...existing, ...values });
+  const existing = asValues(await readBlockPath(section.storage));
+  await writeBlockPath(
+    section.storage,
+    toSingletonStoredValues(section, existing, values),
+  );
 }

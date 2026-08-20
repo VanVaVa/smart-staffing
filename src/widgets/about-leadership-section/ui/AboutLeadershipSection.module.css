@@ -21,6 +21,13 @@
   letter-spacing: -0.01em;
 }
 
+.about-leadership-section__boards {
+  display: flex;
+  flex-direction: column;
+  gap: min(8px, calc(8 * 100vw / 1920));
+  min-width: 0;
+}
+
 .about-leadership-section__grid {
   display: grid;
   grid-template-columns: minmax(0, 603fr) minmax(0, 602fr) minmax(0, 603fr);
@@ -29,6 +36,13 @@
     "featured strategy alliance"
     "featured development analytics"
     "marketing investors finance";
+  gap: min(8px, calc(8 * 100vw / 1920));
+  align-items: stretch;
+}
+
+.about-leadership-section__extra-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 603fr) minmax(0, 602fr) minmax(0, 603fr);
   gap: min(8px, calc(8 * 100vw / 1920));
   align-items: stretch;
 }
@@ -79,6 +93,14 @@
   .about-leadership-section__grid {
     gap: 8px;
   }
+
+  .about-leadership-section__extra-grid {
+    gap: 8px;
+  }
+
+  .about-leadership-section__boards {
+    gap: 8px;
+  }
 }
 
 @media (max-width: 992px) {
@@ -102,6 +124,10 @@
       "alliance analytics"
       "marketing investors"
       "finance .";
+  }
+
+  .about-leadership-section__extra-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 

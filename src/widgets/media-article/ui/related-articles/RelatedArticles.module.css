@@ -45,6 +45,7 @@
   color: var(--color-grey-400);
   font-size: var(--text-body-xl);
   line-height: var(--line-body-xl);
+  overflow-wrap: anywhere;
 }
 
 .related-articles__title {

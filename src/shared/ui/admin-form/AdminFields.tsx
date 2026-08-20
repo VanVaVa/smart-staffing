@@ -4,6 +4,8 @@ import { useState } from "react";
 
 import { uploadAdminMedia } from "@/shared/lib/upload-admin-media";
 
+import { AdminDatePicker } from "./AdminDatePicker";
+import { AdminSelect } from "./AdminSelect";
 import styles from "./AdminFields.module.css";
 import {
   emptyValues,
@@ -140,29 +142,21 @@ function ScalarControl({
 
   if (field.kind === "select") {
     return (
-      <select
-        className={styles.input}
+      <AdminSelect
         value={asString(value)}
+        options={field.options}
         disabled={disabled}
-        onChange={(event) => onChange(event.target.value)}
-      >
-        {field.options.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.label}
-          </option>
-        ))}
-      </select>
+        onChange={onChange}
+      />
     );
   }
 
   if (field.kind === "date") {
     return (
-      <input
-        className={styles.input}
-        type="date"
+      <AdminDatePicker
         value={asString(value)}
         disabled={disabled}
-        onChange={(event) => onChange(event.target.value)}
+        onChange={onChange}
       />
     );
   }
@@ -170,7 +164,7 @@ function ScalarControl({
   if (field.kind === "image" || field.kind === "file") {
     return (
       <MediaControl
-        accept={field.kind === "image" ? "image/*,.svg" : field.accept}
+        accept={field.kind === "image" ? (field.accept ?? "image/*,.svg") : field.accept}
         preview={field.kind === "image"}
         value={asString(value)}
         onChange={onChange}

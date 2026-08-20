@@ -114,6 +114,7 @@
 
 .platform-onboarding-steps__card-title {
   max-width: 269px;
+  min-width: auto;
   font-family: var(--font-body);
   font-size: var(--text-h3);
   line-height: 1.23;
@@ -122,11 +123,13 @@
 
 .platform-onboarding-steps__card-text {
   margin: 0;
+  min-width: 0;
   font-family: var(--font-body);
   font-size: var(--text-body-xl);
   line-height: 1.3;
   color: var(--color-black);
   max-width: 512px;
+  overflow-wrap: anywhere;
 }
 
 .platform-onboarding-steps__arrow {

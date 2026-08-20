@@ -52,6 +52,7 @@
   font-weight: 400;
   line-height: min(var(--line-body-xl), calc(var(--line-body-xl) * 100vw / 1920));
   color: var(--color-grey-200);
+  overflow-wrap: anywhere;
 }
 
 .about-leadership-card__name {
@@ -61,6 +62,7 @@
   font-weight: 500;
   line-height: var(--line-lead);
   color: var(--color-white);
+  overflow-wrap: anywhere;
 }
 
 .about-leadership-card--featured {
@@ -94,6 +96,10 @@
 
 .about-leadership-card--finance {
   grid-area: finance;
+}
+
+.about-leadership-card--extra {
+  min-width: 0;
 }
 
 @media (max-width: 1440px) {

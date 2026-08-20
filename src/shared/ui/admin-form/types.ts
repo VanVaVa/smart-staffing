@@ -19,7 +19,7 @@ export type AdminField =
   | (AdminFieldCommon & { kind: "checkbox" })
   | (AdminFieldCommon & { kind: "select"; options: AdminFieldOption[] })
   | (AdminFieldCommon & { kind: "date" })
-  | (AdminFieldCommon & { kind: "image" })
+  | (AdminFieldCommon & { kind: "image"; accept?: string })
   | (AdminFieldCommon & { kind: "file"; accept: string })
   | (AdminFieldCommon & { kind: "stringList"; addLabel: string; multiline?: boolean })
   | (AdminFieldCommon & { kind: "group"; fields: readonly AdminField[] })

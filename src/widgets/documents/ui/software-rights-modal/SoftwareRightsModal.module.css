@@ -63,6 +63,7 @@
   font-size: var(--text-h3);
   font-weight: 600;
   line-height: var(--line-h3);
+  overflow-wrap: anywhere;
 }
 
 .software-rights-modal__back {
@@ -137,16 +138,19 @@
   padding-bottom: 60px;
   font-size: var(--text-body-xl);
   line-height: 26px;
+  overflow-wrap: anywhere;
 }
 
 .software-rights-modal__registrations {
   margin: 0;
   padding: 0;
   list-style: none;
+  overflow-wrap: anywhere;
 }
 
 .software-rights-modal__content p {
   margin: 0;
+  overflow-wrap: anywhere;
 }
 
 @media (max-width: 992px) {

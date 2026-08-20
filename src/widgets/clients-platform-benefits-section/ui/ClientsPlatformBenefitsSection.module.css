@@ -244,6 +244,30 @@
   .clients-platform-benefits-section__card:nth-child(4) > * {
     min-height: min(140px, calc(140 * 100vw / 992));
   }
+
+  .clients-platform-benefits-section__cards[data-tablet-results-wide]
+    .clients-platform-benefits-section__card:nth-child(3) {
+    grid-column: 1 / span 2;
+    grid-row: 2;
+  }
+
+  .clients-platform-benefits-section__cards[data-tablet-results-wide]
+    .clients-platform-benefits-section__card:nth-child(3)
+    > * {
+    min-height: min(140px, calc(140 * 100vw / 992));
+  }
+
+  .clients-platform-benefits-section__cards[data-tablet-results-wide]
+    .clients-platform-benefits-section__card:nth-child(4) {
+    grid-row: 1 / span 2;
+    grid-column: 3;
+  }
+
+  .clients-platform-benefits-section__cards[data-tablet-results-wide]
+    .clients-platform-benefits-section__card:nth-child(4)
+    > * {
+    min-height: min(436px, calc(436 * 100vw / 992));
+  }
 }
 
 @media (max-width: 768px) {

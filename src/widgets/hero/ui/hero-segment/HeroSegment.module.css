@@ -4,10 +4,11 @@
   align-items: center;
   gap: 16px;
   min-height: 68px;
+  min-width: 0;
   padding-right: 28px;
   border-radius: var(--radius-control);
   background: var(--color-white-40);
-  width: fit-content;
+  align-self: flex-start;
   max-width: 100%;
   overflow: hidden;
   cursor: pointer;
@@ -87,6 +88,9 @@
 .hero-segment__label {
   position: relative;
   z-index: 1;
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
   font-family: var(--font-body);
   font-size: var(--text-body-xl);
   font-weight: 500;

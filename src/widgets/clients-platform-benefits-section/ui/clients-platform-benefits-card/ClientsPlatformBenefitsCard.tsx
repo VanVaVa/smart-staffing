@@ -9,6 +9,7 @@ type ClientsPlatformBenefitsCardProps = {
   cardIndex: number;
   cardCount: number;
   mobileFullWidth: boolean;
+  tabletWide: boolean;
 };
 
 function ClientsPlatformBenefitsInProgressIcon() {
@@ -37,6 +38,7 @@ export function ClientsPlatformBenefitsCard({
   cardIndex,
   cardCount,
   mobileFullWidth,
+  tabletWide,
 }: ClientsPlatformBenefitsCardProps) {
   const toneClass =
     card.backgroundType === "dark-bg"
@@ -49,7 +51,7 @@ export function ClientsPlatformBenefitsCard({
       : "";
 
   const slotLayoutClass =
-    cardCount >= 4 && cardIndex === 3
+    cardCount >= 4 && tabletWide
       ? styles["clients-platform-benefits-card--slot-4-geometry-layout"]
       : cardCount === 3 && cardIndex === 1
         ? styles["clients-platform-benefits-card--slot-3-wide-layout"]

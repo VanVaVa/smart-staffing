@@ -116,10 +116,12 @@
 }
 
 .clients-platform-section__pain-text {
+  min-width: 0;
   font-family: var(--font-body);
   font-size: min(20px, calc(20 * 100vw / 1920));
   font-weight: 400;
   line-height: min(26px, calc(26 * 100vw / 1920));
+  overflow-wrap: anywhere;
 }
 
 .clients-platform-section__main {

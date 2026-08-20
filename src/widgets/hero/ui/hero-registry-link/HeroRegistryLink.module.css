@@ -47,6 +47,8 @@
 
 .hero-registry-link__label {
   flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
   font-family: var(--font-body);
   font-size: var(--text-body-xl);
   font-weight: 400;

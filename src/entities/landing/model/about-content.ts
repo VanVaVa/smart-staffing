@@ -209,7 +209,32 @@ export type AboutLeadershipMemberLayout =
   | "analytics"
   | "marketing"
   | "investors"
-  | "finance";
+  | "finance"
+  | "extra";
+
+export const ABOUT_LEADERSHIP_MOSAIC_LAYOUTS = [
+  "featured",
+  "strategy",
+  "alliance",
+  "development",
+  "analytics",
+  "marketing",
+  "investors",
+  "finance",
+] as const satisfies readonly AboutLeadershipMemberLayout[];
+
+export type AboutLeadershipMember = {
+  id: string;
+  role: string;
+  name: string;
+  imageSrc: string;
+  layout?: AboutLeadershipMemberLayout;
+};
+
+export type AboutLeadershipContent = {
+  title: string;
+  members: AboutLeadershipMember[];
+};
 
 export const aboutLeadership = {
   title: "Познакомьтесь с\u00a0нашим руководством",
@@ -271,7 +296,7 @@ export const aboutLeadership = {
       layout: "finance",
     },
   ],
-} as const;
+} satisfies AboutLeadershipContent;
 
 export const aboutBenefits = {
   title: "Преимущества работы с\u00a0нами",

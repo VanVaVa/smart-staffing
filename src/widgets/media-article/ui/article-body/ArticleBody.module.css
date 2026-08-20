@@ -13,6 +13,7 @@
   font-weight: 600;
   line-height: var(--line-h3);
   letter-spacing: var(--letter-heading);
+  overflow-wrap: anywhere;
 }
 
 .article-body__blocks {
@@ -23,6 +24,7 @@
 
 .article-body__paragraph {
   margin: 0;
+  overflow-wrap: anywhere;
 }
 
 .article-body__add-actions {

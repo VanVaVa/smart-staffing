@@ -11,6 +11,7 @@
 
 .footer-bottom__muted {
   color: var(--color-grey-400);
+  overflow-wrap: anywhere;
 }
 
 .footer-bottom__legal {

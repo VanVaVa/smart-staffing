@@ -25,6 +25,7 @@
   font-weight: 600;
   line-height: var(--line-h3);
   letter-spacing: var(--letter-heading);
+  overflow-wrap: anywhere;
 }
 
 .document-list__requisites {
@@ -55,6 +56,7 @@
   margin: 0;
   font-size: var(--text-body-xl);
   line-height: 28px;
+  overflow-wrap: anywhere;
 }
 
 .document-list__categories {
@@ -90,6 +92,7 @@
   line-height: 1.25;
   text-align: left;
   text-decoration: none;
+  overflow-wrap: anywhere;
   cursor: pointer;
   transition: color 160ms ease;
 }

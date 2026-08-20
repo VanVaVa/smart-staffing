@@ -64,6 +64,7 @@
   font-weight: 600;
   line-height: var(--line-h3);
   text-align: center;
+  overflow-wrap: anywhere;
 }
 
 @media (max-width: 1440px) {

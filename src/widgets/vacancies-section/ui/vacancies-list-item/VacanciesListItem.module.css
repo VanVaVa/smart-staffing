@@ -35,6 +35,7 @@
   font-size: min(20px, calc(20 * 100vw / 1920));
   font-weight: 500;
   line-height: min(26px, calc(26 * 100vw / 1920));
+  overflow-wrap: anywhere;
 }
 
 .vacancies-list-item__employment {
@@ -42,6 +43,7 @@
   font-size: min(14px, calc(14 * 100vw / 1920));
   font-weight: 400;
   line-height: min(20px, calc(20 * 100vw / 1920));
+  overflow-wrap: anywhere;
 }
 
 .vacancies-list-item__arrow {

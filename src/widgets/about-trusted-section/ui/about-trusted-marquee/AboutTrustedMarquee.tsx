@@ -1,21 +1,17 @@
 "use client";
 
-import { useEffect, useRef, type RefObject } from "react";
+import { useEffect, useMemo, useRef, type RefObject } from "react";
 
+import {
+  normalizeMarqueeItems,
+  type TrustedMarqueeItem,
+} from "../../lib/normalize-marquee-items";
 import { AboutTrustedLogoCard } from "../about-trusted-logo-card";
 
 import styles from "./AboutTrustedMarquee.module.css";
 
-type TrustedLogoItem = {
-  id: string;
-  cellWidth: number;
-  src: string;
-  logoWidth: number;
-  logoHeight: number;
-};
-
 type AboutTrustedMarqueeProps = {
-  items: readonly TrustedLogoItem[];
+  items: readonly TrustedMarqueeItem[];
 };
 
 const MARQUEE_DURATION_MS = 90_000;
@@ -25,7 +21,7 @@ function TrustedSequence({
   copyRef,
   hidden,
 }: {
-  items: readonly TrustedLogoItem[];
+  items: readonly TrustedMarqueeItem[];
   copyRef?: RefObject<HTMLDivElement | null>;
   hidden?: boolean;
 }) {
@@ -49,6 +45,7 @@ function TrustedSequence({
 }
 
 export function AboutTrustedMarquee({ items }: AboutTrustedMarqueeProps) {
+  const displayItems = useMemo(() => normalizeMarqueeItems(items), [items]);
   const trackRef = useRef<HTMLDivElement>(null);
   const firstCopyRef = useRef<HTMLDivElement>(null);
 
@@ -66,13 +63,14 @@ export function AboutTrustedMarquee({ items }: AboutTrustedMarqueeProps) {
     let shift = 0;
     let speed = 0;
 
-    const measure = () => {
-      const secondCopy = firstCopy.nextElementSibling;
-      if (!(secondCopy instanceof HTMLElement)) {
-        return false;
-      }
+    const readSequenceGap = () => {
+      const gapValue = getComputedStyle(track).gap;
+      const gap = Number.parseFloat(gapValue);
+      return Number.isFinite(gap) ? gap : 0;
+    };
 
-      const nextShift = secondCopy.offsetLeft - firstCopy.offsetLeft;
+    const measure = () => {
+      const nextShift = firstCopy.offsetWidth + readSequenceGap();
       if (nextShift <= 0) {
         return false;
       }
@@ -122,10 +120,12 @@ export function AboutTrustedMarquee({ items }: AboutTrustedMarqueeProps) {
 
     const resizeObserver = new ResizeObserver(sync);
     resizeObserver.observe(firstCopy);
+    resizeObserver.observe(track);
 
     const images = track.querySelectorAll("img");
     images.forEach((image) => {
       image.addEventListener("load", sync);
+      image.addEventListener("error", sync);
     });
 
     const onMotionChange = () => {
@@ -139,15 +139,20 @@ export function AboutTrustedMarquee({ items }: AboutTrustedMarqueeProps) {
       motionQuery.removeEventListener("change", onMotionChange);
       images.forEach((image) => {
         image.removeEventListener("load", sync);
+        image.removeEventListener("error", sync);
       });
     };
-  }, [items]);
+  }, [displayItems]);
+
+  if (displayItems.length === 0) {
+    return null;
+  }
 
   return (
     <div className={styles["about-trusted-marquee"]}>
       <div ref={trackRef} className={styles["about-trusted-marquee__track"]}>
-        <TrustedSequence items={items} copyRef={firstCopyRef} />
-        <TrustedSequence items={items} hidden />
+        <TrustedSequence items={displayItems} copyRef={firstCopyRef} />
+        <TrustedSequence items={displayItems} hidden />
       </div>
     </div>
   );

@@ -88,6 +88,7 @@
   font-size: var(--text-body-sm);
   line-height: var(--line-body-sm);
   color: var(--color-grey-400);
+  overflow-wrap: anywhere;
 }
 
 .testimonial-card__quote {
@@ -100,7 +101,7 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 4;
   line-clamp: 4;
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
   text-overflow: ellipsis;
   font-size: var(--text-body-xl);
   line-height: var(--line-body-xl);
@@ -118,7 +119,7 @@
       max-height 0.3s ease-in-out;
   }
 
-  .testimonial-card--open {
+  .testimonial-card.testimonial-card--open {
     width: var(--testimonial-card-expanded-width, min(501px, 100cqw));
     flex: 0 0 var(--testimonial-card-expanded-width, min(501px, 100cqw));
     flex-basis: var(--testimonial-card-expanded-width, min(501px, 100cqw));

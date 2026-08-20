@@ -1,0 +1,96 @@
+.admin-select {
+  position: relative;
+  width: 100%;
+}
+
+.admin-select__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid rgb(255 255 255 / 14%);
+  border-radius: 10px;
+  background: rgb(255 255 255 / 6%);
+  color: #f5f5f7;
+  font: inherit;
+  font-size: 14px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.admin-select__trigger:hover:not(:disabled) {
+  border-color: rgb(255 255 255 / 28%);
+}
+
+.admin-select__trigger:focus {
+  outline: none;
+  border-color: rgb(255 255 255 / 40%);
+}
+
+.admin-select--open .admin-select__trigger {
+  border-color: rgb(255 255 255 / 40%);
+}
+
+.admin-select--disabled .admin-select__trigger {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.admin-select__label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.admin-select__chevron {
+  flex: none;
+  transition: transform 0.15s ease;
+}
+
+.admin-select--open .admin-select__chevron {
+  transform: rotate(180deg);
+}
+
+.admin-select__menu {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  max-height: 240px;
+  margin: 0;
+  padding: 4px;
+  overflow-y: auto;
+  list-style: none;
+  border: 1px solid rgb(255 255 255 / 18%);
+  border-radius: 10px;
+  background: #1a1d24;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 35%);
+}
+
+.admin-select__option {
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: #f5f5f7;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.admin-select__option:hover,
+.admin-select__option--active {
+  background: rgb(255 255 255 / 10%);
+}
+
+.admin-select__option--selected {
+  background: rgb(79 140 255 / 18%);
+  color: #fff;
+}
+
+.admin-select__option--selected:hover,
+.admin-select__option--selected.admin-select__option--active {
+  background: rgb(79 140 255 / 28%);
+}

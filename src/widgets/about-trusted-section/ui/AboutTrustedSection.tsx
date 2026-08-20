@@ -11,6 +11,7 @@ type AboutTrustedSectionProps = {
 
 export function AboutTrustedSection({ content }: AboutTrustedSectionProps) {
   const { title, rows } = content;
+  const visibleRows = rows.filter((row) => row.items.length > 0);
 
   return (
     <section className={styles["about-trusted-section"]}>
@@ -24,7 +25,7 @@ export function AboutTrustedSection({ content }: AboutTrustedSectionProps) {
             {title}
           </h2>
           <div className={styles["about-trusted-section__rows"]}>
-            {rows.map((row) => (
+            {visibleRows.map((row) => (
               <AboutTrustedMarquee key={row.id} items={row.items} />
             ))}
           </div>

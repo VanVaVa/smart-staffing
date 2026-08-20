@@ -146,6 +146,7 @@
   font-size: 20px;
   line-height: 26px;
   color: var(--color-grey-400);
+  overflow-wrap: anywhere;
 }
 
 .about-history-section__timeline-text {
@@ -153,6 +154,7 @@
   font-family: var(--font-body);
   font-size: 20px;
   line-height: 26px;
+  overflow-wrap: anywhere;
 }
 
 .about-history-section__mission-column {
@@ -190,6 +192,7 @@
   font-family: var(--font-body);
   font-size: 16px;
   line-height: 22px;
+  overflow-wrap: anywhere;
 }
 
 .__mission-list {
@@ -231,6 +234,7 @@
   font-family: var(--font-body);
   font-size: min(26px, calc(26 * 100vw / 1920));
   line-height: 36px;
+  overflow-wrap: anywhere;
 }
 
 @media (max-width: 1440px) {

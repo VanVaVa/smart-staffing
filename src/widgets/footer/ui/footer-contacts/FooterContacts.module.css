@@ -16,6 +16,7 @@
   transition: color 0.2s ease;
   font-size: var(--text-body-xl);
   line-height: var(--line-body);
+  overflow-wrap: anywhere;
 }
 
 .footer-contacts__link:hover {

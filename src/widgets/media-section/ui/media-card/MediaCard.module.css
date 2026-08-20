@@ -39,12 +39,14 @@
   display: inline-flex;
   align-items: center;
   min-height: 33px;
+  max-width: calc(100% - 32px);
   padding: 6px 16px;
   border-radius: var(--radius-pill);
   background: var(--color-white-64);
   font-size: var(--text-body-sm);
   font-weight: 500;
   line-height: var(--line-body-sm);
+  overflow-wrap: anywhere;
   backdrop-filter: blur(8px);
 }
 
@@ -62,6 +64,7 @@
 
 .media-card__content {
   display: flex;
+  min-width: 0;
   min-height: 0;
   flex: 1;
   flex-direction: column;
@@ -73,6 +76,7 @@
   color: var(--color-grey-400);
   font-size: var(--text-body-sm);
   line-height: var(--line-body-sm);
+  overflow-wrap: anywhere;
 }
 
 .media-card__title {
@@ -84,6 +88,7 @@
   font-weight: 400;
   line-height: var(--line-body-xl);
   letter-spacing: 0;
+  overflow-wrap: anywhere;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
 }
