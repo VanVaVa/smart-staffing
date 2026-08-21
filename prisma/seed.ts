@@ -18,13 +18,13 @@ import {
   caseStudies,
   contactSection,
   demoSection,
-  featureRows,
   heroContent,
   partnerCta,
   productShowcase,
   stepsSection,
   testimonials,
 } from "../src/entities/landing/model/content";
+import { buildHomeFeaturesBlockProps } from "./lib/build-home-features-block-props";
 import { documentViewBlocksFromItem } from "../src/entities/landing/model/document-view-blocks";
 import { documentsBlocksFromStaticContent } from "../src/entities/landing/model/documents-blocks";
 import { footerBlocksFromStaticContent } from "../src/entities/landing/model/footer-blocks";
@@ -104,19 +104,7 @@ const homeSeedBlocks = [
   {
     order: 2,
     type: "features",
-    props: {
-      rows: featureRows.map((row) => ({
-        title: row.title,
-        description: row.description,
-        descriptionAccent: row.descriptionAccent,
-        tags: [...row.tags],
-        imageSrc: row.imageSrc,
-        imageAlt: row.imageAlt,
-        imageWidth: row.imageWidth,
-        imageHeight: row.imageHeight,
-        ...(row.reversed ? { reversed: row.reversed } : {}),
-      })),
-    },
+    props: buildHomeFeaturesBlockProps(),
   },
   {
     order: 3,

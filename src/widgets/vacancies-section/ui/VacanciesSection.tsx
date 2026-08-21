@@ -76,9 +76,6 @@ export function VacanciesSection({ content }: VacanciesSectionProps) {
 
   return (
     <section className={styles["vacancies-section"]}>
-      <div>
-        {desktopHero}
-      </div>
       <Container className={styles["vacancies-section__container"]}>
         <header className={styles["vacancies-section__intro"]}>
           <h1 className={styles["vacancies-section__title"]}>
@@ -106,18 +103,21 @@ export function VacanciesSection({ content }: VacanciesSectionProps) {
               onSelect={setSelectedVacancyId}
             />
           </div>
-          <div className={styles["vacancies-section__form-panel"]}>
-            <div className={styles["vacancies-section__form-decor"]} aria-hidden>
-              <div className={styles["vacancies-section__form-orb--purple"]} />
-              <div className={styles["vacancies-section__form-orb--accent"]} />
-            </div>
-            <div className={styles["vacancies-section__form-content"]}>
-              <VacanciesApplicationForm
-                form={form}
-                applicationSuccessModal={applicationSuccessModal}
-                selectedVacancyId={selectedVacancyId}
-                selectedVacancyTitle={selectedVacancyTitle}
-              />
+          <div className={styles["vacancies-section__hero-aside"]}>
+            {desktopHero}
+            <div className={styles["vacancies-section__form-panel"]}>
+              <div className={styles["vacancies-section__form-decor"]} aria-hidden>
+                <div className={styles["vacancies-section__form-orb--purple"]} />
+                <div className={styles["vacancies-section__form-orb--accent"]} />
+              </div>
+              <div className={styles["vacancies-section__form-content"]}>
+                <VacanciesApplicationForm
+                  form={form}
+                  applicationSuccessModal={applicationSuccessModal}
+                  selectedVacancyId={selectedVacancyId}
+                  selectedVacancyTitle={selectedVacancyTitle}
+                />
+              </div>
             </div>
           </div>
         </div>

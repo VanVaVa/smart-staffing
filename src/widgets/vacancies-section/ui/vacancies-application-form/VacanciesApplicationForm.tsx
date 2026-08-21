@@ -21,6 +21,7 @@ export function VacanciesApplicationForm({
   return (
     <div className={styles["vacancies-application-form"]}>
       <FeedbackForm
+        className={styles["vacancies-application-form__feedback"]}
         tone="light"
         submitLabel={
           <span>

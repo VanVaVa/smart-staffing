@@ -74,6 +74,7 @@
   align-items: center;
   gap: 15px;
   width: 100%;
+  min-width: fit-content;
 }
 
 .feedback-form__attach {

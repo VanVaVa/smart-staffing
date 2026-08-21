@@ -8,6 +8,8 @@ import { Header } from "@/widgets/header";
 
 import { PublicPageScaler } from "./PublicPageScaler";
 
+import styles from "./PublicPageShell.module.css";
+
 type PublicPageShellProps = {
   children: ReactNode;
   footerContent: FooterBlockProps;
@@ -24,10 +26,12 @@ export function PublicPageShell({
   return (
     <PageFooterProvider footer={footer}>
       <FeedbackFormSuccessModalProvider>
-        <PublicPageScaler />
-        <Header />
-        <main>{children}</main>
-        {renderFooter ? renderFooter(footer) : footer}
+        <div className={styles["public-page-shell"]}>
+          <PublicPageScaler />
+          <Header />
+          <main className={styles["public-page-shell__main"]}>{children}</main>
+          {renderFooter ? renderFooter(footer) : footer}
+        </div>
       </FeedbackFormSuccessModalProvider>
     </PageFooterProvider>
   );

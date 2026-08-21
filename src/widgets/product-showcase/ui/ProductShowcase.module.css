@@ -148,6 +148,7 @@
 
   .product-showcase__mockup-slot {
     width: 1260px;
+    max-width: 95vw;
   }
 
   .product-showcase__benefits-slot {

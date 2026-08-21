@@ -2,14 +2,60 @@
   position: relative;
 }
 
-.vacancies-application-form__edit-fields {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-top: 16px;
-  padding: 12px;
-  border: 1px dashed var(--color-border, #d9d9d9);
-  border-radius: 8px;
-  font-size: 14px;
-  line-height: 1.4;
+@media (min-width: 1051px) {
+  .vacancies-application-form__feedback {
+    gap: 16px;
+  }
+
+  .vacancies-application-form__feedback > div:first-of-type label input {
+    height: 44px;
+    min-height: 44px;
+    line-height: 22px;
+  }
+
+  .vacancies-application-form__feedback > label > span:last-child {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .vacancies-application-form__feedback > div:last-child {
+    gap: 12px;
+  }
+
+  .vacancies-application-form__feedback > div:last-child label,
+  .vacancies-application-form__feedback > div:last-child button {
+    height: 44px;
+    min-height: 44px;
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
+
+@media (min-width: 1051px) and (max-width: 1620px) {
+  .vacancies-application-form__feedback {
+    gap: 12px;
+  }
+
+  .vacancies-application-form__feedback > div:first-of-type label input {
+    height: 40px;
+    min-height: 40px;
+    line-height: 22px;
+  }
+
+  .vacancies-application-form__feedback > label > span:last-child {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .vacancies-application-form__feedback > div:last-child {
+    gap: 10px;
+  }
+
+  .vacancies-application-form__feedback > div:last-child label,
+  .vacancies-application-form__feedback > div:last-child button {
+    height: 40px;
+    min-height: 40px;
+    font-size: 18px;
+    line-height: 24px;
+  }
 }

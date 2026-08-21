@@ -19,7 +19,7 @@ body {
   font-size: 16px;
   line-height: 22px;
   color: var(--color-grey-800);
-  background: var(--color-white);
+  background: var(--color-bg);
   text-wrap: pretty;
   -webkit-font-smoothing: antialiased;
 }
@@ -72,9 +72,12 @@ h4 {
   }
 }
 
-html.modal-open > body > header,
-html.modal-open > body > main,
-html.modal-open > body > footer {
+html.modal-open body > header,
+html.modal-open body > main,
+html.modal-open body > footer,
+html.modal-open body header,
+html.modal-open body main,
+html.modal-open body footer {
   filter: blur(var(--modal-blur));
 }
 
