@@ -36,9 +36,9 @@ export function AboutSpotlightSection({ content }: AboutSpotlightSectionProps) {
               className={styles["about-spotlight-section__preview-image"]}
               src={bookCoverSrc}
               alt={bookCoverAlt}
-              width={124}
-              height={90}
-              sizes="124px"
+              width={636}
+              height={452}
+              sizes="(max-width: 450px) 76px, (max-width: 768px) 124px, (max-width: 1440px) 232px, 318px"
             />
           </div>
         </figure>

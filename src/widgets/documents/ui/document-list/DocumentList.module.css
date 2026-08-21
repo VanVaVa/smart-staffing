@@ -241,7 +241,7 @@
     scroll-snap-align: start;
   }
 
-  .document-list__category:nth-child(1) {
+  .document-list__category:nth-child(2) {
     order: 1;
   }
 
@@ -253,13 +253,13 @@
   .document-list__category:nth-child(3) .document-list__links {
     grid-template-columns: unset !important;
   }
-  
-  .document-list__category:nth-child(2) {
+
+  .document-list__category:nth-child(1) {
     order: 3;
     grid-column: 1 / -1;
   }
 
-  .document-list__category:nth-child(2) .document-list__links {
+  .document-list__category:nth-child(1) .document-list__links {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
   }
@@ -388,7 +388,7 @@
     display: flex;
     flex-direction: column;
   }
-  .document-list__category:nth-child(2) .document-list__links {
+  .document-list__category:nth-child(1) .document-list__links {
     display: block;
   }
 

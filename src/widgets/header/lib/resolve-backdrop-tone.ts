@@ -248,6 +248,22 @@ function getElementsFromPointBelowHeader(x: number, y: number): Element[] {
   return stack;
 }
 
+function resolveMarkedBackdrop(
+  marker: HTMLElement,
+): boolean | null {
+  const value = marker.dataset.headerBackdrop;
+
+  if (value === "dark") {
+    return true;
+  }
+
+  if (value === "light") {
+    return false;
+  }
+
+  return null;
+}
+
 export function isDarkBackdropAt(x: number, y: number): boolean {
   const stack = getElementsFromPointBelowHeader(x, y);
 
@@ -264,7 +280,10 @@ export function isDarkBackdropAt(x: number, y: number): boolean {
       "[data-header-backdrop]",
     );
     if (backdropMarker) {
-      return backdropMarker.dataset.headerBackdrop === "dark";
+      const marked = resolveMarkedBackdrop(backdropMarker);
+      if (marked !== null) {
+        return marked;
+      }
     }
 
     const tone = resolveToneFromElement(element, x, y);

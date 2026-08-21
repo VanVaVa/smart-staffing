@@ -13,23 +13,24 @@ type ClientsPlatformSectionProps = {
 
 export function ClientsPlatformSection({ content }: ClientsPlatformSectionProps) {
   return (
-    <section
-      className={styles["clients-platform-section"]}
-      data-header-backdrop="dark"
-    >
-      <div className={styles["clients-platform-section__decor"]} aria-hidden>
-        <div className={styles["clients-platform-section__gradient"]} />
-        <div
-          className={`${styles["clients-platform-section__orb"]} ${styles["clients-platform-section__orb--orange"]}`}
-        />
-        <div
-          className={`${styles["clients-platform-section__orb"]} ${styles["clients-platform-section__orb--purple-large"]}`}
-        />
-        <div
-          className={`${styles["clients-platform-section__orb"]} ${styles["clients-platform-section__orb--purple-small"]}`}
-        />
-      </div>
-      <Container className={styles["clients-platform-section__container"]}>
+    <section className={styles["clients-platform-section"]}>
+      <div
+        className={styles["clients-platform-section__clip"]}
+        data-header-backdrop="dark"
+      >
+        <div className={styles["clients-platform-section__decor"]} aria-hidden>
+          <div className={styles["clients-platform-section__gradient"]} />
+          <div
+            className={`${styles["clients-platform-section__orb"]} ${styles["clients-platform-section__orb--orange"]}`}
+          />
+          <div
+            className={`${styles["clients-platform-section__orb"]} ${styles["clients-platform-section__orb--purple-large"]}`}
+          />
+          <div
+            className={`${styles["clients-platform-section__orb"]} ${styles["clients-platform-section__orb--purple-small"]}`}
+          />
+        </div>
+        <Container className={styles["clients-platform-section__container"]}>
         <div className={styles["clients-platform-section__layout"]}>
           <div className={styles["clients-platform-section__pain-column"]}>
             <ul className={styles["clients-platform-section__pain-list"]}>
@@ -83,7 +84,8 @@ export function ClientsPlatformSection({ content }: ClientsPlatformSectionProps)
             </div>
           </div>
         </div>
-      </Container>
+        </Container>
+      </div>
     </section>
   );
 }

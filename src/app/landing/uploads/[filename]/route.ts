@@ -9,6 +9,7 @@ const CONTENT_TYPES: Readonly<Record<string, string>> = {
   ".gif": "image/gif",
   ".jpeg": "image/jpeg",
   ".jpg": "image/jpeg",
+  ".pdf": "application/pdf",
   ".png": "image/png",
   ".svg": "image/svg+xml",
   ".webp": "image/webp",

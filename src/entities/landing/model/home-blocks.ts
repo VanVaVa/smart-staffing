@@ -1,3 +1,5 @@
+import { deriveHeroSegmentThumbSrc } from "../lib/resolve-hero-segment-thumb-src";
+
 export const HOME_BLOCK_TYPES = [
   "hero",
   "productShowcase",
@@ -13,6 +15,7 @@ export type HomeBlockType = (typeof HOME_BLOCK_TYPES)[number];
 export type HeroSegment = {
   label: string;
   imageSrc: string;
+  thumbImageSrc: string;
   href: string;
 };
 
@@ -213,6 +216,9 @@ function parseHeroSegment(value: unknown): HeroSegment | null {
   return {
     label: value.label,
     imageSrc: value.imageSrc,
+    thumbImageSrc: isString(value.thumbImageSrc)
+      ? value.thumbImageSrc
+      : deriveHeroSegmentThumbSrc(value.imageSrc),
     href: isString(value.href) ? value.href : "/pricing",
   };
 }

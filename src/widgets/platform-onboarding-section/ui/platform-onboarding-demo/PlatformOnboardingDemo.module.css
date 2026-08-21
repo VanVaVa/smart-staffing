@@ -244,7 +244,9 @@
 
 @media (max-width: 576px) {
   .platform-onboarding-demo__copy p {
-    max-width: unset;
+    max-width: 502px;
+    font-size: 16px;
+    line-height: 22px;
   }
 }
 
@@ -256,7 +258,7 @@
   }
 
   .platform-onboarding-demo__mockup {
-    top: 188px;
+    top: 158px;
     right: 0;
     left: auto;
     width: 364px;

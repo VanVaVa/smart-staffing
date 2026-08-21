@@ -1,7 +1,6 @@
 import styles from "./FeatureRowMedia.module.css";
 
 type FeatureRowMediaProps = {
-  rowIndex: number;
   mediaSrc: string;
   mediaAlt: string;
   mediaWidth: number;
@@ -18,7 +17,6 @@ function isAnimatedSrc(src: string): boolean {
 }
 
 export function FeatureRowMedia({
-  rowIndex,
   mediaSrc,
   mediaAlt,
   mediaWidth,
@@ -28,7 +26,6 @@ export function FeatureRowMedia({
   const isAnimated = isAnimatedSrc(mediaSrc);
   const rootClass = [
     styles["feature-row-media"],
-    styles[`feature-row-media--${rowIndex}`],
     isAnimated ? styles["feature-row-media--animated"] : "",
     reversed
       ? styles["feature-row-media--edge-inline-start"]
@@ -39,7 +36,10 @@ export function FeatureRowMedia({
 
   return (
     <figure className={rootClass}>
-      <div className={styles["feature-row-media__viewport"]}>
+      <div
+        className={styles["feature-row-media__viewport"]}
+        style={{ aspectRatio: `${mediaWidth} / ${mediaHeight}` }}
+      >
         <div className={styles["feature-row-media__slot"]}>
           {mediaSrc.trim().length === 0 ? null : isVideoSrc(mediaSrc) ? (
             <video

@@ -4,9 +4,8 @@
   padding-top: 160px;
   padding-bottom: min(264px, calc(264 * 100vw / 1920));
   margin-top: -80px;
-  background-color: var(--color-white);
+  background-color: var(--color-bg);
   border-radius: 40px;
-  position: relative;
 }
 
 .about-partner-section__inner {

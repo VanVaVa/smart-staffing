@@ -13,7 +13,6 @@ export function FeaturesSection({ content }: FeaturesSectionProps) {
       <div className={styles["features-section__list"]}>
         {content.rows.map((row, index) => (
           <FeatureRow key={`${row.title}-${index}`}
-            rowIndex={index}
             title={row.title}
             description={row.description}
             descriptionAccent={row.descriptionAccent}

@@ -43,8 +43,14 @@ export function useNavLinksOnDarkBackdrop(navRef: RefObject<HTMLElement | null>)
     };
 
     const scheduleUpdate = () => {
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(update);
+      if (frame) {
+        return;
+      }
+
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        update();
+      });
     };
 
     scheduleUpdate();

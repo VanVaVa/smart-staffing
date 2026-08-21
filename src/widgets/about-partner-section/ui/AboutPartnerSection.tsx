@@ -13,7 +13,10 @@ export function AboutPartnerSection({ content }: AboutPartnerSectionProps) {
   const { title, awards } = content;
 
   return (
-    <section className={styles["about-partner-section"]}>
+    <section
+      className={styles["about-partner-section"]}
+      data-header-backdrop="light"
+    >
       <Container wide>
         <div className={styles["about-partner-section__inner"]}>
           <header className={styles["about-partner-section__header"]}>

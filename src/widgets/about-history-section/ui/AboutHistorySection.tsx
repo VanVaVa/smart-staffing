@@ -12,18 +12,19 @@ export function AboutHistorySection({ content }: AboutHistorySectionProps) {
   const { title, timeline, mission } = content;
 
   return (
-    <section
-      className={styles["about-history-section"]}
-      data-header-backdrop="dark"
-    >
-      <div className={styles["about-history-section__decor"]} aria-hidden>
-        <div className={styles["about-history-section__gradient"]} />
-        <div className={styles["about-history-section__orb--purple"]} />
-        <div className={styles["about-history-section__orb--orange-top"]} />
-        <div className={styles["about-history-section__orb--orange-bottom"]} />
-      </div>
-      <Container wide>
-        <div className={styles["about-history-section__inner"]}>
+    <section className={styles["about-history-section"]}>
+      <div
+        className={styles["about-history-section__clip"]}
+        data-header-backdrop="dark"
+      >
+        <div className={styles["about-history-section__decor"]} aria-hidden>
+          <div className={styles["about-history-section__gradient"]} />
+          <div className={styles["about-history-section__orb--purple"]} />
+          <div className={styles["about-history-section__orb--orange-top"]} />
+          <div className={styles["about-history-section__orb--orange-bottom"]} />
+        </div>
+        <Container wide>
+          <div className={styles["about-history-section__inner"]}>
           <h2 className={styles["about-history-section__title"]}>
             {title}
           </h2>
@@ -75,8 +76,9 @@ export function AboutHistorySection({ content }: AboutHistorySectionProps) {
               </article>
             </div>
           </div>
-        </div>
-      </Container>
+          </div>
+        </Container>
+      </div>
     </section>
   );
 }

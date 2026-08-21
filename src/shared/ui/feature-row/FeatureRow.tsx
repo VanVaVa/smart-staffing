@@ -6,7 +6,6 @@ import styles from "./FeatureRow.module.css";
 import { FeatureRowMedia } from "./ui/FeatureRowMedia";
 
 type FeatureRowProps = {
-  rowIndex: number;
   title: string;
   description: string;
   descriptionAccent?: string;
@@ -44,7 +43,6 @@ function FeatureRowDescription({
 }
 
 export function FeatureRow({
-  rowIndex,
   title,
   description,
   descriptionAccent,
@@ -85,7 +83,6 @@ export function FeatureRow({
         {action}
       </div>
       <FeatureRowMedia
-        rowIndex={rowIndex}
         mediaSrc={imageSrc}
         mediaAlt={imageAlt}
         mediaWidth={imageWidth}

@@ -695,7 +695,7 @@ const agenciesPartnershipCta: ClientsPartnershipCtaContent = {
 };
 
 const enterpriseHero: ClientsHeroContent = {
-  title: "С\u00a0нами порядок: \nединая сеть доверенных поставщиков",
+  title: "С\u00a0нами порядок: единая сеть доверенных поставщиков",
   subtitle: {
     before: "Создавайте партнёрские сети и ",
     accent: "управляйте десятками подрядчиков без\u00a0бюрократии",

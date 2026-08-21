@@ -127,6 +127,10 @@
     line-height: var(--line-h1);
   }
 
+  .about-career-book-section__career article {
+    max-width: 1048px;
+  }
+
   .about-career-book-section__career-subtitle,
   .about-career-book-section__book-description {
     font-size: var(--text-body-xl);

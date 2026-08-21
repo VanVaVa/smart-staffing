@@ -1,5 +1,10 @@
 .clients-platform-section {
   position: relative;
+  pointer-events: none;
+}
+
+.clients-platform-section__clip {
+  position: relative;
   overflow: hidden;
   padding-block: min(196px, calc(196 * 100vw / 1920))
     min(278px, calc(278 * 100vw / 1920));
@@ -7,6 +12,7 @@
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   color: var(--color-white);
+  pointer-events: auto;
 }
 
 .clients-platform-section__decor {
@@ -17,7 +23,6 @@
   z-index: 0;
   width: 100vw;
   transform: translateX(-50%);
-  pointer-events: none;
   overflow: hidden;
   border-radius: 40px;
   border-bottom-left-radius: 0;
@@ -34,6 +39,7 @@
 .clients-platform-section__orb {
   position: absolute;
   border-radius: 50%;
+  pointer-events: none;
 }
 
 .clients-platform-section__orb--orange {
@@ -175,7 +181,7 @@
 }
 
 @media (max-width: 1440px) {
-  .clients-platform-section {
+  .clients-platform-section__clip {
     padding-block: 168px 211px;
     border-radius: 32px;
     border-bottom-left-radius: 0;
@@ -250,7 +256,7 @@
 }
 
 @media (max-width: 992px) {
-  .clients-platform-section {
+  .clients-platform-section__clip {
     border-radius: 24px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
@@ -326,7 +332,7 @@
 }
 
 @media (max-width: 768px) {
-  .clients-platform-section {
+  .clients-platform-section__clip {
     padding-block: 148px 188px;
     border-radius: 24px;
     border-bottom-left-radius: 0;
@@ -433,7 +439,7 @@
 }
 
 @media (max-width: 576px) {
-  .clients-platform-section {
+  .clients-platform-section__clip {
     padding-block: min(120px, calc(120 * 100vw / 576)) 160px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
@@ -478,7 +484,7 @@
 }
 
 @media (max-width: 450px) {
-  .clients-platform-section {
+  .clients-platform-section__clip {
     border-radius: 20px;
     padding-block: 48px 106px;
     border-bottom-left-radius: 0;

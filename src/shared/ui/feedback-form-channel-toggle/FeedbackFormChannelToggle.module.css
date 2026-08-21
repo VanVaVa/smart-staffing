@@ -5,7 +5,7 @@
   position: relative;
   display: flex;
   gap: var(--toggle-gap);
-  width: 100%;
+  width: 451px;
   height: 52px;
   padding: 0;
   border-radius: var(--radius-input);
@@ -69,6 +69,7 @@
 @media (min-width: 993px) and (max-width: 1440px) {
   .feedback-form-channel-toggle {
     height: 40px;
+    max-width: 368px;
   }
 
   .feedback-form-channel-toggle__option {
@@ -107,6 +108,7 @@
 @media (max-width: 576px) {
   .feedback-form-channel-toggle {
     height: 32px;
+    width: 344px;
   }
 
   .feedback-form-channel-toggle__option {

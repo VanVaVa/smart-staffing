@@ -365,11 +365,13 @@ const heroSegmentsSection: AdminCollectionSection = {
   createValues: () => ({
     label: "Новый сегмент",
     imageSrc: "",
+    thumbImageSrc: "",
     href: `/clients/${clientSegmentSlugs[0]}`,
   }),
   fields: [
     { kind: "text", name: "label", label: "Подпись" },
-    { kind: "image", name: "imageSrc", label: "Скриншот" },
+    { kind: "image", name: "imageSrc", label: "Скриншот (dashboard)" },
+    { kind: "image", name: "thumbImageSrc", label: "Миниатюра сегмента" },
     { kind: "text", name: "href", label: "Ссылка" },
   ],
 };

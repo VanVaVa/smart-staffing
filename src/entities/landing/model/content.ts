@@ -27,21 +27,25 @@ export const heroContent = {
     {
       label: "Крупным корпорациям",
       imageSrc: "/landing/hero-segment-enterprise.png",
+      thumbImageSrc: "/landing/thumb-hero-segment-enterprise.png",
       href: "/pricing/enterprise",
     },
     {
       label: "Среднему бизнесу",
       imageSrc: "/landing/hero-segment-midmarket.png",
+      thumbImageSrc: "/landing/thumb-hero-segment-midmarket.png",
       href: "/pricing/mid-market",
     },
     {
       label: "Кадровым агентствам",
       imageSrc: "/landing/hero-segment-agencies.png",
+      thumbImageSrc: "/landing/thumb-hero-segment-agencies.png",
       href: "/pricing/agencies",
     },
     {
       label: "Аутстаффинговым и\u00a0аутсорсинговым компаниям",
       imageSrc: "/landing/hero-segment-outstaffing.png",
+      thumbImageSrc: "/landing/thumb-hero-segment-outstaffing.png",
       href: "/pricing/outstaffing",
     },
   ],

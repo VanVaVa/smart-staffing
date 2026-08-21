@@ -252,6 +252,10 @@
     gap: 48px;
   }
 
+  .platform-onboarding-partner header {
+    max-width: 480px;
+  }
+
   .platform-onboarding-partner__card {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -270,6 +274,7 @@
     height: 122px;
     margin: 0;
     transform: translateX(20px);
+    margin-bottom: -20px;
   }
 
   .platform-onboarding-partner__card-text {

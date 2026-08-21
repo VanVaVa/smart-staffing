@@ -239,7 +239,7 @@
   }
 
   .company-connection-modal__summary {
-    margin-top: 40px;
+    margin-top: 10px;
   }
 }
 
@@ -314,7 +314,7 @@
     flex: 1;
     margin-inline: -40px;
     margin-bottom: -40px;
-    padding: 40px 32px 48px;
+    padding: 0 32px 48px;
     background: var(--color-bg);
   }
 
