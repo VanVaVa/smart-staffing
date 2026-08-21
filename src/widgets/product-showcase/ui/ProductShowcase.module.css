@@ -206,7 +206,7 @@
   }
 
   .product-showcase__mockup-slot {
-    width: 768px;
+    width: 100%;
   }
 
   .product-showcase__benefits-slot {
@@ -222,10 +222,6 @@
 
   .product-showcase__stage {
     margin-top: 40px;
-  }
-
-  .product-showcase__mockup-slot {
-    width: calc(100% - 2 * var(--container-padding));
   }
 
   .product-showcase__benefits-slot {
@@ -251,10 +247,6 @@
     margin-top: 32px;
   }
 
-  .product-showcase__mockup-slot {
-    width: calc(100% - 2 * var(--container-padding));
-  }
-
   .product-showcase__benefits-slot {
     margin-top: 120px;
   }
@@ -268,10 +260,6 @@
 
   .product-showcase__stage {
     margin-top: 48px;
-  }
-
-  .product-showcase__mockup-slot {
-    width: min(calc(100% - 2 * var(--container-padding)), 328px);
   }
 
   .product-showcase__benefits-slot {
