@@ -16,6 +16,15 @@ function isAnimatedSrc(src: string): boolean {
   return /\.(gif|mp4|webm)$/i.test(src);
 }
 
+function getVideoSources(src: string): { webm: string; mp4: string } {
+  const extensionPattern = /\.(mp4|webm)$/i;
+
+  return {
+    webm: src.replace(extensionPattern, ".webm"),
+    mp4: src.replace(extensionPattern, ".mp4"),
+  };
+}
+
 export function FeatureRowMedia({
   mediaSrc,
   mediaAlt,
@@ -24,6 +33,9 @@ export function FeatureRowMedia({
   reversed,
 }: FeatureRowMediaProps) {
   const isAnimated = isAnimatedSrc(mediaSrc);
+  const videoSources = isVideoSrc(mediaSrc)
+    ? getVideoSources(mediaSrc)
+    : null;
   const rootClass = [
     styles["feature-row-media"],
     isAnimated ? styles["feature-row-media--animated"] : "",
@@ -41,10 +53,9 @@ export function FeatureRowMedia({
         style={{ aspectRatio: `${mediaWidth} / ${mediaHeight}` }}
       >
         <div className={styles["feature-row-media__slot"]}>
-          {mediaSrc.trim().length === 0 ? null : isVideoSrc(mediaSrc) ? (
+          {mediaSrc.trim().length === 0 ? null : videoSources ? (
             <video
               className={styles["feature-row-media__animation"]}
-              src={mediaSrc}
               width={mediaWidth}
               height={mediaHeight}
               autoPlay
@@ -52,7 +63,10 @@ export function FeatureRowMedia({
               muted
               playsInline
               aria-label={mediaAlt}
-            />
+            >
+              <source src={videoSources.webm} type="video/webm" />
+              <source src={videoSources.mp4} type="video/mp4" />
+            </video>
           ) : (
             // eslint-disable-next-line @next/next/no-img-element
             <img
