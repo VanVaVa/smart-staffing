@@ -136,8 +136,8 @@ export const featureRows = [
     ],
     imageSrc: "/landing/features/feature-menu-requests.mp4",
     imageAlt: "Интерфейс управления проектами и\u00a0запросами",
-    imageWidth: 1920,
-    imageHeight: 1080,
+    imageWidth: 1280,
+    imageHeight: 720,
   },
   {
     title: "Формирование команды",
@@ -169,8 +169,8 @@ export const featureRows = [
     ],
     imageSrc: "/landing/features/feature-analytics.mp4",
     imageAlt: "Аналитика загрузки специалистов",
-    imageWidth: 1920,
-    imageHeight: 1080,
+    imageWidth: 1280,
+    imageHeight: 720,
   },
   {
     title: "Контроль подбора специалистов",

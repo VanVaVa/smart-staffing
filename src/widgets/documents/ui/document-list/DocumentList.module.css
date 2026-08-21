@@ -286,8 +286,8 @@
 
   .document-list__requisite dd,
   .document-list__link {
-    font-size: var(--text-body-lg);
-    line-height: var(--line-body-lg);
+    font-size: 16px;
+    line-height: 22px;
   }
 
   .document-list__certificates {

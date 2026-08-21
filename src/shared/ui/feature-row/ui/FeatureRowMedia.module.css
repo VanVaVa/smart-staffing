@@ -50,12 +50,6 @@
   object-fit: contain;
 }
 
-@media (width < 1620px) {
-  .feature-row-media {
-    border: 0;
-  }
-}
-
 @media (max-width: 1050px) {
   .feature-row-media {
     width: calc(100% - var(--container-padding));

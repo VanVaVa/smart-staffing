@@ -112,7 +112,7 @@
   .footer__columns > :nth-child(3) {
     grid-column: 1 / -1;
     grid-row: 2;
-    margin-left: 16px;
+    margin-left: 0;
   }
 }
 
