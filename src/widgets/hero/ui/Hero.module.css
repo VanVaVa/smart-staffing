@@ -92,6 +92,12 @@
   white-space: pre-line;
 }
 
+@media (max-width: 1285px) {
+  .hero__title {
+    font-size: 40px;
+  }
+}
+
 .hero__subtitle {
   max-width: 690px;
   font-family: var(--font-body);
@@ -187,7 +193,7 @@
   }
 
   .hero__actions {
-    gap: 145px;
+    gap: 45px;
   }
 
   .hero__visual-slot {
