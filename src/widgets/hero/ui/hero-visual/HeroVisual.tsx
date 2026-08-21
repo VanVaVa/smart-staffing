@@ -46,7 +46,7 @@ export function HeroVisual({ segments }: HeroVisualProps) {
                 alt="Интерфейс платформы СмартСтаффинг"
                 fill
                 quality={90}
-                sizes="(max-width: 992px) 100vw, (max-width: 1440px) 802px, 900px"
+                sizes="(max-width: 1050px) 100vw, (max-width: 1620px) 802px, 900px"
                 priority={index === 0}
               />
             </div>

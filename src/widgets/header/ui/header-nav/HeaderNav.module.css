@@ -127,7 +127,7 @@
   font-weight: 400;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1620px) {
   .header-nav {
     gap: 16px;
   }

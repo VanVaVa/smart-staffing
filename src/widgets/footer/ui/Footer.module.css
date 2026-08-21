@@ -36,7 +36,7 @@
   margin-left: auto;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1620px) {
   .footer {
     margin-top: -32px;
     border-top-left-radius: 28px;
@@ -55,7 +55,7 @@
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1050px) {
   .footer {
     margin-top: -32px;
     border-top-left-radius: 32px;

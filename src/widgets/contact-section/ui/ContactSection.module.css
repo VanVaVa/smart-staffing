@@ -3,14 +3,14 @@
   padding-bottom: 196px;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1620px) {
   .contact-section {
     padding-top: 168px;
     padding-bottom: 168px;
   }
 }
 
-@media (min-width: 769px) and (max-width: 992px) {
+@media (min-width: 769px) and (max-width: 1050px) {
   .contact-section {
     padding-top: 171px;
     padding-bottom: 201px;

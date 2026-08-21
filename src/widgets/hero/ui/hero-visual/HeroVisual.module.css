@@ -53,7 +53,7 @@
   max-width: 598px;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1620px) {
   .hero-visual {
     max-width: 802px;
     padding: 28px;
@@ -71,21 +71,21 @@
   }
 }
 
-@media (min-width: 993px) and (max-width: 1440px) {
+@media (min-width: 1051px) and (max-width: 1620px) {
   .hero-visual {
-    max-width: min(802px, calc(802 * 100vw / 1440));
+    max-width: min(802px, calc(802 * 100vw / 1620));
   }
 
   .hero-visual__dashboard-stack {
-    height: min(312px, calc(312 * 100vw / 1440));
+    height: min(312px, calc(312 * 100vw / 1620));
   }
 
   .hero-visual__segments {
-    max-width: min(493px, calc(493 * 100vw / 1440));
+    max-width: min(493px, calc(493 * 100vw / 1620));
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1050px) {
   .hero-visual {
     margin-left: 0;
     max-width: none;
@@ -108,14 +108,14 @@
   }
 }
 
-@media (min-width: 769px) and (max-width: 992px) {
+@media (min-width: 769px) and (max-width: 1050px) {
   .hero-visual__dashboard-stack {
-    height: min(378px, calc(378 * 100vw / 992));
+    height: min(378px, calc(378 * 100vw / 1050));
   }
 
   .hero-visual__segments {
-    margin-top: min(32px, calc(32 * 100vw / 992));
-    gap: min(6px, calc(6 * 100vw / 992));
+    margin-top: min(32px, calc(32 * 100vw / 1050));
+    gap: min(6px, calc(6 * 100vw / 1050));
   }
 }
 

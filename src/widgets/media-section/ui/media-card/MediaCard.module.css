@@ -93,7 +93,7 @@
   -webkit-line-clamp: 3;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1620px) {
   .media-card {
     height: 372px;
   }
@@ -103,7 +103,7 @@
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1050px) {
   .media-card {
     height: 302px;
   }

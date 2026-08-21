@@ -6,6 +6,8 @@ import { PageFooterProvider } from "@/shared/ui/page-chrome";
 import { Footer } from "@/widgets/footer";
 import { Header } from "@/widgets/header";
 
+import { PublicPageScaler } from "./PublicPageScaler";
+
 type PublicPageShellProps = {
   children: ReactNode;
   footerContent: FooterBlockProps;
@@ -22,6 +24,7 @@ export function PublicPageShell({
   return (
     <PageFooterProvider footer={footer}>
       <FeedbackFormSuccessModalProvider>
+        <PublicPageScaler />
         <Header />
         <main>{children}</main>
         {renderFooter ? renderFooter(footer) : footer}

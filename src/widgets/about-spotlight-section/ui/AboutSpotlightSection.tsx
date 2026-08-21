@@ -38,7 +38,7 @@ export function AboutSpotlightSection({ content }: AboutSpotlightSectionProps) {
               alt={bookCoverAlt}
               width={636}
               height={452}
-              sizes="(max-width: 450px) 76px, (max-width: 768px) 124px, (max-width: 1440px) 232px, 318px"
+              sizes="(max-width: 450px) 76px, (max-width: 768px) 124px, (max-width: 1620px) 232px, 318px"
             />
           </div>
         </figure>
@@ -49,7 +49,7 @@ export function AboutSpotlightSection({ content }: AboutSpotlightSectionProps) {
               src={collageSrc}
               alt={collageAlt}
               fill
-              sizes="(max-width: 450px) 328px, (max-width: 768px) 720px, (max-width: 992px) 100vw, 679px"
+              sizes="(max-width: 450px) 328px, (max-width: 768px) 720px, (max-width: 1050px) 100vw, 679px"
             />
           </div>
         </figure>

@@ -7,14 +7,14 @@
   margin: 20px auto 0;
 }
 
-@media (min-width: 993px) and (max-width: 1440px) {
+@media (min-width: 1051px) and (max-width: 1620px) {
   .media-article__content {
     width: min(910px, calc(100% - 2 * var(--container-padding)));
-    margin-top: clamp(12px, calc(20 * 100vw / 1440), 20px);
+    margin-top: clamp(12px, calc(20 * 100vw / 1620), 20px);
   }
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1620px) {
   .media-article {
     padding-top: 72px;
     padding-bottom: 160px;
@@ -26,7 +26,7 @@
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1050px) {
   .media-article {
     padding-top: 124px;
   }

@@ -103,7 +103,7 @@
   transform: rotate(180deg);
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1620px) {
   .about-partner-carousel__track {
     gap: 8px;
   }
@@ -114,7 +114,7 @@
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1050px) {
   .about-partner-carousel__fade {
     display: none;
   }

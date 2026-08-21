@@ -43,7 +43,7 @@ export function ClientsPlatformBenefitsShowcaseCard({
             alt={item.visual.imageAlt}
             width={item.visual.imageWidth}
             height={item.visual.imageHeight}
-            sizes="(max-width: 768px) 100vw, (max-width: 992px) 460px, 31vw"
+            sizes="(max-width: 768px) 100vw, (max-width: 1050px) 460px, 31vw"
           />
         </div>
       </article>
@@ -87,7 +87,7 @@ export function ClientsPlatformBenefitsShowcaseCard({
               alt={item.visual.imageAlt}
               width={item.visual.imageWidth}
               height={item.visual.imageHeight}
-              sizes="(max-width: 768px) 100vw, (max-width: 992px) 460px, 66vw"
+              sizes="(max-width: 768px) 100vw, (max-width: 1050px) 460px, 66vw"
             />
           </div>
         </div>
@@ -106,7 +106,7 @@ export function ClientsPlatformBenefitsShowcaseCard({
           alt={item.visual.imageAlt}
           width={item.visual.imageWidth}
           height={item.visual.imageHeight}
-          sizes="(max-width: 992px) 928px, 100vw"
+          sizes="(max-width: 1050px) 928px, 100vw"
         />
       </div>
       <div className={styles["clients-platform-benefits-showcase-card__copy"]}>

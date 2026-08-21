@@ -121,7 +121,7 @@
   word-break: break-all;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1620px) {
   .platform-onboarding-partner {
     gap: 56px;
     align-items: center;
@@ -161,7 +161,7 @@
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1050px) {
   .platform-onboarding-partner {
     gap: 60px;
   }

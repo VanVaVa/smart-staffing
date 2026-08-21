@@ -59,7 +59,7 @@
   font-weight: 500;
 }
 
-@media (max-width: 1440px) and (min-width: 577px) {
+@media (max-width: 1620px) and (min-width: 577px) {
   .input__control {
     box-sizing: border-box;
     height: 40px;

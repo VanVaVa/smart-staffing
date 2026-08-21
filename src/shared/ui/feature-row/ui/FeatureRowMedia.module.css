@@ -7,7 +7,7 @@
   overflow: hidden;
 }
 
-@media (min-width: 993px) {
+@media (min-width: 1051px) {
   .feature-row-media--edge-inline-end {
     border-start-end-radius: 0;
     border-end-end-radius: 0;
@@ -50,13 +50,13 @@
   object-fit: contain;
 }
 
-@media (width < 1440px) {
+@media (width < 1620px) {
   .feature-row-media {
     border: 0;
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1050px) {
   .feature-row-media {
     width: calc(100% - var(--container-padding));
     margin-left: var(--container-padding);

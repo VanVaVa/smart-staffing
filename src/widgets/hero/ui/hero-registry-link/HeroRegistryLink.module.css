@@ -81,7 +81,7 @@
   word-break: break-all;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1620px) {
   .hero-registry-link {
     width: 307px;
     min-height: 56px;
@@ -99,7 +99,7 @@
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1050px) {
   .hero-registry-link {
     width: 233px;
     height: 64px;

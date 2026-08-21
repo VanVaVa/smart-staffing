@@ -90,7 +90,7 @@
   height: 28px;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1620px) {
   .icon-button--lg {
     width: 40px;
     height: 40px;

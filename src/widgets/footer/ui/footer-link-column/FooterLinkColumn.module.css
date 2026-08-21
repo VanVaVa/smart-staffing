@@ -13,7 +13,7 @@
   color: var(--color-accent);
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1620px) {
   .footer-link-column__links {
     gap: 6px;
   }

@@ -28,14 +28,14 @@
   color: var(--color-white-40);
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1620px) {
   .section-title__subtitle {
     font-size: 22px;
     line-height: var(--line-h3);
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1050px) {
   .section-title--centered {
     max-width: 615px;
   }

@@ -216,7 +216,7 @@
   position: relative;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1620px) {
   .company-connection-modal__content {
     margin-top: 32px;
   }
@@ -243,7 +243,7 @@
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1050px) {
   .company-connection-modal--full-page .company-connection-modal__panel {
     padding: 0;
   }
@@ -452,7 +452,7 @@
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1050px) {
   .company-connection-modal--page .company-connection-modal__content {
     margin: 0;
   }

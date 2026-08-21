@@ -128,7 +128,7 @@ export function DocumentList({
                     src={certificate.imageSrc}
                     alt={certificate.imageAlt}
                     fill
-                    sizes="(max-width: 576px) 300px, (max-width: 992px) 226px, 450px"
+                    sizes="(max-width: 576px) 300px, (max-width: 1050px) 226px, 450px"
                   />
                 </div>
               </button>

@@ -61,7 +61,7 @@ export function ClientsPlatformSection({ content }: ClientsPlatformSectionProps)
                   alt={content.imageAlt}
                   width={content.imageWidth}
                   height={content.imageHeight}
-                  sizes="(max-width: 450px) 328px, (max-width: 768px) 359px, (max-width: 992px) 540px, (max-width: 1440px) 680px, 602px"
+                  sizes="(max-width: 450px) 328px, (max-width: 768px) 359px, (max-width: 1050px) 540px, (max-width: 1620px) 680px, 602px"
                 />
               </div>
             </figure>

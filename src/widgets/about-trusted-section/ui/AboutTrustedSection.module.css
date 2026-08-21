@@ -69,7 +69,7 @@
   min-width: 0;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1620px) {
   .about-trusted-section__title {
     max-width: 891px;
     font-size: var(--text-h1);
@@ -77,7 +77,7 @@
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1050px) {
   .about-trusted-section {
     padding-bottom: 168px;
   }

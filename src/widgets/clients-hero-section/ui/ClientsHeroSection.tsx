@@ -24,7 +24,7 @@ export function ClientsHeroSection({ content }: ClientsHeroSectionProps) {
             alt={content.imageAlt}
             width={content.imageWidth}
             height={content.imageHeight}
-            sizes="(max-width: 450px) 344px, (max-width: 768px) 744px, (max-width: 992px) 960px, (max-width: 1440px) 716px, 956px"
+            sizes="(max-width: 450px) 344px, (max-width: 768px) 744px, (max-width: 1050px) 960px, (max-width: 1620px) 716px, 956px"
             priority
           />
         </div>

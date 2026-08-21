@@ -37,7 +37,7 @@
   height: 100%;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1620px) {
   .product-showcase-benefits {
     max-width: 1368px;
   }
@@ -60,22 +60,22 @@
   }
 }
 
-@media (min-width: 993px) and (max-width: 1440px) {
+@media (min-width: 1051px) and (max-width: 1620px) {
   .product-showcase-benefits__grid {
     grid-template-rows:
-      minmax(min(258px, calc(258 * 100vw / 1440)), auto)
-      minmax(min(258px, calc(258 * 100vw / 1440)), auto);
+      minmax(min(258px, calc(258 * 100vw / 1620)), auto)
+      minmax(min(258px, calc(258 * 100vw / 1620)), auto);
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1050px) {
   .product-showcase-benefits {
     max-width: none;
   }
 
   .product-showcase-benefits__title {
     margin-bottom: 48px;
-    max-width: min(616px, calc(616 * 100vw / 992));
+    max-width: min(616px, calc(616 * 100vw / 1050));
   }
 
   .product-showcase-benefits__grid {
@@ -102,9 +102,9 @@
   }
 }
 
-@media (min-width: 769px) and (max-width: 992px) {
+@media (min-width: 769px) and (max-width: 1050px) {
   .product-showcase-benefits__grid > :is([class*="benefit-card--cost"]) {
-    width: min(100%, min(616px, calc(616 * 100vw / 992)));
+    width: min(100%, min(616px, calc(616 * 100vw / 1050)));
   }
 }
 

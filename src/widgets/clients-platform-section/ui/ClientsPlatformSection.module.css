@@ -21,7 +21,7 @@
   bottom: 0;
   left: 50%;
   z-index: 0;
-  width: 100vw;
+  width: var(--public-page-viewport-width, 100vw);
   transform: translateX(-50%);
   overflow: hidden;
   border-radius: 40px;
@@ -180,7 +180,7 @@
   gap: 8px;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1620px) {
   .clients-platform-section__clip {
     padding-block: 168px 211px;
     border-radius: 32px;
@@ -255,13 +255,13 @@
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1050px) {
   .clients-platform-section__clip {
     border-radius: 24px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    padding-block: min(168px, calc(168 * 100vw / 992))
-      min(96px, calc(96 * 100vw / 992));
+    padding-block: min(168px, calc(168 * 100vw / 1050))
+      min(96px, calc(96 * 100vw / 1050));
   }
 
   .clients-platform-section__decor {
@@ -275,12 +275,12 @@
   }
 
   .clients-platform-section__layout {
-    grid-template-columns: min(304px, calc(304 * 100vw / 992)) minmax(0, 1fr);
-    gap: min(8px, calc(8 * 100vw / 992));
+    grid-template-columns: min(304px, calc(304 * 100vw / 1050)) minmax(0, 1fr);
+    gap: min(8px, calc(8 * 100vw / 1050));
   }
 
   .clients-platform-section__main {
-    gap: min(32px, calc(32 * 100vw / 992));
+    gap: min(32px, calc(32 * 100vw / 1050));
     max-width: none;
   }
 
@@ -309,19 +309,19 @@
   .clients-platform-section__orb--orange {
     top: auto;
     right: auto;
-    bottom: max(-43px, calc(-43 * 100vw / 992));
-    left: max(-82px, calc(-82 * 100vw / 992));
-    width: min(320px, calc(320 * 100vw / 992));
-    height: min(320px, calc(320 * 100vw / 992));
+    bottom: max(-43px, calc(-43 * 100vw / 1050));
+    left: max(-82px, calc(-82 * 100vw / 1050));
+    width: min(320px, calc(320 * 100vw / 1050));
+    height: min(320px, calc(320 * 100vw / 1050));
     opacity: 1;
     filter: blur(36px);
   }
 
   .clients-platform-section__orb--purple-small {
-    top: min(398px, calc(398 * 100vw / 992));
-    right: max(-160px, calc(-160 * 100vw / 992));
-    width: min(320px, calc(320 * 100vw / 992));
-    height: min(320px, calc(320 * 100vw / 992));
+    top: min(398px, calc(398 * 100vw / 1050));
+    right: max(-160px, calc(-160 * 100vw / 1050));
+    width: min(320px, calc(320 * 100vw / 1050));
+    height: min(320px, calc(320 * 100vw / 1050));
     opacity: 1;
     filter: blur(36px);
   }

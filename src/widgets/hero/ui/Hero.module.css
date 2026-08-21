@@ -136,7 +136,7 @@
   margin-top: -90px;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1620px) {
   .hero {
     padding-top: 110px;
     padding-bottom: 216px;
@@ -195,7 +195,7 @@
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1050px) {
   .hero {
     margin-top: 80px;
     padding-top: 56px;
@@ -252,11 +252,11 @@
   }
 
   .hero__title {
-    max-width: min(616px, calc(616 * 100vw / 992));
+    max-width: min(616px, calc(616 * 100vw / 1050));
   }
 
   .hero__subtitle {
-    max-width: min(616px, calc(616 * 100vw / 992));
+    max-width: min(616px, calc(616 * 100vw / 1050));
   }
 
   .hero__visual-slot {

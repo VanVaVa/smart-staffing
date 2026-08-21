@@ -67,9 +67,9 @@
   overflow-wrap: anywhere;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1620px) {
   .document-viewer {
-    padding-block: 96px min(160px, calc(160 * 100vw / 1440));
+    padding-block: 96px min(160px, calc(160 * 100vw / 1620));
   }
 
   .document-viewer__header {
@@ -77,9 +77,9 @@
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1050px) {
   .document-viewer {
-    padding-block: 96px min(120px, calc(120 * 100vw / 992));
+    padding-block: 96px min(120px, calc(120 * 100vw / 1050));
   }
 
   .document-viewer__header {

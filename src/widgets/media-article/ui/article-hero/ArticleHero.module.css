@@ -171,25 +171,25 @@
   backdrop-filter: blur(8px);
 }
 
-@media (min-width: 993px) and (max-width: 1440px) {
+@media (min-width: 1051px) and (max-width: 1620px) {
   .article-hero {
-    min-height: clamp(201px, calc(398 * 100vw / 1440), 398px);
-    grid-template-columns: minmax(0, 1fr) clamp(304px, calc(601 * 100vw / 1440), 601px);
-    gap: clamp(48px, calc(89 * 100vw / 1440), 89px);
+    min-height: clamp(201px, calc(398 * 100vw / 1620), 398px);
+    grid-template-columns: minmax(0, 1fr) clamp(304px, calc(601 * 100vw / 1620), 601px);
+    gap: clamp(48px, calc(89 * 100vw / 1620), 89px);
   }
 
   .article-hero__title {
-    font-size: clamp(24px, calc(56 * 100vw / 1440), 56px);
-    line-height: clamp(29px, calc(64 * 100vw / 1440), 64px);
+    font-size: clamp(24px, calc(56 * 100vw / 1620), 56px);
+    line-height: clamp(29px, calc(64 * 100vw / 1620), 64px);
   }
 
   .article-hero__visual {
-    min-height: clamp(201px, calc(398 * 100vw / 1440), 398px);
-    border-radius: clamp(24px, calc(40 * 100vw / 1440), 40px);
+    min-height: clamp(201px, calc(398 * 100vw / 1620), 398px);
+    border-radius: clamp(24px, calc(40 * 100vw / 1620), 40px);
   }
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1620px) {
   .article-hero {
     min-height: 201px;
     grid-template-columns: minmax(0, 1fr) 445px;
@@ -224,19 +224,19 @@
   }
 }
 
-@media (min-width: 769px) and (max-width: 992px) {
+@media (min-width: 769px) and (max-width: 1050px) {
   .article-hero {
-    min-height: clamp(164px, calc(178 * 100vw / 992), 178px);
-    grid-template-columns: clamp(457px, calc(514 * 100vw / 992), 514px) minmax(0, 1fr);
-    gap: clamp(32px, calc(48 * 100vw / 992), 48px);
+    min-height: clamp(164px, calc(178 * 100vw / 1050), 178px);
+    grid-template-columns: clamp(457px, calc(514 * 100vw / 1050), 514px) minmax(0, 1fr);
+    gap: clamp(32px, calc(48 * 100vw / 1050), 48px);
   }
 
   .article-hero__visual {
-    min-height: clamp(164px, calc(178 * 100vw / 992), 178px);
+    min-height: clamp(164px, calc(178 * 100vw / 1050), 178px);
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1050px) {
   .article-hero {
     min-height: 178px;
     grid-template-columns: 514px minmax(0, 1fr);

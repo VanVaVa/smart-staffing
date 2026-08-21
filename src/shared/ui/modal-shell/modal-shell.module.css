@@ -53,7 +53,7 @@
   width: min(778px, 100%);
 }
 
-@media (min-width: 993px) {
+@media (min-width: 1051px) {
   .modal-shell--full-page {
     align-items: flex-start;
     justify-content: center;
@@ -63,13 +63,13 @@
   }
 }
 
-@media (min-width: 993px) and (max-width: 1440px) {
+@media (min-width: 1051px) and (max-width: 1620px) {
   .modal-shell--full-page {
     padding-top: 28px;
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1050px) {
   .modal-shell--full-page {
     align-items: stretch;
     padding: 0;

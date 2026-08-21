@@ -71,7 +71,7 @@ export function ArticleHero({ content }: ArticleHeroProps) {
           placeholder="Добавить заглавное изображение"
           className={styles["article-hero__hero-media"]}
           imageClassName={styles["article-hero__image"]}
-          sizes="(max-width: 450px) 328px, (max-width: 576px) 164px, (max-width: 992px) 304px, (max-width: 1440px) 445px, 601px"
+          sizes="(max-width: 450px) 328px, (max-width: 576px) 164px, (max-width: 1050px) 304px, (max-width: 1620px) 445px, 601px"
           priority
         />
         <span className={styles["article-hero__tag"]}>

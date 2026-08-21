@@ -74,18 +74,18 @@
   cursor: grabbing;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1620px) {
   .vacancies-list-panel__viewport {
-    width: min(634px, calc(634 * 100vw / 1440));
-    height: min(312px, calc(312 * 100vw / 1440));
+    width: min(634px, calc(634 * 100vw / 1620));
+    height: min(312px, calc(312 * 100vw / 1620));
   }
 
   .vacancies-list-panel__scrollbar {
-    height: min(312px, calc(312 * 100vw / 1440));
+    height: min(312px, calc(312 * 100vw / 1620));
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1050px) {
   .vacancies-list-panel {
     flex: 0 0 auto;
     width: min(560px, 100%);

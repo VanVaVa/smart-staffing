@@ -64,7 +64,7 @@
   color: var(--color-white) !important;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1620px) {
   .checkbox {
     font-size: var(--text-body-md);
     line-height: var(--line-body);

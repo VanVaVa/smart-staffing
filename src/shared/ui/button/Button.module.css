@@ -148,7 +148,7 @@
   height: 100%;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1620px) {
   .button__arrow-glyph {
     width: 13px;
     height: 13px;
@@ -175,7 +175,7 @@
   pointer-events: none;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1620px) {
   .button--md,
   .button--lg {
     font-size: var(--text-body-md);

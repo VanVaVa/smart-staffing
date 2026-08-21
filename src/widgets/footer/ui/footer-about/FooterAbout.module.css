@@ -38,7 +38,7 @@
   flex-shrink: 1;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1620px) {
   .footer-about {
     margin-bottom: 161px;
   }
@@ -54,7 +54,7 @@
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1050px) {
   .footer-about {
     margin-bottom: 104px;
   }

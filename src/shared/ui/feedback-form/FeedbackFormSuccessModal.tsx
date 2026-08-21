@@ -74,7 +74,7 @@ export function FeedbackFormSuccessModal({
           alt=""
           width={modalContent.illustrationWidth}
           height={modalContent.illustrationHeight}
-          sizes="(max-width: 576px) 138px, (max-width: 992px) 185px, (max-width: 1440px) 220px, 245px"
+          sizes="(max-width: 576px) 138px, (max-width: 1050px) 185px, (max-width: 1620px) 220px, 245px"
           priority
         />
         <div className={styles["feedback-form-success-modal__copy"]}>

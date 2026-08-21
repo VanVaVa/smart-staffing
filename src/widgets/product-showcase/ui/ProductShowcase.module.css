@@ -108,7 +108,7 @@
   width: 100%;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1620px) {
   .product-showcase {
     padding-top: 196px;
     padding-bottom: 168px;
@@ -155,32 +155,32 @@
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1050px) {
   .product-showcase__orb--orange-large,
   .product-showcase__orb--orange-small,
   .product-showcase__orb--purple {
     left: auto;
-    right: max(-120px, calc(-120 * 100vw / 992));
+    right: max(-120px, calc(-120 * 100vw / 1050));
   }
 
   .product-showcase__orb--orange-large {
-    top: min(914px, calc(914 * 100vw / 992));
-    width: min(600px, calc(600 * 100vw / 992));
-    height: min(600px, calc(600 * 100vw / 992));
+    top: min(914px, calc(914 * 100vw / 1050));
+    width: min(600px, calc(600 * 100vw / 1050));
+    height: min(600px, calc(600 * 100vw / 1050));
   }
 
   .product-showcase__orb--purple {
-    top: min(755px, calc(755 * 100vw / 992));
+    top: min(755px, calc(755 * 100vw / 1050));
     right: -35%;
-    width: min(1050px, calc(1050 * 100vw / 992));
-    height: min(1050px, calc(1050 * 100vw / 992));
+    width: min(1050px, calc(1050 * 100vw / 1050));
+    height: min(1050px, calc(1050 * 100vw / 1050));
   }
 
   .product-showcase__orb--orange-small {
-    top: min(1769px, calc(1769 * 100vw / 992));
+    top: min(1769px, calc(1769 * 100vw / 1050));
     right: 8%;
-    width: min(300px, calc(300 * 100vw / 992));
-    height: min(300px, calc(300 * 100vw / 992));
+    width: min(300px, calc(300 * 100vw / 1050));
+    height: min(300px, calc(300 * 100vw / 1050));
   }
 
   .product-showcase {

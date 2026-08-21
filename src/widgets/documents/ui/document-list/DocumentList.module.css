@@ -143,9 +143,9 @@
   transform: scale(1.015);
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1620px) {
   .document-list {
-    padding-block: 96px min(160px, calc(160 * 100vw / 1440));
+    padding-block: 96px min(160px, calc(160 * 100vw / 1620));
   }
 
   .document-list__title {
@@ -180,9 +180,9 @@
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1050px) {
   .document-list {
-    padding-block: 96px min(120px, calc(120 * 100vw / 992));
+    padding-block: 96px min(120px, calc(120 * 100vw / 1050));
   }
 
   .document-list__company {

@@ -7,9 +7,9 @@
 }
 
 .platform-onboarding-section__bleed {
-  width: 100vw;
-  max-width: 100vw;
-  margin-inline: calc(50% - 50vw);
+  width: var(--public-page-viewport-width, 100vw);
+  max-width: var(--public-page-viewport-width, 100vw);
+  margin-inline: calc(50% - var(--public-page-viewport-width, 100vw) / 2);
   overflow: hidden;
 }
 
@@ -21,21 +21,21 @@
   margin-top: -96px;
 }
 
-@media (min-width: 993px) and (max-width: 1440px) {
+@media (min-width: 1051px) and (max-width: 1620px) {
   .platform-onboarding-section__bleed--demo + .platform-onboarding-section__bleed--steps {
-    margin-top: min(-96px, calc(-96 * 100vw / 1440));
+    margin-top: min(-96px, calc(-96 * 100vw / 1620));
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1050px) {
   .platform-onboarding-section__bleed--demo + .platform-onboarding-section__bleed--steps {
     margin-top: -48px;
   }
 }
 
-@media (min-width: 769px) and (max-width: 992px) {
+@media (min-width: 769px) and (max-width: 1050px) {
   .platform-onboarding-section__bleed--demo + .platform-onboarding-section__bleed--steps {
-    margin-top: min(-48px, calc(-48 * 100vw / 992));
+    margin-top: min(-48px, calc(-48 * 100vw / 1050));
   }
 }
 
@@ -51,13 +51,13 @@
   }
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1620px) {
   .platform-onboarding-section {
     padding-top: 168px;
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1050px) {
   .platform-onboarding-section {
     padding-top: 114px;
     padding-bottom: 31px;

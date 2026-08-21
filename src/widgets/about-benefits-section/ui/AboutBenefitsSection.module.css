@@ -32,7 +32,7 @@
   align-items: stretch;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1620px) {
   .about-benefits-section__title {
     font-size: var(--text-h1);
     line-height: var(--line-h1);
@@ -48,7 +48,7 @@
   }
 }
 
-@media (min-width: 993px) and (max-width: 1440px) {
+@media (min-width: 1051px) and (max-width: 1620px) {
   .about-benefits-section__grid {
     grid-template-rows: minmax(252px, auto) minmax(180px, auto);
   }
@@ -58,7 +58,7 @@
   display: contents;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1050px) {
   .about-benefits-section {
     padding-bottom: 168px;
   }

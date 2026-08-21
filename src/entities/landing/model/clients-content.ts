@@ -350,7 +350,7 @@ const outstaffingPlatformBenefits: ClientsPlatformBenefitsContent = {
         imageAlt: "",
         imageMobileSrc:
           "/landing/clients/outstaffing/benefits-search-visual-mobile.png",
-        imageMobileWidth: 992,
+        imageMobileWidth: 1050,
         imageMobileHeight: 280,
       },
     },
@@ -508,7 +508,7 @@ const midMarketPlatformBenefits: ClientsPlatformBenefitsContent = {
         imageAlt: "",
         imageMobileSrc:
           "/landing/clients/mid-market/benefits-analytics-visual-mobile.png",
-        imageMobileWidth: 992,
+        imageMobileWidth: 1050,
         imageMobileHeight: 280,
       },
     },

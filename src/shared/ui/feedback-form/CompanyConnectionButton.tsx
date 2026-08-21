@@ -10,7 +10,7 @@ import { useFeedbackFormSuccessModal } from "./FeedbackFormSuccessModalProvider"
 
 export const COMPANY_CONNECTION_PATH = "/connect";
 
-const COMPACT_VIEWPORT = "(max-width: 992px)";
+const COMPACT_VIEWPORT = "(max-width: 1050px)";
 
 type CompanyConnectionButtonProps = Omit<
   ComponentProps<typeof Button>,

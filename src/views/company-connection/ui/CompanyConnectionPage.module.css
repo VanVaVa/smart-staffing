@@ -7,7 +7,7 @@
   padding: 0;
 }
 
-@media (min-width: 993px) {
+@media (min-width: 1051px) {
   .company-connection-page__panel {
     width: min(778px, 100%);
     margin: 56px auto 48px;
@@ -18,7 +18,7 @@
   }
 }
 
-@media (min-width: 993px) and (max-width: 1440px) {
+@media (min-width: 1051px) and (max-width: 1620px) {
   .company-connection-page__panel {
     margin-top: 28px;
   }

@@ -224,13 +224,13 @@
   color: var(--color-white);
 }
 
-@media (min-width: 993px) {
+@media (min-width: 1051px) {
   .case-study-card--compact-horizontal .case-study-card__panel-header {
     display: none;
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1050px) {
   .case-study-card--compact-horizontal .case-study-card__tag {
     display: none;
   }
@@ -277,7 +277,7 @@
   }
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1620px) {
   .case-study-card {
     --case-study-card-row-gap: 24px;
     --case-study-card-column-gap: 24px;
@@ -324,14 +324,14 @@
   }
 }
 
-@media (min-width: 993px) and (max-width: 1440px) {
+@media (min-width: 1051px) and (max-width: 1620px) {
   .case-study-card {
-    grid-template-columns: minmax(200px, min(436px, calc(436 * 100vw / 1440))) minmax(0, 1fr);
-    min-height: min(363px, calc(363 * 100vw / 1440));
+    grid-template-columns: minmax(200px, min(436px, calc(436 * 100vw / 1620))) minmax(0, 1fr);
+    min-height: min(363px, calc(363 * 100vw / 1620));
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1050px) {
   .case-study-card {
     --case-study-card-row-gap: 28px;
     --case-study-card-column-gap: 28px;
@@ -381,11 +381,11 @@
   }
 }
 
-@media (min-width: 769px) and (max-width: 992px) {
+@media (min-width: 769px) and (max-width: 1050px) {
   .case-study-card {
-    grid-template-columns: min(304px, calc(304 * 100vw / 992)) minmax(0, 1fr);
-    height: min(258px, calc(258 * 100vw / 992));
-    min-height: min(258px, calc(258 * 100vw / 992));
+    grid-template-columns: min(304px, calc(304 * 100vw / 1050)) minmax(0, 1fr);
+    height: min(258px, calc(258 * 100vw / 1050));
+    min-height: min(258px, calc(258 * 100vw / 1050));
   }
 }
 
@@ -627,7 +627,7 @@
   }
 }
 
-@media (min-width: 769px) and (max-width: 992px) {
+@media (min-width: 769px) and (max-width: 1050px) {
   .case-study-card--compact-horizontal {
     display: grid;
     grid-template-columns: minmax(200px, 304px) minmax(0, 1fr);

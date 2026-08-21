@@ -149,7 +149,7 @@
   object-position: center;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1620px) {
   .about-spotlight-section__grid {
     grid-template-columns: minmax(180px, 336fr) minmax(0, 679fr) minmax(180px, 336fr);
     grid-template-areas: "tag collage preview";
@@ -190,7 +190,7 @@
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1050px) {
   .about-spotlight-section {
     padding-bottom: 168px;
   }

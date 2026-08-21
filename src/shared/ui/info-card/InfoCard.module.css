@@ -46,7 +46,7 @@
   object-fit: cover;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1620px) {
   .info-card {
     padding: 24px;
   }

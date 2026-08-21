@@ -56,7 +56,7 @@ export function VacanciesSection({ content }: VacanciesSectionProps) {
       width={heroImageWidth}
       height={heroImageHeight}
       priority
-      sizes="(max-width: 992px) 344px, (max-width: 1440px) 716px, 956px"
+      sizes="(max-width: 1050px) 344px, (max-width: 1620px) 716px, 956px"
     />
   );
 

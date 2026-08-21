@@ -22,7 +22,7 @@ export function MediaCard({ article, href }: MediaCardProps) {
           src={article.imageSrc}
           alt={article.imageAlt}
           fill
-          sizes="(max-width: 450px) 328px, (max-width: 576px) 50vw, (max-width: 768px) calc(100vw - 48px), (max-width: 992px) 50vw, 33vw"
+          sizes="(max-width: 450px) 328px, (max-width: 576px) 50vw, (max-width: 768px) calc(100vw - 48px), (max-width: 1050px) 50vw, 33vw"
           className={styles["media-card__image"]}
         />
         <span

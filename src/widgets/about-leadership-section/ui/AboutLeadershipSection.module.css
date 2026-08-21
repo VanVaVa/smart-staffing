@@ -83,7 +83,7 @@
   grid-area: finance;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1620px) {
   .about-leadership-section__title {
     max-width: 672px;
     font-size: var(--text-h1);
@@ -103,7 +103,7 @@
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1050px) {
   .about-leadership-section {
     padding-bottom: 168px;
   }

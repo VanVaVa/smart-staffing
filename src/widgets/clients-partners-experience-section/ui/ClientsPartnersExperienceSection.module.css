@@ -23,7 +23,7 @@
   min-width: 0;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1620px) {
   .clients-partners-experience-section {
     padding-top: 168px;
   }
@@ -38,13 +38,13 @@
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1050px) {
   .clients-partners-experience-section {
-    padding-top: min(168px, calc(168 * 100vw / 992));
+    padding-top: min(168px, calc(168 * 100vw / 1050));
   }
 
   .clients-partners-experience-section__container {
-    gap: min(48px, calc(48 * 100vw / 992));
+    gap: min(48px, calc(48 * 100vw / 1050));
   }
 
   .clients-partners-experience-section__title {

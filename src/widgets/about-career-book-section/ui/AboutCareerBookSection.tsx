@@ -56,7 +56,7 @@ export function AboutCareerBookSection({ content }: AboutCareerBookSectionProps)
                     alt={book.spreadAlt}
                     width={752}
                     height={682}
-                    sizes="(max-width: 576px) 260px, (max-width: 768px) 400px, (max-width: 992px) 481px, (max-width: 1200px) 560px, 752px"
+                    sizes="(max-width: 576px) 260px, (max-width: 768px) 400px, (max-width: 1050px) 481px, (max-width: 1200px) 560px, 752px"
                   />
                 </div>
               </figure>

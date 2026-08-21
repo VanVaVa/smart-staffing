@@ -91,7 +91,7 @@
   word-break: break-all;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1620px) {
   .footer-contacts__contacts {
     gap: 6px;
   }
@@ -112,7 +112,7 @@
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1050px) {
   .footer-contacts__social-link {
     width: 92px;
     height: 52px;

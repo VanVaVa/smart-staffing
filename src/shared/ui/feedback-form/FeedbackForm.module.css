@@ -168,7 +168,7 @@
   padding-block: 0;
 }
 
-@media (min-width: 993px) and (max-width: 1440px) {
+@media (min-width: 1051px) and (max-width: 1620px) {
   .feedback-form--with-resume {
     gap: 24px;
   }
@@ -186,19 +186,19 @@
 
   .feedback-form__actions {
     flex-wrap: nowrap;
-    gap: clamp(8px, calc(15 * 100vw / 1440), 15px);
+    gap: clamp(8px, calc(15 * 100vw / 1620), 15px);
   }
 
   .feedback-form__attach,
   .feedback-form__submit {
     height: 40px;
     min-height: 40px;
-    font-size: clamp(14px, calc(18 * 100vw / 1440), 18px);
+    font-size: clamp(14px, calc(18 * 100vw / 1620), 18px);
     line-height: 24px;
   }
 
   .feedback-form__attach-label {
-    padding-inline: clamp(12px, calc(20 * 100vw / 1440), 20px);
+    padding-inline: clamp(12px, calc(20 * 100vw / 1620), 20px);
   }
 
   .feedback-form__attach--loading .feedback-form__attach-label {
@@ -270,7 +270,7 @@
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1050px) {
   .feedback-form--with-resume {
     gap: 24px;
   }

@@ -16,7 +16,7 @@
   flex-shrink: 0;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1620px) {
   .logo__mark {
     height: 40px;
   }

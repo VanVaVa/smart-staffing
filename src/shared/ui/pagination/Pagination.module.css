@@ -77,7 +77,7 @@
   height: 28px;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1620px) {
   .pagination {
     font-size: var(--text-body-md);
     line-height: var(--line-body);

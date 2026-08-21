@@ -146,7 +146,7 @@
   pointer-events: none;
 }
 
-@media (min-width: 993px) or (max-width: 576px) {
+@media (min-width: 1051px) or (max-width: 576px) {
   .platform-onboarding-steps__step[data-step="0"] .platform-onboarding-steps__arrow--trailing {
     display: flex;
   }
@@ -156,7 +156,7 @@
   }
 }
 
-@media (max-width: 992px) and (min-width: 576px) {
+@media (max-width: 1050px) and (min-width: 576px) {
   .platform-onboarding-steps__step[data-step="1"] .platform-onboarding-steps__arrow {
     display: flex;
   }
@@ -190,7 +190,7 @@
   justify-self: start;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1620px) {
   .platform-onboarding-steps {
     min-height: 939px;
     border-radius: var(--radius-xl);
@@ -213,31 +213,31 @@
   }
 }
 
-@media (min-width: 993px) and (max-width: 1440px) {
+@media (min-width: 1051px) and (max-width: 1620px) {
   .platform-onboarding-steps__flow {
-    --step-card-width: min(910px, calc(910 * 100vw / 1440));
+    --step-card-width: min(910px, calc(910 * 100vw / 1620));
     --step-arrow-size: 40px;
-    --step-arrow-offset-x: min(68px, calc(68 * 100vw / 1440));
+    --step-arrow-offset-x: min(68px, calc(68 * 100vw / 1620));
   }
 
   .platform-onboarding-steps__title {
-    max-width: min(714px, calc(714 * 100vw / 1440));
+    max-width: min(714px, calc(714 * 100vw / 1620));
   }
 
   .platform-onboarding-steps__inner {
-    padding-block: min(168px, calc(168 * 100vw / 1440));
+    padding-block: min(168px, calc(168 * 100vw / 1620));
   }
 
   .platform-onboarding-steps__card {
-    min-height: min(160px, calc(160 * 100vw / 1440));
+    min-height: min(160px, calc(160 * 100vw / 1620));
   }
 
   .platform-onboarding-steps__card-text {
-    max-width: min(560px, calc(560 * 100vw / 1440));
+    max-width: min(560px, calc(560 * 100vw / 1620));
   }
 }
 
-@media (min-width: 993px) {
+@media (min-width: 1051px) {
   .platform-onboarding-steps__flow {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
@@ -283,7 +283,7 @@
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1050px) {
   .platform-onboarding-steps {
     border-radius: var(--radius-lg);
   }
@@ -298,10 +298,10 @@
   }
 
   .platform-onboarding-steps__flow {
-    --step-card-width: min(616px, calc(616 * 100vw / 992));
+    --step-card-width: min(616px, calc(616 * 100vw / 1050));
     --step-stagger: calc((100% - var(--step-card-width)) / 2);
-    --step-arrow-size: min(40px, calc(40 * 100vw / 992));
-    --step-arrow-offset-x: min(68px, calc(68 * 100vw / 992));
+    --step-arrow-size: min(40px, calc(40 * 100vw / 1050));
+    --step-arrow-offset-x: min(68px, calc(68 * 100vw / 1050));
     --step-arrow-offset-y: 0px;
 
     display: grid;
@@ -332,7 +332,7 @@
 
   .platform-onboarding-steps__card {
     width: 100%;
-    min-height: min(182px, calc(182 * 100vw / 992));
+    min-height: min(182px, calc(182 * 100vw / 1050));
     padding: 16px;
     border-radius: var(--radius-control);
     gap: 8px;
@@ -370,9 +370,9 @@
   }
 }
 
-@media (min-width: 769px) and (max-width: 992px) {
+@media (min-width: 769px) and (max-width: 1050px) {
   .platform-onboarding-steps__inner {
-    padding-block: min(168px, calc(168 * 100vw / 992));
+    padding-block: min(168px, calc(168 * 100vw / 1050));
   }
 }
 

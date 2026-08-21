@@ -9,15 +9,15 @@
   overflow: visible;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1620px) {
   .clients-partnership-cta-section {
     padding-block: 168px;
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1050px) {
   .clients-partnership-cta-section {
-    padding-block: min(168px, calc(168 * 100vw / 992));
+    padding-block: min(168px, calc(168 * 100vw / 1050));
   }
 }
 

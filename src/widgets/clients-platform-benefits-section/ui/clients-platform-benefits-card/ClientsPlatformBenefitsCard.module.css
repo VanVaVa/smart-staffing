@@ -350,10 +350,10 @@ li:nth-of-type(2) .clients-platform-benefits-card--dark-bg img {
   object-position: center;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1620px) {
   .clients-platform-benefits-card {
-    height: min(408px, calc(408 * 100vw / 1440));
-    min-height: min(408px, calc(408 * 100vw / 1440));
+    height: min(408px, calc(408 * 100vw / 1620));
+    min-height: min(408px, calc(408 * 100vw / 1620));
     border-radius: 16px;
   }
 
@@ -363,7 +363,7 @@ li:nth-of-type(2) .clients-platform-benefits-card--dark-bg img {
   }
 
   .clients-platform-benefits-card__title {
-    padding: min(20px, calc(20 * 100vw / 1440)) min(20px, calc(20 * 100vw / 1440)) 0;
+    padding: min(20px, calc(20 * 100vw / 1620)) min(20px, calc(20 * 100vw / 1620)) 0;
     font-size: var(--text-body-md);
     line-height: var(--line-body);
   }
@@ -372,17 +372,17 @@ li:nth-of-type(2) .clients-platform-benefits-card--dark-bg img {
       .clients-platform-benefits-card--dark-visual
     )
     .clients-platform-benefits-card__visual {
-    margin: min(65px, calc(65 * 100vw / 1440)) 0 0
-      min(33px, calc(33 * 100vw / 1440));
+    margin: min(65px, calc(65 * 100vw / 1620)) 0 0
+      min(33px, calc(33 * 100vw / 1620));
   }
 
   .clients-platform-benefits-card--dark-bg .clients-platform-benefits-card__visual {
-    right: min(16px, calc(16 * 100vw / 1440));
-    left: min(16px, calc(16 * 100vw / 1440));
+    right: min(16px, calc(16 * 100vw / 1620));
+    left: min(16px, calc(16 * 100vw / 1620));
   }
 
   .clients-platform-benefits-card--dark-bg .clients-platform-benefits-card__image {
-    max-width: min(285px, calc(285 * 100vw / 1440));
+    max-width: min(285px, calc(285 * 100vw / 1620));
     border-radius: 16px 16px 0 0;
   }
 
@@ -393,40 +393,40 @@ li:nth-of-type(2) .clients-platform-benefits-card--dark-bg img {
 
   .clients-platform-benefits-card--light-bg.clients-platform-benefits-card--dark-visual
     .clients-platform-benefits-card__visual {
-    padding: min(20px, calc(20 * 100vw / 1440));
+    padding: min(20px, calc(20 * 100vw / 1620));
   }
 
   .clients-platform-benefits-card--light-bg.clients-platform-benefits-card--dark-visual
     .clients-platform-benefits-card__image {
-    max-width: min(285px, calc(285 * 100vw / 1440));
+    max-width: min(285px, calc(285 * 100vw / 1620));
     border-radius: 16px;
   }
 
   .clients-platform-benefits-card__geometry-blob--purple {
-    top: min(196px, calc(196 * 100vw / 1440));
-    left: min(224px, calc(224 * 100vw / 1440));
-    width: min(110px, calc(110 * 100vw / 1440));
-    height: min(110px, calc(110 * 100vw / 1440));
-    filter: blur(min(19px, calc(19 * 100vw / 1440)));
+    top: min(196px, calc(196 * 100vw / 1620));
+    left: min(224px, calc(224 * 100vw / 1620));
+    width: min(110px, calc(110 * 100vw / 1620));
+    height: min(110px, calc(110 * 100vw / 1620));
+    filter: blur(min(19px, calc(19 * 100vw / 1620)));
   }
 
   .clients-platform-benefits-card__geometry-blob--orange {
-    top: min(258px, calc(258 * 100vw / 1440));
-    left: min(32px, calc(32 * 100vw / 1440));
-    width: min(266px, calc(266 * 100vw / 1440));
-    height: min(266px, calc(266 * 100vw / 1440));
-    filter: blur(min(18px, calc(18 * 100vw / 1440)));
+    top: min(258px, calc(258 * 100vw / 1620));
+    left: min(32px, calc(32 * 100vw / 1620));
+    width: min(266px, calc(266 * 100vw / 1620));
+    height: min(266px, calc(266 * 100vw / 1620));
+    filter: blur(min(18px, calc(18 * 100vw / 1620)));
   }
 
   .clients-platform-benefits-card--geometry-bg .clients-platform-benefits-card__visual {
-    top: min(168px, calc(168 * 100vw / 1440));
-    right: min(16px, calc(16 * 100vw / 1440));
-    bottom: min(62px, calc(62 * 100vw / 1440));
-    left: min(16px, calc(16 * 100vw / 1440));
+    top: min(168px, calc(168 * 100vw / 1620));
+    right: min(16px, calc(16 * 100vw / 1620));
+    bottom: min(62px, calc(62 * 100vw / 1620));
+    left: min(16px, calc(16 * 100vw / 1620));
   }
 
   .clients-platform-benefits-card--geometry-bg .clients-platform-benefits-card__image {
-    max-width: min(285px, calc(285 * 100vw / 1440));
+    max-width: min(285px, calc(285 * 100vw / 1620));
     border-radius: 16px;
   }
 
@@ -441,7 +441,7 @@ li:nth-of-type(2) .clients-platform-benefits-card--dark-bg img {
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1050px) {
   .clients-platform-benefits-card {
     height: 100%;
     min-height: 0;
@@ -449,7 +449,7 @@ li:nth-of-type(2) .clients-platform-benefits-card--dark-bg img {
   }
 
   .clients-platform-benefits-card__title {
-    padding: min(20px, calc(20 * 100vw / 992)) min(20px, calc(20 * 100vw / 992)) 0;
+    padding: min(20px, calc(20 * 100vw / 1050)) min(20px, calc(20 * 100vw / 1050)) 0;
     font-size: var(--text-body-md);
     line-height: var(--line-body);
   }
@@ -468,8 +468,8 @@ li:nth-of-type(2) .clients-platform-benefits-card--dark-bg img {
       .clients-platform-benefits-card--dark-visual
     )
     .clients-platform-benefits-card__visual {
-    margin: min(36px, calc(36 * 100vw / 992)) 0 0
-      min(24px, calc(24 * 100vw / 992));
+    margin: min(36px, calc(36 * 100vw / 1050)) 0 0
+      min(24px, calc(24 * 100vw / 1050));
   }
 
   li:nth-of-type(4) .clients-platform-benefits-card--light-bg img {
@@ -478,13 +478,13 @@ li:nth-of-type(2) .clients-platform-benefits-card--dark-bg img {
   }
 
   .clients-platform-benefits-card--dark-bg .clients-platform-benefits-card__visual {
-    right: min(16px, calc(16 * 100vw / 992));
-    left: min(16px, calc(16 * 100vw / 992));
+    right: min(16px, calc(16 * 100vw / 1050));
+    left: min(16px, calc(16 * 100vw / 1050));
     border-radius: 20px !important;
   }
 
   .clients-platform-benefits-card--dark-bg .clients-platform-benefits-card__image {
-    max-width: min(248px, calc(248 * 100vw / 992));
+    max-width: min(248px, calc(248 * 100vw / 1050));
   }
 
   .clients-platform-benefits-card--dark-bg.clients-platform-benefits-card--visual-align-start
@@ -495,38 +495,38 @@ li:nth-of-type(2) .clients-platform-benefits-card--dark-bg img {
 
   .clients-platform-benefits-card--light-bg.clients-platform-benefits-card--dark-visual
     .clients-platform-benefits-card__visual {
-    padding: min(20px, calc(20 * 100vw / 992));
+    padding: min(20px, calc(20 * 100vw / 1050));
     border-radius: 0 !important;
   }
 
   .clients-platform-benefits-card--light-bg.clients-platform-benefits-card--dark-visual
     .clients-platform-benefits-card__image {
-    max-width: min(248px, calc(248 * 100vw / 992));
+    max-width: min(248px, calc(248 * 100vw / 1050));
     border-radius: 16px;
   }
 
   .clients-platform-benefits-card__geometry-blob--purple {
-    top: min(196px, calc(196 * 100vw / 992));
-    left: min(224px, calc(224 * 100vw / 992));
-    width: min(110px, calc(110 * 100vw / 992));
-    height: min(110px, calc(110 * 100vw / 992));
-    filter: blur(min(19px, calc(19 * 100vw / 992)));
+    top: min(196px, calc(196 * 100vw / 1050));
+    left: min(224px, calc(224 * 100vw / 1050));
+    width: min(110px, calc(110 * 100vw / 1050));
+    height: min(110px, calc(110 * 100vw / 1050));
+    filter: blur(min(19px, calc(19 * 100vw / 1050)));
   }
 
   .clients-platform-benefits-card__geometry-blob--orange {
-    top: min(258px, calc(258 * 100vw / 992));
-    left: min(32px, calc(32 * 100vw / 992));
-    width: min(266px, calc(266 * 100vw / 992));
-    height: min(266px, calc(266 * 100vw / 992));
-    filter: blur(min(18px, calc(18 * 100vw / 992)));
+    top: min(258px, calc(258 * 100vw / 1050));
+    left: min(32px, calc(32 * 100vw / 1050));
+    width: min(266px, calc(266 * 100vw / 1050));
+    height: min(266px, calc(266 * 100vw / 1050));
+    filter: blur(min(18px, calc(18 * 100vw / 1050)));
   }
 
   .clients-platform-benefits-card--geometry-bg .clients-platform-benefits-card__visual {
-    top: min(56px, calc(56 * 100vw / 992));
-    right: min(16px, calc(16 * 100vw / 992));
-    bottom: min(16px, calc(16 * 100vw / 992));
+    top: min(56px, calc(56 * 100vw / 1050));
+    right: min(16px, calc(16 * 100vw / 1050));
+    bottom: min(16px, calc(16 * 100vw / 1050));
     left: auto;
-    width: min(248px, calc(248 * 100vw / 992));
+    width: min(248px, calc(248 * 100vw / 1050));
   }
 
   .clients-platform-benefits-card--geometry-bg .clients-platform-benefits-card__image {
@@ -540,7 +540,7 @@ li:nth-of-type(2) .clients-platform-benefits-card--dark-bg img {
   }
 }
 
-@media (min-width: 769px) and (max-width: 992px) {
+@media (min-width: 769px) and (max-width: 1050px) {
   
   .clients-platform-benefits-card--slot-4-geometry-layout
     .clients-platform-benefits-card__visual {

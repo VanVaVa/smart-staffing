@@ -114,7 +114,7 @@ export function ClientsPlatformBenefitsCard({
             alt={card.visual.imageAlt}
             width={card.visual.imageWidth}
             height={card.visual.imageHeight}
-            sizes="(max-width: 768px) 100vw, (max-width: 992px) 288px, 25vw"
+            sizes="(max-width: 768px) 100vw, (max-width: 1050px) 288px, 25vw"
           />
         </div>
         {card.visual.imageMobileSrc ? (

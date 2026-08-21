@@ -54,7 +54,7 @@
   color: var(--color-grey-600);
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1620px) {
   .testimonial-card {
     padding: 24px;
   }

@@ -146,7 +146,7 @@
   }
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1620px) {
   .testimonial-card {
     flex: 0 0 451px;
     width: 451px;
@@ -159,18 +159,18 @@
   }
 }
 
-@media (min-width: 993px) and (max-width: 1440px) {
+@media (min-width: 1051px) and (max-width: 1620px) {
   .testimonial-card {
-    flex-basis: min(451px, calc(451 * 100vw / 1440));
-    width: min(451px, calc(451 * 100vw / 1440));
-    min-height: min(236px, calc(236 * 100vw / 1440));
+    flex-basis: min(451px, calc(451 * 100vw / 1620));
+    width: min(451px, calc(451 * 100vw / 1620));
+    min-height: min(236px, calc(236 * 100vw / 1620));
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1050px) {
   .testimonial-card {
-    flex-basis: min(424px, calc(424 * 100vw / 992));
-    width: min(424px, calc(424 * 100vw / 992));
+    flex-basis: min(424px, calc(424 * 100vw / 1050));
+    width: min(424px, calc(424 * 100vw / 1050));
     min-height: 265px;
     padding: 28px;
   }
@@ -180,16 +180,16 @@
   }
 }
 
-@media (min-width: 769px) and (max-width: 992px) {
+@media (min-width: 769px) and (max-width: 1050px) {
   .testimonial-card {
-    flex-basis: min(424px, calc(424 * 100vw / 992));
-    width: min(424px, calc(424 * 100vw / 992));
-    min-height: min(265px, calc(265 * 100vw / 992));
-    padding: min(28px, calc(28 * 100vw / 992));
+    flex-basis: min(424px, calc(424 * 100vw / 1050));
+    width: min(424px, calc(424 * 100vw / 1050));
+    min-height: min(265px, calc(265 * 100vw / 1050));
+    padding: min(28px, calc(28 * 100vw / 1050));
   }
 
   .testimonial-card__body {
-    gap: min(60px, calc(60 * 100vw / 992));
+    gap: min(60px, calc(60 * 100vw / 1050));
   }
 }
 
