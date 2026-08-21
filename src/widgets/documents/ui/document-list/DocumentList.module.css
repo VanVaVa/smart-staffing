@@ -261,7 +261,7 @@
 
   .document-list__category:nth-child(1) .document-list__links {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: auto auto auto;
   }
 }
 
@@ -341,6 +341,10 @@
     flex: 0 0 408px;
     aspect-ratio: 408 / 586;
     border-radius: 4px;
+  }
+
+  .document-list__category:nth-child(1) .document-list__links {
+    grid-template-columns: auto auto;
   }
 }
 

@@ -758,6 +758,7 @@ li:nth-of-type(2) .clients-platform-benefits-card--dark-bg img {
   .clients-platform-benefits-card--slot-4-geometry-layout.clients-platform-benefits-card--dark-bg .clients-platform-benefits-card__visual > div {
     position: absolute;
     top: auto;
+    max-height: 100%;
   }
 }
 
@@ -853,6 +854,10 @@ li:nth-of-type(2) .clients-platform-benefits-card--dark-bg img {
     font-size: var(--text-body-md);
     line-height: var(--line-body-sm);
     font-weight: 500;
+  }
+
+  .clients-platform-benefits-card--dark-bg .clients-platform-benefits-card__visual > div {
+    max-height: 100%;
   }
 
   .clients-platform-benefits-card--light-bg:not(
