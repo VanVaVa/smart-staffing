@@ -16,13 +16,35 @@
 .product-showcase-mockup__screen-slot {
   position: absolute;
   z-index: 1;
-  top: 3.333%;
-  left: 4.134%;
-  width: 91.434%;
-  height: 93.392%;
+  top: 50%;
+  left: 50%;
+  width: calc(100% - 82px);
+  height: calc(100% - 82px);
+  transform: translate(-50%, -50%);
   overflow: hidden;
   border-radius: 21px;
   background: var(--color-bg);
+}
+
+@media (max-width: 1050px) {
+  .product-showcase-mockup__screen-slot {
+    width: calc(100% - 50px);
+      height: calc(100% - 50px);
+  }
+}
+
+@media (max-width: 576px) {
+  .product-showcase-mockup__screen-slot {
+    width: calc(100% - 36px);
+    height: calc(100% - 36px);
+  }
+}
+
+@media (max-width: 450px) {
+  .product-showcase-mockup__screen-slot {
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+  }
 }
 
 .product-showcase-mockup__screen {
