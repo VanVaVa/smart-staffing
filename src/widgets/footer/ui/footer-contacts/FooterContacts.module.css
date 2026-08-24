@@ -25,7 +25,6 @@
 
 .footer-contacts__social-links {
   display: flex;
-  flex-wrap: wrap;
   gap: 8px;
   margin-top: 28px;
 }
@@ -104,18 +103,21 @@
   .footer-contacts__social-links {
     gap: 6px;
     margin-top: 16px;
+    min-width: 0;
+    flex-wrap: nowrap;
   }
 
   .footer-contacts__social-link {
     width: 70px;
     height: 45px;
+    flex-shrink: 1;
   }
 }
 
 @media (max-width: 1050px) {
   .footer-contacts__social-link {
-    width: 92px;
-    height: 52px;
+    width: clamp(52px, 9.5vw, 92px);
+    height: clamp(40px, 5.5vw, 52px);
   }
 }
 

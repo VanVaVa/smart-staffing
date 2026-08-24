@@ -26,7 +26,7 @@ export function PublicPageShell({
   return (
     <PageFooterProvider footer={footer}>
       <FeedbackFormSuccessModalProvider>
-        <div className={styles["public-page-shell"]}>
+        <div className={[styles["public-page-shell"], "public-page-shell"].join(" ")}>
           <PublicPageScaler />
           <Header />
           <main className={styles["public-page-shell__main"]}>{children}</main>

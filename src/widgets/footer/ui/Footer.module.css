@@ -71,7 +71,8 @@
   }
 
   .footer__columns {
-    grid-template-columns: auto auto auto;
+    grid-template-columns: minmax(0, auto) minmax(0, auto) minmax(0, auto);
+    gap: 16px clamp(16px, 4vw, 84px);
   }
 }
 

@@ -308,6 +308,7 @@
 
   .company-connection-modal--full-page .company-connection-modal__page-footer {
     display: block;
+    filter: none;
   }
 
   .company-connection-modal--full-page .company-connection-modal__body {
@@ -356,7 +357,7 @@
   }
 
   .company-connection-modal--full-page .company-connection-modal__close {
-    position: fixed;
+    position: absolute;
     top: calc(16px + 40px + 16px);
     right: var(--container-padding);
     z-index: 211;

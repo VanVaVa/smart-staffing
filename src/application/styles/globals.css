@@ -72,12 +72,9 @@ h4 {
   }
 }
 
-html.modal-open body > header,
-html.modal-open body > main,
-html.modal-open body > footer,
-html.modal-open body header,
-html.modal-open body main,
-html.modal-open body footer {
+html.modal-open .public-page-shell > header,
+html.modal-open .public-page-shell > main,
+html.modal-open .public-page-shell > footer {
   filter: blur(var(--modal-blur));
 }
 
@@ -88,8 +85,8 @@ html.modal-open body {
 }
 
 @media (max-width: 1050px) {
-  html.company-connection-modal-open > body > header,
-  html.software-rights-modal-open > body > header {
+  html.company-connection-modal-open .public-page-shell > header,
+  html.software-rights-modal-open .public-page-shell > header {
     z-index: 210;
     filter: none;
   }
