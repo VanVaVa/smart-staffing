@@ -11,6 +11,22 @@
   transition: background 0.2s ease;
 }
 
+.header::after {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: -20px;
+  left: 0;
+  pointer-events: none;
+  background: rgb(249 249 251 / 1%);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  -webkit-mask-image: linear-gradient(to bottom, black 20%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 20%, transparent 100%);
+  content: "";
+}
+
 .header--menu-open {
   background-color: var(--color-white);
   color: var(--color-black);

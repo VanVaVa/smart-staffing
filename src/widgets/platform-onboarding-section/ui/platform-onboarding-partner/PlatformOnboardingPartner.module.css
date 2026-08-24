@@ -306,6 +306,7 @@
   .platform-onboarding-partner__cta {
     position: relative;
     z-index: 2;
+    margin-top: 10px;
   }
 
   .platform-onboarding-partner__media {

@@ -1,9 +1,8 @@
 .footer {
   position: relative;
   z-index: 2;
-  isolation: isolate;
   margin-top: -40px;
-  overflow: hidden;
+  overflow: clip;
   background: var(--color-grey-700);
   color: var(--color-white);
   border-top-left-radius: 40px;
@@ -130,7 +129,7 @@
     min-height: 484px;
     padding-block: 28px 51px;
     border-radius: 20px;
-    overflow: hidden;
+    overflow: visible;
   }
 
   .footer__columns {
