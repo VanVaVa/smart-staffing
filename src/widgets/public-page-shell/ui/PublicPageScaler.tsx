@@ -15,6 +15,22 @@ export function PublicPageScaler() {
       const zoom = Math.max(1, window.innerWidth / REFERENCE_VIEWPORT_WIDTH);
       const viewportWidth = window.innerWidth / zoom;
 
+      if (zoom === 1) {
+        if (initialZoom) {
+          body.style.setProperty("zoom", initialZoom);
+        } else {
+          body.style.removeProperty("zoom");
+        }
+
+        if (initialViewportWidth) {
+          body.style.setProperty(VIEWPORT_WIDTH_PROPERTY, initialViewportWidth);
+        } else {
+          body.style.removeProperty(VIEWPORT_WIDTH_PROPERTY);
+        }
+
+        return;
+      }
+
       body.style.setProperty("zoom", String(zoom));
       body.style.setProperty(VIEWPORT_WIDTH_PROPERTY, `${viewportWidth}px`);
     };

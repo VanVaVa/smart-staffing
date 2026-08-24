@@ -90,4 +90,9 @@ html.modal-open body {
     z-index: 210;
     filter: none;
   }
+
+  html.company-connection-modal-open .public-page-shell > footer,
+  html.software-rights-modal-open .public-page-shell > footer {
+    filter: none;
+  }
 }
