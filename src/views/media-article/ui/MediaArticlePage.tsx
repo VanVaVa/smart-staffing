@@ -17,7 +17,7 @@ export function MediaArticlePage({ blocks, relatedArticles }: MediaArticlePagePr
   }
 
   return (
-    <div className={styles["media-article-page"]}>
+    <div className={styles["media-article-page"]} data-header-veil-bg="#f9f9fb">
       <MediaArticle content={block.props} relatedArticles={relatedArticles} />
     </div>
   );

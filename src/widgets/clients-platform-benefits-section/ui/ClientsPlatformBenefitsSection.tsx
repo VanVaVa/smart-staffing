@@ -31,7 +31,10 @@ export function ClientsPlatformBenefitsSection({
     pageVariant === "pricing" && segment === "enterprise";
 
   return (
-    <section className={styles["clients-platform-benefits-section"]}>
+    <section
+      className={styles["clients-platform-benefits-section"]}
+      data-header-veil-bg="#f9f9fb"
+    >
       <Container wide className={styles["clients-platform-benefits-section__container"]}>
         <h2 className={styles["clients-platform-benefits-section__title"]}>
           {content.sectionTitle}

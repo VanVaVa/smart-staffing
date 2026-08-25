@@ -9,7 +9,7 @@ type DocumentsPageProps = {
 
 export function DocumentsPage({ blocks }: DocumentsPageProps) {
   return (
-    <div className={styles["documents-page"]}>
+    <div className={styles["documents-page"]} data-header-veil-bg="#f9f9fb">
       {blocks.map((block) => (
         <div key={block.id}>
           <DocumentsBlockRenderer block={block} />

@@ -19,6 +19,7 @@ export function ClientsPlatformBenefitsShowcaseCard({
       <article
         className={`${styles["clients-platform-benefits-showcase-card"]} ${styles["clients-platform-benefits-showcase-card--it-costs"]} ${styles["clients-platform-benefits-showcase-card--dark-bg"]}`}
         data-header-backdrop="dark"
+        data-header-veil-bg="#212039"
       >
         <div className={styles["clients-platform-benefits-showcase-card__copy"]}>
           <h3 className={styles["clients-platform-benefits-showcase-card__title"]}>
@@ -54,6 +55,7 @@ export function ClientsPlatformBenefitsShowcaseCard({
     return (
       <article
         className={`${styles["clients-platform-benefits-showcase-card"]} ${styles["clients-platform-benefits-showcase-card--quality"]}`}
+        data-header-veil-bg="#ffffff"
       >
         <div className={styles["clients-platform-benefits-showcase-card__quality-top"]}>
           <div className={styles["clients-platform-benefits-showcase-card__copy"]}>
@@ -98,6 +100,7 @@ export function ClientsPlatformBenefitsShowcaseCard({
   return (
     <article
       className={`${styles["clients-platform-benefits-showcase-card"]} ${styles["clients-platform-benefits-showcase-card--scaling"]}`}
+      data-header-veil-bg="#decab2"
     >
       <div>
         <Image

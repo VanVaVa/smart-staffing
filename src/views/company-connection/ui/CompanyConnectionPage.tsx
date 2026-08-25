@@ -5,7 +5,10 @@ import styles from "./CompanyConnectionPage.module.css";
 
 export function CompanyConnectionPage() {
   return (
-    <section className={styles["company-connection-page"]}>
+    <section
+      className={styles["company-connection-page"]}
+      data-header-veil-bg="#f9f9fb"
+    >
       <div
         className={[
           styles["company-connection-page__panel"],

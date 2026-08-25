@@ -15,7 +15,7 @@ type HeroProps = {
 
 export function Hero({ content, interactive = true }: HeroProps) {
   return (
-    <section className={styles.hero}>
+    <section className={styles.hero} data-header-veil-bg="#f9f9fb">
       <div className={styles.hero__decor} aria-hidden>
         <div className={`${styles.hero__orb} ${styles["hero__orb--orange"]}`} />
         <div className={`${styles.hero__orb} ${styles["hero__orb--purple-large"]}`} />

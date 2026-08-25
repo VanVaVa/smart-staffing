@@ -11,6 +11,8 @@
     "db:migrate": "prisma migrate dev",
     "db:migrate:deploy": "prisma migrate deploy",
     "db:seed": "prisma db seed",
+    "sync:documents": "tsx scripts/sync-b2bcloud-documents.ts",
+    "import:media": "tsx scripts/import-teamforce-media.ts",
     "db:sync-home-features": "tsx prisma/sync-home-features.ts",
     "db:studio": "prisma studio",
     "cache:images:clear": "rm -rf .next/dev/cache/images .next/cache/images",

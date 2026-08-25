@@ -102,6 +102,7 @@ export function PlatformOnboardingDemo({
         <div
           className={styles["platform-onboarding-demo__promo"]}
           data-header-backdrop="dark"
+          data-header-veil-bg="#0e0d18"
         >
           <p className={styles["platform-onboarding-demo__promo-text"]}>
             {promoText}

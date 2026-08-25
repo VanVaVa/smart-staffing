@@ -16,6 +16,7 @@ export function AboutPartnerSection({ content }: AboutPartnerSectionProps) {
     <section
       className={styles["about-partner-section"]}
       data-header-backdrop="light"
+      data-header-veil-bg="#f9f9fb"
     >
       <Container wide>
         <div className={styles["about-partner-section__inner"]}>

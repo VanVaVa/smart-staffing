@@ -16,6 +16,7 @@ export function AboutHistorySection({ content }: AboutHistorySectionProps) {
       <div
         className={styles["about-history-section__clip"]}
         data-header-backdrop="dark"
+        data-header-veil-bg="#090909"
       >
         <div className={styles["about-history-section__decor"]} aria-hidden>
           <div className={styles["about-history-section__gradient"]} />

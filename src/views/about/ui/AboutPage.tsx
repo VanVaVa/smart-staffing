@@ -9,7 +9,7 @@ type AboutPageProps = {
 
 export function AboutPage({ blocks }: AboutPageProps) {
   return (
-    <div className={styles["about-page"]}>
+    <div className={styles["about-page"]} data-header-veil-bg="#f9f9fb">
       {blocks.map((block) => (
         <div key={block.id}>
           <AboutBlockRenderer block={block} />

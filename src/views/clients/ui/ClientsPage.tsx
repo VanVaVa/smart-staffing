@@ -19,7 +19,7 @@ export function ClientsPage({
   pageVariant = "clients",
 }: ClientsPageProps) {
   return (
-    <div className={styles["clients-page"]}>
+    <div className={styles["clients-page"]} data-header-veil-bg="#f9f9fb">
       {blocks.map((block) => (
         <div key={block.id}>
           <ClientsBlockRenderer

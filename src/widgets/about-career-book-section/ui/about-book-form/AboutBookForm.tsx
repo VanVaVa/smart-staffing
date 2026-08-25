@@ -67,6 +67,7 @@ export function AboutBookForm({ inputPlaceholder, buttonLabel }: AboutBookFormPr
       action="#"
       method="post"
       data-header-backdrop="dark"
+      data-header-veil-bg="#0e0d18"
       onSubmit={handleSubmit}
     >
       <div className={styles["about-book-form__decor"]} aria-hidden>

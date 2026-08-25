@@ -15,7 +15,7 @@ export function DocumentViewPage({ blocks }: DocumentViewPageProps) {
   }
 
   return (
-    <div className={styles["document-view-page"]}>
+    <div className={styles["document-view-page"]} data-header-veil-bg="#f9f9fb">
       <DocumentViewBlockRenderer block={block} />
     </div>
   );

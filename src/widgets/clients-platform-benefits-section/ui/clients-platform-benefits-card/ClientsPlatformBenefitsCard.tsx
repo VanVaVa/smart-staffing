@@ -12,6 +12,16 @@ type ClientsPlatformBenefitsCardProps = {
   tabletWide: boolean;
 };
 
+const HEADER_VEIL_BG_BY_CARD_TYPE: Record<
+  ClientsPlatformBenefitsCardContent["backgroundType"],
+  string
+> = {
+  "dark-bg": "#212039",
+  "full-bg": "#eef0f4",
+  "light-bg": "#d7def0",
+  "geometry-bg": "#d7def0",
+};
+
 function ClientsPlatformBenefitsInProgressIcon() {
   return (
     <svg
@@ -85,6 +95,7 @@ export function ClientsPlatformBenefitsCard({
     <article
       className={`${styles["clients-platform-benefits-card"]} ${styles[`clients-platform-benefits-card--${card.backgroundType}`]} ${visualLayoutClass} ${slotLayoutClass} ${mobileFullWidthClass} ${inProgressClass} ${visualAlignClass}`}
       data-header-backdrop={card.backgroundType === "dark-bg" ? "dark" : undefined}
+      data-header-veil-bg={HEADER_VEIL_BG_BY_CARD_TYPE[card.backgroundType]}
     >
       {showGeometry ? (
         <div

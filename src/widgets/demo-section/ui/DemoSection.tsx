@@ -12,7 +12,11 @@ export function DemoSection() {
         subtitle={demoSection.subtitle}
         centered
       />
-      <div className={styles["demo-section__player"]} data-header-backdrop="dark">
+      <div
+        className={styles["demo-section__player"]}
+        data-header-backdrop="dark"
+        data-header-veil-bg="#0e0d18"
+      >
         <img
           className={styles["demo-section__preview"]}
           src="/landing/dashboard-preview.svg"

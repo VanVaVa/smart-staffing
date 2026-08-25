@@ -10,7 +10,11 @@ const NOT_FOUND_MESSAGE =
 
 export function NotFoundPage() {
   return (
-    <div className={styles["not-found-page"]} data-header-backdrop="dark">
+    <div
+      className={styles["not-found-page"]}
+      data-header-backdrop="dark"
+      data-header-veil-bg="#0e0d18"
+    >
       <section
         className={styles["not-found-page__section"]}
       >

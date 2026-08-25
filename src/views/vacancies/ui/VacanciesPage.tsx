@@ -15,7 +15,7 @@ export function VacanciesPage({ blocks }: VacanciesPageProps) {
   }
 
   return (
-    <div className={styles["vacancies-page"]}>
+    <div className={styles["vacancies-page"]} data-header-veil-bg="#f9f9fb">
       <VacanciesSection content={block.props} />
     </div>
   );

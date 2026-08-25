@@ -21,7 +21,7 @@ export function MediaPage({ blocks, articles, currentPage = 1 }: MediaPageProps)
   }
 
   return (
-    <div className={styles["media-page"]}>
+    <div className={styles["media-page"]} data-header-veil-bg="#f9f9fb">
       <MediaSection
         display={buildMediaPageContent(articles, block.props.title, currentPage)}
         showPagination

@@ -37,13 +37,11 @@ import {
   clientsPageSlug,
   LANDING_PAGE_SLUGS,
   mediaArticlePageSlug,
+  parseMediaArticleSlugFromPageSlug,
 } from "../src/entities/landing/model/landing-page-slugs";
 import { mediaArticleBlocksFromContent } from "../src/entities/landing/model/media-article-blocks";
+import { TEAMFORCE_MEDIA_ARTICLES } from "../src/entities/landing/model/media-articles-seed";
 import { mediaBlocksFromStaticContent } from "../src/entities/landing/model/media-blocks";
-import {
-  EXAMPLE_MEDIA_ARTICLE,
-  type MediaArticleContent,
-} from "../src/entities/landing/model/media-content";
 import { vacanciesBlocksFromStaticContent } from "../src/entities/landing/model/vacancies-blocks";
 
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
@@ -154,67 +152,6 @@ type SeedPage = {
   meta: { title: string; description: string };
   blocks: SeedBlock[];
 };
-
-const MOCK_MEDIA_ARTICLE_COUNT = 25;
-
-const MOCK_MEDIA_ARTICLE_TAGS = [
-  {
-    tag: "important" as const,
-    tagLabel: "Важное",
-    imageSrc: "/landing/media/media-important.png",
-  },
-  {
-    tag: "interesting" as const,
-    tagLabel: "Интересное",
-    imageSrc: "/landing/media/media-interesting.png",
-  },
-  {
-    tag: "news" as const,
-    tagLabel: "Новость",
-    imageSrc: "/landing/media/media-news.png",
-  },
-];
-
-function buildMockMediaArticles(): MediaArticleContent[] {
-  return Array.from({ length: MOCK_MEDIA_ARTICLE_COUNT }, (_, index) => {
-    const tagConfig = MOCK_MEDIA_ARTICLE_TAGS[index % MOCK_MEDIA_ARTICLE_TAGS.length];
-    const publishedDate = new Date("2026-08-01T12:00:00Z");
-    publishedDate.setUTCDate(publishedDate.getUTCDate() - index);
-    const publishedAt = publishedDate.toISOString().slice(0, 10);
-    const [year, month, day] = publishedAt.split("-");
-    const publishedLabel = `${day}.${month}.${year}`;
-    const slug = `mock-publikaciya-${index + 1}`;
-    const title = `Тестовая публикация ${index + 1}: ${tagConfig.tagLabel.toLowerCase()} СмартСтаффинг`;
-
-    return {
-      id: `mock-${index + 1}`,
-      slug,
-      href: `/media/${slug}`,
-      imageSrc: tagConfig.imageSrc,
-      imageAlt: "Иллюстрация к\u00a0публикации",
-      heroImageSrc: tagConfig.imageSrc,
-      heroImageAlt: "Иллюстрация к\u00a0публикации",
-      tag: tagConfig.tag,
-      tagLabel: tagConfig.tagLabel,
-      publishedAt,
-      publishedLabel,
-      title,
-      lead: `Краткий анонс тестовой публикации №${index + 1} для проверки пагинации на странице «Медиа».`,
-      bodyBlocks: [
-        {
-          type: "paragraph",
-          text: `Это тестовая публикация №${index + 1}. Она создана для проверки отображения списка статей и пагинации.`,
-        },
-      ],
-      sourceHref: "",
-      sourceLabel: "",
-      meta: {
-        title: `${title} — СмартСтаффинг`,
-        description: `Тестовая публикация №${index + 1} для проверки пагинации.`,
-      },
-    };
-  });
-}
 
 async function seedLandingPage(page: SeedPage) {
   const record = await prisma.landingPage.upsert({
@@ -331,14 +268,7 @@ function buildSeedPages(): SeedPage[] {
     });
   }
 
-  pages.push({
-    slug: mediaArticlePageSlug(EXAMPLE_MEDIA_ARTICLE.slug),
-    title: EXAMPLE_MEDIA_ARTICLE.title,
-    meta: EXAMPLE_MEDIA_ARTICLE.meta,
-    blocks: mediaArticleBlocksFromContent(EXAMPLE_MEDIA_ARTICLE),
-  });
-
-  for (const article of buildMockMediaArticles()) {
+  for (const article of TEAMFORCE_MEDIA_ARTICLES) {
     pages.push({
       slug: mediaArticlePageSlug(article.slug),
       title: article.title,
@@ -348,6 +278,20 @@ function buildSeedPages(): SeedPage[] {
   }
 
   return pages;
+}
+
+async function cleanupOrphanedMediaPages(validArticleSlugs: Set<string>) {
+  const pages = await prisma.landingPage.findMany({
+    where: { slug: { startsWith: "media-" } },
+    select: { id: true, slug: true },
+  });
+
+  for (const page of pages) {
+    const articleSlug = parseMediaArticleSlugFromPageSlug(page.slug);
+    if (articleSlug && !validArticleSlugs.has(articleSlug)) {
+      await prisma.landingPage.delete({ where: { id: page.id } });
+    }
+  }
 }
 
 async function main() {
@@ -368,6 +312,10 @@ async function main() {
   for (const page of buildSeedPages()) {
     await seedLandingPage(page);
   }
+
+  await cleanupOrphanedMediaPages(
+    new Set(TEAMFORCE_MEDIA_ARTICLES.map((article) => article.slug)),
+  );
 
   await ensureAdminUser();
 }

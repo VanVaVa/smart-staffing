@@ -17,6 +17,7 @@ export function ClientsPlatformSection({ content }: ClientsPlatformSectionProps)
       <div
         className={styles["clients-platform-section__clip"]}
         data-header-backdrop="dark"
+        data-header-veil-bg="#090909"
       >
         <div className={styles["clients-platform-section__decor"]} aria-hidden>
           <div className={styles["clients-platform-section__gradient"]} />
