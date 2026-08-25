@@ -7,7 +7,8 @@ type Rgba = {
 
 export const HEADER_PROBE_YS = [24, 40, 56, 72];
 
-const LUMINANCE_DARK_THRESHOLD = 0.45;
+const LUMINANCE_DARK_THRESHOLD = 0.35;
+const CHROMA_SPREAD_DARK_THRESHOLD = 35;
 const MIN_ALPHA = 0.5;
 
 const SKIP_TAGS = new Set(["VIDEO", "SVG", "PICTURE", "IFRAME", "CANVAS"]);
@@ -202,20 +203,41 @@ function resolveImagePixel(
   }
 }
 
+function colorChromaSpread({ r, g, b }: Rgba): number {
+  return Math.max(r, g, b) - Math.min(r, g, b);
+}
+
+function isTrulyDarkColor(rgba: Rgba): boolean {
+  return (
+    relativeLuminance(rgba) < LUMINANCE_DARK_THRESHOLD &&
+    colorChromaSpread(rgba) <= CHROMA_SPREAD_DARK_THRESHOLD
+  );
+}
+
+function resolveToneFromColor(rgba: Rgba): "light" | "dark" {
+  return isTrulyDarkColor(rgba) ? "dark" : "light";
+}
+
+function resolveToneFromImagePixel(pixel: Rgba): "light" | "dark" {
+  return relativeLuminance(pixel) < LUMINANCE_DARK_THRESHOLD ? "dark" : "light";
+}
+
 function resolveToneFromElement(
   element: Element,
   x: number,
   y: number,
 ): "light" | "dark" | null {
   if (element instanceof HTMLImageElement) {
+    if (!element.hasAttribute("data-header-backdrop-source")) {
+      return null;
+    }
+
     const pixel = resolveImagePixel(element, x, y);
     if (!pixel || pixel.a < MIN_ALPHA) {
       return null;
     }
 
-    return relativeLuminance(pixel) < LUMINANCE_DARK_THRESHOLD
-      ? "dark"
-      : "light";
+    return resolveToneFromImagePixel(pixel);
   }
 
   if (SKIP_TAGS.has(element.tagName)) {
@@ -227,7 +249,7 @@ function resolveToneFromElement(
     return null;
   }
 
-  return relativeLuminance(rgba) < LUMINANCE_DARK_THRESHOLD ? "dark" : "light";
+  return resolveToneFromColor(rgba);
 }
 
 function getElementsFromPointBelowHeader(x: number, y: number): Element[] {
@@ -276,6 +298,21 @@ export function isDarkBackdropAt(x: number, y: number): boolean {
       continue;
     }
 
+    const tone = resolveToneFromElement(element, x, y);
+    if (tone !== null) {
+      return tone === "dark";
+    }
+  }
+
+  for (const element of stack) {
+    if (!(element instanceof Element)) {
+      continue;
+    }
+
+    if (element.closest("header")) {
+      continue;
+    }
+
     const backdropMarker = element.closest<HTMLElement>(
       "[data-header-backdrop]",
     );
@@ -284,11 +321,6 @@ export function isDarkBackdropAt(x: number, y: number): boolean {
       if (marked !== null) {
         return marked;
       }
-    }
-
-    const tone = resolveToneFromElement(element, x, y);
-    if (tone !== null) {
-      return tone === "dark";
     }
   }
 

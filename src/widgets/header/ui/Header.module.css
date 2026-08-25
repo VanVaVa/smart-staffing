@@ -16,12 +16,18 @@
   max-width: 100%;
   isolation: isolate;
   transition: background 0.2s ease;
+  --header-veil-rise: 32px;
+  --header-veil-fade: 80px;
 }
 
 .header__veil {
   position: absolute;
-  inset: 0 0 auto;
-  height: calc(var(--header-veil-height, 100%) + var(--header-veil-extend, 24px));
+  left: 0;
+  right: 0;
+  top: calc(-1 * var(--header-veil-rise));
+  height: calc(
+    var(--header-veil-height, 100%) + var(--header-veil-extend, 24px) + var(--header-veil-rise)
+  );
   z-index: 0;
   pointer-events: none;
   transition: --header-veil-bg 0.18s linear;
@@ -33,15 +39,19 @@
   background: linear-gradient(
     to bottom,
     var(--header-veil-core) 0,
-    var(--header-veil-core) var(--header-veil-feather, 38%),
+    var(--header-veil-core) max(0px, calc(100% - var(--header-veil-fade))),
     transparent 100%
   );
 }
 
 .header__scrim {
   position: absolute;
-  inset: 0 0 auto;
-  height: calc(var(--header-veil-height, 100%) + var(--header-veil-extend, 24px) + 16px);
+  left: 0;
+  right: 0;
+  top: calc(-1 * var(--header-veil-rise));
+  height: calc(
+    var(--header-veil-height, 100%) + var(--header-veil-extend, 24px) + 16px + var(--header-veil-rise)
+  );
   z-index: 0;
   pointer-events: none;
   --header-blur: 24px;

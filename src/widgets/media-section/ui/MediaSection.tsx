@@ -16,7 +16,10 @@ export function MediaSection({ display, showPagination = true }: MediaSectionPro
         <h1 className={styles["media-section__title"]}>
           {display.title}
         </h1>
-        <div className={styles["media-section__grid"]}>
+        <div
+          className={styles["media-section__grid"]}
+          data-header-veil-bg="transparent"
+        >
           {display.items.map((article) => (
             <MediaCard key={article.id} article={article} />
           ))}

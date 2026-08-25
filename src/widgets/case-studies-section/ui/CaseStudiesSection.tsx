@@ -20,7 +20,10 @@ export function CaseStudiesSection({ content }: CaseStudiesSectionProps) {
           </span>
         }
       />
-      <div className={styles["case-studies-section__list"]}>
+      <div
+        className={styles["case-studies-section__list"]}
+        data-header-veil-bg="transparent"
+      >
         {content.items.map((item, index) => (
           <CaseStudyCard key={`${item.panelSrc}-${index}`}
             href={item.href}

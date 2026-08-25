@@ -1,8 +1,19 @@
 .about-career-book-section {
+  --about-career-book-section-footer-gap: min(112px, calc(112 * 100vw / 1920));
+
   position: relative;
   z-index: 1;
   overflow-x: clip;
-  padding-bottom: min(112px, calc(112 * 100vw / 1920));
+  padding-bottom: var(--about-career-book-section-footer-gap);
+}
+
+.about-career-book-section__header-bridge {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: var(--about-career-book-section-footer-gap);
+  opacity: 0;
+  background: var(--color-grey-700);
 }
 
 .about-career-book-section__inner {
@@ -151,7 +162,7 @@
 
 @media (max-width: 1050px) {
   .about-career-book-section {
-    padding-bottom: 80px;
+    --about-career-book-section-footer-gap: 80px;
   }
 
   .about-career-book-section__career {
@@ -207,7 +218,7 @@
 
 @media (max-width: 768px) {
   .about-career-book-section {
-    padding-bottom: 64px;
+    --about-career-book-section-footer-gap: 64px;
   }
 
   .about-career-book-section__career {
@@ -249,7 +260,7 @@
 
 @media (max-width: 576px) {
   .about-career-book-section {
-    padding-bottom: 60px;
+    --about-career-book-section-footer-gap: 60px;
   }
 
   .about-career-book-section__career {
@@ -302,7 +313,7 @@
 
 @media (max-width: 450px) {
   .about-career-book-section {
-    padding-bottom: 48px;
+    --about-career-book-section-footer-gap: 48px;
   }
 
   .about-career-book-section__career {

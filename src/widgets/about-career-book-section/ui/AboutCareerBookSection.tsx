@@ -83,6 +83,12 @@ export function AboutCareerBookSection({ content }: AboutCareerBookSectionProps)
           </div>
         </div>
       </Container>
+      <div
+        className={styles["about-career-book-section__header-bridge"]}
+        aria-hidden
+        data-header-backdrop="dark"
+        data-header-veil-bg="#181818"
+      />
     </section>
   );
 }

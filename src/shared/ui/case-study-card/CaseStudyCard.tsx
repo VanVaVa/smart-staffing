@@ -84,6 +84,7 @@ export function CaseStudyCard({
       width={571}
       height={484}
       className={styles["case-study-card__panel-bg-image"]}
+      data-header-backdrop-source=""
       aria-hidden
     />
   );
