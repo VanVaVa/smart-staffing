@@ -67,6 +67,7 @@ export function AboutBookForm({ inputPlaceholder, buttonLabel }: AboutBookFormPr
       action="#"
       method="post"
       data-header-backdrop="dark"
+      data-header-overlap="full"
       data-header-veil-bg="#0e0d18"
       onSubmit={handleSubmit}
     >
@@ -108,9 +109,9 @@ export function AboutBookForm({ inputPlaceholder, buttonLabel }: AboutBookFormPr
           disabled={submitting}
           label={
             <>
-              Я даю согласие на обработку персональных данных в соответствии с{" "}
-              <Link href="#" variant="inline" className={styles["about-book-form__consent-link"]}>
-                политикой конфиденциальности
+              Я даю{" "}
+              <Link href="/documents/personal-data-consent" variant="inline" className={styles["about-book-form__consent-link"]}>
+                согласие на обработку персональных данных
               </Link>
             </>
           }

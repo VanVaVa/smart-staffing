@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import { IMAGE_QUALITY } from "@/shared/config/image-quality";
 
 import styles from "./ProductShowcaseMockup.module.css";
 
@@ -19,9 +20,10 @@ export function ProductShowcaseMockup({
           className={styles["product-showcase-mockup__device"]}
           src={deviceSrc}
           alt=""
-          width={1168}
-          height={1528}
-          sizes="(max-width: 768px) 100vw, 1168px"
+          width={1528}
+          height={1168}
+          sizes="(max-width: 768px) 100vw, (max-width: 1620px) 87vw, 1168px"
+          quality={IMAGE_QUALITY.ui}
           priority
           aria-hidden
         />
@@ -35,6 +37,7 @@ export function ProductShowcaseMockup({
             width={1427}
             height={1068}
             sizes="(max-width: 768px) 88vw, 914px"
+            quality={IMAGE_QUALITY.ui}
           />
         </div>
       </div>

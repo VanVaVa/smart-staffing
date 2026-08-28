@@ -27,6 +27,7 @@
   background: var(--color-black);
   transition: left 0.28s cubic-bezier(0.4, 0, 0.2, 1);
   pointer-events: none;
+  max-width: 100%;
 }
 
 .feedback-form-channel-toggle__option {
@@ -125,5 +126,9 @@
     padding-inline: 8px;
     font-size: var(--text-body-sm);
     line-height: var(--line-body-sm);
+  }
+
+  .feedback-form-channel-toggle {
+    width: 100%;
   }
 }

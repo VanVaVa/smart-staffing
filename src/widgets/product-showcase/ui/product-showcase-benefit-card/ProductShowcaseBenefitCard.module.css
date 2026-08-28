@@ -531,6 +531,7 @@
     grid-template-columns: 1fr;
     row-gap: 0;
     padding: 4px;
+    height: auto !important;
   }
 
   .product-showcase-benefit-card--stat .product-showcase-benefit-card__copy {

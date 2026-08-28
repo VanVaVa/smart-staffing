@@ -55,15 +55,14 @@
 }
 
 .case-study-card__panel-bg {
+  position: relative;
   z-index: 0;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 
 .case-study-card__panel-bg-image {
-  display: block;
-  width: 100%;
-  height: 100%;
   object-fit: cover;
 }
 
@@ -425,9 +424,7 @@
   }
 
   .case-study-card__panel-bg,
-  .case-study-card__panel-bg-image,
-  .case-study-card--compact-horizontal .case-study-card__panel-bg,
-  .case-study-card--compact-horizontal .case-study-card__panel-bg-image {
+  .case-study-card--compact-horizontal .case-study-card__panel-bg {
     min-height: 0;
     height: min(194px, calc(194 * 100vw / 768));
     max-height: min(194px, calc(194 * 100vw / 768));
@@ -600,8 +597,7 @@
     border-radius: var(--radius-md);
   }
 
-  .case-study-card--compact-horizontal .case-study-card__panel-bg,
-  .case-study-card--compact-horizontal .case-study-card__panel-bg-image {
+  .case-study-card--compact-horizontal .case-study-card__panel-bg {
     height: 100%;
     max-height: none;
     min-height: 0;
@@ -658,8 +654,7 @@
     border-radius: var(--radius-md) 0 0 var(--radius-md);
   }
 
-  .case-study-card--compact-horizontal .case-study-card__panel-bg,
-  .case-study-card--compact-horizontal .case-study-card__panel-bg-image {
+  .case-study-card--compact-horizontal .case-study-card__panel-bg {
     height: 258px;
     max-height: 258px;
     min-height: 0;
@@ -787,14 +782,8 @@
     max-height: 194px;
   }
 
-  .case-study-card__panel-bg,
-  .case-study-card__panel-bg-image {
+  .case-study-card__panel-bg {
     min-height: 0;
-  }
-
-  .case-study-card__panel-bg-image {
-    height: 194px;
-    max-height: 194px;
   }
 
   .case-study-card__panel-logo {
@@ -951,8 +940,7 @@
 
   .case-study-card__panel,
   .case-study-card__panel-media,
-  .case-study-card__panel-bg,
-  .case-study-card__panel-bg-image {
+  .case-study-card__panel-bg {
     flex-basis: 194px;
     height: 194px;
     max-height: 194px;
@@ -975,8 +963,7 @@
 
   .case-study-card--compact-horizontal .case-study-card__panel,
   .case-study-card--compact-horizontal .case-study-card__panel-media,
-  .case-study-card--compact-horizontal .case-study-card__panel-bg,
-  .case-study-card--compact-horizontal .case-study-card__panel-bg-image {
+  .case-study-card--compact-horizontal .case-study-card__panel-bg {
     flex-basis: 194px;
     height: 194px;
     max-height: 194px;
@@ -1011,14 +998,8 @@
 
   .case-study-card__panel,
   .case-study-card__panel-media,
-  .case-study-card__panel-bg,
-  .case-study-card__panel-bg-image {
+  .case-study-card__panel-bg {
     flex-basis: 178px;
-    height: 178px;
-    max-height: 178px;
-  }
-
-  .case-study-card__panel-bg-image {
     height: 178px;
     max-height: 178px;
   }

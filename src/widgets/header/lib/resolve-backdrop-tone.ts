@@ -7,6 +7,8 @@ type Rgba = {
 
 export const HEADER_PROBE_YS = [24, 40, 56, 72];
 
+const HEADER_PROBE_RATIOS = [0.25, 0.5, 0.75];
+
 const LUMINANCE_DARK_THRESHOLD = 0.35;
 const CHROMA_SPREAD_DARK_THRESHOLD = 35;
 const MIN_ALPHA = 0.5;
@@ -286,8 +288,100 @@ function resolveMarkedBackdrop(
   return null;
 }
 
+function getHeaderRect(): DOMRect | null {
+  const header = document.querySelector("header");
+  if (!(header instanceof HTMLElement)) {
+    return null;
+  }
+
+  const rect = header.getBoundingClientRect();
+  if (rect.height === 0) {
+    return null;
+  }
+
+  return rect;
+}
+
+export function isHeaderFullyOverRect(rect: DOMRect): boolean {
+  const headerRect = getHeaderRect();
+  if (!headerRect) {
+    return false;
+  }
+
+  return (
+    headerRect.top >= rect.top && headerRect.bottom <= rect.bottom
+  );
+}
+
+function resolveFullOverlapMarkedBackdrop(): boolean | null {
+  const markers = document.querySelectorAll<HTMLElement>(
+    '[data-header-backdrop][data-header-overlap="full"]',
+  );
+
+  let bestMarker: HTMLElement | null = null;
+  let bestTop = -Infinity;
+
+  for (const marker of markers) {
+    const rect = marker.getBoundingClientRect();
+    if (!isHeaderFullyOverRect(rect)) {
+      continue;
+    }
+
+    if (rect.top > bestTop) {
+      bestTop = rect.top;
+      bestMarker = marker;
+    }
+  }
+
+  if (!bestMarker) {
+    return null;
+  }
+
+  return resolveMarkedBackdrop(bestMarker);
+}
+
+function getPartialOverlapFullMarker(x: number, y: number): HTMLElement | null {
+  const markers = document.querySelectorAll<HTMLElement>(
+    '[data-header-backdrop][data-header-overlap="full"]',
+  );
+
+  for (const marker of markers) {
+    const rect = marker.getBoundingClientRect();
+    if (
+      x >= rect.left &&
+      x <= rect.right &&
+      y >= rect.top &&
+      y <= rect.bottom &&
+      !isHeaderFullyOverRect(rect)
+    ) {
+      return marker;
+    }
+  }
+
+  return null;
+}
+
+export function getHeaderProbeCenterY(): number {
+  const rect = getHeaderRect();
+  if (!rect) {
+    return HEADER_PROBE_YS[1];
+  }
+
+  return rect.top + rect.height * 0.5;
+}
+
+export function getHeaderProbeYs(): number[] {
+  const rect = getHeaderRect();
+  if (!rect) {
+    return HEADER_PROBE_YS;
+  }
+
+  return HEADER_PROBE_RATIOS.map((ratio) => rect.top + rect.height * ratio);
+}
+
 export function isDarkBackdropAt(x: number, y: number): boolean {
   const stack = getElementsFromPointBelowHeader(x, y);
+  const partialOverlapMarker = getPartialOverlapFullMarker(x, y);
 
   for (const element of stack) {
     if (!(element instanceof Element)) {
@@ -295,6 +389,14 @@ export function isDarkBackdropAt(x: number, y: number): boolean {
     }
 
     if (element.closest("header")) {
+      continue;
+    }
+
+    if (
+      partialOverlapMarker &&
+      element.closest("[data-header-backdrop][data-header-overlap=\"full\"]") ===
+        partialOverlapMarker
+    ) {
       continue;
     }
 
@@ -317,6 +419,10 @@ export function isDarkBackdropAt(x: number, y: number): boolean {
       "[data-header-backdrop]",
     );
     if (backdropMarker) {
+      if (backdropMarker.dataset.headerOverlap === "full") {
+        continue;
+      }
+
       const marked = resolveMarkedBackdrop(backdropMarker);
       if (marked !== null) {
         return marked;
@@ -328,5 +434,10 @@ export function isDarkBackdropAt(x: number, y: number): boolean {
 }
 
 export function isDarkBackdropAtColumn(x: number): boolean {
-  return HEADER_PROBE_YS.some((y) => isDarkBackdropAt(x, y));
+  const fullOverlap = resolveFullOverlapMarkedBackdrop();
+  if (fullOverlap !== null) {
+    return fullOverlap;
+  }
+
+  return getHeaderProbeYs().some((y) => isDarkBackdropAt(x, y));
 }

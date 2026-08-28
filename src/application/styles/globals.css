@@ -72,12 +72,6 @@ h4 {
   }
 }
 
-html.modal-open .public-page-shell > header,
-html.modal-open .public-page-shell > main,
-html.modal-open .public-page-shell > footer {
-  filter: blur(var(--modal-blur));
-}
-
 html.modal-open,
 html.modal-open body {
   overflow: hidden;
@@ -88,6 +82,5 @@ html.modal-open body {
   html.company-connection-modal-open .public-page-shell > header,
   html.software-rights-modal-open .public-page-shell > header {
     z-index: 210;
-    filter: none;
   }
 }

@@ -1,4 +1,7 @@
 import type { ProductShowcaseCostIcon } from "@/entities/landing/model/home-blocks";
+import Image from "next/image";
+
+import { IMAGE_QUALITY } from "@/shared/config/image-quality";
 
 import styles from "./ProductShowcaseBenefitCard.module.css";
 
@@ -20,7 +23,15 @@ function ProductShowcaseBenefitMedia({
   return (
     <div>
       {src ? (
-        <img className={className} src={src} alt={alt} width={width} height={height} />
+        <Image
+          className={className}
+          src={src}
+          alt={alt}
+          width={width}
+          height={height}
+          sizes={`${width}px`}
+          quality={IMAGE_QUALITY.ui}
+        />
       ) : (
         <div
           className={`${className} ${styles["product-showcase-benefit-card__media-placeholder"]}`}

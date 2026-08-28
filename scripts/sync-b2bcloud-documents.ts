@@ -13,12 +13,12 @@ const DOCUMENTS = [
     sourceFile: "Лицензионное_соглашение_В2ВС_v_29_06_2026.pdf",
   },
   {
-    slug: "privacy-policy",
-    sourceFile: "Политика_конфиденциальности_В2ВС_v_24_06_2026.pdf",
-  },
-  {
     slug: "terms-of-use",
     sourceFile: "Пользовательское_соглашение_В2ВС_v_24_06_2026.pdf",
+  },
+  {
+    slug: "platform-privacy-policy",
+    sourceFile: "Политика_конфиденциальности_В2ВС_v_24_06_2026.pdf",
   },
   {
     slug: "platform-features",

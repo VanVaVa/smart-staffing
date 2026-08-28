@@ -1,3 +1,5 @@
+import { isHeaderFullyOverRect } from "./resolve-backdrop-tone";
+
 export const DEFAULT_HEADER_VEIL_BG = "#f9f9fb";
 
 export function resolveHeaderVeilBg(
@@ -11,8 +13,13 @@ export function resolveHeaderVeilBg(
 
   for (const section of sections) {
     const rect = section.getBoundingClientRect();
+    const requiresFullOverlap = section.dataset.headerOverlap === "full";
 
-    if (rect.top > probeY || rect.bottom <= probeY) {
+    if (requiresFullOverlap) {
+      if (!isHeaderFullyOverRect(rect)) {
+        continue;
+      }
+    } else if (rect.top > probeY || rect.bottom <= probeY) {
       continue;
     }
 

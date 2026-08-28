@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import type { AboutSpotlightBlockProps } from "@/entities/landing/model/about-blocks";
+import { IMAGE_QUALITY } from "@/shared/config/image-quality";
 
 import styles from "./AboutSpotlightSection.module.css";
 
@@ -39,6 +40,7 @@ export function AboutSpotlightSection({ content }: AboutSpotlightSectionProps) {
               width={636}
               height={452}
               sizes="(max-width: 450px) 76px, (max-width: 768px) 124px, (max-width: 1620px) 232px, 318px"
+              quality={IMAGE_QUALITY.ui}
             />
           </div>
         </figure>
@@ -50,6 +52,7 @@ export function AboutSpotlightSection({ content }: AboutSpotlightSectionProps) {
               alt={collageAlt}
               fill
               sizes="(max-width: 450px) 328px, (max-width: 768px) 720px, (max-width: 1050px) 100vw, 679px"
+              quality={IMAGE_QUALITY.ui}
             />
           </div>
         </figure>

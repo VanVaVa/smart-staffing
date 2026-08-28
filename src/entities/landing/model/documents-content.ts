@@ -67,6 +67,7 @@ const categories: DocumentCategory[] = [
       ),
       createDocument("technology-stack", "Стек технологий продукта"),
       createDocument("glossary", "Глоссарий"),
+      createDocument("platform-privacy-policy", "Политика конфиденциальности"),
     ],
   },
   {
@@ -76,6 +77,7 @@ const categories: DocumentCategory[] = [
       createDocument("service-agreement", "Договор услуг"),
       createDocument("license-agreement", "Лицензионное соглашение"),
       createDocument("privacy-policy", "Политика конфиденциальности"),
+      createDocument("personal-data-consent", "Согласие на обработку персональных данных"),
       createDocument("terms-of-use", "Пользовательское соглашение"),
     ],
   },

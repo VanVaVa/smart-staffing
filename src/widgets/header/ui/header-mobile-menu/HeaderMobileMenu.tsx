@@ -37,11 +37,10 @@ export function HeaderMobileMenu({ onOpenChange }: HeaderMobileMenuProps) {
   const panelId = useId();
   const menuRef = useRef<HTMLDivElement>(null);
   const ghostRef = useRef<HTMLSpanElement>(null);
+  const actionsRef = useRef<HTMLDivElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
-  const signUpRef = useRef<HTMLSpanElement>(null);
   const ghostOnDarkBackdrop = useElementOnDarkBackdrop(ghostRef);
-  const toggleOnDarkBackdrop = useElementOnDarkBackdrop(toggleRef);
-  const signUpOnDarkBackdrop = useElementOnDarkBackdrop(signUpRef);
+  const actionsOnDarkBackdrop = useElementOnDarkBackdrop(actionsRef);
 
   const setMenuOpen = useCallback(
     (nextOpen: boolean) => {
@@ -90,7 +89,7 @@ export function HeaderMobileMenu({ onOpenChange }: HeaderMobileMenuProps) {
     };
   }, [close, open]);
 
-  const signUpVariant = open ? "dark" : signUpOnDarkBackdrop ? "light" : "dark";
+  const signUpVariant = open ? "dark" : actionsOnDarkBackdrop ? "light" : "dark";
   const topBarTransform = open ? "rotate(45 8 6) translate(0 5)" : undefined;
   const middleBarOpacity = open ? 0 : 1;
   const bottomBarTransform = open ? "rotate(-45 8 6) translate(0 -5)" : undefined;
@@ -109,7 +108,7 @@ export function HeaderMobileMenu({ onOpenChange }: HeaderMobileMenuProps) {
         <span className={styles["header-mobile-menu__logo"]}>
           <Logo />
         </span>
-        <div className={styles["header-mobile-menu__actions"]}>
+        <div ref={actionsRef} className={styles["header-mobile-menu__actions"]}>
           <span
             ref={ghostRef}
             className={[
@@ -125,7 +124,7 @@ export function HeaderMobileMenu({ onOpenChange }: HeaderMobileMenuProps) {
               Вход
             </Button>
           </span>
-          <span ref={signUpRef} className={styles["header-mobile-menu__sign-up-wrap"]}>
+          <span className={styles["header-mobile-menu__sign-up-wrap"]}>
             <Button
               href={contactsHref}
               onClick={scrollToContactsOnPage}
@@ -141,7 +140,7 @@ export function HeaderMobileMenu({ onOpenChange }: HeaderMobileMenuProps) {
             type="button"
             className={[
               styles["header-mobile-menu__toggle"],
-              !open && toggleOnDarkBackdrop
+              !open && actionsOnDarkBackdrop
                 ? styles["header-mobile-menu__toggle--on-dark-backdrop"]
                 : "",
             ]

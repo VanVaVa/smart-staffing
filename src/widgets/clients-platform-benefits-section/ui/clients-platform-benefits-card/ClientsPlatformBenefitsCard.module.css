@@ -8,6 +8,10 @@
   border-radius: 12px;
 }
 
+li:nth-of-type(2) .clients-platform-benefits-card--light-bg:not(.clients-platform-benefits-card--dark-visual) .clients-platform-benefits-card__visual {
+  width: 150%;
+}
+
 .clients-platform-benefits-card--full-bg,
 .clients-platform-benefits-card--light-bg,
 .clients-platform-benefits-card--dark-bg,
@@ -158,7 +162,6 @@ li:nth-of-type(2) .clients-platform-benefits-card--dark-bg img {
 .clients-platform-benefits-card--light-bg.clients-platform-benefits-card--dark-visual
   .clients-platform-benefits-card__image {
   width: auto;
-  max-width: min(396px, calc(396 * 100vw / 1920));
   height: auto;
   max-height: 100%;
   border-radius: 20px;
@@ -169,7 +172,6 @@ li:nth-of-type(2) .clients-platform-benefits-card--dark-bg img {
   .clients-platform-benefits-card__visual {
   align-items: stretch;
   justify-content: stretch;
-  aspect-ratio: 548 / 378;
   background: var(--color-white);
   border-radius: 20px 20px 0 0;
   overflow: hidden;
@@ -851,8 +853,8 @@ li:nth-of-type(2) .clients-platform-benefits-card--dark-bg img {
 @media (max-width: 450px) {
   .clients-platform-benefits-card__title {
     padding: 16px 16px 0;
-    font-size: var(--text-body-md);
-    line-height: var(--line-body-sm);
+    font-size: 12px;
+    line-height: 16px;
     font-weight: 500;
   }
 
@@ -872,6 +874,7 @@ li:nth-of-type(2) .clients-platform-benefits-card--dark-bg img {
     )
     .clients-platform-benefits-card__image {
     object-fit: contain;
+    object-position: 10px 10px;
   }
 
   .clients-platform-benefits-card__in-progress-icon {
@@ -944,6 +947,10 @@ li:nth-of-type(2) .clients-platform-benefits-card--dark-bg img {
     max-width: none;
     width: 100%;
     border-radius: 8px;
+  }
+
+  .clients-platform-benefits-card--full-bg .clients-platform-benefits-card__image {
+    object-position: 30% 40%;
   }
 }
 

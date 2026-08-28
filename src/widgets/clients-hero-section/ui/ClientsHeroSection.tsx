@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import type { ClientsHeroContent } from "@/entities/landing";
+import { IMAGE_QUALITY } from "@/shared/config/image-quality";
 import { CompanyConnectionButton } from "@/shared/ui/feedback-form";
 
 import styles from "./ClientsHeroSection.module.css";
@@ -25,6 +26,7 @@ export function ClientsHeroSection({ content }: ClientsHeroSectionProps) {
             width={content.imageWidth}
             height={content.imageHeight}
             sizes="(max-width: 450px) 344px, (max-width: 768px) 744px, (max-width: 1050px) 960px, (max-width: 1620px) 716px, 956px"
+            quality={IMAGE_QUALITY.ui}
             priority
           />
         </div>
@@ -37,6 +39,7 @@ export function ClientsHeroSection({ content }: ClientsHeroSectionProps) {
               width={content.imageMobileWidth ?? content.imageWidth}
               height={content.imageMobileHeight ?? content.imageHeight}
               sizes="(max-width: 450px) 344px, (max-width: 768px) 744px, 960px"
+              quality={IMAGE_QUALITY.ui}
             />
           </div>
         ) : null}

@@ -1,16 +1,9 @@
 "use client";
 
 import type { ComponentProps } from "react";
-import { useRouter } from "next/navigation";
 
-import { useMediaQuery } from "@/shared/lib/use-media-query";
+import { contactsHref, scrollToContactsOnPage } from "@/shared/lib/scroll-to-contacts";
 import { Button } from "@/shared/ui/button";
-
-import { useFeedbackFormSuccessModal } from "./FeedbackFormSuccessModalProvider";
-
-export const COMPANY_CONNECTION_PATH = "/connect";
-
-const COMPACT_VIEWPORT = "(max-width: 1050px)";
 
 type CompanyConnectionButtonProps = Omit<
   ComponentProps<typeof Button>,
@@ -23,10 +16,6 @@ export function CompanyConnectionButton({
   interactive = true,
   ...props
 }: CompanyConnectionButtonProps) {
-  const router = useRouter();
-  const compactViewport = useMediaQuery(COMPACT_VIEWPORT);
-  const { openCompanyConnectionModal } = useFeedbackFormSuccessModal();
-
   if (!interactive) {
     return <Button {...props} type="button" />;
   }
@@ -34,11 +23,8 @@ export function CompanyConnectionButton({
   return (
     <Button
       {...props}
-      onClick={() =>
-        compactViewport
-          ? router.push(COMPANY_CONNECTION_PATH)
-          : openCompanyConnectionModal()
-      }
+      href={contactsHref}
+      onClick={scrollToContactsOnPage}
     />
   );
 }

@@ -256,9 +256,9 @@ export function FeedbackForm({
         disabled={disabled || submitting}
         label={
           <>
-            Я даю согласие на обработку персональных данных в соответствии с{" "}
-            <Link href="/documents/privacy-policy" variant="inline" className={styles["feedback-form__consent-link"]}>
-              политикой конфиденциальности
+            Я даю{" "}
+            <Link href="/documents/personal-data-consent" variant="inline" className={styles["feedback-form__consent-link"]}>
+              согласие на обработку персональных данных
             </Link>
           </>
         }

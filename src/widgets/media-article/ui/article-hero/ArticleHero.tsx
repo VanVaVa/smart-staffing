@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import type { MediaArticleBlockProps } from "@/entities/landing/model/media-article-blocks";
+import { IMAGE_QUALITY } from "@/shared/config/image-quality";
 
 import styles from "./ArticleHero.module.css";
 
@@ -34,6 +35,7 @@ function ArticleHeroImage({
           fill
           priority={priority}
           sizes={sizes}
+          quality={IMAGE_QUALITY.ui}
           className={imageClassName}
         />
       ) : (

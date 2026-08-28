@@ -1,14 +1,13 @@
 "use client";
 
-import { useEffect, useId, useLayoutEffect, useRef } from "react";
+import { useId, useRef } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 
 import { ArrowIcon } from "@/shared/ui/arrow-icon";
+import { useModalLock } from "@/shared/ui/modal-shell";
 
 import styles from "./AboutPartnerAwardModal.module.css";
-
-const PAGE_BLUR_CLASS = "about-partner-award-modal-open";
 
 type AboutPartnerAwardModalProps = {
   open: boolean;
@@ -29,59 +28,8 @@ export function AboutPartnerAwardModal({
 }: AboutPartnerAwardModalProps) {
   const titleId = useId();
   const backRef = useRef<HTMLButtonElement>(null);
-  const scrollYRef = useRef(0);
-  const onCloseRef = useRef(onClose);
 
-  onCloseRef.current = onClose;
-
-  useLayoutEffect(() => {
-    if (!open) {
-      return;
-    }
-
-    const root = document.documentElement;
-    const { style: bodyStyle } = document.body;
-
-    scrollYRef.current = window.scrollY;
-
-    bodyStyle.position = "fixed";
-    bodyStyle.top = `-${scrollYRef.current}px`;
-    bodyStyle.width = "100%";
-    bodyStyle.overflow = "hidden";
-    root.classList.add(PAGE_BLUR_CLASS);
-    backRef.current?.focus();
-
-    return () => {
-      bodyStyle.position = "";
-      bodyStyle.top = "";
-      bodyStyle.width = "";
-      bodyStyle.overflow = "";
-      root.classList.remove(PAGE_BLUR_CLASS);
-      window.scrollTo({
-        top: scrollYRef.current,
-        left: 0,
-        behavior: "instant",
-      });
-    };
-  }, [open]);
-
-  useEffect(() => {
-    if (!open) {
-      return;
-    }
-
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        onCloseRef.current();
-      }
-    };
-
-    window.addEventListener("keydown", onKeyDown);
-
-    return () => {
-      window.removeEventListener("keydown", onKeyDown);
-    };
-  }, [open]);
+  useModalLock(open, onClose, backRef);
 
   if (!open) {
     return null;

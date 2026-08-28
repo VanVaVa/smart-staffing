@@ -173,3 +173,9 @@
     width: 100%;
   }
 }
+
+@media (max-width: 366px) {
+  .footer-contacts__social-links {
+    margin-left: 0 !important;
+  }
+}

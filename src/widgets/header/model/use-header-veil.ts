@@ -7,6 +7,7 @@ import {
   DEFAULT_HEADER_VEIL_BG,
   resolveHeaderVeilBg,
 } from "../lib/resolve-header-veil-bg";
+import { getHeaderProbeCenterY } from "../lib/resolve-backdrop-tone";
 
 export function useHeaderVeil(
   headerRef: RefObject<HTMLElement | null>,
@@ -30,7 +31,7 @@ export function useHeaderVeil(
       const height = header.getBoundingClientRect().height;
       header.style.setProperty("--header-veil-height", `${height}px`);
 
-      const probeY = height / 2;
+      const probeY = getHeaderProbeCenterY();
       const bg = resolveHeaderVeilBg(probeY);
       veil.style.setProperty("--header-veil-bg", bg);
     };

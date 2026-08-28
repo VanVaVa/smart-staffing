@@ -45,20 +45,20 @@ export function DocumentList({
                 </dd>
               </div>
               <div className={styles["document-list__requisite"]}>
-                <dt>ОКВЭД</dt>
+                <dt>ИНН / ОГРН</dt>
                 <dd>
                   <span>
-                    {company.activity}
+                    {company.inn}
                   </span>
                 </dd>
               </div>
             </div>
             <div className={styles["document-list__requisite-column"]}>
               <div className={styles["document-list__requisite"]}>
-                <dt>ИНН / ОГРН</dt>
+                <dt>ОКВЭД</dt>
                 <dd>
                   <span>
-                    {company.inn}
+                    {company.activity}
                   </span>
                 </dd>
               </div>

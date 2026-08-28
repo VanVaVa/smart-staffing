@@ -256,6 +256,11 @@
     max-width: 480px;
   }
 
+  .platform-onboarding-partner header p {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
   .platform-onboarding-partner__card {
     display: grid;
     grid-template-columns: auto 1fr;

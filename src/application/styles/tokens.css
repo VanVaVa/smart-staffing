@@ -69,7 +69,7 @@
 
   --modal-z-index: 200;
   --modal-overlay: rgb(0 0 0 / 20%);
-  --modal-blur: 48px;
+  --modal-blur: 24px;
   --modal-root-padding-x: var(--container-padding);
   --modal-root-padding-top: 236px;
   --modal-root-padding-bottom: 48px;
@@ -124,7 +124,7 @@
   :root {
     --container-padding: 24px;
     --section-gap: clamp(40px, 5vw, 64px);
-    --modal-blur: 32px;
+    --modal-blur: 24px;
     --modal-root-padding-top: 231px;
     --modal-root-padding-bottom: 24px;
     --modal-panel-max-width: 394px;

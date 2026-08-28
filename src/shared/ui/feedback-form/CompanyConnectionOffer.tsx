@@ -4,12 +4,22 @@ import { Button } from "@/shared/ui/button";
 
 import styles from "./CompanyConnectionModal.module.css";
 
+const SALES_TITLE =
+  "Больше возможностей для\u00a0масштабирования с\u00a0расширенным тарифом";
+
+const SALES_DESCRIPTION =
+  "Создавайте собственные партнёрские сети, управляйте и\u00a0распределяйте ресурсы. Больше контроля, гибкости и\u00a0возможностей для\u00a0масштабирования бизнеса.";
+
+const SALES_ACTION = "Связаться с\u00a0отделом продаж";
+
+const FEATURES_TITLE = "Доступно сразу после\u00a0регистрации:";
+
 const FEATURES = [
-  "Доступ к аккредитованным компаниям платформы без ограничений",
-  "Добавление до 20 компаний в статус партнеров (не в сеть)",
-  "Работа с запросами и специалистами",
-  "Аналитика по ресурсам и проектам",
-  "Участие в партнёрских сетях на платформе",
+  "Доступ к\u00a0аккредитованным компаниям платформы без\u00a0ограничений",
+  "Добавление до\u00a020 компаний в\u00a0статус партнеров (не\u00a0в\u00a0сеть)",
+  "Работа с\u00a0запросами и\u00a0специалистами",
+  "Аналитика по\u00a0ресурсам и\u00a0проектам",
+  "Участие в\u00a0партнёрских сетях на\u00a0платформе",
 ] as const;
 
 type CompanyConnectionOfferProps = {
@@ -34,12 +44,10 @@ export function CompanyConnectionOffer({
         />
         <div className={styles["company-connection-modal__sales-copy"]}>
           <h3 className={styles["company-connection-modal__sales-title"]}>
-            Больше возможностей для масштабирования с расширенным тарифом
+            {SALES_TITLE}
           </h3>
           <p className={styles["company-connection-modal__sales-description"]}>
-            Создавайте собственные партнёрские сети, управляйте и распределяйте
-            ресурсы. Больше контроля, гибкости и возможностей для масштабирования
-            бизнеса.
+            {SALES_DESCRIPTION}
           </p>
         </div>
         <Button
@@ -48,18 +56,19 @@ export function CompanyConnectionOffer({
           className={styles["company-connection-modal__sales-action"]}
           onClick={onContactClick}
         >
-          Связаться с отделом продаж
+          {SALES_ACTION}
         </Button>
       </section>
       <div className={styles["company-connection-modal__hero-cap"]} aria-hidden />
       <div className={styles["company-connection-modal__body"]}>
         <p className={styles["company-connection-modal__summary"]}>
-          Используйте возможности платформы <strong>без ограничений</strong> для
-          основных задач и работайте с ключевым функционалом платформы за{" "}
+          {"Используйте возможности платформы "}
+          <strong>{"без\u00a0ограничений"}</strong>
+          {" для\u00a0основных задач и\u00a0работайте с\u00a0ключевым функционалом платформы за\u00a0"}
           <strong>0 ₽.</strong>
         </p>
         <h3 className={styles["company-connection-modal__features-title"]}>
-          Доступно сразу после регистрации:
+          {FEATURES_TITLE}
         </h3>
         <ul className={styles["company-connection-modal__features"]}>
           {FEATURES.map((feature) => (

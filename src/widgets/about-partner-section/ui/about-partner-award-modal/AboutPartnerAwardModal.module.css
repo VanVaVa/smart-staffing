@@ -13,7 +13,9 @@
   z-index: 0;
   border: none;
   padding: 0;
-  background: rgb(0 0 0 / 20%);
+  background: var(--modal-overlay);
+  -webkit-backdrop-filter: blur(var(--modal-blur));
+  backdrop-filter: blur(var(--modal-blur));
   cursor: pointer;
 }
 
@@ -82,18 +84,6 @@
   border-radius: 4px;
 }
 
-:global(html.about-partner-award-modal-open) > body > header,
-:global(html.about-partner-award-modal-open) > body > main,
-:global(html.about-partner-award-modal-open) > body > footer {
-  filter: blur(48px);
-}
-
-:global(html.about-partner-award-modal-open),
-:global(html.about-partner-award-modal-open) body {
-  overflow: hidden;
-  overscroll-behavior: none;
-}
-
 @media (max-width: 768px) {
   .about-partner-award-modal__back {
     top: 24px;
@@ -108,9 +98,4 @@
     width: min(684px, 100%);
   }
 
-  :global(html.about-partner-award-modal-open) > body > header,
-  :global(html.about-partner-award-modal-open) > body > main,
-  :global(html.about-partner-award-modal-open) > body > footer {
-    filter: blur(32px);
-  }
 }

@@ -3,6 +3,8 @@ import Image from "next/image";
 import NextLink from "next/link";
 import type { ReactNode } from "react";
 
+import { IMAGE_QUALITY } from "@/shared/config/image-quality";
+
 import { ArrowIcon } from "@/shared/ui/arrow-icon";
 import { Badge } from "@/shared/ui/badge";
 
@@ -81,8 +83,9 @@ export function CaseStudyCard({
     <Image
       src={panelSrc}
       alt=""
-      width={571}
-      height={484}
+      fill
+      sizes="(max-width: 768px) 100vw, 571px"
+      quality={IMAGE_QUALITY.ui}
       className={styles["case-study-card__panel-bg-image"]}
       data-header-backdrop-source=""
       aria-hidden

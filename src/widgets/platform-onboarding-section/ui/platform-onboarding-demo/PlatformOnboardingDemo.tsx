@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import { IMAGE_QUALITY } from "@/shared/config/image-quality";
 import { CompanyConnectionButton } from "@/shared/ui/feedback-form";
 import { SectionTitle } from "@/shared/ui/section-title";
 
@@ -80,7 +81,8 @@ export function PlatformOnboardingDemo({
               alt=""
               width={mockupWidth}
               height={mockupHeight}
-              sizes="(max-width: 1024px) 72vw, 812px"
+              sizes="(max-width: 1024px) 52vw, 812px"
+              quality={IMAGE_QUALITY.ui}
             />
           </figure>
         </div>

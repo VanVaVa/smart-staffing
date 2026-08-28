@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import { IMAGE_QUALITY } from "@/shared/config/image-quality";
 import { Button } from "@/shared/ui/button";
 import { CompanyConnectionButton } from "@/shared/ui/feedback-form";
 import { SectionTitle } from "@/shared/ui/section-title";
@@ -108,6 +109,7 @@ export function PlatformOnboardingPartner({
               width={304}
               height={286}
               sizes="(max-width: 576px) 128px, (max-width: 768px) 153px, 152px"
+              quality={IMAGE_QUALITY.ui}
             />
           </div>
           <div className={styles["platform-onboarding-partner__content"]}>

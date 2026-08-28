@@ -259,6 +259,7 @@
 
   .hero__title {
     max-width: min(616px, calc(616 * 100vw / 1050));
+    font-size: var(--text-h1);
   }
 
   .hero__subtitle {
@@ -434,11 +435,7 @@
   }
 
   .hero__orb--orange {
-    top: 428px;
-    left: 292px;
-    right: auto;
-    width: 80px;
-    height: 80px;
+    display: none;
   }
 
   .hero__orb--purple-large {
@@ -460,7 +457,7 @@
   .hero__orb--purple-small {
     width: 80px;
     height: 80px;
-    top: 278px;
+    top: 248px;
     left: auto;
     right: -12px;
   }
@@ -471,5 +468,15 @@
 
   .hero__layout {
     row-gap: 20px;
+  }
+
+  .hero__title {
+    max-width: 100%;
+  }
+
+  .hero__subtitle {
+    font-size: 14px;
+    line-height: 18px;
+    max-width: 100%;
   }
 }

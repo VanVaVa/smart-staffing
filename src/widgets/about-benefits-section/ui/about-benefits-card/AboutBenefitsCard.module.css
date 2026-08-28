@@ -425,6 +425,7 @@
   .about-benefits-card--flex {
     min-height: 170px;
     padding: 16px;
+    max-width: 100%;
   }
 
   .about-benefits-card--expertise {
@@ -461,10 +462,10 @@
   }
 
   .about-benefits-card__security-visual {
-    top: 140px;
-    bottom: auto;
+    top: auto;
+    bottom: -38px;
     left: auto;
-    right: 20px;
+    right: -15px;
     width: 183px;
     height: 140px;
     aspect-ratio: auto;

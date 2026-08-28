@@ -18,6 +18,8 @@
   border: none;
   padding: 0;
   background: var(--modal-overlay);
+  -webkit-backdrop-filter: blur(var(--modal-blur));
+  backdrop-filter: blur(var(--modal-blur));
   cursor: pointer;
 }
 
