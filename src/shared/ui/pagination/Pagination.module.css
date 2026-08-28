@@ -95,7 +95,7 @@
   }
 
   .pagination__page {
-    min-width: 22px;
+    min-width: 40px;
     padding-inline: 4px;
   }
 
@@ -121,7 +121,7 @@
 
   .pagination__page {
     height: 32px;
-    min-width: 20px;
+    min-width: 32px;
   }
 
   .pagination__page--active {

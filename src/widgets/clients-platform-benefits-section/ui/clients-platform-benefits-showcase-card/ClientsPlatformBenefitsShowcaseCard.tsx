@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import type { ClientsPlatformBenefitsShowcaseItem } from "@/entities/landing";
+import { IMAGE_QUALITY } from "@/shared/config/image-quality";
 
 import styles from "./ClientsPlatformBenefitsShowcaseCard.module.css";
 
@@ -45,6 +46,7 @@ export function ClientsPlatformBenefitsShowcaseCard({
             width={item.visual.imageWidth}
             height={item.visual.imageHeight}
             sizes="(max-width: 768px) 100vw, (max-width: 1050px) 460px, 31vw"
+            quality={IMAGE_QUALITY.ui}
           />
         </div>
       </article>
@@ -90,6 +92,7 @@ export function ClientsPlatformBenefitsShowcaseCard({
               width={item.visual.imageWidth}
               height={item.visual.imageHeight}
               sizes="(max-width: 768px) 100vw, (max-width: 1050px) 460px, 66vw"
+              quality={IMAGE_QUALITY.ui}
             />
           </div>
         </div>
@@ -109,7 +112,8 @@ export function ClientsPlatformBenefitsShowcaseCard({
           alt={item.visual.imageAlt}
           width={item.visual.imageWidth}
           height={item.visual.imageHeight}
-          sizes="(max-width: 1050px) 928px, 100vw"
+          sizes="(max-width: 1050px) 135vw, 100vw"
+          quality={IMAGE_QUALITY.ui}
         />
       </div>
       <div className={styles["clients-platform-benefits-showcase-card__copy"]}>

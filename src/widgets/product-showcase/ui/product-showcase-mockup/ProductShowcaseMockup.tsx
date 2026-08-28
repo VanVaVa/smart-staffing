@@ -36,7 +36,7 @@ export function ProductShowcaseMockup({
             alt="Интерфейс платформы СмартСтаффинг"
             width={1427}
             height={1068}
-            sizes="(max-width: 768px) 88vw, 914px"
+            sizes="(max-width: 768px) 100vw, (max-width: 1620px) 87vw, 1086px"
             quality={IMAGE_QUALITY.ui}
           />
         </div>

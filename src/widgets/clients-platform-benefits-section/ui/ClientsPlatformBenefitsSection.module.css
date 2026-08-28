@@ -496,7 +496,7 @@
   }
 
   .clients-platform-benefits-section__cards {
-    gap: 8px;
+    gap: 4px;
   }
 
   .clients-platform-benefits-section__card:not([data-mobile-full]) {
@@ -520,5 +520,22 @@
 
   .clients-platform-benefits-section__showcase-row {
     gap: 8px;
+  }
+
+  .straight-cards {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 4px;
+  }
+
+  .straight-cards .clients-platform-benefits-section__card {
+    flex: 1 1 100%;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .straight-cards .clients-platform-benefits-section__card > * {
+    min-height: 120px;
   }
 }

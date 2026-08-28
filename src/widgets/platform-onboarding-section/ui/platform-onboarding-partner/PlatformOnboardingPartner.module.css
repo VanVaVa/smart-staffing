@@ -15,10 +15,6 @@
   overflow: visible;
 }
 
-.platform-onboarding-partner__card-wrap svg {
-  color: var(--color-accent);
-}
-
 .platform-onboarding-partner__orb {
   position: absolute;
   top: -60px;
@@ -312,6 +308,10 @@
     position: relative;
     z-index: 2;
     margin-top: 10px;
+  }
+
+  .platform-onboarding-partner__cta {
+    margin-top: 18px;
   }
 
   .platform-onboarding-partner__media {

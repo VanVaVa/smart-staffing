@@ -63,7 +63,7 @@ function buildClassName(
 function ArrowGlyph() {
   return (
     <span className={styles["button__arrow-glyph"]} aria-hidden>
-      <ArrowIcon name="cta" />
+      <ArrowIcon name="cta" className={styles["button__arrow-icon"]} />
     </span>
   );
 }

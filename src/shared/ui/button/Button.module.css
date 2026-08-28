@@ -148,6 +148,14 @@
   height: 100%;
 }
 
+.button__arrow-icon {
+  color: var(--color-black);
+}
+
+.button--with-arrow:disabled .button__arrow-icon {
+  color: var(--color-grey-400);
+}
+
 @media (max-width: 1620px) {
   .button__arrow-glyph {
     width: 13px;

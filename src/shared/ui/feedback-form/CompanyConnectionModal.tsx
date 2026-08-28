@@ -57,6 +57,13 @@ export function CompanyConnectionModal({
         shellStyles["modal-shell--full-page"],
       ].join(" ")}
     >
+      <div
+        className={styles["company-connection-modal__header-backdrop"]}
+        data-header-veil-bg="#0e0d18"
+        data-header-backdrop="dark"
+        data-header-overlap="full"
+        aria-hidden
+      />
       <button
         type="button"
         className={shellStyles["modal-shell__overlay"]}

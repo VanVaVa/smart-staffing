@@ -51,7 +51,7 @@ export function AboutSpotlightSection({ content }: AboutSpotlightSectionProps) {
               src={collageSrc}
               alt={collageAlt}
               fill
-              sizes="(max-width: 450px) 328px, (max-width: 768px) 720px, (max-width: 1050px) 100vw, 679px"
+              sizes="(max-width: 450px) 328px, (max-width: 768px) 720px, (max-width: 1050px) 100vw, (max-width: 1620px) 50vw, 908px"
               quality={IMAGE_QUALITY.ui}
             />
           </div>

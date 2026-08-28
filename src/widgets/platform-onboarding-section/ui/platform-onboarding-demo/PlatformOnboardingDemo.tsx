@@ -81,7 +81,7 @@ export function PlatformOnboardingDemo({
               alt=""
               width={mockupWidth}
               height={mockupHeight}
-              sizes="(max-width: 1024px) 52vw, 812px"
+              sizes="(max-width: 450px) 86vw, (max-width: 576px) 364px, (max-width: 768px) 413px, (max-width: 1050px) 444px, (max-width: 1620px) 860px, (max-width: 2042px) 52vw, 1062px"
               quality={IMAGE_QUALITY.ui}
             />
           </figure>

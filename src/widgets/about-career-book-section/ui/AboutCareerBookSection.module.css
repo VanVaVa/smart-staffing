@@ -316,6 +316,10 @@
     --about-career-book-section-footer-gap: 48px;
   }
 
+  .about-career-book-section__book {
+    margin-top: 100px;
+  }
+
   .about-career-book-section__career {
     gap: 48px;
   }

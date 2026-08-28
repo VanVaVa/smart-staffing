@@ -9,6 +9,7 @@ type ClientsPlatformBenefitsCardProps = {
   cardIndex: number;
   cardCount: number;
   mobileFullWidth: boolean;
+  mobileWideLayout?: boolean;
   tabletWide: boolean;
 };
 
@@ -48,6 +49,7 @@ export function ClientsPlatformBenefitsCard({
   cardIndex,
   cardCount,
   mobileFullWidth,
+  mobileWideLayout = false,
   tabletWide,
 }: ClientsPlatformBenefitsCardProps) {
   const toneClass =
@@ -67,10 +69,18 @@ export function ClientsPlatformBenefitsCard({
         ? styles["clients-platform-benefits-card--slot-3-wide-layout"]
         : "";
 
-  const mobileFullWidthClass = mobileFullWidth
-    ? card.backgroundType === "full-bg"
+  const useMobileWideLayout =
+    mobileFullWidth && card.backgroundType !== "full-bg";
+
+  const mobileLayoutClass =
+    mobileFullWidth && card.backgroundType === "full-bg"
       ? styles["clients-platform-benefits-card--mobile-full-bleed"]
-      : styles["clients-platform-benefits-card--mobile-wide"]
+      : useMobileWideLayout
+        ? styles["clients-platform-benefits-card--mobile-wide"]
+        : "";
+
+  const mobileWideNarrowClass = mobileWideLayout
+    ? styles["clients-platform-benefits-card--mobile-wide-narrow"]
     : "";
 
   const inProgressClass = card.inProgress
@@ -84,16 +94,18 @@ export function ClientsPlatformBenefitsCard({
 
   const showGeometry =
     card.backgroundType === "geometry-bg" ||
-    (card.backgroundType === "light-bg" && mobileFullWidth);
+    (card.backgroundType === "light-bg" &&
+      (mobileFullWidth || mobileWideLayout));
 
   const geometryMobileOnlyClass =
-    card.backgroundType === "light-bg" && mobileFullWidth
+    card.backgroundType === "light-bg" &&
+    (mobileFullWidth || mobileWideLayout)
       ? styles["clients-platform-benefits-card__geometry--mobile-only"]
       : "";
 
   return (
     <article
-      className={`${styles["clients-platform-benefits-card"]} ${styles[`clients-platform-benefits-card--${card.backgroundType}`]} ${visualLayoutClass} ${slotLayoutClass} ${mobileFullWidthClass} ${inProgressClass} ${visualAlignClass}`}
+      className={`${styles["clients-platform-benefits-card"]} ${styles[`clients-platform-benefits-card--${card.backgroundType}`]} ${visualLayoutClass} ${slotLayoutClass} ${mobileLayoutClass} ${mobileWideNarrowClass} ${inProgressClass} ${visualAlignClass}`}
       data-header-backdrop={card.backgroundType === "dark-bg" ? "dark" : undefined}
       data-header-veil-bg={HEADER_VEIL_BG_BY_CARD_TYPE[card.backgroundType]}
     >

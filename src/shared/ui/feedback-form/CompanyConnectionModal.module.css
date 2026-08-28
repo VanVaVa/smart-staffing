@@ -1,3 +1,7 @@
+.company-connection-modal__header-backdrop {
+  display: none;
+}
+
 .company-connection-modal__panel {
   padding-top: calc(var(--modal-panel-padding) + 8px);
   padding-bottom: calc(var(--modal-panel-padding) - 12px);
@@ -244,6 +248,13 @@
 }
 
 @media (max-width: 1050px) {
+  .company-connection-modal__header-backdrop {
+    position: fixed;
+    inset: 0;
+    display: block;
+    pointer-events: none;
+  }
+
   .company-connection-modal--full-page .company-connection-modal__panel {
     padding: 0;
   }

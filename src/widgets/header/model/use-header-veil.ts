@@ -56,6 +56,20 @@ export function useHeaderVeil(
     const resizeObserver = new ResizeObserver(scheduleUpdate);
     resizeObserver.observe(header);
 
+    const overlayObserver = new MutationObserver(scheduleUpdate);
+    overlayObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    const bodyObserver = new MutationObserver(scheduleUpdate);
+    bodyObserver.observe(document.body, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ["data-header-veil-bg", "data-header-backdrop", "data-header-overlap"],
+    });
+
     const main = document.querySelector("main");
     const mainObserver = new MutationObserver(scheduleUpdate);
 
@@ -73,6 +87,8 @@ export function useHeaderVeil(
       window.removeEventListener("scroll", scheduleUpdate);
       window.removeEventListener("resize", scheduleUpdate);
       resizeObserver.disconnect();
+      overlayObserver.disconnect();
+      bodyObserver.disconnect();
       mainObserver.disconnect();
     };
   }, [headerRef, veilRef, pathname]);

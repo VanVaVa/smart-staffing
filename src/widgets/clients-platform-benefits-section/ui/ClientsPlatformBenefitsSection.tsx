@@ -10,6 +10,7 @@ import { Container } from "@/shared/ui/container";
 
 import { ClientsPlatformBenefitsCard } from "./clients-platform-benefits-card";
 import { ClientsPlatformBenefitsShowcaseCard } from "./clients-platform-benefits-showcase-card";
+import cn from "classnames";
 
 import styles from "./ClientsPlatformBenefitsSection.module.css";
 
@@ -29,6 +30,7 @@ export function ClientsPlatformBenefitsSection({
   const mobileOrder = getClientsPlatformBenefitsMobileOrder(segment, pageVariant);
   const hasPricingEnterpriseTabletOrder =
     pageVariant === "pricing" && segment === "enterprise";
+  const isStraightCards = content.panelTitle.includes("окне");
 
   return (
     <section
@@ -49,7 +51,10 @@ export function ClientsPlatformBenefitsSection({
             </p>
           </div>
           <ul
-            className={styles["clients-platform-benefits-section__cards"]}
+            className={cn(
+              styles["clients-platform-benefits-section__cards"],
+              isStraightCards && styles["straight-cards"],
+            )}
             data-tablet-results-wide={
               hasPricingEnterpriseTabletOrder ? "" : undefined
             }
@@ -70,6 +75,9 @@ export function ClientsPlatformBenefitsSection({
                 cardCount === 3 ||
                 mobilePosition === 1 ||
                 mobilePosition === cardCount;
+              const mobileWideLayout =
+                isStraightCards &&
+                (mobilePosition === 2 || mobilePosition === 3);
 
               return (
                 <li
@@ -89,6 +97,7 @@ export function ClientsPlatformBenefitsSection({
                     cardIndex={index}
                     cardCount={cardCount}
                     mobileFullWidth={isMobileFullWidth}
+                    mobileWideLayout={mobileWideLayout}
                     tabletWide={tabletWide}
                   />
                 </li>

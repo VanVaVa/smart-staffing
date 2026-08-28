@@ -170,4 +170,40 @@
   .about-trusted-section__rows {
     gap: 4px;
   }
+
+  .about-trusted-section__decor {
+    display: block;
+  }
+
+  .about-trusted-section__orb--orange {
+    position: absolute;
+    top: 64px;
+    left: auto;
+    right: 20px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(
+      135deg,
+      var(--color-blue-muted) 0%,
+      var(--color-accent-hover) 47.12%,
+      var(--color-accent-lead) 100%
+    );
+  }
+
+  .about-trusted-section__orb--purple {
+    position: absolute;
+    top: auto;
+    left: -5px;
+    bottom: 40px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(
+      135deg,
+      var(--color-blue-muted) 0%,
+      var(--color-purple-mid) 50%,
+      var(--color-purple-deep) 100%
+    );
+  }
 }
