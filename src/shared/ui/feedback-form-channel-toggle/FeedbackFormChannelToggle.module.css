@@ -119,6 +119,9 @@
     line-height: var(--line-body-sm);
     overflow: hidden;
     text-overflow: ellipsis;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 

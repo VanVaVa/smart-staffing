@@ -23,8 +23,8 @@ import {
   FeedbackFormChannelToggle,
   type FeedbackFormChannel,
 } from "@/shared/ui/feedback-form-channel-toggle";
+import { FormConsentLabel } from "@/shared/ui/form-consent-label";
 import { Input } from "@/shared/ui/input";
-import { Link } from "@/shared/ui/link";
 import { submitForm } from "@/shared/lib/submit-form";
 import { validateResumeFile } from "@/shared/lib/validate-form-resume";
 
@@ -313,12 +313,7 @@ export function FeedbackForm({
         className={styles["feedback-form__consent"]}
         disabled={disabled || submitting}
         label={
-          <>
-            Я даю{" "}
-            <Link href="/documents/personal-data-consent" variant="inline" className={styles["feedback-form__consent-link"]}>
-              согласие на обработку персональных данных
-            </Link>
-          </>
+          <FormConsentLabel linkClassName={styles["feedback-form__consent-link"]} />
         }
       />
       {submitError ? <p className={styles["feedback-form__error"]}>{submitError}</p> : null}

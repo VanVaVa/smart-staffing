@@ -29,7 +29,7 @@
 
 .feedback-form__consent-link {
   color: var(--color-white);
-  text-decoration: underline;
+  text-decoration: underline !important;
   text-underline-offset: 3px;
 }
 
@@ -386,7 +386,6 @@
   }
 
   .feedback-form--with-resume .feedback-form__input {
-    height: auto;
     min-height: 0;
     padding-block: 0;
     line-height: inherit;

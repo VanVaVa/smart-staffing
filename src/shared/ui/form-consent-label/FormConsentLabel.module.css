@@ -1,0 +1,9 @@
+.form-consent-label a {
+  text-decoration: underline !important;
+  text-underline-offset: 3px;
+}
+
+.form-consent-label__privacy-link {
+  text-decoration: underline !important;
+  text-underline-offset: 3px;
+}

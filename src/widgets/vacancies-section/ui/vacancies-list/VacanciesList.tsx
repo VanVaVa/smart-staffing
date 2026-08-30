@@ -52,6 +52,7 @@ function measureScroll(viewport: HTMLDivElement): ScrollMetrics {
 
 export function VacanciesList({ vacancies, selectedId, onSelect }: VacanciesListProps) {
   const viewportRef = useRef<HTMLDivElement>(null);
+  const itemsRef = useRef<HTMLUListElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const dragRef = useRef<{ startY: number; startScrollTop: number } | null>(null);
   const [metrics, setMetrics] = useState<ScrollMetrics>({
@@ -78,6 +79,10 @@ export function VacanciesList({ vacancies, selectedId, onSelect }: VacanciesList
     viewport.addEventListener("scroll", syncMetrics, { passive: true });
     const observer = new ResizeObserver(syncMetrics);
     observer.observe(viewport);
+    const items = itemsRef.current;
+    if (items) {
+      observer.observe(items);
+    }
 
     return () => {
       viewport.removeEventListener("scroll", syncMetrics);
@@ -170,16 +175,30 @@ export function VacanciesList({ vacancies, selectedId, onSelect }: VacanciesList
     }
   };
 
+  const scrollRowClassName = [
+    styles["vacancies-list-panel__scroll-row"],
+    !metrics.scrollable && styles["vacancies-list-panel__scroll-row--no-scroll"],
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  const viewportClassName = [
+    styles["vacancies-list-panel__viewport"],
+    !metrics.scrollable && styles["vacancies-list-panel__viewport--no-scroll"],
+  ]
+    .filter(Boolean)
+    .join(" ");
+
   return (
     <div className={styles["vacancies-list-panel"]}>
-      <div className={styles["vacancies-list-panel__scroll-row"]}>
+      <div className={scrollRowClassName}>
         <div
           ref={viewportRef}
           id="vacancies-list-viewport"
-          className={styles["vacancies-list-panel__viewport"]}
+          className={viewportClassName}
           tabIndex={0}
         >
-          <ul className={styles["vacancies-list-panel__items"]}>
+          <ul ref={itemsRef} className={styles["vacancies-list-panel__items"]}>
             {vacancies.map((vacancy) => (
               <li key={vacancy.id} className={styles["vacancies-list-panel__item"]}>
                 <VacanciesListItem
@@ -192,29 +211,30 @@ export function VacanciesList({ vacancies, selectedId, onSelect }: VacanciesList
             ))}
           </ul>
         </div>
-        <div
-          ref={trackRef}
-          className={styles["vacancies-list-panel__scrollbar"]}
-          onPointerDown={handleTrackPointerDown}
-          role="scrollbar"
-          aria-controls="vacancies-list-viewport"
-          aria-valuenow={metrics.scrollable ? Math.round(metrics.thumbTop) : 0}
-          aria-valuemin={0}
-          aria-valuemax={100}
-          aria-hidden={!metrics.scrollable}
-        >
+        {metrics.scrollable ? (
           <div
-            className={styles["vacancies-list-panel__scrollbar-thumb"]}
-            style={{
-              height: metrics.thumbHeight > 0 ? `${metrics.thumbHeight}px` : undefined,
-              transform: `translateY(${metrics.thumbTop}px)`,
-            }}
-            onPointerDown={handleThumbPointerDown}
-            onPointerMove={handleThumbPointerMove}
-            onPointerUp={handleThumbPointerUp}
-            onPointerCancel={handleThumbPointerUp}
-          />
-        </div>
+            ref={trackRef}
+            className={styles["vacancies-list-panel__scrollbar"]}
+            onPointerDown={handleTrackPointerDown}
+            role="scrollbar"
+            aria-controls="vacancies-list-viewport"
+            aria-valuenow={Math.round(metrics.thumbTop)}
+            aria-valuemin={0}
+            aria-valuemax={100}
+          >
+            <div
+              className={styles["vacancies-list-panel__scrollbar-thumb"]}
+              style={{
+                height: metrics.thumbHeight > 0 ? `${metrics.thumbHeight}px` : undefined,
+                transform: `translateY(${metrics.thumbTop}px)`,
+              }}
+              onPointerDown={handleThumbPointerDown}
+              onPointerMove={handleThumbPointerMove}
+              onPointerUp={handleThumbPointerUp}
+              onPointerCancel={handleThumbPointerUp}
+            />
+          </div>
+        ) : null}
       </div>
     </div>
   );

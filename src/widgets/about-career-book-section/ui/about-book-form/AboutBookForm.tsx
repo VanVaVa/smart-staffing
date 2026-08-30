@@ -8,8 +8,8 @@ import { type FormEvent, useState } from "react";
 
 import { Button } from "@/shared/ui/button";
 import { Checkbox } from "@/shared/ui/checkbox";
+import { FormConsentLabel } from "@/shared/ui/form-consent-label";
 import { Input } from "@/shared/ui/input";
-import { Link } from "@/shared/ui/link";
 import { submitForm } from "@/shared/lib/submit-form";
 import { useFeedbackFormSuccessModal } from "@/shared/ui/feedback-form/FeedbackFormSuccessModalProvider";
 
@@ -122,12 +122,7 @@ export function AboutBookForm({ inputPlaceholder, buttonLabel }: AboutBookFormPr
           className={styles["about-book-form__consent"]}
           disabled={submitting}
           label={
-            <>
-              Я даю{" "}
-              <Link href="/documents/personal-data-consent" variant="inline" className={styles["about-book-form__consent-link"]}>
-                согласие на обработку персональных данных
-              </Link>
-            </>
+            <FormConsentLabel linkClassName={styles["about-book-form__consent-link"]} />
           }
         />
         {submitError ? <p className={styles["about-book-form__error"]}>{submitError}</p> : null}

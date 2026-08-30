@@ -459,7 +459,7 @@
 
   .product-showcase-benefit-card--stat {
     min-height: auto;
-    height: auto;
+    max-height: 166px;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: 0;
     row-gap: 0;
@@ -509,6 +509,11 @@
     padding: 16px;
   }
 
+  .product-showcase-benefit-card--wide-media img {
+    height: 168px;
+    border-radius: 12px;
+  }
+
   .product-showcase-benefit-card--wide-media .product-showcase-benefit-card__copy {
     padding: 0;
   }
@@ -532,10 +537,13 @@
     row-gap: 0;
     padding: 4px;
     height: auto !important;
+    max-height: none;
+    overflow: visible;
   }
 
   .product-showcase-benefit-card--stat .product-showcase-benefit-card__copy {
     padding: 16px;
+    min-width: 0;
   }
 
   .product-showcase-benefit-card__stat-panel {

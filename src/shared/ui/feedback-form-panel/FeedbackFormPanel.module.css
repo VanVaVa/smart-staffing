@@ -270,7 +270,7 @@
   }
 
   .feedback-form-panel__orb--purple {
-    top: clamp(197px, 34vw, 220px);
+    top: 250px;
     left: clamp(-102px, -17vw, -61px);
     width: clamp(360px, 83vw, 480px);
     height: clamp(360px, 83vw, 480px);

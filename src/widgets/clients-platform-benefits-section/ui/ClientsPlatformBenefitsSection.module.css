@@ -192,18 +192,9 @@
     gap: 8px;
   }
 
-  .clients-platform-benefits-section__card:nth-child(1) > *,
-  .clients-platform-benefits-section__card:nth-child(2) > * {
-    min-height: min(288px, calc(288 * 100vw / 1050));
-  }
-
   .clients-platform-benefits-section__card:nth-child(3) {
     grid-row: 1 / span 2;
     grid-column: 3;
-  }
-
-  .clients-platform-benefits-section__card:nth-child(3) > * {
-    min-height: min(436px, calc(436 * 100vw / 1050));
   }
 
   .clients-platform-benefits-section__card:nth-child(4) {
@@ -227,12 +218,6 @@
     grid-template-rows: auto;
   }
 
-  .clients-platform-benefits-section__cards:not(:has(> :nth-child(4))) li {
-    height: 288px;
-    overflow: hidden;
-    border-radius: 20px;
-  }
-
   .clients-platform-benefits-section__cards:not(:has(> :nth-child(4)))
     .clients-platform-benefits-section__card:nth-child(3) {
     grid-row: auto;
@@ -241,10 +226,6 @@
 }
 
 @media (min-width: 769px) and (max-width: 1050px) {
-  .clients-platform-benefits-section__card:nth-child(4) > * {
-    min-height: min(140px, calc(140 * 100vw / 1050));
-  }
-
   .clients-platform-benefits-section__cards[data-tablet-results-wide]
     .clients-platform-benefits-section__card:nth-child(3) {
     grid-column: 1 / span 2;
@@ -252,21 +233,9 @@
   }
 
   .clients-platform-benefits-section__cards[data-tablet-results-wide]
-    .clients-platform-benefits-section__card:nth-child(3)
-    > * {
-    min-height: min(140px, calc(140 * 100vw / 1050));
-  }
-
-  .clients-platform-benefits-section__cards[data-tablet-results-wide]
     .clients-platform-benefits-section__card:nth-child(4) {
     grid-row: 1 / span 2;
     grid-column: 3;
-  }
-
-  .clients-platform-benefits-section__cards[data-tablet-results-wide]
-    .clients-platform-benefits-section__card:nth-child(4)
-    > * {
-    min-height: min(436px, calc(436 * 100vw / 1050));
   }
 }
 
@@ -315,13 +284,6 @@
     grid-row: auto;
   }
 
-  .clients-platform-benefits-section__card:nth-child(1) > *,
-  .clients-platform-benefits-section__card:nth-child(2) > *,
-  .clients-platform-benefits-section__card:nth-child(3) > *,
-  .clients-platform-benefits-section__card:nth-child(4) > * {
-    min-height: clamp(280px, 44vw, 336px);
-  }
-
   .clients-platform-benefits-section__showcase {
     margin-top: 8px;
     gap: 8px;
@@ -350,18 +312,6 @@
     .clients-platform-benefits-section__card:nth-child(3) {
     order: 2;
   }
-
-  .clients-platform-benefits-section__cards:not(:has(> :nth-child(4)))
-    .clients-platform-benefits-section__card:nth-child(2) > * {
-    min-height: min(140px, calc(140 * 100vw / 1050));
-  }
-
-  .clients-platform-benefits-section__card:nth-child(1) > *,
-  .clients-platform-benefits-section__card:nth-child(2) > *,
-  .clients-platform-benefits-section__card:nth-child(3) > *,
-  .clients-platform-benefits-section__card:nth-child(4) > * {
-    min-height: clamp(240px, 44vw, 336px);
-  }
 }
 
 @media (max-width: 576px) {
@@ -383,6 +333,7 @@
 
   .clients-platform-benefits-section__panel-header {
     gap: 4px;
+    max-width: 100%;
   }
 
   .clients-platform-benefits-section__panel-title {
@@ -433,16 +384,6 @@
     flex: 1 1 calc(50% - 2px);
     max-width: calc(50% - 2px);
     width: calc(50% - 2px);
-  }
-
-  .clients-platform-benefits-section__card[data-mobile-full] > * {
-    min-height: 140px;
-    height: 140px;
-    position: relative;
-  }
-
-  .clients-platform-benefits-section__card:not([data-mobile-full]) > * {
-    min-height: 240px;
   }
 
   .clients-platform-benefits-section__showcase {
@@ -505,12 +446,50 @@
     width: calc(50% - 4px);
   }
 
-  .clients-platform-benefits-section__card[data-mobile-full] > * {
-    min-height: 120px;
+  .clients-platform-benefits-section__cards[data-segment="outstaffing"] {
+    flex-direction: column;
   }
 
-  .clients-platform-benefits-section__card:not([data-mobile-full]) > * {
-    min-height: 160px;
+  .clients-platform-benefits-section__cards[data-segment="outstaffing"]
+    .clients-platform-benefits-section__card {
+    flex: 1 1 100%;
+    width: 100%;
+    max-width: 100%;
+    order: var(
+      --clients-platform-benefits-card-mobile-order-360,
+      var(--clients-platform-benefits-card-mobile-order)
+    );
+  }
+
+  .clients-platform-benefits-section__cards[data-segment="agencies"][data-page-variant="pricing"]
+    .clients-platform-benefits-section__card {
+    order: var(
+      --clients-platform-benefits-card-mobile-order-360,
+      var(--clients-platform-benefits-card-mobile-order)
+    );
+  }
+
+  .clients-platform-benefits-section__cards[data-segment="agencies"][data-page-variant="pricing"]
+    .clients-platform-benefits-section__card[data-mobile-order-360="1"] {
+    flex: 1 1 100%;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .clients-platform-benefits-section__cards[data-segment="agencies"][data-page-variant="pricing"]
+    .clients-platform-benefits-section__card[data-mobile-order-360="2"],
+  .clients-platform-benefits-section__cards[data-segment="agencies"][data-page-variant="pricing"]
+    .clients-platform-benefits-section__card[data-mobile-order-360="3"] {
+    flex: 1 1 calc(50% - 4px);
+    max-width: calc(50% - 4px);
+    width: calc(50% - 4px);
+  }
+
+  .clients-platform-benefits-section__cards[data-segment="agencies"][data-page-variant="pricing"]
+    .clients-platform-benefits-section__card[data-mobile-order-360="4"] {
+    flex: 1 1 100%;
+    width: 100%;
+    max-width: 100%;
   }
 
   .clients-platform-benefits-section__showcase {
@@ -520,22 +499,5 @@
 
   .clients-platform-benefits-section__showcase-row {
     gap: 8px;
-  }
-
-  .straight-cards {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    gap: 4px;
-  }
-
-  .straight-cards .clients-platform-benefits-section__card {
-    flex: 1 1 100%;
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .straight-cards .clients-platform-benefits-section__card > * {
-    min-height: 120px;
   }
 }

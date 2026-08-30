@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useRef } from "react";
+import { useId } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 
@@ -27,9 +27,8 @@ export function AboutPartnerAwardModal({
   documentHeight,
 }: AboutPartnerAwardModalProps) {
   const titleId = useId();
-  const backRef = useRef<HTMLButtonElement>(null);
 
-  useModalLock(open, onClose, backRef);
+  useModalLock(open, onClose);
 
   if (!open) {
     return null;
@@ -50,7 +49,6 @@ export function AboutPartnerAwardModal({
         aria-labelledby={titleId}
       >
         <button
-          ref={backRef}
           type="button"
           className={styles["about-partner-award-modal__back"]}
           onClick={onClose}

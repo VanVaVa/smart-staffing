@@ -264,6 +264,8 @@
 
   .hero__subtitle {
     max-width: min(616px, calc(616 * 100vw / 1050));
+    font-size: 16px;
+    line-height: 22px;
   }
 
   .hero__visual-slot {
@@ -444,6 +446,11 @@
     right: auto;
     width: 360px;
     height: 360px;
+  }
+
+  .hero__subtitle {
+    font-size: 14px;
+    line-height: 18px;
   }
 
   .hero__orb--orange-small {

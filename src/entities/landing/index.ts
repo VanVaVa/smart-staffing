@@ -55,11 +55,14 @@ export { vacanciesPage } from "./model/vacancies-content";
 export {
   clientSegmentSlugs,
   clientsPlatformBenefitsMobileOrder,
+  clientsPlatformBenefitsMobileOrder360,
   clientsSegments,
   getClientsPlatformBenefitsMobileOrder,
+  getClientsPlatformBenefitsMobileOrder360,
   getClientsSegment,
   isClientSegmentSlug,
   pricingPlatformBenefitsMobileOrder,
+  pricingPlatformBenefitsMobileOrder360,
 } from "./model/clients-content";
 export type {
   ClientSegmentSlug,
@@ -69,13 +72,13 @@ export type {
   ClientsPartnersExperienceCaseStudy,
   ClientsPartnersExperienceContent,
   ClientsPartnershipCtaContent,
+  ClientsPlatformBenefitsBreakpoint,
   ClientsPlatformBenefitsCardContent,
-  ClientsPlatformBenefitsCardBackground,
   ClientsPlatformBenefitsContent,
+  ClientsPlatformBenefitsImage,
+  ClientsPlatformBenefitsImageFields,
+  ClientsPlatformBenefitsResponsiveBreakpoint,
   ClientsPlatformBenefitsShowcaseItem,
-  ClientsPlatformBenefitsShowcaseStat,
-  ClientsPlatformBenefitsShowcaseVariant,
-  ClientsPlatformBenefitsVisual,
   ClientsPlatformContent,
   ClientsSegmentContent,
 } from "./model/clients-content";

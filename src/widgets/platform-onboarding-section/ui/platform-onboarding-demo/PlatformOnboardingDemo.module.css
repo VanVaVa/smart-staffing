@@ -330,7 +330,7 @@
   }
 
   .platform-onboarding-demo__promo-cta {
-    width: 100%;
+    width: auto;
     display: flex;
     box-sizing: border-box;
   }

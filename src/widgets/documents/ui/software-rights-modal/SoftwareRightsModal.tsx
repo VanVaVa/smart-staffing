@@ -61,7 +61,10 @@ export function SoftwareRightsModal({
     >
       <button
         type="button"
-        className={shellStyles["modal-shell__overlay"]}
+        className={[
+          shellStyles["modal-shell__overlay"],
+          styles["software-rights-modal__overlay"],
+        ].join(" ")}
         aria-label="Закрыть просмотр документа"
         onClick={onClose}
       />

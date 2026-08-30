@@ -177,7 +177,7 @@
 @media (max-width: 960px) {
   .not-found-page__section {
     min-height: 100svh;
-    padding: 97px var(--container-padding) 285px;
+    padding: 250px var(--container-padding) 285px;
   }
 
   .not-found-page__content {

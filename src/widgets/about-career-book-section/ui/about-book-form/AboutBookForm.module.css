@@ -105,7 +105,7 @@
 
 .about-book-form__consent-link {
   color: var(--color-white);
-  text-decoration: underline;
+  text-decoration: underline !important;
   text-underline-offset: 2px;
 }
 

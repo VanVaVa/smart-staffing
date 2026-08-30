@@ -16,6 +16,10 @@
   max-width: 100%;
 }
 
+.vacancies-list-panel__scroll-row--no-scroll {
+  gap: 0;
+}
+
 .vacancies-list-panel__viewport {
   width: min(846px, calc(846 * 100vw / 1920));
   max-width: 100%;
@@ -28,6 +32,10 @@
 
 .vacancies-list-panel__viewport::-webkit-scrollbar {
   display: none;
+}
+
+.vacancies-list-panel__viewport--no-scroll {
+  overflow: hidden;
 }
 
 .vacancies-list-panel__viewport:focus-visible {
@@ -52,6 +60,7 @@
   position: relative;
   flex-shrink: 0;
   width: min(6px, calc(6 * 100vw / 1920));
+  min-width: 6px;
   height: min(360px, calc(360 * 100vw / 1920));
   border-radius: min(3px, calc(3 * 100vw / 1920));
   background: var(--color-grey-200);

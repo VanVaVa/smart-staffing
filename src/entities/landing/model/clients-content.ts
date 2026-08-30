@@ -1,3 +1,5 @@
+import { clientsPlatformBenefitsImageDimensions } from "../lib/clients-platform-benefits-image-dimensions";
+
 export const clientSegmentSlugs = [
   "enterprise",
   "outstaffing",
@@ -25,6 +27,18 @@ export const pricingPlatformBenefitsMobileOrder: Partial<
   enterprise: [1, 2, 4, 3],
 };
 
+export const clientsPlatformBenefitsMobileOrder360: Partial<
+  Record<ClientSegmentSlug, readonly number[]>
+> = {
+  outstaffing: [2, 4, 3, 1],
+};
+
+export const pricingPlatformBenefitsMobileOrder360: Partial<
+  Record<ClientSegmentSlug, readonly number[]>
+> = {
+  agencies: [2, 3, 1, 4],
+};
+
 export function getClientsPlatformBenefitsMobileOrder(
   segment: ClientSegmentSlug,
   pageVariant: ClientsPageVariant = "clients",
@@ -34,6 +48,18 @@ export function getClientsPlatformBenefitsMobileOrder(
   }
 
   return clientsPlatformBenefitsMobileOrder[segment];
+}
+
+export function getClientsPlatformBenefitsMobileOrder360(
+  segment: ClientSegmentSlug,
+  pageVariant: ClientsPageVariant = "clients",
+): readonly number[] | undefined {
+  if (pageVariant === "pricing") {
+    return pricingPlatformBenefitsMobileOrder360[segment]
+      ?? clientsPlatformBenefitsMobileOrder360[segment];
+  }
+
+  return clientsPlatformBenefitsMobileOrder360[segment];
 }
 
 export type ClientsHeroSubtitle = {
@@ -66,48 +92,92 @@ export type ClientsPlatformContent = {
   imageAlt: string;
 };
 
-export type ClientsPlatformBenefitsVisual = {
+export type ClientsPlatformBenefitsBreakpoint =
+  | "1920"
+  | "1440"
+  | "992"
+  | "768"
+  | "576"
+  | "360";
+
+export type ClientsPlatformBenefitsResponsiveBreakpoint = Exclude<
+  ClientsPlatformBenefitsBreakpoint,
+  "1920"
+>;
+
+export type ClientsPlatformBenefitsImage = {
   imageSrc: string;
   imageWidth: number;
   imageHeight: number;
-  imageAlt: string;
-  imageMobileSrc?: string;
-  imageMobileWidth?: number;
-  imageMobileHeight?: number;
 };
 
-export type ClientsPlatformBenefitsCardBackground =
-  | "full-bg"
-  | "light-bg"
-  | "dark-bg"
-  | "geometry-bg";
+export type ClientsPlatformBenefitsImageFields = ClientsPlatformBenefitsImage & {
+  responsiveImages?: Partial<
+    Record<ClientsPlatformBenefitsResponsiveBreakpoint, ClientsPlatformBenefitsImage>
+  >;
+};
 
 export type ClientsPlatformBenefitsCardContent = {
   title: string;
-  backgroundType: ClientsPlatformBenefitsCardBackground;
-  visualLayout?: "dark-bg";
-  visualAlign?: "start" | "end";
-  inProgress?: boolean;
-  visual: ClientsPlatformBenefitsVisual;
-};
-
-export type ClientsPlatformBenefitsShowcaseStat = {
-  value: string;
-  description: string;
-};
-
-export type ClientsPlatformBenefitsShowcaseVariant =
-  | "it-costs"
-  | "quality"
-  | "scaling";
+} & ClientsPlatformBenefitsImageFields;
 
 export type ClientsPlatformBenefitsShowcaseItem = {
-  variant: ClientsPlatformBenefitsShowcaseVariant;
   title: string;
-  subtitle: string;
-  visual: ClientsPlatformBenefitsVisual;
-  stat?: ClientsPlatformBenefitsShowcaseStat;
+} & ClientsPlatformBenefitsImageFields;
+
+const clientsPlatformBenefitsResponsiveBreakpoints: readonly ClientsPlatformBenefitsResponsiveBreakpoint[] =
+  ["1440", "992", "768", "576", "360"];
+
+type ClientsPlatformBenefitsImageFileBase =
+  | "benefits-card-1"
+  | "benefits-card-2"
+  | "benefits-card-3"
+  | "benefits-card-4"
+  | "showcase-it"
+  | "showcase-quality"
+  | "showcase-scaling";
+
+type ClientsPlatformBenefitsBreakpointDimensions = Partial<
+  Record<ClientsPlatformBenefitsBreakpoint, readonly [number, number]>
+> & {
+  "1920": readonly [number, number];
 };
+
+function buildClientsPlatformBenefitsImage(
+  segment: ClientSegmentSlug,
+  fileBase: ClientsPlatformBenefitsImageFileBase,
+): ClientsPlatformBenefitsImageFields {
+  const segmentDimensions = clientsPlatformBenefitsImageDimensions[segment] as Record<
+    ClientsPlatformBenefitsImageFileBase,
+    ClientsPlatformBenefitsBreakpointDimensions
+  >;
+  const breakpointDimensions = segmentDimensions[fileBase];
+  const [desktopWidth, desktopHeight] = breakpointDimensions["1920"];
+  const responsiveImages: Partial<
+    Record<ClientsPlatformBenefitsResponsiveBreakpoint, ClientsPlatformBenefitsImage>
+  > = {};
+
+  for (const breakpoint of clientsPlatformBenefitsResponsiveBreakpoints) {
+    const dimensions = breakpointDimensions[breakpoint];
+    if (!dimensions) {
+      continue;
+    }
+
+    const [imageWidth, imageHeight] = dimensions;
+    responsiveImages[breakpoint] = {
+      imageSrc: `/landing/clients/${segment}/${fileBase}-${breakpoint}.png`,
+      imageWidth,
+      imageHeight,
+    };
+  }
+
+  return {
+    imageSrc: `/landing/clients/${segment}/${fileBase}.png`,
+    imageWidth: desktopWidth,
+    imageHeight: desktopHeight,
+    responsiveImages,
+  };
+}
 
 export type ClientsPlatformBenefitsContent = {
   sectionTitle: string;
@@ -183,89 +253,33 @@ const enterprisePlatformBenefits: ClientsPlatformBenefitsContent = {
   cards: [
     {
       title: "Роли по\u00a0отраслям и\u00a0компетенциям",
-      backgroundType: "full-bg",
-      visual: {
-        imageSrc: "/landing/clients/enterprise/benefits-roles-visual.png",
-        imageWidth: 436,
-        imageHeight: 540,
-        imageAlt: "",
-        imageMobileSrc: "/landing/clients/enterprise/benefits-roles-visual-mobile.png",
-        imageMobileWidth: 592,
-        imageMobileHeight: 240,
-      },
+      ...buildClientsPlatformBenefitsImage("enterprise", "benefits-card-1"),
     },
     {
       title: "Уровни доступа",
-      backgroundType: "light-bg",
-      visual: {
-        imageSrc: "/landing/clients/enterprise/benefits-access-visual.png",
-        imageWidth: 619,
-        imageHeight: 409,
-        imageAlt: "",
-      },
+      ...buildClientsPlatformBenefitsImage("enterprise", "benefits-card-2"),
     },
     {
       title: "Результаты в\u00a0реальном времени",
-      backgroundType: "geometry-bg",
-      visual: {
-        imageSrc: "/landing/clients/enterprise/benefits-realtime-card.png",
-        imageWidth: 396,
-        imageHeight: 236,
-        imageAlt: "",
-      },
+      ...buildClientsPlatformBenefitsImage("enterprise", "benefits-card-3"),
     },
     {
       title: "Аналитика по\u00a0партнёрским сетям",
-      backgroundType: "dark-bg",
-      inProgress: true,
-      visual: {
-        imageSrc: "/landing/clients/enterprise/benefits-analytics-visual.png",
-        imageWidth: 396,
-        imageHeight: 394,
-        imageAlt: "",
-      },
+      ...buildClientsPlatformBenefitsImage("enterprise", "benefits-card-4"),
     },
   ],
   showcase: [
     {
-      variant: "it-costs",
       title: "Снижение затрат на\u00a0ИТ-ресурсы",
-      subtitle:
-        "Сократите простои, дублирование функций и\u00a0неэффективное распределение специалистов",
-      visual: {
-        imageSrc: "/landing/clients/enterprise/benefits-showcase-it-visual.png",
-        imageWidth: 728,
-        imageHeight: 728,
-        imageAlt: "",
-      },
+      ...buildClientsPlatformBenefitsImage("enterprise", "showcase-it"),
     },
     {
-      variant: "quality",
       title: "Предсказуемые сроки и\u00a0качество",
-      subtitle:
-        "Работайте с\u00a0прозрачной моделью ресурсов и\u00a0контролируйте выполнение задач на\u00a0каждом этапе",
-      stat: {
-        value: "50%",
-        description: "сократили временные затраты на\u00a0управление проектами",
-      },
-      visual: {
-        imageSrc: "/landing/clients/enterprise/benefits-showcase-quality-visual.png",
-        imageWidth: 1197,
-        imageHeight: 424,
-        imageAlt: "",
-      },
+      ...buildClientsPlatformBenefitsImage("enterprise", "showcase-quality"),
     },
     {
-      variant: "scaling",
       title: "Быстрое масштабирование",
-      subtitle:
-        "Подключайте проверенных подрядчиков и\u00a0специалистов без\u00a0долгого найма и\u00a0бюрократии",
-      visual: {
-        imageSrc: "/landing/clients/enterprise/benefits-showcase-scaling-visual.png",
-        imageWidth: 1824,
-        imageHeight: 600,
-        imageAlt: "",
-      },
+      ...buildClientsPlatformBenefitsImage("enterprise", "showcase-scaling"),
     },
   ],
 };
@@ -331,91 +345,33 @@ const outstaffingPlatformBenefits: ClientsPlatformBenefitsContent = {
   cards: [
     {
       title: "Публикация доступных компетенций",
-      backgroundType: "light-bg",
-      visualLayout: "dark-bg",
-      visual: {
-        imageSrc: "/landing/clients/outstaffing/benefits-roles-visual.png",
-        imageWidth: 401,
-        imageHeight: 302,
-        imageAlt: "",
-      },
+      ...buildClientsPlatformBenefitsImage("outstaffing", "benefits-card-1"),
     },
     {
       title: "Умный поиск по\u00a0стеку, грейду и\u00a0ставке",
-      backgroundType: "full-bg",
-      visual: {
-        imageSrc: "/landing/clients/outstaffing/benefits-access-visual.png",
-        imageWidth: 436,
-        imageHeight: 540,
-        imageAlt: "",
-        imageMobileSrc:
-          "/landing/clients/outstaffing/benefits-search-visual-mobile.png",
-        imageMobileWidth: 1050,
-        imageMobileHeight: 280,
-      },
+      ...buildClientsPlatformBenefitsImage("outstaffing", "benefits-card-2"),
     },
     {
       title: "Статус занятости специалистов",
-      backgroundType: "light-bg",
-      visualLayout: "dark-bg",
-      visual: {
-        imageSrc: "/landing/clients/outstaffing/benefits-analytics-visual.png",
-        imageWidth: 396,
-        imageHeight: 248,
-        imageAlt: "",
-      },
+      ...buildClientsPlatformBenefitsImage("outstaffing", "benefits-card-3"),
     },
     {
       title: "Результаты в\u00a0реальном времени",
-      backgroundType: "dark-bg",
-      visual: {
-        imageSrc: "/landing/clients/outstaffing/benefits-realtime-visual.png",
-        imageWidth: 396,
-        imageHeight: 436,
-        imageAlt: "",
-      },
+      ...buildClientsPlatformBenefitsImage("outstaffing", "benefits-card-4"),
     },
   ],
   showcase: [
     {
-      variant: "it-costs",
       title: "Доступ к\u00a0новым проектам и\u00a0заказчикам",
-      subtitle:
-        "Получаете поток проектных запросов от\u00a0корпораций и\u00a0партнёрской сети, не\u00a0завися от\u00a0одного канала продаж",
-      visual: {
-        imageSrc: "/landing/clients/outstaffing/benefits-showcase-it-visual.png",
-        imageWidth: 1000,
-        imageHeight: 667,
-        imageAlt: "",
-      },
+      ...buildClientsPlatformBenefitsImage("outstaffing", "showcase-it"),
     },
     {
-      variant: "quality",
       title: "Максимальная загрузка команды",
-      subtitle:
-        "Минимизируйте простой и\u00a0подключайте свободных специалистов к\u00a0проектам",
-      stat: {
-        value: "15%",
-        description: "рост производительности проектной команды",
-      },
-      visual: {
-        imageSrc: "/landing/clients/outstaffing/benefits-showcase-quality-visual.png",
-        imageWidth: 889,
-        imageHeight: 334,
-        imageAlt: "",
-      },
+      ...buildClientsPlatformBenefitsImage("outstaffing", "showcase-quality"),
     },
     {
-      variant: "scaling",
       title: "Работа через\u00a0сеть проверенных партнёров",
-      subtitle:
-        "Дополнительный функционал позволяет создавать закрытые и\u00a0открытые партнёрские сети, сегментировать поставщиков по\u00a0отраслям, компетенциям и\u00a0уровню доступа",
-      visual: {
-        imageSrc: "/landing/clients/outstaffing/benefits-showcase-scaling-visual.png",
-        imageWidth: 1824,
-        imageHeight: 600,
-        imageAlt: "",
-      },
+      ...buildClientsPlatformBenefitsImage("outstaffing", "showcase-scaling"),
     },
   ],
 };
@@ -479,80 +435,29 @@ const midMarketPlatformBenefits: ClientsPlatformBenefitsContent = {
   cards: [
     {
       title: "Поиск специалистов",
-      backgroundType: "light-bg",
-      visual: {
-        imageSrc: "/landing/clients/mid-market/benefits-roles-visual.png",
-        imageWidth: 560,
-        imageHeight: 545,
-        imageAlt: "",
-      },
+      ...buildClientsPlatformBenefitsImage("mid-market", "benefits-card-1"),
     },
     {
       title: "Подтверждённый опыт",
-      backgroundType: "light-bg",
-      visualLayout: "dark-bg",
-      visual: {
-        imageSrc: "/landing/clients/mid-market/benefits-access-visual.png",
-        imageWidth: 489,
-        imageHeight: 239,
-        imageAlt: "",
-      },
+      ...buildClientsPlatformBenefitsImage("mid-market", "benefits-card-2"),
     },
     {
       title: "Контроль качества исполнителей",
-      backgroundType: "full-bg",
-      visual: {
-        imageSrc: "/landing/clients/mid-market/benefits-analytics-visual.png",
-        imageWidth: 584,
-        imageHeight: 540,
-        imageAlt: "",
-        imageMobileSrc:
-          "/landing/clients/mid-market/benefits-analytics-visual-mobile.png",
-        imageMobileWidth: 1050,
-        imageMobileHeight: 280,
-      },
+      ...buildClientsPlatformBenefitsImage("mid-market", "benefits-card-3"),
     },
   ],
   showcase: [
     {
-      variant: "it-costs",
       title: "Контроль сроков и\u00a0выполнения задач",
-      subtitle:
-        "Управляйте проектами и\u00a0командами в\u00a0одном месте. Следите за\u00a0загрузкой, статусами и\u00a0ролями без\u00a0лишних коммуникаций.",
-      visual: {
-        imageSrc: "/landing/clients/mid-market/benefits-showcase-it-visual.png",
-        imageWidth: 486,
-        imageHeight: 725,
-        imageAlt: "",
-      },
+      ...buildClientsPlatformBenefitsImage("mid-market", "showcase-it"),
     },
     {
-      variant: "quality",
       title: "Оптимизация затрат на\u00a0разработку",
-      subtitle:
-        "Снижайте расходы и\u00a0находите специалистов точно под\u00a0задачу",
-      stat: {
-        value: "5%",
-        description: "рост рентабельности проектов",
-      },
-      visual: {
-        imageSrc: "/landing/clients/mid-market/benefits-showcase-quality-visual.png",
-        imageWidth: 1197,
-        imageHeight: 424,
-        imageAlt: "",
-      },
+      ...buildClientsPlatformBenefitsImage("mid-market", "showcase-quality"),
     },
     {
-      variant: "scaling",
       title: "Быстрый доступ к\u00a0нужным специалистам",
-      subtitle:
-        "Подбирайте не\u00a0только специалистов, но\u00a0и\u00a0формируйте проектные команды под\u00a0задачи без\u00a0долгого найма",
-      visual: {
-        imageSrc: "/landing/clients/mid-market/benefits-showcase-scaling-visual.png",
-        imageWidth: 1824,
-        imageHeight: 600,
-        imageAlt: "",
-      },
+      ...buildClientsPlatformBenefitsImage("mid-market", "showcase-scaling"),
     },
   ],
 };
@@ -591,90 +496,33 @@ const agenciesPlatformBenefits: ClientsPlatformBenefitsContent = {
   cards: [
     {
       title: "Релевантный список специалистов",
-      backgroundType: "light-bg",
-      visualLayout: "dark-bg",
-      visual: {
-        imageSrc: "/landing/clients/agencies/benefits-relevant-visual.png",
-        imageWidth: 276,
-        imageHeight: 214,
-        imageAlt: "",
-      },
+      ...buildClientsPlatformBenefitsImage("agencies", "benefits-card-1"),
     },
     {
       title: "Роли в\u00a0командах",
-      backgroundType: "dark-bg",
-      visualAlign: "start",
-      visual: {
-        imageSrc: "/landing/clients/agencies/benefits-roles-visual.png",
-        imageWidth: 285,
-        imageHeight: 104,
-        imageAlt: "",
-      },
+      ...buildClientsPlatformBenefitsImage("agencies", "benefits-card-2"),
     },
     {
       title: "Сокращение срока подбора",
-      backgroundType: "full-bg",
-      visual: {
-        imageSrc: "/landing/clients/agencies/benefits-speed-visual.png",
-        imageWidth: 323,
-        imageHeight: 408,
-        imageAlt: "",
-      },
+      ...buildClientsPlatformBenefitsImage("agencies", "benefits-card-3"),
     },
     {
       title: "Чёткие критерии отбора",
-      backgroundType: "light-bg",
-      visual: {
-        imageSrc: "/landing/clients/agencies/benefits-criteria-visual.png",
-        imageWidth: 417,
-        imageHeight: 470,
-        imageAlt: "",
-      },
+      ...buildClientsPlatformBenefitsImage("agencies", "benefits-card-4"),
     },
   ],
   showcase: [
     {
-      variant: "it-costs",
       title: "Доступ к\u00a0кандидатам с\u00a0узкопрофильной специальностью",
-      subtitle:
-        "Работайте со\u00a0специалистами, которых нет в\u00a0открытом доступе. Находите нужные компетенции под\u00a0сложные запросы.",
-      visual: {
-        imageSrc:
-          "/landing/clients/agencies/benefits-showcase-specialists-visual.png",
-        imageWidth: 453,
-        imageHeight: 626,
-        imageAlt: "",
-      },
+      ...buildClientsPlatformBenefitsImage("agencies", "showcase-it"),
     },
     {
-      variant: "quality",
       title: "Повышение эффективности подбора",
-      subtitle:
-        "Работайте с\u00a0кандидатами с\u00a0подтверждённым опытом и\u00a0повышайте конверсию закрытия вакансий",
-      stat: {
-        value: "48 ч",
-        description: "на\u00a0вывод специалистов",
-      },
-      visual: {
-        imageSrc:
-          "/landing/clients/agencies/benefits-showcase-efficiency-visual.png",
-        imageWidth: 1197,
-        imageHeight: 424,
-        imageAlt: "",
-      },
+      ...buildClientsPlatformBenefitsImage("agencies", "showcase-quality"),
     },
     {
-      variant: "scaling",
       title: "Усиление позиций на\u00a0рынке",
-      subtitle:
-        "Быстро закрывайте вакансии за\u00a0счёт доступа к\u00a0готовому списку специалистов",
-      visual: {
-        imageSrc:
-          "/landing/clients/agencies/benefits-showcase-market-visual.png",
-        imageWidth: 1824,
-        imageHeight: 600,
-        imageAlt: "",
-      },
+      ...buildClientsPlatformBenefitsImage("agencies", "showcase-scaling"),
     },
   ],
 };

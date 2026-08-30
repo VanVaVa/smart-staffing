@@ -10,6 +10,7 @@ export { Checkbox } from "./checkbox";
 export { Container } from "./container";
 export { Divider } from "./divider";
 export { FeatureRow } from "./feature-row";
+export { FormConsentLabel } from "./form-consent-label";
 export {
   CompanyConnectionButton,
   FeedbackForm,
