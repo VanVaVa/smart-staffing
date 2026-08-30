@@ -1,5 +1,11 @@
 import type { CreateFormSubmissionInput, FormSubmissionType } from "@/entities/form-submission";
 import { isFormSubmissionType } from "@/entities/form-submission";
+import {
+  type ContactChannel,
+  validateContactValue,
+  validateFullName,
+  validateTelegram,
+} from "@/entities/form-submission/lib/contact-field-validation";
 
 const CHANNELS = new Set(["telegram", "phone", "email"]);
 
@@ -46,6 +52,25 @@ export function parseFormSubmissionInput(
   const fullName = readString(formData, "fullName") || null;
   if (type === "vacancy" && !fullName) {
     return { ok: false, error: "Укажите ФИО" };
+  }
+
+  if (type === "book") {
+    const contactError = validateTelegram(contactValue);
+    if (contactError) {
+      return { ok: false, error: contactError };
+    }
+  } else if (requiresChannel(type) && channel) {
+    const contactError = validateContactValue(channel as ContactChannel, contactValue);
+    if (contactError) {
+      return { ok: false, error: contactError };
+    }
+  }
+
+  if (type === "vacancy" && fullName) {
+    const fullNameError = validateFullName(fullName);
+    if (fullNameError) {
+      return { ok: false, error: fullNameError };
+    }
   }
 
   const sourceLabel = readString(formData, "sourceLabel") || null;

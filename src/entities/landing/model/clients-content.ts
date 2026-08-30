@@ -273,15 +273,15 @@ const enterprisePlatformBenefits: ClientsPlatformBenefitsContent = {
 const enterprisePartnersExperience: ClientsPartnersExperienceContent = {
   sectionTitle: "Реальный опыт наших партнёров",
   caseStudy: {
-    href: "#",
+    href: "https://repola.dev/",
     tag: "Банк",
     panelSrc: "/landing/case-studies/panel-bg-case-3.png",
     panelWidth: 571,
     panelHeight: 484,
     panelAlt: "Логотип компании Репола",
     logoSrc: "/landing/case-studies/logo-case-3.svg",
-    logoWidth: 260,
-    logoHeight: 80,
+    logoWidth: 251,
+    logoHeight: 49,
     description:
       "Платформа помогла выстроить централизованное управление подрядчиками и\u00a0ресурсами, сократить сроки формирования команд и\u00a0повысить прозрачность работы по\u00a0ИТ-проектам",
     metric: "20%",
@@ -423,15 +423,15 @@ const outstaffingPlatformBenefits: ClientsPlatformBenefitsContent = {
 const outstaffingPartnersExperience: ClientsPartnersExperienceContent = {
   sectionTitle: "Реальный опыт наших партнёров",
   caseStudy: {
-    href: "#",
+    href: "https://repola.dev/",
     tag: "Банк",
     panelSrc: "/landing/case-studies/panel-bg-case-3.png",
     panelWidth: 571,
     panelHeight: 484,
-    panelAlt: "Логотип партнёра на\u00a0платформе СмартСтаффинг",
+    panelAlt: "Логotip партнёра на\u00a0платформе СмартСтаффинг",
     logoSrc: "/landing/case-studies/logo-case-3.svg",
-    logoWidth: 260,
-    logoHeight: 80,
+    logoWidth: 251,
+    logoHeight: 49,
     description:
       "Платформа помогла выстроить централизованное управление подрядчиками и\u00a0ресурсами, сократить сроки формирования команд и\u00a0повысить прозрачность работы по\u00a0ИТ-проектам",
     metric: "20%",
@@ -560,15 +560,15 @@ const midMarketPlatformBenefits: ClientsPlatformBenefitsContent = {
 const midMarketPartnersExperience: ClientsPartnersExperienceContent = {
   sectionTitle: "Реальный опыт наших партнёров",
   caseStudy: {
-    href: "#",
+    href: "https://repola.dev/",
     tag: "Банк",
     panelSrc: "/landing/case-studies/panel-bg-case-3.png",
     panelWidth: 571,
     panelHeight: 484,
     panelAlt: "Логотип банка-партнёра",
     logoSrc: "/landing/case-studies/logo-case-3.svg",
-    logoWidth: 260,
-    logoHeight: 80,
+    logoWidth: 251,
+    logoHeight: 49,
     description:
       "Платформа помогла выстроить централизованное управление подрядчиками и\u00a0ресурсами, сократить сроки формирования команд и\u00a0повысить прозрачность работы по\u00a0ИТ-проектам",
     metric: "20%",

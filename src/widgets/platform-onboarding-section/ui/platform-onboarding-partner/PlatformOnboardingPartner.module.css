@@ -190,7 +190,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 845px) {
   .platform-onboarding-partner__card {
     display: grid;
     grid-template-columns: auto 1fr;

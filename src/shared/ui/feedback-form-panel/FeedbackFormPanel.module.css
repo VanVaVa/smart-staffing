@@ -200,7 +200,7 @@
     top: 348px;
     right: auto;
     bottom: auto;
-    left: 539px;
+    left: 489px;
     width: 320px;
     height: 320px;
     transform: rotate(90deg);
@@ -239,10 +239,10 @@
 
   .feedback-form-panel__orb--orange {
     top: clamp(330px, 48vw, 594px);
-    right: clamp(20px, 5vw, 40px);
+    right: 48px;
     left: auto;
-    width: clamp(140px, 22vw, 240px);
-    height: clamp(140px, 22vw, 240px);
+    width: 240px;
+    height: 240px;
   }
 }
 

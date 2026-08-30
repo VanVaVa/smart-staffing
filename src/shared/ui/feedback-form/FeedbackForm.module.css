@@ -166,7 +166,7 @@
   width: min(200px, 100%);
   height: 52px;
   min-height: 52px;
-  padding-block: 0;
+  padding-block: 2;
 }
 
 @media (min-width: 1051px) and (max-width: 1620px) {

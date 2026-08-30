@@ -39,8 +39,12 @@ function CaseStudyCardRoot({
   children: ReactNode;
 }) {
   if (href.startsWith("#") || href.startsWith("http")) {
+    const externalLinkProps = href.startsWith("http")
+      ? { target: "_blank" as const, rel: "noopener noreferrer" }
+      : {};
+
     return (
-      <a href={href} className={className} aria-label={ariaLabel}>
+      <a href={href} className={className} aria-label={ariaLabel} {...externalLinkProps}>
         {children}
       </a>
     );

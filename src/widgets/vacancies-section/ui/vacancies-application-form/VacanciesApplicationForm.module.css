@@ -24,7 +24,6 @@
 
   .vacancies-application-form__feedback > div:last-child label,
   .vacancies-application-form__feedback > div:last-child button {
-    height: 44px;
     min-height: 44px;
     font-size: 18px;
     line-height: 24px;

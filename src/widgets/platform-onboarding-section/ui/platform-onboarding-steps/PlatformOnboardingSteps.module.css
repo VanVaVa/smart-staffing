@@ -375,7 +375,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 769px) {
   .platform-onboarding-steps__inner {
     gap: 36px;
     padding-block: 168px;
@@ -405,7 +405,7 @@
   }
 
   .platform-onboarding-steps__arrow--leading {
-    top: 32px;
+    top: 36px;
     left: -32px;
   }
 

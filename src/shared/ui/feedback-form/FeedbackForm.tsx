@@ -2,6 +2,12 @@
 
 import type { FormSubmissionType } from "@/entities/form-submission";
 import {
+  sanitizeContactValue,
+  sanitizeFullNameInput,
+  validateContactValue,
+  validateFullName,
+} from "@/entities/form-submission/lib/contact-field-validation";
+import {
   type ChangeEvent,
   type FormEvent,
   type ReactNode,
@@ -20,6 +26,7 @@ import {
 import { Input } from "@/shared/ui/input";
 import { Link } from "@/shared/ui/link";
 import { submitForm } from "@/shared/lib/submit-form";
+import { validateResumeFile } from "@/shared/lib/validate-form-resume";
 
 import {
   type FeedbackFormSuccessContent,
@@ -30,25 +37,37 @@ import styles from "./FeedbackForm.module.css";
 
 const CHANNEL_FIELDS: Record<
   FeedbackFormChannel,
-  { name: string; type: string; placeholder: string; autoComplete?: string }
+  {
+    name: string;
+    type: string;
+    placeholder: string;
+    autoComplete?: string;
+    inputMode?: "text" | "tel" | "email";
+    maxLength: number;
+  }
 > = {
   telegram: {
     name: "telegram",
     type: "text",
     placeholder: "@ivan_ivanov",
     autoComplete: "username",
+    maxLength: 33,
   },
   phone: {
     name: "phone",
     type: "tel",
     placeholder: "+7 000 00 00",
     autoComplete: "tel",
+    inputMode: "tel",
+    maxLength: 20,
   },
   email: {
     name: "email",
     type: "email",
     placeholder: "name@company.ru",
     autoComplete: "email",
+    inputMode: "email",
+    maxLength: 254,
   },
 };
 
@@ -99,11 +118,14 @@ export function FeedbackForm({
   const [consented, setConsented] = useState(false);
   const [contactValue, setContactValue] = useState("");
   const [fullName, setFullName] = useState("");
+  const [touchedContact, setTouchedContact] = useState(false);
+  const [touchedFullName, setTouchedFullName] = useState(false);
   const [attachState, setAttachState] = useState<AttachState>("idle");
   const [resumeDisplayName, setResumeDisplayName] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const resumeFileRef = useRef<File | null>(null);
+  const resumeInputRef = useRef<HTMLInputElement>(null);
   const { openSuccessModal } = useFeedbackFormSuccessModal();
 
   const field = useMemo(() => CHANNEL_FIELDS[channel], [channel]);
@@ -111,12 +133,20 @@ export function FeedbackForm({
   const requiresFullName = fullNamePlaceholder !== undefined;
   const hasResumeAttach = resumeAttach !== undefined;
 
+  const contactValidationError = validateContactValue(channel, contactValue);
+  const fullNameValidationError = requiresFullName ? validateFullName(fullName) : null;
+
+  const contactError =
+    touchedContact && contactValidationError ? contactValidationError : undefined;
+  const fullNameError =
+    touchedFullName && fullNameValidationError ? fullNameValidationError : undefined;
+
   const canSubmit =
     !disabled &&
     !submitting &&
     consented &&
-    contactValue.trim().length > 0 &&
-    (!requiresFullName || fullName.trim().length > 0);
+    contactValidationError === null &&
+    (!requiresFullName || fullNameValidationError === null);
 
   useEffect(() => {
     if (attachState !== "uploaded" || !resumeFileRef.current) {
@@ -131,9 +161,14 @@ export function FeedbackForm({
     setConsented(false);
     setContactValue("");
     setFullName("");
+    setTouchedContact(false);
+    setTouchedFullName(false);
     setAttachState("idle");
     setResumeDisplayName("");
     resumeFileRef.current = null;
+    if (resumeInputRef.current) {
+      resumeInputRef.current.value = "";
+    }
     setSubmitError(null);
   };
 
@@ -143,6 +178,17 @@ export function FeedbackForm({
       return;
     }
 
+    const validationError = validateResumeFile(file);
+    if (validationError) {
+      setSubmitError(validationError);
+      resumeFileRef.current = null;
+      setAttachState("idle");
+      setResumeDisplayName("");
+      event.target.value = "";
+      return;
+    }
+
+    setSubmitError(null);
     resumeFileRef.current = file;
     setResumeDisplayName(formatResumeLabel(file, fullName));
     setAttachState("uploaded");
@@ -220,6 +266,7 @@ export function FeedbackForm({
           onChange={(next) => {
             setChannel(next);
             setContactValue("");
+            setTouchedContact(false);
           }}
         />
         <Input
@@ -228,9 +275,16 @@ export function FeedbackForm({
           type={field.type}
           placeholder={field.placeholder}
           autoComplete={field.autoComplete}
+          inputMode={field.inputMode}
+          maxLength={field.maxLength}
+          spellCheck={false}
           required
           value={contactValue}
-          onChange={(event) => setContactValue(event.target.value)}
+          error={contactError}
+          onChange={(event) =>
+            setContactValue(sanitizeContactValue(channel, event.target.value))
+          }
+          onBlur={() => setTouchedContact(true)}
           className={styles["feedback-form__input"]}
           disabled={disabled || submitting}
         />
@@ -240,9 +294,13 @@ export function FeedbackForm({
             type="text"
             placeholder={fullNamePlaceholder}
             autoComplete="name"
+            maxLength={100}
+            spellCheck={false}
             required
             value={fullName}
-            onChange={(event) => setFullName(event.target.value)}
+            error={fullNameError}
+            onChange={(event) => setFullName(sanitizeFullNameInput(event.target.value))}
+            onBlur={() => setTouchedFullName(true)}
             className={styles["feedback-form__input"]}
             disabled={disabled || submitting}
           />
@@ -269,6 +327,7 @@ export function FeedbackForm({
           <label className={attachClassName}>
             <span className={styles["feedback-form__attach-label"]}>{attachText}</span>
             <input
+              ref={resumeInputRef}
               type="file"
               name="resume"
               accept=".pdf,.doc,.docx"

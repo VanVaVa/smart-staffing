@@ -58,9 +58,9 @@
 .about-leadership-card__name {
   margin: 0;
   font-family: var(--font-body);
-  font-size: var(--text-h3);
+  font-size: var(--text-body-xl);
   font-weight: 500;
-  line-height: var(--line-lead);
+  line-height: var(--line-body-xl);
   color: var(--color-white);
   overflow-wrap: anywhere;
 }

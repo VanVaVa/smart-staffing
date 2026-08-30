@@ -1,5 +1,9 @@
 "use client";
 
+import {
+  sanitizeTelegramInput,
+  validateTelegram,
+} from "@/entities/form-submission/lib/contact-field-validation";
 import { type FormEvent, useState } from "react";
 
 import { Button } from "@/shared/ui/button";
@@ -19,11 +23,16 @@ type AboutBookFormProps = {
 export function AboutBookForm({ inputPlaceholder, buttonLabel }: AboutBookFormProps) {
   const { openSuccessModal } = useFeedbackFormSuccessModal();
   const [telegramId, setTelegramId] = useState("");
+  const [touchedTelegram, setTouchedTelegram] = useState(false);
   const [consented, setConsented] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
 
-  const canSubmit = !submitting && consented && telegramId.trim().length > 0;
+  const telegramValidationError = validateTelegram(telegramId);
+  const telegramError =
+    touchedTelegram && telegramValidationError ? telegramValidationError : undefined;
+
+  const canSubmit = !submitting && consented && telegramValidationError === null;
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -50,6 +59,7 @@ export function AboutBookForm({ inputPlaceholder, buttonLabel }: AboutBookFormPr
     }
 
     setTelegramId("");
+    setTouchedTelegram(false);
     setConsented(false);
     openSuccessModal({
       title: "Заявка принята",
@@ -82,9 +92,13 @@ export function AboutBookForm({ inputPlaceholder, buttonLabel }: AboutBookFormPr
             type="text"
             placeholder={inputPlaceholder}
             autoComplete="username"
+            maxLength={33}
+            spellCheck={false}
             required
             value={telegramId}
-            onChange={(event) => setTelegramId(event.target.value)}
+            error={telegramError}
+            onChange={(event) => setTelegramId(sanitizeTelegramInput(event.target.value))}
+            onBlur={() => setTouchedTelegram(true)}
             className={styles["about-book-form__input"]}
             disabled={submitting}
           />

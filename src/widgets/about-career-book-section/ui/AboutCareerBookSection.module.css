@@ -150,7 +150,7 @@
 
   .about-career-book-section__book {
     gap: 168px;
-    margin-top: 300px;
+    margin-top: 220px;
   }
 
   .about-career-book-section__book-spread {
@@ -197,7 +197,7 @@
   }
 
   .about-career-book-section__book-description {
-    max-width: 90%;
+    max-width: 550px;
     font-size: 20px;
     line-height: 22px;
   }

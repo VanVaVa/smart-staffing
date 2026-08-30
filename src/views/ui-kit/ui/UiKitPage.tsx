@@ -292,8 +292,8 @@ export function UiKitPage() {
           href="#"
           panelSrc="/landing/case-studies/panel-bg-timforce.png"
           logoSrc="/landing/case-studies/logo-timforce.svg"
-          logoWidth={363}
-          logoHeight={80}
+          logoWidth={340}
+          logoHeight={61}
           panelAlt="ТИМ ФОРС"
           metric="15%"
           metricLabel="к производительности проектного департамента"

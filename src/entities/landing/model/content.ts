@@ -254,11 +254,11 @@ export const caseStudies = {
   title: "Компании уже\u00a0используют платформу для\u00a0роста эффективности",
   items: [
     {
-      href: "#",
+      href: "https://teamforce.ru/",
       panelSrc: "/landing/case-studies/panel-bg-timforce.png",
       logoSrc: "/landing/case-studies/logo-timforce.svg",
-      logoWidth: 363,
-      logoHeight: 80,
+      logoWidth: 340,
+      logoHeight: 61,
       panelAlt: "Логотип группы компаний ТИМ ФОРС",
       description:
         "Благодаря внедрению платформы группа компаний «ТИМ ФОРС» смогла выстроить прозрачную и\u00a0управляемую экосистему взаимодействия с\u00a0подрядчиками, повысив рентабельность проектов на\u00a05%",
@@ -266,23 +266,23 @@ export const caseStudies = {
       metricLabel: "к\u00a0производительности проектного департамента",
     },
     {
-      href: "#",
+      href: "https://kayros-it.ru/",
       panelSrc: "/landing/case-studies/panel-bg-case-2.png",
       logoSrc: "/landing/case-studies/logo-case-2.svg",
-      logoWidth: 249,
-      logoHeight: 60,
-      panelAlt: "Логотип компании",
+      logoWidth: 246,
+      logoHeight: 55,
+      panelAlt: "Логотип компании Кайрос",
       description:
         "Внедрение платформы помогло повысить производительность команд на\u00a025%, снизить ошибки и\u00a0дублирование задач на\u00a035%, а\u00a0также вдвое сократить время управленческого контроля над\u00a0проектом благодаря росту прозрачности процессов и\u00a0улучшению управляемости работы с\u00a0подрядчиками",
       metric: "40%",
       metricLabel: "Снижение временных затрат на\u00a0подбор исполнителей",
     },
     {
-      href: "#",
+      href: "https://repola.dev/",
       panelSrc: "/landing/case-studies/panel-bg-case-3.png",
       logoSrc: "/landing/case-studies/logo-case-3.svg",
-      logoWidth: 260,
-      logoHeight: 80,
+      logoWidth: 251,
+      logoHeight: 49,
       panelAlt: "Логотип компании Репола",
       description:
         "Платформа позволила компании «Репола» автоматизировать распределение заявок между\u00a0проверенными подрядчиками и\u00a0организовать витрину доступных специалистов. В\u00a0результате внедрения сроки закрытия позиций сократились с\u00a05 до\u00a02,5 дней, а\u00a0уровень удовлетворенности внутренних заказчиков достиг 95%.",

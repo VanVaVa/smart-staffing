@@ -47,7 +47,7 @@
 
 @media (max-width: 1050px) {
   .hero-segment {
-    max-width: 329px;
+    max-width: none;
   }
 }
 

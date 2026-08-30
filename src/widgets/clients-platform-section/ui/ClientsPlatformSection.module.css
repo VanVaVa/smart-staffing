@@ -261,7 +261,7 @@
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     padding-block: min(168px, calc(168 * 100vw / 1050))
-      min(96px, calc(96 * 100vw / 1050));
+      188px;
   }
 
   .clients-platform-section__decor {

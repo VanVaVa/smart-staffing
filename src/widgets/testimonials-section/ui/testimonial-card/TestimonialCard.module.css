@@ -78,7 +78,6 @@
 .testimonial-card__role {
   font-size: var(--text-body-sm);
   line-height: var(--line-body-sm);
-  overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }

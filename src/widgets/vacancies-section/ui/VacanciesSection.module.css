@@ -310,7 +310,6 @@
   }
 
   .vacancies-section__intro {
-    padding-top: 118px;
     gap: 12px;
     max-width: 521px;
   }
@@ -386,7 +385,7 @@
 
   .vacancies-section__hero--section {
     width: min(344px, calc(344 * 100vw / 1050));
-    height: min(604px, calc(604 * 100vw / 1050));
+    height: 604px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     border-bottom-left-radius: 24px;

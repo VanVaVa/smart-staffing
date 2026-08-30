@@ -269,7 +269,7 @@
   }
 
   .about-history-section__mission-column {
-    margin-bottom: 0;
+    margin-bottom: 60px;
     margin-top: 60px;
   }
 
@@ -414,7 +414,7 @@
     --mission-marker-offset: -84px;
 
     width: 100%;
-    max-width: 599px;
+    max-width: calc(100% - var(--mission-marker-size) - 16px);
     margin-inline-start: auto;
     padding: 20px;
     gap: 24px;

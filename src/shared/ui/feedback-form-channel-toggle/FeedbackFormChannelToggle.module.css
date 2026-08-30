@@ -71,6 +71,7 @@
   .feedback-form-channel-toggle {
     height: 40px;
     max-width: 100%;
+    width: 85%;
   }
 
   .feedback-form-channel-toggle__option {
