@@ -192,12 +192,9 @@
     position: static;
     order: 2;
     pointer-events: auto;
-    justify-content: flex-end;
     align-self: stretch;
     width: 100%;
     margin-bottom: 0;
-    padding-left: var(--container-padding);
-    padding-right: 0;
   }
 
   .clients-hero-section__inset {
@@ -232,7 +229,8 @@
   }
 
   .clients-hero-section__image {
-    width: min(calc(100vw - var(--container-padding)), calc(960 * 100vw / 1050));
+    width: calc(100vw - var(--container-padding));
+    margin-left: var(--container-padding);
     max-width: none;
     height: 460px;
     object-fit: cover;
@@ -241,7 +239,21 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1050px) {
+  .clients-hero-section[data-segment="outstaffing"] .clients-hero-section__image {
+    object-position: center -150px;
+  }
+
+  .clients-hero-section[data-segment="mid-market"] .clients-hero-section__image {
+    object-position: center top;
+  }
+
+  .clients-hero-section[data-segment="agencies"] .clients-hero-section__image {
+    object-position: center -180px;
+  }
+}
+
+@media (max-width: 769px) {
   .clients-hero-section {
     margin-bottom: min(148px, calc(148 * 100vw / 768));
   }
@@ -267,10 +279,17 @@
   }
 
   .clients-hero-section__image {
-    width: min(calc(100vw - var(--container-padding)), 744px);
     height: clamp(364px, 53vw, 408px);
     border-radius: 24px 0 0 24px;
-    object-position: left 35%;
+    object-position: center center;
+  }
+
+  .clients-hero-section[data-segment="outstaffing"] .clients-hero-section__image {
+    object-position: center -100px;
+  }
+
+  .clients-hero-section[data-segment="agencies"] .clients-hero-section__image {
+    object-position: center -120px;
   }
 }
 
@@ -280,7 +299,7 @@
   }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 577px) {
   .clients-hero-section__content {
     gap: 48px;
     max-width: unset;
@@ -299,6 +318,14 @@
   .clients-hero-section__image {
     height: clamp(288px, 63vw, 364px);
     border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+  }
+
+  .clients-hero-section[data-segment="outstaffing"] .clients-hero-section__image {
+    object-position: center -80px;
+  }
+
+  .clients-hero-section[data-segment="agencies"] .clients-hero-section__image {
+    object-position: center -110px;
   }
 }
 
@@ -337,15 +364,24 @@
 
   .clients-hero-section__media {
     margin-top: 48px;
-    padding-left: var(--container-padding);
-    padding-right: 0;
   }
 
   .clients-hero-section__image {
-    width: min(calc(100vw - var(--container-padding)), calc(960 * 100vw / 1050));
     height: 288px;
     object-fit: cover;
-    object-position: center;
+    object-position: center center;
     border-radius: 20px 0 0 20px;
+  }
+
+  .clients-hero-section[data-segment="mid-market"] .clients-hero-section__image {
+    object-position: center center;
+  }
+
+  .clients-hero-section[data-segment="outstaffing"] .clients-hero-section__image {
+    object-position: center center;
+  }
+
+  .clients-hero-section[data-segment="agencies"] .clients-hero-section__image {
+    object-position: center -70px;
   }
 }

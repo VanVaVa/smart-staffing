@@ -31,7 +31,7 @@ export function ClientsBlockRenderer({
 
   switch (block.type) {
     case "hero":
-      return <ClientsHeroSection content={block.props} />;
+      return <ClientsHeroSection content={block.props} segment={segment} />;
     case "platform":
       return <ClientsPlatformSection content={block.props} />;
     case "platformBenefits":

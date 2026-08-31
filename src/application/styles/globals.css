@@ -84,3 +84,15 @@ html.modal-open body {
     z-index: 210;
   }
 }
+
+@media (max-width: 769px) {
+  html.software-rights-modal-open .public-page-shell > header {
+    z-index: 100;
+  }
+}
+
+@media (max-width: 576px) {
+  html.software-rights-modal-open .public-page-shell > header {
+    z-index: 210;
+  }
+}

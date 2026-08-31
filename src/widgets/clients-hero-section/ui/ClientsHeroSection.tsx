@@ -1,6 +1,9 @@
 import Image from "next/image";
 
-import type { ClientsHeroContent } from "@/entities/landing";
+import type {
+  ClientSegmentSlug,
+  ClientsHeroContent,
+} from "@/entities/landing";
 import { IMAGE_QUALITY } from "@/shared/config/image-quality";
 import { CompanyConnectionButton } from "@/shared/ui/feedback-form";
 
@@ -8,11 +11,15 @@ import styles from "./ClientsHeroSection.module.css";
 
 type ClientsHeroSectionProps = {
   content: ClientsHeroContent;
+  segment: ClientSegmentSlug;
 };
 
-export function ClientsHeroSection({ content }: ClientsHeroSectionProps) {
+export function ClientsHeroSection({ content, segment }: ClientsHeroSectionProps) {
   return (
-    <section className={styles["clients-hero-section"]}>
+    <section
+      className={styles["clients-hero-section"]}
+      data-segment={segment}
+    >
       <figure className={styles["clients-hero-section__media"]}>
         <div className={
             content.imageMobileSrc

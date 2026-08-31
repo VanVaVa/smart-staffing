@@ -303,7 +303,7 @@ export const aboutBenefits = {
   flex: {
     iconSrc: "/landing/about/benefits/flex-icon.png",
     title: "Гибкость под\u00a0разные модели работы",
-    text: "Предоставляем возможность кастомизации СмартСтаффинг-платформы под\u00a0ваши процессы\u00a0— от\u00a0white-label до\u00a0полной интеграции\nс\u00a0внутренними системами (ERP, HRM) и\u00a0on-premise",
+    text: "Предоставляем возможность кастомизации СмартСтаффинг-платформы B2BCloud под\u00a0ваши процессы",
   },
   security: {
     imageSrc: "/landing/about/benefits/security-visual.png",

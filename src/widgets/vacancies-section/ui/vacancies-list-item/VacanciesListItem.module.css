@@ -148,7 +148,7 @@
   .vacancies-list-item {
     gap: 12px;
     width: min(416px, calc(100% - 120px));
-    min-height: 56px;
+    min-height: var(--vacancies-list-item-block-size, 56px);
     margin-inline: auto;
     padding: 10px 10px 10px 16px;
     border-radius: 12px;

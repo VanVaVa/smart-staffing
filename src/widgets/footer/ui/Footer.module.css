@@ -136,6 +136,11 @@
     grid-template-columns: minmax(0, 1fr) var(--footer-social-column);
     gap: 28px 16px;
   }
+
+  .footer__columns > :nth-child(1) > * {
+    margin-left: auto;
+    width: 172px
+  }
 }
 
 @media (max-width: 450px) {

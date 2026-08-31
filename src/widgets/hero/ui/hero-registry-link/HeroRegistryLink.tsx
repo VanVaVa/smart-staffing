@@ -12,12 +12,15 @@ export function HeroRegistryLink({
   registryHref,
   registryLabel,
 }: HeroRegistryLinkProps) {
+  const isExternal = /^https?:\/\//.test(registryHref);
+
   return (
     <Link
       className={styles["hero-registry-link"]}
       href={registryHref}
-      target="_blank"
-      rel="noopener noreferrer"
+      {...(isExternal
+        ? { target: "_blank", rel: "noopener noreferrer" }
+        : {})}
     >
       <span className={styles["hero-registry-link__flag"]} aria-hidden>
         <span className={styles["hero-registry-link__flag-white"]} />

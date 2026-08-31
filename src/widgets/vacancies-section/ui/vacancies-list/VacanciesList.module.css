@@ -129,15 +129,36 @@
 
 @media (max-width: 576px) {
   .vacancies-list-panel {
+    --vacancies-list-item-gap: 8px;
+    --vacancies-list-item-block-size: calc(20px + 22px + 16px);
+    --vacancies-list-visible-count: 6;
     width: 100%;
     max-width: 536px;
     margin-inline: auto;
   }
 
+  .vacancies-list-panel__items {
+    gap: var(--vacancies-list-item-gap);
+  }
+
+  .vacancies-list-panel__scroll-row {
+    align-items: stretch;
+    gap: var(--vacancies-list-item-gap);
+  }
+
   .vacancies-list-panel__viewport {
-    max-height: 376px;
+    max-height: calc(
+      var(--vacancies-list-visible-count) * var(--vacancies-list-item-block-size) +
+        (var(--vacancies-list-visible-count) - 1) * var(--vacancies-list-item-gap)
+    );
     overflow-x: visible;
     overflow-y: auto;
+  }
+
+  .vacancies-list-panel__scrollbar {
+    height: auto;
+    align-self: stretch;
+    border-radius: 3px;
   }
 }
 

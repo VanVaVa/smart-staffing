@@ -23,3 +23,9 @@
     line-height: var(--line-body);
   }
 }
+
+@media (max-width: 576px) {
+  .footer-link-column__links {
+    gap: 14px;
+  }
+}

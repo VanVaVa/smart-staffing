@@ -22,7 +22,7 @@ export const heroContent = {
   title: "Управляйте поставщиками, ресурсами и\u00a0проектами\nв\u00a0одном месте",
   primaryCta: "Подключить компанию за\u00a00 ₽",
   registryLabel: "В\u00a0реестре отечественного ПО",
-  registryHref: "https://reestr.digital.gov.ru/",
+  registryHref: "/documents/domestic-software-registry",
   segments: [
     {
       label: "Крупным корпорациям",

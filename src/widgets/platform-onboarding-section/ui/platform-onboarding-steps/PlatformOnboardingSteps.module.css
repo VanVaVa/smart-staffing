@@ -156,7 +156,7 @@
   }
 }
 
-@media (max-width: 1050px) and (min-width: 576px) {
+@media (max-width: 1050px) and (min-width: 577px) {
   .platform-onboarding-steps__step[data-step="1"] .platform-onboarding-steps__arrow {
     display: flex;
   }
@@ -282,6 +282,13 @@
   }
 }
 
+@media (min-width: 1920px) {
+  .platform-onboarding-steps__cta {
+    grid-row: 2;
+    align-self: end;
+  }
+}
+
 @media (max-width: 1050px) {
   .platform-onboarding-steps {
     border-radius: var(--radius-lg);
@@ -393,6 +400,7 @@
 
   .platform-onboarding-steps__card {
     min-height: min(160px, calc(160 * 100vw / 768));
+    flex-direction: column;
   }
 
   .platform-onboarding-steps__cta {

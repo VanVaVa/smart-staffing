@@ -25,6 +25,7 @@ export const pricingPlatformBenefitsMobileOrder: Partial<
   Record<ClientSegmentSlug, readonly number[]>
 > = {
   enterprise: [1, 2, 4, 3],
+  agencies: [3, 2, 1, 4],
 };
 
 export const clientsPlatformBenefitsMobileOrder360: Partial<
