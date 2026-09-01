@@ -22,6 +22,11 @@ export type DocumentCertificate = {
   imageHeight: number;
 };
 
+export type DocumentModalContent = {
+  registrations?: string[];
+  paragraphs: string[];
+};
+
 export type DocumentsPageContent = {
   title: string;
   company: {
@@ -32,10 +37,10 @@ export type DocumentsPageContent = {
     inn: string;
   };
   categories: DocumentCategory[];
-  softwareRights: {
+  softwareRights: DocumentModalContent & {
     registrations: string[];
-    paragraphs: string[];
   };
+  technologyStack: DocumentModalContent;
   certificatesTitle: string;
   certificates: DocumentCertificate[];
 };
@@ -59,14 +64,16 @@ const categories: DocumentCategory[] = [
     title: "О\u00a0продукте",
     items: [
       createDocument("domestic-software-registry", "Реестр отечественного ПО"),
-      createDocument("license", "Лицензия"),
       createDocument(
         "exclusive-software-rights",
         "Исключительные права на\u00a0ПО",
         "modal",
       ),
-      createDocument("technology-stack", "Стек технологий продукта"),
-      createDocument("glossary", "Глоссарий"),
+      createDocument(
+        "technology-stack",
+        "Стек технологий продукта",
+        "modal",
+      ),
       createDocument("platform-privacy-policy", "Политика конфиденциальности"),
     ],
   },
@@ -140,6 +147,11 @@ export const documentsPage: DocumentsPageContent = {
       "ООО «Смартстаффинг» является обладателем исключительных прав на\u00a0программное обеспечение «Межкорпоративная сеть для\u00a0развития проектной кооперации между\u00a0компаниями в\u00a0сфере ИТ-услуг „B2BCloud“. Право использования программного обеспечения „Межкорпоративная сеть для\u00a0развития проектной кооперации между\u00a0компаниями в\u00a0сфере ИТ-услуг „B2BCloud“ предоставляется на\u00a0условиях лицензионного договора, который заключается с\u00a0каждым лицензиатом.",
     ],
   },
+  technologyStack: {
+    paragraphs: [
+      "При\u00a0разработке программного обеспечения используются следующие языки программирования: Python, Java, JavaScript, ReactJS",
+    ],
+  },
   certificatesTitle: "Свидетельства",
   certificates: [
     {
@@ -192,4 +204,23 @@ export function getDocument(slug: string): DocumentItem | undefined {
     (document) =>
       document.slug === slug && document.presentation === "page",
   );
+}
+
+export function getDocumentModalContent(
+  document: DocumentItem,
+  page: DocumentsPageContent,
+): DocumentModalContent | null {
+  if (document.presentation !== "modal") {
+    return null;
+  }
+
+  if (document.slug === "exclusive-software-rights") {
+    return page.softwareRights;
+  }
+
+  if (document.slug === "technology-stack") {
+    return page.technologyStack;
+  }
+
+  return null;
 }

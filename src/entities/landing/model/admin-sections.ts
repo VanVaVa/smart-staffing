@@ -764,6 +764,30 @@ const documentsSoftwareRightsSection: AdminSingletonSection = {
   ],
 };
 
+const documentsTechnologyStackSection: AdminSingletonSection = {
+  key: "documents-technology-stack",
+  title: "Стек технологий",
+  description: "Текст во всплывающем окне документа «Стек технологий продукта».",
+  group: "documents",
+  publicPath: "/documents",
+  mode: "singleton",
+  storage: {
+    kind: "blockPath",
+    pageSlug: LANDING_PAGE_SLUGS.documents,
+    blockType: "documentsPage",
+    path: ["technologyStack"],
+  },
+  fields: [
+    {
+      kind: "stringList",
+      name: "paragraphs",
+      label: "Текст",
+      addLabel: "Абзац",
+      multiline: true,
+    },
+  ],
+};
+
 const footerSection: AdminSingletonSection = {
   key: "footer",
   title: "Футер",
@@ -866,6 +890,7 @@ export const ADMIN_SECTIONS: readonly AdminSection[] = [
   documentsCategoriesSection,
   documentsCertificatesSection,
   documentsSoftwareRightsSection,
+  documentsTechnologyStackSection,
   footerSection,
 ];
 

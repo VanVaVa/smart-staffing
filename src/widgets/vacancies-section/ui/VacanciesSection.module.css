@@ -286,6 +286,10 @@
   .vacancies-section__list-row {
     max-width: min(634px, calc(634 * 100vw / 1620));
   }
+
+  .vacancies-section__form-panel {
+    max-width: min(544px, calc(544 * 100vw / 1620));
+  }
 }
 
 @media (max-width: 1050px) {

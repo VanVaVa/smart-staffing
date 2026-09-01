@@ -95,10 +95,12 @@ export {
   documentSlugs,
   documentsPage,
   getDocument,
+  getDocumentModalContent,
 } from "./model/documents-content";
 export type {
   DocumentCategory,
   DocumentCertificate,
   DocumentItem,
+  DocumentModalContent,
   DocumentsPageContent,
 } from "./model/documents-content";

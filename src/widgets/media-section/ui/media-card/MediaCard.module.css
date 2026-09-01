@@ -175,6 +175,7 @@
   .media-card__visual {
     flex: 0 0 132px;
     aspect-ratio: auto;
+    min-height: 140px;
   }
 
   .media-card__tag {

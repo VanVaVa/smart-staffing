@@ -8,7 +8,11 @@ import { PrismaPg } from "@prisma/adapter-pg";
 import { Pool } from "pg";
 
 import { PrismaClient } from "../src/generated/prisma/client";
-import { parseMediaArticleSlugFromPageSlug } from "../src/entities/landing/model/landing-page-slugs";
+import { documentSlugs } from "../src/entities/landing/model/documents-content";
+import {
+  parseDocumentSlugFromPageSlug,
+  parseMediaArticleSlugFromPageSlug,
+} from "../src/entities/landing/model/landing-page-slugs";
 import { TEAMFORCE_MEDIA_ARTICLES } from "../src/entities/landing/model/media-articles-seed";
 
 import { buildSeedPages, type SeedPage } from "./lib/build-seed-pages";
@@ -45,6 +49,20 @@ async function seedLandingPage(page: SeedPage) {
   }
 }
 
+async function cleanupOrphanedDocumentPages(validDocumentSlugs: Set<string>) {
+  const pages = await prisma.landingPage.findMany({
+    where: { slug: { startsWith: "documents-" } },
+    select: { id: true, slug: true },
+  });
+
+  for (const page of pages) {
+    const documentSlug = parseDocumentSlugFromPageSlug(page.slug);
+    if (documentSlug && !validDocumentSlugs.has(documentSlug)) {
+      await prisma.landingPage.delete({ where: { id: page.id } });
+    }
+  }
+}
+
 async function cleanupOrphanedMediaPages(validArticleSlugs: Set<string>) {
   const pages = await prisma.landingPage.findMany({
     where: { slug: { startsWith: "media-" } },
@@ -77,6 +95,8 @@ async function main() {
   for (const page of buildSeedPages()) {
     await seedLandingPage(page);
   }
+
+  await cleanupOrphanedDocumentPages(new Set(documentSlugs));
 
   await cleanupOrphanedMediaPages(
     new Set(TEAMFORCE_MEDIA_ARTICLES.map((article) => article.slug)),

@@ -7,6 +7,7 @@ import type {
   DocumentItem,
   DocumentsPageContent,
 } from "@/entities/landing";
+import { getDocumentModalContent } from "@/entities/landing";
 
 import { CertificateGallery } from "./certificate-gallery";
 import { DocumentList } from "./document-list";
@@ -41,7 +42,11 @@ export function Documents({ content }: DocumentsProps) {
       />
       <SoftwareRightsModal
         document={modalDocument}
-        content={content.softwareRights}
+        content={
+          modalDocument
+            ? getDocumentModalContent(modalDocument, content)
+            : null
+        }
         onClose={() => setModalDocument(null)}
       />
       <CertificateGallery

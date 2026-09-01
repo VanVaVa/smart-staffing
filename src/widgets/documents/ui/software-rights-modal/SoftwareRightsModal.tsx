@@ -5,7 +5,7 @@ import { createPortal } from "react-dom";
 
 import type {
   DocumentItem,
-  DocumentsPageContent,
+  DocumentModalContent,
 } from "@/entities/landing";
 import { ArrowIcon } from "@/shared/ui";
 import { useModalLock } from "@/shared/ui/modal-shell";
@@ -18,7 +18,7 @@ const MODAL_OPEN_CLASS = "software-rights-modal-open";
 
 type SoftwareRightsModalProps = {
   document: DocumentItem | null;
-  content: DocumentsPageContent["softwareRights"];
+  content: DocumentModalContent | null;
   onClose: () => void;
 };
 
@@ -46,9 +46,11 @@ export function SoftwareRightsModal({
     };
   }, [open]);
 
-  if (!activeDocument) {
+  if (!activeDocument || !content) {
     return null;
   }
+
+  const registrations = content.registrations ?? [];
 
   return createPortal(
     <div
@@ -106,15 +108,17 @@ export function SoftwareRightsModal({
         </header>
         <div className={styles["software-rights-modal__scroll"]}>
           <div className={styles["software-rights-modal__content"]}>
-            <ul className={styles["software-rights-modal__registrations"]}>
-              {content.registrations.map((registration, index) => (
-                <li key={`${registration}-${index}`}>
-                  <span>
-                    {registration}
-                  </span>
-                </li>
-              ))}
-            </ul>
+            {registrations.length > 0 ? (
+              <ul className={styles["software-rights-modal__registrations"]}>
+                {registrations.map((registration, index) => (
+                  <li key={`${registration}-${index}`}>
+                    <span>
+                      {registration}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
             {content.paragraphs.map((paragraph, index) => (
               <p key={`${paragraph}-${index}`}>
                 {paragraph}
