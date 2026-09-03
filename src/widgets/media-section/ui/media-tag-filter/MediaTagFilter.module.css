@@ -33,23 +33,12 @@
 }
 
 .media-tag-filter__chip--active {
-  background: var(--color-black);
-  color: var(--color-white);
-}
-
-.media-tag-filter__chip--active.media-tag-filter__chip--important {
   background: var(--color-accent);
   color: var(--color-white);
 }
 
-.media-tag-filter__chip--active.media-tag-filter__chip--interesting {
-  background: var(--color-black);
-  color: var(--color-white);
-}
-
-.media-tag-filter__chip--active.media-tag-filter__chip--news {
-  background: var(--color-accent-2);
-  color: var(--color-white);
+.media-tag-filter__chip--active:hover {
+  background: var(--color-accent-hover);
 }
 
 @media (max-width: 768px) {

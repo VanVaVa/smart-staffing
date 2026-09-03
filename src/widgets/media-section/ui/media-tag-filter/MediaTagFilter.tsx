@@ -58,7 +58,6 @@ export function MediaTagFilter({
             aria-selected={isActive}
             className={[
               styles["media-tag-filter__chip"],
-              styles[`media-tag-filter__chip--${tag}`],
               isActive ? styles["media-tag-filter__chip--active"] : "",
             ]
               .filter(Boolean)

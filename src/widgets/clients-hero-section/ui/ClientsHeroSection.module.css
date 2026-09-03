@@ -84,6 +84,10 @@
   font-weight: 500;
 }
 
+.clients-hero-section__subtitle .clients-hero-section__subtitle-accent {
+  color: var(--color-accent);
+}
+
 .clients-hero-section__cta {
   flex-shrink: 0;
   width: auto;

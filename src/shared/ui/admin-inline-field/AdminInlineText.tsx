@@ -9,6 +9,7 @@ type AdminInlineTextProps = {
   onChange: (value: string) => void;
   disabled?: boolean;
   multiline?: boolean;
+  inline?: boolean;
   variant?: "default" | "heading";
   className?: string;
   placeholder?: string;
@@ -19,6 +20,7 @@ export function AdminInlineText({
   onChange,
   disabled,
   multiline,
+  inline,
   variant = "default",
   className,
   placeholder,
@@ -26,6 +28,7 @@ export function AdminInlineText({
   const classNames = [
     styles["admin-inline-text"],
     multiline ? styles["admin-inline-text--multiline"] : "",
+    inline ? styles["admin-inline-text--inline"] : "",
     variant === "heading" ? styles["admin-inline-text--heading"] : "",
     className,
   ]

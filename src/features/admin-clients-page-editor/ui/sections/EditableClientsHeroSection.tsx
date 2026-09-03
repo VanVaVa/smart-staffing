@@ -87,17 +87,20 @@ export function EditableClientsHeroSection({
               />
               <p className={heroStyles["clients-hero-section__subtitle"]}>
                 <AdminInlineText
+                  inline
                   value={String(subtitle.before ?? content.subtitle.before)}
                   disabled={disabled}
                   onChange={(before) => onChange(patchHeroSubtitle(values, { before }))}
                 />
                 <AdminInlineText
+                  inline
                   className={heroStyles["clients-hero-section__subtitle-accent"]}
                   value={String(subtitle.accent ?? content.subtitle.accent ?? "")}
                   disabled={disabled}
                   onChange={(accent) => onChange(patchHeroSubtitle(values, { accent }))}
                 />
                 <AdminInlineText
+                  inline
                   value={String(subtitle.after ?? content.subtitle.after ?? "")}
                   disabled={disabled}
                   onChange={(after) => onChange(patchHeroSubtitle(values, { after }))}

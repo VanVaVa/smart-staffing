@@ -6,11 +6,16 @@
   border: 1px solid transparent;
   border-radius: 4px;
   background: transparent;
-  color: inherit;
+  resize: vertical;
+}
+
+.admin-inline-text--inline {
+  display: inline;
+  width: auto;
   font: inherit;
   letter-spacing: inherit;
   line-height: inherit;
-  resize: vertical;
+  color: inherit;
 }
 
 .admin-inline-text:hover {
