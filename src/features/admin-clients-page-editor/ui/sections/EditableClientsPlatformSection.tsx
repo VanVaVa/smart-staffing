@@ -179,6 +179,7 @@ export function EditableClientsPlatformSection({
                   >
                     <Badge variant="chip">
                       <AdminInlineText
+                        className={editableStyles["editable-clients-platform-section__tag-field"]}
                         value={tag}
                         disabled={disabled}
                         onChange={(next) =>

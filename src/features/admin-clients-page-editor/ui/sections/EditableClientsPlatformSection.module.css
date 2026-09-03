@@ -40,3 +40,11 @@
   gap: 8px;
   align-items: center;
 }
+
+.editable-clients-platform-section__tag-field {
+  font-family: var(--font-body);
+  font-size: var(--text-body-sm);
+  font-weight: 500;
+  line-height: var(--line-body-sm);
+  color: var(--color-black);
+}

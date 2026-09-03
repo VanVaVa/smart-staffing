@@ -13,6 +13,7 @@ import {
   patchHeroSubtitle,
 } from "../../lib/patch-form-values";
 
+import editableStyles from "./EditableClientsHeroSection.module.css";
 import heroStyles from "@/widgets/clients-hero-section/ui/ClientsHeroSection.module.css";
 
 type EditableClientsHeroSectionProps = {
@@ -31,6 +32,8 @@ export function EditableClientsHeroSection({
   const content = getHeroContent(values);
   const hero = values.hero as AdminValues;
   const subtitle = (hero.subtitle ?? {}) as AdminValues;
+  const subtitleLineClass = heroStyles["clients-hero-section__subtitle-line"];
+  const subtitleAccentClass = heroStyles["clients-hero-section__subtitle-accent"];
 
   return (
     <section
@@ -85,27 +88,31 @@ export function EditableClientsHeroSection({
                 disabled={disabled}
                 onChange={(title) => onChange(patchHero(values, { title }))}
               />
-              <p className={heroStyles["clients-hero-section__subtitle"]}>
+              <div
+                className={[
+                  heroStyles["clients-hero-section__subtitle"],
+                  editableStyles["editable-clients-hero-section__subtitle"],
+                ].join(" ")}
+              >
                 <AdminInlineText
-                  inline
+                  className={subtitleLineClass}
                   value={String(subtitle.before ?? content.subtitle.before)}
                   disabled={disabled}
                   onChange={(before) => onChange(patchHeroSubtitle(values, { before }))}
                 />
                 <AdminInlineText
-                  inline
-                  className={heroStyles["clients-hero-section__subtitle-accent"]}
+                  className={[subtitleLineClass, subtitleAccentClass].join(" ")}
                   value={String(subtitle.accent ?? content.subtitle.accent ?? "")}
                   disabled={disabled}
                   onChange={(accent) => onChange(patchHeroSubtitle(values, { accent }))}
                 />
                 <AdminInlineText
-                  inline
+                  className={subtitleLineClass}
                   value={String(subtitle.after ?? content.subtitle.after ?? "")}
                   disabled={disabled}
                   onChange={(after) => onChange(patchHeroSubtitle(values, { after }))}
                 />
-              </p>
+              </div>
             </div>
             <CompanyConnectionButton
               variant="primary"
@@ -115,6 +122,7 @@ export function EditableClientsHeroSection({
               className={heroStyles["clients-hero-section__cta"]}
             >
               <AdminInlineText
+                className={heroStyles["clients-hero-section__cta-field"]}
                 value={content.cta}
                 disabled={disabled}
                 onChange={(cta) => onChange(patchHero(values, { cta }))}

@@ -70,11 +70,13 @@ export function AdminInlineImage({
   if (isFrame) {
     return (
       <div className={[styles["admin-inline-image"], styles["admin-inline-image--frame"]].join(" ")}>
-        <div className={styles["admin-inline-image__slot--frame"]}>
+        <div
+          className={[styles["admin-inline-image__slot--frame"], className].filter(Boolean).join(" ")}
+        >
           {imageSrc ? (
             children ?? (
               <CoverImageFrame
-                className={className}
+                className={styles["admin-inline-image__cover-frame"]}
                 imageClassName={imageClassName}
                 src={imageSrc}
                 alt={imageAlt}
