@@ -65,86 +65,42 @@
   height: 100%;
 }
 
-.editable-case-study-card__lead {
-  overflow: visible;
-}
-
-.editable-case-study-card__tag-field {
-  min-width: 80px;
-  color: inherit;
-}
-
-.editable-case-study-card__description {
-  display: block;
-  width: 100%;
-  min-height: 6em;
-  margin: 0;
-  overflow: visible;
-  font-size: var(--text-body-xl);
-  line-height: var(--line-body-xl);
-  color: var(--color-black);
-}
-
-.editable-case-study-card__metric {
-  display: block;
-  width: 100%;
-  margin: 0;
-  overflow: visible;
-  font-family: var(--font-heading);
-  font-size: var(--text-h1);
-  font-weight: 600;
-  line-height: var(--line-h1);
-  letter-spacing: var(--letter-heading);
-  color: var(--color-accent-2);
-}
-
-.editable-case-study-card__metric-label {
-  display: block;
-  width: 100%;
-  margin: 0;
-  overflow: visible;
-  font-size: var(--text-body-xl);
-  line-height: var(--line-body-xl);
-  color: var(--color-accent-2);
-}
-
 .editable-case-study-card__content,
 .editable-case-study-card__metric-copy {
   position: relative;
   z-index: 2;
 }
 
+.editable-case-study-card__lead {
+  overflow: visible;
+}
+
+.editable-case-study-card__description-field {
+  min-height: 6em;
+}
+
+.editable-case-study-card__tag-field {
+  display: block;
+  width: 100%;
+  min-width: 80px;
+  font-family: var(--font-body);
+  font-size: var(--text-body-md);
+  font-weight: 400;
+  line-height: var(--line-body);
+  color: var(--color-black);
+}
+
 .editable-case-study-card__field {
+  display: block;
+  width: 100%;
+  overflow: visible;
   pointer-events: auto;
+  -webkit-line-clamp: unset;
+  -webkit-box-orient: unset;
 }
 
-@media (max-width: 768px) {
-  .editable-case-study-card__metric {
-    color: var(--color-white);
-  }
-
-  .editable-case-study-card__metric-label {
-    color: var(--color-white);
-  }
-
-  .editable-case-study-card__description {
-    font-size: var(--text-body-md);
-    line-height: var(--line-body-sm);
-  }
-}
-
-@media (max-width: 576px) {
-  .editable-case-study-card__metric {
-    font-size: 28px;
-    line-height: 36px;
-  }
-
-  .editable-case-study-card__metric-label {
-    font-size: var(--text-caption);
-    line-height: var(--line-caption);
-  }
-
-  .editable-case-study-card__description {
+@media (max-width: 1620px) {
+  .editable-case-study-card__tag-field {
     font-size: var(--text-body-sm);
     line-height: var(--line-body-sm);
   }

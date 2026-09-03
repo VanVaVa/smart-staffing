@@ -123,7 +123,7 @@ export function EditableCaseStudyCard({
           >
             <AdminInlineText
               className={[
-                editableStyles["editable-case-study-card__metric"],
+                cardStyles["case-study-card__metric"],
                 fieldClassName,
               ].join(" ")}
               value={metric}
@@ -132,7 +132,7 @@ export function EditableCaseStudyCard({
             />
             <AdminInlineText
               className={[
-                editableStyles["editable-case-study-card__metric-label"],
+                cardStyles["case-study-card__metric-label"],
                 fieldClassName,
               ].join(" ")}
               value={metricLabel}
@@ -167,7 +167,8 @@ export function EditableCaseStudyCard({
           </Badge>
           <AdminInlineText
             className={[
-              editableStyles["editable-case-study-card__description"],
+              cardStyles["case-study-card__description"],
+              editableStyles["editable-case-study-card__description-field"],
               fieldClassName,
             ].join(" ")}
             value={description}

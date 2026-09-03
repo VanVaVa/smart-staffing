@@ -6,21 +6,16 @@
 }
 
 .admin-inline-image--frame {
-  width: fit-content;
+  display: block;
   max-width: 100%;
-  height: auto;
 }
 
 .admin-inline-image__slot--frame {
   position: relative;
+  display: inline-block;
+  max-width: 100%;
   overflow: hidden;
-}
-
-.admin-inline-image__cover-frame {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  vertical-align: top;
 }
 
 .admin-inline-image__placeholder--frame {
