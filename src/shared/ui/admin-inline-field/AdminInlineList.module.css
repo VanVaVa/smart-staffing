@@ -1,0 +1,46 @@
+.admin-inline-list {
+  display: grid;
+  gap: 12px;
+}
+
+.admin-inline-list__item {
+  display: grid;
+  gap: 8px;
+  padding: 12px;
+  border: 1px dashed rgb(0 102 255 / 35%);
+  border-radius: 8px;
+}
+
+.admin-inline-list__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.admin-inline-list__title {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgb(0 0 0 / 55%);
+}
+
+.admin-inline-list__remove,
+.admin-inline-list__add {
+  padding: 4px 8px;
+  border: 1px solid rgb(0 0 0 / 12%);
+  border-radius: 6px;
+  background: #fff;
+  color: rgb(0 0 0 / 70%);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.admin-inline-list__add {
+  justify-self: start;
+}
+
+.admin-inline-list__fields {
+  display: grid;
+  gap: 8px;
+}

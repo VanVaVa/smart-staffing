@@ -8,18 +8,52 @@ import {
   type FooterBlockProps,
 } from "../model/footer-blocks";
 import { LANDING_PAGE_SLUGS } from "../model/landing-page-slugs";
+import { getEmailSettings } from "./get-email-settings";
+import { listVisibleClientsPages } from "./get-clients-pages";
+
+function filterSolutionsLinks(
+  solutions: FooterBlockProps["solutions"],
+  visibleClientHrefs: ReadonlySet<string>,
+): FooterBlockProps["solutions"] {
+  return solutions.filter((item) => {
+    if (visibleClientHrefs.has(item.href)) {
+      return true;
+    }
+    if (item.href.startsWith("/clients/") || item.href.startsWith("/pricing/")) {
+      return false;
+    }
+    return true;
+  });
+}
 
 export async function getFooterContent(): Promise<FooterBlockProps> {
-  const prisma = getPrismaClient();
-  const page = await prisma.landingPage.findUnique({
-    where: { slug: LANDING_PAGE_SLUGS.footer },
-    include: {
-      blocks: { orderBy: { order: "asc" } },
+  const [emailSettings, page, visibleClients] = await Promise.all([
+    getEmailSettings(),
+    getPrismaClient().landingPage.findUnique({
+      where: { slug: LANDING_PAGE_SLUGS.footer },
+      include: {
+        blocks: { orderBy: { order: "asc" } },
+      },
+    }),
+    listVisibleClientsPages(),
+  ]);
+
+  const visibleClientHrefs = new Set([
+    ...visibleClients.map((item) => item.href),
+    ...visibleClients.map((item) => item.href.replace("/clients/", "/pricing/")),
+  ]);
+
+  const applyInfoEmail = (content: FooterBlockProps): FooterBlockProps => ({
+    ...content,
+    contacts: {
+      ...content.contacts,
+      email: emailSettings.infoEmail.trim() || content.contacts.email,
     },
+    solutions: filterSolutionsLinks(content.solutions, visibleClientHrefs),
   });
 
   if (!page || page.blocks.length === 0) {
-    return defaultFooterBlockProps();
+    return applyInfoEmail(defaultFooterBlockProps());
   }
 
   const footerBlock = page.blocks.find((block) => block.type === "footer") ?? page.blocks[0];
@@ -30,7 +64,9 @@ export async function getFooterContent(): Promise<FooterBlockProps> {
     props: footerBlock.props,
   });
 
-  return parsed?.props ?? defaultFooterBlockProps();
+  const content = parsed?.props ?? defaultFooterBlockProps();
+
+  return applyInfoEmail(content);
 }
 
 export async function getFooterPageBlocks() {

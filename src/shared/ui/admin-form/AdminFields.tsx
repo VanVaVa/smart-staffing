@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 import { uploadAdminMedia } from "@/shared/lib/upload-admin-media";
+import { AdminRichTextEditor } from "@/shared/ui/admin-rich-text";
 
 import { AdminDatePicker } from "./AdminDatePicker";
 import { AdminSelect } from "./AdminSelect";
@@ -104,6 +105,17 @@ function ScalarControl({
   onChange: (value: unknown) => void;
   disabled?: boolean;
 }) {
+  if (field.kind === "richtext") {
+    return (
+      <AdminRichTextEditor
+        value={asString(value)}
+        minHeight={field.minHeight}
+        disabled={disabled}
+        onChange={onChange}
+      />
+    );
+  }
+
   if (field.kind === "textarea") {
     return (
       <textarea

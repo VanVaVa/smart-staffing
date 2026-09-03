@@ -1,0 +1,42 @@
+.editable-clients-platform-section__list-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.editable-clients-platform-section__remove,
+.editable-clients-platform-section__add {
+  flex: none;
+  padding: 4px 8px;
+  border: 1px solid rgb(255 255 255 / 24%);
+  border-radius: 6px;
+  background: rgb(255 255 255 / 8%);
+  color: rgb(255 255 255 / 88%);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.editable-clients-platform-section__pain-item {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.editable-clients-platform-section__pain-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.editable-clients-platform-section__tag-item {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.editable-clients-platform-section__tags-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}

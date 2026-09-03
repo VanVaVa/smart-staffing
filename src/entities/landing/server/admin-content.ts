@@ -12,6 +12,14 @@ import {
   validateAndSaveLandingPageBlocks,
 } from "../lib/get-landing-page-content";
 import {
+  createClientsPage,
+  deleteClientsPage,
+  getClientsPageFormValues,
+  listClientsPageFormValues,
+  saveClientsPageFormValues,
+} from "../lib/get-clients-pages";
+import { mergeClientsPageAdminValues } from "../model/clients-admin-form";
+import {
   createMediaArticle,
   deleteMediaArticle,
   getMediaArticleProps,
@@ -109,6 +117,9 @@ async function readCollection(section: AdminCollectionSection): Promise<AdminVal
   if (section.storage.kind === "articles") {
     return listMediaArticleProps() as Promise<AdminValues[]>;
   }
+  if (section.storage.kind === "clientsPages") {
+    return listClientsPageFormValues();
+  }
   return asItems(await readBlockPath(section.storage));
 }
 
@@ -139,6 +150,16 @@ export function isReorderableSection(section: AdminCollectionSection): boolean {
   return section.storage.kind === "blockPath";
 }
 
+function collectionItemId(section: AdminCollectionSection, item: AdminValues, index: number): string {
+  if (section.storage.kind === "articles") {
+    return String(item.slug);
+  }
+  if (section.storage.kind === "clientsPages") {
+    return String(item.segment);
+  }
+  return String(index);
+}
+
 export async function listAdminSectionItems(
   section: AdminCollectionSection,
 ): Promise<AdminSectionItem[]> {
@@ -146,7 +167,7 @@ export async function listAdminSectionItems(
   return items.map((item, index) => {
     const values = toFormValues(section, item);
     return {
-      id: section.storage.kind === "articles" ? String(item.slug) : String(index),
+      id: collectionItemId(section, item, index),
       title: section.itemTitle(values, index) || `${section.addLabel} ${index + 1}`,
       meta: section.itemMeta?.(values) ?? "",
     };
@@ -167,6 +188,10 @@ export async function readAdminSectionItem(
     const props = await getMediaArticleProps(id);
     return props ? toFormValues(section, props as unknown as AdminValues) : null;
   }
+  if (section.storage.kind === "clientsPages") {
+    const values = await getClientsPageFormValues(id);
+    return values ? toFormValues(section, values) : null;
+  }
 
   const items = await readCollection(section);
   const item = items[Number(id)];
@@ -177,12 +202,26 @@ export async function createAdminSectionItem(
   section: AdminCollectionSection,
   values: AdminValues,
 ): Promise<string> {
+  if (section.allowCreate === false) {
+    throw new Error(`Раздел «${section.title}» не поддерживает создание элементов`);
+  }
   if (section.storage.kind === "articles") {
     const draft = await createMediaArticle();
     const existing = await getMediaArticleProps(draft.slug);
     return saveMediaArticleProps(
       draft.slug,
       toStoredValues(section, asValues(existing), values),
+    );
+  }
+  if (section.storage.kind === "clientsPages") {
+    const segment = await createClientsPage();
+    const existing = await getClientsPageFormValues(segment);
+    if (!existing) {
+      throw new Error("Не удалось создать страницу clients");
+    }
+    return saveClientsPageFormValues(
+      segment,
+      mergeClientsPageAdminValues(existing, values),
     );
   }
 
@@ -206,6 +245,13 @@ export async function saveAdminSectionItem(
     }
     return saveMediaArticleProps(id, toStoredValues(section, asValues(existing), values));
   }
+  if (section.storage.kind === "clientsPages") {
+    const existing = await getClientsPageFormValues(id);
+    if (!existing) {
+      throw new Error(`Страница clients "${id}" не найдена`);
+    }
+    return saveClientsPageFormValues(id, mergeClientsPageAdminValues(existing, values));
+  }
 
   const items = await readCollection(section);
   const index = Number(id);
@@ -226,8 +272,15 @@ export async function deleteAdminSectionItem(
   section: AdminCollectionSection,
   id: string,
 ): Promise<void> {
+  if (section.allowDelete === false) {
+    throw new Error(`Раздел «${section.title}» не поддерживает удаление элементов`);
+  }
   if (section.storage.kind === "articles") {
     await deleteMediaArticle(id);
+    return;
+  }
+  if (section.storage.kind === "clientsPages") {
+    await deleteClientsPage(id);
     return;
   }
 

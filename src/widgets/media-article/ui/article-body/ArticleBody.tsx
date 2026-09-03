@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import type { MediaArticleBlockProps } from "@/entities/landing/model/media-article-blocks";
+import { sanitizeArticleHtml } from "@/shared/lib/sanitize-article-html";
 import { Link } from "@/shared/ui";
 
 import styles from "./ArticleBody.module.css";
@@ -10,18 +11,23 @@ type ArticleBodyProps = {
 };
 
 export function ArticleBody({ content }: ArticleBodyProps) {
+  const hasSource = content.sourceHref !== "" || content.sourceLabel !== "";
+
   return (
     <div className={styles["article-body"]}>
-      <p className={styles["article-body__lead"]}>
-        {content.lead}
-      </p>
+      <div
+        className={`${styles["article-body__lead"]} ${styles["article-body__rich-text"]}`}
+        dangerouslySetInnerHTML={{ __html: sanitizeArticleHtml(content.lead) }}
+      />
       <div className={styles["article-body__blocks"]}>
         {content.bodyBlocks.map((block, index) => {
           if (block.type === "paragraph") {
             return (
-              <p key={`block-${index}`} className={styles["article-body__paragraph"]}>
-                {block.text}
-              </p>
+              <div
+                key={`block-${index}`}
+                className={`${styles["article-body__paragraph"]} ${styles["article-body__rich-text"]}`}
+                dangerouslySetInnerHTML={{ __html: sanitizeArticleHtml(block.text) }}
+              />
             );
           }
 
@@ -42,14 +48,16 @@ export function ArticleBody({ content }: ArticleBodyProps) {
         <div className={styles["article-body__add-actions"]}>
         </div>
       </div>
-      <p className={styles["article-body__source"]}>
-        Источник:{" "}
-        <Link href={content.sourceHref}>
-          <span>
-            {content.sourceLabel}
-          </span>
-        </Link>
-      </p>
+      {hasSource ? (
+        <p className={styles["article-body__source"]}>
+          Источник:{" "}
+          <Link href={content.sourceHref}>
+            <span>
+              {content.sourceLabel}
+            </span>
+          </Link>
+        </p>
+      ) : null}
     </div>
   );
 }

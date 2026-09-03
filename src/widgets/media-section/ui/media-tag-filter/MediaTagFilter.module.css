@@ -1,0 +1,66 @@
+.media-tag-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 32px;
+}
+
+.media-tag-filter__chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 33px;
+  padding: 6px 16px;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: var(--color-grey-200);
+  color: var(--color-black);
+  font-family: var(--font-body);
+  font-size: var(--text-body-sm);
+  font-weight: 500;
+  line-height: var(--line-body-sm);
+  text-decoration: none;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.media-tag-filter__chip:hover {
+  background: var(--color-grey-300);
+}
+
+.media-tag-filter__chip:focus-visible {
+  outline: none;
+}
+
+.media-tag-filter__chip--active {
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+.media-tag-filter__chip--active.media-tag-filter__chip--important {
+  background: var(--color-accent);
+  color: var(--color-white);
+}
+
+.media-tag-filter__chip--active.media-tag-filter__chip--interesting {
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+.media-tag-filter__chip--active.media-tag-filter__chip--news {
+  background: var(--color-accent-2);
+  color: var(--color-white);
+}
+
+@media (max-width: 768px) {
+  .media-tag-filter {
+    margin-top: 24px;
+    gap: 6px;
+  }
+}
+
+@media (max-width: 450px) {
+  .media-tag-filter {
+    margin-top: 20px;
+  }
+}

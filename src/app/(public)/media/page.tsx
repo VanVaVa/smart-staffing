@@ -4,6 +4,8 @@ import {
   getMediaLandingPageContent,
   listMediaArticles,
 } from "@/entities/landing/server";
+import { isMediaArticleTag } from "@/entities/landing";
+import type { MediaArticleTag } from "@/entities/landing";
 import { MediaPage } from "@/views/media";
 
 export const dynamic = "force-dynamic";
@@ -15,6 +17,16 @@ type PageProps = {
 function getRequestedPage(value: string | string[] | undefined) {
   const page = Array.isArray(value) ? value[0] : value;
   return Number(page ?? 1);
+}
+
+function getActiveTag(
+  value: string | string[] | undefined,
+): MediaArticleTag | null {
+  const tag = Array.isArray(value) ? value[0] : value;
+  if (!tag || !isMediaArticleTag(tag)) {
+    return null;
+  }
+  return tag;
 }
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -30,7 +42,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Page({ searchParams }: PageProps) {
-  const { page } = await searchParams;
+  const { page, tag } = await searchParams;
   const [{ blocks }, articles] = await Promise.all([
     getMediaLandingPageContent(),
     listMediaArticles(),
@@ -41,6 +53,7 @@ export default async function Page({ searchParams }: PageProps) {
       blocks={blocks}
       articles={articles}
       currentPage={getRequestedPage(page)}
+      activeTag={getActiveTag(tag)}
     />
   );
 }

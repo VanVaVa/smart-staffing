@@ -1,5 +1,10 @@
 import type { AdminField, AdminValues } from "@/shared/ui/admin-form";
+import { sanitizeArticleHtml } from "@/shared/lib/sanitize-article-html";
 
+import {
+  CLIENTS_PAGE_ADMIN_FIELDS,
+  createDefaultClientsPageFormValues,
+} from "./clients-admin-form";
 import { clientSegmentSlugs } from "./clients-content";
 import { LANDING_PAGE_SLUGS } from "./landing-page-slugs";
 
@@ -19,7 +24,8 @@ export type AdminSectionStorage =
       blockType: string;
       path: readonly string[];
     }
-  | { kind: "articles" };
+  | { kind: "articles" }
+  | { kind: "clientsPages" };
 
 type AdminSectionBase = {
   key: string;
@@ -35,6 +41,8 @@ export type AdminCollectionSection = AdminSectionBase & {
   storage: AdminSectionStorage;
   addLabel: string;
   emptyLabel: string;
+  allowCreate?: boolean;
+  allowDelete?: boolean;
   itemTitle: (values: AdminValues, index: number) => string;
   itemMeta?: (values: AdminValues) => string;
   createValues: () => AdminValues;
@@ -60,6 +68,43 @@ const MEDIA_TAG_LABELS: Record<string, string> = {
 function text(values: AdminValues, key: string): string {
   const value = values[key];
   return typeof value === "string" ? value : "";
+}
+
+function groupValues(values: AdminValues, key: string): AdminValues {
+  const value = values[key];
+  return typeof value === "object" && value !== null && !Array.isArray(value)
+    ? (value as AdminValues)
+    : {};
+}
+
+function sanitizeArticleField(value: string): string {
+  return sanitizeArticleHtml(value);
+}
+
+function stripHtml(value: string): string {
+  return value.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+}
+
+function sanitizeArticleBodyBlocks(value: unknown): AdminValues[] {
+  if (!Array.isArray(value)) {
+    return [];
+  }
+
+  return value.map((item) => {
+    if (typeof item !== "object" || item === null || Array.isArray(item)) {
+      return {};
+    }
+
+    const block = item as AdminValues;
+    if (block.type !== "paragraph" || typeof block.text !== "string") {
+      return block;
+    }
+
+    return {
+      ...block,
+      text: sanitizeArticleField(block.text),
+    };
+  });
 }
 
 function formatPublishedLabel(publishedAt: string): string {
@@ -148,9 +193,11 @@ const articlesSection: AdminCollectionSection = {
       href: `/media/${slug}`,
       tagLabel: MEDIA_TAG_LABELS[text(values, "tag")] ?? "Новость",
       publishedLabel: formatPublishedLabel(publishedAt),
+      lead: sanitizeArticleField(text(values, "lead")),
+      bodyBlocks: sanitizeArticleBodyBlocks(values.bodyBlocks),
       meta: {
         title: text(meta, "title") || `${title} — СмартСтаффинг`,
-        description: text(meta, "description") || text(values, "lead").slice(0, 300),
+        description: text(meta, "description") || stripHtml(text(values, "lead")).slice(0, 300),
       },
     };
   },
@@ -177,7 +224,7 @@ const articlesSection: AdminCollectionSection = {
     { kind: "text", name: "imageAlt", label: "Описание обложки" },
     { kind: "image", name: "heroImageSrc", label: "Изображение в шапке статьи" },
     { kind: "text", name: "heroImageAlt", label: "Описание изображения в шапке" },
-    { kind: "textarea", name: "lead", label: "Лид", rows: 4 },
+    { kind: "richtext", name: "lead", label: "Лид", minHeight: 120 },
     {
       kind: "list",
       name: "bodyBlocks",
@@ -197,10 +244,10 @@ const articlesSection: AdminCollectionSection = {
           ],
         },
         {
-          kind: "textarea",
+          kind: "richtext",
           name: "text",
           label: "Текст",
-          rows: 6,
+          minHeight: 180,
           visibleWhen: { field: "type", equals: "paragraph" },
         },
         {
@@ -229,6 +276,29 @@ const articlesSection: AdminCollectionSection = {
       ],
     },
   ],
+};
+
+const clientsPagesSection: AdminCollectionSection = {
+  key: "clients-pages",
+  title: "Страницы clients",
+  description: "Сегментные landing-страницы раздела «Клиентам» и «Тарифы».",
+  group: "content",
+  publicPath: "/clients",
+  mode: "collection",
+  storage: { kind: "clientsPages" },
+  addLabel: "Новая страница",
+  emptyLabel: "Страниц clients пока нет",
+  allowCreate: false,
+  allowDelete: false,
+  itemTitle: (values) =>
+    text(values, "navLabel") || text(groupValues(values, "meta"), "title") || text(values, "segment"),
+  itemMeta: (values) => {
+    const segment = text(values, "segment");
+    const hiddenSuffix = values.hidden === true ? " · Скрыта" : "";
+    return `/clients/${segment}${hiddenSuffix}`;
+  },
+  createValues: () => createDefaultClientsPageFormValues(),
+  fields: CLIENTS_PAGE_ADMIN_FIELDS,
 };
 
 const vacanciesSection: AdminCollectionSection = {
@@ -788,6 +858,38 @@ const documentsTechnologyStackSection: AdminSingletonSection = {
   ],
 };
 
+const emailSettingsSection: AdminSingletonSection = {
+  key: "email-settings",
+  title: "Email-адреса",
+  description:
+    "Почтовые адреса для уведомлений о заявках и отображения на сайте. infoEmail используется в футере.",
+  group: "global",
+  publicPath: "/admin",
+  mode: "singleton",
+  storage: {
+    kind: "blockPath",
+    pageSlug: LANDING_PAGE_SLUGS.settings,
+    blockType: "emailSettings",
+    path: [],
+  },
+  fields: [
+    { kind: "text", name: "senderEmail", label: "Отправитель (noreply)" },
+    {
+      kind: "text",
+      name: "partnerNotificationEmail",
+      label: "Получатель заявок на демо и подключение",
+    },
+    { kind: "text", name: "infoEmail", label: "Общий контактный email" },
+    { kind: "text", name: "supportEmail", label: "Email поддержки платформы" },
+    {
+      kind: "stringList",
+      name: "vacancyNotificationEmails",
+      label: "Получатели откликов на вакансии",
+      addLabel: "Email",
+    },
+  ],
+};
+
 const footerSection: AdminSingletonSection = {
   key: "footer",
   title: "Футер",
@@ -877,6 +979,7 @@ const footerSection: AdminSingletonSection = {
 
 export const ADMIN_SECTIONS: readonly AdminSection[] = [
   articlesSection,
+  clientsPagesSection,
   caseStudiesSection,
   testimonialsSection,
   vacanciesSection,
@@ -891,6 +994,7 @@ export const ADMIN_SECTIONS: readonly AdminSection[] = [
   documentsCertificatesSection,
   documentsSoftwareRightsSection,
   documentsTechnologyStackSection,
+  emailSettingsSection,
   footerSection,
 ];
 

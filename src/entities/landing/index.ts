@@ -82,7 +82,19 @@ export type {
   ClientsPlatformContent,
   ClientsSegmentContent,
 } from "./model/clients-content";
-export { EXAMPLE_MEDIA_ARTICLE } from "./model/media-content";
+export {
+  createPlatformBenefitsCardTemplate,
+  createPlatformBenefitsShowcaseTemplate,
+  normalizePlatformBenefitsLists,
+  resolvePlatformBenefitsCardLayout,
+} from "./model/clients-admin-form";
+export type { PlatformBenefitsCardLayout } from "./model/clients-admin-form";
+export {
+  EXAMPLE_MEDIA_ARTICLE,
+  isMediaArticleTag,
+  MEDIA_ARTICLE_TAG_LABELS,
+  MEDIA_ARTICLE_TAGS,
+} from "./model/media-content";
 export type {
   MediaArticle,
   MediaArticleBodyBlock,

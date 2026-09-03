@@ -1,7 +1,9 @@
+"use client";
+
 import type { CSSProperties } from "react";
 import Image from "next/image";
 import NextLink from "next/link";
-import type { ReactNode } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 
 import { IMAGE_QUALITY } from "@/shared/config/image-quality";
 
@@ -24,19 +26,20 @@ type CaseStudyCardProps = {
   metricLabel: string;
   tag?: string;
   actionLabel?: string;
+  collapseLabel?: string;
   layout?: CaseStudyCardLayout;
 };
 
-function CaseStudyCardRoot({
+const CARD_HEIGHT_TRANSITION_MS = 350;
+
+function CaseStudyCardActionLink({
   href,
   className,
   ariaLabel,
-  children,
 }: {
   href: string;
   className: string;
   ariaLabel: string;
-  children: ReactNode;
 }) {
   if (href.startsWith("#") || href.startsWith("http")) {
     const externalLinkProps = href.startsWith("http")
@@ -45,14 +48,14 @@ function CaseStudyCardRoot({
 
     return (
       <a href={href} className={className} aria-label={ariaLabel} {...externalLinkProps}>
-        {children}
+        <ArrowIcon name="round" />
       </a>
     );
   }
 
   return (
     <NextLink href={href} className={className} aria-label={ariaLabel}>
-      {children}
+      <ArrowIcon name="round" />
     </NextLink>
   );
 }
@@ -69,15 +72,60 @@ export function CaseStudyCard({
   metricLabel,
   tag,
   actionLabel = "Читать далее",
+  collapseLabel = "Свернуть",
   layout = "default",
 }: CaseStudyCardProps) {
+  const [expanded, setExpanded] = useState(false);
+  const cardRef = useRef<HTMLElement>(null);
+  const skipHeightAnimationRef = useRef(true);
   const rootClassName = [
     styles["case-study-card"],
     layout === "compact-horizontal" && styles["case-study-card--compact-horizontal"],
+    expanded && styles["case-study-card--expanded"],
   ]
     .filter(Boolean)
     .join(" ");
-  const ariaLabel = `${panelAlt}. ${actionLabel}`;
+  const actionAriaLabel = `Перейти к кейсу: ${panelAlt}`;
+
+  const toggleExpanded = () => {
+    const card = cardRef.current;
+    if (card) {
+      card.style.height = `${card.getBoundingClientRect().height}px`;
+    }
+    setExpanded((current) => !current);
+  };
+
+  useLayoutEffect(() => {
+    const card = cardRef.current;
+    if (!card) {
+      return;
+    }
+
+    if (skipHeightAnimationRef.current) {
+      skipHeightAnimationRef.current = false;
+      return;
+    }
+
+    card.classList.add(styles["case-study-card--animating"]);
+    card.style.transition = `height ${CARD_HEIGHT_TRANSITION_MS}ms ease`;
+    card.style.height = `${card.scrollHeight}px`;
+
+    const handleTransitionEnd = (event: TransitionEvent) => {
+      if (event.target !== card || event.propertyName !== "height") {
+        return;
+      }
+
+      card.removeEventListener("transitionend", handleTransitionEnd);
+      card.classList.remove(styles["case-study-card--animating"]);
+      card.style.transition = "";
+      card.style.height = expanded ? "auto" : "";
+    };
+
+    card.addEventListener("transitionend", handleTransitionEnd);
+    return () => {
+      card.removeEventListener("transitionend", handleTransitionEnd);
+    };
+  }, [expanded]);
   const logoStyle = {
     "--case-study-logo-max-width": `${logoWidth}px`,
     "--case-study-logo-max-height": `${logoHeight}px`,
@@ -108,11 +156,7 @@ export function CaseStudyCard({
     ) : null;
 
   return (
-    <CaseStudyCardRoot
-      href={href}
-      className={rootClassName}
-      ariaLabel={ariaLabel}
-    >
+    <article ref={cardRef} className={rootClassName}>
       <div className={styles["case-study-card__panel"]}>
         <div className={styles["case-study-card__panel-media"]}>
           <div className={styles["case-study-card__panel-bg"]}>{panelBackground}</div>
@@ -148,14 +192,29 @@ export function CaseStudyCard({
         </div>
       </div>
       <div className={styles["case-study-card__footer"]}>
-        <span className={styles["case-study-card__read-more"]}>
-          {actionLabel}
-          <ArrowIcon name="2Right" className={styles["case-study-card__read-more-icon"]} />
-        </span>
-        <span className={styles["case-study-card__action"]} aria-hidden>
-          <ArrowIcon name="round" />
-        </span>
+        <button
+          type="button"
+          className={styles["case-study-card__read-more"]}
+          aria-expanded={expanded}
+          onClick={toggleExpanded}
+        >
+          {expanded ? collapseLabel : actionLabel}
+          <ArrowIcon
+            name="2Right"
+            className={[
+              styles["case-study-card__read-more-icon"],
+              expanded && styles["case-study-card__read-more-icon--expanded"],
+            ]
+              .filter(Boolean)
+              .join(" ")}
+          />
+        </button>
+        <CaseStudyCardActionLink
+          href={href}
+          className={styles["case-study-card__action"]}
+          ariaLabel={actionAriaLabel}
+        />
       </div>
-    </CaseStudyCardRoot>
+    </article>
   );
 }

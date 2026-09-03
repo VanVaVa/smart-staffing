@@ -347,6 +347,7 @@ export const aboutCareerBook = {
     spreadAlt: "Книга о\u00a0стаффинге",
     form: {
       inputPlaceholder: "@telegram_id",
+      buttonHref: "https://t.me/b2bcloud_platform/6",
       buttonLabel: "Забрать книгу бесплатно",
     },
   },

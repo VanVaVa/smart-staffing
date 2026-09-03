@@ -1,8 +1,5 @@
 import type { ClientsBlock } from "@/entities/landing/model/clients-blocks";
-import type {
-  ClientSegmentSlug,
-  ClientsPageVariant,
-} from "@/entities/landing/model/clients-content";
+import type { ClientsPageVariant } from "@/entities/landing/model/clients-content";
 import {
   getAdminPageLabel,
   getPublicPagePath,
@@ -16,7 +13,7 @@ import { ClientsPlatformSection } from "@/widgets/clients-platform-section";
 
 type ClientsBlockRendererProps = {
   block: ClientsBlock;
-  segment: ClientSegmentSlug;
+  segment: string;
   pageVariant?: ClientsPageVariant;
 };
 

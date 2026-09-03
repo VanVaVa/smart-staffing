@@ -1,7 +1,6 @@
 import type { CSSProperties } from "react";
 
 import type {
-  ClientSegmentSlug,
   ClientsPageVariant,
   ClientsPlatformBenefitsContent,
 } from "@/entities/landing";
@@ -18,7 +17,7 @@ import styles from "./ClientsPlatformBenefitsSection.module.css";
 
 type ClientsPlatformBenefitsSectionProps = {
   content: ClientsPlatformBenefitsContent;
-  segment: ClientSegmentSlug;
+  segment: string;
   pageVariant?: ClientsPageVariant;
 };
 
@@ -101,10 +100,16 @@ export function ClientsPlatformBenefitsSection({
         </div>
         <div className={styles["clients-platform-benefits-section__showcase"]}>
           <div className={styles["clients-platform-benefits-section__showcase-row"]}>
-            <ClientsPlatformBenefitsShowcaseCard item={showcaseItCosts} />
-            <ClientsPlatformBenefitsShowcaseCard item={showcaseQuality} />
+            {showcaseItCosts ? (
+              <ClientsPlatformBenefitsShowcaseCard item={showcaseItCosts} />
+            ) : null}
+            {showcaseQuality ? (
+              <ClientsPlatformBenefitsShowcaseCard item={showcaseQuality} />
+            ) : null}
           </div>
-          <ClientsPlatformBenefitsShowcaseCard item={showcaseScaling} />
+          {showcaseScaling ? (
+            <ClientsPlatformBenefitsShowcaseCard item={showcaseScaling} />
+          ) : null}
         </div>
       </Container>
     </section>

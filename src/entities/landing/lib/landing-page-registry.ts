@@ -19,6 +19,11 @@ import {
   parseDocumentsBlockProps,
 } from "../model/documents-blocks";
 import {
+  isEmailSettingsBlockType,
+  parseEmailSettingsBlock,
+  parseEmailSettingsBlockProps,
+} from "../model/email-settings-blocks";
+import {
   isFooterBlockType,
   parseFooterBlock,
   parseFooterBlockProps,
@@ -125,6 +130,13 @@ const FOOTER_SCHEMA = createSchema({
   parseBlock: parseFooterBlock,
 });
 
+const SETTINGS_SCHEMA = createSchema({
+  slug: LANDING_PAGE_SLUGS.settings,
+  isBlockType: isEmailSettingsBlockType,
+  parseBlockProps: parseEmailSettingsBlockProps,
+  parseBlock: parseEmailSettingsBlock,
+});
+
 function createDocumentViewSchema(slug: string): LandingPageSchema {
   return createSchema({
     slug,
@@ -159,6 +171,7 @@ const STATIC_SCHEMAS: Record<string, LandingPageSchema> = {
   [LANDING_PAGE_SLUGS.documents]: DOCUMENTS_SCHEMA,
   [LANDING_PAGE_SLUGS.media]: MEDIA_SCHEMA,
   [LANDING_PAGE_SLUGS.footer]: FOOTER_SCHEMA,
+  [LANDING_PAGE_SLUGS.settings]: SETTINGS_SCHEMA,
 };
 
 export function getLandingPageSchema(slug: string): LandingPageSchema {
@@ -192,6 +205,7 @@ export function getAdminPageLabel(slug: string): string {
   if (slug === LANDING_PAGE_SLUGS.documents) return "Документы";
   if (slug === LANDING_PAGE_SLUGS.media) return "Медиа";
   if (slug === LANDING_PAGE_SLUGS.footer) return "Футер";
+  if (slug === LANDING_PAGE_SLUGS.settings) return "Настройки";
 
   const clientSegment = parseClientSegmentFromSlug(slug);
   if (clientSegment) {
@@ -214,6 +228,7 @@ export function getAdminPageLabel(slug: string): string {
 export function getPublicPagePath(slug: string): string {
   if (slug === LANDING_PAGE_SLUGS.home) return "/";
   if (slug === LANDING_PAGE_SLUGS.footer) return "/";
+  if (slug === LANDING_PAGE_SLUGS.settings) return "/admin";
 
   const clientSegment = parseClientSegmentFromSlug(slug);
   if (clientSegment) {

@@ -57,13 +57,11 @@
 
 .hero-registry-link__chevron {
   flex-shrink: 0;
-  transform: rotate(90deg);
 }
 
 @media (max-width: 450px) {
   .hero-registry-link__chevron {
     transform: scale(0.6);
-
   }
 }
 

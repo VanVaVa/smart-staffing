@@ -5,7 +5,7 @@
   margin-bottom: min(196px, calc(196 * 100vw / 1920));
 }
 
-.clients-hero-section--pricing .clients-hero-section__image {
+.clients-hero-section--pricing .clients-hero-section__image-frame {
   transform: translateY(40px);
 }
 
@@ -24,10 +24,9 @@
   display: none;
 }
 
-.clients-hero-section__image {
-  display: block;
+.clients-hero-section__image-frame {
   width: min(956px, calc(956 * 100vw / 1920));
-  height: auto;
+  height: calc(min(956px, calc(956 * 100vw / 1920)) * 960 / 956);
   max-width: none;
   border-bottom-left-radius: 40px;
   pointer-events: auto;
@@ -97,12 +96,10 @@
     margin-bottom: 168px;
   }
 
-  .clients-hero-section__image {
+  .clients-hero-section__image-frame {
     width: 716px;
     height: calc(716px * 960 / 956);
     border-bottom-left-radius: 32px;
-    object-fit: cover;
-    object-position: center;
   }
 
   .clients-hero-section__inset {
@@ -160,11 +157,9 @@
     max-width: var(--clients-hero-text-width);
   }
 
-  .clients-hero-section__image {
+  .clients-hero-section__image-frame {
     width: var(--clients-hero-image-width);
     height: var(--clients-hero-image-height);
-    object-fit: cover;
-    object-position: center;
   }
 
   .clients-hero-section__inset {
@@ -228,13 +223,11 @@
     line-height: var(--line-body);
   }
 
-  .clients-hero-section__image {
+  .clients-hero-section__image-frame {
     width: calc(100vw - var(--container-padding));
     margin-left: var(--container-padding);
     max-width: none;
     height: 460px;
-    object-fit: cover;
-    object-position: center;
     border-radius: 24px 0 0 24px;
   }
 }
@@ -278,10 +271,9 @@
     line-height: 1.35;
   }
 
-  .clients-hero-section__image {
+  .clients-hero-section__image-frame {
     height: clamp(364px, 53vw, 408px);
     border-radius: 24px 0 0 24px;
-    object-position: center center;
   }
 
   .clients-hero-section[data-segment="outstaffing"] .clients-hero-section__image {
@@ -315,7 +307,7 @@
     max-width: unset;
   }
 
-  .clients-hero-section__image {
+  .clients-hero-section__image-frame {
     height: clamp(288px, 63vw, 364px);
     border-radius: var(--radius-lg) 0 0 var(--radius-lg);
   }
@@ -366,10 +358,8 @@
     margin-top: 48px;
   }
 
-  .clients-hero-section__image {
+  .clients-hero-section__image-frame {
     height: 288px;
-    object-fit: cover;
-    object-position: center center;
     border-radius: 20px 0 0 20px;
   }
 

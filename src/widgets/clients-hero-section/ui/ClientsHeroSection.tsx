@@ -1,52 +1,49 @@
-import Image from "next/image";
-
-import type {
-  ClientSegmentSlug,
-  ClientsHeroContent,
-} from "@/entities/landing";
-import { IMAGE_QUALITY } from "@/shared/config/image-quality";
+import { CoverImageFrame } from "@/shared/ui/cover-image-frame";
 import { CompanyConnectionButton } from "@/shared/ui/feedback-form";
+
+import type { ClientsHeroContent } from "@/entities/landing";
 
 import styles from "./ClientsHeroSection.module.css";
 
 type ClientsHeroSectionProps = {
   content: ClientsHeroContent;
-  segment: ClientSegmentSlug;
+  segment: string;
+  interactive?: boolean;
 };
 
-export function ClientsHeroSection({ content, segment }: ClientsHeroSectionProps) {
+export function ClientsHeroSection({
+  content,
+  segment,
+  interactive = true,
+}: ClientsHeroSectionProps) {
   return (
     <section
       className={styles["clients-hero-section"]}
       data-segment={segment}
     >
       <figure className={styles["clients-hero-section__media"]}>
-        <div className={
-            content.imageMobileSrc
-              ? styles["clients-hero-section__slot--desktop"]
-              : undefined
-          }>
-          <Image
-            className={styles["clients-hero-section__image"]}
+        <div
+          className={
+            content.imageMobileSrc ? styles["clients-hero-section__slot--desktop"] : undefined
+          }
+        >
+          <CoverImageFrame
+            className={styles["clients-hero-section__image-frame"]}
+            imageClassName={styles["clients-hero-section__image"]}
             src={content.imageSrc}
             alt={content.imageAlt}
-            width={content.imageWidth}
-            height={content.imageHeight}
             sizes="(max-width: 450px) 344px, (max-width: 768px) 744px, (max-width: 1050px) 960px, (max-width: 1620px) 716px, 956px"
-            quality={IMAGE_QUALITY.ui}
             priority
           />
         </div>
         {content.imageMobileSrc ? (
           <div className={styles["clients-hero-section__slot--mobile"]}>
-            <Image
-              className={styles["clients-hero-section__image"]}
+            <CoverImageFrame
+              className={styles["clients-hero-section__image-frame"]}
+              imageClassName={styles["clients-hero-section__image"]}
               src={content.imageMobileSrc}
               alt={content.imageAlt}
-              width={content.imageMobileWidth ?? content.imageWidth}
-              height={content.imageMobileHeight ?? content.imageHeight}
               sizes="(max-width: 450px) 344px, (max-width: 768px) 744px, 960px"
-              quality={IMAGE_QUALITY.ui}
             />
           </div>
         ) : null}
@@ -78,6 +75,7 @@ export function ClientsHeroSection({ content, segment }: ClientsHeroSectionProps
               variant="primary"
               size="md"
               withArrow
+              interactive={interactive}
               className={styles["clients-hero-section__cta"]}
             >
               <span>

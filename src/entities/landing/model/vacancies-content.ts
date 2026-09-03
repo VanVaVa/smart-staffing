@@ -12,12 +12,16 @@ export const vacanciesPage = {
   heroImageMobileHeight: 328,
   heroImageAlt: "Рабочее место в\u00a0офисе СмартСтаффинг",
   vacancies: [
-    { id: "developer", title: "Разработчик", employment: "Полная занятость" },
-    { id: "designer-1", title: "Дизайнер UX|UI", employment: "Полная занятость" },
-    { id: "designer-2", title: "Дизайнер UX|UI", employment: "Полная занятость" },
-    { id: "designer-3", title: "Дизайнер UX|UI", employment: "Полная занятость" },
-    { id: "project-manager", title: "Менеджер проектов", employment: "Полная занятость" },
-    { id: "qa-engineer", title: "Инженер по\u00a0тестированию", employment: "Полная занятость" },
+    {
+      id: "system-analyst-sap-salary-sberbank",
+      title: "Системный Аналитик Миграция SAP Зарплата (Middle+/ Senior) / Сбербанк",
+      employment: "Удаленная работа",
+    },
+    {
+      id: "business-analyst-sap-uvhd",
+      title: "Бизнес аналитик/ Senior-Middle/ Миграция SAP УВХД",
+      employment: "Удаленная работа",
+    },
   ],
   form: {
     fullNamePlaceholder: "ФИО",

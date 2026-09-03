@@ -1,15 +1,12 @@
 import type { ClientsBlock } from "@/entities/landing/model/clients-blocks";
-import type {
-  ClientSegmentSlug,
-  ClientsPageVariant,
-} from "@/entities/landing/model/clients-content";
+import type { ClientsPageVariant } from "@/entities/landing/model/clients-content";
 
 import { ClientsBlockRenderer } from "./ClientsBlockRenderer";
 import styles from "./ClientsPage.module.css";
 
 type ClientsPageProps = {
   blocks: ClientsBlock[];
-  segment: ClientSegmentSlug;
+  segment: string;
   pageVariant?: ClientsPageVariant;
 };
 

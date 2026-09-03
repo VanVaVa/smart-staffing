@@ -27,6 +27,61 @@
   overflow-wrap: anywhere;
 }
 
+.article-body__rich-text :is(p, h2, h3, blockquote, ul, ol) {
+  margin: 0 0 20px;
+}
+
+.article-body__rich-text :is(p, h2, h3, blockquote, ul, ol):last-child {
+  margin-bottom: 0;
+}
+
+.article-body__rich-text h2 {
+  font-family: var(--font-heading);
+  font-size: var(--text-h3);
+  font-weight: 600;
+  line-height: var(--line-h3);
+  letter-spacing: var(--letter-heading);
+}
+
+.article-body__rich-text h3 {
+  font-family: var(--font-heading);
+  font-size: var(--text-lead);
+  font-weight: 600;
+  line-height: var(--line-h3);
+}
+
+.article-body__rich-text blockquote {
+  padding-left: 16px;
+  border-left: 3px solid rgb(0 0 0 / 12%);
+}
+
+.article-body__rich-text ul,
+.article-body__rich-text ol {
+  padding-left: 24px;
+}
+
+.article-body__rich-text ul {
+  list-style: disc;
+}
+
+.article-body__rich-text ol {
+  list-style: decimal;
+}
+
+.article-body__rich-text li + li {
+  margin-top: 8px;
+}
+
+.article-body__rich-text a {
+  color: var(--color-accent);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.article-body__rich-text strong {
+  font-weight: 600;
+}
+
 .article-body__add-actions {
   display: flex;
   flex-wrap: wrap;

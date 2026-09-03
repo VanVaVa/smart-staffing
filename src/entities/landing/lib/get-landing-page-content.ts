@@ -11,6 +11,7 @@ import {
   getLandingPageSchema,
   type LandingPageSchema,
 } from "./landing-page-registry";
+import { ensureSettingsLandingPage } from "./ensure-settings-landing-page";
 
 export type ParsedLandingPageContent = {
   pageId: string;
@@ -30,9 +31,17 @@ function parsePageMeta(meta: unknown): LandingPageMeta | null {
     typeof (meta as { title: unknown }).title === "string" &&
     typeof (meta as { description: unknown }).description === "string"
   ) {
+    const record = meta as {
+      title: string;
+      description: string;
+      hidden?: unknown;
+      navLabel?: unknown;
+    };
     return {
-      title: (meta as { title: string }).title,
-      description: (meta as { description: string }).description,
+      title: record.title,
+      description: record.description,
+      hidden: record.hidden === true,
+      navLabel: typeof record.navLabel === "string" ? record.navLabel : undefined,
     };
   }
   return null;
@@ -47,6 +56,11 @@ export async function getLandingPageContent(
 
   const schema = getLandingPageSchema(slug);
   const prisma = getPrismaClient();
+
+  if (slug === LANDING_PAGE_SLUGS.settings) {
+    await ensureSettingsLandingPage();
+  }
+
   const page = await prisma.landingPage.findUnique({
     where: { slug },
     include: {

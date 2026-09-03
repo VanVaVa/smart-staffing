@@ -22,7 +22,7 @@ export const heroContent = {
   title: "Управляйте поставщиками, ресурсами и\u00a0проектами\nв\u00a0одном месте",
   primaryCta: "Подключить компанию за\u00a00 ₽",
   registryLabel: "В\u00a0реестре отечественного ПО",
-  registryHref: "/documents/domestic-software-registry",
+  registryHref: "https://reestr.digital.gov.ru/reestr/918396/",
   segments: [
     {
       label: "Крупным корпорациям",
@@ -361,21 +361,21 @@ export const footerContent = {
     social: [
       {
         label: "Telegram",
-        href: "https://t.me/",
+        href: "https://t.me/teamforcex",
         iconSrc: "/icons/social/telegram.svg",
         width: 32,
         height: 28,
       },
       {
         label: "VK",
-        href: "https://vk.com/",
+        href: "https://vk.ru/teamforcex",
         iconSrc: "/icons/social/vk.svg",
         width: 40,
         height: 24,
       },
       {
         label: "Дзен",
-        href: "https://dzen.ru/",
+        href: "https://dzen.ru/tfalliance",
         iconSrc: "/icons/social/dzen.svg",
         width: 28,
         height: 28,

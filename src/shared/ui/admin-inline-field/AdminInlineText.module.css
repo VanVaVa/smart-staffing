@@ -1,0 +1,32 @@
+.admin-inline-text {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 2px 4px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  resize: vertical;
+}
+
+.admin-inline-text:hover {
+  border-color: rgb(0 102 255 / 35%);
+}
+
+.admin-inline-text:focus {
+  outline: none;
+  border-color: rgb(0 102 255 / 70%);
+  background: rgb(0 102 255 / 6%);
+}
+
+.admin-inline-text--multiline {
+  min-height: 1.5em;
+}
+
+.admin-inline-text--heading {
+  field-sizing: content;
+}

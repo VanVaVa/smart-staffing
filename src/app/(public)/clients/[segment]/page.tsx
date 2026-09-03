@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { isClientSegmentSlug } from "@/entities/landing";
-import { getClientsPageContent } from "@/entities/landing/server";
+import { getClientsPageBySegment } from "@/entities/landing/server";
 import { ClientsPage } from "@/views/clients";
 
 export const dynamic = "force-dynamic";
@@ -13,31 +12,29 @@ type PageProps = {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { segment } = await params;
+  const page = await getClientsPageBySegment(segment);
 
-  if (!isClientSegmentSlug(segment)) {
+  if (!page || page.meta?.hidden) {
     return {};
   }
 
-  const { meta } = await getClientsPageContent(segment);
-
-  if (!meta) {
+  if (!page.meta) {
     return {};
   }
 
   return {
-    title: meta.title,
-    description: meta.description,
+    title: page.meta.title,
+    description: page.meta.description,
   };
 }
 
 export default async function Page({ params }: PageProps) {
   const { segment } = await params;
+  const page = await getClientsPageBySegment(segment);
 
-  if (!isClientSegmentSlug(segment)) {
+  if (!page || page.meta?.hidden) {
     notFound();
   }
 
-  const { blocks } = await getClientsPageContent(segment);
-
-  return <ClientsPage blocks={blocks} segment={segment} />;
+  return <ClientsPage blocks={page.blocks} segment={segment} />;
 }

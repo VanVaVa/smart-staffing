@@ -1,9 +1,8 @@
-import Image from "next/image";
-
 import type { ClientsPlatformContent } from "@/entities/landing";
 import { ArrowIcon } from "@/shared/ui/arrow-icon";
 import { Badge } from "@/shared/ui/badge";
 import { Container } from "@/shared/ui/container";
+import { CoverImageFrame } from "@/shared/ui/cover-image-frame";
 
 import styles from "./ClientsPlatformSection.module.css";
 
@@ -55,16 +54,12 @@ export function ClientsPlatformSection({ content }: ClientsPlatformSectionProps)
           </div>
           <div className={styles["clients-platform-section__main"]}>
             <figure className={styles["clients-platform-section__preview"]}>
-              <div>
-                <Image
-                  className={styles["clients-platform-section__preview-image"]}
-                  src={content.imageSrc}
-                  alt={content.imageAlt}
-                  width={content.imageWidth}
-                  height={content.imageHeight}
-                  sizes="(max-width: 450px) 328px, (max-width: 768px) 359px, (max-width: 1050px) 540px, (max-width: 1620px) 680px, 602px"
-                />
-              </div>
+              <CoverImageFrame
+                className={styles["clients-platform-section__preview-frame"]}
+                src={content.imageSrc}
+                alt={content.imageAlt}
+                sizes="(max-width: 450px) 328px, (max-width: 768px) 359px, (max-width: 1050px) 540px, (max-width: 1620px) 680px, 602px"
+              />
             </figure>
             <div className={styles["clients-platform-section__copy"]}>
               <h2 className={styles["clients-platform-section__title"]}>

@@ -28,9 +28,11 @@ export function AdminSectionListPage({
       backLabel="Админ-панель"
       publicHref={section.publicPath}
       actions={
-        <Link className={styles.add} href={`${basePath}/new`}>
-          + {section.addLabel}
-        </Link>
+        section.allowCreate === false ? undefined : (
+          <Link className={styles.add} href={`${basePath}/new`}>
+            + {section.addLabel}
+          </Link>
+        )
       }
     >
       {items.length === 0 ? (

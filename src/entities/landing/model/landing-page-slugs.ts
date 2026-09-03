@@ -1,5 +1,3 @@
-import { clientSegmentSlugs, type ClientSegmentSlug } from "./clients-content";
-
 export const LANDING_PAGE_SLUGS = {
   home: "home",
   about: "about",
@@ -7,12 +5,13 @@ export const LANDING_PAGE_SLUGS = {
   documents: "documents",
   media: "media",
   footer: "footer",
+  settings: "settings",
 } as const;
 
 export type StaticLandingPageSlug =
   (typeof LANDING_PAGE_SLUGS)[keyof typeof LANDING_PAGE_SLUGS];
 
-export function clientsPageSlug(segment: ClientSegmentSlug): string {
+export function clientsPageSlug(segment: string): string {
   return `clients-${segment}`;
 }
 
@@ -24,19 +23,15 @@ export function mediaArticlePageSlug(articleSlug: string): string {
   return `media-${articleSlug}`;
 }
 
-export function isClientSegmentPageSlug(
-  slug: string,
-): slug is `clients-${ClientSegmentSlug}` {
-  return clientSegmentSlugs.some((segment) => slug === clientsPageSlug(segment));
+export function isClientSegmentPageSlug(slug: string): slug is `clients-${string}` {
+  return slug.startsWith("clients-") && slug.length > "clients-".length;
 }
 
-export function parseClientSegmentFromSlug(slug: string): ClientSegmentSlug | null {
-  for (const segment of clientSegmentSlugs) {
-    if (slug === clientsPageSlug(segment)) {
-      return segment;
-    }
+export function parseClientSegmentFromSlug(slug: string): string | null {
+  if (!isClientSegmentPageSlug(slug)) {
+    return null;
   }
-  return null;
+  return slug.slice("clients-".length);
 }
 
 export function isDocumentPageSlug(slug: string): slug is `documents-${string}` {
@@ -64,7 +59,6 @@ export const STATIC_LANDING_PAGE_SLUGS: readonly string[] = [
   LANDING_PAGE_SLUGS.vacancies,
   LANDING_PAGE_SLUGS.documents,
   LANDING_PAGE_SLUGS.media,
-  ...clientSegmentSlugs.map(clientsPageSlug),
 ];
 
 export function isStaticLandingPageSlug(slug: string): boolean {
@@ -74,7 +68,9 @@ export function isStaticLandingPageSlug(slug: string): boolean {
 export function isKnownLandingPageSlug(slug: string): boolean {
   return (
     slug === LANDING_PAGE_SLUGS.footer ||
+    slug === LANDING_PAGE_SLUGS.settings ||
     isStaticLandingPageSlug(slug) ||
+    isClientSegmentPageSlug(slug) ||
     isDocumentPageSlug(slug) ||
     isMediaArticlePageSlug(slug)
   );

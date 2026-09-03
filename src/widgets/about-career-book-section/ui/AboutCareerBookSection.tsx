@@ -77,6 +77,7 @@ export function AboutCareerBookSection({ content }: AboutCareerBookSectionProps)
             <div className={styles["about-career-book-section__book-form"]}>
               <AboutBookForm
                 inputPlaceholder={book.form.inputPlaceholder}
+                buttonHref={book.form.buttonHref}
                 buttonLabel={book.form.buttonLabel}
               />
             </div>

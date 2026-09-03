@@ -1,6 +1,8 @@
 export type LandingPageMeta = {
   title: string;
   description: string;
+  hidden?: boolean;
+  navLabel?: string;
 };
 
 export type LandingBlockBase<TType extends string, TProps> = {

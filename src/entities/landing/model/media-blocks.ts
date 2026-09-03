@@ -1,4 +1,8 @@
-import type { MediaArticle, MediaPageContent } from "./media-content";
+import type {
+  MediaArticle,
+  MediaArticleTag,
+  MediaPageContent,
+} from "./media-content";
 import { isRecord, isString } from "../lib/block-parse-utils";
 import type { LandingBlockBase } from "./landing-block-base";
 
@@ -76,17 +80,26 @@ export function buildMediaPageContent(
   articles: MediaArticle[],
   title: string,
   requestedPage: number,
+  activeTag: MediaArticleTag | null = null,
 ): MediaPageContent {
+  const filteredArticles =
+    activeTag === null
+      ? articles
+      : articles.filter((article) => article.tag === activeTag);
   const itemsPerPage = 12;
-  const totalPages = Math.max(1, Math.ceil(articles.length / itemsPerPage));
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredArticles.length / itemsPerPage),
+  );
   const currentPage = Math.min(Math.max(requestedPage, 1), totalPages);
   const start = (currentPage - 1) * itemsPerPage;
-  const items = articles.slice(start, start + itemsPerPage);
+  const items = filteredArticles.slice(start, start + itemsPerPage);
 
   return {
     title,
     items,
     currentPage,
     totalPages,
+    activeTag,
   };
 }

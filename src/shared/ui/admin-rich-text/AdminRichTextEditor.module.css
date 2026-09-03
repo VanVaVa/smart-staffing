@@ -1,0 +1,120 @@
+.admin-rich-text {
+  display: grid;
+  gap: 8px;
+}
+
+.admin-rich-text__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.admin-rich-text__button {
+  min-width: 34px;
+  height: 34px;
+  padding: 0 10px;
+  border: 1px solid rgb(255 255 255 / 14%);
+  border-radius: 8px;
+  background: rgb(255 255 255 / 6%);
+  color: rgb(245 245 247 / 80%);
+  font: inherit;
+  font-size: 13px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.admin-rich-text__button:hover:not(:disabled) {
+  border-color: rgb(255 255 255 / 30%);
+  color: #f5f5f7;
+}
+
+.admin-rich-text__button--active {
+  border-color: rgb(79 140 255 / 70%);
+  background: rgb(79 140 255 / 18%);
+  color: #f5f5f7;
+}
+
+.admin-rich-text__button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.admin-rich-text__editor {
+  min-height: 120px;
+  padding: 10px 12px;
+  border: 1px solid rgb(255 255 255 / 14%);
+  border-radius: 10px;
+  background: rgb(255 255 255 / 6%);
+  color: #f5f5f7;
+  font: inherit;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.admin-rich-text__editor:focus-within {
+  border-color: rgb(255 255 255 / 40%);
+}
+
+.admin-rich-text--disabled .admin-rich-text__editor {
+  opacity: 0.5;
+}
+
+.admin-rich-text__editor :global(.tiptap) {
+  outline: none;
+  min-height: inherit;
+}
+
+.admin-rich-text__editor :global(.tiptap p),
+.admin-rich-text__editor :global(.tiptap h2),
+.admin-rich-text__editor :global(.tiptap h3),
+.admin-rich-text__editor :global(.tiptap blockquote),
+.admin-rich-text__editor :global(.tiptap ul),
+.admin-rich-text__editor :global(.tiptap ol) {
+  margin: 0 0 0.75em;
+}
+
+.admin-rich-text__editor :global(.tiptap p:last-child),
+.admin-rich-text__editor :global(.tiptap h2:last-child),
+.admin-rich-text__editor :global(.tiptap h3:last-child),
+.admin-rich-text__editor :global(.tiptap blockquote:last-child),
+.admin-rich-text__editor :global(.tiptap ul:last-child),
+.admin-rich-text__editor :global(.tiptap ol:last-child) {
+  margin-bottom: 0;
+}
+
+.admin-rich-text__editor :global(.tiptap h2) {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.admin-rich-text__editor :global(.tiptap h3) {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.admin-rich-text__editor :global(.tiptap blockquote) {
+  padding-left: 12px;
+  border-left: 3px solid rgb(255 255 255 / 25%);
+}
+
+.admin-rich-text__editor :global(.tiptap ul),
+.admin-rich-text__editor :global(.tiptap ol) {
+  padding-left: 24px;
+}
+
+.admin-rich-text__editor :global(.tiptap ul) {
+  list-style: disc;
+}
+
+.admin-rich-text__editor :global(.tiptap ol) {
+  list-style: decimal;
+}
+
+.admin-rich-text__editor :global(.tiptap li + li) {
+  margin-top: 4px;
+}
+
+.admin-rich-text__editor :global(.tiptap a) {
+  color: #8eb7ff;
+  text-decoration: underline;
+}

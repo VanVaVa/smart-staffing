@@ -58,12 +58,17 @@ const createDocument = (
   presentation,
 });
 
+const REGISTRY_EXTERNAL_HREF = "https://reestr.digital.gov.ru/reestr/918396/";
+
 const categories: DocumentCategory[] = [
   {
     id: "product",
     title: "О\u00a0продукте",
     items: [
-      createDocument("domestic-software-registry", "Реестр отечественного ПО"),
+      {
+        ...createDocument("domestic-software-registry", "Реестр отечественного ПО"),
+        href: REGISTRY_EXTERNAL_HREF,
+      },
       createDocument(
         "exclusive-software-rights",
         "Исключительные права на\u00a0ПО",

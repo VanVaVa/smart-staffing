@@ -291,6 +291,20 @@
   }
 }
 
+@media (max-width: 499px) {
+  .platform-onboarding-demo__mockup {
+    top: 188px;
+    right: 0;
+    left: auto;
+    width: 364px;
+  }
+
+  .platform-onboarding-demo__promo-text {
+    font-size: var(--text-body-sm);
+    line-height: var(--line-body-sm);
+  }
+}
+
 @media (max-width: 450px) {
   .platform-onboarding-demo__stage {
     display: flex;

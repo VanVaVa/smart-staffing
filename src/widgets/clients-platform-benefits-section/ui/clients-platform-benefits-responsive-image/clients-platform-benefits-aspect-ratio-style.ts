@@ -9,19 +9,21 @@ const responsiveBreakpoints: readonly ClientsPlatformBenefitsResponsiveBreakpoin
   ["1440", "992", "768", "576", "360"];
 
 export function getClientsPlatformBenefitsAspectRatioStyle(
-  images: ClientsPlatformBenefitsImageFields,
+  images: ClientsPlatformBenefitsImageFields | undefined,
 ): CSSProperties {
+  const imageWidth = images?.imageWidth || 1;
+  const imageHeight = images?.imageHeight || 1;
   const style: Record<string, string> = {
-    "--card-ar": `${images.imageWidth} / ${images.imageHeight}`,
+    "--card-ar": `${imageWidth} / ${imageHeight}`,
   };
 
   for (const breakpoint of responsiveBreakpoints) {
-    const image = images.responsiveImages?.[breakpoint];
+    const image = images?.responsiveImages?.[breakpoint];
     if (!image) {
       continue;
     }
 
-    style[`--card-ar-${breakpoint}`] = `${image.imageWidth} / ${image.imageHeight}`;
+    style[`--card-ar-${breakpoint}`] = `${image.imageWidth || 1} / ${image.imageHeight || 1}`;
   }
 
   return style as CSSProperties;

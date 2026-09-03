@@ -1,0 +1,131 @@
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  display: grid;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgb(255 255 255 / 10%);
+  background: rgb(15 17 21 / 96%);
+  color: #f5f5f7;
+  backdrop-filter: blur(8px);
+}
+
+.toolbar__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.toolbar__back {
+  color: rgb(245 245 247 / 70%);
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.toolbar__back:hover {
+  color: #fff;
+}
+
+.toolbar__field {
+  display: grid;
+  gap: 4px;
+  min-width: 160px;
+}
+
+.toolbar__label {
+  font-size: 11px;
+  color: rgb(245 245 247 / 55%);
+}
+
+.toolbar__input,
+.toolbar__textarea {
+  padding: 6px 8px;
+  border: 1px solid rgb(255 255 255 / 14%);
+  border-radius: 6px;
+  background: rgb(255 255 255 / 6%);
+  color: #fff;
+  font: inherit;
+}
+
+.toolbar__textarea {
+  min-width: 260px;
+  min-height: 64px;
+  resize: vertical;
+}
+
+.toolbar__checkbox {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.toolbar__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-left: auto;
+}
+
+.toolbar__save,
+.toolbar__delete,
+.toolbar__link {
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.toolbar__save {
+  border: none;
+  background: #0066ff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.toolbar__save:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.toolbar__delete {
+  border: 1px solid rgb(255 255 255 / 14%);
+  background: transparent;
+  color: #ffb4b4;
+  cursor: pointer;
+}
+
+.toolbar__link {
+  color: rgb(245 245 247 / 75%);
+}
+
+.toolbar__saved {
+  color: #8fd694;
+  font-size: 13px;
+}
+
+.toolbar__error {
+  margin: 0;
+  color: #ffb4b4;
+  font-size: 13px;
+}
+
+.toolbar__details {
+  border-top: 1px solid rgb(255 255 255 / 8%);
+  padding-top: 8px;
+}
+
+.toolbar__summary {
+  cursor: pointer;
+  color: rgb(245 245 247 / 75%);
+  font-size: 13px;
+}
+
+.toolbar__seo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}

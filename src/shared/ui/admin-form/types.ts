@@ -15,6 +15,7 @@ type AdminFieldCommon = {
 export type AdminField =
   | (AdminFieldCommon & { kind: "text" })
   | (AdminFieldCommon & { kind: "textarea"; rows?: number })
+  | (AdminFieldCommon & { kind: "richtext"; minHeight?: number })
   | (AdminFieldCommon & { kind: "number" })
   | (AdminFieldCommon & { kind: "checkbox" })
   | (AdminFieldCommon & { kind: "select"; options: AdminFieldOption[] })

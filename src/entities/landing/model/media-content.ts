@@ -1,5 +1,21 @@
 export type MediaArticleTag = "important" | "interesting" | "news";
 
+export const MEDIA_ARTICLE_TAGS: MediaArticleTag[] = [
+  "important",
+  "interesting",
+  "news",
+];
+
+export const MEDIA_ARTICLE_TAG_LABELS: Record<MediaArticleTag, string> = {
+  important: "Важное",
+  interesting: "Интересное",
+  news: "Новость",
+};
+
+export function isMediaArticleTag(value: string): value is MediaArticleTag {
+  return MEDIA_ARTICLE_TAGS.includes(value as MediaArticleTag);
+}
+
 export type MediaArticle = {
   id: string;
   slug: string;
@@ -55,6 +71,7 @@ export type MediaPageContent = {
   items: MediaArticle[];
   currentPage: number;
   totalPages: number;
+  activeTag: MediaArticleTag | null;
 };
 
 const exampleSlug =

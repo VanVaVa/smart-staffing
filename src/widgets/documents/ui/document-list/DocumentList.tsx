@@ -93,6 +93,17 @@ export function DocumentList({
                           {document.title}
                         </span>
                       </button>
+                    ) : document.href.startsWith("http") ? (
+                      <a
+                        className={styles["document-list__link"]}
+                        href={document.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <span>
+                          {document.title}
+                        </span>
+                      </a>
                     ) : (
                       <Link
                         className={styles["document-list__link"]}

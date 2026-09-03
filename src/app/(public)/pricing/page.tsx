@@ -1,5 +1,11 @@
 import { redirect } from "next/navigation";
 
-export default function PricingPage() {
-  redirect("/pricing/enterprise");
+import { listVisibleClientsPages } from "@/entities/landing/server";
+
+export default async function PricingPage() {
+  const pages = await listVisibleClientsPages();
+  if (pages.length === 0) {
+    redirect("/");
+  }
+  redirect(pages[0].href.replace("/clients/", "/pricing/"));
 }

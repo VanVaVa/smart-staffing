@@ -10,6 +10,7 @@ type PaginationProps = {
   currentPage: number;
   totalPages: number;
   pathname: string;
+  query?: Record<string, string | undefined>;
 };
 
 function getPaginationItems(
@@ -46,14 +47,34 @@ function getPaginationItems(
   ];
 }
 
-function getPageHref(pathname: string, page: number) {
-  return page === 1 ? pathname : `${pathname}?page=${page}`;
+function getPageHref(
+  pathname: string,
+  page: number,
+  query?: Record<string, string | undefined>,
+) {
+  const params = new URLSearchParams();
+
+  if (query) {
+    for (const [key, value] of Object.entries(query)) {
+      if (value) {
+        params.set(key, value);
+      }
+    }
+  }
+
+  if (page > 1) {
+    params.set("page", String(page));
+  }
+
+  const search = params.toString();
+  return search ? `${pathname}?${search}` : pathname;
 }
 
 export function Pagination({
   currentPage,
   totalPages,
   pathname,
+  query,
 }: PaginationProps) {
   if (totalPages <= 1) {
     return null;
@@ -67,7 +88,7 @@ export function Pagination({
     <nav className={styles.pagination} aria-label="Навигация по страницам">
       {showPrev ? (
         <NextLink
-          href={getPageHref(pathname, currentPage - 1)}
+          href={getPageHref(pathname, currentPage - 1, query)}
           className={styles.pagination__arrow}
           aria-label="Предыдущая страница"
           scroll
@@ -91,7 +112,7 @@ export function Pagination({
           ) : (
             <NextLink
               key={item}
-              href={getPageHref(pathname, item)}
+              href={getPageHref(pathname, item, query)}
               className={[
                 styles.pagination__page,
                 item === currentPage
@@ -111,7 +132,7 @@ export function Pagination({
       </div>
       {showNext ? (
         <NextLink
-          href={getPageHref(pathname, currentPage + 1)}
+          href={getPageHref(pathname, currentPage + 1, query)}
           className={styles.pagination__arrow}
           aria-label="Следующая страница"
           scroll

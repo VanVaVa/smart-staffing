@@ -147,3 +147,11 @@ export function clientsMetaFromStaticContent(segment: ClientSegmentSlug): {
 } {
   return { ...clientsSegments[segment].meta };
 }
+
+export function createDefaultClientsPageBlocks(): Array<{
+  order: number;
+  type: ClientsBlockType;
+  props: ClientsBlockPropsByType[ClientsBlockType];
+}> {
+  return clientsBlocksFromStaticContent("enterprise");
+}

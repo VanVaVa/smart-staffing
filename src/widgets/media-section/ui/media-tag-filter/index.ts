@@ -1,0 +1,1 @@
+export { MediaTagFilter } from "./MediaTagFilter";

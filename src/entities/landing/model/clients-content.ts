@@ -41,26 +41,28 @@ export const pricingPlatformBenefitsMobileOrder360: Partial<
 };
 
 export function getClientsPlatformBenefitsMobileOrder(
-  segment: ClientSegmentSlug,
+  segment: string,
   pageVariant: ClientsPageVariant = "clients",
 ): readonly number[] {
+  const knownSegment = segment as ClientSegmentSlug;
   if (pageVariant === "pricing") {
-    return pricingPlatformBenefitsMobileOrder[segment] ?? clientsPlatformBenefitsMobileOrder[segment];
+    return pricingPlatformBenefitsMobileOrder[knownSegment] ?? clientsPlatformBenefitsMobileOrder[knownSegment] ?? [1, 2, 3, 4];
   }
 
-  return clientsPlatformBenefitsMobileOrder[segment];
+  return clientsPlatformBenefitsMobileOrder[knownSegment] ?? [1, 2, 3, 4];
 }
 
 export function getClientsPlatformBenefitsMobileOrder360(
-  segment: ClientSegmentSlug,
+  segment: string,
   pageVariant: ClientsPageVariant = "clients",
 ): readonly number[] | undefined {
+  const knownSegment = segment as ClientSegmentSlug;
   if (pageVariant === "pricing") {
-    return pricingPlatformBenefitsMobileOrder360[segment]
-      ?? clientsPlatformBenefitsMobileOrder360[segment];
+    return pricingPlatformBenefitsMobileOrder360[knownSegment]
+      ?? clientsPlatformBenefitsMobileOrder360[knownSegment];
   }
 
-  return clientsPlatformBenefitsMobileOrder360[segment];
+  return clientsPlatformBenefitsMobileOrder360[knownSegment];
 }
 
 export type ClientsHeroSubtitle = {
@@ -629,7 +631,7 @@ export const clientsSegments: Record<ClientSegmentSlug, ClientsSegmentContent> =
   },
 };
 
-const clientSegmentFooterLabels: Record<ClientSegmentSlug, string> = {
+export const clientSegmentFooterLabels: Record<ClientSegmentSlug, string> = {
   enterprise: "Крупным корпорациям",
   outstaffing: "Аутстаффинговым и\u00a0аутсорсинговым компаниям",
   "mid-market": "Среднему бизнесу",

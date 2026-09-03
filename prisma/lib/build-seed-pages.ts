@@ -3,7 +3,7 @@ import {
   clientsBlocksFromStaticContent,
   clientsMetaFromStaticContent,
 } from "../../src/entities/landing/model/clients-blocks";
-import { clientSegmentSlugs } from "../../src/entities/landing/model/clients-content";
+import { clientSegmentFooterLabels, clientSegmentSlugs } from "../../src/entities/landing/model/clients-content";
 import {
   caseStudies,
   contactSection,
@@ -16,6 +16,7 @@ import {
 } from "../../src/entities/landing/model/content";
 import { documentViewBlocksFromItem } from "../../src/entities/landing/model/document-view-blocks";
 import { documentsBlocksFromStaticContent } from "../../src/entities/landing/model/documents-blocks";
+import { emailSettingsBlocksFromStaticContent } from "../../src/entities/landing/model/email-settings-blocks";
 import { footerBlocksFromStaticContent } from "../../src/entities/landing/model/footer-blocks";
 import {
   documentSlugs,
@@ -43,7 +44,7 @@ export type SeedBlock = {
 export type SeedPage = {
   slug: string;
   title: string;
-  meta: { title: string; description: string };
+  meta: { title: string; description: string; navLabel?: string; hidden?: boolean };
   blocks: SeedBlock[];
 };
 
@@ -53,7 +54,7 @@ const homeSeedBlocks: SeedBlock[] = [
     type: "hero",
     props: {
       title: heroContent.title,
-      subtitleLead: "50 000+ специалистов из\u00a0150+ компаний-партнёров",
+      subtitleLead: "50 000+ специалистов из\u00a0200+ компаний-партнёров",
       subtitleTail: "на\u00a0единой СмартСтаффинг-платформе",
       primaryCta: heroContent.primaryCta,
       registryLabel: heroContent.registryLabel,
@@ -197,6 +198,16 @@ export function buildSeedPages(): SeedPage[] {
         description: "Глобальные настройки футера сайта.",
       },
       blocks: footerBlocksFromStaticContent(),
+    },
+    {
+      slug: LANDING_PAGE_SLUGS.settings,
+      title: "Настройки",
+      meta: {
+        title: "Настройки — СмартСтаффинг",
+        description: "Email-адреса и параметры уведомлений.",
+        hidden: true,
+      },
+      blocks: emailSettingsBlocksFromStaticContent(),
     },
   ];
 

@@ -1,4 +1,4 @@
-import type { MediaArticle } from "@/entities/landing";
+import type { MediaArticle, MediaArticleTag } from "@/entities/landing";
 import {
   buildMediaPageContent,
   type MediaBlock,
@@ -11,9 +11,15 @@ type MediaPageProps = {
   blocks: MediaBlock[];
   articles: MediaArticle[];
   currentPage?: number;
+  activeTag?: MediaArticleTag | null;
 };
 
-export function MediaPage({ blocks, articles, currentPage = 1 }: MediaPageProps) {
+export function MediaPage({
+  blocks,
+  articles,
+  currentPage = 1,
+  activeTag = null,
+}: MediaPageProps) {
   const block = blocks.find((item) => item.type === "mediaListing");
 
   if (!block) {
@@ -23,7 +29,12 @@ export function MediaPage({ blocks, articles, currentPage = 1 }: MediaPageProps)
   return (
     <div className={styles["media-page"]} data-header-veil-bg="#f9f9fb">
       <MediaSection
-        display={buildMediaPageContent(articles, block.props.title, currentPage)}
+        display={buildMediaPageContent(
+          articles,
+          block.props.title,
+          currentPage,
+          activeTag,
+        )}
         showPagination
       />
     </div>

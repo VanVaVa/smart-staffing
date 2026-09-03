@@ -12,8 +12,11 @@ import {
   LANDING_PAGE_SLUGS,
   mediaArticlePageSlug,
 } from "../model/landing-page-slugs";
-import type { ClientSegmentSlug } from "../model/clients-content";
 import type { VacanciesPageContent } from "../model/vacancies-blocks";
+import {
+  getClientsPageBySegment,
+  listVisibleClientsPages,
+} from "../lib/get-clients-pages";
 import {
   getFooterContent,
   getFooterPageBlocks,
@@ -71,6 +74,8 @@ export {
   listMediaArticlePageSlugs,
   listMediaArticles,
   mediaArticleExists,
+  getClientsPageBySegment,
+  listVisibleClientsPages,
 };
 
 export async function getAboutPageContent(): Promise<AboutPageContent> {
@@ -110,7 +115,7 @@ export async function getMediaArticlePageContent(
 }
 
 export async function getClientsPageContent(
-  segment: ClientSegmentSlug,
+  segment: string,
 ): Promise<ClientsPageContent> {
   return (await getLandingPageContent(
     clientsPageSlug(segment),
