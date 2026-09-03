@@ -61,35 +61,49 @@ type AdminRichTextToolbarProps = {
   disabled?: boolean;
 };
 
-function AdminRichTextToolbar({ editor, disabled }: AdminRichTextToolbarProps) {
-  const activeState = useEditorState({
-    editor,
-    selector: ({ editor: currentEditor }) => {
-      if (!currentEditor) {
-        return {
-          bold: false,
-          italic: false,
-          heading2: false,
-          heading3: false,
-          bulletList: false,
-          orderedList: false,
-          blockquote: false,
-          link: false,
-        };
-      }
+type ToolbarActiveState = {
+  bold: boolean;
+  italic: boolean;
+  heading2: boolean;
+  heading3: boolean;
+  bulletList: boolean;
+  orderedList: boolean;
+  blockquote: boolean;
+  link: boolean;
+};
 
-      return {
-        bold: currentEditor.isActive("bold"),
-        italic: currentEditor.isActive("italic"),
-        heading2: currentEditor.isActive("heading", { level: 2 }),
-        heading3: currentEditor.isActive("heading", { level: 3 }),
-        bulletList: currentEditor.isActive("bulletList"),
-        orderedList: currentEditor.isActive("orderedList"),
-        blockquote: currentEditor.isActive("blockquote"),
-        link: currentEditor.isActive("link"),
-      };
-    },
-  });
+const defaultToolbarActiveState: ToolbarActiveState = {
+  bold: false,
+  italic: false,
+  heading2: false,
+  heading3: false,
+  bulletList: false,
+  orderedList: false,
+  blockquote: false,
+  link: false,
+};
+
+function AdminRichTextToolbar({ editor, disabled }: AdminRichTextToolbarProps) {
+  const activeState =
+    useEditorState({
+      editor,
+      selector: ({ editor: currentEditor }) => {
+        if (!currentEditor) {
+          return defaultToolbarActiveState;
+        }
+
+        return {
+          bold: currentEditor.isActive("bold"),
+          italic: currentEditor.isActive("italic"),
+          heading2: currentEditor.isActive("heading", { level: 2 }),
+          heading3: currentEditor.isActive("heading", { level: 3 }),
+          bulletList: currentEditor.isActive("bulletList"),
+          orderedList: currentEditor.isActive("orderedList"),
+          blockquote: currentEditor.isActive("blockquote"),
+          link: currentEditor.isActive("link"),
+        };
+      },
+    }) ?? defaultToolbarActiveState;
 
   function setLink() {
     if (!editor) {
