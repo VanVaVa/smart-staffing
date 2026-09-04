@@ -3,6 +3,7 @@
 import type { CSSProperties } from "react";
 
 import { Badge } from "@/shared/ui/badge";
+import { ArrowIcon } from "@/shared/ui/arrow-icon";
 import { AdminInlineImage, AdminInlineText } from "@/shared/ui/admin-inline-field";
 
 import cardStyles from "@/shared/ui/case-study-card/CaseStudyCard.module.css";
@@ -18,11 +19,13 @@ type EditableCaseStudyCardProps = {
   description: string;
   metric: string;
   metricLabel: string;
+  href: string;
   disabled?: boolean;
   onTagChange: (tag: string) => void;
   onDescriptionChange: (description: string) => void;
   onMetricChange: (metric: string) => void;
   onMetricLabelChange: (metricLabel: string) => void;
+  onHrefChange: (href: string) => void;
   onPanelSrcChange: (panelSrc: string) => void;
   onLogoSrcChange: (logoSrc: string) => void;
 };
@@ -36,11 +39,13 @@ export function EditableCaseStudyCard({
   description,
   metric,
   metricLabel,
+  href,
   disabled,
   onTagChange,
   onDescriptionChange,
   onMetricChange,
   onMetricLabelChange,
+  onHrefChange,
   onPanelSrcChange,
   onLogoSrcChange,
 }: EditableCaseStudyCardProps) {
@@ -176,6 +181,31 @@ export function EditableCaseStudyCard({
             multiline
             onChange={onDescriptionChange}
           />
+        </div>
+      </div>
+      <div
+        className={[
+          cardStyles["case-study-card__footer"],
+          editableStyles["editable-case-study-card__footer"],
+        ].join(" ")}
+      >
+        <div className={editableStyles["editable-case-study-card__link-row"]}>
+          <AdminInlineText
+            className={editableStyles["editable-case-study-card__link-field"]}
+            value={href}
+            disabled={disabled}
+            placeholder="/media/article-slug"
+            onChange={onHrefChange}
+          />
+          <span
+            className={[
+              cardStyles["case-study-card__action"],
+              editableStyles["editable-case-study-card__action"],
+            ].join(" ")}
+            aria-hidden
+          >
+            <ArrowIcon name="round" />
+          </span>
         </div>
       </div>
     </article>

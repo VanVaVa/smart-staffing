@@ -2,7 +2,10 @@ export {
   ADMIN_SECTIONS,
   ADMIN_SECTION_GROUPS,
   adminSectionPath,
+  buildArticleAdminFields,
+  buildArticleTagOptions,
   getAdminSection,
+  MEDIA_TAGS_SECTION_KEY,
 } from "./model/admin-sections";
 export type {
   AdminCollectionSection,
@@ -90,10 +93,10 @@ export {
 } from "./model/clients-admin-form";
 export type { PlatformBenefitsCardLayout } from "./model/clients-admin-form";
 export {
+  DEFAULT_MEDIA_TAGS,
   EXAMPLE_MEDIA_ARTICLE,
   isMediaArticleTag,
-  MEDIA_ARTICLE_TAG_LABELS,
-  MEDIA_ARTICLE_TAGS,
+  isMediaTagTone,
 } from "./model/media-content";
 export type {
   MediaArticle,
@@ -102,6 +105,8 @@ export type {
   MediaArticleRelated,
   MediaArticleTag,
   MediaPageContent,
+  MediaTagDefinition,
+  MediaTagTone,
 } from "./model/media-content";
 export {
   documentSlugs,

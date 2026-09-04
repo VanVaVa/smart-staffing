@@ -28,7 +28,7 @@ export function MediaCard({ article, href }: MediaCardProps) {
         <span
           className={[
             styles["media-card__tag"],
-            styles[`media-card__tag--${article.tag}`],
+            styles[`media-card__tag--${article.tagTone}`],
           ].join(" ")}
         >
           {article.tagLabel}

@@ -1,10 +1,14 @@
 "use client";
 
+import { useMemo, useState, useTransition, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
-import { useState, useTransition, type FormEvent } from "react";
 
 import { getAdminSection } from "@/entities/landing";
-import { AdminFields, type AdminValues } from "@/shared/ui/admin-form";
+import {
+  AdminFields,
+  type AdminFieldOption,
+  type AdminValues,
+} from "@/shared/ui/admin-form";
 
 import { deleteItemAction, saveItemAction, saveSingletonAction } from "../model/actions";
 
@@ -15,6 +19,7 @@ type AdminContentFormProps = {
   itemId: string | null;
   isNew: boolean;
   initialValues: AdminValues;
+  tagOptions?: readonly AdminFieldOption[];
 };
 
 export function AdminContentForm({
@@ -22,6 +27,7 @@ export function AdminContentForm({
   itemId,
   isNew,
   initialValues,
+  tagOptions,
 }: AdminContentFormProps) {
   const router = useRouter();
   const section = getAdminSection(sectionKey);
@@ -29,6 +35,18 @@ export function AdminContentForm({
   const [error, setError] = useState<string | null>(null);
   const [saved, setSaved] = useState(false);
   const [pending, startTransition] = useTransition();
+
+  const formFields = useMemo(() => {
+    if (!section || !tagOptions?.length) {
+      return section?.fields ?? [];
+    }
+
+    return section.fields.map((field) =>
+      field.kind === "select" && field.name === "tag"
+        ? { ...field, options: [...tagOptions] }
+        : field,
+    );
+  }, [section, tagOptions]);
 
   if (!section) {
     return <p className={styles.error}>Раздел не найден</p>;
@@ -70,7 +88,7 @@ export function AdminContentForm({
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <AdminFields
-        fields={section.fields}
+        fields={formFields}
         values={values}
         onChange={(next) => {
           setValues(next);

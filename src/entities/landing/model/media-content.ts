@@ -1,19 +1,28 @@
-export type MediaArticleTag = "important" | "interesting" | "news";
+export type MediaTagTone = "important" | "interesting" | "news";
 
-export const MEDIA_ARTICLE_TAGS: MediaArticleTag[] = [
-  "important",
-  "interesting",
-  "news",
-];
-
-export const MEDIA_ARTICLE_TAG_LABELS: Record<MediaArticleTag, string> = {
-  important: "Важное",
-  interesting: "Интересное",
-  news: "Новость",
+export type MediaTagDefinition = {
+  slug: string;
+  label: string;
+  tone: MediaTagTone;
 };
 
-export function isMediaArticleTag(value: string): value is MediaArticleTag {
-  return MEDIA_ARTICLE_TAGS.includes(value as MediaArticleTag);
+export const DEFAULT_MEDIA_TAGS: MediaTagDefinition[] = [
+  { slug: "important", label: "Важное", tone: "important" },
+  { slug: "interesting", label: "Интересное", tone: "interesting" },
+  { slug: "news", label: "Новость", tone: "news" },
+];
+
+export type MediaArticleTag = string;
+
+export function isMediaTagTone(value: string): value is MediaTagTone {
+  return value === "important" || value === "interesting" || value === "news";
+}
+
+export function isMediaArticleTag(
+  value: string,
+  tags: readonly MediaTagDefinition[],
+): boolean {
+  return tags.some((tag) => tag.slug === value);
 }
 
 export type MediaArticle = {
@@ -24,6 +33,7 @@ export type MediaArticle = {
   imageAlt: string;
   tag: MediaArticleTag;
   tagLabel: string;
+  tagTone: MediaTagTone;
   publishedAt: string;
   publishedLabel: string;
   title: string;
@@ -91,6 +101,7 @@ export const EXAMPLE_MEDIA_ARTICLE: MediaArticleContent = {
   heroImageAlt: "Современное рабочее пространство",
   tag: "important",
   tagLabel: "Важное",
+  tagTone: "important",
   publishedAt: examplePublishedAt,
   publishedLabel: examplePublishedLabel,
   title: exampleTitle,

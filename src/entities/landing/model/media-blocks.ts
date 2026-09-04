@@ -2,7 +2,9 @@ import type {
   MediaArticle,
   MediaArticleTag,
   MediaPageContent,
+  MediaTagDefinition,
 } from "./media-content";
+import { DEFAULT_MEDIA_TAGS, isMediaTagTone } from "./media-content";
 import { isRecord, isString } from "../lib/block-parse-utils";
 import type { LandingBlockBase } from "./landing-block-base";
 
@@ -12,6 +14,7 @@ export type MediaBlockType = (typeof MEDIA_BLOCK_TYPES)[number];
 
 export type MediaListingBlockProps = {
   title: string;
+  tags: MediaTagDefinition[];
 };
 
 export type MediaBlock = LandingBlockBase<"mediaListing", MediaListingBlockProps>;
@@ -24,13 +27,38 @@ export type MediaLandingPageContent = {
   blocks: MediaBlock[];
 };
 
-;
+function parseMediaTag(value: unknown): MediaTagDefinition | null {
+  if (!isRecord(value) || !isString(value.slug) || !isString(value.label)) {
+    return null;
+  }
+
+  return {
+    slug: value.slug,
+    label: value.label,
+    tone: isString(value.tone) && isMediaTagTone(value.tone) ? value.tone : "news",
+  };
+}
+
+function parseMediaTags(value: unknown): MediaTagDefinition[] {
+  if (!Array.isArray(value)) {
+    return DEFAULT_MEDIA_TAGS;
+  }
+
+  const tags = value
+    .map(parseMediaTag)
+    .filter((tag): tag is MediaTagDefinition => tag !== null);
+
+  return tags.length > 0 ? tags : DEFAULT_MEDIA_TAGS;
+}
 
 function parseMediaListingProps(value: unknown): MediaListingBlockProps | null {
   if (!isRecord(value) || !isString(value.title)) {
     return null;
   }
-  return { title: value.title };
+  return {
+    title: value.title,
+    tags: parseMediaTags(value.tags),
+  };
 }
 
 export function parseMediaBlockProps(
@@ -73,7 +101,13 @@ export function mediaBlocksFromStaticContent(): Array<{
   type: MediaBlockType;
   props: MediaListingBlockProps;
 }> {
-  return [{ order: 0, type: "mediaListing", props: { title: "Медиа" } }];
+  return [
+    {
+      order: 0,
+      type: "mediaListing",
+      props: { title: "Медиа", tags: DEFAULT_MEDIA_TAGS },
+    },
+  ];
 }
 
 export function buildMediaPageContent(

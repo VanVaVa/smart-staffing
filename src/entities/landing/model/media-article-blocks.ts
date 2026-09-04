@@ -2,8 +2,9 @@ import type {
   MediaArticle,
   MediaArticleBodyBlock,
   MediaArticleContent,
+  MediaTagTone,
 } from "./media-content";
-import { EXAMPLE_MEDIA_ARTICLE } from "./media-content";
+import { EXAMPLE_MEDIA_ARTICLE, isMediaTagTone } from "./media-content";
 import { cloneProps, isRecord, isString } from "../lib/block-parse-utils";
 import type { LandingBlockBase } from "./landing-block-base";
 
@@ -79,10 +80,13 @@ function parseMediaArticleProps(value: unknown): MediaArticleBlockProps | null {
     imageAlt,
     heroImageSrc,
     heroImageAlt,
-    tag: value.tag === "important" || value.tag === "interesting" || value.tag === "news"
-      ? value.tag
-      : "news",
+    tag: isString(value.tag) ? value.tag : "news",
     tagLabel: isString(value.tagLabel) ? value.tagLabel : "Новость",
+    tagTone: isString(value.tagTone) && isMediaTagTone(value.tagTone)
+      ? value.tagTone
+      : isMediaTagTone(isString(value.tag) ? value.tag : "")
+        ? (value.tag as MediaTagTone)
+        : "news",
     publishedAt: isString(value.publishedAt) ? value.publishedAt : "",
     publishedLabel: isString(value.publishedLabel) ? value.publishedLabel : "",
     title: value.title,
@@ -142,6 +146,7 @@ export function articleToMediaArticle(props: MediaArticleContent): MediaArticle 
     imageAlt: props.imageAlt,
     tag: props.tag,
     tagLabel: props.tagLabel,
+    tagTone: props.tagTone,
     publishedAt: props.publishedAt,
     publishedLabel: props.publishedLabel,
     title: props.title,
@@ -164,6 +169,7 @@ export function createDefaultMediaArticleProps(slug: string): MediaArticleBlockP
     heroImageAlt: "",
     tag: "news",
     tagLabel: "Новость",
+    tagTone: "news",
     publishedAt: today,
     publishedLabel,
     title: "Новая статья",

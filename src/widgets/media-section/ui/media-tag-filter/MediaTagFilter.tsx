@@ -1,14 +1,11 @@
 import NextLink from "next/link";
 
-import {
-  MEDIA_ARTICLE_TAG_LABELS,
-  MEDIA_ARTICLE_TAGS,
-  type MediaArticleTag,
-} from "@/entities/landing";
+import type { MediaArticleTag, MediaTagDefinition } from "@/entities/landing";
 
 import styles from "./MediaTagFilter.module.css";
 
 type MediaTagFilterProps = {
+  tags: readonly MediaTagDefinition[];
   activeTag: MediaArticleTag | null;
   pathname?: string;
 };
@@ -23,6 +20,7 @@ function getTagHref(pathname: string, tag: MediaArticleTag | null) {
 }
 
 export function MediaTagFilter({
+  tags,
   activeTag,
   pathname = "/media",
 }: MediaTagFilterProps) {
@@ -46,13 +44,13 @@ export function MediaTagFilter({
       >
         Все
       </NextLink>
-      {MEDIA_ARTICLE_TAGS.map((tag) => {
-        const isActive = activeTag === tag;
+      {tags.map((tag) => {
+        const isActive = activeTag === tag.slug;
 
         return (
           <NextLink
-            key={tag}
-            href={getTagHref(pathname, tag)}
+            key={tag.slug}
+            href={getTagHref(pathname, tag.slug)}
             scroll
             role="tab"
             aria-selected={isActive}
@@ -63,7 +61,7 @@ export function MediaTagFilter({
               .filter(Boolean)
               .join(" ")}
           >
-            {MEDIA_ARTICLE_TAG_LABELS[tag]}
+            {tag.label}
           </NextLink>
         );
       })}

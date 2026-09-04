@@ -99,6 +99,32 @@
   -webkit-box-orient: unset;
 }
 
+.editable-case-study-card__footer {
+  pointer-events: auto;
+}
+
+.editable-case-study-card__link-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.editable-case-study-card__link-field {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-body);
+  font-size: var(--text-body-sm);
+  line-height: var(--line-body-sm);
+  color: var(--color-grey-400);
+}
+
+.editable-case-study-card__action {
+  position: static;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
 @media (max-width: 1620px) {
   .editable-case-study-card__tag-field {
     font-size: var(--text-body-sm);

@@ -4,6 +4,7 @@ import type { AdminValues } from "@/shared/ui/admin-form";
 
 import {
   DOCUMENTS_CATEGORIES_SECTION_KEY,
+  MEDIA_TAGS_SECTION_KEY,
   type AdminCollectionSection,
   type AdminSingletonSection,
 } from "../model/admin-sections";
@@ -26,6 +27,7 @@ import {
   listMediaArticleProps,
   saveMediaArticleProps,
 } from "../lib/get-media-articles";
+import { countArticlesWithTag, listMediaTags } from "../lib/get-media-tags";
 import { syncDocumentPages } from "../lib/sync-document-pages";
 
 export type AdminSectionItem = {
@@ -127,6 +129,9 @@ async function writeCollection(
   section: AdminCollectionSection,
   items: AdminValues[],
 ): Promise<void> {
+  if (section.key === MEDIA_TAGS_SECTION_KEY) {
+    assertUniqueTagSlugs(items);
+  }
   await writeBlockPath(collectionStorage(section), items);
   if (section.key === DOCUMENTS_CATEGORIES_SECTION_KEY) {
     await syncDocumentPages();
@@ -144,6 +149,31 @@ function toStoredValues(
 ): AdminValues {
   const merged = { ...existing, ...values };
   return section.fromForm ? section.fromForm(merged) : merged;
+}
+
+function assertUniqueTagSlugs(items: AdminValues[]): void {
+  const slugs = items.map((item) => String(item.slug));
+  if (new Set(slugs).size !== slugs.length) {
+    throw new Error("Код тега должен быть уникальным");
+  }
+}
+
+async function resolveArticleStoredValues(
+  section: AdminCollectionSection,
+  existing: AdminValues,
+  values: AdminValues,
+): Promise<AdminValues> {
+  const stored = toStoredValues(section, existing, values);
+  const tags = await listMediaTags();
+  const tagSlug = typeof stored.tag === "string" ? stored.tag : "news";
+  const tagDef = tags.find((tag) => tag.slug === tagSlug) ?? tags[0];
+
+  return {
+    ...stored,
+    tag: tagDef?.slug ?? tagSlug,
+    tagLabel: tagDef?.label ?? "Новость",
+    tagTone: tagDef?.tone ?? "news",
+  };
 }
 
 export function isReorderableSection(section: AdminCollectionSection): boolean {
@@ -210,7 +240,7 @@ export async function createAdminSectionItem(
     const existing = await getMediaArticleProps(draft.slug);
     return saveMediaArticleProps(
       draft.slug,
-      toStoredValues(section, asValues(existing), values),
+      await resolveArticleStoredValues(section, asValues(existing), values),
     );
   }
   if (section.storage.kind === "clientsPages") {
@@ -243,7 +273,10 @@ export async function saveAdminSectionItem(
     if (!existing) {
       throw new Error(`Статья "${id}" не найдена`);
     }
-    return saveMediaArticleProps(id, toStoredValues(section, asValues(existing), values));
+    return saveMediaArticleProps(
+      id,
+      await resolveArticleStoredValues(section, asValues(existing), values),
+    );
   }
   if (section.storage.kind === "clientsPages") {
     const existing = await getClientsPageFormValues(id);
@@ -281,6 +314,28 @@ export async function deleteAdminSectionItem(
   }
   if (section.storage.kind === "clientsPages") {
     await deleteClientsPage(id);
+    return;
+  }
+
+  if (section.key === MEDIA_TAGS_SECTION_KEY) {
+    const items = await readCollection(section);
+    const index = Number(id);
+    const item = items[index];
+    if (!item) {
+      throw new Error("Элемент не найден");
+    }
+    if (items.length <= 1) {
+      throw new Error("Нельзя удалить последний тег");
+    }
+    const slug = String(item.slug);
+    const usageCount = await countArticlesWithTag(slug);
+    if (usageCount > 0) {
+      throw new Error(`Тег используется в ${usageCount} статьях`);
+    }
+    await writeCollection(
+      section,
+      items.filter((_, itemIndex) => itemIndex !== index),
+    );
     return;
   }
 

@@ -51,8 +51,10 @@ export function EditableClientsPartnersExperienceSection({
             description={String(formCaseStudy.description ?? caseStudy.description)}
             metric={String(formCaseStudy.metric ?? caseStudy.metric)}
             metricLabel={String(formCaseStudy.metricLabel ?? caseStudy.metricLabel)}
+            href={String(formCaseStudy.href ?? caseStudy.href ?? "")}
             disabled={disabled}
             onTagChange={(tag) => onChange(patchCaseStudy(values, { tag }))}
+            onHrefChange={(href) => onChange(patchCaseStudy(values, { href }))}
             onDescriptionChange={(description) =>
               onChange(patchCaseStudy(values, { description }))
             }

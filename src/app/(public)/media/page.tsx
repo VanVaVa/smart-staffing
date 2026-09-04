@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 
 import {
+  DEFAULT_MEDIA_TAGS,
+  isMediaArticleTag,
+  type MediaArticleTag,
+} from "@/entities/landing";
+import {
   getMediaLandingPageContent,
   listMediaArticles,
 } from "@/entities/landing/server";
-import { isMediaArticleTag } from "@/entities/landing";
-import type { MediaArticleTag } from "@/entities/landing";
 import { MediaPage } from "@/views/media";
 
 export const dynamic = "force-dynamic";
@@ -21,9 +24,10 @@ function getRequestedPage(value: string | string[] | undefined) {
 
 function getActiveTag(
   value: string | string[] | undefined,
+  tags: typeof DEFAULT_MEDIA_TAGS,
 ): MediaArticleTag | null {
   const tag = Array.isArray(value) ? value[0] : value;
-  if (!tag || !isMediaArticleTag(tag)) {
+  if (!tag || !isMediaArticleTag(tag, tags)) {
     return null;
   }
   return tag;
@@ -47,13 +51,15 @@ export default async function Page({ searchParams }: PageProps) {
     getMediaLandingPageContent(),
     listMediaArticles(),
   ]);
+  const listingBlock = blocks.find((item) => item.type === "mediaListing");
+  const tags = listingBlock?.props.tags ?? DEFAULT_MEDIA_TAGS;
 
   return (
     <MediaPage
       blocks={blocks}
       articles={articles}
       currentPage={getRequestedPage(page)}
-      activeTag={getActiveTag(tag)}
+      activeTag={getActiveTag(tag, tags)}
     />
   );
 }

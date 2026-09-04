@@ -1,5 +1,7 @@
 import { clientsPlatformBenefitsImageDimensions } from "../lib/clients-platform-benefits-image-dimensions";
 
+import { CASE_STUDY_MEDIA_HREF } from "./case-study-media-href";
+
 export const clientSegmentSlugs = [
   "enterprise",
   "outstaffing",
@@ -290,7 +292,7 @@ const enterprisePlatformBenefits: ClientsPlatformBenefitsContent = {
 const enterprisePartnersExperience: ClientsPartnersExperienceContent = {
   sectionTitle: "Реальный опыт наших партнёров",
   caseStudy: {
-    href: "https://repola.dev/",
+    href: CASE_STUDY_MEDIA_HREF,
     tag: "Банк",
     panelSrc: "/landing/case-studies/panel-bg-case-3.png",
     panelWidth: 571,
@@ -382,7 +384,7 @@ const outstaffingPlatformBenefits: ClientsPlatformBenefitsContent = {
 const outstaffingPartnersExperience: ClientsPartnersExperienceContent = {
   sectionTitle: "Реальный опыт наших партнёров",
   caseStudy: {
-    href: "https://repola.dev/",
+    href: CASE_STUDY_MEDIA_HREF,
     tag: "Банк",
     panelSrc: "/landing/case-studies/panel-bg-case-3.png",
     panelWidth: 571,
@@ -468,7 +470,7 @@ const midMarketPlatformBenefits: ClientsPlatformBenefitsContent = {
 const midMarketPartnersExperience: ClientsPartnersExperienceContent = {
   sectionTitle: "Реальный опыт наших партнёров",
   caseStudy: {
-    href: "https://repola.dev/",
+    href: CASE_STUDY_MEDIA_HREF,
     tag: "Банк",
     panelSrc: "/landing/case-studies/panel-bg-case-3.png",
     panelWidth: 571,

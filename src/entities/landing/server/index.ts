@@ -48,6 +48,11 @@ import {
   listMediaArticles,
   mediaArticleExists,
 } from "../lib/get-media-articles";
+import {
+  countArticlesWithTag,
+  getMediaTagBySlug,
+  listMediaTags,
+} from "../lib/get-media-tags";
 
 export type { AdminSectionItem };
 
@@ -69,10 +74,13 @@ export {
   getFooterContent,
   getFooterPageBlocks,
   buildRelatedArticles,
+  countArticlesWithTag,
   createMediaArticle,
   deleteMediaArticle,
+  getMediaTagBySlug,
   listMediaArticlePageSlugs,
   listMediaArticles,
+  listMediaTags,
   mediaArticleExists,
   getClientsPageBySegment,
   listVisibleClientsPages,

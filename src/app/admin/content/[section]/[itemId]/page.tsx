@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { getAdminSection } from "@/entities/landing";
-import { getFooterContent, readAdminSectionItem } from "@/entities/landing/server";
+import { buildArticleTagOptions, getAdminSection } from "@/entities/landing";
+import { getFooterContent, listMediaTags, readAdminSectionItem } from "@/entities/landing/server";
 import { emptyValues } from "@/shared/ui/admin-form";
 import { AdminSectionFormPage } from "@/views/admin-content";
 import { AdminClientsEditorPage } from "@/views/admin-clients-editor";
@@ -50,6 +50,9 @@ export default async function Page({ params }: PageProps) {
     );
   }
 
+  const tagOptions =
+    sectionKey === "articles" ? buildArticleTagOptions(await listMediaTags()) : undefined;
+
   if (itemId === "new") {
     return (
       <AdminSectionFormPage
@@ -58,6 +61,7 @@ export default async function Page({ params }: PageProps) {
         isNew
         title={section.addLabel}
         values={{ ...emptyValues(section.fields), ...section.createValues() }}
+        tagOptions={tagOptions}
       />
     );
   }
@@ -74,6 +78,7 @@ export default async function Page({ params }: PageProps) {
       isNew={false}
       title={section.itemTitle(values, Number(itemId) || 0) || section.title}
       values={{ ...emptyValues(section.fields), ...values }}
+      tagOptions={tagOptions}
     />
   );
 }

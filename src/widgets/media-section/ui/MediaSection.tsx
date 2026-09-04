@@ -1,4 +1,4 @@
-import type { MediaPageContent } from "@/entities/landing";
+import type { MediaPageContent, MediaTagDefinition } from "@/entities/landing";
 import { Container, Pagination } from "@/shared/ui";
 
 import { MediaCard } from "./media-card";
@@ -7,17 +7,22 @@ import styles from "./MediaSection.module.css";
 
 type MediaSectionProps = {
   display: MediaPageContent;
+  tags: readonly MediaTagDefinition[];
   showPagination?: boolean;
 };
 
-export function MediaSection({ display, showPagination = true }: MediaSectionProps) {
+export function MediaSection({
+  display,
+  tags,
+  showPagination = true,
+}: MediaSectionProps) {
   return (
     <section className={styles["media-section"]}>
       <Container className={styles["media-section__container"]}>
         <h1 className={styles["media-section__title"]}>
           {display.title}
         </h1>
-        <MediaTagFilter activeTag={display.activeTag} />
+        <MediaTagFilter tags={tags} activeTag={display.activeTag} />
         <div
           className={styles["media-section__grid"]}
           data-header-veil-bg="transparent"

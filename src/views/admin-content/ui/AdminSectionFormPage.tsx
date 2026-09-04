@@ -1,6 +1,6 @@
 import type { AdminSection } from "@/entities/landing";
 import { AdminContentForm } from "@/features/admin-content-editor";
-import type { AdminValues } from "@/shared/ui/admin-form";
+import type { AdminFieldOption, AdminValues } from "@/shared/ui/admin-form";
 import { AdminPageShell } from "@/widgets/admin-page-shell";
 
 type AdminSectionFormPageProps = {
@@ -9,6 +9,7 @@ type AdminSectionFormPageProps = {
   isNew: boolean;
   title: string;
   values: AdminValues;
+  tagOptions?: readonly AdminFieldOption[];
 };
 
 export function AdminSectionFormPage({
@@ -17,6 +18,7 @@ export function AdminSectionFormPage({
   isNew,
   title,
   values,
+  tagOptions,
 }: AdminSectionFormPageProps) {
   const isCollection = section.mode === "collection";
 
@@ -33,6 +35,7 @@ export function AdminSectionFormPage({
         itemId={itemId}
         isNew={isNew}
         initialValues={values}
+        tagOptions={tagOptions}
       />
     </AdminPageShell>
   );

@@ -12,7 +12,6 @@ type ArticleHeroProps = {
 function ArticleHeroImage({
   src,
   alt,
-  placeholder,
   className,
   imageClassName,
   sizes,
@@ -20,7 +19,6 @@ function ArticleHeroImage({
 }: {
   src: string;
   alt: string;
-  placeholder: string;
   className?: string;
   imageClassName?: string;
   sizes: string;
@@ -39,11 +37,27 @@ function ArticleHeroImage({
           className={imageClassName}
         />
       ) : (
-        <div className={styles["article-hero__placeholder"]}>
-          <span className={styles["article-hero__placeholder-icon"]} aria-hidden>
-            +
-          </span>
-          <span className={styles["article-hero__placeholder-text"]}>{placeholder}</span>
+        <div
+          className={styles["article-hero__placeholder"]}
+          role="img"
+          aria-label={alt || "Изображение статьи"}
+        >
+          <svg
+            className={styles["article-hero__placeholder-icon"]}
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden
+          >
+            <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="1.5" />
+            <circle cx="8.5" cy="10" r="1.5" fill="currentColor" />
+            <path
+              d="M3 16l5-5 4 4 3-3 6 6"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinejoin="round"
+            />
+          </svg>
         </div>
       )}
     </div>
@@ -70,7 +84,6 @@ export function ArticleHero({ content }: ArticleHeroProps) {
         <ArticleHeroImage
           src={content.heroImageSrc}
           alt={content.heroImageAlt}
-          placeholder="Добавить заглавное изображение"
           className={styles["article-hero__hero-media"]}
           imageClassName={styles["article-hero__image"]}
           sizes="(max-width: 450px) 328px, (max-width: 576px) 164px, (max-width: 1050px) 304px, (max-width: 1620px) 445px, 601px"

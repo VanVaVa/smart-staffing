@@ -35,6 +35,7 @@ export function MediaPage({
           currentPage,
           activeTag,
         )}
+        tags={block.props.tags}
         showPagination
       />
     </div>

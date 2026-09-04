@@ -1,4 +1,5 @@
 import { clientSegmentFooterItems } from "./clients-content";
+import { CASE_STUDY_MEDIA_HREF } from "./case-study-media-href";
 
 export const landingNav = [
   { label: "О\u00a0компании", href: "/about" },
@@ -250,11 +251,13 @@ export const stepsSection = {
   ],
 } as const;
 
+export { CASE_STUDY_MEDIA_HREF } from "./case-study-media-href";
+
 export const caseStudies = {
   title: "Компании уже\u00a0используют платформу для\u00a0роста эффективности",
   items: [
     {
-      href: "https://teamforce.ru/",
+      href: CASE_STUDY_MEDIA_HREF,
       panelSrc: "/landing/case-studies/panel-bg-timforce.png",
       logoSrc: "/landing/case-studies/logo-timforce.svg",
       logoWidth: 340,
@@ -266,7 +269,7 @@ export const caseStudies = {
       metricLabel: "к\u00a0производительности проектного департамента",
     },
     {
-      href: "https://kayros-it.ru/",
+      href: CASE_STUDY_MEDIA_HREF,
       panelSrc: "/landing/case-studies/panel-bg-case-2.png",
       logoSrc: "/landing/case-studies/logo-case-2.svg",
       logoWidth: 246,
@@ -278,7 +281,7 @@ export const caseStudies = {
       metricLabel: "Снижение временных затрат на\u00a0подбор исполнителей",
     },
     {
-      href: "https://repola.dev/",
+      href: CASE_STUDY_MEDIA_HREF,
       panelSrc: "/landing/case-studies/panel-bg-case-3.png",
       logoSrc: "/landing/case-studies/logo-case-3.svg",
       logoWidth: 251,

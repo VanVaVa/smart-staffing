@@ -1,4 +1,4 @@
-import type { AdminField, AdminValues } from "@/shared/ui/admin-form";
+import type { AdminField, AdminFieldOption, AdminValues } from "@/shared/ui/admin-form";
 import { sanitizeArticleHtml } from "@/shared/lib/sanitize-article-html";
 
 import {
@@ -7,6 +7,11 @@ import {
 } from "./clients-admin-form";
 import { clientSegmentSlugs } from "./clients-content";
 import { LANDING_PAGE_SLUGS } from "./landing-page-slugs";
+import {
+  DEFAULT_MEDIA_TAGS,
+  isMediaTagTone,
+  type MediaTagDefinition,
+} from "./media-content";
 
 export const ADMIN_SECTION_GROUPS = [
   { key: "content", title: "Контент сайта" },
@@ -59,11 +64,13 @@ export type AdminSingletonSection = AdminSectionBase & {
 
 export type AdminSection = AdminCollectionSection | AdminSingletonSection;
 
-const MEDIA_TAG_LABELS: Record<string, string> = {
-  important: "Важное",
-  interesting: "Интересное",
-  news: "Новость",
-};
+export const MEDIA_TAGS_SECTION_KEY = "media-tags";
+
+const MEDIA_TAG_TONE_OPTIONS = [
+  { value: "important", label: "Важное" },
+  { value: "interesting", label: "Интересное" },
+  { value: "news", label: "Новость" },
+] as const;
 
 function text(values: AdminValues, key: string): string {
   const value = values[key];
@@ -160,6 +167,57 @@ function wrapMarqueeItems(rowId: string, items: AdminValues[]): AdminValues[] {
   }));
 }
 
+const mediaTagsSection: AdminCollectionSection = {
+  key: MEDIA_TAGS_SECTION_KEY,
+  title: "Теги медиа",
+  description: "Справочник тегов для статей раздела «Медиа» и фильтра на странице /media.",
+  group: "content",
+  publicPath: "/media",
+  mode: "collection",
+  storage: {
+    kind: "blockPath",
+    pageSlug: LANDING_PAGE_SLUGS.media,
+    blockType: "mediaListing",
+    path: ["tags"],
+  },
+  addLabel: "Новый тег",
+  emptyLabel: "Тегов пока нет",
+  itemTitle: (values) => text(values, "label") || text(values, "slug"),
+  itemMeta: (values) => text(values, "slug"),
+  createValues: () => ({
+    slug: "",
+    label: "Новый тег",
+    tone: "news",
+  }),
+  fromForm: (values) => {
+    const slug =
+      slugify(text(values, "slug")) ||
+      slugify(text(values, "label")) ||
+      `tag-${crypto.randomUUID().slice(0, 8)}`;
+    const tone = text(values, "tone");
+    return {
+      slug,
+      label: text(values, "label") || slug,
+      tone: isMediaTagTone(tone) ? tone : "news",
+    };
+  },
+  fields: [
+    {
+      kind: "text",
+      name: "slug",
+      label: "Код",
+      hint: "Латиницей, через дефис. Используется в URL фильтра /media?tag=<код>.",
+    },
+    { kind: "text", name: "label", label: "Название" },
+    {
+      kind: "select",
+      name: "tone",
+      label: "Цвет",
+      options: [...MEDIA_TAG_TONE_OPTIONS],
+    },
+  ],
+};
+
 const articlesSection: AdminCollectionSection = {
   key: "articles",
   title: "Статьи",
@@ -191,7 +249,6 @@ const articlesSection: AdminCollectionSection = {
       ...values,
       slug,
       href: `/media/${slug}`,
-      tagLabel: MEDIA_TAG_LABELS[text(values, "tag")] ?? "Новость",
       publishedLabel: formatPublishedLabel(publishedAt),
       lead: sanitizeArticleField(text(values, "lead")),
       bodyBlocks: sanitizeArticleBodyBlocks(values.bodyBlocks),
@@ -213,11 +270,7 @@ const articlesSection: AdminCollectionSection = {
       kind: "select",
       name: "tag",
       label: "Тег",
-      options: [
-        { value: "important", label: "Важное" },
-        { value: "interesting", label: "Интересное" },
-        { value: "news", label: "Новость" },
-      ],
+      options: [],
     },
     { kind: "date", name: "publishedAt", label: "Дата публикации" },
     { kind: "image", name: "imageSrc", label: "Обложка в списке" },
@@ -979,6 +1032,7 @@ const footerSection: AdminSingletonSection = {
 
 export const ADMIN_SECTIONS: readonly AdminSection[] = [
   articlesSection,
+  mediaTagsSection,
   clientsPagesSection,
   caseStudiesSection,
   testimonialsSection,
@@ -1000,6 +1054,33 @@ export const ADMIN_SECTIONS: readonly AdminSection[] = [
 
 export function getAdminSection(key: string): AdminSection | null {
   return ADMIN_SECTIONS.find((section) => section.key === key) ?? null;
+}
+
+export function buildArticleTagOptions(
+  tags: readonly MediaTagDefinition[],
+): AdminFieldOption[] {
+  const source = tags.length > 0 ? tags : DEFAULT_MEDIA_TAGS;
+  return source.map((tag) => ({ value: tag.slug, label: tag.label }));
+}
+
+function applyArticleTagOptions(
+  fields: readonly AdminField[],
+  tagOptions: readonly AdminFieldOption[],
+): readonly AdminField[] {
+  return fields.map((field) =>
+    field.kind === "select" && field.name === "tag"
+      ? { ...field, options: [...tagOptions] }
+      : field,
+  );
+}
+
+export function buildArticleAdminFields(
+  tags: readonly MediaTagDefinition[],
+): readonly AdminField[] {
+  return applyArticleTagOptions(
+    articlesSection.fields,
+    buildArticleTagOptions(tags),
+  );
 }
 
 export function adminSectionPath(section: AdminSection): string {
