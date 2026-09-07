@@ -8,12 +8,6 @@ import { PrismaPg } from "@prisma/adapter-pg";
 import { Pool } from "pg";
 
 import { PrismaClient } from "../src/generated/prisma/client";
-import { documentSlugs } from "../src/entities/landing/model/documents-content";
-import {
-  parseDocumentSlugFromPageSlug,
-  parseMediaArticleSlugFromPageSlug,
-} from "../src/entities/landing/model/landing-page-slugs";
-import { TEAMFORCE_MEDIA_ARTICLES } from "../src/entities/landing/model/media-articles-seed";
 
 import { buildSeedPages, type SeedPage } from "./lib/build-seed-pages";
 
@@ -22,59 +16,29 @@ const adapter = new PrismaPg(pool);
 const prisma = new PrismaClient({ adapter });
 
 async function seedLandingPage(page: SeedPage) {
-  const record = await prisma.landingPage.upsert({
+  const existing = await prisma.landingPage.findUnique({
     where: { slug: page.slug },
-    create: {
+    select: { id: true },
+  });
+
+  if (existing) {
+    return;
+  }
+
+  await prisma.landingPage.create({
+    data: {
       slug: page.slug,
       title: page.title,
       meta: page.meta,
-    },
-    update: {
-      title: page.title,
-      meta: page.meta,
-    },
-  });
-
-  await prisma.block.deleteMany({ where: { landingPageId: record.id } });
-
-  for (const block of page.blocks) {
-    await prisma.block.create({
-      data: {
-        landingPageId: record.id,
-        type: block.type,
-        order: block.order,
-        props: block.props as object,
+      blocks: {
+        create: page.blocks.map((block) => ({
+          type: block.type,
+          order: block.order,
+          props: block.props as object,
+        })),
       },
-    });
-  }
-}
-
-async function cleanupOrphanedDocumentPages(validDocumentSlugs: Set<string>) {
-  const pages = await prisma.landingPage.findMany({
-    where: { slug: { startsWith: "documents-" } },
-    select: { id: true, slug: true },
+    },
   });
-
-  for (const page of pages) {
-    const documentSlug = parseDocumentSlugFromPageSlug(page.slug);
-    if (documentSlug && !validDocumentSlugs.has(documentSlug)) {
-      await prisma.landingPage.delete({ where: { id: page.id } });
-    }
-  }
-}
-
-async function cleanupOrphanedMediaPages(validArticleSlugs: Set<string>) {
-  const pages = await prisma.landingPage.findMany({
-    where: { slug: { startsWith: "media-" } },
-    select: { id: true, slug: true },
-  });
-
-  for (const page of pages) {
-    const articleSlug = parseMediaArticleSlugFromPageSlug(page.slug);
-    if (articleSlug && !validArticleSlugs.has(articleSlug)) {
-      await prisma.landingPage.delete({ where: { id: page.id } });
-    }
-  }
 }
 
 async function main() {
@@ -95,12 +59,6 @@ async function main() {
   for (const page of buildSeedPages()) {
     await seedLandingPage(page);
   }
-
-  await cleanupOrphanedDocumentPages(new Set(documentSlugs));
-
-  await cleanupOrphanedMediaPages(
-    new Set(TEAMFORCE_MEDIA_ARTICLES.map((article) => article.slug)),
-  );
 
   await ensureAdminUser();
 }
