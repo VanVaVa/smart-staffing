@@ -66,12 +66,6 @@ export type AdminSection = AdminCollectionSection | AdminSingletonSection;
 
 export const MEDIA_TAGS_SECTION_KEY = "media-tags";
 
-const MEDIA_TAG_TONE_OPTIONS = [
-  { value: "important", label: "Важное" },
-  { value: "interesting", label: "Интересное" },
-  { value: "news", label: "Новость" },
-] as const;
-
 function text(values: AdminValues, key: string): string {
   const value = values[key];
   return typeof value === "string" ? value : "";
@@ -209,12 +203,6 @@ const mediaTagsSection: AdminCollectionSection = {
       hint: "Латиницей, через дефис. Используется в URL фильтра /media?tag=<код>.",
     },
     { kind: "text", name: "label", label: "Название" },
-    {
-      kind: "select",
-      name: "tone",
-      label: "Цвет",
-      options: [...MEDIA_TAG_TONE_OPTIONS],
-    },
   ],
 };
 
