@@ -1,7 +1,7 @@
 "use client";
 
 import type { HeroBlockProps } from "@/entities/landing/model/home-blocks";
-import { contactsHref, scrollToContactsOnPage } from "@/shared/lib/scroll-to-contacts";
+import { routes } from "@/shared/config";
 import { Button } from "@/shared/ui/button";
 
 import { HeroRegistryLink } from "./hero-registry-link";
@@ -45,8 +45,7 @@ export function Hero({ content, interactive = true }: HeroProps) {
                   size="md"
                   withArrow
                   className={styles["hero__primary-cta"]}
-                  href={contactsHref}
-                  onClick={scrollToContactsOnPage}
+                  href={routes.signUp}
                 >
                   <span>
                     {content.primaryCta}

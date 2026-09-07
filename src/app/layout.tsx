@@ -1,6 +1,9 @@
 import type { ReactNode } from "react";
 import localFont from "next/font/local";
 
+import { CookieConsent } from "@/shared/ui/cookie-consent";
+import { YandexMetrika } from "@/shared/ui/yandex-metrika";
+
 import "@/application/styles/globals.css";
 
 const montserrat = localFont({
@@ -24,7 +27,11 @@ type RootLayoutProps = {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="ru" className={`${montserrat.variable} ${golos.variable}`}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <CookieConsent />
+        <YandexMetrika />
+      </body>
     </html>
   );
 }

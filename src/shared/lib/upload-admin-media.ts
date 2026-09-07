@@ -1,3 +1,5 @@
+const FALLBACK_ERROR = "Не удалось загрузить файл";
+
 export async function uploadAdminMedia(file: File): Promise<string> {
   const formData = new FormData();
   formData.append("file", file);
@@ -7,13 +9,13 @@ export async function uploadAdminMedia(file: File): Promise<string> {
     body: formData,
   });
 
-  if (!response.ok) {
-    throw new Error("Upload failed");
-  }
+  const data = (await response.json().catch(() => ({}))) as {
+    url?: string;
+    error?: string;
+  };
 
-  const data = (await response.json()) as { url?: string };
-  if (!data.url) {
-    throw new Error("Upload failed");
+  if (!response.ok || !data.url) {
+    throw new Error(data.error ?? FALLBACK_ERROR);
   }
 
   return data.url;

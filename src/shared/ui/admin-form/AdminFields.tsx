@@ -217,8 +217,10 @@ function MediaControl({
     setError(null);
     try {
       onChange(await uploadAdminMedia(file));
-    } catch {
-      setError("Не удалось загрузить файл");
+    } catch (uploadError) {
+      setError(
+        uploadError instanceof Error ? uploadError.message : "Не удалось загрузить файл",
+      );
     } finally {
       setUploading(false);
     }

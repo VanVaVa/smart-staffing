@@ -5,7 +5,7 @@ import path from "node:path";
 import { NextResponse } from "next/server";
 
 const UPLOAD_DIR = path.join(process.cwd(), "public/landing/uploads");
-const MAX_BYTES = 10 * 1024 * 1024;
+const MAX_BYTES = 30 * 1024 * 1024;
 
 const MEDIA_EXTENSIONS: Readonly<Record<string, string>> = {
   "image/gif": ".gif",
@@ -98,18 +98,24 @@ export async function POST(request: Request) {
   }
 
   if (file.size > MAX_BYTES) {
-    return NextResponse.json({ error: "File too large" }, { status: 400 });
+    return NextResponse.json(
+      { error: `Файл больше ${MAX_BYTES / (1024 * 1024)} МБ` },
+      { status: 400 },
+    );
   }
 
   const mediaType = resolveMediaType(file);
   if (!mediaType) {
-    return NextResponse.json({ error: "Unsupported file type" }, { status: 400 });
+    return NextResponse.json(
+      { error: "Такой тип файла не поддерживается" },
+      { status: 400 },
+    );
   }
 
   const extension = MEDIA_EXTENSIONS[mediaType];
   const buffer = Buffer.from(await file.arrayBuffer());
   if (!hasValidSignature(buffer, mediaType)) {
-    return NextResponse.json({ error: "Invalid file" }, { status: 400 });
+    return NextResponse.json({ error: "Файл повреждён" }, { status: 400 });
   }
 
   const filename = `${randomUUID()}${extension}`;

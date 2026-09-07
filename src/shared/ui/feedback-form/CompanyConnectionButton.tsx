@@ -2,7 +2,7 @@
 
 import type { ComponentProps } from "react";
 
-import { contactsHref, scrollToContactsOnPage } from "@/shared/lib/scroll-to-contacts";
+import { routes } from "@/shared/config";
 import { Button } from "@/shared/ui/button";
 
 type CompanyConnectionButtonProps = Omit<
@@ -20,11 +20,5 @@ export function CompanyConnectionButton({
     return <Button {...props} type="button" />;
   }
 
-  return (
-    <Button
-      {...props}
-      href={contactsHref}
-      onClick={scrollToContactsOnPage}
-    />
-  );
+  return <Button {...props} href={routes.signUp} />;
 }

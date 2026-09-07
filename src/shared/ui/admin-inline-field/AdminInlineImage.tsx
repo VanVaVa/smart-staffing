@@ -60,8 +60,10 @@ export function AdminInlineImage({
     try {
       const nextSrc = await uploadAdminMedia(file);
       onChange({ imageSrc: nextSrc });
-    } catch {
-      setError("Не удалось загрузить файл");
+    } catch (uploadError) {
+      setError(
+        uploadError instanceof Error ? uploadError.message : "Не удалось загрузить файл",
+      );
     } finally {
       setUploading(false);
     }
