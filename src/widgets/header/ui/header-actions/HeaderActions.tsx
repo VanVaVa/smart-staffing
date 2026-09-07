@@ -3,7 +3,6 @@
 import { useRef } from "react";
 
 import { routes } from "@/shared/config";
-import { contactsHref, scrollToContactsOnPage } from "@/shared/lib/scroll-to-contacts";
 import { Button } from "@/shared/ui/button";
 
 import { useElementOnDarkBackdrop } from "../../model/use-element-on-dark-backdrop";
@@ -33,8 +32,7 @@ export function HeaderActions() {
       </span>
       <span ref={signUpRef} className={styles["header-actions__sign-up-wrap"]}>
         <Button
-          href={contactsHref}
-          onClick={scrollToContactsOnPage}
+          href={routes.signUp}
           size="md"
           variant={signUpOnDarkBackdrop ? "light" : "dark"}
           className={styles["header-actions__sign-up"]}
