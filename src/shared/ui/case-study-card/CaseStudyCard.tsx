@@ -151,6 +151,7 @@ export function CaseStudyCard({
         alt={panelAlt}
         width={logoWidth}
         height={logoHeight}
+        loading="eager"
         className={styles["case-study-card__panel-logo-image"]}
       />
     ) : null;

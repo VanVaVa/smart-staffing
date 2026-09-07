@@ -238,6 +238,7 @@ export function TestimonialCard({
                   alt=""
                   width={logoWidth}
                   height={logoHeight}
+                  loading="eager"
                   className={styles["testimonial-card__logo-image"]}
                 />
               </div>
