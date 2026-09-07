@@ -41,7 +41,7 @@ async function resolveRecipients(
 ): Promise<string[]> {
   const settings = await getEmailSettings();
 
-  if (type === "contact" || type === "partnership") {
+  if (type === "contact" || type === "partnership" || type === "book") {
     const email = settings.partnerNotificationEmail.trim();
     return email ? [email] : [];
   }
@@ -114,10 +114,6 @@ export async function sendFormNotificationEmail(
 ): Promise<void> {
   if (!isSmtpConfigured()) {
     console.warn("SMTP is not configured; form notification email skipped");
-    return;
-  }
-
-  if (submission.type === "book") {
     return;
   }
 

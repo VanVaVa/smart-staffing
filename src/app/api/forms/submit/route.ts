@@ -4,7 +4,7 @@ import { createFormSubmission } from "@/entities/form-submission/server";
 import { parseFormSubmissionInput } from "@/entities/form-submission/lib/parse-form-submission-input";
 import { sendFormNotificationEmail } from "@/shared/lib/email/send-form-notification-email";
 
-const NOTIFICATION_FORM_TYPES = new Set(["contact", "partnership", "vacancy"]);
+const NOTIFICATION_FORM_TYPES = new Set(["contact", "partnership", "vacancy", "book"]);
 
 export async function POST(request: Request) {
   let formData: FormData;
