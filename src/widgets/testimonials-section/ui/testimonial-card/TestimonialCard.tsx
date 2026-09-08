@@ -252,9 +252,6 @@ export function TestimonialCard({
               </span>
             </div>
           </div>
-          <time className={styles["testimonial-card__date"]}>
-            {date}
-          </time>
         </header>
         <p ref={quoteRef} className={styles["testimonial-card__quote"]}>
           {quote}
