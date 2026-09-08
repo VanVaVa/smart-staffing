@@ -82,14 +82,6 @@
   white-space: nowrap;
 }
 
-.testimonial-card__date {
-  flex-shrink: 0;
-  font-size: var(--text-body-sm);
-  line-height: var(--line-body-sm);
-  color: var(--color-grey-400);
-  overflow-wrap: anywhere;
-}
-
 .testimonial-card__quote {
   margin: 0;
   align-self: start;

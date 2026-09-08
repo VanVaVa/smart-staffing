@@ -28,7 +28,6 @@ const EXPAND_TRANSITION_MS = 300;
 type TestimonialCardProps = {
   company: string;
   role: string;
-  date: string;
   quote: string;
   logoSrc: string;
   logoWidth: number;
@@ -39,7 +38,6 @@ type TestimonialCardProps = {
 export function TestimonialCard({
   company,
   role,
-  date,
   quote,
   logoSrc,
   logoWidth,
