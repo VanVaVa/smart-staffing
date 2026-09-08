@@ -6,7 +6,6 @@ import {
 } from "@/entities/landing/lib/landing-page-registry";
 import { clientsPageSlug } from "@/entities/landing/model/landing-page-slugs";
 import { ClientsHeroSection } from "@/widgets/clients-hero-section";
-import { ClientsPartnersExperienceSection } from "@/widgets/clients-partners-experience-section";
 import { ClientsPartnershipCtaSection } from "@/widgets/clients-partnership-cta-section";
 import { ClientsPlatformBenefitsSection } from "@/widgets/clients-platform-benefits-section";
 import { ClientsPlatformSection } from "@/widgets/clients-platform-section";
@@ -40,7 +39,7 @@ export function ClientsBlockRenderer({
         />
       );
     case "partnersExperience":
-      return <ClientsPartnersExperienceSection content={block.props} />;
+      return null;
     case "partnershipCta":
       return (
         <ClientsPartnershipCtaSection
