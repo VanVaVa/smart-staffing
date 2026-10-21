@@ -1,4 +1,5 @@
 import type { FooterLinkItem } from "@/entities/landing/model/footer-blocks";
+import { companyRequisites } from "@/shared/config";
 import { Text } from "@/shared/ui";
 
 import { FooterLinkItem as FooterLinkItemView } from "../footer-link-item";
@@ -28,6 +29,13 @@ export function FooterBottom({ legal, copyright }: FooterBottomProps) {
         className={`${styles["footer-bottom__muted"]} ${styles["footer-bottom__copyright"]}`}
       >
         <span>{copyright}</span>
+      </Text>
+      <Text
+        as="span"
+        size="xl"
+        className={`${styles["footer-bottom__muted"]} ${styles["footer-bottom__requisites"]}`}
+      >
+        {companyRequisites}
       </Text>
     </div>
   );

@@ -20,6 +20,10 @@
   gap: 48px;
 }
 
+.footer-bottom__requisites {
+  flex-basis: 100%;
+}
+
 .footer-bottom__link {
   text-decoration: none;
   transition: color 0.2s ease;
@@ -70,6 +74,10 @@
     order: 1;
   }
 
+  .footer-bottom__requisites {
+    order: 3;
+  }
+
   .footer-bottom__legal {
     width: 100%;
     justify-content: space-between;
@@ -80,7 +88,6 @@
 
 @media (max-width: 576px) {
   .footer-bottom {
-    height: 98px;
     min-height: 98px;
     gap: 8px;
     padding-block: 20px;
