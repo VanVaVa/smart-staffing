@@ -3,23 +3,27 @@
 import Image from "next/image";
 import NextLink from "next/link";
 
+import { Badge } from "@/shared/ui/badge";
+
 import styles from "./HeroSegment.module.css";
 
 type HeroSegmentProps = {
   label: string;
   imageSrc: string;
   href: string;
+  badge?: string;
   isActive: boolean;
   animate: boolean;
   cycleKey: number;
-  onHoverStart: () => void;
-  onHoverEnd: () => void;
+  onHoverStart?: () => void;
+  onHoverEnd?: () => void;
 };
 
 export function HeroSegment({
   label,
   imageSrc,
   href,
+  badge,
   isActive,
   animate,
   cycleKey,
@@ -55,7 +59,14 @@ export function HeroSegment({
           />
         </div>
       </div>
-      <span className={styles["hero-segment__label"]}>{label}</span>
+      <span className={styles["hero-segment__label"]}>
+        {label}
+        {badge ? (
+          <Badge variant="new" className={styles["hero-segment__badge"]}>
+            {badge}
+          </Badge>
+        ) : null}
+      </span>
     </NextLink>
   );
 }

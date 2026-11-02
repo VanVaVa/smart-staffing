@@ -1,0 +1,116 @@
+.transition-reasons {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--transition-card-gap);
+  margin: 0;
+  padding: var(--transition-card-pad);
+  list-style: none;
+  border-radius: var(--radius-lg);
+  background: var(--color-white);
+}
+
+.transition-reasons__card {
+  aspect-ratio: 4 / 3;
+}
+
+.transition-reasons__plate {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: 20px;
+  padding: 16px 24px 16px 16px;
+  border-radius: 16px 0 0 16px;
+  background: linear-gradient(180deg, #8f6bff 0%, #6a46e0 100%);
+  box-shadow:
+    0 0 0 4px rgb(160 130 255 / 45%),
+    0 16px 40px rgb(80 50 200 / 45%);
+  font-family: var(--font-heading);
+  font-size: var(--text-h4);
+  font-weight: 600;
+  line-height: var(--line-h4);
+  white-space: nowrap;
+  color: var(--color-white);
+}
+
+.transition-reasons__plate-check {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: #5a37d1;
+  box-shadow: inset 0 0 0 2px rgb(255 255 255 / 25%);
+  font-size: 24px;
+  line-height: 1;
+}
+
+.transition-reasons__lines {
+  display: grid;
+  gap: 14px;
+  margin: 28px 0 0 40px;
+  padding-bottom: 28px;
+}
+
+.transition-reasons__lines span {
+  height: 12px;
+  border-radius: var(--radius-pill) 0 0 var(--radius-pill);
+  background: rgb(255 255 255 / 22%);
+}
+
+.transition-reasons__label {
+  font-size: var(--text-body-sm);
+  line-height: var(--line-body-sm);
+  color: var(--color-grey-600);
+}
+
+.transition-reasons__dot {
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-grey-400);
+}
+
+.transition-reasons__dot--live {
+  background: #2f8a4c;
+  box-shadow: 0 0 0 4px #dff1e4;
+}
+
+.transition-reasons__avatars {
+  display: flex;
+}
+
+.transition-reasons__avatars > * + * {
+  margin-left: -4px;
+}
+
+.transition-reasons__team {
+  font-weight: 600;
+}
+
+.transition-reasons__roles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-right: 20px;
+}
+
+.transition-reasons__note {
+  margin: 16px 0 0;
+  font-family: var(--font-body);
+  font-size: var(--text-body-md);
+  line-height: var(--line-body);
+  color: var(--color-grey-600);
+}
+
+@media (max-width: 1050px) {
+  .transition-reasons {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .transition-reasons__card {
+    aspect-ratio: auto;
+    min-height: 300px;
+  }
+}

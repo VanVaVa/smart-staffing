@@ -31,6 +31,12 @@ const nextConfig: NextConfig = {
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },
+  async redirects() {
+    return [
+      { source: "/transition", destination: "/outplacement", permanent: true },
+      { source: "/flywheel", destination: "/outplacement", permanent: true },
+    ];
+  },
   serverExternalPackages: ["pg", "@prisma/adapter-pg"],
   images: {
     unoptimized: process.env.NODE_ENV === "development",

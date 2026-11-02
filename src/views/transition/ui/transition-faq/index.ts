@@ -1,0 +1,1 @@
+export { TransitionFaq } from "./TransitionFaq";

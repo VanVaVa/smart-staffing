@@ -1,0 +1,21 @@
+.transition-section {
+  position: relative;
+  overflow: clip;
+  padding-block: var(--transition-section-space);
+}
+
+.transition-section--soft {
+  border-radius: var(--transition-section-radius);
+  background: var(--color-white);
+}
+
+.transition-section--dark {
+  border-radius: var(--transition-section-radius);
+  background: linear-gradient(180deg, #090909 0%, var(--color-purple-dark) 100%);
+  color: var(--color-white);
+}
+
+.transition-section__content {
+  position: relative;
+  z-index: 1;
+}

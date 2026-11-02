@@ -1,0 +1,79 @@
+.transition-perks {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--transition-card-gap);
+  margin: 0;
+  padding: var(--transition-card-pad);
+  list-style: none;
+  border-radius: var(--radius-lg);
+  background: var(--color-white);
+}
+
+.transition-perks__card {
+  aspect-ratio: 4 / 5;
+}
+
+.transition-perks__photo {
+  background: #efe3d9;
+}
+
+.transition-perks__photo-image {
+  z-index: 0;
+  object-fit: cover;
+  object-position: center 62%;
+}
+
+.transition-perks__icon {
+  --transition-icon-box: 64px;
+
+  margin: 0 0 auto;
+}
+
+.transition-perks__person {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  white-space: nowrap;
+}
+
+.transition-perks__label {
+  font-size: var(--text-body-sm);
+  line-height: var(--line-body-sm);
+  color: var(--color-grey-600);
+}
+
+.transition-perks__role {
+  font-weight: 600;
+}
+
+.transition-perks__company {
+  margin-top: -8px;
+  color: var(--color-grey-600);
+}
+
+.transition-perks__actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+@media (max-width: 1050px) {
+  .transition-perks {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .transition-perks__card {
+    aspect-ratio: 1;
+  }
+}
+
+@media (max-width: 576px) {
+  .transition-perks {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .transition-perks__card {
+    aspect-ratio: auto;
+    min-height: 320px;
+  }
+}

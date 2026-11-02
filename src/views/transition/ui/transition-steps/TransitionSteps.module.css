@@ -1,0 +1,106 @@
+.transition-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--transition-card-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.transition-steps__item {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--color-bg);
+}
+
+.transition-steps__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.transition-steps__body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: var(--transition-card-pad);
+}
+
+.transition-steps__top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.transition-steps__number {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: var(--transition-icon-box);
+  height: var(--transition-icon-box);
+  border-radius: var(--radius-md);
+  background: var(--color-accent-2);
+  color: var(--color-white);
+  font-family: var(--font-heading);
+  font-size: var(--text-body-xl);
+  font-weight: 600;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.transition-steps__item:last-child .transition-steps__number {
+  background: var(--color-accent);
+}
+
+.transition-steps__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: var(--text-h3);
+  font-weight: 600;
+  line-height: var(--line-h3);
+  letter-spacing: var(--letter-heading);
+  color: var(--color-black);
+}
+
+.transition-steps__text {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--text-body-xl);
+  line-height: var(--line-body-xl);
+  color: var(--color-grey-600);
+}
+
+@media (max-width: 768px) {
+  .transition-steps {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .transition-steps__item {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  }
+
+  .transition-steps__image {
+    height: 100%;
+    aspect-ratio: auto;
+  }
+
+  .transition-steps__body {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .transition-steps__item {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .transition-steps__image {
+    height: auto;
+    aspect-ratio: 16 / 10;
+  }
+}

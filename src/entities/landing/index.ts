@@ -21,6 +21,7 @@ export {
   featureRows,
   footerContent,
   heroContent,
+  heroNewDirection,
   landingNav,
   partnerCta,
   productShowcase,

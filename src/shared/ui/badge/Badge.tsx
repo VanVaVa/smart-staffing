@@ -9,7 +9,8 @@ type BadgeVariant =
   | "outline"
   | "tag"
   | "chip"
-  | "chipAccent";
+  | "chipAccent"
+  | "new";
 
 const variantClassMap: Record<BadgeVariant, string> = {
   default: "badge--default",
@@ -19,6 +20,7 @@ const variantClassMap: Record<BadgeVariant, string> = {
   tag: "badge--tag",
   chip: "badge--chip",
   chipAccent: "badge--chip-accent",
+  new: "badge--new",
 };
 
 type BadgeProps = {

@@ -40,6 +40,15 @@
   color: var(--color-accent);
 }
 
+.header-nav__badge {
+  align-self: flex-start;
+}
+
+.header-nav__dropdown-item .header-nav__badge {
+  margin-left: 4px;
+  vertical-align: top;
+}
+
 .header-nav__trigger {
   margin: 0;
   padding: 0;
@@ -138,7 +147,7 @@
   }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 860px) {
   .header-nav {
     display: none;
   }

@@ -1,0 +1,5 @@
+.transition-lead {
+  position: relative;
+  overflow-x: clip;
+  padding-block: var(--transition-section-space);
+}

@@ -6,6 +6,7 @@ import { Fragment, useCallback, useEffect, useId, useRef, useState } from "react
 
 import { landingNav } from "@/entities/landing";
 import { routes } from "@/shared/config";
+import { Badge } from "@/shared/ui/badge";
 import { Button } from "@/shared/ui/button";
 import { Logo } from "@/shared/ui/logo";
 import linkStyles from "@/shared/ui/link/Link.module.css";
@@ -219,6 +220,11 @@ export function HeaderMobileMenu({ onOpenChange }: HeaderMobileMenuProps) {
                 onClick={close}
               >
                 {item.label}
+                {"badge" in item ? (
+                  <Badge variant="new" className={navStyles["header-nav__badge"]}>
+                    {item.badge}
+                  </Badge>
+                ) : null}
               </NextLink>
             </li>
           );

@@ -1,0 +1,20 @@
+.transition-icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: var(--transition-icon-box);
+  height: var(--transition-icon-box);
+  border-radius: 50%;
+  background: #fde3d8;
+  color: var(--color-accent);
+}
+
+.transition-icon__glyph {
+  width: 50%;
+  height: 50%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}

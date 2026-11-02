@@ -1,3 +1,5 @@
+import { routes } from "@/shared/config";
+
 import { clientSegmentFooterItems } from "./clients-content";
 import { CASE_STUDY_MEDIA_HREF } from "./case-study-media-href";
 
@@ -17,7 +19,15 @@ export const landingNav = [
       { label: "Кадровые агентства", href: "/pricing/agencies" },
     ],
   },
+  { label: "Аутплейсмент", href: routes.outplacement, badge: "new" },
 ] as const;
+
+export const heroNewDirection = {
+  label: "Компаниям при\u00a0сокращении ИТ\u2011штата",
+  badge: "new",
+  href: routes.outplacement,
+  thumbImageSrc: "/landing/transition/hero-thumb.webp",
+} as const;
 
 export const heroContent = {
   title: "Управляйте поставщиками, ресурсами и\u00a0проектами\nв\u00a0одном месте",

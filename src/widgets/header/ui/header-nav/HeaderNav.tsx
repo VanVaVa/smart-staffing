@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import { useRef } from "react";
 
 import { landingNav } from "@/entities/landing";
-import { Link } from "@/shared/ui";
+import { Badge, Link } from "@/shared/ui";
 
 import { isNavHrefActive } from "../../lib/is-nav-href-active";
 import { useNavLinksOnDarkBackdrop } from "../../model/use-nav-links-on-dark-backdrop";
@@ -53,6 +53,11 @@ export function HeaderNav() {
             aria-current={current ? "page" : undefined}
           >
             {item.label}
+            {"badge" in item ? (
+              <Badge variant="new" className={styles["header-nav__badge"]}>
+                {item.badge}
+              </Badge>
+            ) : null}
           </Link>
         );
       })}

@@ -3,6 +3,7 @@
 import type { CSSProperties } from "react";
 import Image from "next/image";
 
+import { heroNewDirection } from "@/entities/landing";
 import type { HeroSegment as HeroSegmentData } from "@/entities/landing/model/home-blocks";
 
 import { useHeroSegmentCarousel } from "../../lib/use-hero-segment-carousel";
@@ -67,6 +68,15 @@ export function HeroVisual({ segments }: HeroVisualProps) {
             onHoverEnd={() => hoverSegment(null)}
           />
         ))}
+        <HeroSegmentCard
+          label={heroNewDirection.label}
+          imageSrc={heroNewDirection.thumbImageSrc}
+          href={heroNewDirection.href}
+          badge={heroNewDirection.badge}
+          isActive={false}
+          animate={false}
+          cycleKey={0}
+        />
       </div>
     </div>
   );

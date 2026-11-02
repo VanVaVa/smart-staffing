@@ -1,0 +1,40 @@
+.transition-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 100%;
+  overflow: hidden;
+  padding: 20px 0 0 20px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #d6dcef 0%, #eef1f9 100%);
+}
+
+.transition-card--dark {
+  background: linear-gradient(180deg, #22223a 0%, #4b4896 100%);
+}
+
+.transition-card__title {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding-right: 20px;
+  font-family: var(--font-body);
+  font-size: var(--text-body-xl);
+  font-weight: 400;
+  line-height: var(--line-body-xl);
+  letter-spacing: 0;
+  color: var(--color-black);
+}
+
+.transition-card--dark .transition-card__title {
+  color: var(--color-white);
+}
+
+.transition-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-top: 32px;
+}
