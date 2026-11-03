@@ -8,6 +8,26 @@ export type TransitionIconName =
   | "doc"
   | "clock";
 
+export type TransitionAccentText = {
+  before?: string;
+  accent: string;
+  after?: string;
+};
+
+export type TransitionHeroContent = {
+  title: string;
+  subtitle: TransitionAccentText;
+  subtitleNote: string;
+  cta: string;
+};
+
+export type TransitionTrackContent = {
+  title: string;
+  lead: TransitionAccentText;
+  stats: { value: string; text: string }[];
+  networkLines: string[];
+};
+
 export type TransitionStep = {
   number: string;
   title: string;
@@ -29,8 +49,13 @@ export type TransitionFactsContent = {
 
 export type TransitionCycleContent = {
   title: string;
-  text: string;
+  subtitle: TransitionAccentText;
   label: string;
   nodes: { title: string; text: string }[];
   loop: string;
+};
+
+export type TransitionPerk = {
+  title: string;
+  text: string;
 };

@@ -35,6 +35,5 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  justify-content: flex-end;
-  padding-top: 32px;
+  padding: 48px 0 36px;
 }

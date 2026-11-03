@@ -1,0 +1,112 @@
+.transition-track__head p {
+  margin-top: 4px;
+}
+
+.transition-track {
+  display: grid;
+  grid-template-columns: minmax(0, 507fr) minmax(0, 507fr) minmax(0, 786fr);
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.transition-track__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: clamp(150px, 9.7vw, 186px);
+  padding: var(--transition-card-pad);
+  border-radius: var(--radius-lg);
+  background: rgb(119 119 142 / 8%);
+}
+
+.transition-track__value {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  font-weight: 600;
+  line-height: var(--line-h1);
+  letter-spacing: var(--letter-heading);
+  color: var(--color-black);
+}
+
+.transition-track__text {
+  max-width: 451px;
+  font-family: var(--font-body);
+  font-size: var(--text-body-xl);
+  line-height: var(--line-body-xl);
+  color: var(--color-black);
+}
+
+.transition-track__network {
+  position: relative;
+  overflow: hidden;
+  min-height: clamp(150px, 9.7vw, 186px);
+  padding: var(--transition-card-pad) 40px;
+  border-radius: var(--radius-lg);
+  background: var(--color-grey-800);
+}
+
+.transition-track__orb {
+  position: absolute;
+  width: 200px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.transition-track__orb--violet {
+  top: -70px;
+  left: 54%;
+  background: linear-gradient(135deg, var(--color-blue-muted) 0%, var(--color-purple-mid) 47%, #273181 100%);
+  filter: blur(40px);
+}
+
+.transition-track__orb--orange {
+  bottom: -130px;
+  left: 42%;
+  background: linear-gradient(135deg, var(--color-blue-muted) 0%, var(--color-accent-hover) 47%, var(--color-accent) 100%);
+  filter: blur(20px);
+}
+
+.transition-track__network-text {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: var(--text-h3);
+  font-weight: 600;
+  line-height: var(--line-h3);
+  letter-spacing: var(--letter-heading);
+  color: var(--color-white);
+}
+
+.transition-track__network-line {
+  display: block;
+}
+
+@media (max-width: 1050px) {
+  .transition-track {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .transition-track__network {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 576px) {
+  .transition-track {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--transition-card-gap);
+  }
+
+  .transition-track__stat,
+  .transition-track__network {
+    min-height: 0;
+  }
+
+  .transition-track__network {
+    padding: var(--transition-card-pad);
+  }
+}

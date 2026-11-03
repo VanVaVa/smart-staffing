@@ -24,57 +24,58 @@ export function TransitionReasons({ titleId }: TransitionReasonsProps) {
 
   return (
     <>
-      <TransitionSectionTitle
-        id={titleId}
-        title={transitionReasons.title}
-        lead={transitionReasons.lead}
-      />
-      <ul className={styles["transition-reasons"]}>
-        <TransitionCard title={cards.recommendation} tone="dark" className={cardClass}>
-          <div className={styles["transition-reasons__plate"]} aria-hidden>
-            <span className={styles["transition-reasons__plate-check"]}>✓</span>
-            Опыт подтверждён
-          </div>
-          <div className={styles["transition-reasons__lines"]} aria-hidden>
-            <span />
-            <span />
-            <span />
-          </div>
-        </TransitionCard>
-        <TransitionCard title={cards.early} className={cardClass}>
-          <MockSheet>
-            <span className={styles["transition-reasons__label"]}>Статус специалиста</span>
-            <MockRow>
-              <span className={`${styles["transition-reasons__dot"]} ${styles["transition-reasons__dot--live"]}`} />
-              <span>Доступен сейчас</span>
-              <MockChip tone="accent">Срок предупреждения</MockChip>
-            </MockRow>
-            <MockRow>
-              <span className={styles["transition-reasons__dot"]} />
-              <span>Открытый рынок</span>
-              <MockChip tone="muted">Позже</MockChip>
-            </MockRow>
-          </MockSheet>
-        </TransitionCard>
-        <TransitionCard title={cards.team} className={cardClass}>
-          <MockSheet>
-            <div className={styles["transition-reasons__avatars"]}>
-              {TEAM.map((member) => (
-                <MockAvatar key={member.initials} initials={member.initials} tone={member.tone} />
-              ))}
+      <TransitionSectionTitle id={titleId} title={transitionReasons.title} />
+      <div className={styles["transition-reasons"]}>
+        <div className={styles["transition-reasons__head"]}>
+          <p className={styles["transition-reasons__lead"]}>{transitionReasons.lead}</p>
+          <p className={styles["transition-reasons__note"]}>{transitionReasons.note}</p>
+        </div>
+        <ul className={styles["transition-reasons__list"]}>
+          <TransitionCard title={cards.recommendation} tone="dark" className={cardClass}>
+            <div className={styles["transition-reasons__plate"]} aria-hidden>
+              <span className={styles["transition-reasons__plate-check"]}>✓</span>
+              Опыт подтверждён
             </div>
-            <span className={styles["transition-reasons__team"]}>Команда целиком</span>
-            <div className={styles["transition-reasons__roles"]}>
-              {TEAM_ROLES.map((role) => (
-                <MockChip key={role} tone="violet">
-                  {role}
-                </MockChip>
-              ))}
+            <div className={styles["transition-reasons__lines"]} aria-hidden>
+              <span />
+              <span />
+              <span />
             </div>
-          </MockSheet>
-        </TransitionCard>
-      </ul>
-      <p className={styles["transition-reasons__note"]}>{transitionReasons.note}</p>
+          </TransitionCard>
+          <TransitionCard title={cards.early} className={cardClass}>
+            <MockSheet className={styles["transition-reasons__sheet"]}>
+              <span className={styles["transition-reasons__label"]}>Статус специалиста</span>
+              <MockRow>
+                <span className={`${styles["transition-reasons__dot"]} ${styles["transition-reasons__dot--live"]}`} />
+                <span>Доступен сейчас</span>
+                <MockChip tone="accent">Срок предупреждения</MockChip>
+              </MockRow>
+              <MockRow>
+                <span className={styles["transition-reasons__dot"]} />
+                <span>Открытый рынок</span>
+                <MockChip tone="muted">Позже</MockChip>
+              </MockRow>
+            </MockSheet>
+          </TransitionCard>
+          <TransitionCard title={cards.team} className={cardClass}>
+            <MockSheet className={styles["transition-reasons__sheet"]}>
+              <div className={styles["transition-reasons__avatars"]}>
+                {TEAM.map((member) => (
+                  <MockAvatar key={member.initials} initials={member.initials} tone={member.tone} />
+                ))}
+              </div>
+              <span className={styles["transition-reasons__team"]}>Команда целиком</span>
+              <div className={styles["transition-reasons__roles"]}>
+                {TEAM_ROLES.map((role) => (
+                  <MockChip key={role} tone="violet">
+                    {role}
+                  </MockChip>
+                ))}
+              </div>
+            </MockSheet>
+          </TransitionCard>
+        </ul>
+      </div>
     </>
   );
 }

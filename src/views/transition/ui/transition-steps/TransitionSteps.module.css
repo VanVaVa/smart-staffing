@@ -12,7 +12,7 @@
   flex-direction: column;
   overflow: hidden;
   border-radius: var(--radius-lg);
-  background: var(--color-bg);
+  background: var(--color-white);
 }
 
 .transition-steps__image {
@@ -21,6 +21,7 @@
   height: auto;
   aspect-ratio: 4 / 3;
   object-fit: cover;
+  border-radius: var(--radius-lg);
 }
 
 .transition-steps__body {
@@ -71,7 +72,7 @@
   font-family: var(--font-body);
   font-size: var(--text-body-xl);
   line-height: var(--line-body-xl);
-  color: var(--color-grey-600);
+  color: var(--color-black);
 }
 
 @media (max-width: 768px) {

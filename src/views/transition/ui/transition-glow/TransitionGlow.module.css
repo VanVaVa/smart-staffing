@@ -1,0 +1,70 @@
+.transition-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.transition-glow__orb {
+  position: absolute;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-blue-muted) 0%, #7175c7 50%, var(--color-purple-mid) 100%);
+}
+
+.transition-glow__orb--top {
+  top: -5.2vw;
+  left: 60%;
+  width: 20.8vw;
+  background: linear-gradient(
+    135deg,
+    var(--color-blue-muted) 0%,
+    var(--color-accent-hover) 47%,
+    var(--color-accent) 100%
+  );
+  filter: blur(40px);
+}
+
+.transition-glow__orb--bottom {
+  bottom: 4vw;
+  left: 58%;
+  width: 20.8vw;
+  background: linear-gradient(
+    135deg,
+    var(--color-accent) 0%,
+    var(--color-accent-hover) 53%,
+    var(--color-blue-muted) 100%
+  );
+  filter: blur(40px);
+}
+
+.transition-glow__orb--corner {
+  bottom: -40vw;
+  left: -16vw;
+  width: 73vw;
+  background: linear-gradient(
+    135deg,
+    var(--color-blue-muted) 0%,
+    var(--color-purple-mid) 47%,
+    var(--color-purple-deep) 100%
+  );
+  filter: blur(40px);
+}
+
+@media (max-width: 768px) {
+  .transition-glow__orb--top {
+    top: -80px;
+    left: 50%;
+    width: 220px;
+  }
+
+  .transition-glow__orb--bottom {
+    bottom: 40px;
+    width: 220px;
+  }
+
+  .transition-glow__orb--corner {
+    bottom: -320px;
+    left: -240px;
+    width: 640px;
+  }
+}

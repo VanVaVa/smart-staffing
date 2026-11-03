@@ -7,11 +7,12 @@ import styles from "./TransitionSection.module.css";
 type TransitionSectionProps = {
   id?: string;
   labelledBy?: string;
-  tone?: "plain" | "soft" | "dark";
+  tone?: "plain" | "dark" | "raised";
+  decor?: ReactNode;
   children: ReactNode;
 };
 
-export function TransitionSection({ id, labelledBy, tone = "plain", children }: TransitionSectionProps) {
+export function TransitionSection({ id, labelledBy, tone = "plain", decor, children }: TransitionSectionProps) {
   const rootClass = [styles["transition-section"], tone === "plain" ? "" : styles[`transition-section--${tone}`]]
     .filter(Boolean)
     .join(" ");
@@ -24,6 +25,7 @@ export function TransitionSection({ id, labelledBy, tone = "plain", children }: 
       data-header-backdrop={tone === "dark" ? "dark" : undefined}
       data-header-veil-bg={tone === "dark" ? "#090909" : undefined}
     >
+      {decor}
       <Container className={styles["transition-section__content"]}>{children}</Container>
     </section>
   );

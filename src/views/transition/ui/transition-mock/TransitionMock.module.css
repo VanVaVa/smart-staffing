@@ -140,28 +140,6 @@
   background: var(--color-grey-600);
 }
 
-.transition-mock__button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex: none;
-  min-height: 40px;
-  padding: 8px 20px;
-  border-radius: var(--radius-pill);
-  font-weight: 500;
-  white-space: nowrap;
-}
-
-.transition-mock__button--primary {
-  background: var(--color-accent);
-  color: var(--color-white);
-}
-
-.transition-mock__button--secondary {
-  box-shadow: inset 0 0 0 1px var(--color-grey-300);
-  color: var(--color-black);
-}
-
 @media (max-width: 576px) {
   .transition-mock__sheet {
     margin-left: 24px;

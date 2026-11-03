@@ -6,9 +6,13 @@ type ChildrenProps = {
   children: ReactNode;
 };
 
-export function MockSheet({ children }: ChildrenProps) {
+type MockSheetProps = ChildrenProps & {
+  className?: string;
+};
+
+export function MockSheet({ className, children }: MockSheetProps) {
   return (
-    <div className={styles["transition-mock__sheet"]} aria-hidden>
+    <div className={[styles["transition-mock__sheet"], className].filter(Boolean).join(" ")} aria-hidden>
       {children}
     </div>
   );
@@ -78,18 +82,6 @@ export function MockAvatar({ initials, tone }: MockAvatarProps) {
   return (
     <span className={`${styles["transition-mock__avatar"]} ${styles[`transition-mock__avatar--${tone}`]}`}>
       {initials}
-    </span>
-  );
-}
-
-type MockButtonProps = ChildrenProps & {
-  variant: "primary" | "secondary";
-};
-
-export function MockButton({ variant, children }: MockButtonProps) {
-  return (
-    <span className={`${styles["transition-mock__button"]} ${styles[`transition-mock__button--${variant}`]}`}>
-      {children}
     </span>
   );
 }

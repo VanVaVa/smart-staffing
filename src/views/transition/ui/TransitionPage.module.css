@@ -1,17 +1,19 @@
 .transition-page {
-  --transition-section-space: var(--section-gap);
-  --transition-group-space: clamp(40px, 4.44vw, 64px);
-  --transition-head-space: clamp(28px, 3.33vw, 48px);
+  --transition-section-space: clamp(40px, 5.1vw, 98px);
+  --transition-head-space: clamp(28px, 2.92vw, 56px);
   --transition-gutter: 48px;
   --transition-card-gap: 8px;
   --transition-card-pad: 28px;
   --transition-icon-box: 48px;
   --transition-arrow-size: 48px;
   --transition-arrow-glyph: 16px;
-  --transition-panel-radius: 32px;
   --transition-section-radius: 40px;
 
   overflow-x: clip;
+}
+
+.transition-page__perks {
+  margin-top: calc(var(--transition-section-space) * 2);
 }
 
 @media (max-width: 1620px) {
@@ -27,7 +29,6 @@
 
 @media (max-width: 1050px) {
   .transition-page {
-    --transition-panel-radius: 24px;
     --transition-section-radius: 24px;
   }
 }
@@ -45,7 +46,6 @@
     --transition-icon-box: 36px;
     --transition-arrow-size: 28px;
     --transition-arrow-glyph: 11px;
-    --transition-panel-radius: 20px;
     --transition-section-radius: 20px;
   }
 }

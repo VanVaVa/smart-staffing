@@ -1,6 +1,5 @@
 export {
   MockAvatar,
-  MockButton,
   MockChip,
   MockRow,
   MockSheet,

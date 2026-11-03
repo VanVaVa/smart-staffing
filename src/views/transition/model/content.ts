@@ -1,99 +1,132 @@
-import type { ClientsHeroContent } from "@/entities/landing";
 import type { FeedbackFormPanelContent } from "@/shared/ui/feedback-form-panel";
 
-import type { TransitionCycleContent, TransitionFactsContent, TransitionQuestion, TransitionStep } from "./types";
+import type {
+  TransitionCycleContent,
+  TransitionFactsContent,
+  TransitionHeroContent,
+  TransitionPerk,
+  TransitionQuestion,
+  TransitionStep,
+  TransitionTrackContent,
+} from "./types";
 
-export const transitionTitleLines: [string, string] = ["Сократить ФОТ", "Сохранить специалистам работу"];
-
-export const transitionHero: ClientsHeroContent = {
-  title: transitionTitleLines.join("\n"),
+export const transitionHero: TransitionHeroContent = {
+  title: "Сократите ФОТ. Поддерживайте занятость специалистов",
   subtitle: {
-    before: "",
-    accent: "Возможность перехода ИТ\u2011специалистов",
-    after: " к\u00a0новым работодателям ещё в\u00a0срок предупреждения о\u00a0сокращении.",
+    accent: "Сервис для\u00a0перехода ИТ\u2011специалистов",
+    after: " к\u00a0новым работодателям вместо сокращения",
   },
+  subtitleNote: "через партнёрские сети и\u00a0реферальную программу",
   cta: "Перевести сотрудников",
-  imageSrc: "/landing/transition/hero-specialists-square.webp",
-  imageWidth: 1912,
-  imageHeight: 1920,
-  imageAlt: "Каталог специалистов на\u00a0платформе СмартСтаффинг",
-  imageMobileSrc: "/landing/transition/hero-specialists-wide.webp",
-  imageMobileWidth: 2000,
-  imageMobileHeight: 1224,
 };
 
 export const transitionGains = {
   label: "Что получает ваша компания",
-  items: ["Компетенции остаются в\u00a0профессии", "Без\u00a0лишних месяцев ФОТ", "Оплата только за\u00a0переход"],
+  imageSrc: "/landing/transition/gains.webp",
+  items: [
+    "Запускается маховик взаимных рекомендаций",
+    "Опытные специалисты продолжают работу в\u00a0новых компаниях",
+    "Оплата только за\u00a0состоявшийся переход",
+  ],
+};
+
+export const transitionTrack: TransitionTrackContent = {
+  title: "Более 15\u00a0лет на\u00a0рынке",
+  lead: { before: "Строим и\u00a0расширяем ", accent: "профессиональные партнёрства" },
+  stats: [
+    { value: "60+", text: "корпоративных клиентов из\u00a0разных сегментов бизнеса" },
+    { value: "170+", text: "компаний уже используют платформу СмартСтаффинга" },
+  ],
+  networkLines: ["Собрали партнёрскую сеть", "из\u00a0более 300\u00a0участников"],
 };
 
 export const transitionSteps = {
-  title: "Как работает аутплейсмент",
+  title: "Как работает СмартАутплейсмент",
   items: [
     {
       number: "01",
       title: "Доступные компетенции",
-      text: "Вы\u00a0сообщаете специалистам о\u00a0программе. Участвуют только те, кто согласился сам.",
+      text: "Вы\u00a0сообщаете специалистам о\u00a0программе и\u00a0публикуете разрешённые сведения, открывая доступ к\u00a0возможностям партнёрской сети.",
       imageSrc: "/landing/transition/step-1.webp",
     },
     {
       number: "02",
       title: "Реферальная программа",
-      text: "Сервис открывает ваших специалистов вакансиям партнёрской сети. Работодатели и\u00a0специалисты договариваются напрямую.",
+      text: "Сервис знакомит специалистов с\u00a0вакансиями партнёрской сети. Работодатели и\u00a0кандидаты договариваются напрямую.",
       imageSrc: "/landing/transition/step-2.webp",
     },
     {
       number: "03",
       title: "Переход состоялся",
-      text: "Специалист выходит на\u00a0новую работу. Счёт\u00a0— после того как выход подтверждён.",
+      text: "Специалист выходит на\u00a0новую работу и\u00a0подтверждает факт трудоустройства, а\u00a0партнёры получают вознаграждение.",
       imageSrc: "/landing/transition/step-3.webp",
     },
   ] satisfies TransitionStep[],
 };
 
 export const transitionCycle: TransitionCycleContent = {
-  title: "Каждый переход запускает следующий",
-  text: "Работодатели возвращаются с\u00a0новыми вакансиями\u00a0— следующим специалистам проще найти работу.",
+  title: "Каждый переход запускает маховик",
+  subtitle: {
+    accent: "Работодатели возвращаются с\u00a0новыми вакансиями",
+    after: " и\u00a0партнёрская сеть расширяется",
+  },
   label: "Цикл: ваши специалисты в\u00a0сети, партнёры приводят вакансии, переход состоялся, сеть растёт\u00a0— и\u00a0снова",
   nodes: [
     { title: "Ваши специалисты в\u00a0сети", text: "те, кто согласился участвовать" },
     { title: "Партнёры приводят вакансии", text: "работодатели, агентства, компании сети" },
-    { title: "Переход состоялся", text: "специалист вышел на\u00a0новую работу" },
-    { title: "Сеть растёт", text: "новая вакансия, следующее знакомство" },
+    { title: "Переход состоялся", text: "специалист вышел на\u00a0новое место" },
+    { title: "Сеть растёт", text: "рекомендации, новые знакомства" },
   ],
-  loop: "и\u00a0снова\u00a0— больше вакансий для\u00a0следующих ваших специалистов",
+  loop: "и\u00a0снова\u00a0— следующим специалистам проще найти работу",
 };
 
 export const transitionReasons = {
-  title: "Почему работодатели нанимают ваших специалистов",
-  lead: "Мы\u00a0предлагаем работодателям то, чего нет на\u00a0площадках и\u00a0у\u00a0кадровых агентств.",
+  title: "Что получают компании",
+  lead: "Предлагаем решение, которого нет на\u00a0площадках и\u00a0у\u00a0кадровых агентств",
+  note: "Доступ к\u00a0подтверждённым сотрудникам без\u00a0долгого найма",
   cards: {
     recommendation: "Опыт по\u00a0рекомендации",
     early: "Раньше рынка",
     team: "Сработанная команда",
   },
-  note: "Подтверждение опыта\u00a0— только с\u00a0согласия специалиста.",
+};
+
+export const transitionDemand = {
+  text: "Есть потребность в\u00a0специалистах из\u00a0сети?",
+  cta: "Есть задача",
 };
 
 export const transitionPerks = {
   title: "Доступ к\u00a0специалистам\u00a0— под\u00a0вашим контролем",
   cards: {
-    lists: "Управление участниками сети",
-    contour: "Закрытый контур по\u00a0NDA",
-    consent: "Данные\u00a0— только с\u00a0согласия",
-    decision: "Решение\u00a0— за\u00a0специалистом",
-  },
+    lists: {
+      title: "Управление участниками сети",
+      text: "Компания сама решает, каких работодателей допустить, а\u00a0каких\u00a0– нет",
+    },
+    contour: {
+      title: "Закрытый доступ по\u00a0NDA",
+      text: "Информация о\u00a0специалистах доступна только проверенным участникам сети после принятия условий конфиденциальности. Данные не\u00a0попадают в\u00a0открытый доступ.",
+    },
+    consent: {
+      title: "Данные только с\u00a0согласия",
+      text: "Публикация сведений возможна только с\u00a0согласия. Согласие компании не\u00a0заменяет его согласия. Отказ не\u00a0меняет условий ухода.",
+    },
+    decision: {
+      title: "Решение за\u00a0специалистом",
+      text: "Специалист самостоятельно выбирает, рассматривать\u00a0ли предложения работодателей, и\u00a0подтверждает факт перехода",
+    },
+  } satisfies Record<string, TransitionPerk>,
   imageSrc: "/landing/transition/perks.webp",
 };
 
 export const transitionFacts: TransitionFactsContent = {
   title: "Опытных специалистов ищут",
-  lead: "Спрос в\u00a0ИТ\u2011индустрии не\u00a0исчез, а\u00a0сместился: к\u00a0опытным специалистам и\u00a0в\u00a0другие отрасли.",
+  lead: "Спрос в\u00a0ИТ\u2011индустрии не\u00a0исчез, а\u00a0сместился: к\u00a0опытным специалистам и\u00a0в\u00a0другие отрасли",
   items: [
     {
       value: "2,5",
       label: "резюме на\u00a0вакансию сеньора",
-      text: "Против 19 на\u00a0джуниора. Архитекторы и\u00a0лиды остаются востребованными, а\u00a0вакансии DevOps закрывают месяцами.",
+      text: "Против 19 на\u00a0джуниор\u2011позицию, а\u00a0опытных архитекторов, лидов и\u00a0DevOps ищут месяцами",
       sources: [
         { label: "hh.ru", href: "https://hh.ru/article/6-trendov-v-najme-na-2026-god-kotorye-prognoziruyut-ehksperty" },
         { label: "Hi\u2011Tech Mail", href: "https://hi-tech.mail.ru/articles/150067-pochemu-vakansij-na-35-menshe-chem-v-2025-godu/" },
@@ -103,19 +136,21 @@ export const transitionFacts: TransitionFactsContent = {
     {
       value: "до\u00a0300",
       label: "откликов на\u00a0одну ИТ\u2011вакансию",
-      text: "Рекомендации и\u00a0личные связи\u00a0— один из\u00a0ключевых каналов найма.",
+      text: "Рекомендации стали одним из\u00a0главных каналов найма",
       sources: [
-        { label: "CNews, данные iTrend", href: "https://www.cnews.ru/news/line/2026-02-11_rost_zarplat_v_it_ostanovilsya" },
         { label: "hh.ru", href: "https://hh.ru/article/6-trendov-v-najme-na-2026-god-kotorye-prognoziruyut-ehksperty" },
+        { label: "Hi\u2011Tech Mail", href: "https://hi-tech.mail.ru/articles/150067-pochemu-vakansij-na-35-menshe-chem-v-2025-godu/" },
+        { label: "Хабр", href: "https://habr.com/ru/articles/1054450/" },
       ],
     },
     {
       value: "+25%",
       label: "вакансий в\u00a0промышленности за\u00a0год",
-      text: "Реальный сектор набирает специалистов по\u00a0автоматизации: в\u00a0производстве и\u00a0сервисе таких вакансий за\u00a05\u00a0лет стало на\u00a040% больше.",
+      text: "Вакансий с\u00a0задачами автоматизации реального сектора за\u00a05\u00a0лет стало на\u00a040% больше",
       sources: [
-        { label: "Клерк, данные Авито Работы", href: "https://www.klerk.ru/buh/news/714673/" },
-        { label: "Новости ИТ\u2011канала, данные hh.ru", href: "https://www.novostiitkanala.ru/news/detail.php?ID=197861" },
+        { label: "hh.ru", href: "https://hh.ru/article/6-trendov-v-najme-na-2026-god-kotorye-prognoziruyut-ehksperty" },
+        { label: "Hi\u2011Tech Mail", href: "https://hi-tech.mail.ru/articles/150067-pochemu-vakansij-na-35-menshe-chem-v-2025-godu/" },
+        { label: "Хабр", href: "https://habr.com/ru/articles/1054450/" },
       ],
     },
   ],
@@ -127,7 +162,7 @@ export const transitionFaq = {
     {
       icon: "wallet",
       question: "Сколько это стоит?",
-      answer: "Только за\u00a0состоявшийся переход. Счёт выставляется после того, как выход специалиста на\u00a0новую работу подтверждён и\u00a0вы\u00a0признали переход по\u00a0критериям договора. Стоимость и\u00a0порядок расчётов фиксируются в\u00a0договоре услуг и\u00a0дополнительном соглашении к\u00a0нему.",
+      answer: "Предусмотрена гибкая модель оплаты: вы\u00a0платите только за\u00a0подтверждённый результат\u00a0— состоявшийся переход специалиста. Условия согласуем под\u00a0ваш сценарий.",
     },
     {
       icon: "doc",
@@ -169,8 +204,8 @@ export const transitionFaq = {
 
 export const transitionLeadForm: FeedbackFormPanelContent = {
   title: "Оставьте заявку",
-  subtitle: "Покажем сервис на\u00a0вашем сценарии и\u00a0ответим на\u00a0вопросы",
-  subtitleAccent: "Покажем сервис",
+  subtitle: "Покажем платформу на\u00a0вашем сценарии и\u00a0ответим на\u00a0вопросы",
+  subtitleAccent: "Покажем платформу",
 };
 
 export const TRANSITION_SECTION_IDS = {

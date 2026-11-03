@@ -4,15 +4,20 @@
   padding-block: var(--transition-section-space);
 }
 
-.transition-section--soft {
-  border-radius: var(--transition-section-radius);
-  background: var(--color-white);
+.transition-section--dark {
+  padding-block: calc(var(--transition-section-space) * 2)
+    calc(var(--transition-section-space) * 2 + var(--transition-section-radius));
+  border-radius: var(--transition-section-radius) var(--transition-section-radius) 0 0;
+  background: linear-gradient(180deg, var(--color-grey-900) 0%, var(--color-purple-dark) 75%);
+  color: var(--color-white);
 }
 
-.transition-section--dark {
-  border-radius: var(--transition-section-radius);
-  background: linear-gradient(180deg, #090909 0%, var(--color-purple-dark) 100%);
-  color: var(--color-white);
+.transition-section--raised {
+  z-index: 1;
+  margin-top: calc(-1 * var(--transition-section-radius));
+  padding-top: calc(var(--transition-section-space) * 2);
+  border-radius: var(--transition-section-radius) var(--transition-section-radius) 0 0;
+  background: var(--color-bg);
 }
 
 .transition-section__content {

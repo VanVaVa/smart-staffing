@@ -12,44 +12,44 @@
   flex-direction: column;
   gap: 8px;
   padding: var(--transition-card-pad);
-  border: 1px solid rgb(255 255 255 / 10%);
   border-radius: var(--radius-lg);
-  background: rgb(14 13 24 / 72%);
+  background: var(--color-white);
 }
 
 .transition-facts__value {
   font-family: var(--font-heading);
   font-size: var(--text-h1);
   font-weight: 600;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
+  line-height: 1.2;
+  letter-spacing: var(--letter-heading);
   font-variant-numeric: tabular-nums;
   color: var(--color-accent);
 }
 
 .transition-facts__label {
   font-family: var(--font-heading);
-  font-size: var(--text-h4);
+  font-size: var(--text-h3);
   font-weight: 600;
-  line-height: var(--line-h4);
-  color: var(--color-white);
+  line-height: var(--line-h3);
+  letter-spacing: var(--letter-heading);
+  color: var(--color-black);
 }
 
 .transition-facts__text {
-  margin: 4px 0 0;
+  margin: 0;
   font-family: var(--font-body);
-  font-size: var(--text-body-md);
-  line-height: var(--line-body);
-  color: var(--color-white-64);
+  font-size: var(--text-body-xl);
+  line-height: var(--line-body-xl);
+  color: var(--color-black);
 }
 
 .transition-facts__sources {
   margin: auto 0 0;
-  padding-top: 8px;
+  padding-top: 32px;
   font-family: var(--font-body);
-  font-size: var(--text-body-sm);
-  line-height: var(--line-body-sm);
-  color: var(--color-white-64);
+  font-size: var(--text-body-xl);
+  line-height: var(--line-body-xl);
+  color: var(--color-grey-400);
 }
 
 .transition-facts__source {
@@ -61,7 +61,7 @@
 
 @media (hover: hover) {
   .transition-facts__source:hover {
-    color: var(--color-white);
+    color: var(--color-black);
   }
 }
 
