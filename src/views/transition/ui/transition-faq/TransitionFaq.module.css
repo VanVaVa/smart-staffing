@@ -1,4 +1,6 @@
 .transition-faq {
+  --transition-faq-icon-gap: 16px;
+
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--transition-card-gap);
@@ -23,10 +25,11 @@
 .transition-faq__question {
   position: relative;
   display: flex;
-  align-items: center;
-  gap: 16px;
+  align-items: flex-start;
+  gap: var(--transition-faq-icon-gap);
   padding: var(--transition-card-pad)
-    calc(var(--transition-card-pad) + var(--transition-arrow-size) + 16px) var(--transition-card-pad)
+    calc(var(--transition-card-pad) + var(--transition-arrow-size) + var(--transition-faq-icon-gap))
+    var(--transition-card-pad)
     var(--transition-card-pad);
   border-radius: var(--radius-lg);
   font-family: var(--font-heading);
@@ -40,6 +43,10 @@
   transition: color 0.2s ease;
 }
 
+.transition-faq__question-text {
+  padding-top: calc((var(--transition-icon-box) - var(--line-h3)) / 2);
+}
+
 .transition-faq__question::-webkit-details-marker {
   display: none;
 }
@@ -47,11 +54,10 @@
 .transition-faq__question::after {
   content: "";
   position: absolute;
-  top: 50%;
+  top: calc(var(--transition-card-pad) + (var(--transition-icon-box) - var(--transition-arrow-size)) / 2);
   right: var(--transition-card-pad);
   width: var(--transition-arrow-size);
   height: var(--transition-arrow-size);
-  margin-top: calc(var(--transition-arrow-size) / -2);
   border-radius: 50%;
   background: var(--color-bg) no-repeat center / var(--transition-arrow-glyph)
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round'%3E%3Cpath d='M6 1v10M1 6h10'/%3E%3C/svg%3E");
@@ -72,7 +78,7 @@
   max-width: 70ch;
   margin: 0;
   padding: 0 var(--transition-card-pad) var(--transition-card-pad)
-    calc(var(--transition-card-pad) + var(--transition-icon-box) + 16px);
+    calc(var(--transition-card-pad) + var(--transition-icon-box) + var(--transition-faq-icon-gap));
   font-family: var(--font-body);
   font-size: var(--text-body-xl);
   line-height: var(--line-body-xl);
@@ -95,7 +101,7 @@
 }
 
 @media (max-width: 450px) {
-  .transition-faq__question {
-    gap: 12px;
+  .transition-faq {
+    --transition-faq-icon-gap: 12px;
   }
 }

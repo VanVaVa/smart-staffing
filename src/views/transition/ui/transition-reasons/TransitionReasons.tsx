@@ -22,7 +22,6 @@ const REFERRAL_SKILLS = ["Java", "Spring", "Kafka", "PostgreSQL"];
 
 export function TransitionReasons({ titleId }: TransitionReasonsProps) {
   const { cards } = transitionReasons;
-  const cardClass = styles["transition-reasons__card"];
 
   return (
     <>
@@ -33,29 +32,31 @@ export function TransitionReasons({ titleId }: TransitionReasonsProps) {
           <p className={styles["transition-reasons__note"]}>{transitionReasons.note}</p>
         </div>
         <ul className={styles["transition-reasons__list"]}>
-          <TransitionCard title={cards.recommendation} tone="dark" className={cardClass}>
-            <div className={styles["transition-reasons__plate"]} aria-hidden>
-              <span className={styles["transition-reasons__plate-check"]}>✓</span>
-              Опыт подтверждён
-            </div>
-            <div className={styles["transition-reasons__referral"]} aria-hidden>
-              <div className={styles["transition-reasons__referee"]}>
-                <MockAvatar initials="ИК" tone="orange" />
-                <span className={styles["transition-reasons__referee-text"]}>
-                  <span className={styles["transition-reasons__referee-name"]}>Рекомендует тимлид</span>
-                  <span className={styles["transition-reasons__referee-note"]}>3 года в одной команде</span>
-                </span>
+          <TransitionCard title={cards.recommendation} tone="dark">
+            <div className={styles["transition-reasons__showcase"]}>
+              <div className={styles["transition-reasons__plate"]} aria-hidden>
+                <span className={styles["transition-reasons__plate-check"]}>✓</span>
+                Опыт подтверждён
               </div>
-              <div className={styles["transition-reasons__skills"]}>
-                {REFERRAL_SKILLS.map((skill) => (
-                  <span key={skill} className={styles["transition-reasons__skill"]}>
-                    {skill}
+              <div className={styles["transition-reasons__referral"]} aria-hidden>
+                <div className={styles["transition-reasons__referee"]}>
+                  <MockAvatar initials="ИК" tone="orange" />
+                  <span className={styles["transition-reasons__referee-text"]}>
+                    <span className={styles["transition-reasons__referee-name"]}>Рекомендует тимлид</span>
+                    <span className={styles["transition-reasons__referee-note"]}>3 года в одной команде</span>
                   </span>
-                ))}
+                </div>
+                <div className={styles["transition-reasons__skills"]}>
+                  {REFERRAL_SKILLS.map((skill) => (
+                    <span key={skill} className={styles["transition-reasons__skill"]}>
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </TransitionCard>
-          <TransitionCard title={cards.early} className={cardClass}>
+          <TransitionCard title={cards.early}>
             <MockSheet className={styles["transition-reasons__sheet"]}>
               <span className={styles["transition-reasons__label"]}>Статус специалиста</span>
               <MockRow>
@@ -81,7 +82,7 @@ export function TransitionReasons({ titleId }: TransitionReasonsProps) {
               </MockRow>
             </MockSheet>
           </TransitionCard>
-          <TransitionCard title={cards.team} className={cardClass}>
+          <TransitionCard title={cards.team}>
             <MockSheet className={styles["transition-reasons__sheet"]}>
               <div className={styles["transition-reasons__avatars"]}>
                 {TEAM.map((member) => (

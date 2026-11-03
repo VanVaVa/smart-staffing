@@ -24,7 +24,7 @@ export function TransitionFaq({ titleId, title, items }: TransitionFaqProps) {
           >
             <summary className={styles["transition-faq__question"]}>
               <TransitionIcon name={item.icon} />
-              {item.question}
+              <span className={styles["transition-faq__question-text"]}>{item.question}</span>
             </summary>
             <p className={styles["transition-faq__answer"]}>{item.answer}</p>
           </details>

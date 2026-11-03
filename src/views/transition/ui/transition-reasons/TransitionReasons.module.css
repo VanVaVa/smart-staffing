@@ -38,8 +38,8 @@
   list-style: none;
 }
 
-.transition-reasons__card {
-  aspect-ratio: 4 / 3;
+.transition-reasons__showcase {
+  margin-block: auto;
 }
 
 .transition-reasons__sheet {
@@ -82,7 +82,7 @@
 .transition-reasons__referral {
   display: grid;
   gap: 14px;
-  margin: 20px 0 0 40px;
+  margin: 16px 0 0 40px;
   padding: 18px 20px;
   border-radius: 16px 0 0 16px;
   background: rgb(255 255 255 / 10%);
@@ -138,6 +138,7 @@
 
 .transition-reasons__notice-head {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   gap: 12px;
   font-size: var(--text-body-sm);
@@ -199,8 +200,25 @@
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .transition-reasons__card {
-    aspect-ratio: auto;
-    min-height: 300px;
+}
+
+@media (max-width: 576px) {
+  .transition-reasons__head {
+    gap: 4px;
+  }
+}
+
+@media (max-width: 450px) {
+  .transition-reasons__lead {
+    font-family: var(--font-body);
+    font-size: var(--text-body-md);
+    font-weight: 500;
+    line-height: var(--line-body-xl);
+    letter-spacing: 0;
+  }
+
+  .transition-reasons__note {
+    font-size: var(--text-body-sm);
+    line-height: var(--line-body-sm);
   }
 }

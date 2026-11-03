@@ -106,4 +106,12 @@
   .transition-track__network {
     padding: var(--transition-card-pad);
   }
+
+  .transition-track__network-text {
+    font-family: var(--font-body);
+    font-size: var(--text-body-xl);
+    font-weight: 500;
+    line-height: var(--line-body-xl);
+    letter-spacing: 0;
+  }
 }

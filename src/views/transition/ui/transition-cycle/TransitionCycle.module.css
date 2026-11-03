@@ -227,9 +227,13 @@
     background: var(--color-accent-2);
   }
 
+  .transition-cycle__orb {
+    top: 40px;
+    left: -24px;
+  }
+
   .transition-cycle__loop {
     margin-top: 12px;
-    padding-left: 24px;
     text-align: left;
   }
 

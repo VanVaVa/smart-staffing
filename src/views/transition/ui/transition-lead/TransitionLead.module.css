@@ -1,5 +1,11 @@
 .transition-lead {
   position: relative;
   overflow-x: clip;
-  padding-block: var(--transition-section-space);
+  padding-block: var(--transition-section-space) calc(var(--transition-section-space) * 2);
+}
+
+@media (max-width: 576px) {
+  .transition-lead {
+    padding-bottom: 100px;
+  }
 }
