@@ -25,17 +25,17 @@ export function TransitionPerks() {
     <ul className={styles["transition-perks"]}>
       <TransitionCard title={cards.lists} className={cardClass}>
         <MockSheet>
-          <MockTabs items={["Белый список", "Чёрный список"]} active={0} />
+          <MockTabs items={["Чёрный список"]} active={0} />
+          <MockRow>
+            <span>Конкурент</span>
+            <MockToggle on />
+          </MockRow>
           <MockRow>
             <span>Банк</span>
-            <MockToggle on />
+            <MockToggle on={false} />
           </MockRow>
           <MockRow>
             <span>ИТ‑интегратор</span>
-            <MockToggle on />
-          </MockRow>
-          <MockRow>
-            <span>Конкурент</span>
             <MockToggle on={false} />
           </MockRow>
         </MockSheet>

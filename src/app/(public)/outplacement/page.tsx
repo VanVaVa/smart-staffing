@@ -5,6 +5,7 @@ import { TransitionPage, transitionSeo } from "@/views/transition";
 export const metadata: Metadata = {
   title: transitionSeo.title,
   description: transitionSeo.description,
+  keywords: transitionSeo.keywords,
   alternates: {
     canonical: transitionSeo.url,
   },

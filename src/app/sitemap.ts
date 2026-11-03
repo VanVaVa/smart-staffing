@@ -8,8 +8,6 @@ export const dynamic = "force-dynamic";
 const STATIC_PATHS = [
   routes.home,
   routes.about,
-  "/clients",
-  "/pricing",
   "/media",
   routes.vacancies,
   routes.documents,
