@@ -17,12 +17,6 @@ export function TransitionTrack({ titleId }: TransitionTrackProps) {
         className={styles["transition-track__head"]}
       />
       <ul className={styles["transition-track"]}>
-        {transitionTrack.stats.map((stat) => (
-          <li key={stat.value} className={styles["transition-track__stat"]}>
-            <span className={styles["transition-track__value"]}>{stat.value}</span>
-            <span className={styles["transition-track__text"]}>{stat.text}</span>
-          </li>
-        ))}
         <li className={styles["transition-track__network"]}>
           <span className={`${styles["transition-track__orb"]} ${styles["transition-track__orb--violet"]}`} aria-hidden />
           <span className={`${styles["transition-track__orb"]} ${styles["transition-track__orb--orange"]}`} aria-hidden />
@@ -34,6 +28,12 @@ export function TransitionTrack({ titleId }: TransitionTrackProps) {
             ))}
           </p>
         </li>
+        {transitionTrack.stats.map((stat) => (
+          <li key={stat.value} className={styles["transition-track__stat"]}>
+            <span className={styles["transition-track__value"]}>{stat.value}</span>
+            <span className={styles["transition-track__text"]}>{stat.text}</span>
+          </li>
+        ))}
       </ul>
     </>
   );

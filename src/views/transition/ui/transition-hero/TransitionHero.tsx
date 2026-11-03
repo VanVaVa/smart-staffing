@@ -15,7 +15,6 @@ export function TransitionHero() {
         <p className={styles["transition-hero__subtitle"]}>
           <span className={styles["transition-hero__accent"]}>{transitionHero.subtitle.accent}</span>
           {transitionHero.subtitle.after}
-          <span className={styles["transition-hero__note"]}>{transitionHero.subtitleNote}</span>
         </p>
         <CompanyConnectionButton variant="primary" size="md" withArrow className={styles["transition-hero__cta"]}>
           <span>{transitionHero.cta}</span>

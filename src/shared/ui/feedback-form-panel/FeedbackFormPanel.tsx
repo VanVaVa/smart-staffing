@@ -1,4 +1,5 @@
 import { FeedbackForm } from "@/shared/ui/feedback-form";
+import type { FeedbackFormChannel } from "@/shared/ui/feedback-form-channel-toggle";
 import type { FormSubmissionType } from "@/entities/form-submission";
 
 import styles from "./FeedbackFormPanel.module.css";
@@ -16,6 +17,7 @@ type FeedbackFormPanelProps = FeedbackFormPanelContent & {
   submissionType: FormSubmissionType;
   sourcePath: string;
   sourceLabel?: string;
+  channels?: FeedbackFormChannel[];
 };
 
 function FeedbackFormPanelSubtitle({
@@ -66,6 +68,7 @@ export function FeedbackFormPanel({
   submissionType,
   sourcePath,
   sourceLabel,
+  channels,
 }: FeedbackFormPanelProps) {
   const rootClassName = [styles["feedback-form-panel"], className].filter(Boolean).join(" ");
 
@@ -102,6 +105,7 @@ export function FeedbackFormPanel({
             sourcePath={sourcePath}
             sourceLabel={sourceLabel}
             disabled={!interactive}
+            channels={channels}
           />
         </div>
       </div>

@@ -15,12 +15,12 @@ export function TransitionFaq({ titleId, title, items }: TransitionFaqProps) {
     <div className={styles["transition-faq"]}>
       <TransitionSectionTitle id={titleId} title={title} className={styles["transition-faq__title"]} />
       <div className={styles["transition-faq__list"]}>
-        {items.map((item, index) => (
+        {items.map((item) => (
           <details
             key={item.question}
             name={titleId}
             className={styles["transition-faq__item"]}
-            open={index === 0}
+            open={item.open}
           >
             <summary className={styles["transition-faq__question"]}>
               <TransitionIcon name={item.icon} />

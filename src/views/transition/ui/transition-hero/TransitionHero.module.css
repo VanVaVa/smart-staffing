@@ -5,8 +5,7 @@
 .transition-hero__content {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start;
 }
 
 .transition-hero__title {
@@ -21,16 +20,12 @@
 }
 
 .transition-hero__subtitle {
-  max-width: 760px;
+  max-width: 979px;
   margin: 20px 0 0;
   font-family: var(--font-body);
   font-size: var(--text-lead);
   line-height: var(--line-lead);
   color: var(--color-black);
-}
-
-.transition-hero__note {
-  display: block;
 }
 
 .transition-hero__accent {

@@ -19,7 +19,7 @@ export const landingNav = [
       { label: "Кадровые агентства", href: "/pricing/agencies" },
     ],
   },
-  { label: "Аутплейсмент", href: routes.outplacement, badge: "new" },
+  { label: "СмартПлейсмент", href: routes.outplacement, badge: "new" },
 ] as const;
 
 export const heroNewDirection = {

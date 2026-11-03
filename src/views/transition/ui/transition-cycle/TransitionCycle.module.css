@@ -1,6 +1,6 @@
 .transition-cycle {
   position: relative;
-  max-width: 1214px;
+  max-width: 1221px;
   margin-inline: auto;
 }
 
@@ -26,14 +26,14 @@
 
 .transition-cycle__wheel {
   position: relative;
-  padding: 52px 0;
+  padding: clamp(40px, 3.75vw, 72px) 0 clamp(44px, 4.17vw, 80px);
 }
 
 .transition-cycle__ring {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: min(100%, 360px);
+  width: min(100%, 476px);
   height: auto;
   overflow: visible;
   transform: translate(-50%, -50%);
@@ -64,8 +64,8 @@
   grid-template-areas:
     "first second"
     "fourth third";
-  gap: 48px 40px;
-  max-width: 720px;
+  gap: clamp(32px, 2.92vw, 56px);
+  max-width: 1048px;
   margin: 0 auto;
   padding: 0;
   list-style: none;
@@ -74,8 +74,8 @@
 .transition-cycle__node {
   display: grid;
   align-content: start;
-  gap: 2px;
-  padding: 14px 20px;
+  gap: 4px;
+  padding: 20px 28px;
   border-radius: var(--radius-lg);
   background: var(--color-white);
   box-shadow:
@@ -103,26 +103,26 @@
 }
 
 .transition-cycle__node-title {
-  font-family: var(--font-heading);
-  font-size: var(--text-body-md);
-  font-weight: 600;
-  line-height: var(--line-body);
+  font-family: var(--font-body);
+  font-size: var(--text-lead);
+  font-weight: 500;
+  line-height: var(--line-lead);
   color: var(--color-black);
 }
 
 .transition-cycle__node-text {
   font-family: var(--font-body);
-  font-size: var(--text-body-sm);
-  line-height: var(--line-body-sm);
-  color: var(--color-grey-600);
+  font-size: var(--text-body-xl);
+  line-height: var(--line-body-xl);
+  color: var(--color-black);
 }
 
 .transition-cycle__loop {
-  margin-top: 16px;
+  margin-top: 20px;
   font-family: var(--font-body);
-  font-size: var(--text-body-md);
+  font-size: var(--text-lead);
   font-weight: 500;
-  line-height: var(--line-body);
+  line-height: var(--line-lead);
   text-align: center;
   color: var(--color-accent-2);
 }

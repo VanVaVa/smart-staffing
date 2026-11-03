@@ -15,6 +15,7 @@ export function TransitionLead() {
           submissionType="contact"
           sourcePath={routes.outplacement}
           sourceLabel="Аутплейсмент"
+          channels={["phone", "email"]}
         />
       </Container>
     </section>

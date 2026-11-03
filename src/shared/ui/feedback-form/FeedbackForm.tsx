@@ -56,7 +56,7 @@ const CHANNEL_FIELDS: Record<
   phone: {
     name: "phone",
     type: "tel",
-    placeholder: "+7 000 00 00",
+    placeholder: "+7 (000) 000 00 00",
     autoComplete: "tel",
     inputMode: "tel",
     maxLength: 20,
@@ -70,6 +70,8 @@ const CHANNEL_FIELDS: Record<
     maxLength: 254,
   },
 };
+
+const ALL_CHANNELS: FeedbackFormChannel[] = ["telegram", "phone", "email"];
 
 type AttachState = "idle" | "uploaded";
 
@@ -90,6 +92,7 @@ export type FeedbackFormProps = {
   sourceLabel?: string;
   vacancyId?: string;
   disabled?: boolean;
+  channels?: FeedbackFormChannel[];
 };
 
 function formatResumeLabel(file: File, fullName: string): string {
@@ -113,8 +116,9 @@ export function FeedbackForm({
   sourceLabel,
   vacancyId,
   disabled = false,
+  channels = ALL_CHANNELS,
 }: FeedbackFormProps) {
-  const [channel, setChannel] = useState<FeedbackFormChannel>("telegram");
+  const [channel, setChannel] = useState<FeedbackFormChannel>(channels[0]);
   const [consented, setConsented] = useState(false);
   const [contactValue, setContactValue] = useState("");
   const [fullName, setFullName] = useState("");
@@ -157,7 +161,7 @@ export function FeedbackForm({
   }, [attachState, fullName]);
 
   const resetForm = () => {
-    setChannel("telegram");
+    setChannel(channels[0]);
     setConsented(false);
     setContactValue("");
     setFullName("");
@@ -263,6 +267,7 @@ export function FeedbackForm({
       <div className={styles["feedback-form__fields"]}>
         <FeedbackFormChannelToggle
           value={channel}
+          channels={channels}
           onChange={(next) => {
             setChannel(next);
             setContactValue("");

@@ -14,9 +14,9 @@ export function TransitionGains() {
       <Container>
         <div className={styles["transition-gains__stage"]}>
           <div className={styles["transition-gains__decor"]} aria-hidden>
-            <span className={`${styles["transition-gains__orb"]} ${styles["transition-gains__orb--image"]}`} />
+            <span className={`${styles["transition-gains__orb"]} ${styles["transition-gains__orb--large"]}`} />
             <span className={`${styles["transition-gains__orb"]} ${styles["transition-gains__orb--orange"]}`} />
-            <span className={`${styles["transition-gains__orb"]} ${styles["transition-gains__orb--violet"]}`} />
+            <span className={`${styles["transition-gains__orb"]} ${styles["transition-gains__orb--image"]}`} />
           </div>
           <div className={styles["transition-gains__panel"]}>
             <Image

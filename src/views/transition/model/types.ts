@@ -17,7 +17,6 @@ export type TransitionAccentText = {
 export type TransitionHeroContent = {
   title: string;
   subtitle: TransitionAccentText;
-  subtitleNote: string;
   cta: string;
 };
 
@@ -39,6 +38,7 @@ export type TransitionQuestion = {
   icon: TransitionIconName;
   question: string;
   answer: string;
+  open?: boolean;
 };
 
 export type TransitionFactsContent = {

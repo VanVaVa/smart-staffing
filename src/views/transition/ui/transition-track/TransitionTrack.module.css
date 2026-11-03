@@ -1,11 +1,7 @@
-.transition-track__head p {
-  margin-top: 4px;
-}
-
 .transition-track {
   display: grid;
-  grid-template-columns: minmax(0, 507fr) minmax(0, 507fr) minmax(0, 786fr);
-  gap: 12px;
+  grid-template-columns: minmax(0, 2fr) repeat(2, minmax(0, 1fr));
+  gap: var(--transition-card-gap);
   margin: 0;
   padding: 0;
   list-style: none;
@@ -31,7 +27,7 @@
 }
 
 .transition-track__text {
-  max-width: 451px;
+  max-width: 394px;
   font-family: var(--font-body);
   font-size: var(--text-body-xl);
   line-height: var(--line-body-xl);
@@ -57,14 +53,14 @@
 
 .transition-track__orb--violet {
   top: -70px;
-  left: 54%;
+  left: 58%;
   background: linear-gradient(135deg, var(--color-blue-muted) 0%, var(--color-purple-mid) 47%, #273181 100%);
   filter: blur(40px);
 }
 
 .transition-track__orb--orange {
   bottom: -130px;
-  left: 42%;
+  left: 52%;
   background: linear-gradient(135deg, var(--color-blue-muted) 0%, var(--color-accent-hover) 47%, var(--color-accent) 100%);
   filter: blur(20px);
 }
