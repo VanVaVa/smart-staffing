@@ -159,7 +159,7 @@
 
   .transition-perks__card--contour .transition-perks__copy {
     justify-content: flex-start;
-    gap: 8px;
+    gap: 0;
     padding: var(--transition-card-pad);
   }
 
@@ -177,7 +177,34 @@
     padding: var(--transition-card-pad);
   }
 
+  .transition-perks__card--decision {
+    min-height: 0;
+  }
+
+  .transition-perks__icon {
+    --transition-icon-box: 36px;
+  }
+
   .transition-perks__card--decision .transition-perks__title {
-    margin-top: 48px;
+    margin-top: 32px;
+  }
+
+  .transition-perks__title {
+    font-family: var(--font-body);
+    font-size: var(--text-body-md);
+    font-weight: 500;
+    line-height: var(--line-body);
+    letter-spacing: 0;
+  }
+
+  .transition-perks__text,
+  .transition-perks__card--consent .transition-perks__text {
+    margin-top: 8px;
+    font-size: var(--text-body-sm);
+    line-height: var(--line-body-sm);
+  }
+
+  .transition-perks__card--lists .transition-perks__text {
+    margin-bottom: 20px;
   }
 }

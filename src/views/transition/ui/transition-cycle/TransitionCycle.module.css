@@ -213,7 +213,18 @@
 
   .transition-cycle__node {
     position: relative;
+    gap: 2px;
     padding: 12px 16px;
+  }
+
+  .transition-cycle__node-title {
+    font-size: var(--text-body-md);
+    line-height: var(--line-body);
+  }
+
+  .transition-cycle__node-text {
+    font-size: var(--text-body-sm);
+    line-height: var(--line-body-sm);
   }
 
   .transition-cycle__node::before {
@@ -234,6 +245,8 @@
 
   .transition-cycle__loop {
     margin-top: 12px;
+    font-size: var(--text-body-md);
+    line-height: var(--line-body);
     text-align: left;
   }
 
