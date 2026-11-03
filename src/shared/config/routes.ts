@@ -3,7 +3,7 @@ export const routes = {
   about: "/about",
   vacancies: "/vacancies",
   documents: "/documents",
-  outplacement: "/outplacement",
+  smartplacement: "/smartplacement",
   uiKit: "/ui-kit",
   platform: "#platform",
   solutions: "#solutions",

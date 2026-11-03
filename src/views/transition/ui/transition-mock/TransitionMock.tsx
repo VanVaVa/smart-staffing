@@ -7,12 +7,21 @@ type ChildrenProps = {
 };
 
 type MockSheetProps = ChildrenProps & {
+  compact?: boolean;
   className?: string;
 };
 
-export function MockSheet({ className, children }: MockSheetProps) {
+export function MockSheet({ compact = false, className, children }: MockSheetProps) {
+  const rootClass = [
+    styles["transition-mock__sheet"],
+    compact ? styles["transition-mock__sheet--compact"] : "",
+    className,
+  ]
+    .filter(Boolean)
+    .join(" ");
+
   return (
-    <div className={[styles["transition-mock__sheet"], className].filter(Boolean).join(" ")} aria-hidden>
+    <div className={rootClass} aria-hidden>
       {children}
     </div>
   );

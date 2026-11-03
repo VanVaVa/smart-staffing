@@ -56,7 +56,7 @@ export function TransitionPerks() {
       </li>
       <li className={`${cardClass} ${styles["transition-perks__card--consent"]}`}>
         <div className={styles["transition-perks__consent-mock"]}>
-          <MockSheet className={styles["transition-perks__consent-sheet"]}>
+          <MockSheet compact className={styles["transition-perks__consent-sheet"]}>
             <div className={styles["transition-perks__person"]}>
               <MockAvatar initials="J" tone="violet" />
               <span>Java‑разработчик</span>

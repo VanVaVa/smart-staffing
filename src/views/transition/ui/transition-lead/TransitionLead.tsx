@@ -13,7 +13,7 @@ export function TransitionLead() {
         <FeedbackFormPanel
           {...transitionLeadForm}
           submissionType="contact"
-          sourcePath={routes.outplacement}
+          sourcePath={routes.smartplacement}
           sourceLabel="Аутплейсмент"
           channels={["phone", "email"]}
         />

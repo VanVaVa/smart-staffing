@@ -177,6 +177,10 @@
 }
 
 @media (max-width: 576px) {
+  .transition-cycle {
+    margin-top: 40px;
+  }
+
   .transition-cycle__ring {
     display: none;
   }

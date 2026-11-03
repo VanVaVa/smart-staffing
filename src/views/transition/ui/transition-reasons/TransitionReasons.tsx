@@ -18,6 +18,8 @@ const TEAM = [
 
 const TEAM_ROLES = ["Backend", "Frontend", "QA", "Аналитик"];
 
+const REFERRAL_SKILLS = ["Java", "Spring", "Kafka", "PostgreSQL"];
+
 export function TransitionReasons({ titleId }: TransitionReasonsProps) {
   const { cards } = transitionReasons;
   const cardClass = styles["transition-reasons__card"];
@@ -36,10 +38,21 @@ export function TransitionReasons({ titleId }: TransitionReasonsProps) {
               <span className={styles["transition-reasons__plate-check"]}>✓</span>
               Опыт подтверждён
             </div>
-            <div className={styles["transition-reasons__lines"]} aria-hidden>
-              <span />
-              <span />
-              <span />
+            <div className={styles["transition-reasons__referral"]} aria-hidden>
+              <div className={styles["transition-reasons__referee"]}>
+                <MockAvatar initials="ИК" tone="orange" />
+                <span className={styles["transition-reasons__referee-text"]}>
+                  <span className={styles["transition-reasons__referee-name"]}>Рекомендует тимлид</span>
+                  <span className={styles["transition-reasons__referee-note"]}>3 года в одной команде</span>
+                </span>
+              </div>
+              <div className={styles["transition-reasons__skills"]}>
+                {REFERRAL_SKILLS.map((skill) => (
+                  <span key={skill} className={styles["transition-reasons__skill"]}>
+                    {skill}
+                  </span>
+                ))}
+              </div>
             </div>
           </TransitionCard>
           <TransitionCard title={cards.early} className={cardClass}>
@@ -54,6 +67,17 @@ export function TransitionReasons({ titleId }: TransitionReasonsProps) {
                 <span className={styles["transition-reasons__dot"]} />
                 <span>Открытый рынок</span>
                 <MockChip tone="muted">Позже</MockChip>
+              </MockRow>
+              <div className={styles["transition-reasons__notice"]}>
+                <span className={styles["transition-reasons__notice-head"]}>
+                  <span>Срок предупреждения</span>
+                  <span className={styles["transition-reasons__notice-left"]}>ещё 45 дней</span>
+                </span>
+                <span className={styles["transition-reasons__progress"]} />
+              </div>
+              <MockRow>
+                <span>Предложения из&nbsp;сети</span>
+                <MockChip tone="violet">2 оффера</MockChip>
               </MockRow>
             </MockSheet>
           </TransitionCard>
@@ -72,6 +96,14 @@ export function TransitionReasons({ titleId }: TransitionReasonsProps) {
                   </MockChip>
                 ))}
               </div>
+              <MockRow>
+                <span>Вместе на&nbsp;проектах</span>
+                <MockChip tone="muted">3 года</MockChip>
+              </MockRow>
+              <MockRow>
+                <span>Готовы к&nbsp;переходу</span>
+                <MockChip tone="success">4 из 6</MockChip>
+              </MockRow>
             </MockSheet>
           </TransitionCard>
         </ul>

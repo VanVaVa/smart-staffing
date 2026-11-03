@@ -16,6 +16,15 @@
   z-index: 1;
   margin-top: calc(-1 * var(--transition-section-radius));
   padding-top: calc(var(--transition-section-space) * 2);
+}
+
+.transition-section--raised::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: calc(var(--transition-section-radius) * 2);
   border-radius: var(--transition-section-radius) var(--transition-section-radius) 0 0;
   background: var(--color-bg);
 }

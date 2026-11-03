@@ -57,5 +57,7 @@
 @media (max-width: 576px) {
   .transition-section-title__lead {
     margin-top: 12px;
+    font-size: var(--text-body-md);
+    line-height: var(--line-body);
   }
 }

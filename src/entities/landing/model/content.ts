@@ -19,13 +19,13 @@ export const landingNav = [
       { label: "Кадровые агентства", href: "/pricing/agencies" },
     ],
   },
-  { label: "СмартПлейсмент", href: routes.outplacement, badge: "new" },
+  { label: "СмартПлейсмент", href: routes.smartplacement, badge: "new" },
 ] as const;
 
 export const heroNewDirection = {
   label: "Компаниям при\u00a0сокращении ИТ\u2011штата",
   badge: "new",
-  href: routes.outplacement,
+  href: routes.smartplacement,
   thumbImageSrc: "/landing/transition/hero-thumb.webp",
 } as const;
 

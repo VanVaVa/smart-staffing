@@ -94,6 +94,7 @@
 @media (max-width: 576px) {
   .transition-track {
     grid-template-columns: minmax(0, 1fr);
+    grid-auto-rows: 1fr;
     gap: var(--transition-card-gap);
   }
 

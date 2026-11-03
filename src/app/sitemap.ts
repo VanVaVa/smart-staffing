@@ -12,7 +12,7 @@ const STATIC_PATHS = [
   routes.vacancies,
   routes.documents,
   "/connect",
-  routes.outplacement,
+  routes.smartplacement,
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

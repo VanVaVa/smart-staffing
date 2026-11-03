@@ -6,7 +6,8 @@ export type TransitionIconName =
   | "lock"
   | "userCheck"
   | "doc"
-  | "clock";
+  | "clock"
+  | "info";
 
 export type TransitionAccentText = {
   before?: string;

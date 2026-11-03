@@ -2,7 +2,7 @@ import { routes, siteUrl } from "@/shared/config";
 
 import { transitionFaq } from "./content";
 
-const pageUrl = `${siteUrl}${routes.outplacement}`;
+const pageUrl = `${siteUrl}${routes.smartplacement}`;
 
 function toPlainText(value: string) {
   return value.replaceAll("\u00a0", " ").replaceAll("\u2011", "-");

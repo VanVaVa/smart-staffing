@@ -33,8 +33,9 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
-      { source: "/transition", destination: "/outplacement", permanent: true },
-      { source: "/flywheel", destination: "/outplacement", permanent: true },
+      { source: "/outplacement", destination: "/smartplacement", permanent: true },
+      { source: "/transition", destination: "/smartplacement", permanent: true },
+      { source: "/flywheel", destination: "/smartplacement", permanent: true },
     ];
   },
   serverExternalPackages: ["pg", "@prisma/adapter-pg"],

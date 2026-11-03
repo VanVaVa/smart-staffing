@@ -106,16 +106,14 @@
 }
 
 .transition-perks__consent-mock {
-  position: relative;
-  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding: 16px 0 16px var(--transition-card-pad);
 }
 
-.transition-perks__card .transition-perks__consent-sheet {
-  position: absolute;
-  top: 19px;
-  right: 50px;
-  left: 56px;
-  margin: 0;
+.transition-perks__consent-sheet {
+  width: 100%;
+  max-width: 360px;
 }
 
 .transition-perks__card--consent .transition-perks__copy {
@@ -160,6 +158,8 @@
   }
 
   .transition-perks__card--contour .transition-perks__copy {
+    justify-content: flex-start;
+    gap: 8px;
     padding: var(--transition-card-pad);
   }
 
@@ -170,13 +170,7 @@
   }
 
   .transition-perks__consent-mock {
-    height: 176px;
-  }
-
-  .transition-perks__card .transition-perks__consent-sheet {
-    top: var(--transition-card-pad);
-    right: 0;
-    left: var(--transition-card-pad);
+    padding: var(--transition-card-pad) var(--transition-card-pad) 0;
   }
 
   .transition-perks__card--consent .transition-perks__copy {
