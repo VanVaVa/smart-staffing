@@ -44,7 +44,7 @@
 }
 
 .transition-faq__question-text {
-  padding-top: calc((var(--transition-icon-box) - var(--line-h3)) / 2);
+  align-self: center;
 }
 
 .transition-faq__question::-webkit-details-marker {

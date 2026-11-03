@@ -70,3 +70,23 @@
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+@media (max-width: 576px) {
+  .transition-facts__label {
+    font-family: var(--font-body);
+    font-size: var(--text-body-md);
+    font-weight: 500;
+    line-height: var(--line-body);
+    letter-spacing: 0;
+  }
+
+  .transition-facts__text,
+  .transition-facts__sources {
+    font-size: var(--text-body-sm);
+    line-height: var(--line-body-sm);
+  }
+
+  .transition-facts__sources {
+    padding-top: 20px;
+  }
+}

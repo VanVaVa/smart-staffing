@@ -45,6 +45,7 @@
 .transition-reasons__sheet {
   flex: 1;
   align-content: start;
+  margin-bottom: -36px;
 }
 
 .transition-reasons__plate {
@@ -205,6 +206,10 @@
 @media (max-width: 576px) {
   .transition-reasons__head {
     gap: 4px;
+  }
+
+  .transition-reasons__sheet {
+    margin-bottom: -24px;
   }
 }
 
